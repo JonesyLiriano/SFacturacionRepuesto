@@ -73,6 +73,7 @@ namespace SFacturacion
         {
             try
             {
+                Me
                 Validar();
                 ValidarRecuerdame();
 
