@@ -1,0 +1,17 @@
+C:\Users\jliriano\Documents\C#\SFacturacion\CapaNegocios\obj\Debug\CapaNegocios.csprojAssemblyReference.cache
+C:\Users\jliriano\Documents\C#\SFacturacion\CapaNegocios\obj\Debug\CapaNegocios.csproj.CoreCompileInputs.cache
+C:\Users\jliriano\Documents\C#\SFacturacion\CapaNegocios\bin\Debug\SFacturacion.mdf
+C:\Users\jliriano\Documents\C#\SFacturacion\CapaNegocios\bin\Debug\SFacturacion_log.ldf
+C:\Users\jliriano\Documents\C#\SFacturacion\CapaNegocios\bin\Debug\CapaNegocios.dll
+C:\Users\jliriano\Documents\C#\SFacturacion\CapaNegocios\bin\Debug\CapaNegocios.pdb
+C:\Users\jliriano\Documents\C#\SFacturacion\CapaNegocios\bin\Debug\CapaDatos.dll
+C:\Users\jliriano\Documents\C#\SFacturacion\CapaNegocios\bin\Debug\EntityFramework.dll
+C:\Users\jliriano\Documents\C#\SFacturacion\CapaNegocios\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\jliriano\Documents\C#\SFacturacion\CapaNegocios\bin\Debug\CapaDatos.pdb
+C:\Users\jliriano\Documents\C#\SFacturacion\CapaNegocios\bin\Debug\CapaDatos.dll.config
+C:\Users\jliriano\Documents\C#\SFacturacion\CapaNegocios\bin\Debug\EntityFramework.xml
+C:\Users\jliriano\Documents\C#\SFacturacion\CapaNegocios\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\jliriano\Documents\C#\SFacturacion\CapaNegocios\obj\Debug\CapaNegocios.csproj.CopyComplete
+C:\Users\jliriano\Documents\C#\SFacturacion\CapaNegocios\obj\Debug\CapaNegocios.dll
+C:\Users\jliriano\Documents\C#\SFacturacion\CapaNegocios\obj\Debug\CapaNegocios.pdb
+C:\Users\jliriano\Documents\C#\SFacturacion\CapaNegocios\bin\Debug\CapaNegocios.dll.config
