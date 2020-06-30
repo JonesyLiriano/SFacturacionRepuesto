@@ -34,9 +34,16 @@ namespace CapaDatos
             return (bool)resultado.Value;
         }
 
-        public ObjectResult<proc_ComprobantePagoLineaCreditoVenta_Result> ComprobantePagoLineaCreditoVenta()
+        public bool BorrarCobroVentaCredito(int cobroVentaCreditoID)
         {
-            var result = modelDB.proc_ComprobantePagoLineaCreditoVenta();
+            modelDB.proc_BorrarCobroVentaCredito(cobroVentaCreditoID, resultado);
+
+            return (bool)resultado.Value;
+        }
+
+        public ObjectResult<proc_ComprobantePagoLineaCreditoVenta_Result> ComprobantePagoLineaCreditoVenta(int cobrosVentasCreditoID)
+        {
+            var result = modelDB.proc_ComprobantePagoLineaCreditoVenta(cobrosVentasCreditoID);
 
             return result;
         }

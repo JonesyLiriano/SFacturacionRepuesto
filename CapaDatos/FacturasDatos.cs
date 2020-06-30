@@ -23,16 +23,11 @@ namespace CapaDatos
 
         public Tuple<bool, int> InsertarFactura(Factura factura)
         {
-            modelDB.proc_InsertarFactura(facturaID, factura.ClienteID, factura.Fecha, factura.TipoPagoID, factura.TipoFacturaID,factura.NCF, factura.FechaVencimiento, factura.UserID, factura.RNC, factura.Entidad, factura.DescuentoCliente, resultado);
+            modelDB.proc_InsertarFactura(facturaID, factura.ClienteID, factura.Fecha, factura.TipoPagoID, factura.TipoFacturaID,factura.NCF, factura.FechaVencimiento, factura.UserID, factura.RNC, factura.Entidad, factura.DescuentoCliente, factura.CotizacionID, resultado);
 
             return Tuple.Create((bool)resultado.Value, (int)facturaID.Value);
         }
-
-        public ObjectResult<proc_VerTipoUltimaFactura_Result> VerTipoUltimaFactura()
-        {
-            var result = modelDB.proc_VerTipoUltimaFactura();
-            return result;
-        }
+       
 
         public ObjectResult<proc_CargarMontoFacturaNC_Result> CargarMontoFacturaNC(int facturaID)
         {
@@ -46,11 +41,6 @@ namespace CapaDatos
             return result;
         }
 
-        public ObjectResult<proc_VerTipoPagoUltimaFactura_Result> VerTipoPagoUltimaFactura()
-        {
-            var result = modelDB.proc_VerTipoPagoUltimaFactura();
-            return result;
-        }
 
         public ObjectResult<proc_CargarProductosFactura_Result> CargarProductosFactura(int facturaID)
         {
@@ -81,16 +71,10 @@ namespace CapaDatos
             var result = modelDB.proc_CargarTodasFacturas();
             return result;
         }
-
-        public ObjectResult<proc_CargarFacturaVentaCFinal_Result> CargarFacturaVentaCFinal()
+       
+        public ObjectResult<proc_ComprobanteFacturaVenta_Result> CargarComprobanteFacturaVenta(int facturaID)
         {
-            var result = modelDB.proc_CargarFacturaVentaCFinal();
-            return result;
-        }
-
-        public ObjectResult<proc_CargarFacturaVentaCFiscal_Result> CargarFacturaVentaCFiscal()
-        {
-            var result = modelDB.proc_CargarFacturaVentaCFiscal();
+            var result = modelDB.proc_ComprobanteFacturaVenta(facturaID);
             return result;
         }
 

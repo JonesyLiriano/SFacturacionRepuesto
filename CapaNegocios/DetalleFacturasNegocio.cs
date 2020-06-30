@@ -17,10 +17,5 @@ namespace CapaNegocios
 
             return detalleFacturasDatos.InsertarDetalleFactura(detalleFactura);
         }
-
-        public ObjectResult<proc_CargarDetalleFacturaVenta_Result> CargarDetalleFacturaVenta(int facturaID)
-        {
-            return detalleFacturasDatos.CargarDetalleFacturaVenta(facturaID);
-        }
     }
 }

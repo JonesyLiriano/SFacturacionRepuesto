@@ -81,11 +81,12 @@
     <Property Name="UserID" Type="Int32" Nullable="false" />
     <Property Name="RNC" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
     <Property Name="Entidad" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="DescuentoCliente" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="DescuentoCliente" Type="Decimal" Precision="18" Scale="2" />
     <NavigationProperty Name="DetalleFacturas" Relationship="Self.FK_DetalleFacturas_Facturas" FromRole="Facturas" ToRole="DetalleFacturas" />
     <NavigationProperty Name="LineasCreditoVentas" Relationship="Self.FK_LineasCredito_Facturas" FromRole="Facturas" ToRole="LineasCreditoVentas" />
     <NavigationProperty Name="LineasCreditoVentas1" Relationship="Self.FK_LineasCreditoVentas_Facturas" FromRole="Facturas" ToRole="LineasCreditoVentas" />
     <NavigationProperty Name="NotasDeCreditoes" Relationship="Self.FK_NotasDeCredito_Facturas" FromRole="Facturas" ToRole="NotasDeCredito" />
+    <Property Name="CotizacionID" Type="Int32" />
   </EntityType>
   <EntityType Name="FacturasCompra">
     <Key>
@@ -150,20 +151,22 @@
       <PropertyRef Name="ProductoID" />
     </Key>
     <Property Name="ProductoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="ProveedorID" Type="Int32" />
     <Property Name="Existencia" Type="Double" />
     <Property Name="PrecioCompra" Type="Decimal" Precision="18" Scale="2" />
     <Property Name="PrecioVenta" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-    <Property Name="PrecioVentaMin" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="PrecioVentaMin" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
     <Property Name="Descuento" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
     <Property Name="ITBIS" Type="Boolean" Nullable="false" />
-    <Property Name="Servicio" Type="Boolean" />
+    <Property Name="Servicio" Type="Boolean" Nullable="false" />
     <Property Name="CantMin" Type="Double" />
     <Property Name="CantMax" Type="Double" />
     <NavigationProperty Name="DetalleFacturas" Relationship="Self.FK_DetalleFacturas_Productos" FromRole="Productos" ToRole="DetalleFacturas" />
     <NavigationProperty Name="DetalleNotaDeCreditoes" Relationship="Self.FK_DetalleNotaDeCredito_Productos" FromRole="Productos" ToRole="DetalleNotaDeCredito" />
     <NavigationProperty Name="Proveedore" Relationship="Self.FK_Productos_Proveedores" FromRole="Productos" ToRole="Proveedores" />
+    <Property Name="CodigoBarra" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UnidadMedida" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="Proveedore">
     <Key>
@@ -201,7 +204,7 @@
     <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="UserPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="UserLevel" Type="Int32" Nullable="false" />
+    <Property Name="UserLevel" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
     <NavigationProperty Name="CobrosVentasCreditoes" Relationship="Self.FK_CobrosVentasCredito_Users" FromRole="Users" ToRole="CobrosVentasCredito" />
     <NavigationProperty Name="NotasDeCreditoes" Relationship="Self.FK_NotasDeCredito_Users" FromRole="Users" ToRole="NotasDeCredito" />
   </EntityType>
@@ -514,6 +517,8 @@
       <Parameter Name="Descuento" Mode="In" Type="Decimal" />
       <Parameter Name="CantMin" Mode="In" Type="Double" />
       <Parameter Name="CantMax" Mode="In" Type="Double" />
+      <Parameter Name="CodigoBarra" Mode="In" Type="String" />
+      <Parameter Name="UnidadMedida" Mode="In" Type="String" />
       <Parameter Name="resultado" Mode="InOut" Type="Boolean" />
     </FunctionImport>
     <FunctionImport Name="proc_ActualizarProveedor">
@@ -540,7 +545,7 @@
       <Parameter Name="UserID" Mode="In" Type="Int32" />
       <Parameter Name="UserName" Mode="In" Type="String" />
       <Parameter Name="UserPassword" Mode="In" Type="String" />
-      <Parameter Name="UserLevel" Mode="In" Type="Int32" />
+      <Parameter Name="UserLevel" Mode="In" Type="String" />
       <Parameter Name="resultado" Mode="InOut" Type="Boolean" />
     </FunctionImport>
     <FunctionImport Name="proc_BorrarCliente">
@@ -620,9 +625,6 @@
       <Parameter Name="FechaInicial" Mode="In" Type="DateTime" />
       <Parameter Name="FechaFinal" Mode="In" Type="DateTime" />
     </FunctionImport>
-    <FunctionImport Name="proc_CargarDetalleFacturaVenta" ReturnType="Collection(SFacturacionModel.proc_CargarDetalleFacturaVenta_Result)">
-      <Parameter Name="FacturaID" Mode="In" Type="Int32" />
-    </FunctionImport>
     <FunctionImport Name="proc_CargarFacturasPendientes" ReturnType="Collection(SFacturacionModel.proc_CargarFacturasPendientes_Result)">
       <Parameter Name="ClienteID" Mode="In" Type="Int32" />
     </FunctionImport>
@@ -630,8 +632,6 @@
       <Parameter Name="FechaInicial" Mode="In" Type="DateTime" />
       <Parameter Name="FechaFinal" Mode="In" Type="DateTime" />
     </FunctionImport>
-    <FunctionImport Name="proc_CargarFacturaVentaCFinal" ReturnType="Collection(SFacturacionModel.proc_CargarFacturaVentaCFinal_Result)" />
-    <FunctionImport Name="proc_CargarFacturaVentaCFiscal" ReturnType="Collection(SFacturacionModel.proc_CargarFacturaVentaCFiscal_Result)" />
     <FunctionImport Name="proc_CargarLineasCreditoVentasCompletadasPFecha" ReturnType="Collection(SFacturacionModel.proc_CargarLineasCreditoVentasCompletadasPFecha_Result)">
       <Parameter Name="FechaInicial" Mode="In" Type="DateTime" />
       <Parameter Name="FechaFinal" Mode="In" Type="DateTime" />
@@ -656,7 +656,6 @@
       <Parameter Name="FechaFinal" Mode="In" Type="DateTime" />
     </FunctionImport>
     <FunctionImport Name="proc_CargarProductosExistBaja" ReturnType="Collection(SFacturacionModel.proc_CargarProductosExistBaja_Result)" />
-    <FunctionImport Name="proc_CargarTodasCategoriasProd" />
     <FunctionImport Name="proc_CargarTodasFacturas" ReturnType="Collection(SFacturacionModel.proc_CargarTodasFacturas_Result)" />
     <FunctionImport Name="proc_CargarTodasLineasCreditoVentas" ReturnType="Collection(SFacturacionModel.proc_CargarTodasLineasCreditoVentas_Result)" />
     <FunctionImport Name="proc_CargarTodasLineasCreditoVentasCompletadas" ReturnType="Collection(SFacturacionModel.proc_CargarTodasLineasCreditoVentasCompletadas_Result)" />
@@ -673,8 +672,12 @@
     <FunctionImport Name="proc_CerrarOrdenCompra">
       <Parameter Name="OrdenCompraID" Mode="In" Type="Int32" />
     </FunctionImport>
-    <FunctionImport Name="proc_ComprobanteNotaDeCredito" ReturnType="Collection(SFacturacionModel.proc_ComprobanteNotaDeCredito_Result)" />
-    <FunctionImport Name="proc_ComprobantePagoLineaCreditoVenta" ReturnType="Collection(SFacturacionModel.proc_ComprobantePagoLineaCreditoVenta_Result)" />
+    <FunctionImport Name="proc_ComprobanteNotaDeCredito" ReturnType="Collection(SFacturacionModel.proc_ComprobanteNotaDeCredito_Result)">
+      <Parameter Name="NotaDeCreditoID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="proc_ComprobantePagoLineaCreditoVenta" ReturnType="Collection(SFacturacionModel.proc_ComprobantePagoLineaCreditoVenta_Result)">
+      <Parameter Name="CobroVentaCreditoID" Mode="In" Type="Int32" />
+    </FunctionImport>
     <FunctionImport Name="proc_ComprobarPagoLineaCreditoVenta">
       <Parameter Name="LineaCreditoVentaID" Mode="In" Type="Int32" />
       <Parameter Name="PagoLineaCreditoVenta" Mode="In" Type="Decimal" />
@@ -750,6 +753,7 @@
       <Parameter Name="RNC" Mode="In" Type="String" />
       <Parameter Name="Entidad" Mode="In" Type="String" />
       <Parameter Name="DescuentoCliente" Mode="In" Type="Decimal" />
+      <Parameter Name="CotizacionID" Mode="In" Type="Int32" />
       <Parameter Name="resultado" Mode="InOut" Type="Boolean" />
     </FunctionImport>
     <FunctionImport Name="proc_InsertarFacturaCompra">
@@ -813,7 +817,7 @@
       <Parameter Name="UserID" Mode="InOut" Type="Int32" />
       <Parameter Name="UserName" Mode="In" Type="String" />
       <Parameter Name="UserPassword" Mode="In" Type="String" />
-      <Parameter Name="UserLevel" Mode="In" Type="Int32" />
+      <Parameter Name="UserLevel" Mode="In" Type="String" />
       <Parameter Name="resultado" Mode="InOut" Type="Boolean" />
     </FunctionImport>
     <FunctionImport Name="proc_RealizarBackUp" />
@@ -827,8 +831,6 @@
       <Parameter Name="ClienteID" Mode="In" Type="Int32" />
       <Parameter Name="MontoFactura" Mode="In" Type="Decimal" />
     </FunctionImport>
-    <FunctionImport Name="proc_VerTipoPagoUltimaFactura" ReturnType="Collection(SFacturacionModel.proc_VerTipoPagoUltimaFactura_Result)" />
-    <FunctionImport Name="proc_VerTipoUltimaFactura" ReturnType="Collection(SFacturacionModel.proc_VerTipoUltimaFactura_Result)" />
     <FunctionImport Name="proc_CargarDetalleNotaDeCredito" ReturnType="Collection(SFacturacionModel.proc_CargarDetalleNotaDeCredito_Result)">
       <Parameter Name="NotaDeCreditoID" Mode="In" Type="Int32" />
     </FunctionImport>
@@ -854,7 +856,57 @@
       <Parameter Name="Descuento" Mode="In" Type="Decimal" />
       <Parameter Name="CantMin" Mode="In" Type="Double" />
       <Parameter Name="CantMax" Mode="In" Type="Double" />
+      <Parameter Name="CodigoBarra" Mode="In" Type="String" />
+      <Parameter Name="UnidadMedida" Mode="In" Type="String" />
       <Parameter Name="resultado" Mode="InOut" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="proc_BuscarProductosPorCodigoBarra" ReturnType="Collection(SFacturacionModel.proc_BuscarProductosPorCodigoBarra_Result)">
+      <Parameter Name="CodigoBarra" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="proc_ActualizarCantidadProducto">
+      <Parameter Name="CodigoBarra" Mode="In" Type="String" />
+      <Parameter Name="Existencia" Mode="In" Type="Double" />
+      <Parameter Name="resultado" Mode="InOut" Type="Boolean" />
+    </FunctionImport>
+    <EntitySet Name="Cotizaciones" EntityType="SFacturacionModel.Cotizacione" />
+    <EntitySet Name="DetalleCotizaciones" EntityType="SFacturacionModel.DetalleCotizacione" />
+    <FunctionImport Name="proc_CargarCotizacionesPFecha" ReturnType="Collection(SFacturacionModel.proc_CargarCotizacionesPFecha_Result)">
+      <Parameter Name="FechaInicial" Mode="In" Type="DateTime" />
+      <Parameter Name="FechaFinal" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="proc_CargarTodasCotizaciones" ReturnType="Collection(SFacturacionModel.proc_CargarTodasCotizaciones_Result)" />
+    <FunctionImport Name="proc_ComprobanteCotizacion" ReturnType="Collection(SFacturacionModel.proc_ComprobanteCotizacion_Result)">
+      <Parameter Name="CotizacionID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="proc_InsertarCotizacion">
+      <Parameter Name="CotizacionID" Mode="InOut" Type="Int32" />
+      <Parameter Name="ClienteID" Mode="In" Type="Int32" />
+      <Parameter Name="Fecha" Mode="In" Type="DateTime" />
+      <Parameter Name="UserID" Mode="In" Type="Int32" />
+      <Parameter Name="Facturada" Mode="In" Type="Boolean" />
+      <Parameter Name="DescuentoCliente" Mode="In" Type="Decimal" />
+      <Parameter Name="resultado" Mode="InOut" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="proc_InsertarDetalleCotizacion">
+      <Parameter Name="DetalleCotizacionID" Mode="InOut" Type="Int32" />
+      <Parameter Name="CotizacionID" Mode="In" Type="Int32" />
+      <Parameter Name="ProductoID" Mode="In" Type="Int32" />
+      <Parameter Name="Cantidad" Mode="In" Type="Double" />
+      <Parameter Name="Precio" Mode="In" Type="Decimal" />
+      <Parameter Name="ITBIS" Mode="In" Type="Decimal" />
+      <Parameter Name="Descuento" Mode="In" Type="Decimal" />
+      <Parameter Name="resultado" Mode="InOut" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="proc_CargarCotizacionesActivas" ReturnType="Collection(SFacturacionModel.proc_CargarCotizacionesActivas_Result)" />
+    <FunctionImport Name="proc_BorrarCotizacion">
+      <Parameter Name="CotizacionID" Mode="In" Type="Int32" />
+      <Parameter Name="resultado" Mode="InOut" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="proc_CargarProductosCotizacion" ReturnType="Collection(SFacturacionModel.proc_CargarProductosCotizacion_Result)">
+      <Parameter Name="CotizacionID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="proc_ComprobanteFacturaVenta" ReturnType="Collection(SFacturacionModel.proc_ComprobanteFacturaVenta_Result)">
+      <Parameter Name="FacturaID" Mode="In" Type="Int32" />
     </FunctionImport>
   </EntityContainer>
   <ComplexType Name="proc_BuscarClientesPorID_Result">
@@ -869,31 +921,35 @@
   </ComplexType>
   <ComplexType Name="proc_BuscarProductosPorID_Result">
     <Property Type="Int32" Name="ProductoID" Nullable="false" />
-    <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="100" />
     <Property Type="Int32" Name="ProveedorID" Nullable="true" />
     <Property Type="Double" Name="Existencia" Nullable="true" />
     <Property Type="Decimal" Name="PrecioCompra" Nullable="true" Precision="18" Scale="2" />
     <Property Type="Decimal" Name="PrecioVenta" Nullable="false" Precision="18" Scale="2" />
-    <Property Type="Decimal" Name="PrecioVentaMin" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="PrecioVentaMin" Nullable="false" Precision="18" Scale="2" />
     <Property Type="Decimal" Name="Descuento" Nullable="false" Precision="18" Scale="2" />
     <Property Type="Boolean" Name="ITBIS" Nullable="false" />
-    <Property Type="Boolean" Name="Servicio" Nullable="true" />
+    <Property Type="Boolean" Name="Servicio" Nullable="false" />
     <Property Type="Double" Name="CantMin" Nullable="true" />
     <Property Type="Double" Name="CantMax" Nullable="true" />
+    <Property Type="String" Name="CodigoBarra" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="UnidadMedida" Nullable="false" MaxLength="50" />
   </ComplexType>
   <ComplexType Name="proc_BuscarProductosPorProveedor_Result">
     <Property Type="Int32" Name="ProductoID" Nullable="false" />
-    <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="100" />
     <Property Type="Int32" Name="ProveedorID" Nullable="true" />
     <Property Type="Double" Name="Existencia" Nullable="true" />
     <Property Type="Decimal" Name="PrecioCompra" Nullable="true" Precision="18" Scale="2" />
     <Property Type="Decimal" Name="PrecioVenta" Nullable="false" Precision="18" Scale="2" />
-    <Property Type="Decimal" Name="PrecioVentaMin" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="PrecioVentaMin" Nullable="false" Precision="18" Scale="2" />
     <Property Type="Decimal" Name="Descuento" Nullable="false" Precision="18" Scale="2" />
     <Property Type="Boolean" Name="ITBIS" Nullable="false" />
-    <Property Type="Boolean" Name="Servicio" Nullable="true" />
+    <Property Type="Boolean" Name="Servicio" Nullable="false" />
     <Property Type="Double" Name="CantMin" Nullable="true" />
     <Property Type="Double" Name="CantMax" Nullable="true" />
+    <Property Type="String" Name="CodigoBarra" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="UnidadMedida" Nullable="false" MaxLength="50" />
   </ComplexType>
   <ComplexType Name="proc_BuscarProveedoresPorID_Result">
     <Property Type="Int32" Name="ProveedorID" Nullable="false" />
@@ -906,10 +962,12 @@
   </ComplexType>
   <ComplexType Name="proc_Cargar10ProductosVendidosPFecha_Result">
     <Property Type="Int32" Name="ProductoID" Nullable="false" />
-    <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="50" />
-    <Property Type="Int32" Name="ProveedorID" Nullable="true" />
+    <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="100" />
     <Property Type="Double" Name="Existencia" Nullable="true" />
     <Property Type="Double" Name="CantidadVendida" Nullable="true" />
+    <Property Type="String" Name="CodigoBarra" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="UnidadMedida" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Proveedor" Nullable="true" MaxLength="100" />
   </ComplexType>
   <ComplexType Name="proc_CargarCobrosVentaCredito_Result">
     <Property Type="Int32" Name="CobroVentaCreditoID" Nullable="false" />
@@ -926,21 +984,12 @@
     <Property Type="String" Name="Concepto" Nullable="false" MaxLength="20" />
     <Property Type="Int32" Name="UserID" Nullable="false" />
   </ComplexType>
-  <ComplexType Name="proc_CargarDetalleFacturaVenta_Result">
-    <Property Type="Int32" Name="ProductoID" Nullable="false" />
-    <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="50" />
-    <Property Type="Double" Name="CantVen" Nullable="false" />
-    <Property Type="Decimal" Name="Precio" Nullable="true" Precision="18" Scale="2" />
-    <Property Type="Decimal" Name="ITBIS" Nullable="false" Precision="18" Scale="2" />
-    <Property Type="Decimal" Name="Descuento" Nullable="false" Precision="18" Scale="2" />
-    <Property Type="Decimal" Name="Importe" Nullable="true" Precision="18" Scale="2" />
-  </ComplexType>
   <ComplexType Name="proc_CargarFacturasPFecha_Result">
     <Property Type="Int32" Name="FacturaID" Nullable="false" />
     <Property Type="Int32" Name="UserID" Nullable="false" />
     <Property Type="Int32" Name="ClienteID" Nullable="false" />
     <Property Type="String" Name="Nombre" Nullable="false" MaxLength="100" />
-    <Property Type="Decimal" Name="DescuentoCliente" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="DescuentoCliente" Nullable="true" Precision="18" Scale="2" />
     <Property Type="DateTime" Name="Fecha" Nullable="false" Precision="23" />
     <Property Type="String" Name="TipoDePago" Nullable="false" MaxLength="50" />
     <Property Type="String" Name="TipoFactura" Nullable="false" MaxLength="50" />
@@ -951,41 +1000,7 @@
     <Property Type="Decimal" Name="Valor" Nullable="true" Precision="18" Scale="2" />
     <Property Type="String" Name="RNC" Nullable="true" MaxLength="11" />
     <Property Type="String" Name="Entidad" Nullable="true" MaxLength="100" />
-  </ComplexType>
-  <ComplexType Name="proc_CargarFacturaVentaCFinal_Result">
-    <Property Type="Int32" Name="FacturaID" Nullable="false" />
-    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="100" />
-    <Property Type="Decimal" Name="DescuentoCliente" Nullable="false" Precision="18" Scale="2" />
-    <Property Type="DateTime" Name="Fecha" Nullable="false" Precision="23" />
-    <Property Type="String" Name="NCF" Nullable="false" MaxLength="50" />
-    <Property Type="String" Name="TipoFactura" Nullable="false" MaxLength="50" />
-    <Property Type="String" Name="TipoDePago" Nullable="false" MaxLength="50" />
-    <Property Type="Int32" Name="UserID" Nullable="false" />
-    <Property Type="Int32" Name="ProductoID" Nullable="false" />
-    <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="50" />
-    <Property Type="Decimal" Name="Precio" Nullable="false" Precision="18" Scale="2" />
-    <Property Type="Double" Name="CantVen" Nullable="false" />
-    <Property Type="Decimal" Name="Descuento" Nullable="false" Precision="18" Scale="2" />
-    <Property Type="Decimal" Name="ITBIS" Nullable="false" Precision="18" Scale="2" />
-  </ComplexType>
-  <ComplexType Name="proc_CargarFacturaVentaCFiscal_Result">
-    <Property Type="Int32" Name="FacturaID" Nullable="false" />
-    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="100" />
-    <Property Type="Decimal" Name="DescuentoCliente" Nullable="false" Precision="18" Scale="2" />
-    <Property Type="DateTime" Name="Fecha" Nullable="false" Precision="23" />
-    <Property Type="String" Name="NCF" Nullable="false" MaxLength="50" />
-    <Property Type="String" Name="TipoFactura" Nullable="false" MaxLength="50" />
-    <Property Type="String" Name="TipoDePago" Nullable="false" MaxLength="50" />
-    <Property Type="Int32" Name="UserID" Nullable="false" />
-    <Property Type="Int32" Name="ProductoID" Nullable="false" />
-    <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="50" />
-    <Property Type="Decimal" Name="Precio" Nullable="false" Precision="18" Scale="2" />
-    <Property Type="Double" Name="CantVen" Nullable="false" />
-    <Property Type="Decimal" Name="Descuento" Nullable="false" Precision="18" Scale="2" />
-    <Property Type="Decimal" Name="ITBIS" Nullable="false" Precision="18" Scale="2" />
-    <Property Type="DateTime" Name="FechaVencimiento" Nullable="true" />
-    <Property Type="String" Name="RNC" Nullable="true" MaxLength="11" />
-    <Property Type="String" Name="Entidad" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="Cotizacion" Nullable="true" />
   </ComplexType>
   <ComplexType Name="proc_CargarLineasCreditoVentasCompletadasPFecha_Result">
     <Property Type="Int32" Name="LineaCreditoVentaID" Nullable="false" />
@@ -1058,6 +1073,7 @@
     <Property Type="String" Name="NCF" Nullable="true" MaxLength="11" />
     <Property Type="Int32" Name="UserID" Nullable="false" />
     <Property Type="Decimal" Name="Valor" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Int32" Name="Cotizacion" Nullable="true" />
   </ComplexType>
   <ComplexType Name="proc_CargarTodasLineasCreditoVentas_Result">
     <Property Type="Int32" Name="LineaCreditoVentaID" Nullable="false" />
@@ -1149,12 +1165,12 @@
     <Property Type="Int32" Name="UserID" Nullable="false" />
     <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" />
     <Property Type="String" Name="UserPassword" Nullable="false" MaxLength="50" />
-    <Property Type="Int32" Name="UserLevel" Nullable="false" />
+    <Property Type="String" Name="UserLevel" Nullable="false" MaxLength="20" />
   </ComplexType>
   <ComplexType Name="proc_ComprobanteNotaDeCredito_Result">
     <Property Type="String" Name="NCF" Nullable="false" MaxLength="25" />
     <Property Type="String" Name="NCFAfectado" Nullable="false" MaxLength="50" />
-    <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="100" />
     <Property Type="Double" Name="CantDevuelta" Nullable="false" />
     <Property Type="Decimal" Name="Precio" Nullable="false" Precision="18" Scale="2" />
     <Property Type="String" Name="Comentario" Nullable="false" MaxLength="50" />
@@ -1182,16 +1198,10 @@
     <Property Type="Int32" Name="UserID" Nullable="false" />
     <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" />
     <Property Type="String" Name="UserPassword" Nullable="false" MaxLength="50" />
-    <Property Type="Int32" Name="UserLevel" Nullable="false" />
-  </ComplexType>
-  <ComplexType Name="proc_VerTipoUltimaFactura_Result">
-    <Property Type="Int32" Name="TipoFacturaID" Nullable="false" />
+    <Property Type="String" Name="UserLevel" Nullable="false" MaxLength="20" />
   </ComplexType>
   <ComplexType Name="proc_CargarFacturasPendientes_Result">
     <Property Type="Int32" Name="FacturaID" Nullable="false" />
-  </ComplexType>
-  <ComplexType Name="proc_VerTipoPagoUltimaFactura_Result">
-    <Property Type="Int32" Name="TipoPagoID" Nullable="false" />
   </ComplexType>
   <ComplexType Name="proc_CargarDetalleNotaDeCredito_Result">
     <Property Type="Int32" Name="ProductoID" Nullable="false" />
@@ -1203,9 +1213,11 @@
   </ComplexType>
   <ComplexType Name="proc_CargarProductosFactura_Result">
     <Property Type="Int32" Name="ID" Nullable="false" />
-    <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="100" />
     <Property Type="Decimal" Name="Precio" Nullable="true" Precision="20" Scale="2" />
     <Property Type="Double" Name="CantVen" Nullable="false" />
+    <Property Type="String" Name="CodigoBarra" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="UnidadMedida" Nullable="false" MaxLength="50" />
   </ComplexType>
   <ComplexType Name="proc_CargarDetalleOrdenCompra_Result">
     <Property Type="Int32" Name="ProductoID" Nullable="false" />
@@ -1218,31 +1230,160 @@
   </ComplexType>
   <ComplexType Name="proc_CargarProductosExistBajaPorProveedor_Result">
     <Property Type="Int32" Name="ProductoID" Nullable="false" />
-    <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="100" />
     <Property Type="Double" Name="Existencia" Nullable="true" />
     <Property Type="Double" Name="CantMin" Nullable="true" />
     <Property Type="Double" Name="CantMax" Nullable="true" />
     <Property Type="Decimal" Name="PrecioCompra" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="String" Name="CodigoBarra" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="UnidadMedida" Nullable="false" MaxLength="50" />
   </ComplexType>
   <ComplexType Name="proc_CargarProductosExistBaja_Result">
     <Property Type="Int32" Name="ProductoID" Nullable="false" />
-    <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="50" />
-    <Property Type="Int32" Name="ProveedorID" Nullable="false" />
+    <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="100" />
     <Property Type="Double" Name="Existencia" Nullable="true" />
     <Property Type="Double" Name="CantMin" Nullable="true" />
     <Property Type="Double" Name="CantMax" Nullable="true" />
+    <Property Type="String" Name="CodigoBarra" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="UnidadMedida" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Proveedor" Nullable="true" MaxLength="100" />
   </ComplexType>
   <ComplexType Name="proc_CargarTodosProductos_Result">
     <Property Type="Int32" Name="ProductoID" Nullable="false" />
-    <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="100" />
     <Property Type="Double" Name="Existencia" Nullable="true" />
-    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="100" />
     <Property Type="Decimal" Name="PrecioCompra" Nullable="true" Precision="18" Scale="2" />
     <Property Type="Decimal" Name="PrecioVenta" Nullable="false" Precision="18" Scale="2" />
-    <Property Type="Decimal" Name="PrecioVentaMin" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="PrecioVentaMin" Nullable="false" Precision="18" Scale="2" />
     <Property Type="Boolean" Name="ITBIS" Nullable="false" />
     <Property Type="Decimal" Name="Descuento" Nullable="false" Precision="18" Scale="2" />
     <Property Type="Double" Name="CantMin" Nullable="true" />
     <Property Type="Double" Name="CantMax" Nullable="true" />
+    <Property Type="Boolean" Name="Servicio" Nullable="false" />
+    <Property Type="Int32" Name="ProveedorID" Nullable="true" />
+    <Property Type="String" Name="Proveedor" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="CodigoBarra" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="UnidadMedida" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="proc_BuscarProductosPorCodigoBarra_Result">
+    <Property Type="Int32" Name="ProductoID" Nullable="false" />
+    <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="100" />
+    <Property Type="Int32" Name="ProveedorID" Nullable="true" />
+    <Property Type="Double" Name="Existencia" Nullable="true" />
+    <Property Type="Decimal" Name="PrecioCompra" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="PrecioVenta" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="PrecioVentaMin" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Descuento" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Boolean" Name="ITBIS" Nullable="false" />
+    <Property Type="Boolean" Name="Servicio" Nullable="false" />
+    <Property Type="Double" Name="CantMin" Nullable="true" />
+    <Property Type="Double" Name="CantMax" Nullable="true" />
+    <Property Type="String" Name="CodigoBarra" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="UnidadMedida" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <EntityType Name="Cotizacione">
+    <Key>
+      <PropertyRef Name="CotizacionID" />
+    </Key>
+    <Property Name="CotizacionID" Type="Int32" Nullable="false" />
+    <Property Name="ClienteID" Type="Int32" Nullable="false" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="Facturada" Type="Boolean" Nullable="false" />
+    <Property Name="DescuentoCliente" Type="Decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="DetalleCotizacione">
+    <Key>
+      <PropertyRef Name="DetalleCotizacionID" />
+    </Key>
+    <Property Name="DetalleCotizacionID" Type="Int32" Nullable="false" />
+    <Property Name="CotizacionID" Type="Int32" Nullable="false" />
+    <Property Name="ProductoID" Type="Int32" Nullable="false" />
+    <Property Name="Cantidad" Type="Double" Nullable="false" />
+    <Property Name="Precio" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="ITBIS" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="Descuento" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+  </EntityType>
+  <ComplexType Name="proc_CargarCotizacionesPFecha_Result">
+    <Property Type="Int32" Name="CotizacionID" Nullable="false" />
+    <Property Type="Int32" Name="UserID" Nullable="false" />
+    <Property Type="Int32" Name="ClienteID" Nullable="false" />
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="100" />
+    <Property Type="Decimal" Name="DescuentoCliente" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="DateTime" Name="Fecha" Nullable="false" Precision="23" />
+    <Property Type="Decimal" Name="Descuento" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="ITBIS" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="SubTotal" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Valor" Nullable="true" Precision="18" Scale="2" />
+  </ComplexType>
+  <ComplexType Name="proc_CargarTodasCotizaciones_Result">
+    <Property Type="Int32" Name="CotizacionID" Nullable="false" />
+    <Property Type="Decimal" Name="DescuentoCliente" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="DateTime" Name="Fecha" Nullable="false" Precision="23" />
+    <Property Type="Decimal" Name="Valor" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="String" Name="Cliente" Nullable="false" MaxLength="100" />
+    <Property Type="Int32" Name="FacturaID" Nullable="true" />
+    <Property Type="String" Name="Usuario" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="proc_ComprobanteCotizacion_Result">
+    <Property Type="Int32" Name="CotizacionID" Nullable="false" />
+    <Property Type="Decimal" Name="DescuentoCliente" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="DateTime" Name="Fecha" Nullable="false" Precision="23" />
+    <Property Type="Int32" Name="ProductoID" Nullable="false" />
+    <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="100" />
+    <Property Type="Decimal" Name="Precio" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Double" Name="CantVen" Nullable="false" />
+    <Property Type="Decimal" Name="Descuento" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="ITBIS" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Int32" Name="ClienteID" Nullable="false" />
+    <Property Type="String" Name="NombreCliente" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="CedulaORncCliente" Nullable="false" MaxLength="11" />
+    <Property Type="String" Name="ClienteDireccion" Nullable="false" MaxLength="200" />
+    <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="UnidadMedida" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="proc_CargarCotizacionesActivas_Result">
+    <Property Type="Int32" Name="CotizacionID" Nullable="false" />
+    <Property Type="Int32" Name="ClienteID" Nullable="false" />
+    <Property Type="Decimal" Name="DescuentoCliente" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="DateTime" Name="Fecha" Nullable="false" Precision="23" />
+    <Property Type="Int32" Name="UserID" Nullable="false" />
+    <Property Type="Decimal" Name="Valor" Nullable="true" Precision="18" Scale="2" />
+  </ComplexType>
+  <ComplexType Name="proc_CargarProductosCotizacion_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="CodigoBarra" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="100" />
+    <Property Type="Double" Name="Cantidad" Nullable="false" />
+    <Property Type="Decimal" Name="Precio" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="ITBIS" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Descuento" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Importe" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Boolean" Name="Servicio" Nullable="false" />
+    <Property Type="String" Name="UnidadMedida" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="proc_ComprobanteFacturaVenta_Result">
+    <Property Type="Int32" Name="FacturaID" Nullable="false" />
+    <Property Type="String" Name="NombreCliente" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="DireccionCliente" Nullable="false" MaxLength="200" />
+    <Property Type="Decimal" Name="DescuentoCliente" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="DateTime" Name="Fecha" Nullable="false" Precision="23" />
+    <Property Type="String" Name="NCF" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="TipoFactura" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="TipoDePago" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="Cotizacion" Nullable="true" />
+    <Property Type="DateTime" Name="FechaVencimiento" Nullable="true" />
+    <Property Type="String" Name="RNC" Nullable="true" MaxLength="11" />
+    <Property Type="String" Name="Entidad" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="ProductoID" Nullable="false" />
+    <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="100" />
+    <Property Type="Decimal" Name="Precio" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Double" Name="CantVen" Nullable="false" />
+    <Property Type="Decimal" Name="Descuento" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="ITBIS" Nullable="false" Precision="18" Scale="2" />
+    <Property Type="Int32" Name="ClienteID" Nullable="false" />
+    <Property Type="String" Name="CedulaORncCliente" Nullable="false" MaxLength="11" />
+    <Property Type="String" Name="UnidadMedida" Nullable="false" MaxLength="50" />
   </ComplexType>
 </Schema>

@@ -15,8 +15,10 @@ namespace CapaDatos
     {
         public int ProductoID { get; set; }
         public string Descripcion { get; set; }
-        public Nullable<int> ProveedorID { get; set; }
         public Nullable<double> Existencia { get; set; }
         public Nullable<double> CantidadVendida { get; set; }
+        public string CodigoBarra { get; set; }
+        public string UnidadMedida { get; set; }
+        public string Proveedor { get; set; }
     }
 }

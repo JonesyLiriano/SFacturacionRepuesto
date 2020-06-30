@@ -21,9 +21,11 @@ namespace CapaDatos
         public Nullable<double> ValorPendiente { get; set; }
         public Nullable<decimal> PagoRealizado { get; set; }
         public Nullable<double> MontoRestante { get; set; }
-        public int ClienteID { get; set; }
-        public string Nombre { get; set; }
-        public Nullable<int> UserID { get; set; }
         public string Concepto { get; set; }
+        public string Cliente { get; set; }
+        public string Usuario { get; set; }
+        public int ClienteID { get; set; }
+        public string DireccionCliente { get; set; }
+        public string CedulaORncCliente { get; set; }
     }
 }

@@ -24,7 +24,7 @@ namespace CapaDatos
         public int UserID { get; set; }
         public string UserName { get; set; }
         public string UserPassword { get; set; }
-        public int UserLevel { get; set; }
+        public string UserLevel { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CobrosVentasCredito> CobrosVentasCreditoes { get; set; }

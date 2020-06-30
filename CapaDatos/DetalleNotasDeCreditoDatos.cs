@@ -28,9 +28,9 @@ namespace CapaDatos
         }
 
 
-        public ObjectResult<proc_ComprobanteNotaDeCredito_Result> CargarComprobanteNotaDeCredito()
+        public ObjectResult<proc_ComprobanteNotaDeCredito_Result> CargarComprobanteNotaDeCredito(int notaDeCreditoID)
         {
-            var result = modelDB.proc_ComprobanteNotaDeCredito();
+            var result = modelDB.proc_ComprobanteNotaDeCredito(notaDeCreditoID);
 
             return result;
         }

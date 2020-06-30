@@ -28,14 +28,19 @@ namespace CapaNegocios
             return cobrosVentaCreditoDatos.ComprobarPagoLineaCreditoVenta(lineaCreditoVentaID, pagoLineaCreditoVenta);
         }
 
-        public ObjectResult<proc_ComprobantePagoLineaCreditoVenta_Result> ComprobantePagoLineaCreditoVenta()
+        public ObjectResult<proc_ComprobantePagoLineaCreditoVenta_Result> ComprobantePagoLineaCreditoVenta(int cobrosVentasCreditoID)
         {
-            return cobrosVentaCreditoDatos.ComprobantePagoLineaCreditoVenta();
+            return cobrosVentaCreditoDatos.ComprobantePagoLineaCreditoVenta(cobrosVentasCreditoID);
         }
 
         public ObjectResult<proc_CargarCobrosVentaCreditoPFecha_Result> CargarCobrosVentaCreditoPFecha(DateTime fInicial, DateTime fFinal)
         {
             return cobrosVentaCreditoDatos.CargarCobrosVentaCreditoPFecha(fInicial, fFinal);
+        }
+
+        public bool BorrarCobroVentaCredito(int cobroVentaCreditoID)
+        {
+            return cobrosVentaCreditoDatos.BorrarCobroVentaCredito(cobroVentaCreditoID);          
         }
     }
 }

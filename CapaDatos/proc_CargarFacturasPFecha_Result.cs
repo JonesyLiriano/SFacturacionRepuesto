@@ -17,7 +17,7 @@ namespace CapaDatos
         public int UserID { get; set; }
         public int ClienteID { get; set; }
         public string Nombre { get; set; }
-        public decimal DescuentoCliente { get; set; }
+        public Nullable<decimal> DescuentoCliente { get; set; }
         public System.DateTime Fecha { get; set; }
         public string TipoDePago { get; set; }
         public string TipoFactura { get; set; }
@@ -28,5 +28,6 @@ namespace CapaDatos
         public Nullable<decimal> Valor { get; set; }
         public string RNC { get; set; }
         public string Entidad { get; set; }
+        public Nullable<int> Cotizacion { get; set; }
     }
 }

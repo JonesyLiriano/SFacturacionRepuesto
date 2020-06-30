@@ -33,7 +33,8 @@ namespace CapaDatos
         public int UserID { get; set; }
         public string RNC { get; set; }
         public string Entidad { get; set; }
-        public decimal DescuentoCliente { get; set; }
+        public Nullable<decimal> DescuentoCliente { get; set; }
+        public Nullable<int> CotizacionID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DetalleFactura> DetalleFacturas { get; set; }

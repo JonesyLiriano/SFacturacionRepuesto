@@ -18,10 +18,7 @@ namespace CapaNegocios
             return facturasDatos.InsertarFactura(factura);
         }
 
-        public ObjectResult<proc_VerTipoUltimaFactura_Result> VerTipoUltimaFactura()
-        {
-            return facturasDatos.VerTipoUltimaFactura();
-        }
+      
 
         public ObjectResult<proc_CargarMontoFacturaNC_Result> CargarMontoFacturaNC(int facturaID)
         {
@@ -32,11 +29,7 @@ namespace CapaNegocios
         {
             return facturasDatos.CargarFacturasPendiente(clienteID);
         }
-        
-        public ObjectResult<proc_VerTipoPagoUltimaFactura_Result> VerTipoPagoUltimaFactura()
-        {
-            return facturasDatos.VerTipoPagoUltimaFactura();
-        }
+               
 
         public ObjectResult<proc_CargarProductosFactura_Result> CargarProductosFactura(int facturaID)
         {
@@ -64,15 +57,12 @@ namespace CapaNegocios
             return facturasDatos.CargarTodasFacturas();
         }
 
-        public ObjectResult<proc_CargarFacturaVentaCFinal_Result> CargarFacturaVentaCFinal()
+        public ObjectResult<proc_ComprobanteFacturaVenta_Result> CargarComprobanteFacturaVenta(int facturaID)
         {
-            return facturasDatos.CargarFacturaVentaCFinal();
+            return facturasDatos.CargarComprobanteFacturaVenta(facturaID);
         }
 
-        public ObjectResult<proc_CargarFacturaVentaCFiscal_Result> CargarFacturaVentaCFiscal()
-        {
-            return facturasDatos.CargarFacturaVentaCFiscal();
-        }
+        
         public ObjectResult<proc_CargarFacturasPFecha_Result> CargarFacturasPFecha(DateTime fInicial, DateTime fFinal)
         {
             return facturasDatos.CargarFacturasPFecha(fInicial, fFinal);

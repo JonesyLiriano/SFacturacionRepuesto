@@ -57,5 +57,13 @@ namespace CapaNegocios
         {
             return productosDatos.Cargar10ProductosVendidosPFecha(fInicial, fFinal);
         }
+        public ObjectResult<proc_BuscarProductosPorCodigoBarra_Result> BuscarProductosPorCodigoBarra(string codigoBarra)
+        {
+            return productosDatos.BuscarProductosPorCodigoBarra(codigoBarra);
+        }
+        public bool ActualizarCantidadProducto(Producto producto)
+        {
+            return productosDatos.ActualizarCantidadProducto(producto);
+        }
     }
 }

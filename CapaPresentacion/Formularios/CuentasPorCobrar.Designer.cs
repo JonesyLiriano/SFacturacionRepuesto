@@ -1,0 +1,183 @@
+﻿namespace CapaPresentacion.Formularios
+{
+    partial class CuentasPorCobrar
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.btnConsultaFactura = new System.Windows.Forms.Button();
+            this.dgvLineasCreditoVenta = new System.Windows.Forms.DataGridView();
+            this.LineaCreditoVentaID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnCerrar = new System.Windows.Forms.Label();
+            this.btnRealizarCobro = new System.Windows.Forms.Button();
+            this.btnHistorialCobros = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLineasCreditoVenta)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // btnConsultaFactura
+            // 
+            this.btnConsultaFactura.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnConsultaFactura.BackColor = System.Drawing.Color.ForestGreen;
+            this.btnConsultaFactura.FlatAppearance.BorderSize = 0;
+            this.btnConsultaFactura.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.btnConsultaFactura.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnConsultaFactura.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConsultaFactura.ForeColor = System.Drawing.Color.White;
+            this.btnConsultaFactura.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnConsultaFactura.Location = new System.Drawing.Point(964, 103);
+            this.btnConsultaFactura.Name = "btnConsultaFactura";
+            this.btnConsultaFactura.Size = new System.Drawing.Size(180, 35);
+            this.btnConsultaFactura.TabIndex = 46;
+            this.btnConsultaFactura.Text = "Consultar Factura";
+            this.btnConsultaFactura.UseVisualStyleBackColor = false;
+            this.btnConsultaFactura.Click += new System.EventHandler(this.btnConsultaFactura_Click);
+            // 
+            // dgvLineasCreditoVenta
+            // 
+            this.dgvLineasCreditoVenta.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvLineasCreditoVenta.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvLineasCreditoVenta.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvLineasCreditoVenta.BackgroundColor = System.Drawing.Color.WhiteSmoke;
+            this.dgvLineasCreditoVenta.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dgvLineasCreditoVenta.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.LightSeaGreen;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvLineasCreditoVenta.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvLineasCreditoVenta.ColumnHeadersHeight = 30;
+            this.dgvLineasCreditoVenta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dgvLineasCreditoVenta.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.LineaCreditoVentaID});
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvLineasCreditoVenta.DefaultCellStyle = dataGridViewCellStyle4;
+            this.dgvLineasCreditoVenta.EnableHeadersVisualStyles = false;
+            this.dgvLineasCreditoVenta.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.dgvLineasCreditoVenta.Location = new System.Drawing.Point(38, 41);
+            this.dgvLineasCreditoVenta.Name = "dgvLineasCreditoVenta";
+            this.dgvLineasCreditoVenta.RowHeadersVisible = false;
+            this.dgvLineasCreditoVenta.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvLineasCreditoVenta.Size = new System.Drawing.Size(895, 648);
+            this.dgvLineasCreditoVenta.TabIndex = 45;
+            // 
+            // LineaCreditoVentaID
+            // 
+            this.LineaCreditoVentaID.DataPropertyName = "LineaCreditoVentaID";
+            this.LineaCreditoVentaID.HeaderText = "ID";
+            this.LineaCreditoVentaID.Name = "LineaCreditoVentaID";
+            this.LineaCreditoVentaID.Width = 44;
+            // 
+            // btnCerrar
+            // 
+            this.btnCerrar.AutoSize = true;
+            this.btnCerrar.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnCerrar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCerrar.ForeColor = System.Drawing.Color.DimGray;
+            this.btnCerrar.Location = new System.Drawing.Point(10, 8);
+            this.btnCerrar.Name = "btnCerrar";
+            this.btnCerrar.Size = new System.Drawing.Size(20, 20);
+            this.btnCerrar.TabIndex = 44;
+            this.btnCerrar.Text = "X";
+            // 
+            // btnRealizarCobro
+            // 
+            this.btnRealizarCobro.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRealizarCobro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnRealizarCobro.FlatAppearance.BorderSize = 0;
+            this.btnRealizarCobro.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.btnRealizarCobro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRealizarCobro.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRealizarCobro.ForeColor = System.Drawing.Color.White;
+            this.btnRealizarCobro.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRealizarCobro.Location = new System.Drawing.Point(964, 41);
+            this.btnRealizarCobro.Name = "btnRealizarCobro";
+            this.btnRealizarCobro.Size = new System.Drawing.Size(180, 35);
+            this.btnRealizarCobro.TabIndex = 43;
+            this.btnRealizarCobro.Text = "Realizar Cobro";
+            this.btnRealizarCobro.UseVisualStyleBackColor = false;
+            // 
+            // btnHistorialCobros
+            // 
+            this.btnHistorialCobros.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnHistorialCobros.BackColor = System.Drawing.Color.ForestGreen;
+            this.btnHistorialCobros.FlatAppearance.BorderSize = 0;
+            this.btnHistorialCobros.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.btnHistorialCobros.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHistorialCobros.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHistorialCobros.ForeColor = System.Drawing.Color.White;
+            this.btnHistorialCobros.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnHistorialCobros.Location = new System.Drawing.Point(964, 164);
+            this.btnHistorialCobros.Name = "btnHistorialCobros";
+            this.btnHistorialCobros.Size = new System.Drawing.Size(180, 35);
+            this.btnHistorialCobros.TabIndex = 47;
+            this.btnHistorialCobros.Text = "Historial de Cobros";
+            this.btnHistorialCobros.UseVisualStyleBackColor = false;
+            this.btnHistorialCobros.Click += new System.EventHandler(this.btnHistorialCobros_Click);
+            // 
+            // CuentasPorCobrar
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1170, 700);
+            this.Controls.Add(this.btnHistorialCobros);
+            this.Controls.Add(this.btnConsultaFactura);
+            this.Controls.Add(this.dgvLineasCreditoVenta);
+            this.Controls.Add(this.btnCerrar);
+            this.Controls.Add(this.btnRealizarCobro);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Name = "CuentasPorCobrar";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "CXC";
+            this.Load += new System.EventHandler(this.CuentasPorCobrar_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLineasCreditoVenta)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+        private System.Windows.Forms.Button btnConsultaFactura;
+        private System.Windows.Forms.DataGridView dgvLineasCreditoVenta;
+        private System.Windows.Forms.Label btnCerrar;
+        private System.Windows.Forms.Button btnRealizarCobro;
+        private System.Windows.Forms.Button btnHistorialCobros;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LineaCreditoVentaID;
+    }
+}

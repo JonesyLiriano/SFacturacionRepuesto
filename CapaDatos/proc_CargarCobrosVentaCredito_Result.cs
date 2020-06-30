@@ -14,9 +14,9 @@ namespace CapaDatos
     public partial class proc_CargarCobrosVentaCredito_Result
     {
         public int CobroVentaCreditoID { get; set; }
-        public System.DateTime FechaCobro { get; set; }
         public Nullable<decimal> Monto { get; set; }
-        public int UserID { get; set; }
         public string Concepto { get; set; }
+        public System.DateTime Fecha { get; set; }
+        public string Usuario { get; set; }
     }
 }

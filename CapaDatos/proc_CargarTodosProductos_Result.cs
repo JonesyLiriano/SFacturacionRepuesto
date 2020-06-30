@@ -16,13 +16,17 @@ namespace CapaDatos
         public int ProductoID { get; set; }
         public string Descripcion { get; set; }
         public Nullable<double> Existencia { get; set; }
-        public string Nombre { get; set; }
         public Nullable<decimal> PrecioCompra { get; set; }
         public decimal PrecioVenta { get; set; }
-        public Nullable<decimal> PrecioVentaMin { get; set; }
+        public decimal PrecioVentaMin { get; set; }
         public bool ITBIS { get; set; }
         public decimal Descuento { get; set; }
         public Nullable<double> CantMin { get; set; }
         public Nullable<double> CantMax { get; set; }
+        public bool Servicio { get; set; }
+        public Nullable<int> ProveedorID { get; set; }
+        public string Proveedor { get; set; }
+        public string CodigoBarra { get; set; }
+        public string UnidadMedida { get; set; }
     }
 }

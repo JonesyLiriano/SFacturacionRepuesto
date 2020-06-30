@@ -25,7 +25,7 @@ namespace CapaPresentacion.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("ALVARO DANIEL SOSA SOSA")]
         public string NombreEmpresa {
             get {
                 return ((string)(this["NombreEmpresa"]));
@@ -37,7 +37,7 @@ namespace CapaPresentacion.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Aut. Duarte .....")]
         public string Direccion {
             get {
                 return ((string)(this["Direccion"]));
@@ -49,7 +49,7 @@ namespace CapaPresentacion.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("809-222-3740")]
         public string Telefono {
             get {
                 return ((string)(this["Telefono"]));
@@ -61,7 +61,7 @@ namespace CapaPresentacion.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("402-2512476-3")]
         public string CedulaORnc {
             get {
                 return ((string)(this["CedulaORnc"]));
@@ -73,7 +73,7 @@ namespace CapaPresentacion.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("ALVARO DANIEL SOSA SOSA")]
         public string RazonSocial {
             get {
                 return ((string)(this["RazonSocial"]));
@@ -85,10 +85,10 @@ namespace CapaPresentacion.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public float ITBIS {
+        [global::System.Configuration.DefaultSettingValueAttribute("18")]
+        public decimal ITBIS {
             get {
-                return ((float)(this["ITBIS"]));
+                return ((decimal)(this["ITBIS"]));
             }
             set {
                 this["ITBIS"] = value;
@@ -97,7 +97,7 @@ namespace CapaPresentacion.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("admin")]
         public string Usuario {
             get {
                 return ((string)(this["Usuario"]));
@@ -109,7 +109,7 @@ namespace CapaPresentacion.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("admin123")]
         public string Password {
             get {
                 return ((string)(this["Password"]));
@@ -121,13 +121,121 @@ namespace CapaPresentacion.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool Recuerdame {
             get {
                 return ((bool)(this["Recuerdame"]));
             }
             set {
                 this["Recuerdame"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int CFiscal {
+            get {
+                return ((int)(this["CFiscal"]));
+            }
+            set {
+                this["CFiscal"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int CFinal {
+            get {
+                return ((int)(this["CFinal"]));
+            }
+            set {
+                this["CFinal"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int NCredito {
+            get {
+                return ((int)(this["NCredito"]));
+            }
+            set {
+                this["NCredito"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int CGubernamental {
+            get {
+                return ((int)(this["CGubernamental"]));
+            }
+            set {
+                this["CGubernamental"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2020-12-12")]
+        public global::System.DateTime FechaVencimiento {
+            get {
+                return ((global::System.DateTime)(this["FechaVencimiento"]));
+            }
+            set {
+                this["FechaVencimiento"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("CorreoEmpresa@Gmail.com")]
+        public string Email {
+            get {
+                return ((string)(this["Email"]));
+            }
+            set {
+                this["Email"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Impresora {
+            get {
+                return ((string)(this["Impresora"]));
+            }
+            set {
+                this["Impresora"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string TipoImpresora {
+            get {
+                return ((string)(this["TipoImpresora"]));
+            }
+            set {
+                this["TipoImpresora"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Logo {
+            get {
+                return ((string)(this["Logo"]));
+            }
+            set {
+                this["Logo"] = value;
             }
         }
     }

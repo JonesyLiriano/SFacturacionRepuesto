@@ -3,31 +3,58 @@
   <Profiles />
   <Settings>
     <Setting Name="NombreEmpresa" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">ALVARO DANIEL SOSA SOSA</Value>
     </Setting>
     <Setting Name="Direccion" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">Aut. Duarte .....</Value>
     </Setting>
     <Setting Name="Telefono" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">809-222-3740</Value>
     </Setting>
     <Setting Name="CedulaORnc" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">402-2512476-3</Value>
     </Setting>
     <Setting Name="RazonSocial" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">ALVARO DANIEL SOSA SOSA</Value>
     </Setting>
-    <Setting Name="ITBIS" Type="System.Single" Scope="User">
-      <Value Profile="(Default)">0</Value>
+    <Setting Name="ITBIS" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">18</Value>
     </Setting>
     <Setting Name="Usuario" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">admin</Value>
     </Setting>
     <Setting Name="Password" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">admin123</Value>
     </Setting>
     <Setting Name="Recuerdame" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="CFiscal" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="CFinal" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="NCredito" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="CGubernamental" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="FechaVencimiento" Type="System.DateTime" Scope="User">
+      <Value Profile="(Default)">2020-12-12</Value>
+    </Setting>
+    <Setting Name="Email" Type="System.String" Scope="User">
+      <Value Profile="(Default)">CorreoEmpresa@Gmail.com</Value>
+    </Setting>
+    <Setting Name="Impresora" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="TipoImpresora" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Logo" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
     </Setting>
   </Settings>
 </SettingsFile>

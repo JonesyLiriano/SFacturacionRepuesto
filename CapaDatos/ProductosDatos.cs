@@ -15,7 +15,7 @@ namespace CapaDatos
 
         public Tuple<bool, int> AgregarProducto(Producto producto)
         {
-            modelDB.proc_InsertarProducto(productoID,producto.Descripcion,producto.Existencia, producto.PrecioCompra, producto.PrecioVenta, producto.PrecioVentaMin, producto.ProveedorID, producto.Servicio, producto.ITBIS, producto.Descuento, producto.CantMin, producto.CantMax ,resultado);
+            modelDB.proc_InsertarProducto(productoID,producto.Descripcion,producto.Existencia, producto.PrecioCompra, producto.PrecioVenta, producto.PrecioVentaMin, producto.ProveedorID, producto.Servicio, producto.ITBIS, producto.Descuento, producto.CantMin, producto.CantMax, producto.CodigoBarra, producto.UnidadMedida ,resultado);
 
             return Tuple.Create((bool)resultado.Value, (int)productoID.Value);
         }
@@ -55,7 +55,7 @@ namespace CapaDatos
 
         public bool EditarProducto(Producto producto)
         {
-            modelDB.proc_ActualizarProducto(producto.ProductoID, producto.Descripcion, producto.Existencia, producto.PrecioCompra, producto.PrecioVenta, producto.PrecioVentaMin, producto.ProveedorID, producto.Servicio, producto.ITBIS, producto.Descuento, producto.CantMin, producto.CantMax, resultado);
+            modelDB.proc_ActualizarProducto(producto.ProductoID, producto.Descripcion, producto.Existencia, producto.PrecioCompra, producto.PrecioVenta, producto.PrecioVentaMin, producto.ProveedorID, producto.Servicio, producto.ITBIS, producto.Descuento, producto.CantMin, producto.CantMax, producto.CodigoBarra, producto.UnidadMedida, resultado);
             return (bool)resultado.Value;
         }
 
@@ -70,6 +70,19 @@ namespace CapaDatos
             var result = modelDB.proc_Cargar10ProductosVendidosPFecha(fInicial, fFinal);
 
             return result;
+        }
+
+        public ObjectResult<proc_BuscarProductosPorCodigoBarra_Result> BuscarProductosPorCodigoBarra(string codigoBarra)
+        {
+            var result = modelDB.proc_BuscarProductosPorCodigoBarra(codigoBarra);
+
+            return result;
+        }
+        public bool ActualizarCantidadProducto(Producto producto)
+        {
+            modelDB.proc_ActualizarCantidadProducto(producto.CodigoBarra, producto.Existencia, resultado);
+
+            return (bool)resultado.Value;
         }
     }
 }

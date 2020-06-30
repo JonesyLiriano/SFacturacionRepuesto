@@ -42,6 +42,8 @@ namespace CapaDatos
         public virtual DbSet<TiposFactura> TiposFacturas { get; set; }
         public virtual DbSet<TiposPago> TiposPagoes { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Cotizacione> Cotizaciones { get; set; }
+        public virtual DbSet<DetalleCotizacione> DetalleCotizaciones { get; set; }
     
         public virtual int proc_ActualizarCliente(Nullable<int> clienteID, string nombre, string cedulaORnc, string direccion, string contacto_1, string contacto_2, Nullable<double> descuento, Nullable<double> credito, ObjectParameter resultado)
         {
@@ -118,7 +120,7 @@ namespace CapaDatos
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("proc_ActualizarLineaCreditoVenta", lineaCreditoVentaIDParameter, estatusParameter, resultado);
         }
     
-        public virtual int proc_ActualizarProducto(Nullable<int> productoID, string descripcion, Nullable<double> existencia, Nullable<decimal> precioCompra, Nullable<decimal> precioVenta, Nullable<decimal> precioVentaMin, Nullable<int> proveedorID, Nullable<bool> servicio, Nullable<bool> iTBIS, Nullable<decimal> descuento, Nullable<double> cantMin, Nullable<double> cantMax, ObjectParameter resultado)
+        public virtual int proc_ActualizarProducto(Nullable<int> productoID, string descripcion, Nullable<double> existencia, Nullable<decimal> precioCompra, Nullable<decimal> precioVenta, Nullable<decimal> precioVentaMin, Nullable<int> proveedorID, Nullable<bool> servicio, Nullable<bool> iTBIS, Nullable<decimal> descuento, Nullable<double> cantMin, Nullable<double> cantMax, string codigoBarra, string unidadMedida, ObjectParameter resultado)
         {
             var productoIDParameter = productoID.HasValue ?
                 new ObjectParameter("ProductoID", productoID) :
@@ -168,7 +170,15 @@ namespace CapaDatos
                 new ObjectParameter("CantMax", cantMax) :
                 new ObjectParameter("CantMax", typeof(double));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("proc_ActualizarProducto", productoIDParameter, descripcionParameter, existenciaParameter, precioCompraParameter, precioVentaParameter, precioVentaMinParameter, proveedorIDParameter, servicioParameter, iTBISParameter, descuentoParameter, cantMinParameter, cantMaxParameter, resultado);
+            var codigoBarraParameter = codigoBarra != null ?
+                new ObjectParameter("CodigoBarra", codigoBarra) :
+                new ObjectParameter("CodigoBarra", typeof(string));
+    
+            var unidadMedidaParameter = unidadMedida != null ?
+                new ObjectParameter("UnidadMedida", unidadMedida) :
+                new ObjectParameter("UnidadMedida", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("proc_ActualizarProducto", productoIDParameter, descripcionParameter, existenciaParameter, precioCompraParameter, precioVentaParameter, precioVentaMinParameter, proveedorIDParameter, servicioParameter, iTBISParameter, descuentoParameter, cantMinParameter, cantMaxParameter, codigoBarraParameter, unidadMedidaParameter, resultado);
         }
     
         public virtual int proc_ActualizarProveedor(Nullable<int> proveedorID, string nombre, string cedulaORnc, string direccion, string contacto_1, string contacto_2, string datoAdicional, ObjectParameter resultado)
@@ -230,7 +240,7 @@ namespace CapaDatos
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("proc_ActualizarTiposPagos", tipoPagoIDParameter, tipoDePagoParameter, resultado);
         }
     
-        public virtual int proc_ActualizarUsers(Nullable<int> userID, string userName, string userPassword, Nullable<int> userLevel, ObjectParameter resultado)
+        public virtual int proc_ActualizarUsers(Nullable<int> userID, string userName, string userPassword, string userLevel, ObjectParameter resultado)
         {
             var userIDParameter = userID.HasValue ?
                 new ObjectParameter("UserID", userID) :
@@ -244,9 +254,9 @@ namespace CapaDatos
                 new ObjectParameter("UserPassword", userPassword) :
                 new ObjectParameter("UserPassword", typeof(string));
     
-            var userLevelParameter = userLevel.HasValue ?
+            var userLevelParameter = userLevel != null ?
                 new ObjectParameter("UserLevel", userLevel) :
-                new ObjectParameter("UserLevel", typeof(int));
+                new ObjectParameter("UserLevel", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("proc_ActualizarUsers", userIDParameter, userNameParameter, userPasswordParameter, userLevelParameter, resultado);
         }
@@ -430,15 +440,6 @@ namespace CapaDatos
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_CargarCobrosVentaCreditoPFecha_Result>("proc_CargarCobrosVentaCreditoPFecha", fechaInicialParameter, fechaFinalParameter);
         }
     
-        public virtual ObjectResult<proc_CargarDetalleFacturaVenta_Result> proc_CargarDetalleFacturaVenta(Nullable<int> facturaID)
-        {
-            var facturaIDParameter = facturaID.HasValue ?
-                new ObjectParameter("FacturaID", facturaID) :
-                new ObjectParameter("FacturaID", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_CargarDetalleFacturaVenta_Result>("proc_CargarDetalleFacturaVenta", facturaIDParameter);
-        }
-    
         public virtual ObjectResult<proc_CargarFacturasPendientes_Result> proc_CargarFacturasPendientes(Nullable<int> clienteID)
         {
             var clienteIDParameter = clienteID.HasValue ?
@@ -459,16 +460,6 @@ namespace CapaDatos
                 new ObjectParameter("FechaFinal", typeof(System.DateTime));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_CargarFacturasPFecha_Result>("proc_CargarFacturasPFecha", fechaInicialParameter, fechaFinalParameter);
-        }
-    
-        public virtual ObjectResult<proc_CargarFacturaVentaCFinal_Result> proc_CargarFacturaVentaCFinal()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_CargarFacturaVentaCFinal_Result>("proc_CargarFacturaVentaCFinal");
-        }
-    
-        public virtual ObjectResult<proc_CargarFacturaVentaCFiscal_Result> proc_CargarFacturaVentaCFiscal()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_CargarFacturaVentaCFiscal_Result>("proc_CargarFacturaVentaCFiscal");
         }
     
         public virtual ObjectResult<proc_CargarLineasCreditoVentasCompletadasPFecha_Result> proc_CargarLineasCreditoVentasCompletadasPFecha(Nullable<System.DateTime> fechaInicial, Nullable<System.DateTime> fechaFinal)
@@ -550,11 +541,6 @@ namespace CapaDatos
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_CargarProductosExistBaja_Result>("proc_CargarProductosExistBaja");
         }
     
-        public virtual int proc_CargarTodasCategoriasProd()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("proc_CargarTodasCategoriasProd");
-        }
-    
         public virtual ObjectResult<proc_CargarTodasFacturas_Result> proc_CargarTodasFacturas()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_CargarTodasFacturas_Result>("proc_CargarTodasFacturas");
@@ -629,14 +615,22 @@ namespace CapaDatos
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("proc_CerrarOrdenCompra", ordenCompraIDParameter);
         }
     
-        public virtual ObjectResult<proc_ComprobanteNotaDeCredito_Result> proc_ComprobanteNotaDeCredito()
+        public virtual ObjectResult<proc_ComprobanteNotaDeCredito_Result> proc_ComprobanteNotaDeCredito(Nullable<int> notaDeCreditoID)
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_ComprobanteNotaDeCredito_Result>("proc_ComprobanteNotaDeCredito");
+            var notaDeCreditoIDParameter = notaDeCreditoID.HasValue ?
+                new ObjectParameter("NotaDeCreditoID", notaDeCreditoID) :
+                new ObjectParameter("NotaDeCreditoID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_ComprobanteNotaDeCredito_Result>("proc_ComprobanteNotaDeCredito", notaDeCreditoIDParameter);
         }
     
-        public virtual ObjectResult<proc_ComprobantePagoLineaCreditoVenta_Result> proc_ComprobantePagoLineaCreditoVenta()
+        public virtual ObjectResult<proc_ComprobantePagoLineaCreditoVenta_Result> proc_ComprobantePagoLineaCreditoVenta(Nullable<int> cobroVentaCreditoID)
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_ComprobantePagoLineaCreditoVenta_Result>("proc_ComprobantePagoLineaCreditoVenta");
+            var cobroVentaCreditoIDParameter = cobroVentaCreditoID.HasValue ?
+                new ObjectParameter("CobroVentaCreditoID", cobroVentaCreditoID) :
+                new ObjectParameter("CobroVentaCreditoID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_ComprobantePagoLineaCreditoVenta_Result>("proc_ComprobantePagoLineaCreditoVenta", cobroVentaCreditoIDParameter);
         }
     
         public virtual int proc_ComprobarPagoLineaCreditoVenta(Nullable<int> lineaCreditoVentaID, Nullable<decimal> pagoLineaCreditoVenta, ObjectParameter resultado)
@@ -811,7 +805,7 @@ namespace CapaDatos
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("proc_InsertarDetalleOrdenCompra", detalleOrdenCompraID, ordenCompraIDParameter, productoIDParameter, cantOrdenadaParameter, precioParameter, resultado);
         }
     
-        public virtual int proc_InsertarFactura(ObjectParameter facturaID, Nullable<int> clienteID, Nullable<System.DateTime> fecha, Nullable<int> tipoPagoID, Nullable<int> tipoFacturaID, string nCF, Nullable<System.DateTime> fechaVencimiento, Nullable<int> userID, string rNC, string entidad, Nullable<decimal> descuentoCliente, ObjectParameter resultado)
+        public virtual int proc_InsertarFactura(ObjectParameter facturaID, Nullable<int> clienteID, Nullable<System.DateTime> fecha, Nullable<int> tipoPagoID, Nullable<int> tipoFacturaID, string nCF, Nullable<System.DateTime> fechaVencimiento, Nullable<int> userID, string rNC, string entidad, Nullable<decimal> descuentoCliente, Nullable<int> cotizacionID, ObjectParameter resultado)
         {
             var clienteIDParameter = clienteID.HasValue ?
                 new ObjectParameter("ClienteID", clienteID) :
@@ -853,7 +847,11 @@ namespace CapaDatos
                 new ObjectParameter("DescuentoCliente", descuentoCliente) :
                 new ObjectParameter("DescuentoCliente", typeof(decimal));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("proc_InsertarFactura", facturaID, clienteIDParameter, fechaParameter, tipoPagoIDParameter, tipoFacturaIDParameter, nCFParameter, fechaVencimientoParameter, userIDParameter, rNCParameter, entidadParameter, descuentoClienteParameter, resultado);
+            var cotizacionIDParameter = cotizacionID.HasValue ?
+                new ObjectParameter("CotizacionID", cotizacionID) :
+                new ObjectParameter("CotizacionID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("proc_InsertarFactura", facturaID, clienteIDParameter, fechaParameter, tipoPagoIDParameter, tipoFacturaIDParameter, nCFParameter, fechaVencimientoParameter, userIDParameter, rNCParameter, entidadParameter, descuentoClienteParameter, cotizacionIDParameter, resultado);
         }
     
         public virtual int proc_InsertarFacturaCompra(ObjectParameter facturaCompraID, Nullable<int> proveedorID, Nullable<int> ordenCompraID, string nCF, Nullable<System.DateTime> fechaVencimientoSecuencia, Nullable<System.DateTime> fechaFactura, Nullable<int> tipoPagoID, Nullable<decimal> subTotal, Nullable<decimal> iTBIS, ObjectParameter resultado)
@@ -1007,7 +1005,7 @@ namespace CapaDatos
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("proc_InsertarTiposFactura", tipoFacturaID, tipoFacturaParameter, resultado);
         }
     
-        public virtual int proc_InsertarUser(ObjectParameter userID, string userName, string userPassword, Nullable<int> userLevel, ObjectParameter resultado)
+        public virtual int proc_InsertarUser(ObjectParameter userID, string userName, string userPassword, string userLevel, ObjectParameter resultado)
         {
             var userNameParameter = userName != null ?
                 new ObjectParameter("UserName", userName) :
@@ -1017,9 +1015,9 @@ namespace CapaDatos
                 new ObjectParameter("UserPassword", userPassword) :
                 new ObjectParameter("UserPassword", typeof(string));
     
-            var userLevelParameter = userLevel.HasValue ?
+            var userLevelParameter = userLevel != null ?
                 new ObjectParameter("UserLevel", userLevel) :
-                new ObjectParameter("UserLevel", typeof(int));
+                new ObjectParameter("UserLevel", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("proc_InsertarUser", userID, userNameParameter, userPasswordParameter, userLevelParameter, resultado);
         }
@@ -1053,16 +1051,6 @@ namespace CapaDatos
                 new ObjectParameter("MontoFactura", typeof(decimal));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("proc_VerificarLimite", resultado, clienteIDParameter, montoFacturaParameter);
-        }
-    
-        public virtual ObjectResult<proc_VerTipoPagoUltimaFactura_Result> proc_VerTipoPagoUltimaFactura()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_VerTipoPagoUltimaFactura_Result>("proc_VerTipoPagoUltimaFactura");
-        }
-    
-        public virtual ObjectResult<proc_VerTipoUltimaFactura_Result> proc_VerTipoUltimaFactura()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_VerTipoUltimaFactura_Result>("proc_VerTipoUltimaFactura");
         }
     
         public virtual ObjectResult<proc_CargarDetalleNotaDeCredito_Result> proc_CargarDetalleNotaDeCredito(Nullable<int> notaDeCreditoID)
@@ -1101,7 +1089,7 @@ namespace CapaDatos
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_CargarProductosExistBajaPorProveedor_Result>("proc_CargarProductosExistBajaPorProveedor", proveedorIDParameter);
         }
     
-        public virtual int proc_InsertarProducto(ObjectParameter productoID, string descripcion, Nullable<double> existencia, Nullable<decimal> precioCompra, Nullable<decimal> precioVenta, Nullable<decimal> precioVentaMin, Nullable<int> proveedorID, Nullable<bool> servicio, Nullable<bool> iTBIS, Nullable<decimal> descuento, Nullable<double> cantMin, Nullable<double> cantMax, ObjectParameter resultado)
+        public virtual int proc_InsertarProducto(ObjectParameter productoID, string descripcion, Nullable<double> existencia, Nullable<decimal> precioCompra, Nullable<decimal> precioVenta, Nullable<decimal> precioVentaMin, Nullable<int> proveedorID, Nullable<bool> servicio, Nullable<bool> iTBIS, Nullable<decimal> descuento, Nullable<double> cantMin, Nullable<double> cantMax, string codigoBarra, string unidadMedida, ObjectParameter resultado)
         {
             var descripcionParameter = descripcion != null ?
                 new ObjectParameter("Descripcion", descripcion) :
@@ -1147,7 +1135,168 @@ namespace CapaDatos
                 new ObjectParameter("CantMax", cantMax) :
                 new ObjectParameter("CantMax", typeof(double));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("proc_InsertarProducto", productoID, descripcionParameter, existenciaParameter, precioCompraParameter, precioVentaParameter, precioVentaMinParameter, proveedorIDParameter, servicioParameter, iTBISParameter, descuentoParameter, cantMinParameter, cantMaxParameter, resultado);
+            var codigoBarraParameter = codigoBarra != null ?
+                new ObjectParameter("CodigoBarra", codigoBarra) :
+                new ObjectParameter("CodigoBarra", typeof(string));
+    
+            var unidadMedidaParameter = unidadMedida != null ?
+                new ObjectParameter("UnidadMedida", unidadMedida) :
+                new ObjectParameter("UnidadMedida", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("proc_InsertarProducto", productoID, descripcionParameter, existenciaParameter, precioCompraParameter, precioVentaParameter, precioVentaMinParameter, proveedorIDParameter, servicioParameter, iTBISParameter, descuentoParameter, cantMinParameter, cantMaxParameter, codigoBarraParameter, unidadMedidaParameter, resultado);
+        }
+    
+        public virtual ObjectResult<proc_BuscarProductosPorCodigoBarra_Result> proc_BuscarProductosPorCodigoBarra(string codigoBarra)
+        {
+            var codigoBarraParameter = codigoBarra != null ?
+                new ObjectParameter("CodigoBarra", codigoBarra) :
+                new ObjectParameter("CodigoBarra", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_BuscarProductosPorCodigoBarra_Result>("proc_BuscarProductosPorCodigoBarra", codigoBarraParameter);
+        }
+    
+        public virtual int proc_ActualizarCantidadProducto(string codigoBarra, Nullable<double> existencia, ObjectParameter resultado)
+        {
+            var codigoBarraParameter = codigoBarra != null ?
+                new ObjectParameter("CodigoBarra", codigoBarra) :
+                new ObjectParameter("CodigoBarra", typeof(string));
+    
+            var existenciaParameter = existencia.HasValue ?
+                new ObjectParameter("Existencia", existencia) :
+                new ObjectParameter("Existencia", typeof(double));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("proc_ActualizarCantidadProducto", codigoBarraParameter, existenciaParameter, resultado);
+        }
+    
+        public virtual ObjectResult<proc_CargarCotizacionesPFecha_Result> proc_CargarCotizacionesPFecha(Nullable<System.DateTime> fechaInicial, Nullable<System.DateTime> fechaFinal)
+        {
+            var fechaInicialParameter = fechaInicial.HasValue ?
+                new ObjectParameter("FechaInicial", fechaInicial) :
+                new ObjectParameter("FechaInicial", typeof(System.DateTime));
+    
+            var fechaFinalParameter = fechaFinal.HasValue ?
+                new ObjectParameter("FechaFinal", fechaFinal) :
+                new ObjectParameter("FechaFinal", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_CargarCotizacionesPFecha_Result>("proc_CargarCotizacionesPFecha", fechaInicialParameter, fechaFinalParameter);
+        }
+    
+        public virtual ObjectResult<proc_CargarTodasCotizaciones_Result> proc_CargarTodasCotizaciones()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_CargarTodasCotizaciones_Result>("proc_CargarTodasCotizaciones");
+        }
+    
+        public virtual ObjectResult<proc_ComprobanteCotizacion_Result> proc_ComprobanteCotizacion(Nullable<int> cotizacionID)
+        {
+            var cotizacionIDParameter = cotizacionID.HasValue ?
+                new ObjectParameter("CotizacionID", cotizacionID) :
+                new ObjectParameter("CotizacionID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_ComprobanteCotizacion_Result>("proc_ComprobanteCotizacion", cotizacionIDParameter);
+        }
+    
+        public virtual int proc_InsertarCotizacion(ObjectParameter cotizacionID, Nullable<int> clienteID, Nullable<System.DateTime> fecha, Nullable<int> userID, Nullable<bool> facturada, Nullable<decimal> descuentoCliente, ObjectParameter resultado)
+        {
+            var clienteIDParameter = clienteID.HasValue ?
+                new ObjectParameter("ClienteID", clienteID) :
+                new ObjectParameter("ClienteID", typeof(int));
+    
+            var fechaParameter = fecha.HasValue ?
+                new ObjectParameter("Fecha", fecha) :
+                new ObjectParameter("Fecha", typeof(System.DateTime));
+    
+            var userIDParameter = userID.HasValue ?
+                new ObjectParameter("UserID", userID) :
+                new ObjectParameter("UserID", typeof(int));
+    
+            var facturadaParameter = facturada.HasValue ?
+                new ObjectParameter("Facturada", facturada) :
+                new ObjectParameter("Facturada", typeof(bool));
+    
+            var descuentoClienteParameter = descuentoCliente.HasValue ?
+                new ObjectParameter("DescuentoCliente", descuentoCliente) :
+                new ObjectParameter("DescuentoCliente", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("proc_InsertarCotizacion", cotizacionID, clienteIDParameter, fechaParameter, userIDParameter, facturadaParameter, descuentoClienteParameter, resultado);
+        }
+    
+        public virtual int proc_InsertarDetalleCotizacion(ObjectParameter detalleCotizacionID, Nullable<int> cotizacionID, Nullable<int> productoID, Nullable<double> cantidad, Nullable<decimal> precio, Nullable<decimal> iTBIS, Nullable<decimal> descuento, ObjectParameter resultado)
+        {
+            var cotizacionIDParameter = cotizacionID.HasValue ?
+                new ObjectParameter("CotizacionID", cotizacionID) :
+                new ObjectParameter("CotizacionID", typeof(int));
+    
+            var productoIDParameter = productoID.HasValue ?
+                new ObjectParameter("ProductoID", productoID) :
+                new ObjectParameter("ProductoID", typeof(int));
+    
+            var cantidadParameter = cantidad.HasValue ?
+                new ObjectParameter("Cantidad", cantidad) :
+                new ObjectParameter("Cantidad", typeof(double));
+    
+            var precioParameter = precio.HasValue ?
+                new ObjectParameter("Precio", precio) :
+                new ObjectParameter("Precio", typeof(decimal));
+    
+            var iTBISParameter = iTBIS.HasValue ?
+                new ObjectParameter("ITBIS", iTBIS) :
+                new ObjectParameter("ITBIS", typeof(decimal));
+    
+            var descuentoParameter = descuento.HasValue ?
+                new ObjectParameter("Descuento", descuento) :
+                new ObjectParameter("Descuento", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("proc_InsertarDetalleCotizacion", detalleCotizacionID, cotizacionIDParameter, productoIDParameter, cantidadParameter, precioParameter, iTBISParameter, descuentoParameter, resultado);
+        }
+    
+        public virtual ObjectResult<proc_CargarCotizacionesActivas_Result> proc_CargarCotizacionesActivas()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_CargarCotizacionesActivas_Result>("proc_CargarCotizacionesActivas");
+        }
+    
+        public virtual int proc_BorrarCotizacion(Nullable<int> cotizacionID, ObjectParameter resultado)
+        {
+            var cotizacionIDParameter = cotizacionID.HasValue ?
+                new ObjectParameter("CotizacionID", cotizacionID) :
+                new ObjectParameter("CotizacionID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("proc_BorrarCotizacion", cotizacionIDParameter, resultado);
+        }
+    
+        public virtual ObjectResult<proc_CargarProductosCotizacion_Result> proc_CargarProductosCotizacion(Nullable<int> cotizacionID)
+        {
+            var cotizacionIDParameter = cotizacionID.HasValue ?
+                new ObjectParameter("CotizacionID", cotizacionID) :
+                new ObjectParameter("CotizacionID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_CargarProductosCotizacion_Result>("proc_CargarProductosCotizacion", cotizacionIDParameter);
+        }
+    
+        public virtual ObjectResult<proc_ComprobanteFacturaVenta_Result> proc_ComprobanteFacturaVenta(Nullable<int> facturaID)
+        {
+            var facturaIDParameter = facturaID.HasValue ?
+                new ObjectParameter("FacturaID", facturaID) :
+                new ObjectParameter("FacturaID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_ComprobanteFacturaVenta_Result>("proc_ComprobanteFacturaVenta", facturaIDParameter);
+        }
+    
+        public virtual int proc_ActualizarEstatusCotizacion(Nullable<int> cotizacionID, ObjectParameter resultado)
+        {
+            var cotizacionIDParameter = cotizacionID.HasValue ?
+                new ObjectParameter("CotizacionID", cotizacionID) :
+                new ObjectParameter("CotizacionID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("proc_ActualizarEstatusCotizacion", cotizacionIDParameter, resultado);
+        }
+    
+        public virtual int proc_BorrarCobroVentaCredito(Nullable<int> cobroVentaCreditoID, ObjectParameter resultado)
+        {
+            var cobroVentaCreditoIDParameter = cobroVentaCreditoID.HasValue ?
+                new ObjectParameter("CobroVentaCreditoID", cobroVentaCreditoID) :
+                new ObjectParameter("CobroVentaCreditoID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("proc_BorrarCobroVentaCredito", cobroVentaCreditoIDParameter, resultado);
         }
     }
 }

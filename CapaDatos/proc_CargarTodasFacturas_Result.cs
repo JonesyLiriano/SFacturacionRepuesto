@@ -22,5 +22,6 @@ namespace CapaDatos
         public string NCF { get; set; }
         public int UserID { get; set; }
         public Nullable<decimal> Valor { get; set; }
+        public Nullable<int> Cotizacion { get; set; }
     }
 }

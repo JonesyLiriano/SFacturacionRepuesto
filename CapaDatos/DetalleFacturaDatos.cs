@@ -19,11 +19,5 @@ namespace CapaDatos
 
             return Tuple.Create((bool)resultado.Value, (int)detalleFacturaID.Value);
         }
-
-        public ObjectResult<proc_CargarDetalleFacturaVenta_Result> CargarDetalleFacturaVenta(int facturaID)
-        {
-            var result = modelDB.proc_CargarDetalleFacturaVenta(facturaID);
-            return result;
-        }
     }
 }

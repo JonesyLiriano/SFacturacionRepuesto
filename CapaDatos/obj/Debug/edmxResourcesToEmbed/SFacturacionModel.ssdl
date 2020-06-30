@@ -24,6 +24,29 @@
     <Property Name="UserID" Type="int" Nullable="false" />
     <Property Name="Concepto" Type="varchar" MaxLength="20" Nullable="false" />
   </EntityType>
+  <EntityType Name="Cotizaciones">
+    <Key>
+      <PropertyRef Name="CotizacionID" />
+    </Key>
+    <Property Name="CotizacionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClienteID" Type="int" Nullable="false" />
+    <Property Name="Fecha" Type="datetime" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="Facturada" Type="bit" Nullable="false" />
+    <Property Name="DescuentoCliente" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="DetalleCotizaciones">
+    <Key>
+      <PropertyRef Name="DetalleCotizacionID" />
+    </Key>
+    <Property Name="DetalleCotizacionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CotizacionID" Type="int" Nullable="false" />
+    <Property Name="ProductoID" Type="int" Nullable="false" />
+    <Property Name="Cantidad" Type="float" Nullable="false" />
+    <Property Name="Precio" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="ITBIS" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Descuento" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+  </EntityType>
   <EntityType Name="DetalleFacturas">
     <Key>
       <PropertyRef Name="DetalleFacturaID" />
@@ -73,7 +96,8 @@
     <Property Name="UserID" Type="int" Nullable="false" />
     <Property Name="RNC" Type="varchar" MaxLength="11" />
     <Property Name="Entidad" Type="varchar" MaxLength="100" />
-    <Property Name="DescuentoCliente" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="DescuentoCliente" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="CotizacionID" Type="int" />
   </EntityType>
   <EntityType Name="FacturasCompra">
     <Key>
@@ -126,17 +150,19 @@
       <PropertyRef Name="ProductoID" />
     </Key>
     <Property Name="ProductoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="ProveedorID" Type="int" />
     <Property Name="Existencia" Type="float" />
     <Property Name="PrecioCompra" Type="decimal" Precision="18" Scale="2" />
     <Property Name="PrecioVenta" Type="decimal" Precision="18" Scale="2" Nullable="false" />
-    <Property Name="PrecioVentaMin" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="PrecioVentaMin" Type="decimal" Precision="18" Scale="2" Nullable="false" />
     <Property Name="Descuento" Type="decimal" Precision="18" Scale="2" Nullable="false" />
     <Property Name="ITBIS" Type="bit" Nullable="false" />
-    <Property Name="Servicio" Type="bit" />
+    <Property Name="Servicio" Type="bit" Nullable="false" />
     <Property Name="CantMin" Type="float" />
     <Property Name="CantMax" Type="float" />
+    <Property Name="CodigoBarra" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="UnidadMedida" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="Proveedores">
     <Key>
@@ -171,7 +197,7 @@
     <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="UserPassword" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="UserLevel" Type="int" Nullable="false" />
+    <Property Name="UserLevel" Type="nvarchar" MaxLength="20" Nullable="false" />
   </EntityType>
   <Association Name="FK_CobrosVentasCredito_LineasCredito">
     <End Role="LineasCreditoVentas" Type="Self.LineasCreditoVentas" Multiplicity="1" />
@@ -365,6 +391,11 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="proc_ActualizarCantidadProducto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CodigoBarra" Type="varchar" Mode="In" />
+    <Parameter Name="Existencia" Type="float" Mode="In" />
+    <Parameter Name="resultado" Type="bit" Mode="InOut" />
+  </Function>
   <Function Name="proc_ActualizarCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ClienteID" Type="int" Mode="In" />
     <Parameter Name="Nombre" Type="varchar" Mode="In" />
@@ -402,6 +433,8 @@
     <Parameter Name="Descuento" Type="decimal" Mode="In" />
     <Parameter Name="CantMin" Type="float" Mode="In" />
     <Parameter Name="CantMax" Type="float" Mode="In" />
+    <Parameter Name="CodigoBarra" Type="varchar" Mode="In" />
+    <Parameter Name="UnidadMedida" Type="varchar" Mode="In" />
     <Parameter Name="resultado" Type="bit" Mode="InOut" />
   </Function>
   <Function Name="proc_ActualizarProveedor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -428,11 +461,15 @@
     <Parameter Name="UserID" Type="int" Mode="In" />
     <Parameter Name="UserName" Type="varchar" Mode="In" />
     <Parameter Name="UserPassword" Type="varchar" Mode="In" />
-    <Parameter Name="UserLevel" Type="int" Mode="In" />
+    <Parameter Name="UserLevel" Type="varchar" Mode="In" />
     <Parameter Name="resultado" Type="bit" Mode="InOut" />
   </Function>
   <Function Name="proc_BorrarCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ClienteID" Type="int" Mode="In" />
+    <Parameter Name="resultado" Type="bit" Mode="InOut" />
+  </Function>
+  <Function Name="proc_BorrarCotizacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CotizacionID" Type="int" Mode="In" />
     <Parameter Name="resultado" Type="bit" Mode="InOut" />
   </Function>
   <Function Name="proc_BorrarDetalleOrdenCompra" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -480,6 +517,9 @@
     <Parameter Name="FacturaID" Type="int" Mode="In" />
     <Parameter Name="LineaCreditoVentaID" Type="int" Mode="InOut" />
   </Function>
+  <Function Name="proc_BuscarProductosPorCodigoBarra" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CodigoBarra" Type="varchar" Mode="In" />
+  </Function>
   <Function Name="proc_BuscarProductosPorID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ProductoID" Type="int" Mode="In" />
   </Function>
@@ -508,8 +548,13 @@
     <Parameter Name="FechaInicial" Type="date" Mode="In" />
     <Parameter Name="FechaFinal" Type="date" Mode="In" />
   </Function>
-  <Function Name="proc_CargarDetalleFacturaVenta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="FacturaID" Type="int" Mode="In" />
+  <Function Name="proc_CargarCotizacionesActivas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="proc_CargarCotizacionesPFecha" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FechaInicial" Type="date" Mode="In" />
+    <Parameter Name="FechaFinal" Type="date" Mode="In" />
+  </Function>
+  <Function Name="proc_CargarDetalleCotizacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CotizacionID" Type="int" Mode="In" />
   </Function>
   <Function Name="proc_CargarDetalleNotaDeCredito" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="NotaDeCreditoID" Type="int" Mode="In" />
@@ -524,8 +569,6 @@
     <Parameter Name="FechaInicial" Type="date" Mode="In" />
     <Parameter Name="FechaFinal" Type="date" Mode="In" />
   </Function>
-  <Function Name="proc_CargarFacturaVentaCFinal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-  <Function Name="proc_CargarFacturaVentaCFiscal" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="proc_CargarLineasCreditoVentasCompletadasPFecha" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="FechaInicial" Type="date" Mode="In" />
     <Parameter Name="FechaFinal" Type="date" Mode="In" />
@@ -549,6 +592,9 @@
     <Parameter Name="FechaInicial" Type="date" Mode="In" />
     <Parameter Name="FechaFinal" Type="date" Mode="In" />
   </Function>
+  <Function Name="proc_CargarProductosCotizacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CotizacionID" Type="int" Mode="In" />
+  </Function>
   <Function Name="proc_CargarProductosExistBaja" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="proc_CargarProductosExistBajaPorProveedor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ProveedorID" Type="int" Mode="In" />
@@ -556,7 +602,7 @@
   <Function Name="proc_CargarProductosFactura" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="FacturaID" Type="int" Mode="In" />
   </Function>
-  <Function Name="proc_CargarTodasCategoriasProd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="proc_CargarTodasCotizaciones" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="proc_CargarTodasFacturas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="proc_CargarTodasLineasCreditoVentas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="proc_CargarTodasLineasCreditoVentasCompletadas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
@@ -573,8 +619,18 @@
   <Function Name="proc_CerrarOrdenCompra" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="OrdenCompraID" Type="int" Mode="In" />
   </Function>
-  <Function Name="proc_ComprobanteNotaDeCredito" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-  <Function Name="proc_ComprobantePagoLineaCreditoVenta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="proc_ComprobanteCotizacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CotizacionID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="proc_ComprobanteFacturaVenta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FacturaID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="proc_ComprobanteNotaDeCredito" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="NotaDeCreditoID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="proc_ComprobantePagoLineaCreditoVenta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CobroVentaCreditoID" Type="int" Mode="In" />
+  </Function>
   <Function Name="proc_ComprobarPagoLineaCreditoVenta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="LineaCreditoVentaID" Type="int" Mode="In" />
     <Parameter Name="PagoLineaCreditoVenta" Type="decimal" Mode="In" />
@@ -583,11 +639,6 @@
   <Function Name="proc_ConfirmarFacturaYCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="FacturaID" Type="int" Mode="In" />
     <Parameter Name="ClienteID" Type="int" Mode="In" />
-    <Parameter Name="resultado" Type="bit" Mode="InOut" />
-  </Function>
-  <Function Name="proc_InsertarCategoriaProd" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="CategoriaProdID" Type="int" Mode="InOut" />
-    <Parameter Name="Categoria" Type="varchar" Mode="In" />
     <Parameter Name="resultado" Type="bit" Mode="InOut" />
   </Function>
   <Function Name="proc_InsertarCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -608,6 +659,25 @@
     <Parameter Name="Monto" Type="decimal" Mode="In" />
     <Parameter Name="UserID" Type="int" Mode="In" />
     <Parameter Name="Concepto" Type="varchar" Mode="In" />
+    <Parameter Name="resultado" Type="bit" Mode="InOut" />
+  </Function>
+  <Function Name="proc_InsertarCotizacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CotizacionID" Type="int" Mode="InOut" />
+    <Parameter Name="ClienteID" Type="int" Mode="In" />
+    <Parameter Name="Fecha" Type="datetime" Mode="In" />
+    <Parameter Name="UserID" Type="int" Mode="In" />
+    <Parameter Name="Facturada" Type="bit" Mode="In" />
+    <Parameter Name="DescuentoCliente" Type="decimal" Mode="In" />
+    <Parameter Name="resultado" Type="bit" Mode="InOut" />
+  </Function>
+  <Function Name="proc_InsertarDetalleCotizacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="DetalleCotizacionID" Type="int" Mode="InOut" />
+    <Parameter Name="CotizacionID" Type="int" Mode="In" />
+    <Parameter Name="ProductoID" Type="int" Mode="In" />
+    <Parameter Name="Cantidad" Type="float" Mode="In" />
+    <Parameter Name="Precio" Type="decimal" Mode="In" />
+    <Parameter Name="ITBIS" Type="decimal" Mode="In" />
+    <Parameter Name="Descuento" Type="decimal" Mode="In" />
     <Parameter Name="resultado" Type="bit" Mode="InOut" />
   </Function>
   <Function Name="proc_InsertarDetalleFactura" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -650,6 +720,7 @@
     <Parameter Name="RNC" Type="varchar" Mode="In" />
     <Parameter Name="Entidad" Type="varchar" Mode="In" />
     <Parameter Name="DescuentoCliente" Type="decimal" Mode="In" />
+    <Parameter Name="CotizacionID" Type="int" Mode="In" />
     <Parameter Name="resultado" Type="bit" Mode="InOut" />
   </Function>
   <Function Name="proc_InsertarFacturaCompra" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -702,6 +773,8 @@
     <Parameter Name="Descuento" Type="decimal" Mode="In" />
     <Parameter Name="CantMin" Type="float" Mode="In" />
     <Parameter Name="CantMax" Type="float" Mode="In" />
+    <Parameter Name="CodigoBarra" Type="varchar" Mode="In" />
+    <Parameter Name="UnidadMedida" Type="varchar" Mode="In" />
     <Parameter Name="resultado" Type="bit" Mode="InOut" />
   </Function>
   <Function Name="proc_InsertarProveedor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -728,7 +801,7 @@
     <Parameter Name="UserID" Type="int" Mode="InOut" />
     <Parameter Name="UserName" Type="varchar" Mode="In" />
     <Parameter Name="UserPassword" Type="varchar" Mode="In" />
-    <Parameter Name="UserLevel" Type="int" Mode="In" />
+    <Parameter Name="UserLevel" Type="varchar" Mode="In" />
     <Parameter Name="resultado" Type="bit" Mode="InOut" />
   </Function>
   <Function Name="proc_RealizarBackUp" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
@@ -742,11 +815,12 @@
     <Parameter Name="ClienteID" Type="int" Mode="In" />
     <Parameter Name="MontoFactura" Type="decimal" Mode="In" />
   </Function>
-  <Function Name="proc_VerTipoPagoUltimaFactura" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="proc_VerTipoUltimaFactura" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <EntityContainer Name="SFacturacionModelStoreContainer">
     <EntitySet Name="Clientes" EntityType="Self.Clientes" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CobrosVentasCredito" EntityType="Self.CobrosVentasCredito" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Cotizaciones" EntityType="Self.Cotizaciones" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DetalleCotizaciones" EntityType="Self.DetalleCotizaciones" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DetalleFacturas" EntityType="Self.DetalleFacturas" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DetalleNotaDeCredito" EntityType="Self.DetalleNotaDeCredito" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DetalleOrdenesCompra" EntityType="Self.DetalleOrdenesCompra" Schema="dbo" store:Type="Tables" />
