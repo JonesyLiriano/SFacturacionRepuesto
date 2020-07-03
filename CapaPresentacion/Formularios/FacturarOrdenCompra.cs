@@ -49,7 +49,7 @@ namespace CapaPresentacion.Formularios
                         CrearFacturaCompra();
                     }
                     
-                    CerrarOrdenCompra(Convert.ToInt32(txtOrdenCompraID.Text));
+                    //CerrarOrdenCompra(Convert.ToInt32(txtOrdenCompraID.Text));
                     this.Close();
                 }
                 catch (Exception exc)
@@ -64,18 +64,18 @@ namespace CapaPresentacion.Formularios
 
         private void CrearFacturaCompra()
         {
-            facturasCompraEntidad.ProveedorID = Convert.ToInt32(txtCodProveedor.Text);
-            facturasCompraEntidad.OrdenCompraID = Convert.ToInt32(txtOrdenCompraID.Text);
-            facturasCompraEntidad.NCF = txtNCF.Text;
-            facturasCompraEntidad.FechaVencimientoSecuencia = dtpFechaVSecuencia.Value;
-            facturasCompraEntidad.FechaFactura = dtpFechaFactura.Value;
-            facturasCompraEntidad.TipoDePagoID = (int)char.GetNumericValue(cbTipoPago.Text[0]);
-            facturasCompraEntidad.SubTotal = Convert.ToDecimal(txtSubTotal.Text);
-            facturasCompraEntidad.ITBIS = Convert.ToDecimal(txtITBIS.Text);
-            var result = facturaOrdenCompraNegocio.InsertarFacturaOrdenCompra(facturasCompraEntidad);
-            respuesta = result.Item1;
-            facturaCompraID = result.Item2;
-            validarInsertFactura(respuesta, facturaCompraID);
+            //facturasCompraEntidad.ProveedorID = Convert.ToInt32(txtCodProveedor.Text);
+            //facturasCompraEntidad.OrdenCompraID = Convert.ToInt32(txtOrdenCompraID.Text);
+            //facturasCompraEntidad.NCF = txtNCF.Text;
+            //facturasCompraEntidad.FechaVencimientoSecuencia = dtpFechaVSecuencia.Value;
+            //facturasCompraEntidad.FechaFactura = dtpFechaFactura.Value;
+            //facturasCompraEntidad.TipoDePagoID = (int)char.GetNumericValue(cbTipoPago.Text[0]);
+            //facturasCompraEntidad.SubTotal = Convert.ToDecimal(txtSubTotal.Text);
+            //facturasCompraEntidad.ITBIS = Convert.ToDecimal(txtITBIS.Text);
+            //var result = facturaOrdenCompraNegocio.InsertarFacturaOrdenCompra(facturasCompraEntidad);
+            //respuesta = result.Item1;
+            //facturaCompraID = result.Item2;
+            //validarInsertFactura(respuesta, facturaCompraID);
 
 
         }
