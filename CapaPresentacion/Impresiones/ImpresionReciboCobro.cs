@@ -20,7 +20,6 @@ namespace CapaPresentacion.Impresiones
         CobrosVentaCreditoNegocio cobrosVentaCreditoNegocio = new CobrosVentaCreditoNegocio();
         List<proc_ComprobantePagoLineaCreditoVenta_Result> proc_ComprobantePagoLineaCreditoVenta_Results;
         ReportParameter[] parameters = new ReportParameter[6];
-        decimal subtotal, itbis, desc, descTotal;
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
@@ -147,10 +146,10 @@ namespace CapaPresentacion.Impresiones
             {               
                 ControladorImpresoraMatricial controladorImpresoraMatricial = new ControladorImpresoraMatricial();
         
-                controladorImpresoraMatricial.TextoCentro(Properties.Settings.Default.NombreEmpresa);
+                controladorImpresoraMatricial.TextoCentro(Properties.Settings.Default.NombreEmpresa.ToUpper());
                 controladorImpresoraMatricial.TextoCentro(Properties.Settings.Default.Direccion);
                 controladorImpresoraMatricial.TextoCentro(Properties.Settings.Default.Telefono);
-                controladorImpresoraMatricial.TextoIzquierda(Properties.Settings.Default.RazonSocial);
+                controladorImpresoraMatricial.TextoIzquierda(Properties.Settings.Default.RazonSocial.ToUpper());
                 controladorImpresoraMatricial.TextoIzquierda(Properties.Settings.Default.CedulaORnc);
                 controladorImpresoraMatricial.TextoCentro("COMPROBANTE DE PAGO");
                 controladorImpresoraMatricial.TextoIzquierda(proc_ComprobantePagoLineaCreditoVenta_Results.First().FechaCobro.ToString());
@@ -171,10 +170,10 @@ namespace CapaPresentacion.Impresiones
                 controladorImpresoraMatricial.TextoCentro("FIRMA/CEDULA");
                 controladorImpresoraMatricial.lineasGuio();
                 controladorImpresoraMatricial.TextoIzquierda("COD. CLIENTE: " + proc_ComprobantePagoLineaCreditoVenta_Results.First().ClienteID);
-                controladorImpresoraMatricial.TextoIzquierda("CLIENTE: " + proc_ComprobantePagoLineaCreditoVenta_Results.First().Cliente.ToString());
+                controladorImpresoraMatricial.TextoIzquierda("CLIENTE: " + proc_ComprobantePagoLineaCreditoVenta_Results.First().Cliente.ToUpper());
                 controladorImpresoraMatricial.TextoDerecha("USUARIO: " + proc_ComprobantePagoLineaCreditoVenta_Results.First().Usuario.ToUpper());
                 controladorImpresoraMatricial.lineasGuio();
-                controladorImpresoraMatricial.TextoCentro("SISTEMA REALIZADO POR LIRIANO");
+                controladorImpresoraMatricial.TextoCentro("SISTEMA REALIZADO POR JONESY LIRIANO");
                 controladorImpresoraMatricial.TextoCentro("TEL/WSS: 809-222-3740");
                 controladorImpresoraMatricial.TextoCentro("****GRACIAS POR SU PAGO***");
                 controladorImpresoraMatricial.TextoIzquierda(" ");

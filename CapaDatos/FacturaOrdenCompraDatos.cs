@@ -15,7 +15,7 @@ namespace CapaDatos
 
         public Tuple<bool, int> InsertarFacturaOrdenCompra( FacturasCompra facturaCompra)
         {
-            modelDB.proc_InsertarFacturaCompra(facturaCompraID, facturaCompra.ProveedorID, facturaCompra.OrdenCompraID, facturaCompra.NCF, facturaCompra.FechaVencimientoSecuencia, facturaCompra.FechaFactura, facturaCompra.TipoDePagoID, facturaCompra.SubTotal, facturaCompra.ITBIS,resultado);
+            modelDB.proc_InsertarFacturaCompra(facturaCompraID, facturaCompra.OrdenCompraID, facturaCompra.NCF, facturaCompra.FechaVencimientoSecuencia, facturaCompra.FechaFactura, facturaCompra.TipoDePagoID, facturaCompra.SubTotal, facturaCompra.ITBIS,resultado);
 
             return Tuple.Create((bool)resultado.Value, (int)facturaCompraID.Value);
         }

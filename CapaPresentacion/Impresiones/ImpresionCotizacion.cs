@@ -102,6 +102,11 @@ namespace CapaPresentacion.Reportes
             this.Close();
         }
 
+        private void ImpresionCotizacion_Load(object sender, EventArgs e)
+        {
+
+        }
+
         private LocalReport CargarImpresionRV()
         {
             try
@@ -189,11 +194,11 @@ namespace CapaPresentacion.Reportes
                 controladorImpresoraMatricial.AgregarTotales("                   TOTAL : $ ", Convert.ToDecimal(subtotal + itbis - descTotal));
                 controladorImpresoraMatricial.lineasGuio();
                 controladorImpresoraMatricial.TextoIzquierda("COD. CLIENTE: " + proc_ComprobanteCotizacion_Results.First().ClienteID);
-                controladorImpresoraMatricial.TextoIzquierda("CLIENTE: " + proc_ComprobanteCotizacion_Results.First().NombreCliente);
-                controladorImpresoraMatricial.TextoIzquierda("COD. COTIZACION: " + proc_ComprobanteCotizacion_Results.First().CotizacionID.ToString() +
-                    "              " + "USUARIO: " + proc_ComprobanteCotizacion_Results.First().UserName.ToUpper());
+                controladorImpresoraMatricial.TextoIzquierda("CLIENTE: " + proc_ComprobanteCotizacion_Results.First().NombreCliente.ToUpper());
+                controladorImpresoraMatricial.TextoIzquierda("COD. COTIZACION: " + proc_ComprobanteCotizacion_Results.First().CotizacionID.ToString());
+                controladorImpresoraMatricial.TextoIzquierda("USUARIO: " + proc_ComprobanteCotizacion_Results.First().UserName.ToUpper());
                 controladorImpresoraMatricial.lineasGuio();
-                controladorImpresoraMatricial.TextoCentro("SISTEMA REALIZADO POR LIRIANO");
+                controladorImpresoraMatricial.TextoCentro("SISTEMA REALIZADO POR JONESY LIRIANO");
                 controladorImpresoraMatricial.TextoCentro("TEL/WSS: 809-222-3740");
                 controladorImpresoraMatricial.TextoCentro("****GRACIAS POR SU VISITA****");
                 controladorImpresoraMatricial.TextoIzquierda(" ");

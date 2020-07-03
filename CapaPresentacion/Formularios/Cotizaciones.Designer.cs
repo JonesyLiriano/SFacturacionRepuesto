@@ -92,6 +92,7 @@
             this.dgvCotizaciones.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.dgvCotizaciones.Location = new System.Drawing.Point(38, 40);
             this.dgvCotizaciones.Name = "dgvCotizaciones";
+            this.dgvCotizaciones.ReadOnly = true;
             this.dgvCotizaciones.RowHeadersVisible = false;
             this.dgvCotizaciones.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCotizaciones.Size = new System.Drawing.Size(898, 648);
@@ -102,6 +103,7 @@
             this.CotizacionID.DataPropertyName = "CotizacionID";
             this.CotizacionID.HeaderText = "ID";
             this.CotizacionID.Name = "CotizacionID";
+            this.CotizacionID.ReadOnly = true;
             this.CotizacionID.Width = 44;
             // 
             // btnCerrar

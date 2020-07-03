@@ -27,6 +27,13 @@ namespace CapaDatos
             return result;
         }
 
+        public ObjectResult<proc_ComprobanteNotaDeCredito_Result> CargarComprobanteNotaDeCredito(int notaCreditoID)
+        {
+            var result = modelDB.proc_ComprobanteNotaDeCredito(notaCreditoID);
+
+            return result;
+        }
+
         public ObjectResult<proc_CargarNotasDeCreditoPFecha_Result> CargarNotasDeCreditoPFecha(DateTime fInicial, DateTime fFinal)
         {
             var result = modelDB.proc_CargarNotasDeCreditoPFecha(fInicial, fFinal);

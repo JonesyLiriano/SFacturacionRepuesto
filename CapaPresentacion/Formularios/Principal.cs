@@ -112,24 +112,34 @@ namespace SFacturacion
 
         private void AbrirFormEnPanel<MiForm>() where MiForm : Form, new()
         {
-            Form fh;
-            fh = panelContenedor.Controls.OfType<MiForm>().FirstOrDefault();
+            try
+            {
+                Form fh;
+                fh = panelContenedor.Controls.OfType<MiForm>().FirstOrDefault();
 
-            if (fh == null)
-            {
-                fh = new MiForm();
-                fh.TopLevel = false;
-                fh.Dock = DockStyle.Fill;
-                this.panelContenedor.Controls.Add(fh);
-                this.panelContenedor.Tag = fh;
-                fh.Show();
-                fh.BringToFront();
+                if (fh == null)
+                {
+                    fh = new MiForm();
+                    fh.TopLevel = false;
+                    fh.Dock = DockStyle.Fill;
+                    this.panelContenedor.Controls.Add(fh);
+                    this.panelContenedor.Tag = fh;
+                    fh.Show();
+                    fh.BringToFront();
+                }
+                else
+                {
+                    fh.Activate();
+                    fh.BringToFront();
+
+                }
             }
-            else
+            catch (Exception exc)
             {
-                fh.Activate();
-                fh.BringToFront();
-                
+
+                MessageBox.Show("Error: " + exc.ToString(),
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Loggeator.EscribeEnArchivo(exc.ToString());
             }
 
         }
@@ -149,6 +159,8 @@ namespace SFacturacion
         {
             ActivarScrollBar();
             btnlogoInicio_Click(null, e);
+            lbCargoUsuario.Text = Login.userLevel.ToUpper();
+            lbUsuario.Text = Login.userName.ToUpper();
 
         }
 
@@ -186,6 +198,18 @@ namespace SFacturacion
                 case "Facturas":
                     ActivarButton(btnFacturas);
                     break;
+                case "NotasCredito":
+                    ActivarButton(btnNotasCredito);
+                    break;
+                case "CuentasPorCobrar":
+                    ActivarButton(btnCXC);
+                    break;
+                case "CuentasPorPagar":
+                    ActivarButton(btnCXP);
+                    break;
+                case "Reportes":
+                    ActivarButton(btnReportes);
+                    break;
                 default:
                     break;
             }
@@ -193,45 +217,65 @@ namespace SFacturacion
 
         private void ActivarButton(object senderBtn)
         {
-            if (senderBtn != null)
+            try
             {
-                DesactivarButton();
-                btnActual = (Button)senderBtn;
-                btnActual.BackColor = Color.FromArgb(37, 36, 81);
-                if (MenuVertical.Width == 250) 
+                if (senderBtn != null)
                 {
-                    btnActual.TextAlign = ContentAlignment.MiddleCenter;
-                    btnActual.ImageAlign = ContentAlignment.MiddleRight;
-                    btnActual.TextImageRelation = TextImageRelation.TextBeforeImage;
-                } else
-                {
-                    btnActual.TextAlign = ContentAlignment.MiddleCenter;
-                    btnActual.ImageAlign = ContentAlignment.MiddleLeft;
-                    btnActual.TextImageRelation = TextImageRelation.Overlay;
+                    DesactivarButton();
+                    btnActual = (Button)senderBtn;
+                    btnActual.BackColor = Color.FromArgb(37, 36, 81);
+                    if (MenuVertical.Width == 250)
+                    {
+                        btnActual.TextAlign = ContentAlignment.MiddleCenter;
+                        btnActual.ImageAlign = ContentAlignment.MiddleRight;
+                        btnActual.TextImageRelation = TextImageRelation.TextBeforeImage;
+                    }
+                    else
+                    {
+                        btnActual.TextAlign = ContentAlignment.MiddleCenter;
+                        btnActual.ImageAlign = ContentAlignment.MiddleLeft;
+                        btnActual.TextImageRelation = TextImageRelation.Overlay;
+                    }
+
+
+                    bordeIzquierdoBtn.BackColor = Color.White;
+                    bordeIzquierdoBtn.Location = new Point(0, btnActual.Location.Y);
+                    bordeIzquierdoBtn.Visible = true;
+                    bordeIzquierdoBtn.BringToFront();
+
+                    labelBarraMenu.Text = btnActual.Text;
+                    pbBarraMenu.Image = btnActual.Image;
                 }
-               
+            }
+            catch (Exception exc)
+            {
 
-                bordeIzquierdoBtn.BackColor = Color.White;
-                bordeIzquierdoBtn.Location = new Point(0, btnActual.Location.Y);
-                bordeIzquierdoBtn.Visible = true;
-                bordeIzquierdoBtn.BringToFront();
-
-                labelBarraMenu.Text = btnActual.Text;
-                pbBarraMenu.Image = btnActual.Image;
+                MessageBox.Show("Error: " + exc.ToString(),
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Loggeator.EscribeEnArchivo(exc.ToString());
             }
 
         }
         private void DesactivarButton()
         {
-
-            if (btnActual != null)
+            try
             {
-                btnActual.BackColor = Color.FromArgb(32, 30, 45);
-                btnActual.TextAlign = ContentAlignment.MiddleCenter;
-                btnActual.ImageAlign = ContentAlignment.MiddleLeft;
-                btnActual.TextImageRelation = TextImageRelation.Overlay;
-                pbBarraMenu.Image = null;
-                labelBarraMenu.Text = "";
+                if (btnActual != null)
+                {
+                    btnActual.BackColor = Color.FromArgb(32, 30, 45);
+                    btnActual.TextAlign = ContentAlignment.MiddleCenter;
+                    btnActual.ImageAlign = ContentAlignment.MiddleLeft;
+                    btnActual.TextImageRelation = TextImageRelation.Overlay;
+                    pbBarraMenu.Image = null;
+                    labelBarraMenu.Text = "";
+                }
+            }
+            catch (Exception exc)
+            {
+
+                MessageBox.Show("Error: " + exc.ToString(),
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Loggeator.EscribeEnArchivo(exc.ToString());
             }
 
         }
@@ -257,6 +301,7 @@ namespace SFacturacion
 
         private void btnCompras_Click(object sender, EventArgs e)
         {
+            AbrirFormEnPanel<Compras>();
             SeleccionarButton("Compras");
         }
         private void btnUsuarios_Click(object sender, EventArgs e)
@@ -304,6 +349,28 @@ namespace SFacturacion
         {
             AbrirFormEnPanel<Facturas>();
             SeleccionarButton("Facturas");
+        }
+
+        private void btnNotasCredito_Click(object sender, EventArgs e)
+        {
+            AbrirFormEnPanel<NotasCredito>();
+            SeleccionarButton("NotasCredito");
+        }
+
+        private void btnCXC_Click(object sender, EventArgs e)
+        {
+            AbrirFormEnPanel<CuentasPorCobrar>();
+            SeleccionarButton("CuentasPorCobrar");
+        }
+
+        private void btnCXP_Click(object sender, EventArgs e)
+        {
+            SeleccionarButton("CuentasPorPagar");
+        }
+
+        private void btnReportes_Click(object sender, EventArgs e)
+        {
+            SeleccionarButton("Reportes");
         }
     }
 }

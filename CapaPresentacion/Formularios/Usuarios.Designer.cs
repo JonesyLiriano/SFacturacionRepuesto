@@ -115,6 +115,7 @@
             this.dgvUsuarios.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.dgvUsuarios.Location = new System.Drawing.Point(36, 40);
             this.dgvUsuarios.Name = "dgvUsuarios";
+            this.dgvUsuarios.ReadOnly = true;
             this.dgvUsuarios.RowHeadersVisible = false;
             this.dgvUsuarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvUsuarios.Size = new System.Drawing.Size(898, 648);
@@ -125,6 +126,7 @@
             this.UserID.DataPropertyName = "UserID";
             this.UserID.HeaderText = "ID";
             this.UserID.Name = "UserID";
+            this.UserID.ReadOnly = true;
             this.UserID.Width = 44;
             // 
             // UserName
@@ -132,6 +134,7 @@
             this.UserName.DataPropertyName = "UserName";
             this.UserName.HeaderText = "Usuario";
             this.UserName.Name = "UserName";
+            this.UserName.ReadOnly = true;
             this.UserName.Width = 77;
             // 
             // UserPassword
@@ -139,6 +142,7 @@
             this.UserPassword.DataPropertyName = "UserPassword";
             this.UserPassword.HeaderText = "Password";
             this.UserPassword.Name = "UserPassword";
+            this.UserPassword.ReadOnly = true;
             this.UserPassword.Width = 92;
             // 
             // UserLevel
@@ -146,6 +150,7 @@
             this.UserLevel.DataPropertyName = "UserLevel";
             this.UserLevel.HeaderText = "Nivel";
             this.UserLevel.Name = "UserLevel";
+            this.UserLevel.ReadOnly = true;
             this.UserLevel.Width = 63;
             // 
             // btnCerrar

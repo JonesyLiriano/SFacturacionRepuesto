@@ -103,6 +103,12 @@
     <Compile Include="Formularios\Clientes.Designer.cs">
       <DependentUpon>Clientes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Compras.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Compras.Designer.cs">
+      <DependentUpon>Compras.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Configuraciones.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,6 +132,18 @@
     </Compile>
     <Compile Include="Formularios\DetalleFacturaCotizacion.Designer.cs">
       <DependentUpon>DetalleFacturaCotizacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\DetalleNotaCredito.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\DetalleNotaCredito.Designer.cs">
+      <DependentUpon>DetalleNotaCredito.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FacturarOrdenCompra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FacturarOrdenCompra.Designer.cs">
+      <DependentUpon>FacturarOrdenCompra.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\Facturas.cs">
       <SubType>Form</SubType>
@@ -170,6 +188,18 @@
     <Compile Include="Formularios\MantenimientoUsuario.Designer.cs">
       <DependentUpon>MantenimientoUsuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\NotasCredito.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\NotasCredito.Designer.cs">
+      <DependentUpon>NotasCredito.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\OrdenCompra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\OrdenCompra.Designer.cs">
+      <DependentUpon>OrdenCompra.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Principal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -188,11 +218,29 @@
     <Compile Include="Formularios\Productos.Designer.cs">
       <DependentUpon>Productos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\ProductosADevolver.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\ProductosADevolver.Designer.cs">
+      <DependentUpon>ProductosADevolver.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\ProductosPorProveedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\ProductosPorProveedor.Designer.cs">
+      <DependentUpon>ProductosPorProveedor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\RegistrarCobro.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Formularios\RegistrarCobro.Designer.cs">
       <DependentUpon>RegistrarCobro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\RegistrarNotaCredito.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\RegistrarNotaCredito.Designer.cs">
+      <DependentUpon>RegistrarNotaCredito.cs</DependentUpon>
     </Compile>
     <Compile Include="Impresiones\ImpresionReciboCobro.cs">
       <SubType>Form</SubType>
@@ -242,6 +290,9 @@
     <EmbeddedResource Include="Formularios\Clientes.resx">
       <DependentUpon>Clientes.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Compras.resx">
+      <DependentUpon>Compras.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Configuraciones.resx">
       <DependentUpon>Configuraciones.cs</DependentUpon>
     </EmbeddedResource>
@@ -253,6 +304,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\DetalleFacturaCotizacion.resx">
       <DependentUpon>DetalleFacturaCotizacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\DetalleNotaCredito.resx">
+      <DependentUpon>DetalleNotaCredito.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FacturarOrdenCompra.resx">
+      <DependentUpon>FacturarOrdenCompra.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Facturas.resx">
       <DependentUpon>Facturas.cs</DependentUpon>
@@ -275,6 +332,12 @@
     <EmbeddedResource Include="Formularios\MantenimientoUsuario.resx">
       <DependentUpon>MantenimientoUsuario.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\NotasCredito.resx">
+      <DependentUpon>NotasCredito.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\OrdenCompra.resx">
+      <DependentUpon>OrdenCompra.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Principal.resx">
       <DependentUpon>Principal.cs</DependentUpon>
     </EmbeddedResource>
@@ -284,8 +347,17 @@
     <EmbeddedResource Include="Formularios\Productos.resx">
       <DependentUpon>Productos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\ProductosADevolver.resx">
+      <DependentUpon>ProductosADevolver.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\ProductosPorProveedor.resx">
+      <DependentUpon>ProductosPorProveedor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\RegistrarCobro.resx">
       <DependentUpon>RegistrarCobro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\RegistrarNotaCredito.resx">
+      <DependentUpon>RegistrarNotaCredito.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Impresiones\impresionFacturaVenta.rdlc" />
     <EmbeddedResource Include="Impresiones\impresionNotaCredito.rdlc" />
@@ -322,6 +394,7 @@
     <EmbeddedResource Include="Impresiones\ImpresionNotaCredito.resx">
       <DependentUpon>ImpresionNotaCredito.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="CapaDatos.proc_ComprobanteNotaDeCredito_Result.datasource" />
     <None Include="CapaDatos.proc_ComprobantePagoLineaCreditoVenta_Result.datasource" />
     <None Include="Clases\credentials.json" />
     <None Include="packages.config" />

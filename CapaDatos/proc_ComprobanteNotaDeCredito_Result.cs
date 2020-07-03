@@ -17,12 +17,19 @@ namespace CapaDatos
         public string NCFAfectado { get; set; }
         public string Descripcion { get; set; }
         public double CantDevuelta { get; set; }
-        public decimal Precio { get; set; }
+        public Nullable<decimal> Precio { get; set; }
         public string Comentario { get; set; }
-        public decimal DescuentoCliente { get; set; }
-        public decimal PrecioTotal { get; set; }
+        public Nullable<decimal> PrecioTotal { get; set; }
         public bool ITBIS { get; set; }
-        public string Nombre { get; set; }
-        public int UserID { get; set; }
+        public int ClienteID { get; set; }
+        public string NombreCliente { get; set; }
+        public string DireccionCliente { get; set; }
+        public string CedulaORncCliente { get; set; }
+        public int ProductoID { get; set; }
+        public string UserName { get; set; }
+        public System.DateTime Fecha { get; set; }
+        public System.DateTime FechaVencimiento { get; set; }
+        public int NotaDeCreditoID { get; set; }
+        public string UnidadMedida { get; set; }
     }
 }

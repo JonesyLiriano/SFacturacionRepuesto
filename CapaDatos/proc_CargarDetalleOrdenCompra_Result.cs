@@ -17,8 +17,9 @@ namespace CapaDatos
         public string Descripcion { get; set; }
         public Nullable<double> Existencia { get; set; }
         public Nullable<double> CantMin { get; set; }
-        public double CantidadOrdenada { get; set; }
-        public Nullable<double> CantidadRecibida { get; set; }
-        public Nullable<decimal> Precio { get; set; }
+        public string UnidadMedida { get; set; }
+        public Nullable<decimal> PrecioCompra { get; set; }
+        public double Ordenada { get; set; }
+        public Nullable<double> Recibida { get; set; }
     }
 }

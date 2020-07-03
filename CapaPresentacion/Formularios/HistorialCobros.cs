@@ -61,8 +61,7 @@ namespace CapaPresentacion.Formularios
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Loggeator.EscribeEnArchivo(exc.ToString());
             }
-        }
-        
+        }        
         private void iconcerrar_Click(object sender, EventArgs e)
         {
             this.Close();

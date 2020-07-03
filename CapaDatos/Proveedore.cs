@@ -17,7 +17,6 @@ namespace CapaDatos
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Proveedore()
         {
-            this.FacturasCompras = new HashSet<FacturasCompra>();
             this.Productos = new HashSet<Producto>();
         }
     
@@ -29,8 +28,6 @@ namespace CapaDatos
         public string Contacto_2 { get; set; }
         public string DatoAdicional { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<FacturasCompra> FacturasCompras { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Producto> Productos { get; set; }
     }

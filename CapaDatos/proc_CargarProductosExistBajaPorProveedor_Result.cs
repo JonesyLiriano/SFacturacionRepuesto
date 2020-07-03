@@ -15,11 +15,10 @@ namespace CapaDatos
     {
         public int ProductoID { get; set; }
         public string Descripcion { get; set; }
-        public Nullable<double> Existencia { get; set; }
-        public Nullable<double> CantMin { get; set; }
-        public Nullable<double> CantMax { get; set; }
+        public Nullable<decimal> Existencia { get; set; }
+        public Nullable<decimal> CantMin { get; set; }
+        public Nullable<decimal> CantMax { get; set; }
         public Nullable<decimal> PrecioCompra { get; set; }
-        public string CodigoBarra { get; set; }
         public string UnidadMedida { get; set; }
     }
 }

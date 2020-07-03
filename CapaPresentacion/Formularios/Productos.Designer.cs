@@ -33,15 +33,15 @@
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
             this.dgvProductos = new System.Windows.Forms.DataGridView();
-            this.btnCerrar = new System.Windows.Forms.Label();
-            this.btnNuevo = new System.Windows.Forms.Button();
-            this.btnSeleccionar = new System.Windows.Forms.Button();
-            this.btnImprimirEtiqueta = new System.Windows.Forms.Button();
             this.ProductoID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProveedorID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ITBIS = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Servicio = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.UnidadMedida = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnCerrar = new System.Windows.Forms.Label();
+            this.btnNuevo = new System.Windows.Forms.Button();
+            this.btnSeleccionar = new System.Windows.Forms.Button();
+            this.btnImprimirEtiqueta = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -119,10 +119,52 @@
             this.dgvProductos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.dgvProductos.Location = new System.Drawing.Point(36, 40);
             this.dgvProductos.Name = "dgvProductos";
+            this.dgvProductos.ReadOnly = true;
             this.dgvProductos.RowHeadersVisible = false;
             this.dgvProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvProductos.Size = new System.Drawing.Size(898, 648);
             this.dgvProductos.TabIndex = 50;
+            // 
+            // ProductoID
+            // 
+            this.ProductoID.DataPropertyName = "ProductoID";
+            this.ProductoID.HeaderText = "ID";
+            this.ProductoID.Name = "ProductoID";
+            this.ProductoID.ReadOnly = true;
+            this.ProductoID.Width = 44;
+            // 
+            // ProveedorID
+            // 
+            this.ProveedorID.DataPropertyName = "ProveedorID";
+            this.ProveedorID.HeaderText = "ProveedorID";
+            this.ProveedorID.Name = "ProveedorID";
+            this.ProveedorID.ReadOnly = true;
+            this.ProveedorID.Visible = false;
+            this.ProveedorID.Width = 113;
+            // 
+            // ITBIS
+            // 
+            this.ITBIS.DataPropertyName = "ITBIS";
+            this.ITBIS.HeaderText = "ITBIS";
+            this.ITBIS.Name = "ITBIS";
+            this.ITBIS.ReadOnly = true;
+            this.ITBIS.Width = 36;
+            // 
+            // Servicio
+            // 
+            this.Servicio.DataPropertyName = "Servicio";
+            this.Servicio.HeaderText = "Servicio";
+            this.Servicio.Name = "Servicio";
+            this.Servicio.ReadOnly = true;
+            this.Servicio.Width = 61;
+            // 
+            // UnidadMedida
+            // 
+            this.UnidadMedida.DataPropertyName = "UnidadMedida";
+            this.UnidadMedida.HeaderText = "UM";
+            this.UnidadMedida.Name = "UnidadMedida";
+            this.UnidadMedida.ReadOnly = true;
+            this.UnidadMedida.Width = 50;
             // 
             // btnCerrar
             // 
@@ -192,42 +234,6 @@
             this.btnImprimirEtiqueta.Text = "Imprimir Etiqueta";
             this.btnImprimirEtiqueta.UseVisualStyleBackColor = false;
             this.btnImprimirEtiqueta.Visible = false;
-            // 
-            // ProductoID
-            // 
-            this.ProductoID.DataPropertyName = "ProductoID";
-            this.ProductoID.HeaderText = "ID";
-            this.ProductoID.Name = "ProductoID";
-            this.ProductoID.Width = 44;
-            // 
-            // ProveedorID
-            // 
-            this.ProveedorID.DataPropertyName = "ProveedorID";
-            this.ProveedorID.HeaderText = "ProveedorID";
-            this.ProveedorID.Name = "ProveedorID";
-            this.ProveedorID.Visible = false;
-            this.ProveedorID.Width = 111;
-            // 
-            // ITBIS
-            // 
-            this.ITBIS.DataPropertyName = "ITBIS";
-            this.ITBIS.HeaderText = "ITBIS";
-            this.ITBIS.Name = "ITBIS";
-            this.ITBIS.Width = 36;
-            // 
-            // Servicio
-            // 
-            this.Servicio.DataPropertyName = "Servicio";
-            this.Servicio.HeaderText = "Servicio";
-            this.Servicio.Name = "Servicio";
-            this.Servicio.Width = 61;
-            // 
-            // UnidadMedida
-            // 
-            this.UnidadMedida.DataPropertyName = "UnidadMedida";
-            this.UnidadMedida.HeaderText = "UM";
-            this.UnidadMedida.Name = "UnidadMedida";
-            this.UnidadMedida.Width = 50;
             // 
             // Productos
             // 

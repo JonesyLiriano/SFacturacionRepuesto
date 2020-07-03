@@ -127,6 +127,6 @@ namespace CapaPresentacion.Formularios
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Loggeator.EscribeEnArchivo(exc.ToString());
             }
-        }
+        }        
     }
 }

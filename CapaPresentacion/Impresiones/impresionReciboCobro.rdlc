@@ -17,6 +17,14 @@
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
+        <Field Name="CedulaORncCliente">
+          <DataField>CedulaORncCliente</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Cliente">
+          <DataField>Cliente</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="ClienteID">
           <DataField>ClienteID</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
@@ -27,6 +35,10 @@
         </Field>
         <Field Name="Concepto">
           <DataField>Concepto</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DireccionCliente">
+          <DataField>DireccionCliente</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="FacturaID">
@@ -45,17 +57,13 @@
           <DataField>MontoRestante</DataField>
           <rd:TypeName>System.Nullable`1[[System.Double, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
         </Field>
-        <Field Name="Nombre">
-          <DataField>Nombre</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
         <Field Name="PagoRealizado">
           <DataField>PagoRealizado</DataField>
           <rd:TypeName>System.Nullable`1[[System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
         </Field>
-        <Field Name="UserID">
-          <DataField>UserID</DataField>
-          <rd:TypeName>System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]</rd:TypeName>
+        <Field Name="Usuario">
+          <DataField>Usuario</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="ValorFactura">
           <DataField>ValorFactura</DataField>
@@ -100,9 +108,6 @@
             <Left>0.34374in</Left>
             <Height>0.25in</Height>
             <Width>1.55208in</Width>
-            <Visibility>
-              <Hidden>=Globals.PageNumber&lt;Globals.TotalPages</Hidden>
-            </Visibility>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -137,9 +142,6 @@
             <Height>0.25in</Height>
             <Width>1.55207in</Width>
             <ZIndex>1</ZIndex>
-            <Visibility>
-              <Hidden>=Globals.PageNumber&lt;Globals.TotalPages</Hidden>
-            </Visibility>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -174,9 +176,6 @@
             <Height>0.25in</Height>
             <Width>1.55207in</Width>
             <ZIndex>2</ZIndex>
-            <Visibility>
-              <Hidden>=Globals.PageNumber&lt;Globals.TotalPages</Hidden>
-            </Visibility>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -222,9 +221,6 @@
             <Height>0.25in</Height>
             <Width>1.55208in</Width>
             <ZIndex>3</ZIndex>
-            <Visibility>
-              <Hidden>=Globals.PageNumber&lt;Globals.TotalPages</Hidden>
-            </Visibility>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -260,9 +256,6 @@
             <Height>0.25in</Height>
             <Width>1.61459in</Width>
             <ZIndex>4</ZIndex>
-            <Visibility>
-              <Hidden>=Globals.PageNumber&lt;Globals.TotalPages</Hidden>
-            </Visibility>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -297,9 +290,6 @@
             <Height>0.25in</Height>
             <Width>1.61459in</Width>
             <ZIndex>5</ZIndex>
-            <Visibility>
-              <Hidden>=Globals.PageNumber&lt;Globals.TotalPages</Hidden>
-            </Visibility>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -334,9 +324,6 @@
             <Height>0.25in</Height>
             <Width>1.61459in</Width>
             <ZIndex>6</ZIndex>
-            <Visibility>
-              <Hidden>=Globals.PageNumber&lt;Globals.TotalPages</Hidden>
-            </Visibility>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -372,9 +359,6 @@
             <Height>0.25in</Height>
             <Width>1.61459in</Width>
             <ZIndex>7</ZIndex>
-            <Visibility>
-              <Hidden>=Globals.PageNumber&lt;Globals.TotalPages</Hidden>
-            </Visibility>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -409,9 +393,6 @@
             <Height>0.25in</Height>
             <Width>1.55208in</Width>
             <ZIndex>8</ZIndex>
-            <Visibility>
-              <Hidden>=Globals.PageNumber&lt;Globals.TotalPages</Hidden>
-            </Visibility>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -447,9 +428,6 @@
             <Height>0.25in</Height>
             <Width>1.61459in</Width>
             <ZIndex>9</ZIndex>
-            <Visibility>
-              <Hidden>=Globals.PageNumber&lt;Globals.TotalPages</Hidden>
-            </Visibility>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1001,7 +979,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=UCase(Fields!NombreCliente.Value)</Value>
+                      <Value>=UCase(Fields!Cliente.Value)</Value>
                       <Style>
                         <FontFamily>Segoe UI</FontFamily>
                         <FontWeight>Bold</FontWeight>
@@ -1034,7 +1012,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Fields!ClienteDireccion.Value</Value>
+                      <Value>=Fields!DireccionCliente.Value</Value>
                       <Style>
                         <FontFamily>Segoe UI</FontFamily>
                         <FontSize>9pt</FontSize>
@@ -1051,7 +1029,7 @@
               <Width>3.74633in</Width>
               <ZIndex>16</ZIndex>
               <Visibility>
-                <Hidden>= IIf((Fields!ClienteDireccion.Value = "" Or Fields!ClienteDireccion.Value = 0),True, False)</Hidden>
+                <Hidden>= IIf((Fields!DireccionCliente.Value = "" Or Fields!DireccionCliente.Value = 0),True, False)</Hidden>
               </Visibility>
               <Style>
                 <Border>
@@ -1103,7 +1081,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=UCase(Fields!UserName.Value)</Value>
+                      <Value>=UCase(Fields!Usuario.Value)</Value>
                       <Style>
                         <FontFamily>Segoe UI</FontFamily>
                         <FontSize>9pt</FontSize>

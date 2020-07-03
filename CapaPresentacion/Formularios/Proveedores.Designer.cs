@@ -67,7 +67,7 @@
             this.btnEditar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEditar.ForeColor = System.Drawing.Color.White;
             this.btnEditar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEditar.Location = new System.Drawing.Point(965, 102);
+            this.btnEditar.Location = new System.Drawing.Point(965, 100);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(180, 35);
             this.btnEditar.TabIndex = 46;
@@ -109,6 +109,7 @@
             this.dgvProveedores.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.dgvProveedores.Location = new System.Drawing.Point(35, 40);
             this.dgvProveedores.Name = "dgvProveedores";
+            this.dgvProveedores.ReadOnly = true;
             this.dgvProveedores.RowHeadersVisible = false;
             this.dgvProveedores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvProveedores.Size = new System.Drawing.Size(898, 648);
@@ -119,6 +120,7 @@
             this.ProveedorID.DataPropertyName = "ProveedorID";
             this.ProveedorID.HeaderText = "ID";
             this.ProveedorID.Name = "ProveedorID";
+            this.ProveedorID.ReadOnly = true;
             this.ProveedorID.Width = 44;
             // 
             // btnCerrar

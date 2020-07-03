@@ -5,7 +5,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,8 +21,9 @@ namespace CapaPresentacion.Formularios
         List<proc_ComprobanteCotizacion_Result> proc_ComprobanteCotizacion_Results;
         FacturasNegocio facturasNegocio = new FacturasNegocio();
         List<proc_ComprobanteFacturaVenta_Result> proc_ComprobanteFacturaVenta_Results;
-        decimal itbis, descuento, total, subtotal, cantProd;
+        decimal itbisTotal, descuentoTotal, total, subtotal, cantProd;
         int id;
+        CultureInfo ci = new CultureInfo("en-us");
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
@@ -45,21 +48,31 @@ namespace CapaPresentacion.Formularios
 
         private void LlenarDataGridView(string detalle)
         {
-            if(detalle == "Cotizacion")
+            try
             {
-                CargarProdCotizacion();
-                CargarTextBoxs();
-            } else
-            {
-                CargarProdFactura();
-                CargarTextBoxs();
-            }
+                if (detalle == "Cotizacion")
+                {
+                    CargarProdCotizacion();
+                    CargarTextBoxs();
+                }
+                else
+                {
+                    CargarProdFactura();
+                    CargarTextBoxs();
+                }
 
-            dgvCarrito.Columns["Precio"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dgvCarrito.Columns["ITBIS"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dgvCarrito.Columns["Descuento"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dgvCarrito.Columns["Importe"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dgvCarrito.Refresh();
+                dgvCarrito.Columns["Precio"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dgvCarrito.Columns["ITBIS"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dgvCarrito.Columns["Descuento"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dgvCarrito.Columns["Importe"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dgvCarrito.Refresh();
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Error: " + exc.ToString(),
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Loggeator.EscribeEnArchivo(exc.ToString());
+            }
         }
 
         private void CargarProdCotizacion()
@@ -70,10 +83,11 @@ namespace CapaPresentacion.Formularios
             {
                 foreach (var item in proc_ComprobanteCotizacion_Results)
                 {
-                    dgvCarrito.Rows.Add(item.ProductoID, item.UnidadMedida, item.Descripcion, item.CantVen,
+                    dgvCarrito.Rows.Add(item.ProductoID, item.Descripcion, item.UnidadMedida, item.CantVen,
                         item.Precio, item.ITBIS, item.Descuento, (Convert.ToDecimal(item.CantVen) * (item.Precio + item.ITBIS - item.Descuento)).ToString("F"));
                 }
             }
+           
         }
 
         private void CargarProdFactura()
@@ -84,35 +98,35 @@ namespace CapaPresentacion.Formularios
             {
                 foreach (var item in proc_ComprobanteFacturaVenta_Results)
                 {
-                    dgvCarrito.Rows.Add(item.ProductoID, item.UnidadMedida, item.Descripcion, item.CantVen,
-                        item.Precio, item.ITBIS, item.Descuento, (item.Precio + item.ITBIS - item.Descuento));
+                    dgvCarrito.Rows.Add(item.ProductoID, item.Descripcion, item.UnidadMedida, item.CantVen,
+                        item.Precio, item.ITBIS, item.Descuento, (Convert.ToDecimal(item.CantVen) * (item.Precio + item.ITBIS - item.Descuento)).ToString("F"));
                 }
-            }
+            }          
 
-                      
+
         }
         private void CargarTextBoxs()
         {
-            itbis = 0;
-            descuento = 0;
+            itbisTotal = 0;
+            descuentoTotal = 0;
             subtotal = 0;
             cantProd = 0;
 
             foreach (DataGridViewRow row in dgvCarrito.Rows)
             {
-                itbis += (Convert.ToDecimal(row.Cells["ITBIS1"].Value) * Convert.ToDecimal(row.Cells["CantVen"].Value));
-                descuento += (Convert.ToDecimal(row.Cells["CantVen"].Value) * Convert.ToDecimal(row.Cells["Descuento1"].Value));
+                itbisTotal += (Convert.ToDecimal(row.Cells["ITBIS"].Value) * Convert.ToDecimal(row.Cells["CantVen"].Value));
+                descuentoTotal += (Convert.ToDecimal(row.Cells["CantVen"].Value) * Convert.ToDecimal(row.Cells["Descuento"].Value));
                 subtotal += (Convert.ToDecimal(row.Cells["CantVen"].Value) * Convert.ToDecimal(row.Cells["Precio"].Value));
                 total += (Convert.ToDecimal(row.Cells["Importe"].Value));
                 cantProd++;
             }
-            descuento += (proc_ComprobanteFacturaVenta_Results.FirstOrDefault().Descuento * (subtotal + itbis - descuento));           
+            descuentoTotal += (proc_ComprobanteFacturaVenta_Results.FirstOrDefault().Descuento * (subtotal + itbisTotal - descuentoTotal));           
 
-            txtSubTotal.Text = subtotal.ToString("F");
-            txtITBIS.Text = itbis.ToString("F");
-            txtDescuento.Text = descuento.ToString("F");
-            txtTotal.Text = (total - descuento).ToString("F");
-            txtCantProd.Text = cantProd.ToString();
+            txtSubTotal.Text = subtotal.ToString("C", ci);
+            txtITBIS.Text = itbisTotal.ToString("C", ci);
+            txtDescuento.Text = descuentoTotal.ToString("C", ci);
+            txtTotal.Text = (total - descuentoTotal).ToString("C", ci);
+            txtCantProd.Text = cantProd.ToString();           
         }
     }
 }

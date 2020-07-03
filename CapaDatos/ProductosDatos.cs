@@ -46,9 +46,9 @@ namespace CapaDatos
             return result;
         }
 
-        public ObjectResult<proc_BuscarProductosPorProveedor_Result> BuscarProductosPorProveedor(int proveedorID)
+        public ObjectResult<proc_CargarProductosPorProveedor_Result> CargarProductosPorProveedor(int proveedorID)
         {
-            var result = modelDB.proc_BuscarProductosPorProveedor(proveedorID);
+            var result = modelDB.proc_CargarProductosPorProveedor(proveedorID);
 
             return result;
         }

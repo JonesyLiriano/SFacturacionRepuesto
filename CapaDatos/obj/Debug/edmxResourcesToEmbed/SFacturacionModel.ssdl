@@ -104,7 +104,6 @@
       <PropertyRef Name="FacturaCompraID" />
     </Key>
     <Property Name="FacturaCompraID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="ProveedorID" Type="int" Nullable="false" />
     <Property Name="OrdenCompraID" Type="int" Nullable="false" />
     <Property Name="NCF" Type="varchar" MaxLength="16" Nullable="false" />
     <Property Name="FechaVencimientoSecuencia" Type="date" Nullable="false" />
@@ -112,6 +111,14 @@
     <Property Name="TipoDePagoID" Type="int" Nullable="false" />
     <Property Name="SubTotal" Type="decimal" Precision="18" Scale="2" Nullable="false" />
     <Property Name="ITBIS" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LineasCreditoCompras">
+    <Key>
+      <PropertyRef Name="LineaCreditoCompraID" />
+    </Key>
+    <Property Name="LineaCreditoCompraID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrdenCompraID" Type="int" Nullable="false" />
+    <Property Name="Estatus" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="LineasCreditoVentas">
     <Key>
@@ -144,6 +151,17 @@
     <Property Name="FechaPedido" Type="date" Nullable="false" />
     <Property Name="FechaCompletado" Type="date" />
     <Property Name="Estatus" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PagosOrdenesCompraCredito">
+    <Key>
+      <PropertyRef Name="PagoOrdenCompraCreditoID" />
+    </Key>
+    <Property Name="PagoOrdenCompraCreditoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LineaCreditoCompraID" Type="int" Nullable="false" />
+    <Property Name="FechaPago" Type="datetime" Nullable="false" />
+    <Property Name="Monto" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="Concepto" Type="varchar" MaxLength="20" Nullable="false" />
   </EntityType>
   <EntityType Name="Productos">
     <Key>
@@ -307,18 +325,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_FacturasCompra_Proveedores">
-    <End Role="Proveedores" Type="Self.Proveedores" Multiplicity="1" />
-    <End Role="FacturasCompra" Type="Self.FacturasCompra" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Proveedores">
-        <PropertyRef Name="ProveedorID" />
-      </Principal>
-      <Dependent Role="FacturasCompra">
-        <PropertyRef Name="ProveedorID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_FacturasCompra_TiposPago">
     <End Role="TiposPago" Type="Self.TiposPago" Multiplicity="1" />
     <End Role="FacturasCompra" Type="Self.FacturasCompra" Multiplicity="*" />
@@ -415,6 +421,15 @@
     <Parameter Name="Precio" Type="decimal" Mode="In" />
     <Parameter Name="resultado" Type="bit" Mode="InOut" />
   </Function>
+  <Function Name="proc_ActualizarEstatusCotizacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CotizacionID" Type="int" Mode="In" />
+    <Parameter Name="resultado" Type="bit" Mode="InOut" />
+  </Function>
+  <Function Name="proc_ActualizarLineaCreditoCompra" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="LineaCreditoCompraID" Type="int" Mode="In" />
+    <Parameter Name="Estatus" Type="bit" Mode="In" />
+    <Parameter Name="resultado" Type="bit" Mode="InOut" />
+  </Function>
   <Function Name="proc_ActualizarLineaCreditoVenta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="LineaCreditoVentaID" Type="int" Mode="In" />
     <Parameter Name="Estatus" Type="bit" Mode="In" />
@@ -466,6 +481,10 @@
   </Function>
   <Function Name="proc_BorrarCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ClienteID" Type="int" Mode="In" />
+    <Parameter Name="resultado" Type="bit" Mode="InOut" />
+  </Function>
+  <Function Name="proc_BorrarCobroVentaCredito" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CobroVentaCreditoID" Type="int" Mode="In" />
     <Parameter Name="resultado" Type="bit" Mode="InOut" />
   </Function>
   <Function Name="proc_BorrarCotizacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -602,8 +621,12 @@
   <Function Name="proc_CargarProductosFactura" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="FacturaID" Type="int" Mode="In" />
   </Function>
+  <Function Name="proc_CargarProductosPorProveedor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ProveedorID" Type="int" Mode="In" />
+  </Function>
   <Function Name="proc_CargarTodasCotizaciones" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="proc_CargarTodasFacturas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="proc_CargarTodasLineasCreditoCompras" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="proc_CargarTodasLineasCreditoVentas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="proc_CargarTodasLineasCreditoVentasCompletadas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="proc_CargarTodasLineasCreditoVentasPendientes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
@@ -725,7 +748,6 @@
   </Function>
   <Function Name="proc_InsertarFacturaCompra" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="FacturaCompraID" Type="int" Mode="InOut" />
-    <Parameter Name="ProveedorID" Type="int" Mode="In" />
     <Parameter Name="OrdenCompraID" Type="int" Mode="In" />
     <Parameter Name="NCF" Type="varchar" Mode="In" />
     <Parameter Name="FechaVencimientoSecuencia" Type="date" Mode="In" />
@@ -826,9 +848,11 @@
     <EntitySet Name="DetalleOrdenesCompra" EntityType="Self.DetalleOrdenesCompra" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Facturas" EntityType="Self.Facturas" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="FacturasCompra" EntityType="Self.FacturasCompra" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LineasCreditoCompras" EntityType="Self.LineasCreditoCompras" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="LineasCreditoVentas" EntityType="Self.LineasCreditoVentas" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="NotasDeCredito" EntityType="Self.NotasDeCredito" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="OrdenesCompra" EntityType="Self.OrdenesCompra" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PagosOrdenesCompraCredito" EntityType="Self.PagosOrdenesCompraCredito" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Productos" EntityType="Self.Productos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Proveedores" EntityType="Self.Proveedores" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TiposFactura" EntityType="Self.TiposFactura" Schema="dbo" store:Type="Tables" />
@@ -868,10 +892,6 @@
     </AssociationSet>
     <AssociationSet Name="FK_FacturasCompra_OrdenesCompra" Association="Self.FK_FacturasCompra_OrdenesCompra">
       <End Role="OrdenesCompra" EntitySet="OrdenesCompra" />
-      <End Role="FacturasCompra" EntitySet="FacturasCompra" />
-    </AssociationSet>
-    <AssociationSet Name="FK_FacturasCompra_Proveedores" Association="Self.FK_FacturasCompra_Proveedores">
-      <End Role="Proveedores" EntitySet="Proveedores" />
       <End Role="FacturasCompra" EntitySet="FacturasCompra" />
     </AssociationSet>
     <AssociationSet Name="FK_FacturasCompra_TiposPago" Association="Self.FK_FacturasCompra_TiposPago">

@@ -37,9 +37,9 @@ namespace CapaNegocios
             return productosDatos.BuscarProductosPorID(productoID);
         }
 
-        public ObjectResult<proc_BuscarProductosPorProveedor_Result> BuscarProductosPorProveedor(int proveedorID)
+        public ObjectResult<proc_CargarProductosPorProveedor_Result> CargarProductosPorProveedor(int proveedorID)
         {
-            return productosDatos.BuscarProductosPorProveedor(proveedorID);
+            return productosDatos.CargarProductosPorProveedor(proveedorID);
         }
 
 

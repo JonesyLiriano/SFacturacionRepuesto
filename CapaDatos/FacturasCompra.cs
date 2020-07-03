@@ -15,7 +15,6 @@ namespace CapaDatos
     public partial class FacturasCompra
     {
         public int FacturaCompraID { get; set; }
-        public int ProveedorID { get; set; }
         public int OrdenCompraID { get; set; }
         public string NCF { get; set; }
         public System.DateTime FechaVencimientoSecuencia { get; set; }
@@ -25,7 +24,6 @@ namespace CapaDatos
         public decimal ITBIS { get; set; }
     
         public virtual OrdenesCompra OrdenesCompra { get; set; }
-        public virtual Proveedore Proveedore { get; set; }
         public virtual TiposPago TiposPago { get; set; }
     }
 }

@@ -191,3 +191,15 @@ F:\C#\SFacturacion\CapaPresentacion\obj\Debug\CapaPresentacion.Reportes.Impresio
 F:\C#\SFacturacion\CapaPresentacion\obj\Debug\CapaPresentacion.Reportes.ImpresionFacturaVenta.resources
 F:\C#\SFacturacion\CapaPresentacion\obj\Debug\CapaPresentacion.Formularios.DetalleFacturaCotizacion.resources
 F:\C#\SFacturacion\CapaPresentacion\obj\Debug\CapaPresentacion.Formularios.Facturas.resources
+F:\C#\SFacturacion\CapaPresentacion\obj\Debug\CapaPresentacion.Formularios.CuentasPorCobrar.resources
+F:\C#\SFacturacion\CapaPresentacion\obj\Debug\CapaPresentacion.Formularios.HistorialCobros.resources
+F:\C#\SFacturacion\CapaPresentacion\obj\Debug\CapaPresentacion.Formularios.NotasCredito.resources
+F:\C#\SFacturacion\CapaPresentacion\obj\Debug\CapaPresentacion.Formularios.ProductosADevolver.resources
+F:\C#\SFacturacion\CapaPresentacion\obj\Debug\CapaPresentacion.Formularios.RegistrarCobro.resources
+F:\C#\SFacturacion\CapaPresentacion\obj\Debug\CapaPresentacion.Formularios.RegistrarNotaCredito.resources
+F:\C#\SFacturacion\CapaPresentacion\obj\Debug\CapaPresentacion.Impresiones.ImpresionReciboCobro.resources
+F:\C#\SFacturacion\CapaPresentacion\obj\Debug\CapaPresentacion.Formularios.Compras.resources
+F:\C#\SFacturacion\CapaPresentacion\obj\Debug\CapaPresentacion.Formularios.DetalleNotaCredito.resources
+F:\C#\SFacturacion\CapaPresentacion\obj\Debug\CapaPresentacion.Formularios.OrdenCompra.resources
+F:\C#\SFacturacion\CapaPresentacion\obj\Debug\CapaPresentacion.Formularios.ProductosPorProveedor.resources
+F:\C#\SFacturacion\CapaPresentacion\obj\Debug\CapaPresentacion.Formularios.FacturarOrdenCompra.resources

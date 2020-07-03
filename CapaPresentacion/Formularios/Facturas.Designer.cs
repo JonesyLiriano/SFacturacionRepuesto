@@ -127,6 +127,7 @@
             this.dgvFacturas.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.dgvFacturas.Location = new System.Drawing.Point(45, 43);
             this.dgvFacturas.Name = "dgvFacturas";
+            this.dgvFacturas.ReadOnly = true;
             this.dgvFacturas.RowHeadersVisible = false;
             this.dgvFacturas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvFacturas.Size = new System.Drawing.Size(898, 648);
@@ -137,6 +138,7 @@
             this.FacturaID.DataPropertyName = "FacturaID";
             this.FacturaID.HeaderText = "ID";
             this.FacturaID.Name = "FacturaID";
+            this.FacturaID.ReadOnly = true;
             this.FacturaID.Width = 44;
             // 
             // btnCerrar

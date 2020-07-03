@@ -63,7 +63,7 @@
             this.BarraTitulo.Dock = System.Windows.Forms.DockStyle.Top;
             this.BarraTitulo.Location = new System.Drawing.Point(0, 0);
             this.BarraTitulo.Name = "BarraTitulo";
-            this.BarraTitulo.Size = new System.Drawing.Size(795, 36);
+            this.BarraTitulo.Size = new System.Drawing.Size(786, 36);
             this.BarraTitulo.TabIndex = 5;
             // 
             // pbBarraMenu
@@ -93,7 +93,7 @@
             this.iconcerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.iconcerrar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.iconcerrar.Image = ((System.Drawing.Image)(resources.GetObject("iconcerrar.Image")));
-            this.iconcerrar.Location = new System.Drawing.Point(765, 9);
+            this.iconcerrar.Location = new System.Drawing.Point(756, 9);
             this.iconcerrar.Name = "iconcerrar";
             this.iconcerrar.Size = new System.Drawing.Size(18, 18);
             this.iconcerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -112,9 +112,9 @@
             this.groupBox4.Controls.Add(this.label8);
             this.groupBox4.Controls.Add(this.txtCliente);
             this.groupBox4.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.Location = new System.Drawing.Point(30, 54);
+            this.groupBox4.Location = new System.Drawing.Point(12, 42);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(539, 107);
+            this.groupBox4.Size = new System.Drawing.Size(530, 107);
             this.groupBox4.TabIndex = 117;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Linea de credito";
@@ -220,12 +220,12 @@
             this.dgvCobros.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvCobros.EnableHeadersVisualStyles = false;
             this.dgvCobros.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.dgvCobros.Location = new System.Drawing.Point(31, 167);
+            this.dgvCobros.Location = new System.Drawing.Point(13, 155);
             this.dgvCobros.Name = "dgvCobros";
             this.dgvCobros.ReadOnly = true;
             this.dgvCobros.RowHeadersVisible = false;
             this.dgvCobros.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCobros.Size = new System.Drawing.Size(538, 325);
+            this.dgvCobros.Size = new System.Drawing.Size(529, 325);
             this.dgvCobros.TabIndex = 116;
             // 
             // CobroVentaCreditoID
@@ -246,7 +246,7 @@
             this.btnExportar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExportar.ForeColor = System.Drawing.Color.White;
             this.btnExportar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExportar.Location = new System.Drawing.Point(592, 64);
+            this.btnExportar.Location = new System.Drawing.Point(574, 52);
             this.btnExportar.Name = "btnExportar";
             this.btnExportar.Size = new System.Drawing.Size(180, 35);
             this.btnExportar.TabIndex = 119;
@@ -264,7 +264,7 @@
             this.btnImprimir.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnImprimir.ForeColor = System.Drawing.Color.White;
             this.btnImprimir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnImprimir.Location = new System.Drawing.Point(592, 124);
+            this.btnImprimir.Location = new System.Drawing.Point(574, 112);
             this.btnImprimir.Name = "btnImprimir";
             this.btnImprimir.Size = new System.Drawing.Size(180, 35);
             this.btnImprimir.TabIndex = 118;
@@ -282,7 +282,7 @@
             this.btnEliminar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEliminar.ForeColor = System.Drawing.Color.White;
             this.btnEliminar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEliminar.Location = new System.Drawing.Point(592, 186);
+            this.btnEliminar.Location = new System.Drawing.Point(574, 174);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(180, 35);
             this.btnEliminar.TabIndex = 120;
@@ -294,7 +294,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(795, 507);
+            this.ClientSize = new System.Drawing.Size(786, 507);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnExportar);
             this.Controls.Add(this.btnImprimir);

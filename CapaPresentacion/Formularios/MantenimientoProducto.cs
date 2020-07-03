@@ -54,7 +54,7 @@ namespace CapaPresentacion
         private void MantenimientoProducto_Load(object sender, EventArgs e)
         {
             CargarCbProveedores();
-            txtDescripcion.Select();
+            txtCodigoBarra.Select();
         }
 
         private void CargarCbProveedores()

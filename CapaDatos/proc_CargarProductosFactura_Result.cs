@@ -13,11 +13,11 @@ namespace CapaDatos
     
     public partial class proc_CargarProductosFactura_Result
     {
-        public int ID { get; set; }
         public string Descripcion { get; set; }
         public Nullable<decimal> Precio { get; set; }
         public double CantVen { get; set; }
-        public string CodigoBarra { get; set; }
         public string UnidadMedida { get; set; }
+        public int ProductoID { get; set; }
+        public Nullable<decimal> PrecioSinITBIS { get; set; }
     }
 }

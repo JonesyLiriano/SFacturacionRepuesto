@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Principal));
             this.MenuVertical = new System.Windows.Forms.Panel();
+            this.btnNotasCredito = new System.Windows.Forms.Button();
             this.btnReportes = new System.Windows.Forms.Button();
             this.btnCXP = new System.Windows.Forms.Button();
             this.btnCXC = new System.Windows.Forms.Button();
@@ -69,6 +70,7 @@
             // MenuVertical
             // 
             this.MenuVertical.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            this.MenuVertical.Controls.Add(this.btnNotasCredito);
             this.MenuVertical.Controls.Add(this.btnReportes);
             this.MenuVertical.Controls.Add(this.btnCXP);
             this.MenuVertical.Controls.Add(this.btnCXC);
@@ -88,8 +90,26 @@
             this.MenuVertical.Dock = System.Windows.Forms.DockStyle.Left;
             this.MenuVertical.Location = new System.Drawing.Point(0, 0);
             this.MenuVertical.Name = "MenuVertical";
-            this.MenuVertical.Size = new System.Drawing.Size(250, 912);
+            this.MenuVertical.Size = new System.Drawing.Size(250, 1029);
             this.MenuVertical.TabIndex = 0;
+            // 
+            // btnNotasCredito
+            // 
+            this.btnNotasCredito.FlatAppearance.BorderSize = 0;
+            this.btnNotasCredito.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.btnNotasCredito.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNotasCredito.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNotasCredito.ForeColor = System.Drawing.Color.White;
+            this.btnNotasCredito.Image = ((System.Drawing.Image)(resources.GetObject("btnNotasCredito.Image")));
+            this.btnNotasCredito.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnNotasCredito.Location = new System.Drawing.Point(3, 548);
+            this.btnNotasCredito.Name = "btnNotasCredito";
+            this.btnNotasCredito.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnNotasCredito.Size = new System.Drawing.Size(248, 60);
+            this.btnNotasCredito.TabIndex = 24;
+            this.btnNotasCredito.Text = "Notas de Credito";
+            this.btnNotasCredito.UseVisualStyleBackColor = true;
+            this.btnNotasCredito.Click += new System.EventHandler(this.btnNotasCredito_Click);
             // 
             // btnReportes
             // 
@@ -100,13 +120,14 @@
             this.btnReportes.ForeColor = System.Drawing.Color.White;
             this.btnReportes.Image = ((System.Drawing.Image)(resources.GetObject("btnReportes.Image")));
             this.btnReportes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReportes.Location = new System.Drawing.Point(1, 680);
+            this.btnReportes.Location = new System.Drawing.Point(1, 746);
             this.btnReportes.Name = "btnReportes";
             this.btnReportes.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnReportes.Size = new System.Drawing.Size(248, 60);
             this.btnReportes.TabIndex = 23;
             this.btnReportes.Text = "Reportes";
             this.btnReportes.UseVisualStyleBackColor = true;
+            this.btnReportes.Click += new System.EventHandler(this.btnReportes_Click);
             // 
             // btnCXP
             // 
@@ -117,13 +138,14 @@
             this.btnCXP.ForeColor = System.Drawing.Color.White;
             this.btnCXP.Image = ((System.Drawing.Image)(resources.GetObject("btnCXP.Image")));
             this.btnCXP.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCXP.Location = new System.Drawing.Point(1, 614);
+            this.btnCXP.Location = new System.Drawing.Point(1, 680);
             this.btnCXP.Name = "btnCXP";
             this.btnCXP.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnCXP.Size = new System.Drawing.Size(248, 60);
             this.btnCXP.TabIndex = 22;
             this.btnCXP.Text = "CXP";
             this.btnCXP.UseVisualStyleBackColor = true;
+            this.btnCXP.Click += new System.EventHandler(this.btnCXP_Click);
             // 
             // btnCXC
             // 
@@ -134,13 +156,14 @@
             this.btnCXC.ForeColor = System.Drawing.Color.White;
             this.btnCXC.Image = ((System.Drawing.Image)(resources.GetObject("btnCXC.Image")));
             this.btnCXC.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCXC.Location = new System.Drawing.Point(1, 548);
+            this.btnCXC.Location = new System.Drawing.Point(1, 614);
             this.btnCXC.Name = "btnCXC";
             this.btnCXC.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnCXC.Size = new System.Drawing.Size(248, 60);
             this.btnCXC.TabIndex = 21;
             this.btnCXC.Text = "CXC";
             this.btnCXC.UseVisualStyleBackColor = true;
+            this.btnCXC.Click += new System.EventHandler(this.btnCXC_Click);
             // 
             // btnFacturas
             // 
@@ -187,7 +210,7 @@
             this.btnConfiguraciones.ForeColor = System.Drawing.Color.White;
             this.btnConfiguraciones.Image = ((System.Drawing.Image)(resources.GetObject("btnConfiguraciones.Image")));
             this.btnConfiguraciones.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnConfiguraciones.Location = new System.Drawing.Point(1, 812);
+            this.btnConfiguraciones.Location = new System.Drawing.Point(1, 878);
             this.btnConfiguraciones.Name = "btnConfiguraciones";
             this.btnConfiguraciones.Padding = new System.Windows.Forms.Padding(10, 0, 17, 0);
             this.btnConfiguraciones.Size = new System.Drawing.Size(248, 60);
@@ -238,7 +261,7 @@
             this.lbUsuario.AutoSize = true;
             this.lbUsuario.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbUsuario.ForeColor = System.Drawing.Color.White;
-            this.lbUsuario.Location = new System.Drawing.Point(77, 935);
+            this.lbUsuario.Location = new System.Drawing.Point(77, 1001);
             this.lbUsuario.Name = "lbUsuario";
             this.lbUsuario.Size = new System.Drawing.Size(54, 17);
             this.lbUsuario.TabIndex = 16;
@@ -247,7 +270,7 @@
             // pbUsuarioFoto
             // 
             this.pbUsuarioFoto.Image = ((System.Drawing.Image)(resources.GetObject("pbUsuarioFoto.Image")));
-            this.pbUsuarioFoto.Location = new System.Drawing.Point(1, 903);
+            this.pbUsuarioFoto.Location = new System.Drawing.Point(1, 969);
             this.pbUsuarioFoto.Name = "pbUsuarioFoto";
             this.pbUsuarioFoto.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
             this.pbUsuarioFoto.Size = new System.Drawing.Size(70, 61);
@@ -260,7 +283,7 @@
             this.lbCargoUsuario.AutoSize = true;
             this.lbCargoUsuario.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbCargoUsuario.ForeColor = System.Drawing.Color.White;
-            this.lbCargoUsuario.Location = new System.Drawing.Point(77, 918);
+            this.lbCargoUsuario.Location = new System.Drawing.Point(77, 984);
             this.lbCargoUsuario.Name = "lbCargoUsuario";
             this.lbCargoUsuario.Size = new System.Drawing.Size(50, 17);
             this.lbCargoUsuario.TabIndex = 14;
@@ -275,7 +298,7 @@
             this.btnUsuarios.ForeColor = System.Drawing.Color.White;
             this.btnUsuarios.Image = ((System.Drawing.Image)(resources.GetObject("btnUsuarios.Image")));
             this.btnUsuarios.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUsuarios.Location = new System.Drawing.Point(1, 746);
+            this.btnUsuarios.Location = new System.Drawing.Point(1, 812);
             this.btnUsuarios.Name = "btnUsuarios";
             this.btnUsuarios.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnUsuarios.Size = new System.Drawing.Size(248, 60);
@@ -468,7 +491,7 @@
             this.panelContenedor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelContenedor.Location = new System.Drawing.Point(250, 80);
             this.panelContenedor.Name = "panelContenedor";
-            this.panelContenedor.Size = new System.Drawing.Size(1170, 832);
+            this.panelContenedor.Size = new System.Drawing.Size(1170, 949);
             this.panelContenedor.TabIndex = 2;
             this.panelContenedor.ControlRemoved += new System.Windows.Forms.ControlEventHandler(this.panelContenedor_ControlRemoved);
             // 
@@ -476,7 +499,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1420, 912);
+            this.ClientSize = new System.Drawing.Size(1420, 1029);
             this.Controls.Add(this.panelContenedor);
             this.Controls.Add(this.BarraTitulo);
             this.Controls.Add(this.MenuVertical);
@@ -530,6 +553,7 @@
         private System.Windows.Forms.Button btnCXP;
         private System.Windows.Forms.Button btnCXC;
         private System.Windows.Forms.Button btnFacturas;
+        private System.Windows.Forms.Button btnNotasCredito;
     }
 }
 

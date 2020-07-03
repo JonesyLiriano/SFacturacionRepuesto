@@ -188,7 +188,7 @@
             this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.label3.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(30, 239);
+            this.label3.Location = new System.Drawing.Point(30, 233);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(128, 20);
             this.label3.TabIndex = 42;
@@ -198,7 +198,7 @@
             // 
             this.txtCobro.BackColor = System.Drawing.Color.White;
             this.txtCobro.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCobro.Location = new System.Drawing.Point(164, 237);
+            this.txtCobro.Location = new System.Drawing.Point(164, 231);
             this.txtCobro.Name = "txtCobro";
             this.txtCobro.Size = new System.Drawing.Size(195, 24);
             this.txtCobro.TabIndex = 41;

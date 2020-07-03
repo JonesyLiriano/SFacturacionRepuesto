@@ -735,6 +735,11 @@ namespace CapaPresentacion
             cbTipoFactura.SelectedIndex = 0;
         }
 
+        private void cbClientes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
         private void cbTipoFactura_SelectedIndexChanged(object sender, EventArgs e)
         {
             try

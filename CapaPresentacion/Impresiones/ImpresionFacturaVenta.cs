@@ -180,6 +180,7 @@ namespace CapaPresentacion.Reportes
                 controladorImpresoraMatricial.TextoCentro("COMPROBANTE AUTORIZADO POR DGII");
                 controladorImpresoraMatricial.TextoIzquierda(proc_ComprobanteFacturaVenta_Results.First().Fecha.ToString());
                 controladorImpresoraMatricial.TextoIzquierda("NCF:" + " " + proc_ComprobanteFacturaVenta_Results.First().NCF.ToString());
+                controladorImpresoraMatricial.TextoIzquierda("FECHA VENCIMIENTO: " + proc_ComprobanteFacturaVenta_Results.First().FechaVencimiento?.ToString("dd/MM/yyyy"));
                 controladorImpresoraMatricial.TextoIzquierda("RNC: " + proc_ComprobanteFacturaVenta_Results.First().RNC.ToString());
                 controladorImpresoraMatricial.TextoIzquierda(proc_ComprobanteFacturaVenta_Results.First().Entidad);
                 controladorImpresoraMatricial.TextoIzquierda("TIPO DE PAGO:" + " " + proc_ComprobanteFacturaVenta_Results.First().TipoDePago);
@@ -214,11 +215,11 @@ namespace CapaPresentacion.Reportes
                 controladorImpresoraMatricial.TextoCentro("FIRMA/CEDULA");
                 controladorImpresoraMatricial.lineasGuio();
                 controladorImpresoraMatricial.TextoIzquierda("COD. CLIENTE: " + proc_ComprobanteFacturaVenta_Results.First().ClienteID);
-                controladorImpresoraMatricial.TextoIzquierda("CLIENTE: " + proc_ComprobanteFacturaVenta_Results.First().NombreCliente);
-                controladorImpresoraMatricial.TextoIzquierda("COD. FACTURA: " + proc_ComprobanteFacturaVenta_Results.First().FacturaID.ToString() +
-                    "              " + "USUARIO: " + proc_ComprobanteFacturaVenta_Results.First().UserName.ToString());
+                controladorImpresoraMatricial.TextoIzquierda("CLIENTE: " + proc_ComprobanteFacturaVenta_Results.First().NombreCliente.ToUpper());
+                controladorImpresoraMatricial.TextoIzquierda("COD. FACTURA: " + proc_ComprobanteFacturaVenta_Results.First().FacturaID.ToString());
+                controladorImpresoraMatricial.TextoIzquierda("USUARIO: " + proc_ComprobanteFacturaVenta_Results.First().UserName.ToString().ToUpper());
                 controladorImpresoraMatricial.lineasGuio();
-                controladorImpresoraMatricial.TextoCentro("SISTEMA REALIZADO POR LIRIANO");
+                controladorImpresoraMatricial.TextoCentro("SISTEMA REALIZADO POR JONESY LIRIANO");
                 controladorImpresoraMatricial.TextoCentro("TEL/WSS: 809-222-3740");
                 controladorImpresoraMatricial.TextoCentro("****GRACIAS POR SU VISITA****");
                 controladorImpresoraMatricial.TextoIzquierda(" ");
@@ -257,6 +258,7 @@ namespace CapaPresentacion.Reportes
                 controladorImpresoraMatricial.TextoIzquierda("RNC: " + Properties.Settings.Default.CedulaORnc);
                 controladorImpresoraMatricial.TextoCentro("COMPROBANTE AUTORIZADO POR DGII");
                 controladorImpresoraMatricial.TextoIzquierda(proc_ComprobanteFacturaVenta_Results.First().Fecha.ToString());
+                controladorImpresoraMatricial.TextoIzquierda("FECHA VENCIMIENTO: " + proc_ComprobanteFacturaVenta_Results.First().FechaVencimiento?.ToString("dd/MM/yyyy"));
                 controladorImpresoraMatricial.TextoIzquierda("NCF:" + " " + proc_ComprobanteFacturaVenta_Results.First().NCF.ToString());
                 controladorImpresoraMatricial.TextoIzquierda("TIPO DE PAGO:" + " " + proc_ComprobanteFacturaVenta_Results.First().TipoDePago);
                 controladorImpresoraMatricial.lineasGuio();
@@ -290,9 +292,9 @@ namespace CapaPresentacion.Reportes
                 controladorImpresoraMatricial.TextoCentro("FIRMA/CEDULA");
                 controladorImpresoraMatricial.lineasGuio();
                 controladorImpresoraMatricial.TextoIzquierda("COD. CLIENTE: " + proc_ComprobanteFacturaVenta_Results.First().ClienteID);
-                controladorImpresoraMatricial.TextoIzquierda("CLIENTE: " + proc_ComprobanteFacturaVenta_Results.First().NombreCliente);
-                controladorImpresoraMatricial.TextoIzquierda("COD. FACTURA: " + proc_ComprobanteFacturaVenta_Results.First().FacturaID.ToString() +
-                    "              " + "USUARIO: " + proc_ComprobanteFacturaVenta_Results.First().UserName.ToString());
+                controladorImpresoraMatricial.TextoIzquierda("CLIENTE: " + proc_ComprobanteFacturaVenta_Results.First().NombreCliente.ToUpper());
+                controladorImpresoraMatricial.TextoIzquierda("COD. FACTURA: " + proc_ComprobanteFacturaVenta_Results.First().FacturaID.ToString());
+                controladorImpresoraMatricial.TextoIzquierda("USUARIO: " + proc_ComprobanteFacturaVenta_Results.First().UserName.ToString().ToUpper());
                 controladorImpresoraMatricial.lineasGuio();
                 controladorImpresoraMatricial.TextoCentro("SISTEMA REALIZADO POR LIRIANO");
                 controladorImpresoraMatricial.TextoCentro("TEL/WSS: 809-222-3740");
@@ -334,6 +336,7 @@ namespace CapaPresentacion.Reportes
                 controladorImpresoraMatricial.TextoCentro("COMPROBANTE AUTORIZADO POR DGII");
                 controladorImpresoraMatricial.TextoIzquierda(proc_ComprobanteFacturaVenta_Results.First().Fecha.ToString());
                 controladorImpresoraMatricial.TextoIzquierda("NCF:" + " " + proc_ComprobanteFacturaVenta_Results.First().NCF.ToString());
+                controladorImpresoraMatricial.TextoIzquierda("FECHA VENCIMIENTO: " + proc_ComprobanteFacturaVenta_Results.First().FechaVencimiento?.ToString("dd/MM/yyyy"));
                 controladorImpresoraMatricial.TextoIzquierda("RNC: " + proc_ComprobanteFacturaVenta_Results.First().RNC.ToString());
                 controladorImpresoraMatricial.TextoIzquierda(proc_ComprobanteFacturaVenta_Results.First().Entidad);
                 controladorImpresoraMatricial.TextoIzquierda("TIPO DE PAGO:" + " " + proc_ComprobanteFacturaVenta_Results.First().TipoDePago);
@@ -368,9 +371,9 @@ namespace CapaPresentacion.Reportes
                 controladorImpresoraMatricial.TextoCentro("FIRMA/CEDULA");
                 controladorImpresoraMatricial.lineasGuio();
                 controladorImpresoraMatricial.TextoIzquierda("COD. CLIENTE: " + proc_ComprobanteFacturaVenta_Results.First().ClienteID);
-                controladorImpresoraMatricial.TextoIzquierda("CLIENTE: " + proc_ComprobanteFacturaVenta_Results.First().NombreCliente);
-                controladorImpresoraMatricial.TextoIzquierda("COD. FACTURA: " + proc_ComprobanteFacturaVenta_Results.First().FacturaID.ToString() +
-                    "              " + "USUARIO: " + proc_ComprobanteFacturaVenta_Results.First().UserName.ToString());
+                controladorImpresoraMatricial.TextoIzquierda("CLIENTE: " + proc_ComprobanteFacturaVenta_Results.First().NombreCliente.ToUpper());
+                controladorImpresoraMatricial.TextoIzquierda("COD. FACTURA: " + proc_ComprobanteFacturaVenta_Results.First().FacturaID.ToString());
+                controladorImpresoraMatricial.TextoIzquierda("USUARIO: " + proc_ComprobanteFacturaVenta_Results.First().UserName.ToString().ToUpper());
                 controladorImpresoraMatricial.lineasGuio();
                 controladorImpresoraMatricial.TextoCentro("SISTEMA REALIZADO POR LIRIANO");
                 controladorImpresoraMatricial.TextoCentro("TEL/WSS: 809-222-3740");

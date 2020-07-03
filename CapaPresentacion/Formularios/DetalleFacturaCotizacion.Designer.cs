@@ -51,8 +51,8 @@
             this.UnidadMedida = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ITBIS1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descuento1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ITBIS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descuento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Importe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BarraTitulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbBarraMenu)).BeginInit();
@@ -72,6 +72,7 @@
             this.BarraTitulo.Name = "BarraTitulo";
             this.BarraTitulo.Size = new System.Drawing.Size(1016, 36);
             this.BarraTitulo.TabIndex = 4;
+            this.BarraTitulo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.BarraTitulo_MouseDown);
             // 
             // pbBarraMenu
             // 
@@ -251,8 +252,8 @@
             this.UnidadMedida,
             this.Cantidad,
             this.Precio,
-            this.ITBIS1,
-            this.Descuento1,
+            this.ITBIS,
+            this.Descuento,
             this.Importe});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -312,21 +313,21 @@
             this.Precio.ReadOnly = true;
             this.Precio.Width = 60;
             // 
-            // ITBIS1
+            // ITBIS
             // 
-            this.ITBIS1.DataPropertyName = "ITBIS";
-            this.ITBIS1.HeaderText = "ITBIS";
-            this.ITBIS1.Name = "ITBIS1";
-            this.ITBIS1.ReadOnly = true;
-            this.ITBIS1.Width = 57;
+            this.ITBIS.DataPropertyName = "ITBIS";
+            this.ITBIS.HeaderText = "ITBIS";
+            this.ITBIS.Name = "ITBIS";
+            this.ITBIS.ReadOnly = true;
+            this.ITBIS.Width = 57;
             // 
-            // Descuento1
+            // Descuento
             // 
-            this.Descuento1.DataPropertyName = "Descuento";
-            this.Descuento1.HeaderText = "Descuento";
-            this.Descuento1.Name = "Descuento1";
-            this.Descuento1.ReadOnly = true;
-            this.Descuento1.Width = 82;
+            this.Descuento.DataPropertyName = "Descuento";
+            this.Descuento.HeaderText = "Descuento";
+            this.Descuento.Name = "Descuento";
+            this.Descuento.ReadOnly = true;
+            this.Descuento.Width = 82;
             // 
             // Importe
             // 
@@ -390,8 +391,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn UnidadMedida;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ITBIS1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Descuento1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ITBIS;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Descuento;
         private System.Windows.Forms.DataGridViewTextBoxColumn Importe;
     }
 }

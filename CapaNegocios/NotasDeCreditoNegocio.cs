@@ -23,7 +23,12 @@ namespace CapaNegocios
             return notasDeCreditoDatos.CargarTodasNotasDeCredito();
         }
 
-        public ObjectResult<proc_CargarNotasDeCreditoPFecha_Result> CargarNotasDeCreditoPFecha(DateTime fInicial, DateTime fFinal)
+        public ObjectResult<proc_ComprobanteNotaDeCredito_Result> CargarComprobanteNotaDeCredito(int notaCreditoID)
+        {
+            return notasDeCreditoDatos.CargarComprobanteNotaDeCredito(notaCreditoID);
+        }
+
+            public ObjectResult<proc_CargarNotasDeCreditoPFecha_Result> CargarNotasDeCreditoPFecha(DateTime fInicial, DateTime fFinal)
         {
             return notasDeCreditoDatos.CargarNotasDeCreditoPFecha(fInicial, fFinal);
         }
