@@ -150,11 +150,11 @@ namespace CapaPresentacion.Formularios
         {
             if (result)
             {
-                MessageBox.Show(string.Format("La cotizacion ha sido borrada correctamente en la base de datos."), "Cotizacion Borrada Correctamente!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(string.Format("El cobro ha sido borrado correctamente en la base de datos."), "Cobro Borrado Correctamente!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                MessageBox.Show("La Cotizacion no pudo ser eliminada, favor de verificar los requerimientros", "Ha Ocurrido un error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("El Cobro no pudo ser eliminada, favor de verificar los requerimientros", "Ha Ocurrido un error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

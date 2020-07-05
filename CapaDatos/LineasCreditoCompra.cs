@@ -15,7 +15,7 @@ namespace CapaDatos
     public partial class LineasCreditoCompra
     {
         public int LineaCreditoCompraID { get; set; }
-        public int OrdenCompraID { get; set; }
         public bool Estatus { get; set; }
+        public int FacturaCompraID { get; set; }
     }
 }

@@ -20,6 +20,7 @@ namespace CapaDatos
         public double CantidadOrdenada { get; set; }
         public Nullable<double> CantidadRecibida { get; set; }
         public decimal Precio { get; set; }
+        public bool Estatus { get; set; }
     
         public virtual OrdenesCompra OrdenesCompra { get; set; }
     }

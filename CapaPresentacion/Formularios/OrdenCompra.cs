@@ -21,20 +21,22 @@ namespace CapaPresentacion.Formularios
         DetalleOrdenCompraNegocio detalleOrdenCompraNegocio = new DetalleOrdenCompraNegocio();
         DetalleOrdenesCompra detalleOrdenCompraEntidad = new DetalleOrdenesCompra();
         List<proc_CargarDetalleOrdenCompra_Result> proc_CargarDetalleOrdenCompra_Results;
-        proc_CargarDetalleOrdenCompra_Result Proc_CargarDetalleOrdenCompra_Result = new proc_CargarDetalleOrdenCompra_Result();
+        Producto productoEntidad = new Producto();
+        ProductosNegocio productosNegocio = new ProductosNegocio();
         private int ordenCompraID;
         public OrdenCompra()
         {
             InitializeComponent();
             CargarCbProveedores();
         }
-        public OrdenCompra(string proveedor, int ordenCompraID ,bool status, string tipoPago)
+        public OrdenCompra(string proveedor, int ordenCompraID ,bool status)
         {
             InitializeComponent();
             this.ordenCompraID = ordenCompraID;
             CargarCbProveedores();
             cbProveedor.SelectedItem = proveedor;
             cbProveedor.Enabled = false;
+
             if (status)
             {
                 btnBuscarProd.Enabled = false;
@@ -43,6 +45,7 @@ namespace CapaPresentacion.Formularios
                 btnQuitar.Enabled = false;
                 btnFacturarOrdenCorte.Enabled = false;
             }
+            CargarDataGridView();
         }
 
 
@@ -245,6 +248,11 @@ namespace CapaPresentacion.Formularios
                             MessageBox.Show("La cantidad RECIBIDA no puede mayor a la cantidad ordenada", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
+                        if(Convert.ToBoolean(dgvProductos.Rows[e.RowIndex].Cells["Estatus"].Value))
+                        {
+                            MessageBox.Show("No se puede modificar la cantidad recibida, ya se completo esta entrega.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
                         break;
                     default:
                         break;
@@ -333,6 +341,7 @@ namespace CapaPresentacion.Formularios
                 detalleOrdenCompraEntidad.ProductoID = Convert.ToInt32(row.Cells["ProductoID"].Value);
                 detalleOrdenCompraEntidad.CantidadOrdenada = Convert.ToDouble(row.Cells["Ordenada"].Value);
                 detalleOrdenCompraEntidad.Precio = Convert.ToDecimal(row.Cells["PrecioCompra"].Value);
+                detalleOrdenCompraEntidad.Estatus = false;
 
                 detalleOrdenCompraNegocio.InsertarDetalleOrdenCompra(detalleOrdenCompraEntidad);
             }
@@ -347,7 +356,23 @@ namespace CapaPresentacion.Formularios
                 detalleOrdenCompraEntidad.CantidadOrdenada = Convert.ToDouble(row.Cells["Ordenada"].Value);
                 detalleOrdenCompraEntidad.CantidadRecibida = Convert.ToDouble(row.Cells["Recibida"].Value);
                 detalleOrdenCompraEntidad.Precio = Convert.ToDecimal(row.Cells["PrecioCompra"].Value);
+                
+                if(Convert.ToDouble(row.Cells["Ordenada"].Value) == Convert.ToDouble(row.Cells["Recibida"].Value))
+                {
+                    if (!detalleOrdenCompraEntidad.Estatus)
+                    {
+                        productoEntidad.ProductoID = Convert.ToInt32(row.Cells["ProductoID"].Value);
+                        productoEntidad.Existencia = Convert.ToDouble(row.Cells["Recibida"].Value);
+                        productosNegocio.ActualizarCantidadProductoPorID(productoEntidad);
+                    }
+                    detalleOrdenCompraEntidad.Estatus = true;
+                                       
+                }
+                else
+                {
+                    detalleOrdenCompraEntidad.Estatus = false;
 
+                }
                 var result = detalleOrdenCompraNegocio.ActualizarDetalleOrdenCompra(detalleOrdenCompraEntidad);
 
                 if (result)
@@ -361,18 +386,18 @@ namespace CapaPresentacion.Formularios
 
         private void btnFacturarOrdenCorte_Click(object sender, EventArgs e)
         {
-            if (dgvProductos.Rows.Count > 0 && cbProveedor.SelectedIndex != 0)
+            if (dgvProductos.Rows.Count > 0 && cbProveedor.SelectedIndex != 0 && ordenCompraID > 0)
             {
                 if (ValidarProductosRecibidos())
                 {
-                    FacturarOrdenCompra facturarOrdenCompra = new FacturarOrdenCompra();
+                    FacturarOrdenCompra facturarOrdenCompra = new FacturarOrdenCompra(ordenCompraID);
                     facturarOrdenCompra.ShowDialog();
                     this.Close();
                 }
             }
             else
             {
-                MessageBox.Show("No se puede guardar la orden de compra sin productos | Debe de elegir un proveedor.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("No se puede guardar la orden de compra sin productos | Debe de elegir un proveedor | La orden de compra debe de estar creada.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
         }

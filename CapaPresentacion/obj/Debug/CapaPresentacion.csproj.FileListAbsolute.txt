@@ -186,9 +186,6 @@ F:\C#\SFacturacion\CapaPresentacion\bin\Debug\Google.Apis.Core.xml
 F:\C#\SFacturacion\CapaPresentacion\bin\Debug\Google.Apis.Drive.v3.pdb
 F:\C#\SFacturacion\CapaPresentacion\bin\Debug\Google.Apis.Drive.v3.xml
 F:\C#\SFacturacion\CapaPresentacion\bin\Debug\Newtonsoft.Json.xml
-F:\C#\SFacturacion\CapaPresentacion\obj\Debug\CapaPresentacion.Reportes.ImpresionCotizacion.resources
-F:\C#\SFacturacion\CapaPresentacion\obj\Debug\CapaPresentacion.Reportes.ImpresionNotaCredito.resources
-F:\C#\SFacturacion\CapaPresentacion\obj\Debug\CapaPresentacion.Reportes.ImpresionFacturaVenta.resources
 F:\C#\SFacturacion\CapaPresentacion\obj\Debug\CapaPresentacion.Formularios.DetalleFacturaCotizacion.resources
 F:\C#\SFacturacion\CapaPresentacion\obj\Debug\CapaPresentacion.Formularios.Facturas.resources
 F:\C#\SFacturacion\CapaPresentacion\obj\Debug\CapaPresentacion.Formularios.CuentasPorCobrar.resources
@@ -203,3 +200,9 @@ F:\C#\SFacturacion\CapaPresentacion\obj\Debug\CapaPresentacion.Formularios.Detal
 F:\C#\SFacturacion\CapaPresentacion\obj\Debug\CapaPresentacion.Formularios.OrdenCompra.resources
 F:\C#\SFacturacion\CapaPresentacion\obj\Debug\CapaPresentacion.Formularios.ProductosPorProveedor.resources
 F:\C#\SFacturacion\CapaPresentacion\obj\Debug\CapaPresentacion.Formularios.FacturarOrdenCompra.resources
+F:\C#\SFacturacion\CapaPresentacion\obj\Debug\CapaPresentacion.Formularios.CuentasPorPagar.resources
+F:\C#\SFacturacion\CapaPresentacion\obj\Debug\CapaPresentacion.Formularios.HistorialPagos.resources
+F:\C#\SFacturacion\CapaPresentacion\obj\Debug\CapaPresentacion.Impresiones.ImpresionOrdenCompra.resources
+F:\C#\SFacturacion\CapaPresentacion\obj\Debug\CapaPresentacion.Impresiones.ImpresionCotizacion.resources
+F:\C#\SFacturacion\CapaPresentacion\obj\Debug\CapaPresentacion.Impresiones.ImpresionFacturaVenta.resources
+F:\C#\SFacturacion\CapaPresentacion\obj\Debug\CapaPresentacion.Impresiones.ImpresionNotaCredito.resources

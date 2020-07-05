@@ -107,6 +107,7 @@
     <Compile Include="LineasCreditoCompra.cs">
       <DependentUpon>SFacturacionModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="LineasCreditoComprasDatos.cs" />
     <Compile Include="LineasCreditoVenta.cs">
       <DependentUpon>SFacturacionModel.tt</DependentUpon>
     </Compile>
@@ -119,7 +120,11 @@
       <DependentUpon>SFacturacionModel.tt</DependentUpon>
     </Compile>
     <Compile Include="OrdenesCompraDatos.cs" />
-    <Compile Include="PagosOrdenesCompraCredito.cs">
+    <Compile Include="PagosCompraCreditoDatos.cs" />
+    <Compile Include="PagosComprasCredito.cs">
+      <DependentUpon>SFacturacionModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Procedure_Result.cs">
       <DependentUpon>SFacturacionModel.tt</DependentUpon>
     </Compile>
     <Compile Include="proc_BuscarClientesPorID_Result.cs">
@@ -182,6 +187,9 @@
     <Compile Include="proc_CargarOrdenesCompraPFecha_Result.cs">
       <DependentUpon>SFacturacionModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="proc_CargarPagosCompraCredito_Result.cs">
+      <DependentUpon>SFacturacionModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="proc_CargarProductosCotizacion_Result.cs">
       <DependentUpon>SFacturacionModel.tt</DependentUpon>
     </Compile>
@@ -192,6 +200,9 @@
       <DependentUpon>SFacturacionModel.tt</DependentUpon>
     </Compile>
     <Compile Include="proc_CargarProductosFactura_Result.cs">
+      <DependentUpon>SFacturacionModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="proc_CargarProductosMasVendidos_Result.cs">
       <DependentUpon>SFacturacionModel.tt</DependentUpon>
     </Compile>
     <Compile Include="proc_CargarProductosPorProveedor_Result.cs">
@@ -251,7 +262,13 @@
     <Compile Include="proc_ComprobanteNotaDeCredito_Result.cs">
       <DependentUpon>SFacturacionModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="proc_ComprobanteOrdenCompra_Result.cs">
+      <DependentUpon>SFacturacionModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="proc_ComprobantePagoLineaCreditoVenta_Result.cs">
+      <DependentUpon>SFacturacionModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="proc_ResumenSistema_Result.cs">
       <DependentUpon>SFacturacionModel.tt</DependentUpon>
     </Compile>
     <Compile Include="proc_ValidarUsuario_Result.cs">
@@ -281,6 +298,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SFacturacionModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="SistemaResumenDatos.cs" />
     <Compile Include="TiposFactura.cs">
       <DependentUpon>SFacturacionModel.tt</DependentUpon>
     </Compile>

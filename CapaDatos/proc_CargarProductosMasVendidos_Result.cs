@@ -10,15 +10,15 @@
 namespace CapaDatos
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class PagosOrdenesCompraCredito
+    public partial class proc_CargarProductosMasVendidos_Result
     {
-        public int PagoOrdenCompraCreditoID { get; set; }
-        public int LineaCreditoCompraID { get; set; }
-        public System.DateTime FechaPago { get; set; }
-        public decimal Monto { get; set; }
-        public int UserID { get; set; }
-        public string Concepto { get; set; }
+        public int ProductoID { get; set; }
+        public string CodigoBarra { get; set; }
+        public string Descripcion { get; set; }
+        public string UnidadMedida { get; set; }
+        public string Proveedor { get; set; }
+        public Nullable<double> Existencia { get; set; }
+        public Nullable<double> CantidadVendida { get; set; }
     }
 }

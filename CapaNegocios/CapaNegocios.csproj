@@ -61,12 +61,15 @@
     <Compile Include="DetalleOrdenCompraNegocio.cs" />
     <Compile Include="FacturaOrdenCompraNegocio.cs" />
     <Compile Include="FacturasNegocio.cs" />
+    <Compile Include="LineasCreditoComprasNegocio.cs" />
     <Compile Include="LineasCreditoVentasNegocio.cs" />
     <Compile Include="NotasDeCreditoNegocio.cs" />
     <Compile Include="OrdenesCompraNegocio.cs" />
+    <Compile Include="PagosCompraCreditoNegocio.cs" />
     <Compile Include="ProductosNegocio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProveedoresNegocio.cs" />
+    <Compile Include="SistemaResumenNegocio.cs" />
     <Compile Include="TiposFacturaNegocio.cs" />
     <Compile Include="TiposPagosNegocio.cs" />
     <Compile Include="UsersNegocio.cs" />

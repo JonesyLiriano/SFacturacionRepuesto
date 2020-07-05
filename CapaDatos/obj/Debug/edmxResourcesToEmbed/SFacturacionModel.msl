@@ -56,6 +56,7 @@
     <EntitySetMapping Name="DetalleOrdenesCompras">
       <EntityTypeMapping TypeName="SFacturacionModel.DetalleOrdenesCompra">
         <MappingFragment StoreEntitySet="DetalleOrdenesCompra">
+          <ScalarProperty Name="Estatus" ColumnName="Estatus" />
           <ScalarProperty Name="DetalleOrdenCompraID" ColumnName="DetalleOrdenCompraID" />
           <ScalarProperty Name="OrdenCompraID" ColumnName="OrdenCompraID" />
           <ScalarProperty Name="ProductoID" ColumnName="ProductoID" />
@@ -86,10 +87,10 @@
     <EntitySetMapping Name="FacturasCompras">
       <EntityTypeMapping TypeName="SFacturacionModel.FacturasCompra">
         <MappingFragment StoreEntitySet="FacturasCompra">
+          <ScalarProperty Name="FechaVencimiento" ColumnName="FechaVencimiento" />
           <ScalarProperty Name="FacturaCompraID" ColumnName="FacturaCompraID" />
           <ScalarProperty Name="OrdenCompraID" ColumnName="OrdenCompraID" />
           <ScalarProperty Name="NCF" ColumnName="NCF" />
-          <ScalarProperty Name="FechaVencimientoSecuencia" ColumnName="FechaVencimientoSecuencia" />
           <ScalarProperty Name="FechaFactura" ColumnName="FechaFactura" />
           <ScalarProperty Name="TipoDePagoID" ColumnName="TipoDePagoID" />
           <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
@@ -446,15 +447,17 @@
       <ResultMapping>
         <ComplexTypeMapping TypeName="SFacturacionModel.proc_CargarTodasFacturas_Result">
           <ScalarProperty Name="FacturaID" ColumnName="FacturaID" />
-          <ScalarProperty Name="ClienteID" ColumnName="ClienteID" />
           <ScalarProperty Name="DescuentoCliente" ColumnName="DescuentoCliente" />
           <ScalarProperty Name="Fecha" ColumnName="Fecha" />
           <ScalarProperty Name="TipoDePago" ColumnName="TipoDePago" />
           <ScalarProperty Name="TipoFactura" ColumnName="TipoFactura" />
           <ScalarProperty Name="NCF" ColumnName="NCF" />
-          <ScalarProperty Name="UserID" ColumnName="UserID" />
           <ScalarProperty Name="Valor" ColumnName="Valor" />
           <ScalarProperty Name="Cotizacion" ColumnName="Cotizacion" />
+          <ScalarProperty Name="Cliente" ColumnName="Cliente" />
+          <ScalarProperty Name="FechaVencimiento" ColumnName="FechaVencimiento" />
+          <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+          <ScalarProperty Name="ClienteID" ColumnName="ClienteID" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
@@ -523,6 +526,7 @@
           <ScalarProperty Name="Monto" ColumnName="Monto" />
           <ScalarProperty Name="MontoAplicado" ColumnName="MontoAplicado" />
           <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+          <ScalarProperty Name="FechaVencimiento" ColumnName="FechaVencimiento" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
@@ -530,14 +534,17 @@
       <ResultMapping>
         <ComplexTypeMapping TypeName="SFacturacionModel.proc_CargarTodasOrdenesCompra_Result">
           <ScalarProperty Name="OrdencompraID" ColumnName="OrdencompraID" />
-          <ScalarProperty Name="ProveedorID" ColumnName="ProveedorID" />
-          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
           <ScalarProperty Name="FechaPedido" ColumnName="FechaPedido" />
-          <ScalarProperty Name="Estatus" ColumnName="Estatus" />
           <ScalarProperty Name="FechaCompletado" ColumnName="FechaCompletado" />
           <ScalarProperty Name="NCF" ColumnName="NCF" />
-          <ScalarProperty Name="FechaVencimientoSecuencia" ColumnName="FechaVencimientoSecuencia" />
           <ScalarProperty Name="FechaFactura" ColumnName="FechaFactura" />
+          <ScalarProperty Name="Proveedor" ColumnName="Proveedor" />
+          <ScalarProperty Name="TipoDePago" ColumnName="TipoDePago" />
+          <ScalarProperty Name="ITBIS" ColumnName="ITBIS" />
+          <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+          <ScalarProperty Name="Completado" ColumnName="Completado" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="FechaVencimiento" ColumnName="FechaVencimiento" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
@@ -723,6 +730,7 @@
           <ScalarProperty Name="PrecioCompra" ColumnName="PrecioCompra" />
           <ScalarProperty Name="Ordenada" ColumnName="Ordenada" />
           <ScalarProperty Name="Recibida" ColumnName="Recibida" />
+          <ScalarProperty Name="Estatus" ColumnName="Estatus" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
@@ -810,8 +818,8 @@
           <ScalarProperty Name="Fecha" ColumnName="Fecha" />
           <ScalarProperty Name="Valor" ColumnName="Valor" />
           <ScalarProperty Name="Cliente" ColumnName="Cliente" />
-          <ScalarProperty Name="FacturaID" ColumnName="FacturaID" />
           <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+          <ScalarProperty Name="Factura" ColumnName="Factura" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
@@ -928,23 +936,96 @@
     <EntitySetMapping Name="LineasCreditoCompras">
       <EntityTypeMapping TypeName="SFacturacionModel.LineasCreditoCompra">
         <MappingFragment StoreEntitySet="LineasCreditoCompras">
+          <ScalarProperty Name="FacturaCompraID" ColumnName="FacturaCompraID" />
           <ScalarProperty Name="Estatus" ColumnName="Estatus" />
-          <ScalarProperty Name="OrdenCompraID" ColumnName="OrdenCompraID" />
           <ScalarProperty Name="LineaCreditoCompraID" ColumnName="LineaCreditoCompraID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="PagosOrdenesCompraCreditoes">
-      <EntityTypeMapping TypeName="SFacturacionModel.PagosOrdenesCompraCredito">
-        <MappingFragment StoreEntitySet="PagosOrdenesCompraCredito">
+    <EntitySetMapping Name="PagosComprasCreditoes">
+      <EntityTypeMapping TypeName="SFacturacionModel.PagosComprasCredito">
+        <MappingFragment StoreEntitySet="PagosComprasCredito">
           <ScalarProperty Name="Concepto" ColumnName="Concepto" />
           <ScalarProperty Name="UserID" ColumnName="UserID" />
           <ScalarProperty Name="Monto" ColumnName="Monto" />
           <ScalarProperty Name="FechaPago" ColumnName="FechaPago" />
-          <ScalarProperty Name="LineaCreditoCompraID" ColumnName="LineaCreditoCompraID" />
-          <ScalarProperty Name="PagoOrdenCompraCreditoID" ColumnName="PagoOrdenCompraCreditoID" />
+          <ScalarProperty Name="LineaCompraCreditoID" ColumnName="LineaCompraCreditoID" />
+          <ScalarProperty Name="PagoCompraCreditoID" ColumnName="PagoCompraCreditoID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="proc_BorrarPagoCompraCredito" FunctionName="SFacturacionModel.Store.proc_BorrarPagoCompraCredito" />
+    <FunctionImportMapping FunctionImportName="proc_CargarPagosCompraCredito" FunctionName="SFacturacionModel.Store.proc_CargarPagosCompraCredito">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SFacturacionModel.proc_CargarPagosCompraCredito_Result">
+          <ScalarProperty Name="PagoCompraCreditoID" ColumnName="PagoCompraCreditoID" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Monto" ColumnName="Monto" />
+          <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+          <ScalarProperty Name="Concepto" ColumnName="Concepto" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="proc_InsertarLineaCreditoCompra" FunctionName="SFacturacionModel.Store.proc_InsertarLineaCreditoCompra" />
+    <FunctionImportMapping FunctionImportName="proc_InsertarPagoCompraCredito" FunctionName="SFacturacionModel.Store.proc_InsertarPagoCompraCredito" />
+    <FunctionImportMapping FunctionImportName="proc_ComprobarPagoLineaCreditoCompra" FunctionName="SFacturacionModel.Store.proc_ComprobarPagoLineaCreditoCompra" />
+    <FunctionImportMapping FunctionImportName="proc_ActualizarCantidadProductoPorID" FunctionName="SFacturacionModel.Store.proc_ActualizarCantidadProductoPorID" />
+    <FunctionImportMapping FunctionImportName="Procedure" FunctionName="SFacturacionModel.Store.Procedure">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SFacturacionModel.Procedure_Result">
+          <ScalarProperty Name="Column1" ColumnName="Column1" />
+          <ScalarProperty Name="Column2" ColumnName="Column2" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="proc_ComprobanteOrdenCompra" FunctionName="SFacturacionModel.Store.proc_ComprobanteOrdenCompra">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SFacturacionModel.proc_ComprobanteOrdenCompra_Result">
+          <ScalarProperty Name="OrdencompraID" ColumnName="OrdencompraID" />
+          <ScalarProperty Name="ProveedorID" ColumnName="ProveedorID" />
+          <ScalarProperty Name="NombreProveedor" ColumnName="NombreProveedor" />
+          <ScalarProperty Name="CedulaORncProveedor" ColumnName="CedulaORncProveedor" />
+          <ScalarProperty Name="DireccionProveedor" ColumnName="DireccionProveedor" />
+          <ScalarProperty Name="FechaPedido" ColumnName="FechaPedido" />
+          <ScalarProperty Name="ProductoID" ColumnName="ProductoID" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="UnidadMedida" ColumnName="UnidadMedida" />
+          <ScalarProperty Name="Existencia" ColumnName="Existencia" />
+          <ScalarProperty Name="CantMin" ColumnName="CantMin" />
+          <ScalarProperty Name="PrecioCompra" ColumnName="PrecioCompra" />
+          <ScalarProperty Name="Ordenada" ColumnName="Ordenada" />
+          <ScalarProperty Name="Recibida" ColumnName="Recibida" />
+          <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="proc_ResumenSistema" FunctionName="SFacturacionModel.Store.proc_ResumenSistema">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SFacturacionModel.proc_ResumenSistema_Result">
+          <ScalarProperty Name="Clientes" ColumnName="Clientes" />
+          <ScalarProperty Name="Proveedores" ColumnName="Proveedores" />
+          <ScalarProperty Name="Productos" ColumnName="Productos" />
+          <ScalarProperty Name="Ventas" ColumnName="Ventas" />
+          <ScalarProperty Name="Cotizaciones" ColumnName="Cotizaciones" />
+          <ScalarProperty Name="NotasCreditos" ColumnName="NotasCreditos" />
+          <ScalarProperty Name="CXC" ColumnName="CXC" />
+          <ScalarProperty Name="CXP" ColumnName="CXP" />
+          <ScalarProperty Name="Compras" ColumnName="Compras" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="proc_CargarProductosMasVendidos" FunctionName="SFacturacionModel.Store.proc_CargarProductosMasVendidos">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SFacturacionModel.proc_CargarProductosMasVendidos_Result">
+          <ScalarProperty Name="ProductoID" ColumnName="ProductoID" />
+          <ScalarProperty Name="CodigoBarra" ColumnName="CodigoBarra" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="UnidadMedida" ColumnName="UnidadMedida" />
+          <ScalarProperty Name="Proveedor" ColumnName="Proveedor" />
+          <ScalarProperty Name="Existencia" ColumnName="Existencia" />
+          <ScalarProperty Name="CantidadVendida" ColumnName="CantidadVendida" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

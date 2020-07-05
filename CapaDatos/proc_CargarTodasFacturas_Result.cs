@@ -14,14 +14,16 @@ namespace CapaDatos
     public partial class proc_CargarTodasFacturas_Result
     {
         public int FacturaID { get; set; }
-        public int ClienteID { get; set; }
-        public decimal DescuentoCliente { get; set; }
+        public Nullable<decimal> DescuentoCliente { get; set; }
         public System.DateTime Fecha { get; set; }
         public string TipoDePago { get; set; }
         public string TipoFactura { get; set; }
         public string NCF { get; set; }
-        public int UserID { get; set; }
         public Nullable<decimal> Valor { get; set; }
         public Nullable<int> Cotizacion { get; set; }
+        public string Cliente { get; set; }
+        public Nullable<System.DateTime> FechaVencimiento { get; set; }
+        public string Usuario { get; set; }
+        public int ClienteID { get; set; }
     }
 }

@@ -13,7 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CapaPresentacion.Reportes
+namespace CapaPresentacion.Impresiones
 {
     public partial class ImpresionNotaCredito : Form
     {
@@ -162,7 +162,7 @@ namespace CapaPresentacion.Reportes
                 controladorImpresoraMatricial.TextoIzquierda("NCF AFECTADO:" + " " + proc_ComprobanteNotaDeCredito_Results.First().NCFAfectado);
                 controladorImpresoraMatricial.TextoIzquierda("FECHA VENCIMIENTO: " + proc_ComprobanteNotaDeCredito_Results.First().FechaVencimiento.ToString("dd/MM/yyyy"));
                 controladorImpresoraMatricial.lineasGuio();
-                controladorImpresoraMatricial.EncabezadoVenta();
+                controladorImpresoraMatricial.EncabezadoNC();
                 controladorImpresoraMatricial.lineasGuio();
                 foreach (var fila in proc_ComprobanteNotaDeCredito_Results)
                 {

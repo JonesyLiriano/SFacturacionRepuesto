@@ -114,6 +114,11 @@ namespace SFacturacion
         {
             try
             {
+                if (!(panelContenedor.Controls.OfType<MiForm>().FirstOrDefault().Text == "InicioResumen"))
+                {
+                    CerrarFormularioResumenSistema();
+                    MessageBox.Show("asdasd");
+                }
                 Form fh;
                 fh = panelContenedor.Controls.OfType<MiForm>().FirstOrDefault();
 
@@ -153,6 +158,8 @@ namespace SFacturacion
         private void btnlogoInicio_Click(object sender, EventArgs e)
         {
             AbrirFormEnPanel<InicioResumen>();
+            SeleccionarButton("InicioResumen");
+
         }
 
         private void Principal_Load(object sender, EventArgs e)
@@ -284,7 +291,7 @@ namespace SFacturacion
         {            
             AbrirFormEnPanel<RegistrarVenta>();
             SeleccionarButton("Ventas");
-            CerrarFormulariosCotizacionYFacturas();
+            CerrarFormulariosCotizacionFacturasYCuentasPorCobrar();
         }
 
         private void btnClientes_Click(object sender, EventArgs e)
@@ -303,6 +310,7 @@ namespace SFacturacion
         {
             AbrirFormEnPanel<Compras>();
             SeleccionarButton("Compras");
+            CerrarFormularioCuentasPorPagar();
         }
         private void btnUsuarios_Click(object sender, EventArgs e)
         {
@@ -312,6 +320,10 @@ namespace SFacturacion
 
         private void panelContenedor_ControlRemoved(object sender, ControlEventArgs e)
         {
+            if(panelContenedor.Controls.Count == 0)
+            {
+                btnlogoInicio_Click(null, e);
+            }
             SeleccionarButton(panelContenedor.Controls[0].Text);
         }
 
@@ -323,7 +335,6 @@ namespace SFacturacion
 
         private void btnConfiguraciones_Click(object sender, EventArgs e)
         {
-
             AbrirFormEnPanel<Configuraciones>();
             SeleccionarButton("Configuraciones");
         }
@@ -334,15 +345,37 @@ namespace SFacturacion
             SeleccionarButton("Cotizaciones");
         }
 
-        private void CerrarFormulariosCotizacionYFacturas()
+        private void CerrarFormulariosCotizacionFacturasYCuentasPorCobrar()
         {
             foreach (Control item in panelContenedor.Controls)
             {
-               if (item.Text == "Cotizaciones" || item.Text == "Facturas")
+               if (item.Text == "Cotizaciones" || item.Text == "Facturas" || item.Text == "CuentasPorCobrar")
                 {
                     panelContenedor.Controls.Remove(item);
                 }
             }            
+        }
+        private void CerrarFormularioCuentasPorPagar()
+        {
+            foreach (Control item in panelContenedor.Controls)
+            {
+                if (item.Text == "CuentasPorPagar")
+                {
+                    panelContenedor.Controls.Remove(item);
+                }
+            }
+        }
+
+
+        private void CerrarFormularioResumenSistema()
+        {
+            foreach (Control item in panelContenedor.Controls)
+            {
+                if (item.Text == "InicioResumen")
+                {
+                    panelContenedor.Controls.Remove(item);
+                }
+            }
         }
 
         private void btnFacturas_Click(object sender, EventArgs e)
@@ -365,6 +398,7 @@ namespace SFacturacion
 
         private void btnCXP_Click(object sender, EventArgs e)
         {
+            AbrirFormEnPanel<CuentasPorPagar>();
             SeleccionarButton("CuentasPorPagar");
         }
 

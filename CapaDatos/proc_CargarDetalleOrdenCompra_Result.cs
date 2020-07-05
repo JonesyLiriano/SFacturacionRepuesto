@@ -21,5 +21,6 @@ namespace CapaDatos
         public Nullable<decimal> PrecioCompra { get; set; }
         public double Ordenada { get; set; }
         public Nullable<double> Recibida { get; set; }
+        public bool Estatus { get; set; }
     }
 }

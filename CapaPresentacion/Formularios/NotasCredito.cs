@@ -1,6 +1,6 @@
 ﻿using CapaDatos;
 using CapaNegocios;
-using CapaPresentacion.Reportes;
+using CapaPresentacion.Impresiones;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -46,6 +46,18 @@ namespace CapaPresentacion.Formularios
             {
                 proc_CargarTodasNotasDeCredito_Results = notasDeCreditoNegocio.CargarTodasNotasDeCredito().ToList();
                 dgvNotasCredito.DataSource = proc_CargarTodasNotasDeCredito_Results;
+
+                dgvNotasCredito.Columns["NotaDeCreditoID"].DisplayIndex = 0;
+                dgvNotasCredito.Columns["Cliente"].DisplayIndex = 1;
+                dgvNotasCredito.Columns["Fecha"].DisplayIndex = 2;
+                dgvNotasCredito.Columns["Factura"].DisplayIndex = 3;
+                dgvNotasCredito.Columns["FacturaAplicada"].DisplayIndex = 4;
+                dgvNotasCredito.Columns["NCF"].DisplayIndex = 5;
+                dgvNotasCredito.Columns["FechaVencimiento"].DisplayIndex = 6;
+                dgvNotasCredito.Columns["ITBIS"].DisplayIndex = 7;
+                dgvNotasCredito.Columns["Monto"].DisplayIndex = 8;
+                dgvNotasCredito.Columns["MontoAplicado"].DisplayIndex = 9;
+
                 dgvNotasCredito.Columns["Monto"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                 dgvNotasCredito.Columns["MontoAplicado"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                 dgvNotasCredito.Refresh();
@@ -136,6 +148,11 @@ namespace CapaPresentacion.Formularios
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Loggeator.EscribeEnArchivo(exc.ToString());
             }
+        }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

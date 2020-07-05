@@ -18,7 +18,7 @@ namespace CapaDatos
         public System.DateTime Fecha { get; set; }
         public Nullable<decimal> Valor { get; set; }
         public string Cliente { get; set; }
-        public Nullable<int> FacturaID { get; set; }
         public string Usuario { get; set; }
+        public Nullable<int> Factura { get; set; }
     }
 }

@@ -11,7 +11,7 @@ using System.Windows.Forms;
 using CapaDatos;
 using CapaNegocios;
 using CapaPresentacion.Formularios;
-using CapaPresentacion.Reportes;
+using CapaPresentacion.Impresiones;
 
 namespace CapaPresentacion
 {
@@ -65,6 +65,15 @@ namespace CapaPresentacion
             {
                 proc_CargarTodasCotizaciones_Results = cotizacionesNegocio.CargarTodasCotizaciones().ToList();
                 dgvCotizaciones.DataSource = proc_CargarTodasCotizaciones_Results;
+
+                dgvCotizaciones.Columns["CotizacionID"].DisplayIndex = 0;
+                dgvCotizaciones.Columns["Cliente"].DisplayIndex = 1;
+                dgvCotizaciones.Columns["DescuentoCliente"].DisplayIndex = 2;
+                dgvCotizaciones.Columns["Fecha"].DisplayIndex = 3;
+                dgvCotizaciones.Columns["Factura"].DisplayIndex = 3;
+                dgvCotizaciones.Columns["Valor"].DisplayIndex = 4;
+                dgvCotizaciones.Columns["Usuario"].DisplayIndex = 5;
+
                 dgvCotizaciones.Columns["Valor"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                 dgvCotizaciones.Refresh();
             }

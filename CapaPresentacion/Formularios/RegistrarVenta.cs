@@ -1,6 +1,6 @@
 ﻿using CapaDatos;
 using CapaNegocios;
-using CapaPresentacion.Reportes;
+using CapaPresentacion.Impresiones;
 using SFacturacion;
 using System;
 using System.Collections.Generic;

@@ -1,4 +1,4 @@
-﻿namespace CapaPresentacion.Reportes
+﻿namespace CapaPresentacion.Impresiones
 {
     partial class ImpresionNotaCredito
     {

@@ -1,0 +1,148 @@
+﻿using CapaDatos;
+using CapaNegocios;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace CapaPresentacion.Formularios
+{    
+    public partial class CuentasPorPagar : Form
+    {
+        public static decimal montoPendiente;
+        LineasCreditoComprasNegocio lineasCreditoComprasNegocio = new LineasCreditoComprasNegocio();
+        List<proc_CargarTodasLineasCreditoCompras_Result> proc_CargarTodasLineasCreditoCompras_Results;
+        public CuentasPorPagar()
+        {
+            InitializeComponent();
+        }
+
+        private void CuentasPorPagar_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                CargarTodasLineasCreditoCompra();
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Error: " + exc.ToString(),
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Loggeator.EscribeEnArchivo(exc.ToString());
+            }
+        }
+
+        private void CargarTodasLineasCreditoCompra()
+        {
+            proc_CargarTodasLineasCreditoCompras_Results = lineasCreditoComprasNegocio.CargarTodasLineasCreditoCompras().ToList();
+            dgvLineasCreditoCompra.DataSource = proc_CargarTodasLineasCreditoCompras_Results;
+
+            dgvLineasCreditoCompra.Columns["LineaCreditoCompraID"].DisplayIndex = 0;
+            dgvLineasCreditoCompra.Columns["Proveedor"].DisplayIndex = 1;
+            dgvLineasCreditoCompra.Columns["OrdenCompra"].DisplayIndex = 2;
+            dgvLineasCreditoCompra.Columns["Fecha"].DisplayIndex = 3;
+            dgvLineasCreditoCompra.Columns["FacturaCompra"].DisplayIndex = 4;
+            dgvLineasCreditoCompra.Columns["MontoFactura"].DisplayIndex = 5;
+            dgvLineasCreditoCompra.Columns["BalancePendiente"].DisplayIndex = 6;
+            dgvLineasCreditoCompra.Columns["Completado"].DisplayIndex = 7;
+
+            dgvLineasCreditoCompra.Columns["BalancePendiente"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvLineasCreditoCompra.Columns["MontoFactura"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvLineasCreditoCompra.Refresh();
+
+        }
+
+        private void btnConsultaFactura_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dgvLineasCreditoCompra.SelectedRows.Count > 0)
+                {
+                    OrdenCompra ordenCompra = new OrdenCompra(
+                   dgvLineasCreditoCompra.CurrentRow.Cells["Proveedor"].Value.ToString(),
+                   Convert.ToInt32(dgvLineasCreditoCompra.Rows[dgvLineasCreditoCompra.CurrentRow.Index].Cells["OrdenCompra"].Value),
+                   Convert.ToBoolean(dgvLineasCreditoCompra.Rows[dgvLineasCreditoCompra.CurrentRow.Index].Cells["Completado"].Value)
+                   );
+                    ordenCompra.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("Debe de seleccionar una orden de compra para poder ver su detalle", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Error: " + exc.ToString(),
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Loggeator.EscribeEnArchivo(exc.ToString());
+            }
+        }
+
+        private void btnRealizarPago_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dgvLineasCreditoCompra.SelectedRows.Count > 0)
+                {
+                    if (Convert.ToBoolean(dgvLineasCreditoCompra.Rows[dgvLineasCreditoCompra.CurrentRow.Index].Cells["Completado"].Value))
+                    {
+                        RegistrarCobro registrarCobro = new RegistrarCobro(
+                            Convert.ToInt32(dgvLineasCreditoCompra.CurrentRow.Cells["LineaCreditoVentaID"].Value)
+                        , dgvLineasCreditoCompra.CurrentRow.Cells["Proveedor"].Value.ToString()
+                        , Convert.ToDecimal(dgvLineasCreditoCompra.CurrentRow.Cells["BalancePendiente"].Value));
+                        registrarCobro.ShowDialog();
+                        CargarTodasLineasCreditoCompra();
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("La linea de credito compra ya esta saldada.", "Linea Saldada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Debe de seleccionar la linea de credito compra a la que desea realizar el pago.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception exc)
+            {
+
+                MessageBox.Show("Error: " + exc.ToString(),
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Loggeator.EscribeEnArchivo(exc.ToString());
+            }
+        }
+
+        private void btnHistorialPagos_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dgvLineasCreditoCompra.SelectedRows.Count > 0)
+                {
+                    HistorialPagos historialPagos = new HistorialPagos(
+                        Convert.ToInt32(dgvLineasCreditoCompra.CurrentRow.Cells["LineaCreditoCompraID"].Value)
+                        , dgvLineasCreditoCompra.CurrentRow.Cells["Proveedor"].Value.ToString()
+                        , Convert.ToDecimal(dgvLineasCreditoCompra.CurrentRow.Cells["BalancePendiente"].Value)
+                        , Convert.ToBoolean(dgvLineasCreditoCompra.CurrentRow.Cells["Completado"].Value));
+                    historialPagos.ShowDialog();
+                }
+            }
+            catch (Exception exc)
+            {
+
+                MessageBox.Show("Error: " + exc.ToString(),
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Loggeator.EscribeEnArchivo(exc.ToString());
+            }
+        }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+    }
+}

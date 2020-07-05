@@ -15,7 +15,6 @@ namespace CapaPresentacion.Formularios
     public partial class ProductosPorProveedor : Form
     {
         ProductosNegocio productosNegocio = new ProductosNegocio();
-        ProveedoresNegocio proveedoresNegocio = new ProveedoresNegocio();
         List<proc_CargarProductosExistBajaPorProveedor_Result> proc_CargarProductosExistBajaPorProveedors;
         List<proc_CargarProductosPorProveedor_Result> proc_BuscarProductosPorProveedors;
         public static DataTable dtProductosMarcados;
@@ -56,6 +55,14 @@ namespace CapaPresentacion.Formularios
                 proc_BuscarProductosPorProveedors = productosNegocio.CargarProductosPorProveedor(proveedorID).ToList();
                 dgvProductos.DataSource = proc_BuscarProductosPorProveedors;
             }
+            dgvProductos.Columns["ProductoID"].DisplayIndex = 0;
+            dgvProductos.Columns["Descripcion"].DisplayIndex = 1;
+            dgvProductos.Columns["UnidadMedida"].DisplayIndex = 2;
+            dgvProductos.Columns["Existencia"].DisplayIndex = 3;
+            dgvProductos.Columns["PrecioCompra"].DisplayIndex = 4;
+            dgvProductos.Columns["CantMin"].DisplayIndex = 5;
+            dgvProductos.Columns["CantMax"].DisplayIndex = 6;
+
             dgvProductos.Columns["CantMin"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgvProductos.Columns["CantMax"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgvProductos.Columns["Existencia"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;

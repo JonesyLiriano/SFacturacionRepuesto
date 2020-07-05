@@ -15,7 +15,7 @@ namespace CapaDatos
 
         public Tuple<bool, int> InsertarDetalleOrdenCompra(DetalleOrdenesCompra detalleOrdenCompra)
         {
-            modelDB.proc_InsertarDetalleOrdenCompra(detalleOrdenCompraID, detalleOrdenCompra.OrdenCompraID, detalleOrdenCompra.ProductoID, detalleOrdenCompra.CantidadOrdenada, detalleOrdenCompra.Precio, resultado);
+            modelDB.proc_InsertarDetalleOrdenCompra(detalleOrdenCompraID, detalleOrdenCompra.OrdenCompraID, detalleOrdenCompra.ProductoID, detalleOrdenCompra.CantidadOrdenada, detalleOrdenCompra.Precio, detalleOrdenCompra.Estatus, resultado);
 
             return Tuple.Create((bool)resultado.Value, (int)detalleOrdenCompraID.Value);
         }
@@ -29,7 +29,7 @@ namespace CapaDatos
 
         public bool ActualizarDetalleOrdenCompra(DetalleOrdenesCompra detalleOrdenCompra)
         {
-            modelDB.proc_ActualizarDetalleOrdenCompra(detalleOrdenCompra.OrdenCompraID,detalleOrdenCompra.ProductoID,detalleOrdenCompra.CantidadOrdenada,detalleOrdenCompra.CantidadRecibida,detalleOrdenCompra.Precio, resultado);
+            modelDB.proc_ActualizarDetalleOrdenCompra(detalleOrdenCompra.OrdenCompraID,detalleOrdenCompra.ProductoID,detalleOrdenCompra.CantidadOrdenada,detalleOrdenCompra.CantidadRecibida,detalleOrdenCompra.Precio, detalleOrdenCompra.Estatus, resultado);
             return (bool)resultado.Value;
         }
 

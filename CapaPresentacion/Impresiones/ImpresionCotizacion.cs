@@ -16,7 +16,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CapaPresentacion.Reportes
+namespace CapaPresentacion.Impresiones
 {
     public partial class ImpresionCotizacion : Form
     {

@@ -28,104 +28,127 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InicioResumen));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.label9 = new System.Windows.Forms.Label();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            this.labelProductos = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.label11 = new System.Windows.Forms.Label();
+            this.labelVentas = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
+            this.labelCXC = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.lblFecha = new System.Windows.Forms.Label();
-            this.lblhora = new System.Windows.Forms.Label();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel13 = new System.Windows.Forms.Panel();
-            this.label17 = new System.Windows.Forms.Label();
+            this.labelCotizaciones = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.panel14 = new System.Windows.Forms.Panel();
-            this.TablaProductos = new System.Windows.Forms.DataGridView();
+            this.dgvProductos = new System.Windows.Forms.DataGridView();
             this.label10 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.panel11 = new System.Windows.Forms.Panel();
-            this.label7 = new System.Windows.Forms.Label();
+            this.labelProveedores = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.panel12 = new System.Windows.Forms.Panel();
             this.panel9 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
+            this.labelClientes = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel10 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.label13 = new System.Windows.Forms.Label();
+            this.labelCompras = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.panel8 = new System.Windows.Forms.Panel();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.panel15 = new System.Windows.Forms.Panel();
+            this.labelCXP = new System.Windows.Forms.Label();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.panel16 = new System.Windows.Forms.Panel();
+            this.label20 = new System.Windows.Forms.Label();
+            this.panel17 = new System.Windows.Forms.Panel();
+            this.labelNotasCredito = new System.Windows.Forms.Label();
+            this.pictureBox9 = new System.Windows.Forms.PictureBox();
+            this.panel18 = new System.Windows.Forms.Panel();
+            this.label22 = new System.Windows.Forms.Label();
+            this.ProductoID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.chartProductosMasVendidos = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            this.panel4.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.panel2.SuspendLayout();
             this.panel13.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TablaProductos)).BeginInit();
+            this.panel14.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             this.panel11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            this.panel12.SuspendLayout();
             this.panel9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel10.SuspendLayout();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            this.panel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panel5.SuspendLayout();
+            this.panel15.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
+            this.panel16.SuspendLayout();
+            this.panel17.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
+            this.panel18.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartProductosMasVendidos)).BeginInit();
             this.SuspendLayout();
             // 
-            // label9
+            // labelProductos
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.label9.Location = new System.Drawing.Point(23, 113);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(33, 20);
-            this.label9.TabIndex = 16;
-            this.label9.Text = "lbl1";
+            this.labelProductos.AutoSize = true;
+            this.labelProductos.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelProductos.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.labelProductos.Location = new System.Drawing.Point(13, 111);
+            this.labelProductos.Name = "labelProductos";
+            this.labelProductos.Size = new System.Drawing.Size(33, 20);
+            this.labelProductos.TabIndex = 16;
+            this.labelProductos.Text = "lbl1";
             // 
             // panel3
             // 
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.label11);
-            this.panel3.Controls.Add(this.label12);
+            this.panel3.Controls.Add(this.labelVentas);
             this.panel3.Controls.Add(this.pictureBox4);
             this.panel3.Controls.Add(this.panel4);
-            this.panel3.Location = new System.Drawing.Point(591, 32);
+            this.panel3.Location = new System.Drawing.Point(399, 28);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(110, 150);
             this.panel3.TabIndex = 31;
             // 
-            // label11
+            // labelVentas
             // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.Red;
-            this.label11.Location = new System.Drawing.Point(27, 112);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(33, 20);
-            this.label11.TabIndex = 16;
-            this.label11.Text = "lbl1";
+            this.labelVentas.AutoSize = true;
+            this.labelVentas.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelVentas.ForeColor = System.Drawing.Color.Orange;
+            this.labelVentas.Location = new System.Drawing.Point(10, 111);
+            this.labelVentas.Name = "labelVentas";
+            this.labelVentas.Size = new System.Drawing.Size(33, 20);
+            this.labelVentas.TabIndex = 16;
+            this.labelVentas.Text = "lbl1";
             // 
             // label12
             // 
@@ -133,11 +156,11 @@
             this.label12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label12.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.White;
-            this.label12.Location = new System.Drawing.Point(19, 4);
+            this.label12.Location = new System.Drawing.Point(23, 4);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(67, 20);
+            this.label12.Size = new System.Drawing.Size(60, 20);
             this.label12.TabIndex = 15;
-            this.label12.Text = "Clientes";
+            this.label12.Text = "Ventas";
             // 
             // pictureBox4
             // 
@@ -152,6 +175,7 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.panel4.Controls.Add(this.label12);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
@@ -161,26 +185,25 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.label6);
+            this.panel1.Controls.Add(this.labelCXC);
             this.panel1.Controls.Add(this.pictureBox2);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.ForeColor = System.Drawing.Color.SeaGreen;
-            this.panel1.Location = new System.Drawing.Point(162, 29);
+            this.panel1.Location = new System.Drawing.Point(913, 28);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(110, 150);
             this.panel1.TabIndex = 30;
             // 
-            // label5
+            // labelCXC
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.label5.Location = new System.Drawing.Point(32, 115);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(33, 20);
-            this.label5.TabIndex = 16;
-            this.label5.Text = "lbl1";
+            this.labelCXC.AutoSize = true;
+            this.labelCXC.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCXC.ForeColor = System.Drawing.Color.Orange;
+            this.labelCXC.Location = new System.Drawing.Point(11, 111);
+            this.labelCXC.Name = "labelCXC";
+            this.labelCXC.Size = new System.Drawing.Size(33, 20);
+            this.labelCXC.TabIndex = 16;
+            this.labelCXC.Text = "lbl1";
             // 
             // label6
             // 
@@ -188,11 +211,11 @@
             this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label6.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(10, 4);
+            this.label6.Location = new System.Drawing.Point(33, 4);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(89, 20);
+            this.label6.Size = new System.Drawing.Size(42, 20);
             this.label6.TabIndex = 15;
-            this.label6.Text = "Empleados";
+            this.label6.Text = "CXC";
             // 
             // pictureBox2
             // 
@@ -207,63 +230,34 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.panel2.Controls.Add(this.label6);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(108, 30);
             this.panel2.TabIndex = 0;
             // 
-            // lblFecha
-            // 
-            this.lblFecha.AutoSize = true;
-            this.lblFecha.BackColor = System.Drawing.Color.Transparent;
-            this.lblFecha.Font = new System.Drawing.Font("Century Gothic", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFecha.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.lblFecha.Location = new System.Drawing.Point(488, 386);
-            this.lblFecha.Name = "lblFecha";
-            this.lblFecha.Size = new System.Drawing.Size(516, 40);
-            this.lblFecha.TabIndex = 29;
-            this.lblFecha.Text = "Miercoles, 10  noviembre  2017";
-            // 
-            // lblhora
-            // 
-            this.lblhora.AutoSize = true;
-            this.lblhora.BackColor = System.Drawing.Color.Transparent;
-            this.lblhora.Font = new System.Drawing.Font("Century Gothic", 80F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblhora.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lblhora.Location = new System.Drawing.Point(507, 271);
-            this.lblhora.Name = "lblhora";
-            this.lblhora.Size = new System.Drawing.Size(467, 129);
-            this.lblhora.TabIndex = 28;
-            this.lblhora.Text = "10:59:58";
-            // 
-            // timer1
-            // 
-            this.timer1.Enabled = true;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
             // panel13
             // 
             this.panel13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel13.Controls.Add(this.label17);
-            this.panel13.Controls.Add(this.label18);
+            this.panel13.Controls.Add(this.labelCotizaciones);
             this.panel13.Controls.Add(this.pictureBox7);
             this.panel13.Controls.Add(this.panel14);
-            this.panel13.Location = new System.Drawing.Point(864, 34);
+            this.panel13.Location = new System.Drawing.Point(656, 28);
             this.panel13.Name = "panel13";
             this.panel13.Size = new System.Drawing.Size(110, 150);
             this.panel13.TabIndex = 34;
             // 
-            // label17
+            // labelCotizaciones
             // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.ForeColor = System.Drawing.Color.Orange;
-            this.label17.Location = new System.Drawing.Point(34, 111);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(33, 20);
-            this.label17.TabIndex = 16;
-            this.label17.Text = "lbl1";
+            this.labelCotizaciones.AutoSize = true;
+            this.labelCotizaciones.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCotizaciones.ForeColor = System.Drawing.Color.Crimson;
+            this.labelCotizaciones.Location = new System.Drawing.Point(10, 111);
+            this.labelCotizaciones.Name = "labelCotizaciones";
+            this.labelCotizaciones.Size = new System.Drawing.Size(33, 20);
+            this.labelCotizaciones.TabIndex = 16;
+            this.labelCotizaciones.Text = "lbl1";
             // 
             // label18
             // 
@@ -271,11 +265,11 @@
             this.label18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label18.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label18.ForeColor = System.Drawing.Color.White;
-            this.label18.Location = new System.Drawing.Point(23, 3);
+            this.label18.Location = new System.Drawing.Point(2, 4);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(65, 20);
+            this.label18.Size = new System.Drawing.Size(103, 20);
             this.label18.TabIndex = 15;
-            this.label18.Text = "Marcas";
+            this.label18.Text = "Cotizaciones";
             // 
             // pictureBox7
             // 
@@ -290,47 +284,52 @@
             // panel14
             // 
             this.panel14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.panel14.Controls.Add(this.label18);
             this.panel14.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel14.Location = new System.Drawing.Point(0, 0);
             this.panel14.Name = "panel14";
             this.panel14.Size = new System.Drawing.Size(108, 30);
             this.panel14.TabIndex = 0;
             // 
-            // TablaProductos
+            // dgvProductos
             // 
-            this.TablaProductos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.dgvProductos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.TablaProductos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.TablaProductos.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.TablaProductos.BackgroundColor = System.Drawing.Color.WhiteSmoke;
-            this.TablaProductos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.TablaProductos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.LightSeaGreen;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.TablaProductos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.TablaProductos.ColumnHeadersHeight = 30;
-            this.TablaProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.TablaProductos.DefaultCellStyle = dataGridViewCellStyle2;
-            this.TablaProductos.EnableHeadersVisualStyles = false;
-            this.TablaProductos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.TablaProductos.Location = new System.Drawing.Point(13, 232);
-            this.TablaProductos.Name = "TablaProductos";
-            this.TablaProductos.RowHeadersVisible = false;
-            this.TablaProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.TablaProductos.Size = new System.Drawing.Size(464, 420);
-            this.TablaProductos.TabIndex = 39;
+            this.dgvProductos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvProductos.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvProductos.BackgroundColor = System.Drawing.Color.WhiteSmoke;
+            this.dgvProductos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dgvProductos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.LightSeaGreen;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvProductos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            this.dgvProductos.ColumnHeadersHeight = 30;
+            this.dgvProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dgvProductos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ProductoID});
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvProductos.DefaultCellStyle = dataGridViewCellStyle10;
+            this.dgvProductos.EnableHeadersVisualStyles = false;
+            this.dgvProductos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.dgvProductos.Location = new System.Drawing.Point(9, 232);
+            this.dgvProductos.MultiSelect = false;
+            this.dgvProductos.Name = "dgvProductos";
+            this.dgvProductos.ReadOnly = true;
+            this.dgvProductos.RowHeadersVisible = false;
+            this.dgvProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvProductos.Size = new System.Drawing.Size(628, 420);
+            this.dgvProductos.TabIndex = 39;
             // 
             // label10
             // 
@@ -338,7 +337,7 @@
             this.label10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label10.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(14, 4);
+            this.label10.Location = new System.Drawing.Point(13, 4);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(83, 20);
             this.label10.TabIndex = 15;
@@ -369,25 +368,24 @@
             // panel11
             // 
             this.panel11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel11.Controls.Add(this.label7);
-            this.panel11.Controls.Add(this.label8);
+            this.panel11.Controls.Add(this.labelProveedores);
             this.panel11.Controls.Add(this.pictureBox6);
             this.panel11.Controls.Add(this.panel12);
-            this.panel11.Location = new System.Drawing.Point(307, 30);
+            this.panel11.Location = new System.Drawing.Point(144, 28);
             this.panel11.Name = "panel11";
             this.panel11.Size = new System.Drawing.Size(110, 150);
             this.panel11.TabIndex = 35;
             // 
-            // label7
+            // labelProveedores
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.Crimson;
-            this.label7.Location = new System.Drawing.Point(36, 114);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(33, 20);
-            this.label7.TabIndex = 16;
-            this.label7.Text = "lbl1";
+            this.labelProveedores.AutoSize = true;
+            this.labelProveedores.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelProveedores.ForeColor = System.Drawing.Color.Crimson;
+            this.labelProveedores.Location = new System.Drawing.Point(10, 111);
+            this.labelProveedores.Name = "labelProveedores";
+            this.labelProveedores.Size = new System.Drawing.Size(33, 20);
+            this.labelProveedores.TabIndex = 16;
+            this.labelProveedores.Text = "lbl1";
             // 
             // label8
             // 
@@ -395,7 +393,7 @@
             this.label8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label8.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(4, 2);
+            this.label8.Location = new System.Drawing.Point(1, 4);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(104, 20);
             this.label8.TabIndex = 15;
@@ -414,6 +412,7 @@
             // panel12
             // 
             this.panel12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.panel12.Controls.Add(this.label8);
             this.panel12.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel12.Location = new System.Drawing.Point(0, 0);
             this.panel12.Name = "panel12";
@@ -423,7 +422,7 @@
             // panel9
             // 
             this.panel9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel9.Controls.Add(this.label2);
+            this.panel9.Controls.Add(this.labelClientes);
             this.panel9.Controls.Add(this.pictureBox1);
             this.panel9.Controls.Add(this.panel10);
             this.panel9.Location = new System.Drawing.Point(18, 28);
@@ -431,16 +430,16 @@
             this.panel9.Size = new System.Drawing.Size(110, 150);
             this.panel9.TabIndex = 36;
             // 
-            // label2
+            // labelClientes
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.SeaGreen;
-            this.label2.Location = new System.Drawing.Point(23, 116);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(33, 20);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "lbl1";
+            this.labelClientes.AutoSize = true;
+            this.labelClientes.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelClientes.ForeColor = System.Drawing.Color.SeaGreen;
+            this.labelClientes.Location = new System.Drawing.Point(9, 111);
+            this.labelClientes.Name = "labelClientes";
+            this.labelClientes.Size = new System.Drawing.Size(33, 20);
+            this.labelClientes.TabIndex = 1;
+            this.labelClientes.Text = "lbl1";
             // 
             // pictureBox1
             // 
@@ -500,25 +499,24 @@
             // panel7
             // 
             this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel7.Controls.Add(this.label13);
-            this.panel7.Controls.Add(this.label14);
+            this.panel7.Controls.Add(this.labelCompras);
             this.panel7.Controls.Add(this.pictureBox5);
             this.panel7.Controls.Add(this.panel8);
-            this.panel7.Location = new System.Drawing.Point(730, 33);
+            this.panel7.Location = new System.Drawing.Point(528, 28);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(110, 150);
             this.panel7.TabIndex = 33;
             // 
-            // label13
+            // labelCompras
             // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.Color.SeaGreen;
-            this.label13.Location = new System.Drawing.Point(15, 111);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(33, 20);
-            this.label13.TabIndex = 16;
-            this.label13.Text = "lbl1";
+            this.labelCompras.AutoSize = true;
+            this.labelCompras.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCompras.ForeColor = System.Drawing.Color.SeaGreen;
+            this.labelCompras.Location = new System.Drawing.Point(15, 111);
+            this.labelCompras.Name = "labelCompras";
+            this.labelCompras.Size = new System.Drawing.Size(33, 20);
+            this.labelCompras.TabIndex = 16;
+            this.labelCompras.Text = "lbl1";
             // 
             // label14
             // 
@@ -526,11 +524,11 @@
             this.label14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label14.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.White;
-            this.label14.Location = new System.Drawing.Point(32, 3);
+            this.label14.Location = new System.Drawing.Point(16, 4);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(44, 20);
+            this.label14.Size = new System.Drawing.Size(75, 20);
             this.label14.TabIndex = 15;
-            this.label14.Text = "Caja";
+            this.label14.Text = "Compras";
             // 
             // pictureBox5
             // 
@@ -545,6 +543,7 @@
             // panel8
             // 
             this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.panel8.Controls.Add(this.label14);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel8.Location = new System.Drawing.Point(0, 0);
             this.panel8.Name = "panel8";
@@ -573,14 +572,164 @@
             // panel5
             // 
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel5.Controls.Add(this.label9);
+            this.panel5.Controls.Add(this.labelProductos);
             this.panel5.Controls.Add(this.label10);
             this.panel5.Controls.Add(this.pictureBox3);
             this.panel5.Controls.Add(this.panel6);
-            this.panel5.Location = new System.Drawing.Point(450, 31);
+            this.panel5.Location = new System.Drawing.Point(271, 28);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(110, 150);
             this.panel5.TabIndex = 32;
+            // 
+            // panel15
+            // 
+            this.panel15.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel15.Controls.Add(this.labelCXP);
+            this.panel15.Controls.Add(this.pictureBox8);
+            this.panel15.Controls.Add(this.panel16);
+            this.panel15.ForeColor = System.Drawing.Color.SeaGreen;
+            this.panel15.Location = new System.Drawing.Point(1041, 28);
+            this.panel15.Name = "panel15";
+            this.panel15.Size = new System.Drawing.Size(110, 150);
+            this.panel15.TabIndex = 31;
+            // 
+            // labelCXP
+            // 
+            this.labelCXP.AutoSize = true;
+            this.labelCXP.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCXP.ForeColor = System.Drawing.Color.SeaGreen;
+            this.labelCXP.Location = new System.Drawing.Point(11, 111);
+            this.labelCXP.Name = "labelCXP";
+            this.labelCXP.Size = new System.Drawing.Size(33, 20);
+            this.labelCXP.TabIndex = 16;
+            this.labelCXP.Text = "lbl1";
+            // 
+            // pictureBox8
+            // 
+            this.pictureBox8.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox8.Image")));
+            this.pictureBox8.Location = new System.Drawing.Point(15, 34);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(80, 80);
+            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox8.TabIndex = 2;
+            this.pictureBox8.TabStop = false;
+            // 
+            // panel16
+            // 
+            this.panel16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.panel16.Controls.Add(this.label20);
+            this.panel16.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel16.Location = new System.Drawing.Point(0, 0);
+            this.panel16.Name = "panel16";
+            this.panel16.Size = new System.Drawing.Size(108, 30);
+            this.panel16.TabIndex = 0;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label20.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.ForeColor = System.Drawing.Color.White;
+            this.label20.Location = new System.Drawing.Point(33, 4);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(39, 20);
+            this.label20.TabIndex = 15;
+            this.label20.Text = "CXP";
+            // 
+            // panel17
+            // 
+            this.panel17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel17.Controls.Add(this.labelNotasCredito);
+            this.panel17.Controls.Add(this.pictureBox9);
+            this.panel17.Controls.Add(this.panel18);
+            this.panel17.ForeColor = System.Drawing.Color.SeaGreen;
+            this.panel17.Location = new System.Drawing.Point(784, 28);
+            this.panel17.Name = "panel17";
+            this.panel17.Size = new System.Drawing.Size(110, 150);
+            this.panel17.TabIndex = 32;
+            // 
+            // labelNotasCredito
+            // 
+            this.labelNotasCredito.AutoSize = true;
+            this.labelNotasCredito.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelNotasCredito.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.labelNotasCredito.Location = new System.Drawing.Point(11, 111);
+            this.labelNotasCredito.Name = "labelNotasCredito";
+            this.labelNotasCredito.Size = new System.Drawing.Size(33, 20);
+            this.labelNotasCredito.TabIndex = 16;
+            this.labelNotasCredito.Text = "lbl1";
+            // 
+            // pictureBox9
+            // 
+            this.pictureBox9.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox9.Image")));
+            this.pictureBox9.Location = new System.Drawing.Point(15, 34);
+            this.pictureBox9.Name = "pictureBox9";
+            this.pictureBox9.Size = new System.Drawing.Size(80, 80);
+            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox9.TabIndex = 2;
+            this.pictureBox9.TabStop = false;
+            // 
+            // panel18
+            // 
+            this.panel18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.panel18.Controls.Add(this.label22);
+            this.panel18.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel18.Location = new System.Drawing.Point(0, 0);
+            this.panel18.Name = "panel18";
+            this.panel18.Size = new System.Drawing.Size(108, 30);
+            this.panel18.TabIndex = 0;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label22.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.ForeColor = System.Drawing.Color.White;
+            this.label22.Location = new System.Drawing.Point(-1, 4);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(110, 20);
+            this.label22.TabIndex = 15;
+            this.label22.Text = "Notas Credito";
+            // 
+            // ProductoID
+            // 
+            this.ProductoID.DataPropertyName = "ProductoID";
+            this.ProductoID.HeaderText = "ID";
+            this.ProductoID.Name = "ProductoID";
+            this.ProductoID.ReadOnly = true;
+            this.ProductoID.Width = 44;
+            // 
+            // chartProductosMasVendidos
+            // 
+            this.chartProductosMasVendidos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.chartProductosMasVendidos.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.chartProductosMasVendidos.BorderlineColor = System.Drawing.Color.WhiteSmoke;
+            chartArea5.Name = "ChartArea1";
+            this.chartProductosMasVendidos.ChartAreas.Add(chartArea5);
+            legend5.Name = "Legend1";
+            this.chartProductosMasVendidos.Legends.Add(legend5);
+            this.chartProductosMasVendidos.Location = new System.Drawing.Point(656, 232);
+            this.chartProductosMasVendidos.Name = "chartProductosMasVendidos";
+            series5.ChartArea = "ChartArea1";
+            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series5.Legend = "Legend1";
+            series5.Name = "Series1";
+            this.chartProductosMasVendidos.Series.Add(series5);
+            this.chartProductosMasVendidos.Size = new System.Drawing.Size(494, 420);
+            this.chartProductosMasVendidos.TabIndex = 40;
+            this.chartProductosMasVendidos.Text = "chart1";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label2.Location = new System.Drawing.Point(773, 208);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(249, 21);
+            this.label2.TabIndex = 41;
+            this.label2.Text = "Top 5 Productos mas vendidos:";
             // 
             // InicioResumen
             // 
@@ -588,12 +737,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1170, 700);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.chartProductosMasVendidos);
+            this.Controls.Add(this.panel17);
+            this.Controls.Add(this.panel15);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.lblFecha);
-            this.Controls.Add(this.lblhora);
             this.Controls.Add(this.panel13);
-            this.Controls.Add(this.TablaProductos);
+            this.Controls.Add(this.dgvProductos);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.panel11);
@@ -602,20 +753,30 @@
             this.Controls.Add(this.panel5);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "InicioResumen";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "InicioResumen";
+            this.Load += new System.EventHandler(this.InicioResumen_Load);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.panel13.ResumeLayout(false);
             this.panel13.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TablaProductos)).EndInit();
+            this.panel14.ResumeLayout(false);
+            this.panel14.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).EndInit();
             this.panel11.ResumeLayout(false);
             this.panel11.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            this.panel12.ResumeLayout(false);
+            this.panel12.PerformLayout();
             this.panel9.ResumeLayout(false);
             this.panel9.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -624,9 +785,22 @@
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            this.panel8.ResumeLayout(false);
+            this.panel8.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
+            this.panel15.ResumeLayout(false);
+            this.panel15.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
+            this.panel16.ResumeLayout(false);
+            this.panel16.PerformLayout();
+            this.panel17.ResumeLayout(false);
+            this.panel17.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
+            this.panel18.ResumeLayout(false);
+            this.panel18.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chartProductosMasVendidos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -634,48 +808,58 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label labelProductos;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label labelVentas;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label labelCXC;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label lblFecha;
-        private System.Windows.Forms.Label lblhora;
-        private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Panel panel13;
-        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label labelCotizaciones;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.Panel panel14;
-        private System.Windows.Forms.DataGridView TablaProductos;
+        private System.Windows.Forms.DataGridView dgvProductos;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Panel panel11;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label labelProveedores;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.PictureBox pictureBox6;
         private System.Windows.Forms.Panel panel12;
         private System.Windows.Forms.Panel panel9;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label labelClientes;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel10;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label labelCompras;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Panel panel15;
+        private System.Windows.Forms.Label labelCXP;
+        private System.Windows.Forms.PictureBox pictureBox8;
+        private System.Windows.Forms.Panel panel16;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Panel panel17;
+        private System.Windows.Forms.Label labelNotasCredito;
+        private System.Windows.Forms.PictureBox pictureBox9;
+        private System.Windows.Forms.Panel panel18;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProductoID;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartProductosMasVendidos;
+        private System.Windows.Forms.Label label2;
     }
 }

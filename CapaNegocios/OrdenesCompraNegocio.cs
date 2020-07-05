@@ -33,9 +33,14 @@ namespace CapaNegocios
             return ordenesCompraDatos.BorrarOrdenCompra(ordenCompraID);
         }
 
-            public ObjectResult<proc_CargarOrdenesCompraPFecha_Result> CargarOrdenesCompraPFecha(DateTime fInicial, DateTime fFinal)
+        public ObjectResult<proc_CargarOrdenesCompraPFecha_Result> CargarOrdenesCompraPFecha(DateTime fInicial, DateTime fFinal)
         {
             return ordenesCompraDatos.CargarOrdenesCompraPFecha(fInicial, fFinal);
+        }
+
+        public ObjectResult<proc_ComprobanteOrdenCompra_Result> CargarComprobanteOrdenCompra(int ordenCompraID)
+        {
+            return ordenesCompraDatos.CargarComprobanteOrdenCompra(ordenCompraID);
         }
     }
 }

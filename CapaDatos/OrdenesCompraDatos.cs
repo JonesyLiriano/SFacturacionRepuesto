@@ -46,6 +46,13 @@ namespace CapaDatos
 
             return result;
         }
-       
+
+        public ObjectResult<proc_ComprobanteOrdenCompra_Result> CargarComprobanteOrdenCompra(int ordenCompraID)
+        {
+            var result = modelDB.proc_ComprobanteOrdenCompra(ordenCompraID);
+
+            return result;
+        }
+
     }
 }

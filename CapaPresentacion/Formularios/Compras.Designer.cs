@@ -35,7 +35,10 @@
             this.dgvCompras = new System.Windows.Forms.DataGridView();
             this.btnCerrar = new System.Windows.Forms.Label();
             this.btnRegistrar = new System.Windows.Forms.Button();
+            this.btnExportar = new System.Windows.Forms.Button();
+            this.btnImprimir = new System.Windows.Forms.Button();
             this.OrdenCompraID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Completado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCompras)).BeginInit();
             this.SuspendLayout();
             // 
@@ -49,7 +52,7 @@
             this.btnEliminar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEliminar.ForeColor = System.Drawing.Color.White;
             this.btnEliminar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEliminar.Location = new System.Drawing.Point(965, 162);
+            this.btnEliminar.Location = new System.Drawing.Point(965, 281);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(180, 35);
             this.btnEliminar.TabIndex = 47;
@@ -67,7 +70,7 @@
             this.btnVerDetalle.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVerDetalle.ForeColor = System.Drawing.Color.White;
             this.btnVerDetalle.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnVerDetalle.Location = new System.Drawing.Point(965, 103);
+            this.btnVerDetalle.Location = new System.Drawing.Point(965, 222);
             this.btnVerDetalle.Name = "btnVerDetalle";
             this.btnVerDetalle.Size = new System.Drawing.Size(180, 35);
             this.btnVerDetalle.TabIndex = 46;
@@ -96,7 +99,8 @@
             this.dgvCompras.ColumnHeadersHeight = 30;
             this.dgvCompras.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvCompras.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.OrdenCompraID});
+            this.OrdenCompraID,
+            this.Completado});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.WhiteSmoke;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -108,6 +112,7 @@
             this.dgvCompras.EnableHeadersVisualStyles = false;
             this.dgvCompras.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.dgvCompras.Location = new System.Drawing.Point(40, 42);
+            this.dgvCompras.MultiSelect = false;
             this.dgvCompras.Name = "dgvCompras";
             this.dgvCompras.ReadOnly = true;
             this.dgvCompras.RowHeadersVisible = false;
@@ -147,6 +152,42 @@
             this.btnRegistrar.UseVisualStyleBackColor = false;
             this.btnRegistrar.Click += new System.EventHandler(this.btnRegistrar_Click);
             // 
+            // btnExportar
+            // 
+            this.btnExportar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExportar.BackColor = System.Drawing.Color.ForestGreen;
+            this.btnExportar.FlatAppearance.BorderSize = 0;
+            this.btnExportar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.btnExportar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExportar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExportar.ForeColor = System.Drawing.Color.White;
+            this.btnExportar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnExportar.Location = new System.Drawing.Point(965, 102);
+            this.btnExportar.Name = "btnExportar";
+            this.btnExportar.Size = new System.Drawing.Size(180, 35);
+            this.btnExportar.TabIndex = 48;
+            this.btnExportar.Text = "Exportar";
+            this.btnExportar.UseVisualStyleBackColor = false;
+            this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
+            // 
+            // btnImprimir
+            // 
+            this.btnImprimir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnImprimir.BackColor = System.Drawing.Color.ForestGreen;
+            this.btnImprimir.FlatAppearance.BorderSize = 0;
+            this.btnImprimir.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.btnImprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnImprimir.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImprimir.ForeColor = System.Drawing.Color.White;
+            this.btnImprimir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnImprimir.Location = new System.Drawing.Point(965, 162);
+            this.btnImprimir.Name = "btnImprimir";
+            this.btnImprimir.Size = new System.Drawing.Size(180, 35);
+            this.btnImprimir.TabIndex = 49;
+            this.btnImprimir.Text = "Imprimir";
+            this.btnImprimir.UseVisualStyleBackColor = false;
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
+            // 
             // OrdenCompraID
             // 
             this.OrdenCompraID.DataPropertyName = "OrdenCompraID";
@@ -155,12 +196,24 @@
             this.OrdenCompraID.ReadOnly = true;
             this.OrdenCompraID.Width = 44;
             // 
+            // Completado
+            // 
+            this.Completado.DataPropertyName = "Completado";
+            this.Completado.HeaderText = "Completado";
+            this.Completado.Name = "Completado";
+            this.Completado.ReadOnly = true;
+            this.Completado.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Completado.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Completado.Width = 116;
+            // 
             // Compras
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1170, 700);
+            this.Controls.Add(this.btnImprimir);
+            this.Controls.Add(this.btnExportar);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnVerDetalle);
             this.Controls.Add(this.dgvCompras);
@@ -170,6 +223,7 @@
             this.Name = "Compras";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Compras";
+            this.Load += new System.EventHandler(this.Compras_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCompras)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -183,6 +237,9 @@
         private System.Windows.Forms.DataGridView dgvCompras;
         private System.Windows.Forms.Label btnCerrar;
         private System.Windows.Forms.Button btnRegistrar;
+        private System.Windows.Forms.Button btnExportar;
+        private System.Windows.Forms.Button btnImprimir;
         private System.Windows.Forms.DataGridViewTextBoxColumn OrdenCompraID;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Completado;
     }
 }

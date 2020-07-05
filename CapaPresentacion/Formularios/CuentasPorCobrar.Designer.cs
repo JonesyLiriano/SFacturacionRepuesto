@@ -32,10 +32,11 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnConsultaFactura = new System.Windows.Forms.Button();
             this.dgvLineasCreditoVenta = new System.Windows.Forms.DataGridView();
-            this.LineaCreditoVentaID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnCerrar = new System.Windows.Forms.Label();
             this.btnRealizarCobro = new System.Windows.Forms.Button();
             this.btnHistorialCobros = new System.Windows.Forms.Button();
+            this.LineaCreditoVentaID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Completado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLineasCreditoVenta)).BeginInit();
             this.SuspendLayout();
             // 
@@ -78,7 +79,8 @@
             this.dgvLineasCreditoVenta.ColumnHeadersHeight = 30;
             this.dgvLineasCreditoVenta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvLineasCreditoVenta.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.LineaCreditoVentaID});
+            this.LineaCreditoVentaID,
+            this.Completado});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.WhiteSmoke;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -90,20 +92,13 @@
             this.dgvLineasCreditoVenta.EnableHeadersVisualStyles = false;
             this.dgvLineasCreditoVenta.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.dgvLineasCreditoVenta.Location = new System.Drawing.Point(38, 41);
+            this.dgvLineasCreditoVenta.MultiSelect = false;
             this.dgvLineasCreditoVenta.Name = "dgvLineasCreditoVenta";
             this.dgvLineasCreditoVenta.ReadOnly = true;
             this.dgvLineasCreditoVenta.RowHeadersVisible = false;
             this.dgvLineasCreditoVenta.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvLineasCreditoVenta.Size = new System.Drawing.Size(895, 648);
             this.dgvLineasCreditoVenta.TabIndex = 45;
-            // 
-            // LineaCreditoVentaID
-            // 
-            this.LineaCreditoVentaID.DataPropertyName = "LineaCreditoVentaID";
-            this.LineaCreditoVentaID.HeaderText = "ID";
-            this.LineaCreditoVentaID.Name = "LineaCreditoVentaID";
-            this.LineaCreditoVentaID.ReadOnly = true;
-            this.LineaCreditoVentaID.Width = 44;
             // 
             // btnCerrar
             // 
@@ -117,6 +112,7 @@
             this.btnCerrar.Size = new System.Drawing.Size(20, 20);
             this.btnCerrar.TabIndex = 44;
             this.btnCerrar.Text = "X";
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
             // btnRealizarCobro
             // 
@@ -154,6 +150,26 @@
             this.btnHistorialCobros.UseVisualStyleBackColor = false;
             this.btnHistorialCobros.Click += new System.EventHandler(this.btnHistorialCobros_Click);
             // 
+            // LineaCreditoVentaID
+            // 
+            this.LineaCreditoVentaID.DataPropertyName = "LineaCreditoVentaID";
+            this.LineaCreditoVentaID.HeaderText = "ID";
+            this.LineaCreditoVentaID.Name = "LineaCreditoVentaID";
+            this.LineaCreditoVentaID.ReadOnly = true;
+            this.LineaCreditoVentaID.Width = 44;
+            // 
+            // Completado
+            // 
+            this.Completado.DataPropertyName = "Completado";
+            this.Completado.HeaderText = "Completado";
+            this.Completado.Name = "Completado";
+            this.Completado.ReadOnly = true;
+            this.Completado.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Completado.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Completado.ThreeState = true;
+            this.Completado.Visible = false;
+            this.Completado.Width = 116;
+            // 
             // CuentasPorCobrar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -182,5 +198,6 @@
         private System.Windows.Forms.Button btnRealizarCobro;
         private System.Windows.Forms.Button btnHistorialCobros;
         private System.Windows.Forms.DataGridViewTextBoxColumn LineaCreditoVentaID;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Completado;
     }
 }

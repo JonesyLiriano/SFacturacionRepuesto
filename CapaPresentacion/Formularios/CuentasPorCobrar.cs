@@ -25,14 +25,11 @@ namespace CapaPresentacion.Formularios
         private void CuentasPorCobrar_Load(object sender, EventArgs e)
         {
             try
-            {
-                dgvLineasCreditoVenta.Columns["BalancePendiente"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                dgvLineasCreditoVenta.Columns["MontoFactura"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            {                
                 CargarTodasLineasCreditoVenta();
             }
             catch (Exception exc)
             {
-
                 MessageBox.Show("Error: " + exc.ToString(),
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Loggeator.EscribeEnArchivo(exc.ToString());
@@ -44,6 +41,18 @@ namespace CapaPresentacion.Formularios
             proc_CargarTodasLineasCreditoVentas_Results = lineasCreditoVentasNegocio.CargarTodasLineasCreditoVentas().ToList();
             dgvLineasCreditoVenta.DataSource = proc_CargarTodasLineasCreditoVentas_Results;
 
+            dgvLineasCreditoVenta.Columns["LineaCreditoVentaID"].DisplayIndex = 0;
+            dgvLineasCreditoVenta.Columns["Cliente"].DisplayIndex = 1;
+            dgvLineasCreditoVenta.Columns["Factura"].DisplayIndex = 2;
+            dgvLineasCreditoVenta.Columns["Fecha"].DisplayIndex = 3;
+            dgvLineasCreditoVenta.Columns["MontoFactura"].DisplayIndex = 4;
+            dgvLineasCreditoVenta.Columns["BalancePendiente"].DisplayIndex = 5;
+            dgvLineasCreditoVenta.Columns["Completado"].DisplayIndex = 6;
+
+            dgvLineasCreditoVenta.Columns["BalancePendiente"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvLineasCreditoVenta.Columns["MontoFactura"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvLineasCreditoVenta.Refresh();
+
         }
         private void btnRealizarCobro_Click(object sender, EventArgs e)
         {
@@ -51,7 +60,7 @@ namespace CapaPresentacion.Formularios
             {     
                 if (dgvLineasCreditoVenta.SelectedRows.Count > 0)
                 {
-                    if (Convert.ToBoolean(dgvLineasCreditoVenta.Rows[dgvLineasCreditoVenta.CurrentRow.Index].Cells["Completada"].Value))
+                    if (Convert.ToBoolean(dgvLineasCreditoVenta.Rows[dgvLineasCreditoVenta.CurrentRow.Index].Cells["Completado"].Value))
                     {
                         RegistrarCobro registrarCobro = new RegistrarCobro(
                             Convert.ToInt32(dgvLineasCreditoVenta.CurrentRow.Cells["LineaCreditoVentaID"].Value)
@@ -79,7 +88,6 @@ namespace CapaPresentacion.Formularios
                 Loggeator.EscribeEnArchivo(exc.ToString());
             }
 
-
         }
 
         private void btnHistorialCobros_Click(object sender, EventArgs e)
@@ -92,7 +100,7 @@ namespace CapaPresentacion.Formularios
                         Convert.ToInt32(dgvLineasCreditoVenta.CurrentRow.Cells["LineaCreditoVentaID"].Value)
                         , dgvLineasCreditoVenta.CurrentRow.Cells["Cliente"].Value.ToString()
                         , Convert.ToDecimal(dgvLineasCreditoVenta.CurrentRow.Cells["BalancePendiente"].Value)
-                        , Convert.ToBoolean(dgvLineasCreditoVenta.CurrentRow.Cells["Status"].Value));
+                        , Convert.ToBoolean(dgvLineasCreditoVenta.CurrentRow.Cells["Completado"].Value));
                     historialCobros.ShowDialog();
                 }
             }
@@ -127,6 +135,11 @@ namespace CapaPresentacion.Formularios
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Loggeator.EscribeEnArchivo(exc.ToString());
             }
-        }        
+        }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

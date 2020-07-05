@@ -91,6 +91,7 @@
             this.dgvCotizaciones.EnableHeadersVisualStyles = false;
             this.dgvCotizaciones.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.dgvCotizaciones.Location = new System.Drawing.Point(38, 40);
+            this.dgvCotizaciones.MultiSelect = false;
             this.dgvCotizaciones.Name = "dgvCotizaciones";
             this.dgvCotizaciones.ReadOnly = true;
             this.dgvCotizaciones.RowHeadersVisible = false;

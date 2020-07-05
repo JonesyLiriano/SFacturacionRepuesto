@@ -34,8 +34,9 @@
             this.btnExportar = new System.Windows.Forms.Button();
             this.btnImprimir = new System.Windows.Forms.Button();
             this.dgvFacturas = new System.Windows.Forms.DataGridView();
-            this.FacturaID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnCerrar = new System.Windows.Forms.Label();
+            this.FacturaID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClienteID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFacturas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -114,7 +115,8 @@
             this.dgvFacturas.ColumnHeadersHeight = 30;
             this.dgvFacturas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvFacturas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.FacturaID});
+            this.FacturaID,
+            this.ClienteID});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.WhiteSmoke;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -126,20 +128,13 @@
             this.dgvFacturas.EnableHeadersVisualStyles = false;
             this.dgvFacturas.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.dgvFacturas.Location = new System.Drawing.Point(45, 43);
+            this.dgvFacturas.MultiSelect = false;
             this.dgvFacturas.Name = "dgvFacturas";
             this.dgvFacturas.ReadOnly = true;
             this.dgvFacturas.RowHeadersVisible = false;
             this.dgvFacturas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvFacturas.Size = new System.Drawing.Size(898, 648);
             this.dgvFacturas.TabIndex = 62;
-            // 
-            // FacturaID
-            // 
-            this.FacturaID.DataPropertyName = "FacturaID";
-            this.FacturaID.HeaderText = "ID";
-            this.FacturaID.Name = "FacturaID";
-            this.FacturaID.ReadOnly = true;
-            this.FacturaID.Width = 44;
             // 
             // btnCerrar
             // 
@@ -153,6 +148,23 @@
             this.btnCerrar.Size = new System.Drawing.Size(20, 20);
             this.btnCerrar.TabIndex = 61;
             this.btnCerrar.Text = "X";
+            // 
+            // FacturaID
+            // 
+            this.FacturaID.DataPropertyName = "FacturaID";
+            this.FacturaID.HeaderText = "ID";
+            this.FacturaID.Name = "FacturaID";
+            this.FacturaID.ReadOnly = true;
+            this.FacturaID.Width = 44;
+            // 
+            // ClienteID
+            // 
+            this.ClienteID.DataPropertyName = "ClienteID";
+            this.ClienteID.HeaderText = "ClienteID";
+            this.ClienteID.Name = "ClienteID";
+            this.ClienteID.ReadOnly = true;
+            this.ClienteID.Visible = false;
+            this.ClienteID.Width = 90;
             // 
             // Facturas
             // 
@@ -183,5 +195,6 @@
         private System.Windows.Forms.DataGridView dgvFacturas;
         private System.Windows.Forms.Label btnCerrar;
         private System.Windows.Forms.DataGridViewTextBoxColumn FacturaID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ClienteID;
     }
 }

@@ -38,7 +38,7 @@
         <EntityTypeShape EntityType="SFacturacionModel.Cotizacione" Width="1.5" PointX="8.375" PointY="0.75" />
         <EntityTypeShape EntityType="SFacturacionModel.DetalleCotizacione" Width="1.5" PointX="8.375" PointY="7.75" />
         <EntityTypeShape EntityType="SFacturacionModel.LineasCreditoCompra" Width="1.5" PointX="10.375" PointY="0.75" />
-        <EntityTypeShape EntityType="SFacturacionModel.PagosOrdenesCompraCredito" Width="1.5" PointX="10.375" PointY="3.75" />
+        <EntityTypeShape EntityType="SFacturacionModel.PagosComprasCredito" Width="1.5" PointX="10.375" PointY="6.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

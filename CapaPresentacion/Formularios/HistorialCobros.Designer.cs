@@ -221,6 +221,7 @@
             this.dgvCobros.EnableHeadersVisualStyles = false;
             this.dgvCobros.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.dgvCobros.Location = new System.Drawing.Point(13, 155);
+            this.dgvCobros.MultiSelect = false;
             this.dgvCobros.Name = "dgvCobros";
             this.dgvCobros.ReadOnly = true;
             this.dgvCobros.RowHeadersVisible = false;
@@ -294,6 +295,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(786, 507);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnExportar);

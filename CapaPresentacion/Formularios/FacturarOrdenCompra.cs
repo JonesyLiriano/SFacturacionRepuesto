@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity.Infrastructure;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -18,10 +19,15 @@ namespace CapaPresentacion.Formularios
         OrdenesCompraNegocio ordenesCompraNegocio = new OrdenesCompraNegocio();
         FacturasCompra facturasCompraEntidad = new FacturasCompra();
         FacturaOrdenCompraNegocio facturaOrdenCompraNegocio = new FacturaOrdenCompraNegocio();
+        LineasCreditoComprasNegocio lineasCreditoCompraNegocio = new LineasCreditoComprasNegocio();
+        LineasCreditoCompra lineasCreditoCompraEntidad = new LineasCreditoCompra();
+        private int ordenCompraID;
+        private bool respuesta;
 
-        public FacturarOrdenCompra()
+        public FacturarOrdenCompra(int ordenCompraID)
         {
             InitializeComponent();
+            this.ordenCompraID = ordenCompraID;
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
@@ -47,14 +53,12 @@ namespace CapaPresentacion.Formularios
                     if(ValidarCampos())
                     {
                         CrearFacturaCompra();
-                    }
-                    
-                    //CerrarOrdenCompra(Convert.ToInt32(txtOrdenCompraID.Text));
-                    this.Close();
+                        CerrarOrdenCompra();
+                        this.Close();
+                    }              
                 }
                 catch (Exception exc)
                 {
-
                     MessageBox.Show("Error: " + exc.ToString(),
                         "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     Loggeator.EscribeEnArchivo(exc.ToString());
@@ -62,22 +66,44 @@ namespace CapaPresentacion.Formularios
             }
         }
 
+        private void CerrarOrdenCompra()
+        {
+            ordenesCompraNegocio.CerrarOrdenCompra(ordenCompraID);
+        }
         private void CrearFacturaCompra()
         {
-            //facturasCompraEntidad.ProveedorID = Convert.ToInt32(txtCodProveedor.Text);
-            //facturasCompraEntidad.OrdenCompraID = Convert.ToInt32(txtOrdenCompraID.Text);
-            //facturasCompraEntidad.NCF = txtNCF.Text;
-            //facturasCompraEntidad.FechaVencimientoSecuencia = dtpFechaVSecuencia.Value;
-            //facturasCompraEntidad.FechaFactura = dtpFechaFactura.Value;
-            //facturasCompraEntidad.TipoDePagoID = (int)char.GetNumericValue(cbTipoPago.Text[0]);
-            //facturasCompraEntidad.SubTotal = Convert.ToDecimal(txtSubTotal.Text);
-            //facturasCompraEntidad.ITBIS = Convert.ToDecimal(txtITBIS.Text);
-            //var result = facturaOrdenCompraNegocio.InsertarFacturaOrdenCompra(facturasCompraEntidad);
-            //respuesta = result.Item1;
-            //facturaCompraID = result.Item2;
-            //validarInsertFactura(respuesta, facturaCompraID);
+            facturasCompraEntidad.OrdenCompraID = ordenCompraID;
+            facturasCompraEntidad.NCF = txtNCF.Text;
+            facturasCompraEntidad.FechaVencimiento = dtPickerFechaVencimiento.Value;
+            facturasCompraEntidad.FechaFactura = dtPickerFecha.Value;
+            facturasCompraEntidad.TipoDePagoID = (int)char.GetNumericValue(cbTipoPago.Text[0]);
+            facturasCompraEntidad.SubTotal = Convert.ToDecimal(txtSubTotal.Text);
+            facturasCompraEntidad.ITBIS = Convert.ToDecimal(txtITBIS.Text);
+            var result = facturaOrdenCompraNegocio.InsertarFacturaOrdenCompra(facturasCompraEntidad);
+            respuesta = result.Item1;
+            ValidarCreacionFactura(respuesta, result.Item2);
 
 
+        }
+
+        private void ValidarCreacionFactura(bool respuesta, int facturaCompraID)
+        {
+            if (respuesta)
+            {
+                CrearLineaCreditoCompra(facturaCompraID);
+                MessageBox.Show(string.Format("La Factura ha sido agregada correctamente a la base de datos, con el numero de factura: {0}", facturaCompraID), "Factura Agregada Correctamente!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("La Factura no pudo ser agregada a la base de datos, favor de verificar los requerimientros", "Ha Ocurrido un error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void CrearLineaCreditoCompra(int facturaCompraID)
+        {
+            lineasCreditoCompraEntidad.FacturaCompraID = facturaCompraID;
+            lineasCreditoCompraEntidad.Estatus = false;
+            lineasCreditoCompraNegocio.InsertarLineaCreditoCompra(lineasCreditoCompraEntidad);
         }
 
 

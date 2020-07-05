@@ -187,14 +187,20 @@ namespace CapaPresentacion.Clases
         public void EncabezadoVenta()
         {
             //Escribimos los espacios para mostrar el articulo. En total tienen que ser 40 caracteres
-            linea.AppendLine("DESCRIPCION          |UM  |ITBIS  |VALOR");
+            linea.AppendLine("DESCRIPCION               |ITBIS  |VALOR");
+        }
+
+        public void EncabezadoOrdenCompra()
+        {
+            //Escribimos los espacios para mostrar el articulo. En total tienen que ser 40 caracteres
+            linea.AppendLine("DESCRIPCION                       |VALOR");
         }
 
         //Creamos el encabezado para los articulos
-        public void EncabezadoVentaNC()
+        public void EncabezadoNC()
         {
             //Escribimos los espacios para mostrar el articulo. En total tienen que ser 40 caracteres
-            linea.AppendLine("DESCRIPCION/COMENTARIO                |VALOR");
+            linea.AppendLine("DESCRIPCION/COMENTARIO            |VALOR");
         }
 
         //Metodo para agregar los totales d ela venta
@@ -247,6 +253,41 @@ namespace CapaPresentacion.Clases
                 elemento += espacios + itbis.ToString();
                 //Colocar el precio total.
                 importe = Convert.ToDecimal(cant) * (precio + itbis - descuento);
+                nroEspacios = (34 - elemento.Length);
+                espacios = "";
+                for (int i = 0; i < nroEspacios; i++)
+                {
+                    espacios += " ";
+                }
+                elemento += espacios + importe.ToString();
+
+                linea.AppendLine(elemento);//Agregamos todo el elemento: nombre del articulo, cant, precio, importe.
+                linea.AppendLine(articulo);
+
+            }
+            else
+            {
+                linea.AppendLine("Los valores ingresados para esta fila");
+                linea.AppendLine("superan las columnas soportdas por éste.");
+                throw new Exception("Los valores ingresados para algunas filas del ticket\nsuperan las columnas soportdas por éste.");
+            }
+        }
+        //Metodo para agreagar articulos al ticket de orden de compra
+
+        public void AgregaArticuloOrdenCompra(string articulo, double cant, decimal precio)
+        {
+            if (cant.ToString().Length < 7 && precio.ToString().Length < 11)
+            {
+                string elemento, espacios = "";
+                int nroEspacios = 0;
+                decimal importe = 0;
+                //Colocar cant y precio
+                elemento = cant.ToString() + " " + "X" + " " + precio.ToString();
+
+
+                
+                //Colocar el precio total.
+                importe = Convert.ToDecimal(cant) * (precio);
                 nroEspacios = (34 - elemento.Length);
                 espacios = "";
                 for (int i = 0; i < nroEspacios; i++)

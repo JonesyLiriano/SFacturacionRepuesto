@@ -1,6 +1,6 @@
 ﻿using CapaDatos;
 using CapaNegocios;
-using CapaPresentacion.Reportes;
+using CapaPresentacion.Impresiones;
 using SFacturacion;
 using System;
 using System.Collections.Generic;
@@ -20,6 +20,8 @@ namespace CapaPresentacion.Formularios
     public partial class RegistrarNotaCredito : Form
     {
         Thread hilo;
+        Producto productoEntidad = new Producto();
+        ProductosNegocio productosNegocio = new ProductosNegocio();
         ClientesNegocio clientesNegocio = new ClientesNegocio();
         FacturasNegocio facturasNegocio = new FacturasNegocio();
         NotasDeCreditoNegocio notasDeCreditoNegocio = new NotasDeCreditoNegocio();
@@ -268,7 +270,12 @@ namespace CapaPresentacion.Formularios
                     detalleNotaDeCreditoEntidad.Comentario = Convert.ToString(dtRow["Comentario"]);
 
                     detalleNotasDeCreditoNegocio.AgregarDetalleNotaDeCredito(detalleNotaDeCreditoEntidad);
-
+                    if(Convert.ToDouble(dtRow["Inventariada"]) > 0)
+                    {
+                        productoEntidad.ProductoID = Convert.ToInt32(dtRow["ProductoID"]);
+                        productoEntidad.Existencia = Convert.ToDouble(dtRow["Inventariada"]);
+                        productosNegocio.ActualizarCantidadProductoPorID(productoEntidad);
+                    }                    
                 }
             }
             catch (Exception exc)
@@ -413,7 +420,7 @@ namespace CapaPresentacion.Formularios
                         valorFacturaTotal += Convert.ToDecimal(dtRow["cantVen"]) * Convert.ToDecimal(dtRow["Precio"]);
                             valorFacturaTotalSinITBIS += Convert.ToDecimal(dtRow["cantVen"]) * Convert.ToDecimal(dtRow["PrecioSinITBIS"]);
                     }
-                    txtValorNotaCredito.Text = valorFacturaTotal.ToString("C", ci);
+                    txtValorNotaCredito.Text = (valorFacturaTotal - (valorFacturaTotal * (descuentoCliente / 100)))?.ToString("C", ci);
 
                     if (checkBoxITBIS.Checked)
                     {

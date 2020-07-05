@@ -17,11 +17,11 @@ namespace CapaDatos
         public int FacturaCompraID { get; set; }
         public int OrdenCompraID { get; set; }
         public string NCF { get; set; }
-        public System.DateTime FechaVencimientoSecuencia { get; set; }
         public System.DateTime FechaFactura { get; set; }
         public int TipoDePagoID { get; set; }
         public decimal SubTotal { get; set; }
         public decimal ITBIS { get; set; }
+        public System.DateTime FechaVencimiento { get; set; }
     
         public virtual OrdenesCompra OrdenesCompra { get; set; }
         public virtual TiposPago TiposPago { get; set; }

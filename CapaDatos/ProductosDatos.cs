@@ -53,6 +53,13 @@ namespace CapaDatos
             return result;
         }
 
+        public ObjectResult<proc_CargarProductosMasVendidos_Result> CargarProductosMasVendidos()
+        {
+            var result = modelDB.proc_CargarProductosMasVendidos();
+
+            return result;
+        }
+
         public bool EditarProducto(Producto producto)
         {
             modelDB.proc_ActualizarProducto(producto.ProductoID, producto.Descripcion, producto.Existencia, producto.PrecioCompra, producto.PrecioVenta, producto.PrecioVentaMin, producto.ProveedorID, producto.Servicio, producto.ITBIS, producto.Descuento, producto.CantMin, producto.CantMax, producto.CodigoBarra, producto.UnidadMedida, resultado);
@@ -81,6 +88,12 @@ namespace CapaDatos
         public bool ActualizarCantidadProducto(Producto producto)
         {
             modelDB.proc_ActualizarCantidadProducto(producto.CodigoBarra, producto.Existencia, resultado);
+
+            return (bool)resultado.Value;
+        }
+        public bool ActualizarCantidadProductoPorID(Producto producto)
+        {
+            modelDB.proc_ActualizarCantidadProductoPorID(producto.ProductoID, producto.Existencia, resultado);
 
             return (bool)resultado.Value;
         }
