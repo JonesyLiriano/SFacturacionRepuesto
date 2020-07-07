@@ -14,9 +14,7 @@ namespace CapaDatos
     public partial class proc_CargarNotasDeCreditoPFecha_Result
     {
         public int NotaDeCreditoID { get; set; }
-        public int UserID { get; set; }
         public int ClienteID { get; set; }
-        public string Nombre { get; set; }
         public int FacturaID { get; set; }
         public int FacturaAplicarID { get; set; }
         public System.DateTime Fecha { get; set; }
@@ -24,5 +22,7 @@ namespace CapaDatos
         public Nullable<double> Valor { get; set; }
         public decimal ValorAplicado { get; set; }
         public bool ITBIS { get; set; }
+        public string Usuario { get; set; }
+        public string Cliente { get; set; }
     }
 }

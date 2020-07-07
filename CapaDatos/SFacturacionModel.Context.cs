@@ -406,9 +406,13 @@ namespace CapaDatos
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_BuscarProveedoresPorID_Result>("proc_BuscarProveedoresPorID", proveedorIDParameter);
         }
     
-        public virtual int proc_CalcularGanancias(ObjectParameter gananciaFContDia, ObjectParameter gananciaFContSemana, ObjectParameter gananciaFContMes, ObjectParameter gananciaFCredDia, ObjectParameter gananciaFCredSemana, ObjectParameter gananciaFCredMes)
+        public virtual int proc_CalcularGanancias(ObjectParameter gananciaFContDia, ObjectParameter gananciaFContSemana, ObjectParameter gananciaFContMes, ObjectParameter gananciaFCredDia, ObjectParameter gananciaFCredSemana, ObjectParameter gananciaFCredMes, Nullable<decimal> itbis)
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("proc_CalcularGanancias", gananciaFContDia, gananciaFContSemana, gananciaFContMes, gananciaFCredDia, gananciaFCredSemana, gananciaFCredMes);
+            var itbisParameter = itbis.HasValue ?
+                new ObjectParameter("Itbis", itbis) :
+                new ObjectParameter("Itbis", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("proc_CalcularGanancias", gananciaFContDia, gananciaFContSemana, gananciaFContMes, gananciaFCredDia, gananciaFCredSemana, gananciaFCredMes, itbisParameter);
         }
     
         public virtual ObjectResult<proc_Cargar10ProductosVendidosPFecha_Result> proc_Cargar10ProductosVendidosPFecha(Nullable<System.DateTime> fechaInicial, Nullable<System.DateTime> fechaFinal)
@@ -1444,6 +1448,45 @@ namespace CapaDatos
         public virtual ObjectResult<proc_CargarProductosMasVendidos_Result> proc_CargarProductosMasVendidos()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_CargarProductosMasVendidos_Result>("proc_CargarProductosMasVendidos");
+        }
+    
+        public virtual ObjectResult<proc_CargarFacturasCFinalPFecha_Result> proc_CargarFacturasCFinalPFecha(Nullable<System.DateTime> fechaInicial, Nullable<System.DateTime> fechaFinal)
+        {
+            var fechaInicialParameter = fechaInicial.HasValue ?
+                new ObjectParameter("FechaInicial", fechaInicial) :
+                new ObjectParameter("FechaInicial", typeof(System.DateTime));
+    
+            var fechaFinalParameter = fechaFinal.HasValue ?
+                new ObjectParameter("FechaFinal", fechaFinal) :
+                new ObjectParameter("FechaFinal", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_CargarFacturasCFinalPFecha_Result>("proc_CargarFacturasCFinalPFecha", fechaInicialParameter, fechaFinalParameter);
+        }
+    
+        public virtual ObjectResult<proc_CargarFacturasCFiscalPFecha_Result> proc_CargarFacturasCFiscalPFecha(Nullable<System.DateTime> fechaInicial, Nullable<System.DateTime> fechaFinal)
+        {
+            var fechaInicialParameter = fechaInicial.HasValue ?
+                new ObjectParameter("FechaInicial", fechaInicial) :
+                new ObjectParameter("FechaInicial", typeof(System.DateTime));
+    
+            var fechaFinalParameter = fechaFinal.HasValue ?
+                new ObjectParameter("FechaFinal", fechaFinal) :
+                new ObjectParameter("FechaFinal", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_CargarFacturasCFiscalPFecha_Result>("proc_CargarFacturasCFiscalPFecha", fechaInicialParameter, fechaFinalParameter);
+        }
+    
+        public virtual ObjectResult<proc_CargarFacturasCGubernamentalPFecha_Result> proc_CargarFacturasCGubernamentalPFecha(Nullable<System.DateTime> fechaInicial, Nullable<System.DateTime> fechaFinal)
+        {
+            var fechaInicialParameter = fechaInicial.HasValue ?
+                new ObjectParameter("FechaInicial", fechaInicial) :
+                new ObjectParameter("FechaInicial", typeof(System.DateTime));
+    
+            var fechaFinalParameter = fechaFinal.HasValue ?
+                new ObjectParameter("FechaFinal", fechaFinal) :
+                new ObjectParameter("FechaFinal", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_CargarFacturasCGubernamentalPFecha_Result>("proc_CargarFacturasCGubernamentalPFecha", fechaInicialParameter, fechaFinalParameter);
         }
     }
 }

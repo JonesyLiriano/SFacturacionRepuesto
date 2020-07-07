@@ -15,14 +15,16 @@ namespace CapaDatos
     {
         public int OrdencompraID { get; set; }
         public int ProveedorID { get; set; }
-        public string Nombre { get; set; }
         public string NCF { get; set; }
-        public Nullable<System.DateTime> FechaVencimientoSecuencia { get; set; }
         public System.DateTime FechaPedido { get; set; }
         public string Estatus { get; set; }
         public Nullable<System.DateTime> FechaCompletado { get; set; }
         public Nullable<decimal> ITBIS { get; set; }
         public Nullable<decimal> SubTotal { get; set; }
         public Nullable<decimal> Total { get; set; }
+        public string Proveedor { get; set; }
+        public Nullable<System.DateTime> FechaVencimiento { get; set; }
+        public string TipoDePago { get; set; }
+        public Nullable<int> FacturaCompraID { get; set; }
     }
 }

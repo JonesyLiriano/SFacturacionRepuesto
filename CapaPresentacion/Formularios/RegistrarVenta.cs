@@ -865,7 +865,7 @@ namespace CapaPresentacion
             facturaEntidad.Fecha = DateTime.Now;
             facturaEntidad.TipoPagoID = Convert.ToInt32(cbTipoPago.SelectedValue);
             facturaEntidad.TipoFacturaID = Convert.ToInt32(cbTipoFactura.SelectedValue);
-            facturaEntidad.NCF = "00000000B15" + NCF.ToString("D8");
+            facturaEntidad.NCF = "B15" + NCF.ToString("D8");
             facturaEntidad.UserID = Login.userID;
             facturaEntidad.RNC = txtRNC.Text;
             facturaEntidad.Entidad = txtRazonSocial.Text;
@@ -907,7 +907,7 @@ namespace CapaPresentacion
             facturaEntidad.Fecha = DateTime.Now;
             facturaEntidad.TipoPagoID = Convert.ToInt32(cbTipoPago.SelectedValue);
             facturaEntidad.TipoFacturaID = Convert.ToInt32(cbTipoFactura.SelectedValue);
-            facturaEntidad.NCF = "00000000B02" + NCF.ToString("D8");
+            facturaEntidad.NCF = "B02" + NCF.ToString("D8");
             facturaEntidad.UserID = Login.userID;
             facturaEntidad.RNC = null;
             facturaEntidad.Entidad = null;
@@ -952,7 +952,7 @@ namespace CapaPresentacion
             facturaEntidad.Fecha = DateTime.Now;
             facturaEntidad.TipoPagoID = Convert.ToInt32(cbTipoPago.SelectedValue);
             facturaEntidad.TipoFacturaID = Convert.ToInt32(cbTipoFactura.SelectedValue);
-            facturaEntidad.NCF = "00000000B01" + NCF.ToString("D8");
+            facturaEntidad.NCF = "B01" + NCF.ToString("D8");
             facturaEntidad.UserID = Login.userID;
             facturaEntidad.RNC = txtRNC.Text;
             facturaEntidad.Entidad = txtRazonSocial.Text;

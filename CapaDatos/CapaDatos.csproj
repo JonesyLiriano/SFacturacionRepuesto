@@ -163,6 +163,15 @@
     <Compile Include="proc_CargarDetalleOrdenCompra_Result.cs">
       <DependentUpon>SFacturacionModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="proc_CargarFacturasCFinalPFecha_Result.cs">
+      <DependentUpon>SFacturacionModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="proc_CargarFacturasCFiscalPFecha_Result.cs">
+      <DependentUpon>SFacturacionModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="proc_CargarFacturasCGubernamentalPFecha_Result.cs">
+      <DependentUpon>SFacturacionModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="proc_CargarFacturasPendientes_Result.cs">
       <DependentUpon>SFacturacionModel.tt</DependentUpon>
     </Compile>

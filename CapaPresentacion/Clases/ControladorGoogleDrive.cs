@@ -16,7 +16,7 @@ namespace CapaPresentacion.Clases
     class ControladorGoogleDrive
     {
         static string[] Scopes = { DriveService.Scope.Drive };
-        static string ApplicationName = "SFacturacionRepuesto";
+        static string ApplicationName = "SFacturacion";
 
 
         public void UploadZipFile(string path)

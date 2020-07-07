@@ -114,11 +114,11 @@ namespace SFacturacion
         {
             try
             {
-                if (!(panelContenedor.Controls.OfType<MiForm>().FirstOrDefault().Text == "InicioResumen"))
-                {
-                    CerrarFormularioResumenSistema();
-                    MessageBox.Show("asdasd");
-                }
+                //if (panelContenedor.Controls.Count > 0 && !(panelContenedor.Controls.OfType<MiForm>().FirstOrDefault().Text == "InicioResumen"))
+                //{
+                //    CerrarFormularioResumenSistema();
+                //    MessageBox.Show("asdasd");
+                //}
                 Form fh;
                 fh = panelContenedor.Controls.OfType<MiForm>().FirstOrDefault();
 

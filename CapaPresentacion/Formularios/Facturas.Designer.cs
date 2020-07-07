@@ -34,9 +34,9 @@
             this.btnExportar = new System.Windows.Forms.Button();
             this.btnImprimir = new System.Windows.Forms.Button();
             this.dgvFacturas = new System.Windows.Forms.DataGridView();
-            this.btnCerrar = new System.Windows.Forms.Label();
             this.FacturaID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClienteID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnCerrar = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFacturas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -136,19 +136,6 @@
             this.dgvFacturas.Size = new System.Drawing.Size(898, 648);
             this.dgvFacturas.TabIndex = 62;
             // 
-            // btnCerrar
-            // 
-            this.btnCerrar.AutoSize = true;
-            this.btnCerrar.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnCerrar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCerrar.ForeColor = System.Drawing.Color.DimGray;
-            this.btnCerrar.Location = new System.Drawing.Point(17, 10);
-            this.btnCerrar.Name = "btnCerrar";
-            this.btnCerrar.Size = new System.Drawing.Size(20, 20);
-            this.btnCerrar.TabIndex = 61;
-            this.btnCerrar.Text = "X";
-            // 
             // FacturaID
             // 
             this.FacturaID.DataPropertyName = "FacturaID";
@@ -164,12 +151,26 @@
             this.ClienteID.Name = "ClienteID";
             this.ClienteID.ReadOnly = true;
             this.ClienteID.Visible = false;
-            this.ClienteID.Width = 90;
+            this.ClienteID.Width = 92;
+            // 
+            // btnCerrar
+            // 
+            this.btnCerrar.AutoSize = true;
+            this.btnCerrar.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnCerrar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCerrar.ForeColor = System.Drawing.Color.DimGray;
+            this.btnCerrar.Location = new System.Drawing.Point(17, 10);
+            this.btnCerrar.Name = "btnCerrar";
+            this.btnCerrar.Size = new System.Drawing.Size(20, 20);
+            this.btnCerrar.TabIndex = 61;
+            this.btnCerrar.Text = "X";
             // 
             // Facturas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1170, 700);
             this.Controls.Add(this.btnVerDetalles);
             this.Controls.Add(this.btnExportar);

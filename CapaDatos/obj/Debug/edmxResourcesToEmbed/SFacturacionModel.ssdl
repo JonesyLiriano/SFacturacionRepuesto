@@ -566,6 +566,7 @@
     <Parameter Name="GananciaFCredDia" Type="decimal" Mode="InOut" />
     <Parameter Name="GananciaFCredSemana" Type="decimal" Mode="InOut" />
     <Parameter Name="GananciaFCredMes" Type="decimal" Mode="InOut" />
+    <Parameter Name="Itbis" Type="decimal" Mode="In" />
   </Function>
   <Function Name="proc_Cargar10ProductosVendidosPFecha" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="FechaInicial" Type="date" Mode="In" />
@@ -591,6 +592,18 @@
   </Function>
   <Function Name="proc_CargarDetalleOrdenCompra" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="OrdenCompraID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="proc_CargarFacturasCFinalPFecha" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FechaInicial" Type="date" Mode="In" />
+    <Parameter Name="FechaFinal" Type="date" Mode="In" />
+  </Function>
+  <Function Name="proc_CargarFacturasCFiscalPFecha" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FechaInicial" Type="date" Mode="In" />
+    <Parameter Name="FechaFinal" Type="date" Mode="In" />
+  </Function>
+  <Function Name="proc_CargarFacturasCGubernamentalPFecha" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FechaInicial" Type="date" Mode="In" />
+    <Parameter Name="FechaFinal" Type="date" Mode="In" />
   </Function>
   <Function Name="proc_CargarFacturasPendientes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ClienteID" Type="int" Mode="In" />

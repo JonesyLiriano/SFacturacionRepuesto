@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Configuraciones));
             this.btnCerrar = new System.Windows.Forms.Label();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -509,19 +510,23 @@
             this.btnSubirBackupNube.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSubirBackupNube.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSubirBackupNube.ForeColor = System.Drawing.Color.White;
+            this.btnSubirBackupNube.Image = ((System.Drawing.Image)(resources.GetObject("btnSubirBackupNube.Image")));
             this.btnSubirBackupNube.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSubirBackupNube.Location = new System.Drawing.Point(933, 105);
             this.btnSubirBackupNube.Name = "btnSubirBackupNube";
             this.btnSubirBackupNube.Size = new System.Drawing.Size(180, 54);
             this.btnSubirBackupNube.TabIndex = 61;
             this.btnSubirBackupNube.Text = "Subir Backup a la Nube";
+            this.btnSubirBackupNube.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSubirBackupNube.UseVisualStyleBackColor = false;
+            this.btnSubirBackupNube.Click += new System.EventHandler(this.btnSubirBackupNube_Click);
             // 
             // Configuraciones
             // 
             this.AcceptButton = this.btnGuardar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1170, 700);
             this.Controls.Add(this.btnSubirBackupNube);
             this.Controls.Add(this.label5);

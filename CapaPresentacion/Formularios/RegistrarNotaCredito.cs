@@ -234,7 +234,7 @@ namespace CapaPresentacion.Formularios
             notasDeCreditoEntidad.FacturaAplicarID = Convert.ToInt32(cbFacturasAAplicar.SelectedValue);
             notasDeCreditoEntidad.Fecha = System.DateTime.Now;
             notasDeCreditoEntidad.UserID = Login.userID;            
-            notasDeCreditoEntidad.NCF = "00000000B04" + (Properties.Settings.Default.NCredito + 1).ToString("D8");
+            notasDeCreditoEntidad.NCF = "B04" + (Properties.Settings.Default.NCredito + 1).ToString("D8");
             notasDeCreditoEntidad.FechaVencimiento = Properties.Settings.Default.FechaVencimiento;
             notasDeCreditoEntidad.ValorAplicado = Convert.ToDecimal(txtValorAplicarNotaCredito.Text);
             notasDeCreditoEntidad.ITBIS = checkBoxITBIS.Checked;

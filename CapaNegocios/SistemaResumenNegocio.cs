@@ -15,5 +15,15 @@ namespace CapaNegocios
         {
             return resumenDatos.ResumenSistema();
         }
+
+        public void RealizarCopiadeSeguridad()
+        {
+            resumenDatos.RealizarCopiadeSeguridad();
+        }
+
+        public Tuple<decimal, decimal, decimal, decimal, decimal, decimal> CalcularGanancias(decimal itbis)
+        {
+            return resumenDatos.CalcularGanancias(itbis);
+        }
     }
 }

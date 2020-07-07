@@ -76,7 +76,7 @@ namespace CapaPresentacion.Formularios
             facturasCompraEntidad.NCF = txtNCF.Text;
             facturasCompraEntidad.FechaVencimiento = dtPickerFechaVencimiento.Value;
             facturasCompraEntidad.FechaFactura = dtPickerFecha.Value;
-            facturasCompraEntidad.TipoDePagoID = (int)char.GetNumericValue(cbTipoPago.Text[0]);
+            facturasCompraEntidad.TipoDePagoID = Convert.ToInt32(cbTipoPago.SelectedValue);
             facturasCompraEntidad.SubTotal = Convert.ToDecimal(txtSubTotal.Text);
             facturasCompraEntidad.ITBIS = Convert.ToDecimal(txtITBIS.Text);
             var result = facturaOrdenCompraNegocio.InsertarFacturaOrdenCompra(facturasCompraEntidad);

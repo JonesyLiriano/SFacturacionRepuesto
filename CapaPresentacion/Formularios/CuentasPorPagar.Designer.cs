@@ -33,10 +33,10 @@
             this.btnHistorialPagos = new System.Windows.Forms.Button();
             this.btnConsultaFactura = new System.Windows.Forms.Button();
             this.dgvLineasCreditoCompra = new System.Windows.Forms.DataGridView();
-            this.btnCerrar = new System.Windows.Forms.Label();
-            this.btnRealizarPago = new System.Windows.Forms.Button();
             this.LineaCreditoVentaID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Completado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.btnCerrar = new System.Windows.Forms.Label();
+            this.btnRealizarPago = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLineasCreditoCompra)).BeginInit();
             this.SuspendLayout();
             // 
@@ -118,6 +118,22 @@
             this.dgvLineasCreditoCompra.Size = new System.Drawing.Size(895, 648);
             this.dgvLineasCreditoCompra.TabIndex = 50;
             // 
+            // LineaCreditoVentaID
+            // 
+            this.LineaCreditoVentaID.DataPropertyName = "LineaCreditoCompraID";
+            this.LineaCreditoVentaID.HeaderText = "ID";
+            this.LineaCreditoVentaID.Name = "LineaCreditoVentaID";
+            this.LineaCreditoVentaID.ReadOnly = true;
+            this.LineaCreditoVentaID.Width = 44;
+            // 
+            // Completado
+            // 
+            this.Completado.DataPropertyName = "Completado";
+            this.Completado.HeaderText = "Completado";
+            this.Completado.Name = "Completado";
+            this.Completado.ReadOnly = true;
+            this.Completado.Width = 97;
+            // 
             // btnCerrar
             // 
             this.btnCerrar.AutoSize = true;
@@ -150,26 +166,11 @@
             this.btnRealizarPago.UseVisualStyleBackColor = false;
             this.btnRealizarPago.Click += new System.EventHandler(this.btnRealizarPago_Click);
             // 
-            // LineaCreditoVentaID
-            // 
-            this.LineaCreditoVentaID.DataPropertyName = "LineaCreditoCompraID";
-            this.LineaCreditoVentaID.HeaderText = "ID";
-            this.LineaCreditoVentaID.Name = "LineaCreditoVentaID";
-            this.LineaCreditoVentaID.ReadOnly = true;
-            this.LineaCreditoVentaID.Width = 44;
-            // 
-            // Completado
-            // 
-            this.Completado.DataPropertyName = "Completado";
-            this.Completado.HeaderText = "Completado";
-            this.Completado.Name = "Completado";
-            this.Completado.ReadOnly = true;
-            this.Completado.Width = 97;
-            // 
             // CuentasPorPagar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1170, 700);
             this.Controls.Add(this.btnHistorialPagos);
             this.Controls.Add(this.btnConsultaFactura);

@@ -1,4 +1,6 @@
-﻿using Microsoft.ReportingServices.Interfaces;
+﻿using CapaNegocios;
+using CapaPresentacion.Clases;
+using Microsoft.ReportingServices.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -6,6 +8,7 @@ using System.Data;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Resources;
 using System.Text;
@@ -16,13 +19,14 @@ namespace CapaPresentacion.Formularios
 {
     public partial class Configuraciones : Form
     {
+        SistemaResumenNegocio sistemaResumenNegocio = new SistemaResumenNegocio();
         public Configuraciones()
         {
             InitializeComponent();
         }
 
         private void Configuraciones_Load(object sender, EventArgs e)
-        {           
+        {
             try
             {
                 CargarCbTipoImpresora();
@@ -96,8 +100,8 @@ namespace CapaPresentacion.Formularios
                         Properties.Settings.Default.Logo = Convert.ToBase64String(ms.ToArray());
                     }
                 }
-            }            
-             MessageBox.Show("Los cambios se aplicaron correctamente.", "Cambios Aplicados", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            MessageBox.Show("Los cambios se aplicaron correctamente.", "Cambios Aplicados", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
         }
 
@@ -115,7 +119,7 @@ namespace CapaPresentacion.Formularios
                 txtDireccion.Text = Properties.Settings.Default.Direccion.ToString();
                 txtTelefono.Text = Properties.Settings.Default.Telefono.ToString();
                 txtRazonSocial.Text = Properties.Settings.Default.RazonSocial.ToString();
-                txtRNCoCedula.Text = Properties.Settings.Default.CedulaORnc.ToString();                
+                txtRNCoCedula.Text = Properties.Settings.Default.CedulaORnc.ToString();
                 txtNombreImpresora.Text = Properties.Settings.Default.Impresora.ToString();
                 cbTipoImpresora.SelectedItem = Properties.Settings.Default.TipoImpresora.ToString();
                 txtEmail.Text = Properties.Settings.Default.Email.ToString();
@@ -128,7 +132,7 @@ namespace CapaPresentacion.Formularios
 
                     }
                 }
-                           
+
             }
             catch (Exception exc)
             {
@@ -140,7 +144,7 @@ namespace CapaPresentacion.Formularios
 
         private void btnCerrar_Click(object sender, EventArgs e)
         {
-           this.Close();
+            this.Close();
         }
 
         private void cbTipoImpresora_Validating(object sender, CancelEventArgs e)
@@ -149,6 +153,58 @@ namespace CapaPresentacion.Formularios
             {
                 cbTipoImpresora.Focus();
             }
+        }
+
+        private void btnSubirBackupNube_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DialogResult dialogResult = MessageBox.Show("Esta seguro que desea subir el backup de los datos a la nube?", "Generar Backup", MessageBoxButtons.OKCancel);
+                if (dialogResult == DialogResult.OK)
+                {
+                    RealizarCopiaDeSeguridad();
+                }
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Error: " + exc.ToString(),
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Loggeator.EscribeEnArchivo(exc.ToString());
+            }
+        }
+
+        private void RealizarCopiaDeSeguridad()
+        {
+            if (File.Exists(@"C:\SFacturacion\Backup\BackUpBaseDatos.bak"))
+            {
+                File.Delete(@"C:\SFacturacion\Backup\BackUpBaseDatos.bak");
+            }
+            sistemaResumenNegocio.RealizarCopiadeSeguridad();
+            ComprimirCopiaDeSeguridad();
+            SubirBackupAGoogleDrive();
+        }
+
+        private void SubirBackupAGoogleDrive()
+        {
+            ControladorGoogleDrive controladorGoogleDrive = new ControladorGoogleDrive();
+
+            controladorGoogleDrive.UploadZipFile(@"C:\SFacturacion\BD\BackUpBaseDatos"
+                + Properties.Settings.Default.NombreEmpresa.Replace(" ", "") + ".zip");
+            MessageBox.Show("Copia de Seguridad fue realizada con exito", "Copia de Seguridad Completada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+        }
+
+        private void ComprimirCopiaDeSeguridad()
+        {
+            if (File.Exists(@"C:\SFacturacion\BD\BackUpBaseDatos"
+            + Properties.Settings.Default.NombreEmpresa.Replace(" ", "") + ".zip"))
+            {
+                File.Delete(@"C:\SFacturacion\BD\BackUpBaseDatos"
+                + Properties.Settings.Default.NombreEmpresa.Replace(" ", "") + ".zip");
+            }
+
+            ZipFile.CreateFromDirectory(@"C:\SFacturacion\Backup", @"C:\SFacturacion\BD\BackUpBaseDatos"
+             + Properties.Settings.Default.NombreEmpresa.Replace(" ", "") + ".zip");
         }
     }
 }

@@ -67,9 +67,18 @@ namespace CapaNegocios
         {
             return facturasDatos.CargarFacturasPFecha(fInicial, fFinal);
         }
-        public Tuple<decimal, decimal, decimal, decimal, decimal, decimal> CalcularGanancias()
+
+        public ObjectResult<proc_CargarFacturasCFinalPFecha_Result> CargarFacturasCFinalPFecha(DateTime fInicial, DateTime fFinal)
         {
-            return facturasDatos.CalcularGanancias();
+            return facturasDatos.CargarFacturasCFinalPFecha(fInicial, fFinal);
+        }
+        public ObjectResult<proc_CargarFacturasCFiscalPFecha_Result> CargarFacturasCFiscalPFecha(DateTime fInicial, DateTime fFinal)
+        {
+            return facturasDatos.CargarFacturasCFiscalPFecha(fInicial, fFinal);
+        }
+        public ObjectResult<proc_CargarFacturasCGubernamentalPFecha_Result> CargarFacturasCGubernamentalPFecha(DateTime fInicial, DateTime fFinal)
+        {
+            return facturasDatos.CargarFacturasCGubernamentalPFecha(fInicial, fFinal);
         }
     }
 }

@@ -14,12 +14,7 @@ namespace CapaDatos
         ObjectParameter facturaID = new ObjectParameter("FacturaID", typeof(int));
         ObjectParameter fecha = new ObjectParameter("Fecha", typeof(DateTime));
         ObjectParameter descuentoCliente = new ObjectParameter("DescuentoCliente", typeof(decimal));
-        ObjectParameter gananciaFContDia = new ObjectParameter("GananciaFContDia", typeof(decimal));
-        ObjectParameter gananciaFContSemana = new ObjectParameter("GananciaFContSemana", typeof(decimal));
-        ObjectParameter gananciaFContMes = new ObjectParameter("GananciaFContMes", typeof(decimal));
-        ObjectParameter gananciaFCredDia = new ObjectParameter("GananciaFCredDia", typeof(decimal));
-        ObjectParameter gananciaFCredSemana = new ObjectParameter("GananciaFCredSemana", typeof(decimal));
-        ObjectParameter gananciaFCredtMes = new ObjectParameter("GananciaFCredMes", typeof(decimal));
+        
 
         public Tuple<bool, int> InsertarFactura(Factura factura)
         {
@@ -83,12 +78,20 @@ namespace CapaDatos
             var result = modelDB.proc_CargarFacturasPFecha(fInicial, fFinal);
             return result;
         }
-
-        public Tuple<decimal,decimal,decimal,decimal,decimal,decimal>CalcularGanancias()
+        public ObjectResult<proc_CargarFacturasCFinalPFecha_Result> CargarFacturasCFinalPFecha(DateTime fInicial, DateTime fFinal)
         {
-            modelDB.proc_CalcularGanancias(gananciaFContDia,gananciaFContSemana,gananciaFContMes,gananciaFCredDia,gananciaFCredSemana,gananciaFCredtMes);
-
-            return Tuple.Create((decimal)gananciaFContDia.Value, (decimal)gananciaFContSemana.Value, (decimal)gananciaFContMes.Value, (decimal)gananciaFCredDia.Value, (decimal)gananciaFCredSemana.Value, (decimal)gananciaFCredtMes.Value);
+            var result = modelDB.proc_CargarFacturasCFinalPFecha(fInicial, fFinal);
+            return result;
+        }
+        public ObjectResult<proc_CargarFacturasCFiscalPFecha_Result> CargarFacturasCFiscalPFecha(DateTime fInicial, DateTime fFinal)
+        {
+            var result = modelDB.proc_CargarFacturasCFiscalPFecha(fInicial, fFinal);
+            return result;
+        }
+        public ObjectResult<proc_CargarFacturasCGubernamentalPFecha_Result> CargarFacturasCGubernamentalPFecha(DateTime fInicial, DateTime fFinal)
+        {
+            var result = modelDB.proc_CargarFacturasCGubernamentalPFecha(fInicial, fFinal);
+            return result;
         }
     }
 }

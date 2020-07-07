@@ -206,3 +206,12 @@ F:\C#\SFacturacion\CapaPresentacion\obj\Debug\CapaPresentacion.Impresiones.Impre
 F:\C#\SFacturacion\CapaPresentacion\obj\Debug\CapaPresentacion.Impresiones.ImpresionCotizacion.resources
 F:\C#\SFacturacion\CapaPresentacion\obj\Debug\CapaPresentacion.Impresiones.ImpresionFacturaVenta.resources
 F:\C#\SFacturacion\CapaPresentacion\obj\Debug\CapaPresentacion.Impresiones.ImpresionNotaCredito.resources
+F:\C#\SFacturacion\CapaPresentacion\obj\Debug\CapaPresentacion.Formularios.Reportes.resources
+F:\C#\SFacturacion\CapaPresentacion\obj\Debug\CapaPresentacion.Formularios.ElegirRangoFechas.resources
+F:\C#\SFacturacion\CapaPresentacion\obj\Debug\CapaPresentacion.Reportes.ReporteClientes.resources
+F:\C#\SFacturacion\CapaPresentacion\obj\Debug\CapaPresentacion.Reportes.ReporteFacturasCompra.resources
+F:\C#\SFacturacion\CapaPresentacion\obj\Debug\CapaPresentacion.Reportes.ReporteNotasCredito.resources
+F:\C#\SFacturacion\CapaPresentacion\obj\Debug\CapaPresentacion.Reportes.ReporteProductos.resources
+F:\C#\SFacturacion\CapaPresentacion\obj\Debug\CapaPresentacion.Reportes.ReporteProveedores.resources
+F:\C#\SFacturacion\CapaPresentacion\obj\Debug\CapaPresentacion.Reportes.ReporteTodasFacturas.resources
+F:\C#\SFacturacion\CapaPresentacion\obj\Debug\CapaPresentacion.Reportes.ReporteGanancias.resources
