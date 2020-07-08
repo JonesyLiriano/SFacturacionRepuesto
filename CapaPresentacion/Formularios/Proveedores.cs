@@ -53,7 +53,17 @@ namespace CapaPresentacion
 
         private void Proveedores_Load(object sender, EventArgs e)
         {
-            CargarProveedores();
+            try
+            {
+                CargarProveedores();
+                CargarCBFiltro();
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Error: " + exc.ToString(),
+                   "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Loggeator.EscribeEnArchivo(exc.ToString());
+            }
         }
 
         private Proveedore CargarParametrosProveedor()
@@ -114,6 +124,70 @@ namespace CapaPresentacion
             else
             {
                 MessageBox.Show("El proveedor no pudo ser borrado, favor de verificar los requerimientros", "Ha Ocurrido un error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void CargarCBFiltro()
+        {
+            cbFiltro.Items.Add("ID");
+            cbFiltro.Items.Add("Nombre");
+            cbFiltro.Items.Add("Cedula o RNC");
+            cbFiltro.Items.Add("Direccion");
+            cbFiltro.SelectedIndex = 0;
+        }
+        private void txtFiltro_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtFiltro.Text))
+            {
+                txtFiltro.Text = "Escriba para filtrar...";
+                txtFiltro.ForeColor = Color.Gray;
+            }
+        }
+
+        private void txtFiltro_Enter(object sender, EventArgs e)
+        {
+            if (txtFiltro.Text == "Escriba para filtrar...")
+            {
+                txtFiltro.Text = "";
+                txtFiltro.ForeColor = Color.Black;
+            }
+        }
+
+        private void txtFiltro_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                switch (cbFiltro.SelectedItem.ToString())
+                {
+                    case "ID":
+                        dgvProveedores.DataSource = proc_CargarTodosProveedores_Results.Where(p => p.ProveedorID.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                        break;
+                    case "Nombre":
+                        dgvProveedores.DataSource = proc_CargarTodosProveedores_Results.Where(p => p.Nombre.ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                        break;
+                    case "Cedula o RNC":
+                        dgvProveedores.DataSource = proc_CargarTodosProveedores_Results.Where(p => p.CedulaORnc.ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                        break;
+                    case "Direccion":
+                        dgvProveedores.DataSource = proc_CargarTodosProveedores_Results.Where(p => p.Direccion.ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                        break;
+                    default:
+                        break;
+                }
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Error: " + exc.ToString(),
+                      "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Loggeator.EscribeEnArchivo(exc.ToString());
+            }
+        }
+
+        private void cbFiltro_Validating(object sender, CancelEventArgs e)
+        {
+            if (cbFiltro.SelectedIndex == -1 && cbFiltro.Items.Count > 0)
+            {
+                cbFiltro.Focus();
             }
         }
     }

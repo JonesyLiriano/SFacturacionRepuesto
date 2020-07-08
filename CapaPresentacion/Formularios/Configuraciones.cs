@@ -90,6 +90,7 @@ namespace CapaPresentacion.Formularios
             Properties.Settings.Default.Impresora = txtNombreImpresora.Text;
             Properties.Settings.Default.TipoImpresora = cbTipoImpresora.SelectedItem.ToString();
             Properties.Settings.Default.Email = txtEmail.Text;
+            Properties.Settings.Default.ImpresoraTermica = txtImpresoraTermica.Text;
             if (pbLogo.Image != null)
             {
                 using (var b = new Bitmap(pbLogo.Image))
@@ -123,6 +124,7 @@ namespace CapaPresentacion.Formularios
                 txtNombreImpresora.Text = Properties.Settings.Default.Impresora.ToString();
                 cbTipoImpresora.SelectedItem = Properties.Settings.Default.TipoImpresora.ToString();
                 txtEmail.Text = Properties.Settings.Default.Email.ToString();
+                txtImpresoraTermica.Text = Properties.Settings.Default.ImpresoraTermica.ToString();
                 if (Properties.Settings.Default.Logo != "")
                 {
                     byte[] imageBytes = Convert.FromBase64String(Properties.Settings.Default.Logo);

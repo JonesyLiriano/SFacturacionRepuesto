@@ -238,5 +238,17 @@ namespace CapaPresentacion.Properties {
                 this["Logo"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string ImpresoraTermica {
+            get {
+                return ((string)(this["ImpresoraTermica"]));
+            }
+            set {
+                this["ImpresoraTermica"] = value;
+            }
+        }
     }
 }

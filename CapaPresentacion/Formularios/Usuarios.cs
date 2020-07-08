@@ -61,7 +61,17 @@ namespace CapaPresentacion
 
         private void Usuarios_Load(object sender, EventArgs e)
         {
-            CargarUsuarios();
+            try
+            {
+                CargarUsuarios();
+                CargarCBFiltro();
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Error: " + exc.ToString(),
+                   "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Loggeator.EscribeEnArchivo(exc.ToString());
+            }
         }
 
         private User CargarParametrosUsuario()
@@ -120,6 +130,66 @@ namespace CapaPresentacion
             {
                 MessageBox.Show("El usuario no pudo ser borrado, favor de verificar los requerimientros", "Ha Ocurrido un error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }       
+        }
+
+        private void CargarCBFiltro()
+        {
+            cbFiltro.Items.Add("ID");
+            cbFiltro.Items.Add("Usuario");
+            cbFiltro.Items.Add("Nivel");
+            cbFiltro.SelectedIndex = 0;
+        }
+        private void txtFiltro_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtFiltro.Text))
+            {
+                txtFiltro.Text = "Escriba para filtrar...";
+                txtFiltro.ForeColor = Color.Gray;
+            }
+        }
+
+        private void txtFiltro_Enter(object sender, EventArgs e)
+        {
+            if (txtFiltro.Text == "Escriba para filtrar...")
+            {
+                txtFiltro.Text = "";
+                txtFiltro.ForeColor = Color.Black;
+            }
+        }
+
+        private void txtFiltro_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                switch (cbFiltro.SelectedItem.ToString())
+                {
+                    case "ID":
+                        dgvUsuarios.DataSource = proc_CargarTodosUsers_Results.Where(p => p.UserID.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                        break;
+                    case "Usuario":
+                        dgvUsuarios.DataSource = proc_CargarTodosUsers_Results.Where(p => p.UserName.ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                        break;
+                    case "Nivel":
+                        dgvUsuarios.DataSource = proc_CargarTodosUsers_Results.Where(p => p.UserLevel.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                        break;                    
+                    default:
+                        break;
+                }
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Error: " + exc.ToString(),
+                      "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Loggeator.EscribeEnArchivo(exc.ToString());
+            }
+        }
+
+        private void cbFiltro_Validating(object sender, CancelEventArgs e)
+        {
+            if (cbFiltro.SelectedIndex == -1 && cbFiltro.Items.Count > 0)
+            {
+                cbFiltro.Focus();
+            }
+        }
     }
 }

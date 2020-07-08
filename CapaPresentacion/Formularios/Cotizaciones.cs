@@ -127,6 +127,7 @@ namespace CapaPresentacion
         private void Cotizaciones_Load(object sender, EventArgs e)
         {
             CargarCotizaciones();
+            CargarCBFiltro();
         }
 
         private void btnExportar_Click(object sender, EventArgs e)
@@ -175,6 +176,68 @@ namespace CapaPresentacion
                 Loggeator.EscribeEnArchivo(exc.ToString());
             }
         }
+        private void CargarCBFiltro()
+        {
+            cbFiltro.Items.Add("ID");
+            cbFiltro.Items.Add("Cliente");
+            cbFiltro.Items.Add("Fecha");
+            cbFiltro.Items.Add("Factura");
+            cbFiltro.SelectedIndex = 0;
+        }
+        private void txtFiltro_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtFiltro.Text))
+            {
+                txtFiltro.Text = "Escriba para filtrar...";
+                txtFiltro.ForeColor = Color.Gray;
+            }
+        }
 
+        private void txtFiltro_Enter(object sender, EventArgs e)
+        {
+            if (txtFiltro.Text == "Escriba para filtrar...")
+            {
+                txtFiltro.Text = "";
+                txtFiltro.ForeColor = Color.Black;
+            }
+        }
+
+        private void txtFiltro_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                switch (cbFiltro.SelectedItem.ToString())
+                {
+                    case "ID":
+                        dgvCotizaciones.DataSource = proc_CargarTodasCotizaciones_Results.Where(p => p.CotizacionID.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                        break;
+                    case "Cliente":
+                        dgvCotizaciones.DataSource = proc_CargarTodasCotizaciones_Results.Where(p => p.Cliente.ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                        break;
+                    case "Fecha":
+                        dgvCotizaciones.DataSource = proc_CargarTodasCotizaciones_Results.Where(p => p.Fecha.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                        break;
+                    case "Factura":
+                        dgvCotizaciones.DataSource = proc_CargarTodasCotizaciones_Results.Where(p => p.Factura.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                        break;
+                    default:
+                        break;
+                }
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Error: " + exc.ToString(),
+                      "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Loggeator.EscribeEnArchivo(exc.ToString());
+            }
+        }
+
+        private void cbFiltro_Validating(object sender, CancelEventArgs e)
+        {
+            if (cbFiltro.SelectedIndex == -1 && cbFiltro.Items.Count > 0)
+            {
+                cbFiltro.Focus();
+            }
+        }
     }
 }

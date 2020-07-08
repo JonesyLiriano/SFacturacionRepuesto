@@ -33,7 +33,17 @@ namespace SFacturacion
 
         private void Productos_Load(object sender, EventArgs e)
         {
-            CargarProductos();
+            try
+            {
+                CargarProductos();
+                CargarCBFiltro();
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Error: " + exc.ToString(),
+                   "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Loggeator.EscribeEnArchivo(exc.ToString());
+            }
         }
 
         private Producto CargarParametrosProducto()
@@ -160,6 +170,84 @@ namespace SFacturacion
             {
                 RegistrarVenta.codigoBarraProd = dgvProductos.CurrentRow.Cells["CodigoBarra"].Value.ToString();
                 this.Close();
+            }
+        }
+
+        private void btnImprimirEtiqueta_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CargarCBFiltro()
+        {
+            cbFiltro.Items.Add("ID");
+            cbFiltro.Items.Add("Servicio");
+            cbFiltro.Items.Add("Codigo de Barra");
+            cbFiltro.Items.Add("Descripcion");
+            cbFiltro.Items.Add("Unidad de Medida");
+            cbFiltro.Items.Add("Proveedor");
+            cbFiltro.SelectedIndex = 0;
+        }
+        private void txtFiltro_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtFiltro.Text))
+            {
+                txtFiltro.Text = "Escriba para filtrar...";
+                txtFiltro.ForeColor = Color.Gray;
+            }
+        }
+
+        private void txtFiltro_Enter(object sender, EventArgs e)
+        {
+            if (txtFiltro.Text == "Escriba para filtrar...")
+            {
+                txtFiltro.Text = "";
+                txtFiltro.ForeColor = Color.Black;
+            }
+        }
+
+        private void txtFiltro_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                switch (cbFiltro.SelectedItem.ToString())
+                {
+                    case "ID":
+                        dgvProductos.DataSource = proc_CargarTodosProductos_Results.Where(p => p.ProductoID.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                        break;
+                    case "Servicio":
+                        dgvProductos.DataSource = proc_CargarTodosProductos_Results.Where(p => p.Servicio.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                        break;
+                    case "Codigo de Barra":
+                        dgvProductos.DataSource = proc_CargarTodosProductos_Results.Where(p => p.CodigoBarra.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                        break;
+                    case "Descripcion":
+                        dgvProductos.DataSource = proc_CargarTodosProductos_Results.Where(p => p.Descripcion.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                        break;
+                    case "Unidad de Medida":
+                        dgvProductos.DataSource = proc_CargarTodosProductos_Results.Where(p => p.UnidadMedida.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                        break;
+                    case "Proveedor":
+                        dgvProductos.DataSource = proc_CargarTodosProductos_Results.Where(p => p.Proveedor.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                        break;
+
+                    default:
+                        break;
+                }
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Error: " + exc.ToString(),
+                      "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Loggeator.EscribeEnArchivo(exc.ToString());
+            }
+        }
+
+        private void cbFiltro_Validating(object sender, CancelEventArgs e)
+        {
+            if (cbFiltro.SelectedIndex == -1 && cbFiltro.Items.Count > 0)
+            {
+                cbFiltro.Focus();
             }
         }
     }

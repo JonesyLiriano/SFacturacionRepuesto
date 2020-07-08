@@ -121,6 +121,7 @@ namespace CapaPresentacion.Formularios
             try
             {
                 CargarDataGridView();
+                CargarCBFiltro();
             }
             catch (Exception exc)
             {
@@ -204,6 +205,77 @@ namespace CapaPresentacion.Formularios
                 MessageBox.Show("Error: " + exc.ToString(),
                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Loggeator.EscribeEnArchivo(exc.ToString());
+            }
+        }
+        private void CargarCBFiltro()
+        {
+            cbFiltro.Items.Add("ID");
+            cbFiltro.Items.Add("Proveedor");
+            cbFiltro.Items.Add("Fecha Pedido");
+            cbFiltro.Items.Add("Tipo de Pago");
+            cbFiltro.Items.Add("NCF");
+            cbFiltro.Items.Add("Completado");
+            cbFiltro.SelectedIndex = 0;
+        }
+        private void txtFiltro_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtFiltro.Text))
+            {
+                txtFiltro.Text = "Escriba para filtrar...";
+                txtFiltro.ForeColor = Color.Gray;
+            }
+        }
+
+        private void txtFiltro_Enter(object sender, EventArgs e)
+        {
+            if (txtFiltro.Text == "Escriba para filtrar...")
+            {
+                txtFiltro.Text = "";
+                txtFiltro.ForeColor = Color.Black;
+            }
+        }
+
+        private void txtFiltro_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                switch (cbFiltro.SelectedItem.ToString())
+                {
+                    case "ID":
+                        dgvCompras.DataSource = proc_CargarTodasOrdenesCompra_Results.Where(p => p.OrdencompraID.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                        break;
+                    case "Proveedor":
+                        dgvCompras.DataSource = proc_CargarTodasOrdenesCompra_Results.Where(p => p.Proveedor.ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                        break;
+                    case "Tipo de Pago":
+                        dgvCompras.DataSource = proc_CargarTodasOrdenesCompra_Results.Where(p => p.TipoDePago.ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                        break;
+                    case "Fecha Pedido":
+                        dgvCompras.DataSource = proc_CargarTodasOrdenesCompra_Results.Where(p => p.FechaPedido.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                        break;
+                    case "NCF":
+                        dgvCompras.DataSource = proc_CargarTodasOrdenesCompra_Results.Where(p => p.NCF.ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                        break;
+                    case "Completado":
+                        dgvCompras.DataSource = proc_CargarTodasOrdenesCompra_Results.Where(p => p.Completado.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                        break;
+                    default:
+                        break;
+                }
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Error: " + exc.ToString(),
+                      "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Loggeator.EscribeEnArchivo(exc.ToString());
+            }
+        }
+
+        private void cbFiltro_Validating(object sender, CancelEventArgs e)
+        {
+            if (cbFiltro.SelectedIndex == -1 && cbFiltro.Items.Count > 0)
+            {
+                cbFiltro.Focus();
             }
         }
     }

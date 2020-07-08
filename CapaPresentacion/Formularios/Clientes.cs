@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace SFacturacion
 {
@@ -55,10 +56,20 @@ namespace SFacturacion
         }
 
         private void Clientes_Load(object sender, EventArgs e)
-        { 
-            CargarClientes();
-        }
+        {
+            try
+            {
+                CargarClientes();
+                CargarCBFiltro();
+            }
+            catch (Exception exc)
+            {
 
+                MessageBox.Show("Error: " + exc.ToString(),
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Loggeator.EscribeEnArchivo(exc.ToString());
+            }
+        }       
         private Cliente CargarParametrosCliente()
         {
             clienteEntidad.ClienteID = Convert.ToInt32(dgvClientes.CurrentRow.Cells["ClienteID"].Value);
@@ -124,6 +135,68 @@ namespace SFacturacion
                 MessageBox.Show("El cliente no pudo ser borrado, favor de verificar los requerimientros", "Ha Ocurrido un error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        private void CargarCBFiltro()
+        {
+            cbFiltro.Items.Add("ID");
+            cbFiltro.Items.Add("Nombre");
+            cbFiltro.Items.Add("Cedula o RNC");
+            cbFiltro.Items.Add("Direccion");
+            cbFiltro.SelectedIndex = 0;
+        }
+        private void txtFiltro_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtFiltro.Text))
+            {
+                txtFiltro.Text = "Escriba para filtrar...";
+                txtFiltro.ForeColor = Color.Gray;
+            }                
+        }
 
+        private void txtFiltro_Enter(object sender, EventArgs e)
+        {
+            if (txtFiltro.Text == "Escriba para filtrar...")
+            {
+                txtFiltro.Text = "";
+                txtFiltro.ForeColor = Color.Black;
+            }
+        }
+
+        private void txtFiltro_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                switch (cbFiltro.SelectedItem.ToString())
+                {
+                    case "ID":
+                        dgvClientes.DataSource = proc_CargarTodosClientes_Results.Where(p => p.ClienteID.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                        break;
+                    case "Nombre":
+                        dgvClientes.DataSource = proc_CargarTodosClientes_Results.Where(p => p.Nombre.ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                        break;
+                    case "Cedula o RNC":
+                        dgvClientes.DataSource = proc_CargarTodosClientes_Results.Where(p => p.CedulaORnc.ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                        break;
+                    case "Direccion":
+                        dgvClientes.DataSource = proc_CargarTodosClientes_Results.Where(p => p.Direccion.ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                        break;                    
+                    default:
+                        break;
+                }
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Error: " + exc.ToString(),
+                      "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Loggeator.EscribeEnArchivo(exc.ToString());
+            }
+        }
+
+        private void cbFiltro_Validating(object sender, CancelEventArgs e)
+        {
+            if (cbFiltro.SelectedIndex == -1 && cbFiltro.Items.Count > 0)
+            {
+                cbFiltro.Focus();
+            }
+        }
     }
 }

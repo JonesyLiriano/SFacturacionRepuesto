@@ -123,7 +123,17 @@ namespace CapaPresentacion.Formularios
         }
         private void NotasCredito_Load(object sender, EventArgs e)
         {
-            CargarNotasDeCredito();
+            try
+            {
+                CargarNotasDeCredito();
+                CargarCBFiltro();
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Error: " + exc.ToString(),
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Loggeator.EscribeEnArchivo(exc.ToString());
+            }
         }
 
         private void btnVerDetalles_Click(object sender, EventArgs e)
@@ -153,6 +163,79 @@ namespace CapaPresentacion.Formularios
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void CargarCBFiltro()
+        {
+            cbFiltro.Items.Add("ID");
+            cbFiltro.Items.Add("Cliente");
+            cbFiltro.Items.Add("Fecha");
+            cbFiltro.Items.Add("Factura");
+            cbFiltro.Items.Add("Factura Aplicada");
+            cbFiltro.Items.Add("NCF");
+            cbFiltro.SelectedIndex = 0;
+        }
+        private void txtFiltro_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtFiltro.Text))
+            {
+                txtFiltro.Text = "Escriba para filtrar...";
+                txtFiltro.ForeColor = Color.Gray;
+            }
+        }
+
+        private void txtFiltro_Enter(object sender, EventArgs e)
+        {
+            if (txtFiltro.Text == "Escriba para filtrar...")
+            {
+                txtFiltro.Text = "";
+                txtFiltro.ForeColor = Color.Black;
+            }
+        }
+
+        private void txtFiltro_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                switch (cbFiltro.SelectedItem.ToString())
+                {
+                    case "ID":
+                        dgvNotasCredito.DataSource = proc_CargarTodasNotasDeCredito_Results.Where(p => p.NotaDeCreditoID.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                        break;
+                    case "Cliente":
+                        dgvNotasCredito.DataSource = proc_CargarTodasNotasDeCredito_Results.Where(p => p.Cliente.ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                        break;
+                    case "Fecha":
+                        dgvNotasCredito.DataSource = proc_CargarTodasNotasDeCredito_Results.Where(p => p.Fecha.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                        break;
+                    case "Factura":
+                        dgvNotasCredito.DataSource = proc_CargarTodasNotasDeCredito_Results.Where(p => p.Factura.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                        break;
+                    case "Factura Aplicada":
+                        dgvNotasCredito.DataSource = proc_CargarTodasNotasDeCredito_Results.Where(p => p.FacturaAplicada.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                        break;
+                    case "NCF":
+                        dgvNotasCredito.DataSource = proc_CargarTodasNotasDeCredito_Results.Where(p => p.NCF.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                        break;
+                    
+                    default:
+                        break;
+                }
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Error: " + exc.ToString(),
+                      "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Loggeator.EscribeEnArchivo(exc.ToString());
+            }
+        }
+
+        private void cbFiltro_Validating(object sender, CancelEventArgs e)
+        {
+            if (cbFiltro.SelectedIndex == -1 && cbFiltro.Items.Count > 0)
+            {
+                cbFiltro.Focus();
+            }
         }
     }
 }
