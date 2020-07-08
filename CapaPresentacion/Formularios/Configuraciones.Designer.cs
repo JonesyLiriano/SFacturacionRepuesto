@@ -48,6 +48,8 @@
             this.dtFechaVencimiento = new System.Windows.Forms.DateTimePicker();
             this.label9 = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.txtImpresoraTermica = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
             this.cbTipoImpresora = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
             this.txtNombreImpresora = new System.Windows.Forms.TextBox();
@@ -70,8 +72,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.btnSubirBackupNube = new System.Windows.Forms.Button();
-            this.label17 = new System.Windows.Forms.Label();
-            this.txtImpresoraTermica = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -285,6 +285,23 @@
             this.groupBox6.TabIndex = 58;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Impresora";
+            // 
+            // txtImpresoraTermica
+            // 
+            this.txtImpresoraTermica.Font = new System.Drawing.Font("Century Gothic", 11.25F);
+            this.txtImpresoraTermica.Location = new System.Drawing.Point(162, 125);
+            this.txtImpresoraTermica.Name = "txtImpresoraTermica";
+            this.txtImpresoraTermica.Size = new System.Drawing.Size(175, 26);
+            this.txtImpresoraTermica.TabIndex = 4;
+            // 
+            // label17
+            // 
+            this.label17.Font = new System.Drawing.Font("Century Gothic", 11F);
+            this.label17.Location = new System.Drawing.Point(6, 125);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(139, 49);
+            this.label17.TabIndex = 3;
+            this.label17.Text = "Impresora Termica";
             // 
             // cbTipoImpresora
             // 
@@ -524,23 +541,6 @@
             this.btnSubirBackupNube.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSubirBackupNube.UseVisualStyleBackColor = false;
             this.btnSubirBackupNube.Click += new System.EventHandler(this.btnSubirBackupNube_Click);
-            // 
-            // label17
-            // 
-            this.label17.Font = new System.Drawing.Font("Century Gothic", 11F);
-            this.label17.Location = new System.Drawing.Point(6, 125);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(139, 49);
-            this.label17.TabIndex = 3;
-            this.label17.Text = "Impresora Termica";
-            // 
-            // txtImpresoraTermica
-            // 
-            this.txtImpresoraTermica.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.txtImpresoraTermica.Location = new System.Drawing.Point(162, 125);
-            this.txtImpresoraTermica.Name = "txtImpresoraTermica";
-            this.txtImpresoraTermica.Size = new System.Drawing.Size(175, 26);
-            this.txtImpresoraTermica.TabIndex = 4;
             // 
             // Configuraciones
             // 

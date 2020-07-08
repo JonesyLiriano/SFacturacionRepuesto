@@ -206,22 +206,25 @@ namespace CapaPresentacion
         {
             try
             {
-                switch (cbFiltro.SelectedItem.ToString())
+                if (txtFiltro.Text != "Escriba para filtrar...")
                 {
-                    case "ID":
-                        dgvCotizaciones.DataSource = proc_CargarTodasCotizaciones_Results.Where(p => p.CotizacionID.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
-                        break;
-                    case "Cliente":
-                        dgvCotizaciones.DataSource = proc_CargarTodasCotizaciones_Results.Where(p => p.Cliente.ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
-                        break;
-                    case "Fecha":
-                        dgvCotizaciones.DataSource = proc_CargarTodasCotizaciones_Results.Where(p => p.Fecha.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
-                        break;
-                    case "Factura":
-                        dgvCotizaciones.DataSource = proc_CargarTodasCotizaciones_Results.Where(p => p.Factura.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
-                        break;
-                    default:
-                        break;
+                    switch (cbFiltro.SelectedItem.ToString())
+                    {
+                        case "ID":
+                            dgvCotizaciones.DataSource = proc_CargarTodasCotizaciones_Results.Where(p => p.CotizacionID.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                            break;
+                        case "Cliente":
+                            dgvCotizaciones.DataSource = proc_CargarTodasCotizaciones_Results.Where(p => p.Cliente.ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                            break;
+                        case "Fecha":
+                            dgvCotizaciones.DataSource = proc_CargarTodasCotizaciones_Results.Where(p => p.Fecha.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                            break;
+                        case "Factura":
+                            dgvCotizaciones.DataSource = proc_CargarTodasCotizaciones_Results.Where(p => p.Factura.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                            break;
+                        default:
+                            break;
+                    }
                 }
             }
             catch (Exception exc)

@@ -165,23 +165,26 @@ namespace SFacturacion
         {
             try
             {
-                switch (cbFiltro.SelectedItem.ToString())
+                if(txtFiltro.Text != "Escriba para filtrar...")
                 {
-                    case "ID":
-                        dgvClientes.DataSource = proc_CargarTodosClientes_Results.Where(p => p.ClienteID.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
-                        break;
-                    case "Nombre":
-                        dgvClientes.DataSource = proc_CargarTodosClientes_Results.Where(p => p.Nombre.ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
-                        break;
-                    case "Cedula o RNC":
-                        dgvClientes.DataSource = proc_CargarTodosClientes_Results.Where(p => p.CedulaORnc.ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
-                        break;
-                    case "Direccion":
-                        dgvClientes.DataSource = proc_CargarTodosClientes_Results.Where(p => p.Direccion.ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
-                        break;                    
-                    default:
-                        break;
-                }
+                    switch (cbFiltro.SelectedItem.ToString())
+                    {
+                        case "ID":
+                            dgvClientes.DataSource = proc_CargarTodosClientes_Results.Where(p => p.ClienteID.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                            break;
+                        case "Nombre":
+                            dgvClientes.DataSource = proc_CargarTodosClientes_Results.Where(p => p.Nombre.ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                            break;
+                        case "Cedula o RNC":
+                            dgvClientes.DataSource = proc_CargarTodosClientes_Results.Where(p => p.CedulaORnc.ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                            break;
+                        case "Direccion":
+                            dgvClientes.DataSource = proc_CargarTodosClientes_Results.Where(p => p.Direccion.ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                            break;
+                        default:
+                            break;
+                    }
+                }                
             }
             catch (Exception exc)
             {

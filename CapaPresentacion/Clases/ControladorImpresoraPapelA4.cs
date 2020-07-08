@@ -47,6 +47,28 @@ namespace CapaPresentacion.Clases
             foreach (Stream stream in m_streams)
             { stream.Position = 0; }
         }
+        // Impresora Para Etiquetas
+        private void ExportLabel(LocalReport report)
+        {
+            //las siguientes lineas definen el tamaño de la hoja, en mi caso es de tamaño ticket
+            //los tamaños pueden ser en pulgadas(in) o en centimetros(cm), quiza aceptan mas formatos pero no los probé.
+            string deviceInfo =
+              @"<DeviceInfo>
+                <OutputFormat>EMF</OutputFormat>
+                <PageWidth>5.08cm</PageWidth>
+                <PageHeight>2.54cm</PageHeight>
+                <MarginTop>0cm</MarginTop>
+                <MarginLeft>0cm</MarginLeft>
+                <MarginRight>0cm</MarginRight>
+                <MarginBottom>0cm</MarginBottom>
+            </DeviceInfo>";
+            Warning[] warnings;
+            m_streams = new List<Stream>();
+            //renderizamos el reporte
+            report.Render("Image", deviceInfo, CreateStream, out warnings);
+            foreach (Stream stream in m_streams)
+            { stream.Position = 0; }
+        }
 
         // Handler para los eventos PrintPageEvents
         private void PrintPage(object sender, PrintPageEventArgs ev)
@@ -93,6 +115,29 @@ namespace CapaPresentacion.Clases
                 printDoc.Print();
             }
         }
+        //Impresora de etiquetas
+        private void PrintLabel()
+        {
+            PrintDocument printDoc;
+            //busca el nombre de la impresora predeterminada
+            String printerName = Properties.Settings.Default.ImpresoraTermica;
+
+            if (m_streams == null || m_streams.Count == 0)
+                throw new Exception("Error: No hay datos que imprimir.");
+
+            printDoc = new PrintDocument();
+            printDoc.PrinterSettings.PrinterName = printerName;
+            if (!printDoc.PrinterSettings.IsValid)
+            {
+                MessageBox.Show(String.Format("No se pudo encontrar la impresora \"{0}\".", printerName));
+            }
+            else
+            {
+                printDoc.PrintPage += new PrintPageEventHandler(PrintPage);
+                m_currentPageIndex = 0;
+                printDoc.Print();
+            }
+        }
 
         //Busca Impresora Predeterminada
         //private string ImpresoraPredeterminada()
@@ -113,6 +158,13 @@ namespace CapaPresentacion.Clases
             Export(rdlc);
             Print();
         }
+        // Impresora de etiquetas
+        public void ImprimeLabel(LocalReport rdlc)
+        {
+            ExportLabel(rdlc);
+            PrintLabel();
+        }
+
 
         public void Dispose()
         {

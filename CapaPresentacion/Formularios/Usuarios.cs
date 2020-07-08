@@ -161,19 +161,22 @@ namespace CapaPresentacion
         {
             try
             {
-                switch (cbFiltro.SelectedItem.ToString())
+                if (txtFiltro.Text != "Escriba para filtrar...")
                 {
-                    case "ID":
-                        dgvUsuarios.DataSource = proc_CargarTodosUsers_Results.Where(p => p.UserID.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
-                        break;
-                    case "Usuario":
-                        dgvUsuarios.DataSource = proc_CargarTodosUsers_Results.Where(p => p.UserName.ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
-                        break;
-                    case "Nivel":
-                        dgvUsuarios.DataSource = proc_CargarTodosUsers_Results.Where(p => p.UserLevel.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
-                        break;                    
-                    default:
-                        break;
+                    switch (cbFiltro.SelectedItem.ToString())
+                    {
+                        case "ID":
+                            dgvUsuarios.DataSource = proc_CargarTodosUsers_Results.Where(p => p.UserID.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                            break;
+                        case "Usuario":
+                            dgvUsuarios.DataSource = proc_CargarTodosUsers_Results.Where(p => p.UserName.ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                            break;
+                        case "Nivel":
+                            dgvUsuarios.DataSource = proc_CargarTodosUsers_Results.Where(p => p.UserLevel.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                            break;
+                        default:
+                            break;
+                    }
                 }
             }
             catch (Exception exc)

@@ -182,31 +182,34 @@ namespace CapaPresentacion.Formularios
         {
             try
             {
-                switch (cbFiltro.SelectedItem.ToString())
+                if (txtFiltro.Text != "Escriba para filtrar...")
                 {
-                    case "ID":
-                        dgvFacturas.DataSource = proc_CargarTodasFacturas_Results.Where(p => p.FacturaID.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
-                        break;
-                    case "Cliente":
-                        dgvFacturas.DataSource = proc_CargarTodasFacturas_Results.Where(p => p.Cliente.ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
-                        break;
-                    case "Fecha":
-                        dgvFacturas.DataSource = proc_CargarTodasFacturas_Results.Where(p => p.Fecha.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
-                        break;
-                    case "Tipo de Pago":
-                        dgvFacturas.DataSource = proc_CargarTodasFacturas_Results.Where(p => p.TipoDePago.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
-                        break;
-                    case "Tipo de Factura":
-                        dgvFacturas.DataSource = proc_CargarTodasFacturas_Results.Where(p => p.TipoFactura.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
-                        break;
-                    case "NCF":
-                        dgvFacturas.DataSource = proc_CargarTodasFacturas_Results.Where(p => p.NCF.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
-                        break;
-                    case "Cotizacion":
-                        dgvFacturas.DataSource = proc_CargarTodasFacturas_Results.Where(p => p.Cotizacion.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
-                        break;
-                    default:
-                        break;
+                    switch (cbFiltro.SelectedItem.ToString())
+                    {
+                        case "ID":
+                            dgvFacturas.DataSource = proc_CargarTodasFacturas_Results.Where(p => p.FacturaID.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                            break;
+                        case "Cliente":
+                            dgvFacturas.DataSource = proc_CargarTodasFacturas_Results.Where(p => p.Cliente.ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                            break;
+                        case "Fecha":
+                            dgvFacturas.DataSource = proc_CargarTodasFacturas_Results.Where(p => p.Fecha.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                            break;
+                        case "Tipo de Pago":
+                            dgvFacturas.DataSource = proc_CargarTodasFacturas_Results.Where(p => p.TipoDePago.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                            break;
+                        case "Tipo de Factura":
+                            dgvFacturas.DataSource = proc_CargarTodasFacturas_Results.Where(p => p.TipoFactura.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                            break;
+                        case "NCF":
+                            dgvFacturas.DataSource = proc_CargarTodasFacturas_Results.Where(p => p.NCF.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                            break;
+                        case "Cotizacion":
+                            dgvFacturas.DataSource = proc_CargarTodasFacturas_Results.Where(p => p.Cotizacion.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                            break;
+                        default:
+                            break;
+                    }
                 }
             }
             catch (Exception exc)

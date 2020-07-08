@@ -197,29 +197,32 @@ namespace CapaPresentacion.Formularios
         {
             try
             {
-                switch (cbFiltro.SelectedItem.ToString())
+                if (txtFiltro.Text != "Escriba para filtrar...")
                 {
-                    case "ID":
-                        dgvNotasCredito.DataSource = proc_CargarTodasNotasDeCredito_Results.Where(p => p.NotaDeCreditoID.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
-                        break;
-                    case "Cliente":
-                        dgvNotasCredito.DataSource = proc_CargarTodasNotasDeCredito_Results.Where(p => p.Cliente.ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
-                        break;
-                    case "Fecha":
-                        dgvNotasCredito.DataSource = proc_CargarTodasNotasDeCredito_Results.Where(p => p.Fecha.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
-                        break;
-                    case "Factura":
-                        dgvNotasCredito.DataSource = proc_CargarTodasNotasDeCredito_Results.Where(p => p.Factura.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
-                        break;
-                    case "Factura Aplicada":
-                        dgvNotasCredito.DataSource = proc_CargarTodasNotasDeCredito_Results.Where(p => p.FacturaAplicada.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
-                        break;
-                    case "NCF":
-                        dgvNotasCredito.DataSource = proc_CargarTodasNotasDeCredito_Results.Where(p => p.NCF.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
-                        break;
-                    
-                    default:
-                        break;
+                    switch (cbFiltro.SelectedItem.ToString())
+                    {
+                        case "ID":
+                            dgvNotasCredito.DataSource = proc_CargarTodasNotasDeCredito_Results.Where(p => p.NotaDeCreditoID.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                            break;
+                        case "Cliente":
+                            dgvNotasCredito.DataSource = proc_CargarTodasNotasDeCredito_Results.Where(p => p.Cliente.ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                            break;
+                        case "Fecha":
+                            dgvNotasCredito.DataSource = proc_CargarTodasNotasDeCredito_Results.Where(p => p.Fecha.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                            break;
+                        case "Factura":
+                            dgvNotasCredito.DataSource = proc_CargarTodasNotasDeCredito_Results.Where(p => p.Factura.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                            break;
+                        case "Factura Aplicada":
+                            dgvNotasCredito.DataSource = proc_CargarTodasNotasDeCredito_Results.Where(p => p.FacturaAplicada.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                            break;
+                        case "NCF":
+                            dgvNotasCredito.DataSource = proc_CargarTodasNotasDeCredito_Results.Where(p => p.NCF.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                            break;
+
+                        default:
+                            break;
+                    }
                 }
             }
             catch (Exception exc)

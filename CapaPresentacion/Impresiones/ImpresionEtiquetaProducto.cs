@@ -3,16 +3,24 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BarcodeLib;
+using CapaPresentacion.Clases;
+using Microsoft.Reporting.WinForms;
 
 namespace CapaPresentacion.Impresiones
 {
     public partial class ImpresionEtiquetaProducto : Form
     {
+        private int cantidad;
+        ReportParameter[] parameters = new ReportParameter[3];
+
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
@@ -23,14 +31,26 @@ namespace CapaPresentacion.Impresiones
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
 
-        public ImpresionEtiquetaProducto()
+        public ImpresionEtiquetaProducto(string descripcionProd, string codigoBarra, int cantidad)
         {
             InitializeComponent();
+            CargarParametros(descripcionProd, codigoBarra);
+            this.cantidad = cantidad;
         }
 
         private void ImpresionEtiquetaProducto_Load(object sender, EventArgs e)
         {
 
+        }
+
+        public void ImprimirLabel()
+        {
+            for (int i = 0; i < cantidad; i++)
+            {
+                ControladorImpresoraPapelA4 controladorImpresoraPapelA4 = new ControladorImpresoraPapelA4();
+                controladorImpresoraPapelA4.Imprime(CargarImpresionRV());
+            }            
+            this.Close();
         }
 
         private void iconminimizar_Click(object sender, EventArgs e)
@@ -57,5 +77,58 @@ namespace CapaPresentacion.Impresiones
         {
             this.Close();
         }
+
+        private string GenerarCodigoBarra(string codigoBarra)
+        {
+            try
+            {
+                Barcode CodigoBarra = new Barcode();
+                CodigoBarra.IncludeLabel = true;
+
+                using (var b = new Bitmap(CodigoBarra.Encode(TYPE.CODE128, codigoBarra, Color.Black, Color.White)))
+                {
+                    using (var ms = new MemoryStream())
+                    {
+                        b.Save(ms, ImageFormat.Jpeg);
+                        return Convert.ToBase64String(ms.ToArray());
+                    }
+                }
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Error: " + exc.ToString(),
+                  "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Loggeator.EscribeEnArchivo(exc.ToString());
+                return null;
+            }
+        }
+
+        private void CargarParametros(string descripcionProd, string codigoBarra)
+        {
+            parameters[0] = new ReportParameter("NombreEmpresa", Properties.Settings.Default.NombreEmpresa);
+            parameters[1] = new ReportParameter("CodigoBarra", GenerarCodigoBarra(codigoBarra));
+            parameters[2] = new ReportParameter("DescripcionProducto", descripcionProd);
+           
+        }
+
+        private LocalReport CargarImpresionRV()
+        {
+            try
+            {
+                LocalReport rdlc = new LocalReport();
+                rdlc.ReportPath = @"C:/SFacturacion/impresionEtiquetaProducto.rdlc";
+                rdlc.DataSources.Clear();
+                rdlc.EnableExternalImages = true;
+                rdlc.SetParameters(parameters);
+                return rdlc;
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Error: " + exc.ToString(),
+                  "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Loggeator.EscribeEnArchivo(exc.ToString());
+                return null;
+            }
+        }       
     }
 }

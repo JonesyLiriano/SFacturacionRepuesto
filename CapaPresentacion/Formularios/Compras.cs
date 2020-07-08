@@ -239,28 +239,31 @@ namespace CapaPresentacion.Formularios
         {
             try
             {
-                switch (cbFiltro.SelectedItem.ToString())
+                if (txtFiltro.Text != "Escriba para filtrar...")
                 {
-                    case "ID":
-                        dgvCompras.DataSource = proc_CargarTodasOrdenesCompra_Results.Where(p => p.OrdencompraID.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
-                        break;
-                    case "Proveedor":
-                        dgvCompras.DataSource = proc_CargarTodasOrdenesCompra_Results.Where(p => p.Proveedor.ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
-                        break;
-                    case "Tipo de Pago":
-                        dgvCompras.DataSource = proc_CargarTodasOrdenesCompra_Results.Where(p => p.TipoDePago.ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
-                        break;
-                    case "Fecha Pedido":
-                        dgvCompras.DataSource = proc_CargarTodasOrdenesCompra_Results.Where(p => p.FechaPedido.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
-                        break;
-                    case "NCF":
-                        dgvCompras.DataSource = proc_CargarTodasOrdenesCompra_Results.Where(p => p.NCF.ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
-                        break;
-                    case "Completado":
-                        dgvCompras.DataSource = proc_CargarTodasOrdenesCompra_Results.Where(p => p.Completado.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
-                        break;
-                    default:
-                        break;
+                    switch (cbFiltro.SelectedItem.ToString())
+                    {
+                        case "ID":
+                            dgvCompras.DataSource = proc_CargarTodasOrdenesCompra_Results.Where(p => p.OrdencompraID.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                            break;
+                        case "Proveedor":
+                            dgvCompras.DataSource = proc_CargarTodasOrdenesCompra_Results.Where(p => p.Proveedor.ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                            break;
+                        case "Tipo de Pago":
+                            dgvCompras.DataSource = proc_CargarTodasOrdenesCompra_Results.Where(p => p.TipoDePago.ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                            break;
+                        case "Fecha Pedido":
+                            dgvCompras.DataSource = proc_CargarTodasOrdenesCompra_Results.Where(p => p.FechaPedido.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                            break;
+                        case "NCF":
+                            dgvCompras.DataSource = proc_CargarTodasOrdenesCompra_Results.Where(p => p.NCF.ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                            break;
+                        case "Completado":
+                            dgvCompras.DataSource = proc_CargarTodasOrdenesCompra_Results.Where(p => p.Completado.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                            break;
+                        default:
+                            break;
+                    }
                 }
             }
             catch (Exception exc)

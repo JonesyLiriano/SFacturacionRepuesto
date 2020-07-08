@@ -212,11 +212,8 @@ namespace CapaPresentacion.Formularios
         private void CargarCBFiltro()
         {
             cbFiltro.Items.Add("ID");
-            cbFiltro.Items.Add("Servicio");
-            cbFiltro.Items.Add("Codigo de Barra");
             cbFiltro.Items.Add("Descripcion");
             cbFiltro.Items.Add("Unidad de Medida");
-            cbFiltro.Items.Add("Proveedor");
             cbFiltro.SelectedIndex = 0;
         }
         private void txtFiltro_Leave(object sender, EventArgs e)
@@ -241,29 +238,22 @@ namespace CapaPresentacion.Formularios
         {
             try
             {
-                switch (cbFiltro.SelectedItem.ToString())
+                if (txtFiltro.Text != "Escriba para filtrar...")
                 {
-                    case "ID":
-                        dgvProductos.DataSource = proc_CargarTodosProductos_Results.Where(p => p.ProductoID.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
-                        break;
-                    case "Servicio":
-                        dgvProductos.DataSource = proc_CargarTodosProductos_Results.Where(p => p.Servicio.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
-                        break;
-                    case "Codigo de Barra":
-                        dgvProductos.DataSource = proc_CargarTodosProductos_Results.Where(p => p.CodigoBarra.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
-                        break;
-                    case "Descripcion":
-                        dgvProductos.DataSource = proc_CargarTodosProductos_Results.Where(p => p.Descripcion.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
-                        break;
-                    case "Unidad de Medida":
-                        dgvProductos.DataSource = proc_CargarTodosProductos_Results.Where(p => p.UnidadMedida.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
-                        break;
-                    case "Proveedor":
-                        dgvProductos.DataSource = proc_CargarTodosProductos_Results.Where(p => p.Proveedor.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
-                        break;
-
-                    default:
-                        break;
+                    switch (cbFiltro.SelectedItem.ToString())
+                    {
+                        case "ID":
+                            dgvProductos.DataSource = proc_BuscarProductosPorProveedors.Where(p => p.ProductoID.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                            break;
+                        case "Descripcion":
+                            dgvProductos.DataSource = proc_BuscarProductosPorProveedors.Where(p => p.Descripcion.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                            break;
+                        case "Unidad de Medida":
+                            dgvProductos.DataSource = proc_BuscarProductosPorProveedors.Where(p => p.UnidadMedida.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                            break;
+                        default:
+                            break;
+                    }
                 }
             }
             catch (Exception exc)

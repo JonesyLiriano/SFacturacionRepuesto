@@ -90,7 +90,7 @@
             this.MenuVertical.Dock = System.Windows.Forms.DockStyle.Left;
             this.MenuVertical.Location = new System.Drawing.Point(0, 0);
             this.MenuVertical.Name = "MenuVertical";
-            this.MenuVertical.Size = new System.Drawing.Size(250, 1029);
+            this.MenuVertical.Size = new System.Drawing.Size(250, 780);
             this.MenuVertical.TabIndex = 0;
             // 
             // btnNotasCredito
@@ -491,7 +491,7 @@
             this.panelContenedor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelContenedor.Location = new System.Drawing.Point(250, 80);
             this.panelContenedor.Name = "panelContenedor";
-            this.panelContenedor.Size = new System.Drawing.Size(1170, 949);
+            this.panelContenedor.Size = new System.Drawing.Size(1170, 700);
             this.panelContenedor.TabIndex = 2;
             this.panelContenedor.ControlRemoved += new System.Windows.Forms.ControlEventHandler(this.panelContenedor_ControlRemoved);
             // 
@@ -499,7 +499,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1420, 1029);
+            this.ClientSize = new System.Drawing.Size(1420, 780);
             this.Controls.Add(this.panelContenedor);
             this.Controls.Add(this.BarraTitulo);
             this.Controls.Add(this.MenuVertical);

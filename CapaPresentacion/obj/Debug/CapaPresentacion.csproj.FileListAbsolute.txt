@@ -216,3 +216,5 @@ F:\C#\SFacturacion\CapaPresentacion\obj\Debug\CapaPresentacion.Reportes.ReporteP
 F:\C#\SFacturacion\CapaPresentacion\obj\Debug\CapaPresentacion.Reportes.ReporteTodasFacturas.resources
 F:\C#\SFacturacion\CapaPresentacion\obj\Debug\CapaPresentacion.Reportes.ReporteGanancias.resources
 F:\C#\SFacturacion\CapaPresentacion\obj\Debug\CapaPresentacion.Impresiones.ImpresionEtiquetaProducto.resources
+F:\C#\SFacturacion\CapaPresentacion\bin\Debug\BarcodeLib.dll
+F:\C#\SFacturacion\CapaPresentacion\obj\Debug\CapaPresentacion.Formularios.CantidadEtiquetasImprimir.resources

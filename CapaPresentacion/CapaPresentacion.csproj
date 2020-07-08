@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BarcodeLib, Version=1.3.0.0, Culture=neutral, PublicKeyToken=5f09bda868cc39e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\BarcodeLib.1.3.0.0\lib\net20\BarcodeLib.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -99,6 +102,12 @@
     <Compile Include="Clases\ControladorGoogleDrive.cs" />
     <Compile Include="Clases\ControladorImpresoraMatricial.cs" />
     <Compile Include="Clases\ControladorImpresoraPapelA4.cs" />
+    <Compile Include="Formularios\CantidadEtiquetasImprimir.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\CantidadEtiquetasImprimir.Designer.cs">
+      <DependentUpon>CantidadEtiquetasImprimir.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Clientes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -367,6 +376,9 @@
       <DependentUpon>ReporteTodasFacturas.cs</DependentUpon>
     </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <EmbeddedResource Include="Formularios\CantidadEtiquetasImprimir.resx">
+      <DependentUpon>CantidadEtiquetasImprimir.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Clientes.resx">
       <DependentUpon>Clientes.cs</DependentUpon>
     </EmbeddedResource>
