@@ -21,5 +21,8 @@ namespace CapaDatos
         public decimal Precio { get; set; }
         public decimal ITBIS { get; set; }
         public decimal Descuento { get; set; }
+    
+        public virtual Cotizacione Cotizacione { get; set; }
+        public virtual Producto Producto { get; set; }
     }
 }

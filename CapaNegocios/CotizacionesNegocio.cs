@@ -48,12 +48,5 @@ namespace CapaNegocios
         {
             return cotizacionDatos.CargarComprobanteCotizacion(cotizacionID);
         }
-
-        
-        public ObjectResult<proc_CargarCotizacionesPFecha_Result> CargarCotizacionesPFecha(DateTime fInicial, DateTime fFinal)
-        {
-            return cotizacionDatos.CargarCotizacionesPFecha(fInicial, fFinal);
-        }
-
     }
 }

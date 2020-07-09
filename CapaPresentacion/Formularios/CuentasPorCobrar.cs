@@ -61,7 +61,7 @@ namespace CapaPresentacion.Formularios
             {     
                 if (dgvLineasCreditoVenta.SelectedRows.Count > 0)
                 {
-                    if (Convert.ToBoolean(dgvLineasCreditoVenta.Rows[dgvLineasCreditoVenta.CurrentRow.Index].Cells["Completado"].Value))
+                    if (!Convert.ToBoolean(dgvLineasCreditoVenta.Rows[dgvLineasCreditoVenta.CurrentRow.Index].Cells["Completado"].Value))
                     {
                         RegistrarCobro registrarCobro = new RegistrarCobro(
                             Convert.ToInt32(dgvLineasCreditoVenta.CurrentRow.Cells["LineaCreditoVentaID"].Value)

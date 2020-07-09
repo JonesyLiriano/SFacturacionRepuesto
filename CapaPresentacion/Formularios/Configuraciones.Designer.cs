@@ -163,7 +163,7 @@
             this.txtSNCredito.Location = new System.Drawing.Point(183, 25);
             this.txtSNCredito.Name = "txtSNCredito";
             this.txtSNCredito.Size = new System.Drawing.Size(123, 26);
-            this.txtSNCredito.TabIndex = 0;
+            this.txtSNCredito.TabIndex = 50;
             // 
             // label6
             // 
@@ -196,7 +196,7 @@
             this.txtSFacturaGubernamental.Location = new System.Drawing.Point(184, 147);
             this.txtSFacturaGubernamental.Name = "txtSFacturaGubernamental";
             this.txtSFacturaGubernamental.Size = new System.Drawing.Size(123, 26);
-            this.txtSFacturaGubernamental.TabIndex = 5;
+            this.txtSFacturaGubernamental.TabIndex = 49;
             // 
             // label13
             // 
@@ -213,7 +213,7 @@
             this.txtSFacturaFinal.Location = new System.Drawing.Point(183, 92);
             this.txtSFacturaFinal.Name = "txtSFacturaFinal";
             this.txtSFacturaFinal.Size = new System.Drawing.Size(123, 26);
-            this.txtSFacturaFinal.TabIndex = 3;
+            this.txtSFacturaFinal.TabIndex = 48;
             // 
             // label7
             // 
@@ -230,7 +230,7 @@
             this.txtSFacturaFiscal.Location = new System.Drawing.Point(182, 30);
             this.txtSFacturaFiscal.Name = "txtSFacturaFiscal";
             this.txtSFacturaFiscal.Size = new System.Drawing.Size(123, 26);
-            this.txtSFacturaFiscal.TabIndex = 2;
+            this.txtSFacturaFiscal.TabIndex = 47;
             // 
             // label8
             // 
@@ -259,7 +259,7 @@
             this.dtFechaVencimiento.Location = new System.Drawing.Point(182, 18);
             this.dtFechaVencimiento.Name = "dtFechaVencimiento";
             this.dtFechaVencimiento.Size = new System.Drawing.Size(123, 26);
-            this.dtFechaVencimiento.TabIndex = 4;
+            this.dtFechaVencimiento.TabIndex = 51;
             // 
             // label9
             // 
@@ -292,7 +292,7 @@
             this.txtImpresoraTermica.Location = new System.Drawing.Point(162, 125);
             this.txtImpresoraTermica.Name = "txtImpresoraTermica";
             this.txtImpresoraTermica.Size = new System.Drawing.Size(175, 26);
-            this.txtImpresoraTermica.TabIndex = 4;
+            this.txtImpresoraTermica.TabIndex = 61;
             // 
             // label17
             // 
@@ -310,7 +310,7 @@
             this.cbTipoImpresora.Location = new System.Drawing.Point(163, 76);
             this.cbTipoImpresora.Name = "cbTipoImpresora";
             this.cbTipoImpresora.Size = new System.Drawing.Size(174, 28);
-            this.cbTipoImpresora.TabIndex = 2;
+            this.cbTipoImpresora.TabIndex = 60;
             this.cbTipoImpresora.Validating += new System.ComponentModel.CancelEventHandler(this.cbTipoImpresora_Validating);
             // 
             // label15
@@ -328,7 +328,7 @@
             this.txtNombreImpresora.Location = new System.Drawing.Point(162, 27);
             this.txtNombreImpresora.Name = "txtNombreImpresora";
             this.txtNombreImpresora.Size = new System.Drawing.Size(175, 26);
-            this.txtNombreImpresora.TabIndex = 0;
+            this.txtNombreImpresora.TabIndex = 59;
             // 
             // label12
             // 
@@ -370,7 +370,7 @@
             this.txtEmail.Location = new System.Drawing.Point(163, 238);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(175, 26);
-            this.txtEmail.TabIndex = 62;
+            this.txtEmail.TabIndex = 57;
             // 
             // label16
             // 
@@ -395,7 +395,7 @@
             this.btnCargarLogo.Location = new System.Drawing.Point(162, 363);
             this.btnCargarLogo.Name = "btnCargarLogo";
             this.btnCargarLogo.Size = new System.Drawing.Size(175, 35);
-            this.btnCargarLogo.TabIndex = 61;
+            this.btnCargarLogo.TabIndex = 58;
             this.btnCargarLogo.Text = "Cargar Logo";
             this.btnCargarLogo.UseVisualStyleBackColor = false;
             this.btnCargarLogo.Click += new System.EventHandler(this.btnCargarLogo_Click);
@@ -426,7 +426,7 @@
             this.txtRNCoCedula.Location = new System.Drawing.Point(163, 198);
             this.txtRNCoCedula.Name = "txtRNCoCedula";
             this.txtRNCoCedula.Size = new System.Drawing.Size(175, 26);
-            this.txtRNCoCedula.TabIndex = 7;
+            this.txtRNCoCedula.TabIndex = 56;
             // 
             // label11
             // 
@@ -444,7 +444,7 @@
             this.txtRazonSocial.Location = new System.Drawing.Point(162, 159);
             this.txtRazonSocial.Name = "txtRazonSocial";
             this.txtRazonSocial.Size = new System.Drawing.Size(176, 26);
-            this.txtRazonSocial.TabIndex = 5;
+            this.txtRazonSocial.TabIndex = 55;
             // 
             // label10
             // 
@@ -462,7 +462,7 @@
             this.txtTelefono.Location = new System.Drawing.Point(162, 121);
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(175, 26);
-            this.txtTelefono.TabIndex = 3;
+            this.txtTelefono.TabIndex = 54;
             // 
             // label1
             // 
@@ -481,7 +481,7 @@
             this.txtDireccion.Multiline = true;
             this.txtDireccion.Name = "txtDireccion";
             this.txtDireccion.Size = new System.Drawing.Size(176, 37);
-            this.txtDireccion.TabIndex = 1;
+            this.txtDireccion.TabIndex = 53;
             // 
             // label3
             // 
@@ -499,7 +499,7 @@
             this.txtNombreEmpresa.Location = new System.Drawing.Point(162, 35);
             this.txtNombreEmpresa.Name = "txtNombreEmpresa";
             this.txtNombreEmpresa.Size = new System.Drawing.Size(176, 26);
-            this.txtNombreEmpresa.TabIndex = 0;
+            this.txtNombreEmpresa.TabIndex = 52;
             // 
             // label4
             // 

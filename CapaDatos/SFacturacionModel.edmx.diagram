@@ -10,7 +10,7 @@
         <EntityTypeShape EntityType="SFacturacionModel.DetalleFactura" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
         <EntityTypeShape EntityType="SFacturacionModel.DetalleNotaDeCredito" Width="1.5" PointX="8.25" PointY="4.125" IsExpanded="true" />
         <EntityTypeShape EntityType="SFacturacionModel.DetalleOrdenesCompra" Width="1.5" PointX="9" PointY="18.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="SFacturacionModel.Factura" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SFacturacionModel.Factura" Width="2" PointX="0.5" PointY="5.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SFacturacionModel.FacturasCompra" Width="1.5" PointX="9.875" PointY="12.5" IsExpanded="true" />
         <EntityTypeShape EntityType="SFacturacionModel.LineasCreditoVenta" Width="1.5" PointX="3" PointY="8.875" IsExpanded="true" />
         <EntityTypeShape EntityType="SFacturacionModel.NotasDeCredito" Width="1.5" PointX="6.375" PointY="4.125" IsExpanded="true" />
@@ -18,7 +18,7 @@
         <EntityTypeShape EntityType="SFacturacionModel.Producto" Width="1.5" PointX="6" PointY="12.5" IsExpanded="true" />
         <EntityTypeShape EntityType="SFacturacionModel.Proveedore" Width="1.5" PointX="3.75" PointY="13.125" IsExpanded="true" />
         <EntityTypeShape EntityType="SFacturacionModel.TiposFactura" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SFacturacionModel.TiposPago" Width="1.5" PointX="6.75" PointY="21.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SFacturacionModel.TiposPago" Width="1.5" PointX="10.375" PointY="4.875" IsExpanded="true" />
         <EntityTypeShape EntityType="SFacturacionModel.User" Width="1.5" PointX="3.75" PointY="1.375" IsExpanded="true" />
         <AssociationConnector Association="SFacturacionModel.FK_CobrosVentasCredito_LineasCredito" ManuallyRouted="false" />
         <AssociationConnector Association="SFacturacionModel.FK_CobrosVentasCredito_LineasCreditoVentas" ManuallyRouted="false" />
@@ -27,18 +27,38 @@
         <AssociationConnector Association="SFacturacionModel.FK_DetalleFacturas_Productos" ManuallyRouted="false" />
         <AssociationConnector Association="SFacturacionModel.FK_DetalleNotaDeCredito_NotasDeCredito" ManuallyRouted="false" />
         <AssociationConnector Association="SFacturacionModel.FK_DetalleNotaDeCredito_Productos" ManuallyRouted="false" />
-        <AssociationConnector Association="SFacturacionModel.FK_DetalleOrdenesCompra_OrdenesCompra" ManuallyRouted="false" />
         <AssociationConnector Association="SFacturacionModel.FK_LineasCredito_Facturas" ManuallyRouted="false" />
         <AssociationConnector Association="SFacturacionModel.FK_LineasCreditoVentas_Facturas" ManuallyRouted="false" />
         <AssociationConnector Association="SFacturacionModel.FK_NotasDeCredito_Facturas" ManuallyRouted="false" />
-        <AssociationConnector Association="SFacturacionModel.FK_FacturasCompra_OrdenesCompra" ManuallyRouted="false" />
         <AssociationConnector Association="SFacturacionModel.FK_FacturasCompra_TiposPago" ManuallyRouted="false" />
         <AssociationConnector Association="SFacturacionModel.FK_NotasDeCredito_Users" ManuallyRouted="false" />
         <AssociationConnector Association="SFacturacionModel.FK_Productos_Proveedores" ManuallyRouted="false" />
         <EntityTypeShape EntityType="SFacturacionModel.Cotizacione" Width="1.5" PointX="8.375" PointY="0.75" />
         <EntityTypeShape EntityType="SFacturacionModel.DetalleCotizacione" Width="1.5" PointX="8.375" PointY="7.75" />
         <EntityTypeShape EntityType="SFacturacionModel.LineasCreditoCompra" Width="1.5" PointX="10.375" PointY="0.75" />
-        <EntityTypeShape EntityType="SFacturacionModel.PagosComprasCredito" Width="1.5" PointX="10.375" PointY="6.75" />
+        <EntityTypeShape EntityType="SFacturacionModel.PagosComprasCredito" Width="2.375" PointX="13.875" PointY="1.875" />
+        <AssociationConnector Association="SFacturacionModel.FK_Cotizaciones_Clientes" />
+        <AssociationConnector Association="SFacturacionModel.FK_Facturas_Clientes" />
+        <AssociationConnector Association="SFacturacionModel.FK_Cotizaciones_Users" />
+        <AssociationConnector Association="SFacturacionModel.FK_DetalleCotizaciones_Cotizaciones" />
+        <AssociationConnector Association="SFacturacionModel.FK_DetalleCotizaciones_Productos" />
+        <AssociationConnector Association="SFacturacionModel.FK_DetalleOrdenesCompra_OrdenesCompra1" />
+        <AssociationConnector Association="SFacturacionModel.FK_Facturas_TiposFactura" />
+        <AssociationConnector Association="SFacturacionModel.FK_Facturas_TiposPago" />
+        <AssociationConnector Association="SFacturacionModel.FK_Facturas_Users" />
+        <AssociationConnector Association="SFacturacionModel.FK_NotasDeCredito_FacturasAplicar" />
+        <AssociationConnector Association="SFacturacionModel.FK_FacturasCompra_OrdenesCompra1" />
+        <AssociationConnector Association="SFacturacionModel.FK_LineasCreditoCompras_FacturasCompra" />
+        <AssociationConnector Association="SFacturacionModel.FK_PagosComprasCredito_LineasCreditoCompras" ManuallyRouted="true" >
+          <ConnectorPoint PointX="11.875" PointY="2.6261105152459439" />
+          <ConnectorPoint PointX="12.535" PointY="2.6261105152459439" />
+          <ConnectorPoint PointX="12.535" PointY="2.4594438485792773" />
+          <ConnectorPoint PointX="13.215" PointY="2.4594438485792773" />
+          <ConnectorPoint PointX="13.215" PointY="2.6261105152459439" />
+          <ConnectorPoint PointX="13.875" PointY="2.6261105152459439" />
+        </AssociationConnector>
+        <AssociationConnector Association="SFacturacionModel.FK_OrdenesCompra_Proveedores" />
+        <AssociationConnector Association="SFacturacionModel.FK_PagosComprasCredito_Users" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

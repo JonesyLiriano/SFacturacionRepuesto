@@ -13,7 +13,6 @@ namespace CapaDatos
     
     public partial class proc_CargarOrdenesCompraPFecha_Result
     {
-        public int OrdencompraID { get; set; }
         public int ProveedorID { get; set; }
         public string NCF { get; set; }
         public System.DateTime FechaPedido { get; set; }
@@ -26,5 +25,6 @@ namespace CapaDatos
         public Nullable<System.DateTime> FechaVencimiento { get; set; }
         public string TipoDePago { get; set; }
         public Nullable<int> FacturaCompraID { get; set; }
+        public int OrdenCompraID { get; set; }
     }
 }

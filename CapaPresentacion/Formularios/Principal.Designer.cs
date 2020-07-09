@@ -90,7 +90,7 @@
             this.MenuVertical.Dock = System.Windows.Forms.DockStyle.Left;
             this.MenuVertical.Location = new System.Drawing.Point(0, 0);
             this.MenuVertical.Name = "MenuVertical";
-            this.MenuVertical.Size = new System.Drawing.Size(250, 780);
+            this.MenuVertical.Size = new System.Drawing.Size(250, 953);
             this.MenuVertical.TabIndex = 0;
             // 
             // btnNotasCredito
@@ -102,9 +102,9 @@
             this.btnNotasCredito.ForeColor = System.Drawing.Color.White;
             this.btnNotasCredito.Image = ((System.Drawing.Image)(resources.GetObject("btnNotasCredito.Image")));
             this.btnNotasCredito.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNotasCredito.Location = new System.Drawing.Point(3, 548);
+            this.btnNotasCredito.Location = new System.Drawing.Point(1, 548);
             this.btnNotasCredito.Name = "btnNotasCredito";
-            this.btnNotasCredito.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnNotasCredito.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.btnNotasCredito.Size = new System.Drawing.Size(248, 60);
             this.btnNotasCredito.TabIndex = 24;
             this.btnNotasCredito.Text = "Notas de Credito";
@@ -122,7 +122,7 @@
             this.btnReportes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnReportes.Location = new System.Drawing.Point(1, 746);
             this.btnReportes.Name = "btnReportes";
-            this.btnReportes.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnReportes.Padding = new System.Windows.Forms.Padding(10, 0, 15, 0);
             this.btnReportes.Size = new System.Drawing.Size(248, 60);
             this.btnReportes.TabIndex = 23;
             this.btnReportes.Text = "Reportes";
@@ -140,7 +140,7 @@
             this.btnCXP.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCXP.Location = new System.Drawing.Point(1, 680);
             this.btnCXP.Name = "btnCXP";
-            this.btnCXP.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnCXP.Padding = new System.Windows.Forms.Padding(10, 0, 15, 0);
             this.btnCXP.Size = new System.Drawing.Size(248, 60);
             this.btnCXP.TabIndex = 22;
             this.btnCXP.Text = "CXP";
@@ -158,7 +158,7 @@
             this.btnCXC.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCXC.Location = new System.Drawing.Point(1, 614);
             this.btnCXC.Name = "btnCXC";
-            this.btnCXC.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnCXC.Padding = new System.Windows.Forms.Padding(10, 0, 15, 0);
             this.btnCXC.Size = new System.Drawing.Size(248, 60);
             this.btnCXC.TabIndex = 21;
             this.btnCXC.Text = "CXC";
@@ -176,7 +176,7 @@
             this.btnFacturas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnFacturas.Location = new System.Drawing.Point(1, 482);
             this.btnFacturas.Name = "btnFacturas";
-            this.btnFacturas.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnFacturas.Padding = new System.Windows.Forms.Padding(10, 0, 15, 0);
             this.btnFacturas.Size = new System.Drawing.Size(248, 60);
             this.btnFacturas.TabIndex = 20;
             this.btnFacturas.Text = "Facturas";
@@ -194,7 +194,7 @@
             this.btnCotizaciones.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCotizaciones.Location = new System.Drawing.Point(1, 416);
             this.btnCotizaciones.Name = "btnCotizaciones";
-            this.btnCotizaciones.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnCotizaciones.Padding = new System.Windows.Forms.Padding(10, 0, 15, 0);
             this.btnCotizaciones.Size = new System.Drawing.Size(248, 60);
             this.btnCotizaciones.TabIndex = 19;
             this.btnCotizaciones.Text = "Cotizaciones";
@@ -212,7 +212,7 @@
             this.btnConfiguraciones.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnConfiguraciones.Location = new System.Drawing.Point(1, 878);
             this.btnConfiguraciones.Name = "btnConfiguraciones";
-            this.btnConfiguraciones.Padding = new System.Windows.Forms.Padding(10, 0, 17, 0);
+            this.btnConfiguraciones.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.btnConfiguraciones.Size = new System.Drawing.Size(248, 60);
             this.btnConfiguraciones.TabIndex = 18;
             this.btnConfiguraciones.Text = "     Configuraciones";
@@ -230,7 +230,7 @@
             this.btnProveedores.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnProveedores.Location = new System.Drawing.Point(1, 350);
             this.btnProveedores.Name = "btnProveedores";
-            this.btnProveedores.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnProveedores.Padding = new System.Windows.Forms.Padding(10, 0, 15, 0);
             this.btnProveedores.Size = new System.Drawing.Size(248, 60);
             this.btnProveedores.TabIndex = 4;
             this.btnProveedores.Text = "Proveedores";
@@ -261,7 +261,7 @@
             this.lbUsuario.AutoSize = true;
             this.lbUsuario.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbUsuario.ForeColor = System.Drawing.Color.White;
-            this.lbUsuario.Location = new System.Drawing.Point(77, 1001);
+            this.lbUsuario.Location = new System.Drawing.Point(77, 976);
             this.lbUsuario.Name = "lbUsuario";
             this.lbUsuario.Size = new System.Drawing.Size(54, 17);
             this.lbUsuario.TabIndex = 16;
@@ -270,7 +270,7 @@
             // pbUsuarioFoto
             // 
             this.pbUsuarioFoto.Image = ((System.Drawing.Image)(resources.GetObject("pbUsuarioFoto.Image")));
-            this.pbUsuarioFoto.Location = new System.Drawing.Point(1, 969);
+            this.pbUsuarioFoto.Location = new System.Drawing.Point(1, 944);
             this.pbUsuarioFoto.Name = "pbUsuarioFoto";
             this.pbUsuarioFoto.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
             this.pbUsuarioFoto.Size = new System.Drawing.Size(70, 61);
@@ -283,7 +283,7 @@
             this.lbCargoUsuario.AutoSize = true;
             this.lbCargoUsuario.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbCargoUsuario.ForeColor = System.Drawing.Color.White;
-            this.lbCargoUsuario.Location = new System.Drawing.Point(77, 984);
+            this.lbCargoUsuario.Location = new System.Drawing.Point(77, 959);
             this.lbCargoUsuario.Name = "lbCargoUsuario";
             this.lbCargoUsuario.Size = new System.Drawing.Size(50, 17);
             this.lbCargoUsuario.TabIndex = 14;
@@ -300,7 +300,7 @@
             this.btnUsuarios.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnUsuarios.Location = new System.Drawing.Point(1, 812);
             this.btnUsuarios.Name = "btnUsuarios";
-            this.btnUsuarios.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnUsuarios.Padding = new System.Windows.Forms.Padding(10, 0, 15, 0);
             this.btnUsuarios.Size = new System.Drawing.Size(248, 60);
             this.btnUsuarios.TabIndex = 6;
             this.btnUsuarios.Text = "Usuarios";
@@ -318,7 +318,7 @@
             this.btnCompras.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCompras.Location = new System.Drawing.Point(1, 284);
             this.btnCompras.Name = "btnCompras";
-            this.btnCompras.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnCompras.Padding = new System.Windows.Forms.Padding(10, 0, 15, 0);
             this.btnCompras.Size = new System.Drawing.Size(248, 60);
             this.btnCompras.TabIndex = 5;
             this.btnCompras.Text = "Compras";
@@ -336,7 +336,7 @@
             this.btnClientes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnClientes.Location = new System.Drawing.Point(1, 218);
             this.btnClientes.Name = "btnClientes";
-            this.btnClientes.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnClientes.Padding = new System.Windows.Forms.Padding(10, 0, 15, 0);
             this.btnClientes.Size = new System.Drawing.Size(248, 60);
             this.btnClientes.TabIndex = 3;
             this.btnClientes.Text = "Clientes";
@@ -354,7 +354,7 @@
             this.btnVentas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnVentas.Location = new System.Drawing.Point(1, 86);
             this.btnVentas.Name = "btnVentas";
-            this.btnVentas.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.btnVentas.Padding = new System.Windows.Forms.Padding(10, 0, 15, 0);
             this.btnVentas.Size = new System.Drawing.Size(248, 60);
             this.btnVentas.TabIndex = 2;
             this.btnVentas.Text = "Ventas";
@@ -372,7 +372,7 @@
             this.btnProductos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnProductos.Location = new System.Drawing.Point(1, 152);
             this.btnProductos.Name = "btnProductos";
-            this.btnProductos.Padding = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.btnProductos.Padding = new System.Windows.Forms.Padding(10, 0, 15, 0);
             this.btnProductos.Size = new System.Drawing.Size(248, 60);
             this.btnProductos.TabIndex = 1;
             this.btnProductos.Text = "Productos";
@@ -403,7 +403,7 @@
             this.labelBarraMenu.AutoSize = true;
             this.labelBarraMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelBarraMenu.ForeColor = System.Drawing.Color.White;
-            this.labelBarraMenu.Location = new System.Drawing.Point(615, 34);
+            this.labelBarraMenu.Location = new System.Drawing.Point(605, 33);
             this.labelBarraMenu.Name = "labelBarraMenu";
             this.labelBarraMenu.Size = new System.Drawing.Size(0, 20);
             this.labelBarraMenu.TabIndex = 2;
@@ -413,7 +413,7 @@
             this.pbBarraMenu.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pbBarraMenu.ErrorImage = ((System.Drawing.Image)(resources.GetObject("pbBarraMenu.ErrorImage")));
-            this.pbBarraMenu.Location = new System.Drawing.Point(556, 16);
+            this.pbBarraMenu.Location = new System.Drawing.Point(546, 15);
             this.pbBarraMenu.Name = "pbBarraMenu";
             this.pbBarraMenu.Padding = new System.Windows.Forms.Padding(10, 10, 0, 0);
             this.pbBarraMenu.Size = new System.Drawing.Size(53, 50);
@@ -491,7 +491,7 @@
             this.panelContenedor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelContenedor.Location = new System.Drawing.Point(250, 80);
             this.panelContenedor.Name = "panelContenedor";
-            this.panelContenedor.Size = new System.Drawing.Size(1170, 700);
+            this.panelContenedor.Size = new System.Drawing.Size(1170, 873);
             this.panelContenedor.TabIndex = 2;
             this.panelContenedor.ControlRemoved += new System.Windows.Forms.ControlEventHandler(this.panelContenedor_ControlRemoved);
             // 
@@ -499,10 +499,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1420, 780);
+            this.ClientSize = new System.Drawing.Size(1420, 953);
             this.Controls.Add(this.panelContenedor);
             this.Controls.Add(this.BarraTitulo);
             this.Controls.Add(this.MenuVertical);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Principal";

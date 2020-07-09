@@ -21,19 +21,7 @@ namespace CapaNegocios
         public ObjectResult<proc_CargarTodasLineasCreditoVentas_Result> CargarTodasLineasCreditoVentas()
         {
            return lineasCreditoVentasDatos.CargarTodasLineasCreditoVentas();
-        }
-        public ObjectResult<proc_CargarTodasLineasCreditoVentasCompletadas_Result> CargarTodasLineasCreditoVentasCompletadas()
-        {
-            return lineasCreditoVentasDatos.CargarTodasLineasCreditoVentasCompletadas();
-        }
-        public ObjectResult<proc_CargarTodasLineasCreditoVentasPendientes_Result> CargarTodasLineasCreditoVentasPendientes()
-        {
-            return lineasCreditoVentasDatos.CargarTodasLineasCreditoVentasPendientes();
-        }
-        public ObjectResult<proc_CargarTodasLineasCreditoVentasVencidas_Result> CargarTodasLineasCreditoVentasVencidas()
-        {
-            return lineasCreditoVentasDatos.CargarTodasLineasCreditoVentasVencidas();
-        }
+        }        
        
         public bool ActualizarLineaCreditoVenta(int lineaCreditoVentaID, bool estatus)
         {
@@ -43,20 +31,6 @@ namespace CapaNegocios
         public int BuscarLineaDeCreditoVentaIDFactura(int facturaID)
         {
             return lineasCreditoVentasDatos.BuscarLineaDeCreditoVentaIDFactura(facturaID);
-        }
-
-        public ObjectResult<proc_CargarLineasCreditoVentasPendientesPFecha_Result> CargarLineasCreditoVentasPendientesPFecha(DateTime fInicial, DateTime fFinal)
-        {
-            return lineasCreditoVentasDatos.CargarLineasCreditoVentasPendientesPFecha(fInicial, fFinal);
-        }
-        public ObjectResult<proc_CargarLineasCreditoVentasCompletadasPFecha_Result> CargarLineasCreditoVentasCompletadasPFecha(DateTime fInicial, DateTime fFinal)
-        {
-            return lineasCreditoVentasDatos.CargarLineasCreditoVentasCompletadasPFecha(fInicial, fFinal);
-        }
-        public ObjectResult<proc_CargarLineasCreditoVentasVencidas30PFecha_Result> CargarLineasCreditoVentasVencidas30PFecha(DateTime fInicial, DateTime fFinal)
-        {
-            return lineasCreditoVentasDatos.CargarLineasCreditoVentasVencidas30PFecha(fInicial, fFinal);
-
-        }
+        }      
     }
 }

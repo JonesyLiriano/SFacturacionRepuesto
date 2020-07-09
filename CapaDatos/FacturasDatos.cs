@@ -41,25 +41,7 @@ namespace CapaDatos
         {
             var result = modelDB.proc_CargarProductosFactura(facturaID);
             return result;
-        }
-
-        public bool ConfirmarFacturaYCliente(int facturaID, int clienteID)
-        {
-            modelDB.proc_ConfirmarFacturaYCliente(facturaID,clienteID, resultado);
-            return (bool) resultado.Value;
-        }
-
-        public bool BuscarFacturaPorID(int facturaID)
-        {
-            modelDB.proc_BuscarFacturaPorID(facturaID, resultado);
-            return (bool)resultado.Value;
-        }
-
-        public Tuple<DateTime?, decimal?> BuscarFechaFacturaYDescuento(int facturaID)
-        {
-            modelDB.proc_BuscarFechaFacturaYDescuento(facturaID, fecha,descuentoCliente);
-            return Tuple.Create((DateTime?)fecha.Value,(decimal?)descuentoCliente.Value);
-        }
+        }       
 
         public ObjectResult<proc_CargarTodasFacturas_Result> CargarTodasFacturas()
         {

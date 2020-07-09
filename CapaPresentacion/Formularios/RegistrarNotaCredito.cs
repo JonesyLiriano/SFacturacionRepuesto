@@ -126,63 +126,15 @@ namespace CapaPresentacion.Formularios
             {
                 cbFacturasAAplicar.Focus();
             }
-        }
-
-        private void cbClientes_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cbClientes.SelectedIndex != -1)
-            {
-                CargarCBFacturas(Convert.ToInt32(cbClientes.SelectedValue));
-                CargarCBFacturasAAplicar(Convert.ToInt32(cbClientes.SelectedValue));
-                
-            }
-            else
-            {
-                cbFacturasAAplicar.DataSource = null;
-                CargarCBFacturas();                              
-            }
-            LimpiarTxtFacturaAAplicar();
-        }
+        }      
 
         private void LimpiarTxtFacturaAAplicar()
         {
             txtBalancePendiente.Clear();
             txtMontoFactura.Clear();
         }
-        private void cbFacturas_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cbFacturas.SelectedIndex != -1)
-            {
-                cbClientes.SelectedValue = proc_CargarTodasFacturas_Results.Where(r => r.FacturaID == Convert.ToInt32(cbFacturas.SelectedValue))
-                .FirstOrDefault().ClienteID;
-                txtFechaFactura.Text = proc_CargarTodasFacturas_Results.Where(r => r.FacturaID == Convert.ToInt32(cbFacturas.SelectedValue))
-                .FirstOrDefault().Fecha.ToString();
-                descuentoCliente = proc_CargarTodasFacturas_Results.Where(r => r.FacturaID == Convert.ToInt32(cbFacturas.SelectedValue))
-                .FirstOrDefault().DescuentoCliente;
-
-                // Diferencia de días
-                if ((12 * (Convert.ToDateTime(txtFechaFactura.Text).Year - DateTime.Today.Date.Year) + Convert.ToDateTime(txtFechaFactura.Text).Month - DateTime.Today.Date.Month) < 1)
-                {
-                    checkBoxITBIS.Checked = true;
-                }
-                else
-                {
-                    checkBoxITBIS.Checked = false;
-                }
-            }
-            else
-            {
-                txtFechaFactura.Clear();
-            }
-        }
-
-        private void cbFacturasAAplicar_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cbFacturasAAplicar.SelectedIndex != -1)
-            {
-                CargarTxtFacturaAAplicar();
-            }
-        }
+       
+      
          private void CargarTxtFacturaAAplicar()
         {
             try
@@ -391,6 +343,57 @@ namespace CapaPresentacion.Formularios
             else
             {
                 txtValorAplicarNotaCredito.Text = valorFacturaTotalSinITBIS.ToString("C", ci);
+            }
+        }
+
+        private void cbClientes_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            if (cbClientes.SelectedIndex != -1)
+            {
+                CargarCBFacturas(Convert.ToInt32(cbClientes.SelectedValue));
+                CargarCBFacturasAAplicar(Convert.ToInt32(cbClientes.SelectedValue));
+
+            }
+            else
+            {
+                cbFacturasAAplicar.DataSource = null;
+                CargarCBFacturas();
+            }
+            LimpiarTxtFacturaAAplicar();
+        }
+
+        private void cbFacturas_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            if (cbFacturas.SelectedIndex != -1)
+            {
+                cbClientes.SelectedValue = proc_CargarTodasFacturas_Results.Where(r => r.FacturaID == Convert.ToInt32(cbFacturas.SelectedValue))
+                .FirstOrDefault().ClienteID;
+                txtFechaFactura.Text = proc_CargarTodasFacturas_Results.Where(r => r.FacturaID == Convert.ToInt32(cbFacturas.SelectedValue))
+                .FirstOrDefault().Fecha.ToString();
+                descuentoCliente = proc_CargarTodasFacturas_Results.Where(r => r.FacturaID == Convert.ToInt32(cbFacturas.SelectedValue))
+                .FirstOrDefault().DescuentoCliente;
+
+                // Diferencia de días
+                if ((12 * (Convert.ToDateTime(txtFechaFactura.Text).Year - DateTime.Today.Date.Year) + Convert.ToDateTime(txtFechaFactura.Text).Month - DateTime.Today.Date.Month) < 1)
+                {
+                    checkBoxITBIS.Checked = true;
+                }
+                else
+                {
+                    checkBoxITBIS.Checked = false;
+                }
+            }
+            else
+            {
+                txtFechaFactura.Clear();
+            }
+        }
+
+        private void cbFacturasAAplicar_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            if (cbFacturasAAplicar.SelectedIndex != -1)
+            {
+                CargarTxtFacturaAAplicar();
             }
         }
 

@@ -92,6 +92,7 @@ namespace CapaPresentacion.Formularios
                 dgvFacturas.Columns["Usuario"].DisplayIndex = 10;
                 dgvFacturas.Columns["ClienteID"].DisplayIndex = 11;
 
+                dgvFacturas.Columns["DescuentoCliente"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                 dgvFacturas.Columns["Valor"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                 dgvFacturas.Refresh();
             }

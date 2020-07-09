@@ -16,7 +16,7 @@ namespace CapaPresentacion.Formularios
 {
     public partial class CantidadEtiquetasImprimir : Form
     {
-        private string descripcion, codigoBarra;
+        private string descripcion, codigoBarra, precioVenta;
         private int numeroEntero;
         Thread hilo;
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
@@ -28,11 +28,12 @@ namespace CapaPresentacion.Formularios
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
-        public CantidadEtiquetasImprimir(string descripcion, string codigoBarra)
+        public CantidadEtiquetasImprimir(string descripcion, string codigoBarra, string precioVenta)
         {
             InitializeComponent();
             this.descripcion = descripcion;
             this.codigoBarra = codigoBarra;
+            this.precioVenta = precioVenta;
         }
 
         private void btnAceptar_Click(object sender, EventArgs e)
@@ -43,7 +44,7 @@ namespace CapaPresentacion.Formularios
                 {
                     hilo = new Thread(() =>
                     {
-                        ImpresionEtiquetaProducto impresionEtiquetaProducto = new ImpresionEtiquetaProducto(descripcion, codigoBarra, numeroEntero);
+                        ImpresionEtiquetaProducto impresionEtiquetaProducto = new ImpresionEtiquetaProducto(descripcion, codigoBarra, numeroEntero, precioVenta);
                         impresionEtiquetaProducto.Visible = false;
                         impresionEtiquetaProducto.ImprimirLabel();
                     });

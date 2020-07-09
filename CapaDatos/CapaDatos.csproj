@@ -124,40 +124,16 @@
     <Compile Include="PagosComprasCredito.cs">
       <DependentUpon>SFacturacionModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Procedure_Result.cs">
-      <DependentUpon>SFacturacionModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="proc_BuscarClientesPorID_Result.cs">
-      <DependentUpon>SFacturacionModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="proc_BuscarProductosPorCodigoBarra_Result.cs">
       <DependentUpon>SFacturacionModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="proc_BuscarProductosPorID_Result.cs">
-      <DependentUpon>SFacturacionModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="proc_BuscarProductosPorProveedor_Result.cs">
-      <DependentUpon>SFacturacionModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="proc_BuscarProveedoresPorID_Result.cs">
-      <DependentUpon>SFacturacionModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="proc_Cargar10ProductosVendidosPFecha_Result.cs">
-      <DependentUpon>SFacturacionModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="proc_CargarCobrosVentaCreditoPFecha_Result.cs">
       <DependentUpon>SFacturacionModel.tt</DependentUpon>
     </Compile>
     <Compile Include="proc_CargarCobrosVentaCredito_Result.cs">
       <DependentUpon>SFacturacionModel.tt</DependentUpon>
     </Compile>
     <Compile Include="proc_CargarCotizacionesActivas_Result.cs">
-      <DependentUpon>SFacturacionModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="proc_CargarCotizacionesPFecha_Result.cs">
-      <DependentUpon>SFacturacionModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="proc_CargarDetalleNotaDeCredito_Result.cs">
       <DependentUpon>SFacturacionModel.tt</DependentUpon>
     </Compile>
     <Compile Include="proc_CargarDetalleOrdenCompra_Result.cs">
@@ -176,15 +152,6 @@
       <DependentUpon>SFacturacionModel.tt</DependentUpon>
     </Compile>
     <Compile Include="proc_CargarFacturasPFecha_Result.cs">
-      <DependentUpon>SFacturacionModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="proc_CargarLineasCreditoVentasCompletadasPFecha_Result.cs">
-      <DependentUpon>SFacturacionModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="proc_CargarLineasCreditoVentasPendientesPFecha_Result.cs">
-      <DependentUpon>SFacturacionModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="proc_CargarLineasCreditoVentasVencidas30PFecha_Result.cs">
       <DependentUpon>SFacturacionModel.tt</DependentUpon>
     </Compile>
     <Compile Include="proc_CargarMontoFacturaNC_Result.cs">
@@ -224,15 +191,6 @@
       <DependentUpon>SFacturacionModel.tt</DependentUpon>
     </Compile>
     <Compile Include="proc_CargarTodasLineasCreditoCompras_Result.cs">
-      <DependentUpon>SFacturacionModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="proc_CargarTodasLineasCreditoVentasCompletadas_Result.cs">
-      <DependentUpon>SFacturacionModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="proc_CargarTodasLineasCreditoVentasPendientes_Result.cs">
-      <DependentUpon>SFacturacionModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="proc_CargarTodasLineasCreditoVentasVencidas_Result.cs">
       <DependentUpon>SFacturacionModel.tt</DependentUpon>
     </Compile>
     <Compile Include="proc_CargarTodasLineasCreditoVentas_Result.cs">

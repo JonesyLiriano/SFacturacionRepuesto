@@ -14,7 +14,16 @@ namespace CapaDatos
     
     public partial class TiposFactura
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public TiposFactura()
+        {
+            this.Facturas = new HashSet<Factura>();
+        }
+    
         public int TipoFacturaID { get; set; }
         public string TipoFactura { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Factura> Facturas { get; set; }
     }
 }

@@ -13,7 +13,6 @@ namespace CapaDatos
     
     public partial class proc_CargarTodasOrdenesCompra_Result
     {
-        public int OrdencompraID { get; set; }
         public System.DateTime FechaPedido { get; set; }
         public Nullable<System.DateTime> FechaCompletado { get; set; }
         public string NCF { get; set; }
@@ -25,5 +24,6 @@ namespace CapaDatos
         public bool Completado { get; set; }
         public Nullable<decimal> Total { get; set; }
         public Nullable<System.DateTime> FechaVencimiento { get; set; }
+        public int OrdenCompraID { get; set; }
     }
 }

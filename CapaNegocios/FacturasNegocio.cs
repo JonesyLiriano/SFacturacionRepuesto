@@ -16,9 +16,7 @@ namespace CapaNegocios
         {
 
             return facturasDatos.InsertarFactura(factura);
-        }
-
-      
+        }      
 
         public ObjectResult<proc_CargarMontoFacturaNC_Result> CargarMontoFacturaNC(int facturaID)
         {
@@ -36,23 +34,8 @@ namespace CapaNegocios
             return facturasDatos.CargarProductosFactura(facturaID);
         }
 
-        public bool ConfirmarFacturaYCliente(int facturaID, int clienteID)
-        {
-            return facturasDatos.ConfirmarFacturaYCliente(facturaID, clienteID);
-        }
 
-        public Tuple<DateTime?, decimal?> BuscarFechaFacturaYDescuento(int facturaID)
-        {
-            return facturasDatos.BuscarFechaFacturaYDescuento(facturaID);
-        }
-
-        public bool BuscarFacturaPorID(int facturaID)
-        {
-            return facturasDatos.BuscarFacturaPorID(facturaID);
-        }
-
-
-            public ObjectResult<proc_CargarTodasFacturas_Result> CargarTodasFacturas()
+        public ObjectResult<proc_CargarTodasFacturas_Result> CargarTodasFacturas()
         {
             return facturasDatos.CargarTodasFacturas();
         }

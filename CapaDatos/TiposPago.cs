@@ -18,6 +18,7 @@ namespace CapaDatos
         public TiposPago()
         {
             this.FacturasCompras = new HashSet<FacturasCompra>();
+            this.Facturas = new HashSet<Factura>();
         }
     
         public int TipoPagoID { get; set; }
@@ -25,5 +26,7 @@ namespace CapaDatos
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<FacturasCompra> FacturasCompras { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Factura> Facturas { get; set; }
     }
 }

@@ -99,7 +99,7 @@
             this.txtDatoAdicional.Location = new System.Drawing.Point(145, 314);
             this.txtDatoAdicional.Name = "txtDatoAdicional";
             this.txtDatoAdicional.Size = new System.Drawing.Size(195, 24);
-            this.txtDatoAdicional.TabIndex = 41;
+            this.txtDatoAdicional.TabIndex = 34;
             // 
             // label6
             // 

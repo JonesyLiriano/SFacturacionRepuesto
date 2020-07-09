@@ -62,7 +62,7 @@ namespace SFacturacion
      
         private void ValidarRecuerdame()
         {
-            if (Settings.Default.Recuerdame)
+            if (checkboxRecuerdame.Checked)
             {
                 Settings.Default.Usuario = txtUsuario.Text;
                 Settings.Default.Password = txtPassword.Text;
@@ -74,6 +74,7 @@ namespace SFacturacion
                 Settings.Default.Password = "";
                 Settings.Default.Recuerdame = false;
             }
+            Settings.Default.Save();
         }
         private void btnEntrar_Click(object sender, EventArgs e)
         {
@@ -107,15 +108,7 @@ namespace SFacturacion
                 userID = resultado.Item2.UserID;
                 userLevel = resultado.Item2.UserLevel;
                 userName = resultado.Item2.UserName;
-                Principal menu = new Principal();
-                if(userLevel == "Usuario")
-                {
-                    menu.Controls["btnProductos"].Enabled = false;
-                    menu.Controls["btnClientes"].Enabled = false;
-                    menu.Controls["btnProveedores"].Enabled = false;
-                    menu.Controls["btnCompras"].Enabled = false;
-                    menu.Controls["btnUsuarios"].Enabled = false;
-                }
+                Principal menu = new Principal(userLevel);
                 menu.Show();
             }
             else

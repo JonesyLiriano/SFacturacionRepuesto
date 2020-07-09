@@ -39,7 +39,7 @@ namespace CapaPresentacion.Formularios
             dtProductosMarcados.Columns.Add("Existencia", typeof(double));
             dtProductosMarcados.Columns.Add("PrecioCompra", typeof(decimal));
             dtProductosMarcados.Columns.Add("CantMin", typeof(double));
-            dtProductosMarcados.Columns.Add("Ordenada", typeof(double));
+            dtProductosMarcados.Columns.Add("CantMax", typeof(double));
             
         }
 
@@ -55,13 +55,14 @@ namespace CapaPresentacion.Formularios
                 proc_BuscarProductosPorProveedors = productosNegocio.CargarProductosPorProveedor(proveedorID).ToList();
                 dgvProductos.DataSource = proc_BuscarProductosPorProveedors;
             }
-            dgvProductos.Columns["ProductoID"].DisplayIndex = 0;
-            dgvProductos.Columns["Descripcion"].DisplayIndex = 1;
-            dgvProductos.Columns["UnidadMedida"].DisplayIndex = 2;
-            dgvProductos.Columns["Existencia"].DisplayIndex = 3;
-            dgvProductos.Columns["PrecioCompra"].DisplayIndex = 4;
-            dgvProductos.Columns["CantMin"].DisplayIndex = 5;
-            dgvProductos.Columns["CantMax"].DisplayIndex = 6;
+            dgvProductos.Columns["Seleccionar"].DisplayIndex = 0;
+            dgvProductos.Columns["ProductoID"].DisplayIndex = 1;
+            dgvProductos.Columns["Descripcion"].DisplayIndex = 2;
+            dgvProductos.Columns["UnidadMedida"].DisplayIndex = 3;
+            dgvProductos.Columns["Existencia"].DisplayIndex = 4;
+            dgvProductos.Columns["PrecioCompra"].DisplayIndex = 5;
+            dgvProductos.Columns["CantMin"].DisplayIndex = 6;
+            dgvProductos.Columns["CantMax"].DisplayIndex = 7;
 
             dgvProductos.Columns["CantMin"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgvProductos.Columns["CantMax"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;

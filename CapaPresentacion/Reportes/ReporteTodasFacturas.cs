@@ -79,7 +79,7 @@ namespace CapaPresentacion.Reportes
                 proc_CargarFacturasPFecha_Results = facturasNegocio.CargarFacturasPFecha(fechaInicial, fechaFinal).ToList();
                 var dataSource = new ReportDataSource("DataSetTodasFacturas", proc_CargarFacturasPFecha_Results);
                 reportViewer1.ProcessingMode = ProcessingMode.Local;
-                reportViewer1.LocalReport.ReportPath = @"C:/SFacturacion/reporteFacturas.rdlc";
+                reportViewer1.LocalReport.ReportPath = @"C:/SFacturacion/reporteTodasFacturas.rdlc";
                 reportViewer1.LocalReport.DataSources.Clear();
                 reportViewer1.LocalReport.DataSources.Add(dataSource);
                 reportViewer1.ZoomMode = ZoomMode.PageWidth;
@@ -103,7 +103,7 @@ namespace CapaPresentacion.Reportes
                 proc_CargarFacturasCFinalPFecha_Results = facturasNegocio.CargarFacturasCFinalPFecha(fechaInicial, fechaFinal).ToList();
                 var dataSource = new ReportDataSource("DataSetTodasFacturas", proc_CargarFacturasCFinalPFecha_Results);
                 reportViewer1.ProcessingMode = ProcessingMode.Local;
-                reportViewer1.LocalReport.ReportPath = @"C:/SFacturacion/reporteFacturas.rdlc";
+                reportViewer1.LocalReport.ReportPath = @"C:/SFacturacion/reporteTodasFacturas.rdlc";
                 reportViewer1.LocalReport.DataSources.Clear();
                 reportViewer1.LocalReport.DataSources.Add(dataSource);
                 reportViewer1.ZoomMode = ZoomMode.PageWidth;
@@ -127,7 +127,7 @@ namespace CapaPresentacion.Reportes
                 proc_CargarFacturasCFiscalPFecha_Results = facturasNegocio.CargarFacturasCFiscalPFecha(fechaInicial, fechaFinal).ToList();
                 var dataSource = new ReportDataSource("DataSetTodasFacturas", proc_CargarFacturasCFiscalPFecha_Results);
                 reportViewer1.ProcessingMode = ProcessingMode.Local;
-                reportViewer1.LocalReport.ReportPath = @"C:/SFacturacion/reporteFacturas.rdlc";
+                reportViewer1.LocalReport.ReportPath = @"C:/SFacturacion/reporteTodasFacturas.rdlc";
                 reportViewer1.LocalReport.DataSources.Clear();
                 reportViewer1.LocalReport.DataSources.Add(dataSource);
                 reportViewer1.ZoomMode = ZoomMode.PageWidth;
@@ -151,7 +151,7 @@ namespace CapaPresentacion.Reportes
                 proc_CargarFacturasCGubernamentalPFecha_Results = facturasNegocio.CargarFacturasCGubernamentalPFecha(fechaInicial, fechaFinal).ToList();
                 var dataSource = new ReportDataSource("DataSetTodasFacturas", proc_CargarFacturasCGubernamentalPFecha_Results);
                 reportViewer1.ProcessingMode = ProcessingMode.Local;
-                reportViewer1.LocalReport.ReportPath = @"C:/SFacturacion/reporteFacturas.rdlc";
+                reportViewer1.LocalReport.ReportPath = @"C:/SFacturacion/reporteTodasFacturas.rdlc";
                 reportViewer1.LocalReport.DataSources.Clear();
                 reportViewer1.LocalReport.DataSources.Add(dataSource);
                 reportViewer1.ZoomMode = ZoomMode.PageWidth;
@@ -172,5 +172,6 @@ namespace CapaPresentacion.Reportes
         {
 
         }
+
     }
 }

@@ -159,7 +159,7 @@
             this.cbFacturasAAplicar.Name = "cbFacturasAAplicar";
             this.cbFacturasAAplicar.Size = new System.Drawing.Size(127, 26);
             this.cbFacturasAAplicar.TabIndex = 82;
-            this.cbFacturasAAplicar.SelectedIndexChanged += new System.EventHandler(this.cbFacturasAAplicar_SelectedIndexChanged);
+            this.cbFacturasAAplicar.SelectionChangeCommitted += new System.EventHandler(this.cbFacturasAAplicar_SelectionChangeCommitted);
             this.cbFacturasAAplicar.Validating += new System.ComponentModel.CancelEventHandler(this.cbFacturasAAplicar_Validating);
             // 
             // txtMontoFactura
@@ -219,7 +219,7 @@
             this.cbFacturas.Name = "cbFacturas";
             this.cbFacturas.Size = new System.Drawing.Size(127, 26);
             this.cbFacturas.TabIndex = 80;
-            this.cbFacturas.SelectedIndexChanged += new System.EventHandler(this.cbFacturas_SelectedIndexChanged);
+            this.cbFacturas.SelectionChangeCommitted += new System.EventHandler(this.cbFacturas_SelectionChangeCommitted);
             this.cbFacturas.Validating += new System.ComponentModel.CancelEventHandler(this.cbFacturas_Validating);
             // 
             // label4
@@ -271,7 +271,7 @@
             this.cbClientes.Name = "cbClientes";
             this.cbClientes.Size = new System.Drawing.Size(256, 26);
             this.cbClientes.TabIndex = 78;
-            this.cbClientes.SelectedIndexChanged += new System.EventHandler(this.cbClientes_SelectedIndexChanged);
+            this.cbClientes.SelectionChangeCommitted += new System.EventHandler(this.cbClientes_SelectionChangeCommitted);
             this.cbClientes.Validating += new System.ComponentModel.CancelEventHandler(this.cbClientes_Validating);
             // 
             // label2

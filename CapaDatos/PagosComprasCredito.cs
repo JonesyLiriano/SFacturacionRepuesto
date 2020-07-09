@@ -15,10 +15,13 @@ namespace CapaDatos
     public partial class PagosComprasCredito
     {
         public int PagoCompraCreditoID { get; set; }
-        public int LineaCompraCreditoID { get; set; }
         public System.DateTime FechaPago { get; set; }
         public decimal Monto { get; set; }
         public int UserID { get; set; }
         public string Concepto { get; set; }
+        public int LineaCreditoCompraID { get; set; }
+    
+        public virtual LineasCreditoCompra LineasCreditoCompra { get; set; }
+        public virtual User User { get; set; }
     }
 }

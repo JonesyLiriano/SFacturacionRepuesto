@@ -21,6 +21,7 @@ namespace CapaDatos
             this.LineasCreditoVentas = new HashSet<LineasCreditoVenta>();
             this.LineasCreditoVentas1 = new HashSet<LineasCreditoVenta>();
             this.NotasDeCreditoes = new HashSet<NotasDeCredito>();
+            this.NotasDeCreditoes1 = new HashSet<NotasDeCredito>();
         }
     
         public int FacturaID { get; set; }
@@ -44,5 +45,11 @@ namespace CapaDatos
         public virtual ICollection<LineasCreditoVenta> LineasCreditoVentas1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NotasDeCredito> NotasDeCreditoes { get; set; }
+        public virtual Cliente Cliente { get; set; }
+        public virtual TiposFactura TiposFactura { get; set; }
+        public virtual TiposPago TiposPago { get; set; }
+        public virtual User User { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<NotasDeCredito> NotasDeCreditoes1 { get; set; }
     }
 }

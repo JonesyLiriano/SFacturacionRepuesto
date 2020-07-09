@@ -31,7 +31,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegistrarVenta));
-            this.btnCerrar = new System.Windows.Forms.Label();
             this.dgvCarrito = new System.Windows.Forms.DataGridView();
             this.ProductoID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CodigoBarra = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -105,20 +104,6 @@
             this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
-            // btnCerrar
-            // 
-            this.btnCerrar.AutoSize = true;
-            this.btnCerrar.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnCerrar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCerrar.ForeColor = System.Drawing.Color.DimGray;
-            this.btnCerrar.Location = new System.Drawing.Point(12, 9);
-            this.btnCerrar.Name = "btnCerrar";
-            this.btnCerrar.Size = new System.Drawing.Size(20, 20);
-            this.btnCerrar.TabIndex = 55;
-            this.btnCerrar.Text = "X";
-            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
-            // 
             // dgvCarrito
             // 
             this.dgvCarrito.AllowUserToAddRows = false;
@@ -162,7 +147,7 @@
             this.dgvCarrito.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvCarrito.EnableHeadersVisualStyles = false;
             this.dgvCarrito.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.dgvCarrito.Location = new System.Drawing.Point(40, 264);
+            this.dgvCarrito.Location = new System.Drawing.Point(21, 264);
             this.dgvCarrito.Name = "dgvCarrito";
             this.dgvCarrito.ReadOnly = true;
             this.dgvCarrito.RowHeadersVisible = false;
@@ -309,7 +294,7 @@
             this.groupBox1.Controls.Add(this.cbClientes);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(40, 12);
+            this.groupBox1.Location = new System.Drawing.Point(21, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(454, 107);
             this.groupBox1.TabIndex = 81;
@@ -348,7 +333,7 @@
             this.groupBox2.Controls.Add(this.txtCodigoBarra);
             this.groupBox2.Controls.Add(this.btnColocar);
             this.groupBox2.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(40, 125);
+            this.groupBox2.Location = new System.Drawing.Point(21, 125);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(730, 133);
             this.groupBox2.TabIndex = 82;
@@ -571,7 +556,7 @@
             this.groupBox3.Controls.Add(this.cbTipoPago);
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(509, 12);
+            this.groupBox3.Location = new System.Drawing.Point(490, 12);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(328, 107);
             this.groupBox3.TabIndex = 82;
@@ -634,7 +619,7 @@
             this.gbComprobante.Controls.Add(this.txtRNC);
             this.gbComprobante.Controls.Add(this.label9);
             this.gbComprobante.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbComprobante.Location = new System.Drawing.Point(843, 12);
+            this.gbComprobante.Location = new System.Drawing.Point(824, 12);
             this.gbComprobante.Name = "gbComprobante";
             this.gbComprobante.Size = new System.Drawing.Size(315, 107);
             this.gbComprobante.TabIndex = 87;
@@ -691,7 +676,7 @@
             this.groupBox5.Controls.Add(this.cbCotizacion);
             this.groupBox5.Controls.Add(this.label12);
             this.groupBox5.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox5.Location = new System.Drawing.Point(776, 125);
+            this.groupBox5.Location = new System.Drawing.Point(757, 125);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(382, 133);
             this.groupBox5.TabIndex = 87;
@@ -801,7 +786,7 @@
             this.btnCotizar.ForeColor = System.Drawing.Color.White;
             this.btnCotizar.Image = ((System.Drawing.Image)(resources.GetObject("btnCotizar.Image")));
             this.btnCotizar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCotizar.Location = new System.Drawing.Point(998, 585);
+            this.btnCotizar.Location = new System.Drawing.Point(979, 585);
             this.btnCotizar.Name = "btnCotizar";
             this.btnCotizar.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnCotizar.Size = new System.Drawing.Size(151, 47);
@@ -822,7 +807,7 @@
             this.btnFacturar.ForeColor = System.Drawing.Color.White;
             this.btnFacturar.Image = ((System.Drawing.Image)(resources.GetObject("btnFacturar.Image")));
             this.btnFacturar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnFacturar.Location = new System.Drawing.Point(998, 513);
+            this.btnFacturar.Location = new System.Drawing.Point(979, 513);
             this.btnFacturar.Name = "btnFacturar";
             this.btnFacturar.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnFacturar.Size = new System.Drawing.Size(151, 47);
@@ -839,7 +824,7 @@
             this.lblhora.BackColor = System.Drawing.Color.Transparent;
             this.lblhora.Font = new System.Drawing.Font("Century Gothic", 13F);
             this.lblhora.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lblhora.Location = new System.Drawing.Point(708, 517);
+            this.lblhora.Location = new System.Drawing.Point(689, 517);
             this.lblhora.Name = "lblhora";
             this.lblhora.Size = new System.Drawing.Size(90, 21);
             this.lblhora.TabIndex = 95;
@@ -852,7 +837,7 @@
             this.label14.BackColor = System.Drawing.Color.Transparent;
             this.label14.Font = new System.Drawing.Font("Century Gothic", 13F);
             this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label14.Location = new System.Drawing.Point(708, 555);
+            this.label14.Location = new System.Drawing.Point(689, 555);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(47, 21);
             this.label14.TabIndex = 96;
@@ -865,7 +850,7 @@
             this.label15.BackColor = System.Drawing.Color.Transparent;
             this.label15.Font = new System.Drawing.Font("Century Gothic", 13F);
             this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label15.Location = new System.Drawing.Point(708, 592);
+            this.label15.Location = new System.Drawing.Point(689, 592);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(107, 21);
             this.label15.TabIndex = 97;
@@ -878,7 +863,7 @@
             this.label16.BackColor = System.Drawing.Color.Transparent;
             this.label16.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label16.Location = new System.Drawing.Point(678, 634);
+            this.label16.Location = new System.Drawing.Point(659, 634);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(66, 28);
             this.label16.TabIndex = 98;
@@ -888,7 +873,7 @@
             // 
             this.txtSubTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSubTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
-            this.txtSubTotal.Location = new System.Drawing.Point(823, 513);
+            this.txtSubTotal.Location = new System.Drawing.Point(804, 513);
             this.txtSubTotal.Name = "txtSubTotal";
             this.txtSubTotal.Size = new System.Drawing.Size(154, 27);
             this.txtSubTotal.TabIndex = 94;
@@ -898,7 +883,7 @@
             // 
             this.txtITBIS.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.txtITBIS.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
-            this.txtITBIS.Location = new System.Drawing.Point(823, 551);
+            this.txtITBIS.Location = new System.Drawing.Point(804, 551);
             this.txtITBIS.Name = "txtITBIS";
             this.txtITBIS.Size = new System.Drawing.Size(154, 27);
             this.txtITBIS.TabIndex = 99;
@@ -908,7 +893,7 @@
             // 
             this.txtDescuento.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDescuento.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
-            this.txtDescuento.Location = new System.Drawing.Point(823, 588);
+            this.txtDescuento.Location = new System.Drawing.Point(804, 588);
             this.txtDescuento.Name = "txtDescuento";
             this.txtDescuento.Size = new System.Drawing.Size(154, 27);
             this.txtDescuento.TabIndex = 100;
@@ -919,7 +904,7 @@
             this.txtTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.txtTotal.BackColor = System.Drawing.SystemColors.Info;
             this.txtTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
-            this.txtTotal.Location = new System.Drawing.Point(776, 625);
+            this.txtTotal.Location = new System.Drawing.Point(757, 625);
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.Size = new System.Drawing.Size(201, 44);
             this.txtTotal.TabIndex = 101;
@@ -940,7 +925,7 @@
             this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox4.Controls.Add(this.txtCantProd);
             this.groupBox4.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.Location = new System.Drawing.Point(684, 264);
+            this.groupBox4.Location = new System.Drawing.Point(664, 264);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(157, 107);
             this.groupBox4.TabIndex = 87;
@@ -949,8 +934,7 @@
             // 
             // RegistrarVenta
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1170, 700);
             this.Controls.Add(this.groupBox4);
@@ -968,7 +952,6 @@
             this.Controls.Add(this.gbComprobante);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.dgvCarrito);
-            this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -997,8 +980,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label btnCerrar;
         private System.Windows.Forms.DataGridView dgvCarrito;
         private System.Windows.Forms.ComboBox cbClientes;
         private System.Windows.Forms.Label label2;

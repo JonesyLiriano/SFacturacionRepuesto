@@ -21,8 +21,8 @@ namespace CapaPresentacion.Formularios
         List<proc_CargarCobrosVentaCredito_Result> proc_CargarCobrosVentaCredito_Results;
         CobrosVentaCreditoNegocio cobrosVentaCreditoNegocio = new CobrosVentaCreditoNegocio();
         CultureInfo ci = new CultureInfo("en-us");
-        bool status, resultado;
-        int lineaCreditoVentaID;
+        private bool  resultado;
+        private int lineaCreditoVentaID;
         Thread hilo;
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
@@ -43,7 +43,10 @@ namespace CapaPresentacion.Formularios
             txtLineaCreditoVentaID.Text = this.lineaCreditoVentaID.ToString();
             txtCliente.Text = cliente;
             txtBalancePendiente.Text = montoPendiente.ToString("C", ci);
-            this.status = status;
+            if (status)
+            {
+                btnEliminar.Enabled = false;
+            }
         }
 
         private void CargarDataGridView()
@@ -125,7 +128,8 @@ namespace CapaPresentacion.Formularios
             {
                 if (dgvCobros.SelectedRows.Count > 0)
                 {
-                    DialogResult dialogResult = MessageBox.Show(string.Format("Esta seguro que desea eliminar el cobro {0}?", dgvCobros.CurrentRow.Cells["CobroVentaCreditoID"].Value), "Eliminar Cobro", MessageBoxButtons.OKCancel);
+                    
+                        DialogResult dialogResult = MessageBox.Show(string.Format("Esta seguro que desea eliminar el cobro {0}?", dgvCobros.CurrentRow.Cells["CobroVentaCreditoID"].Value), "Eliminar Cobro", MessageBoxButtons.OKCancel);
                     if (dialogResult == DialogResult.OK)
                     {
                         resultado = cobrosVentaCreditoNegocio.BorrarCobroVentaCredito(Convert.ToInt32(dgvCobros.CurrentRow.Cells["CobroVentaCreditoID"].Value));

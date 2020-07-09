@@ -43,29 +43,29 @@ namespace CapaPresentacion.Formularios
                 switch (reporte)
                 {                   
                     case "Facturas Ventas":                        
-                        reporteTodasFacturas.CargarTodasFacturas(dtPickerFechaInicial.Value, dtPickerFechaInicial.Value);
+                        reporteTodasFacturas.CargarTodasFacturas(dtPickerFechaInicial.Value, dtPickerFechaFinal.Value);
                         reporteTodasFacturas.Show();
               
                         break;
                     case "Facturas C Final":                        
-                        reporteTodasFacturas.CargarTodasFacturasCFinal(dtPickerFechaInicial.Value, dtPickerFechaInicial.Value);
+                        reporteTodasFacturas.CargarTodasFacturasCFinal(dtPickerFechaInicial.Value, dtPickerFechaFinal.Value);
                         reporteTodasFacturas.Show();
                         break;
                     case "Facturas C Fiscal":                       
-                        reporteTodasFacturas.CargarTodasFacturasCFiscal(dtPickerFechaInicial.Value, dtPickerFechaInicial.Value);
+                        reporteTodasFacturas.CargarTodasFacturasCFiscal(dtPickerFechaInicial.Value, dtPickerFechaFinal.Value);
                         reporteTodasFacturas.Show();
                         break;
                     case "Facturas C Gubernamental":
-                        reporteTodasFacturas.CargarTodasFacturasCGubernamental(dtPickerFechaInicial.Value, dtPickerFechaInicial.Value);
+                        reporteTodasFacturas.CargarTodasFacturasCGubernamental(dtPickerFechaInicial.Value, dtPickerFechaFinal.Value);
                         reporteTodasFacturas.Show();
                         break;
                     case "Facturas Compras":
-                        ReporteFacturasCompra reporteFacturasCompra = new ReporteFacturasCompra(dtPickerFechaInicial.Value, dtPickerFechaInicial.Value);
+                        ReporteFacturasCompra reporteFacturasCompra = new ReporteFacturasCompra(dtPickerFechaInicial.Value, dtPickerFechaFinal.Value);
                         reporteFacturasCompra.Show();
                         break;
 
                     case "Notas Credito":
-                        ReporteNotasCredito reporteNotasCredito = new ReporteNotasCredito(dtPickerFechaInicial.Value, dtPickerFechaInicial.Value);
+                        ReporteNotasCredito reporteNotasCredito = new ReporteNotasCredito(dtPickerFechaInicial.Value, dtPickerFechaFinal.Value);
                         reporteNotasCredito.Show();
                         break;
                     default:

@@ -358,6 +358,7 @@
             this.Name = "DetalleFacturaCotizacion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DetalleFacturaCotizacion";
+            this.Load += new System.EventHandler(this.DetalleFacturaCotizacion_Load);
             this.BarraTitulo.ResumeLayout(false);
             this.BarraTitulo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbBarraMenu)).EndInit();

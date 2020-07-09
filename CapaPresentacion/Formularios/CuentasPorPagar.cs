@@ -89,13 +89,13 @@ namespace CapaPresentacion.Formularios
             {
                 if (dgvLineasCreditoCompra.SelectedRows.Count > 0)
                 {
-                    if (Convert.ToBoolean(dgvLineasCreditoCompra.Rows[dgvLineasCreditoCompra.CurrentRow.Index].Cells["Completado"].Value))
+                    if (!Convert.ToBoolean(dgvLineasCreditoCompra.Rows[dgvLineasCreditoCompra.CurrentRow.Index].Cells["Completado"].Value))
                     {
-                        RegistrarCobro registrarCobro = new RegistrarCobro(
-                            Convert.ToInt32(dgvLineasCreditoCompra.CurrentRow.Cells["LineaCreditoVentaID"].Value)
+                        RegistrarPago registrarPago = new RegistrarPago(
+                            Convert.ToInt32(dgvLineasCreditoCompra.CurrentRow.Cells["LineaCreditoCompraID"].Value)
                         , dgvLineasCreditoCompra.CurrentRow.Cells["Proveedor"].Value.ToString()
                         , Convert.ToDecimal(dgvLineasCreditoCompra.CurrentRow.Cells["BalancePendiente"].Value));
-                        registrarCobro.ShowDialog();
+                        registrarPago.ShowDialog();
                         CargarTodasLineasCreditoCompra();
 
                     }

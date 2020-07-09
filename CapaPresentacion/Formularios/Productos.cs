@@ -183,8 +183,13 @@ namespace SFacturacion
                 if (dgvProductos.SelectedRows.Count > 0)
                 {
                     CantidadEtiquetasImprimir cantidadEtiquetasImprimir = new CantidadEtiquetasImprimir(dgvProductos.CurrentRow.Cells["Descripcion"].Value.ToString(),
-                        dgvProductos.CurrentRow.Cells["CodigoBarra"].Value.ToString());
+                        dgvProductos.CurrentRow.Cells["CodigoBarra"].Value.ToString(), dgvProductos.CurrentRow.Cells["PrecioVenta"].Value.ToString());
                     cantidadEtiquetasImprimir.ShowDialog();
+                } 
+                else
+                {
+                    MessageBox.Show("Debe de seleccionar al menos un producto para imprimir etiqueta", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                 }
             }
             catch (Exception exc)

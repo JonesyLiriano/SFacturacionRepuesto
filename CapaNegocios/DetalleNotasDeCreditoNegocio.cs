@@ -17,15 +17,5 @@ namespace CapaNegocios
 
             return detalleNotasDeCreditoDatos.AgregarDetalleNotaDeCredito(detalleNotaDeCredito);
         }
-
-        public ObjectResult<proc_CargarDetalleNotaDeCredito_Result> CargarDetalleNotaDeCredito(int notaDeCreditoID)
-        {
-            return detalleNotasDeCreditoDatos.CargarDetalleNotaDeCredito(notaDeCreditoID);
-        }
-
-        public ObjectResult<proc_ComprobanteNotaDeCredito_Result> CargarComprobanteNotaDeCredito(int notaDeCreditoID)
-        {
-            return detalleNotasDeCreditoDatos.CargarComprobanteNotaDeCredito(notaDeCreditoID);
-        }
     }
 }

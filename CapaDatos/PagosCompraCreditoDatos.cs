@@ -15,7 +15,7 @@ namespace CapaDatos
 
         public Tuple<bool, int> InsertarPagoCompraCredito(PagosComprasCredito pagoCompraCredito)
         {
-            modelDB.proc_InsertarPagoCompraCredito(pagoCompraCreditoID, pagoCompraCredito.LineaCompraCreditoID, pagoCompraCredito.FechaPago, pagoCompraCredito.Monto, pagoCompraCredito.UserID, pagoCompraCredito.Concepto, resultado);
+            modelDB.proc_InsertarPagoCompraCredito(pagoCompraCreditoID, pagoCompraCredito.LineaCreditoCompraID, pagoCompraCredito.FechaPago, pagoCompraCredito.Monto, pagoCompraCredito.UserID, pagoCompraCredito.Concepto, resultado);
 
             return Tuple.Create((bool)resultado.Value, (int)pagoCompraCreditoID.Value);
         }
@@ -26,14 +26,7 @@ namespace CapaDatos
 
             return result;
         }
-
-        public bool ComprobarPagoLineaCreditoCompra(int lineaCreditoCompra, decimal pagoLineaCreditoCompra)
-        {
-            modelDB.proc_ComprobarPagoLineaCreditoCompra(lineaCreditoCompra, pagoLineaCreditoCompra, resultado);
-
-            return (bool)resultado.Value;
-        }
-
+     
         public bool BorrarPagoCompraCredito(int pagoCompraCreditoID)
         {
             modelDB.proc_BorrarPagoCompraCredito(pagoCompraCreditoID, resultado);

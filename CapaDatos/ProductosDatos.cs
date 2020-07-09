@@ -39,13 +39,6 @@ namespace CapaDatos
             return result;
         }
 
-        public ObjectResult<proc_BuscarProductosPorID_Result> BuscarProductosPorID(int productoID)
-        {
-            var result = modelDB.proc_BuscarProductosPorID(productoID);
-
-            return result;
-        }
-
         public ObjectResult<proc_CargarProductosPorProveedor_Result> CargarProductosPorProveedor(int proveedorID)
         {
             var result = modelDB.proc_CargarProductosPorProveedor(proveedorID);
@@ -70,13 +63,6 @@ namespace CapaDatos
         {
             modelDB.proc_BorrarProducto(productoID, resultado);
             return (bool)resultado.Value;
-        }
-
-        public ObjectResult<proc_Cargar10ProductosVendidosPFecha_Result> Cargar10ProductosVendidosPFecha(DateTime fInicial, DateTime fFinal)
-        {
-            var result = modelDB.proc_Cargar10ProductosVendidosPFecha(fInicial, fFinal);
-
-            return result;
         }
 
         public ObjectResult<proc_BuscarProductosPorCodigoBarra_Result> BuscarProductosPorCodigoBarra(string codigoBarra)

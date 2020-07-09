@@ -17,19 +17,20 @@ namespace CapaDatos
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public OrdenesCompra()
         {
-            this.DetalleOrdenesCompras = new HashSet<DetalleOrdenesCompra>();
-            this.FacturasCompras = new HashSet<FacturasCompra>();
+            this.DetalleOrdenesCompras1 = new HashSet<DetalleOrdenesCompra>();
+            this.FacturasCompras1 = new HashSet<FacturasCompra>();
         }
     
-        public int OrdencompraID { get; set; }
         public int ProveedorID { get; set; }
         public System.DateTime FechaPedido { get; set; }
         public Nullable<System.DateTime> FechaCompletado { get; set; }
         public bool Estatus { get; set; }
+        public int OrdenCompraID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DetalleOrdenesCompra> DetalleOrdenesCompras { get; set; }
+        public virtual ICollection<DetalleOrdenesCompra> DetalleOrdenesCompras1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<FacturasCompra> FacturasCompras { get; set; }
+        public virtual ICollection<FacturasCompra> FacturasCompras1 { get; set; }
+        public virtual Proveedore Proveedore { get; set; }
     }
 }

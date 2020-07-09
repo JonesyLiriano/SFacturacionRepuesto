@@ -10,13 +10,13 @@ namespace CapaNegocios
 {
     public class OrdenesCompraNegocio
     {   
-            OrdenesCompraDatos ordenesCompraDatos = new OrdenesCompraDatos();
+        OrdenesCompraDatos ordenesCompraDatos = new OrdenesCompraDatos();
 
-            public Tuple<bool, int> InsertarOrdenCompra(OrdenesCompra ordenCompra)
-            {
+        public Tuple<bool, int> InsertarOrdenCompra(OrdenesCompra ordenCompra)
+        {
 
-                return ordenesCompraDatos.InsertarOrdenCompra(ordenCompra);
-            }
+            return ordenesCompraDatos.InsertarOrdenCompra(ordenCompra);
+        }
 
         public ObjectResult<proc_CargarTodasOrdenesCompra_Result> CargarTodasOrdenesCompra()
         {

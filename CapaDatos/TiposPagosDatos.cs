@@ -19,23 +19,5 @@ namespace CapaDatos
         
             return result;
         }
-        public Tuple<bool, int> AgregarTipoPago(TiposPago tiposPago)
-        {
-            modelDB.proc_InsertarTipoPago(tipoPagoID, tiposPago.TipoDePago, resultado);
-
-            return Tuple.Create((bool)resultado.Value, (int)tipoPagoID.Value);
-        }
-
-        public bool EditarTipoPago(TiposPago tiposPago)
-        {
-            modelDB.proc_ActualizarTiposPagos(tiposPago.TipoPagoID, tiposPago.TipoDePago, resultado);
-            return (bool)resultado.Value;
-        }
-
-        public bool BorrarTipoPago(int tipoPagosID)
-        {
-            modelDB.proc_BorrarTiposPagos(tipoPagosID, resultado);
-            return (bool)resultado.Value;
-        }
     }
 }

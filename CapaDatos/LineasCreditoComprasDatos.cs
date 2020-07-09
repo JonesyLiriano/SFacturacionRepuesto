@@ -31,12 +31,6 @@ namespace CapaDatos
             modelDB.proc_ActualizarLineaCreditoCompra(lineaCreditoCompraID, estatus, resultado);
             return (bool)resultado.Value;
         }
-
-        //public int BuscarLineaDeCreditoVentaIDFactura(int ordenCompraID)
-        //{
-        //    modelDB.proc_BuscarLineaDeCreditoCompraIDOrdenCompra(ordenCompraID, lineaCreditoCompraID);
-
-        //    return (int)lineaCreditoCompraID.Value;
-        //}
+        
     }
 }

@@ -55,12 +55,5 @@ namespace CapaDatos
             return result;
         }
 
-
-        public ObjectResult<proc_CargarCotizacionesPFecha_Result> CargarCotizacionesPFecha(DateTime fInicial, DateTime fFinal)
-        {
-            var result = modelDB.proc_CargarCotizacionesPFecha(fInicial, fFinal);
-            return result;
-        }
-
     }
 }

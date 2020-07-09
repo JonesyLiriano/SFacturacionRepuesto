@@ -27,13 +27,6 @@ namespace CapaDatos
             return result;
         }
 
-        public ObjectResult<proc_BuscarProveedoresPorID_Result> BuscarProveedoresPorID(int proveedorID)
-        {
-            var result = modelDB.proc_BuscarProveedoresPorID(proveedorID);
-
-            return result;
-        }
-
         public bool EditarProveedor(Proveedore proveedor)
         {
             modelDB.proc_ActualizarProveedor(proveedor.ProveedorID, proveedor.Nombre, proveedor.CedulaORnc, proveedor.Direccion, proveedor.Contacto_1, proveedor.Contacto_2, proveedor.DatoAdicional, resultado);

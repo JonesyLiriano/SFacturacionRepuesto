@@ -1047,7 +1047,7 @@
               <Width>3.913in</Width>
               <ZIndex>12</ZIndex>
               <Visibility>
-                <Hidden>= IIf((Fields!DireccionProveedor.Value = "" Or Fields!DireccionProveedor.Value = 0),True, False)</Hidden>
+                <Hidden>= IIf((Fields!DireccionProveedor.Value = "" Or Fields!DireccionProveedor.Value = "0"),True, False)</Hidden>
               </Visibility>
               <Style>
                 <Border>

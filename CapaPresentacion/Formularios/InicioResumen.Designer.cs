@@ -703,18 +703,33 @@
             // 
             this.chartProductosMasVendidos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.chartProductosMasVendidos.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.chartProductosMasVendidos.BorderlineColor = System.Drawing.Color.WhiteSmoke;
+            this.chartProductosMasVendidos.BackColor = System.Drawing.Color.Transparent;
+            this.chartProductosMasVendidos.BorderlineColor = System.Drawing.Color.Transparent;
+            chartArea1.BackColor = System.Drawing.Color.Transparent;
+            chartArea1.BackImageTransparentColor = System.Drawing.Color.Transparent;
+            chartArea1.BackSecondaryColor = System.Drawing.Color.Transparent;
             chartArea1.Name = "ChartArea1";
             this.chartProductosMasVendidos.ChartAreas.Add(chartArea1);
+            legend1.BackColor = System.Drawing.Color.Transparent;
+            legend1.BackImageTransparentColor = System.Drawing.Color.Transparent;
+            legend1.BackSecondaryColor = System.Drawing.Color.Transparent;
+            legend1.BorderColor = System.Drawing.Color.Transparent;
             legend1.Name = "Legend1";
             this.chartProductosMasVendidos.Legends.Add(legend1);
             this.chartProductosMasVendidos.Location = new System.Drawing.Point(656, 232);
             this.chartProductosMasVendidos.Name = "chartProductosMasVendidos";
+            series1.BackImageTransparentColor = System.Drawing.Color.Transparent;
+            series1.BackSecondaryColor = System.Drawing.Color.Transparent;
+            series1.BorderColor = System.Drawing.Color.Transparent;
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series1.Color = System.Drawing.Color.Transparent;
+            series1.LabelBackColor = System.Drawing.Color.Transparent;
+            series1.LabelBorderColor = System.Drawing.Color.Transparent;
             series1.Legend = "Legend1";
+            series1.MarkerBorderColor = System.Drawing.Color.Transparent;
             series1.Name = "Series1";
+            series1.ShadowColor = System.Drawing.Color.Transparent;
             this.chartProductosMasVendidos.Series.Add(series1);
             this.chartProductosMasVendidos.Size = new System.Drawing.Size(494, 420);
             this.chartProductosMasVendidos.TabIndex = 40;

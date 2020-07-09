@@ -1137,7 +1137,7 @@
               <Width>3.74633in</Width>
               <ZIndex>12</ZIndex>
               <Visibility>
-                <Hidden>= IIf((Fields!DireccionCliente.Value = "" Or Fields!DireccionCliente.Value = 0),True, False)</Hidden>
+                <Hidden>= IIf((Fields!DireccionCliente.Value = "" Or Fields!DireccionCliente.Value = "0"),True, False)</Hidden>
               </Visibility>
               <Style>
                 <Border>
@@ -1420,7 +1420,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Fields!FechaVencimiento.Value.ToString("dd/MM/yyyy")</Value>
+                      <Value>=Fields!FechaVencimiento.Value</Value>
                       <Style>
                         <FontFamily>Segoe UI</FontFamily>
                         <FontSize>9pt</FontSize>

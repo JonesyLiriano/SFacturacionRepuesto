@@ -32,13 +32,13 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnConsultaFactura = new System.Windows.Forms.Button();
             this.dgvLineasCreditoVenta = new System.Windows.Forms.DataGridView();
-            this.LineaCreditoVentaID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Completado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.btnCerrar = new System.Windows.Forms.Label();
             this.btnRealizarCobro = new System.Windows.Forms.Button();
             this.btnHistorialCobros = new System.Windows.Forms.Button();
             this.txtFiltro = new System.Windows.Forms.TextBox();
             this.cbFiltro = new System.Windows.Forms.ComboBox();
+            this.LineaCreditoVentaID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Completado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLineasCreditoVenta)).BeginInit();
             this.SuspendLayout();
             // 
@@ -101,26 +101,6 @@
             this.dgvLineasCreditoVenta.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvLineasCreditoVenta.Size = new System.Drawing.Size(895, 622);
             this.dgvLineasCreditoVenta.TabIndex = 45;
-            // 
-            // LineaCreditoVentaID
-            // 
-            this.LineaCreditoVentaID.DataPropertyName = "LineaCreditoVentaID";
-            this.LineaCreditoVentaID.HeaderText = "ID";
-            this.LineaCreditoVentaID.Name = "LineaCreditoVentaID";
-            this.LineaCreditoVentaID.ReadOnly = true;
-            this.LineaCreditoVentaID.Width = 44;
-            // 
-            // Completado
-            // 
-            this.Completado.DataPropertyName = "Completado";
-            this.Completado.HeaderText = "Completado";
-            this.Completado.Name = "Completado";
-            this.Completado.ReadOnly = true;
-            this.Completado.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Completado.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Completado.ThreeState = true;
-            this.Completado.Visible = false;
-            this.Completado.Width = 118;
             // 
             // btnCerrar
             // 
@@ -197,6 +177,25 @@
             this.cbFiltro.TabIndex = 85;
             this.cbFiltro.Validating += new System.ComponentModel.CancelEventHandler(this.cbFiltro_Validating);
             // 
+            // LineaCreditoVentaID
+            // 
+            this.LineaCreditoVentaID.DataPropertyName = "LineaCreditoVentaID";
+            this.LineaCreditoVentaID.HeaderText = "ID";
+            this.LineaCreditoVentaID.Name = "LineaCreditoVentaID";
+            this.LineaCreditoVentaID.ReadOnly = true;
+            this.LineaCreditoVentaID.Width = 44;
+            // 
+            // Completado
+            // 
+            this.Completado.DataPropertyName = "Completado";
+            this.Completado.HeaderText = "Completado";
+            this.Completado.Name = "Completado";
+            this.Completado.ReadOnly = true;
+            this.Completado.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Completado.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Completado.ThreeState = true;
+            this.Completado.Width = 116;
+            // 
             // CuentasPorCobrar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -227,9 +226,9 @@
         private System.Windows.Forms.Label btnCerrar;
         private System.Windows.Forms.Button btnRealizarCobro;
         private System.Windows.Forms.Button btnHistorialCobros;
-        private System.Windows.Forms.DataGridViewTextBoxColumn LineaCreditoVentaID;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Completado;
         private System.Windows.Forms.TextBox txtFiltro;
         private System.Windows.Forms.ComboBox cbFiltro;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LineaCreditoVentaID;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Completado;
     }
 }

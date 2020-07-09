@@ -74,6 +74,7 @@ namespace CapaPresentacion
                 dgvCotizaciones.Columns["Valor"].DisplayIndex = 4;
                 dgvCotizaciones.Columns["Usuario"].DisplayIndex = 5;
 
+                dgvCotizaciones.Columns["DescuentoCliente"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                 dgvCotizaciones.Columns["Valor"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                 dgvCotizaciones.Refresh();
             }

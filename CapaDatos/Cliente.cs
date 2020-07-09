@@ -14,6 +14,13 @@ namespace CapaDatos
     
     public partial class Cliente
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Cliente()
+        {
+            this.Cotizaciones = new HashSet<Cotizacione>();
+            this.Facturas = new HashSet<Factura>();
+        }
+    
         public int ClienteID { get; set; }
         public string Nombre { get; set; }
         public string CedulaORnc { get; set; }
@@ -22,5 +29,10 @@ namespace CapaDatos
         public string Contacto_2 { get; set; }
         public Nullable<double> Descuento { get; set; }
         public Nullable<double> Credito { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Cotizacione> Cotizaciones { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Factura> Facturas { get; set; }
     }
 }

@@ -19,6 +19,9 @@ namespace CapaDatos
         {
             this.CobrosVentasCreditoes = new HashSet<CobrosVentasCredito>();
             this.NotasDeCreditoes = new HashSet<NotasDeCredito>();
+            this.Cotizaciones = new HashSet<Cotizacione>();
+            this.Facturas = new HashSet<Factura>();
+            this.PagosComprasCreditoes = new HashSet<PagosComprasCredito>();
         }
     
         public int UserID { get; set; }
@@ -30,5 +33,11 @@ namespace CapaDatos
         public virtual ICollection<CobrosVentasCredito> CobrosVentasCreditoes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NotasDeCredito> NotasDeCreditoes { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Cotizacione> Cotizaciones { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Factura> Facturas { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PagosComprasCredito> PagosComprasCreditoes { get; set; }
     }
 }

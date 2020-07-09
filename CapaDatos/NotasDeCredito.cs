@@ -34,5 +34,6 @@ namespace CapaDatos
         public virtual ICollection<DetalleNotaDeCredito> DetalleNotaDeCreditoes { get; set; }
         public virtual Factura Factura { get; set; }
         public virtual User User { get; set; }
+        public virtual Factura Factura1 { get; set; }
     }
 }

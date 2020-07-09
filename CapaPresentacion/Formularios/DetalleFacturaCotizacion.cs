@@ -46,6 +46,11 @@ namespace CapaPresentacion.Formularios
             this.Close();
         }
 
+        private void DetalleFacturaCotizacion_Load(object sender, EventArgs e)
+        {
+
+        }
+
         private void LlenarDataGridView(string detalle)
         {
             try
@@ -114,9 +119,9 @@ namespace CapaPresentacion.Formularios
 
             foreach (DataGridViewRow row in dgvCarrito.Rows)
             {
-                itbisTotal += (Convert.ToDecimal(row.Cells["ITBIS"].Value) * Convert.ToDecimal(row.Cells["CantVen"].Value));
-                descuentoTotal += (Convert.ToDecimal(row.Cells["CantVen"].Value) * Convert.ToDecimal(row.Cells["Descuento"].Value));
-                subtotal += (Convert.ToDecimal(row.Cells["CantVen"].Value) * Convert.ToDecimal(row.Cells["Precio"].Value));
+                itbisTotal += (Convert.ToDecimal(row.Cells["ITBIS"].Value) * Convert.ToDecimal(row.Cells["Cantidad"].Value));
+                descuentoTotal += (Convert.ToDecimal(row.Cells["Cantidad"].Value) * Convert.ToDecimal(row.Cells["Descuento"].Value));
+                subtotal += (Convert.ToDecimal(row.Cells["Cantidad"].Value) * Convert.ToDecimal(row.Cells["Precio"].Value));
                 total += (Convert.ToDecimal(row.Cells["Importe"].Value));
                 cantProd++;
             }

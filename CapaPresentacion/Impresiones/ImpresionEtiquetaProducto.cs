@@ -31,10 +31,10 @@ namespace CapaPresentacion.Impresiones
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
 
-        public ImpresionEtiquetaProducto(string descripcionProd, string codigoBarra, int cantidad)
+        public ImpresionEtiquetaProducto(string descripcionProd, string codigoBarra, int cantidad, string precioVenta)
         {
             InitializeComponent();
-            CargarParametros(descripcionProd, codigoBarra);
+            CargarParametros(descripcionProd, codigoBarra, precioVenta);
             this.cantidad = cantidad;
         }
 
@@ -103,12 +103,13 @@ namespace CapaPresentacion.Impresiones
             }
         }
 
-        private void CargarParametros(string descripcionProd, string codigoBarra)
+        private void CargarParametros(string descripcionProd, string codigoBarra, string precioVenta)
         {
             parameters[0] = new ReportParameter("NombreEmpresa", Properties.Settings.Default.NombreEmpresa);
             parameters[1] = new ReportParameter("CodigoBarra", GenerarCodigoBarra(codigoBarra));
             parameters[2] = new ReportParameter("DescripcionProducto", descripcionProd);
-           
+            parameters[3] = new ReportParameter("PrecioVenta", precioVenta);
+
         }
 
         private LocalReport CargarImpresionRV()

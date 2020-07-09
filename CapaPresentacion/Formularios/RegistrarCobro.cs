@@ -11,6 +11,7 @@ using System.Globalization;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -87,7 +88,7 @@ namespace CapaPresentacion.Formularios
             cobrosVentasCreditoEntidad.Monto = montoCobro;
             cobrosVentasCreditoEntidad.UserID = Login.userID;
 
-            if (Convert.ToDecimal(txtBalancePendiente.Text) == montoCobro)
+            if (decimal.Parse(Regex.Replace(txtBalancePendiente.Text, @"[^\d.]", "")) == montoCobro)
             {
                 cobrosVentasCreditoEntidad.Concepto = "Saldo";
                 lineasCreditoVentasNegocio.ActualizarLineaCreditoVenta(Convert.ToInt32(txtLineaCreditoVentaID.Text), true);
@@ -109,12 +110,12 @@ namespace CapaPresentacion.Formularios
             if (resultado)
             {
                 ImprimirComprobanteCobro();
-                MessageBox.Show(string.Format("Pago  de codigo #{0} fue realizado correctamente", cobroVentaCreditoID), "Pago Aplicado Correctamente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(string.Format("Cobro  de codigo #{0} fue realizado correctamente", cobroVentaCreditoID), "Cobro Aplicado Correctamente", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }
             else
             {
-                MessageBox.Show("Pago no fue aplicado", "Ha ocurrido un error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Cobro no fue aplicado", "Ha ocurrido un error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

@@ -24,14 +24,7 @@ namespace CapaDatos
             var result = modelDB.proc_CargarTodosClientes();
 
             return result;
-        }
-
-        public ObjectResult<proc_BuscarClientesPorID_Result> BuscarClientesPorID(int clienteID)
-        {
-            var result = modelDB.proc_BuscarClientesPorID(clienteID);
-
-            return result;
-        }
+        }              
 
         public bool EditarCliente(Cliente cliente)
         {
@@ -44,7 +37,6 @@ namespace CapaDatos
             modelDB.proc_BorrarCliente(clienteID, resultado);
             return (bool)resultado.Value;
         }
-
         public bool VerificarCredito(int clienteID, decimal montoFactura)
         {
             modelDB.proc_VerificarLimite(resultado, clienteID, montoFactura);

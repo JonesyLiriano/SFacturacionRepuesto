@@ -745,7 +745,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!Servicio.Value</Value>
+                                  <Value>=IIf(Fields!Servicio.Value = true, "Si", "No")</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                   </Style>
@@ -949,7 +949,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!ITBIS.Value</Value>
+                                  <Value>=IIf(Fields!ITBIS.Value = true, "Si", "No")</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                   </Style>
@@ -1766,6 +1766,7 @@
                       <Value>=FormatNumber(SUM((Fields!PrecioVenta.Value * Fields!Existencia.Value), "DataSetTodosProductos"), 2)</Value>
                       <Style>
                         <FontFamily>Segoe UI</FontFamily>
+                        <FontWeight>Bold</FontWeight>
                       </Style>
                     </TextRun>
                   </TextRuns>

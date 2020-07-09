@@ -12,6 +12,8 @@
     <Property Name="Contacto_2" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="Descuento" Type="Double" />
     <Property Name="Credito" Type="Double" />
+    <NavigationProperty Name="Cotizaciones" Relationship="SFacturacionModel.FK_Cotizaciones_Clientes" FromRole="Cliente" ToRole="Cotizacione" />
+    <NavigationProperty Name="Facturas" Relationship="SFacturacionModel.FK_Facturas_Clientes" FromRole="Cliente" ToRole="Factura" />
   </EntityType>
   <EntityType Name="CobrosVentasCredito">
     <Key>
@@ -65,8 +67,8 @@
     <Property Name="CantidadOrdenada" Type="Double" Nullable="false" />
     <Property Name="CantidadRecibida" Type="Double" />
     <Property Name="Precio" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-    <NavigationProperty Name="OrdenesCompra" Relationship="Self.FK_DetalleOrdenesCompra_OrdenesCompra" FromRole="DetalleOrdenesCompra" ToRole="OrdenesCompra" />
     <Property Name="Estatus" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="OrdenesCompra1" Relationship="SFacturacionModel.FK_DetalleOrdenesCompra_OrdenesCompra1" FromRole="DetalleOrdenesCompra" ToRole="OrdenesCompra" />
   </EntityType>
   <EntityType Name="Factura">
     <Key>
@@ -88,6 +90,11 @@
     <NavigationProperty Name="LineasCreditoVentas1" Relationship="Self.FK_LineasCreditoVentas_Facturas" FromRole="Facturas" ToRole="LineasCreditoVentas" />
     <NavigationProperty Name="NotasDeCreditoes" Relationship="Self.FK_NotasDeCredito_Facturas" FromRole="Facturas" ToRole="NotasDeCredito" />
     <Property Name="CotizacionID" Type="Int32" />
+    <NavigationProperty Name="Cliente" Relationship="SFacturacionModel.FK_Facturas_Clientes" FromRole="Factura" ToRole="Cliente" />
+    <NavigationProperty Name="TiposFactura" Relationship="SFacturacionModel.FK_Facturas_TiposFactura" FromRole="Factura" ToRole="TiposFactura" />
+    <NavigationProperty Name="TiposPago" Relationship="SFacturacionModel.FK_Facturas_TiposPago" FromRole="Factura" ToRole="TiposPago" />
+    <NavigationProperty Name="User" Relationship="SFacturacionModel.FK_Facturas_Users" FromRole="Factura" ToRole="User" />
+    <NavigationProperty Name="NotasDeCreditoes1" Relationship="SFacturacionModel.FK_NotasDeCredito_FacturasAplicar" FromRole="Factura" ToRole="NotasDeCredito" />
   </EntityType>
   <EntityType Name="FacturasCompra">
     <Key>
@@ -100,9 +107,10 @@
     <Property Name="TipoDePagoID" Type="Int32" Nullable="false" />
     <Property Name="SubTotal" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
     <Property Name="ITBIS" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
-    <NavigationProperty Name="OrdenesCompra" Relationship="Self.FK_FacturasCompra_OrdenesCompra" FromRole="FacturasCompra" ToRole="OrdenesCompra" />
     <NavigationProperty Name="TiposPago" Relationship="Self.FK_FacturasCompra_TiposPago" FromRole="FacturasCompra" ToRole="TiposPago" />
     <Property Name="FechaVencimiento" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="OrdenesCompra1" Relationship="SFacturacionModel.FK_FacturasCompra_OrdenesCompra1" FromRole="FacturasCompra" ToRole="OrdenesCompra" />
+    <NavigationProperty Name="LineasCreditoCompras" Relationship="SFacturacionModel.FK_LineasCreditoCompras_FacturasCompra" FromRole="FacturasCompra" ToRole="LineasCreditoCompra" />
   </EntityType>
   <EntityType Name="LineasCreditoVenta">
     <Key>
@@ -132,18 +140,20 @@
     <NavigationProperty Name="DetalleNotaDeCreditoes" Relationship="Self.FK_DetalleNotaDeCredito_NotasDeCredito" FromRole="NotasDeCredito" ToRole="DetalleNotaDeCredito" />
     <NavigationProperty Name="Factura" Relationship="Self.FK_NotasDeCredito_Facturas" FromRole="NotasDeCredito" ToRole="Facturas" />
     <NavigationProperty Name="User" Relationship="Self.FK_NotasDeCredito_Users" FromRole="NotasDeCredito" ToRole="Users" />
+    <NavigationProperty Name="Factura1" Relationship="SFacturacionModel.FK_NotasDeCredito_FacturasAplicar" FromRole="NotasDeCredito" ToRole="Factura" />
   </EntityType>
   <EntityType Name="OrdenesCompra">
     <Key>
-      <PropertyRef Name="OrdencompraID" />
+      <PropertyRef Name="OrdenCompraID" />
     </Key>
-    <Property Name="OrdencompraID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="ProveedorID" Type="Int32" Nullable="false" />
     <Property Name="FechaPedido" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="FechaCompletado" Type="DateTime" Precision="0" />
     <Property Name="Estatus" Type="Boolean" Nullable="false" />
-    <NavigationProperty Name="DetalleOrdenesCompras" Relationship="Self.FK_DetalleOrdenesCompra_OrdenesCompra" FromRole="OrdenesCompra" ToRole="DetalleOrdenesCompra" />
-    <NavigationProperty Name="FacturasCompras" Relationship="Self.FK_FacturasCompra_OrdenesCompra" FromRole="OrdenesCompra" ToRole="FacturasCompra" />
+    <Property Name="OrdenCompraID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="DetalleOrdenesCompras1" Relationship="SFacturacionModel.FK_DetalleOrdenesCompra_OrdenesCompra1" FromRole="OrdenesCompra" ToRole="DetalleOrdenesCompra" />
+    <NavigationProperty Name="FacturasCompras1" Relationship="SFacturacionModel.FK_FacturasCompra_OrdenesCompra1" FromRole="OrdenesCompra" ToRole="FacturasCompra" />
+    <NavigationProperty Name="Proveedore" Relationship="SFacturacionModel.FK_OrdenesCompra_Proveedores" FromRole="OrdenesCompra" ToRole="Proveedore" />
   </EntityType>
   <EntityType Name="Producto">
     <Key>
@@ -166,6 +176,7 @@
     <NavigationProperty Name="Proveedore" Relationship="Self.FK_Productos_Proveedores" FromRole="Productos" ToRole="Proveedores" />
     <Property Name="CodigoBarra" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="UnidadMedida" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="DetalleCotizaciones" Relationship="SFacturacionModel.FK_DetalleCotizaciones_Productos" FromRole="Producto" ToRole="DetalleCotizacione" />
   </EntityType>
   <EntityType Name="Proveedore">
     <Key>
@@ -179,6 +190,7 @@
     <Property Name="Contacto_2" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="DatoAdicional" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Productos" Relationship="Self.FK_Productos_Proveedores" FromRole="Proveedores" ToRole="Productos" />
+    <NavigationProperty Name="OrdenesCompras" Relationship="SFacturacionModel.FK_OrdenesCompra_Proveedores" FromRole="Proveedore" ToRole="OrdenesCompra" />
   </EntityType>
   <EntityType Name="TiposFactura">
     <Key>
@@ -186,6 +198,7 @@
     </Key>
     <Property Name="TipoFacturaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="TipoFactura" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Facturas" Relationship="SFacturacionModel.FK_Facturas_TiposFactura" FromRole="TiposFactura" ToRole="Factura" />
   </EntityType>
   <EntityType Name="TiposPago">
     <Key>
@@ -194,6 +207,7 @@
     <Property Name="TipoPagoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="TipoDePago" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="FacturasCompras" Relationship="Self.FK_FacturasCompra_TiposPago" FromRole="TiposPago" ToRole="FacturasCompra" />
+    <NavigationProperty Name="Facturas" Relationship="SFacturacionModel.FK_Facturas_TiposPago" FromRole="TiposPago" ToRole="Factura" />
   </EntityType>
   <EntityType Name="User">
     <Key>
@@ -205,6 +219,9 @@
     <Property Name="UserLevel" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
     <NavigationProperty Name="CobrosVentasCreditoes" Relationship="Self.FK_CobrosVentasCredito_Users" FromRole="Users" ToRole="CobrosVentasCredito" />
     <NavigationProperty Name="NotasDeCreditoes" Relationship="Self.FK_NotasDeCredito_Users" FromRole="Users" ToRole="NotasDeCredito" />
+    <NavigationProperty Name="Cotizaciones" Relationship="SFacturacionModel.FK_Cotizaciones_Users" FromRole="User" ToRole="Cotizacione" />
+    <NavigationProperty Name="Facturas" Relationship="SFacturacionModel.FK_Facturas_Users" FromRole="User" ToRole="Factura" />
+    <NavigationProperty Name="PagosComprasCreditoes" Relationship="SFacturacionModel.FK_PagosComprasCredito_Users" FromRole="User" ToRole="PagosComprasCredito" />
   </EntityType>
   <Association Name="FK_CobrosVentasCredito_LineasCredito">
     <End Role="LineasCreditoVentas" Type="Self.LineasCreditoVenta" Multiplicity="1" />
@@ -290,18 +307,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_DetalleOrdenesCompra_OrdenesCompra">
-    <End Role="OrdenesCompra" Type="Self.OrdenesCompra" Multiplicity="1" />
-    <End Role="DetalleOrdenesCompra" Type="Self.DetalleOrdenesCompra" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="OrdenesCompra">
-        <PropertyRef Name="OrdencompraID" />
-      </Principal>
-      <Dependent Role="DetalleOrdenesCompra">
-        <PropertyRef Name="OrdenCompraID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_LineasCredito_Facturas">
     <End Role="Facturas" Type="Self.Factura" Multiplicity="1" />
     <End Role="LineasCreditoVentas" Type="Self.LineasCreditoVenta" Multiplicity="*" />
@@ -335,18 +340,6 @@
       </Principal>
       <Dependent Role="NotasDeCredito">
         <PropertyRef Name="FacturaID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_FacturasCompra_OrdenesCompra">
-    <End Role="OrdenesCompra" Type="Self.OrdenesCompra" Multiplicity="1" />
-    <End Role="FacturasCompra" Type="Self.FacturasCompra" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="OrdenesCompra">
-        <PropertyRef Name="OrdencompraID" />
-      </Principal>
-      <Dependent Role="FacturasCompra">
-        <PropertyRef Name="OrdenCompraID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -430,10 +423,6 @@
       <End Role="Productos" EntitySet="Productos" />
       <End Role="DetalleNotaDeCredito" EntitySet="DetalleNotaDeCreditoes" />
     </AssociationSet>
-    <AssociationSet Name="FK_DetalleOrdenesCompra_OrdenesCompra" Association="Self.FK_DetalleOrdenesCompra_OrdenesCompra">
-      <End Role="OrdenesCompra" EntitySet="OrdenesCompras" />
-      <End Role="DetalleOrdenesCompra" EntitySet="DetalleOrdenesCompras" />
-    </AssociationSet>
     <AssociationSet Name="FK_LineasCredito_Facturas" Association="Self.FK_LineasCredito_Facturas">
       <End Role="Facturas" EntitySet="Facturas" />
       <End Role="LineasCreditoVentas" EntitySet="LineasCreditoVentas" />
@@ -445,10 +434,6 @@
     <AssociationSet Name="FK_NotasDeCredito_Facturas" Association="Self.FK_NotasDeCredito_Facturas">
       <End Role="Facturas" EntitySet="Facturas" />
       <End Role="NotasDeCredito" EntitySet="NotasDeCreditoes" />
-    </AssociationSet>
-    <AssociationSet Name="FK_FacturasCompra_OrdenesCompra" Association="Self.FK_FacturasCompra_OrdenesCompra">
-      <End Role="OrdenesCompra" EntitySet="OrdenesCompras" />
-      <End Role="FacturasCompra" EntitySet="FacturasCompras" />
     </AssociationSet>
     <AssociationSet Name="FK_FacturasCompra_TiposPago" Association="Self.FK_FacturasCompra_TiposPago">
       <End Role="TiposPago" EntitySet="TiposPagoes" />
@@ -514,16 +499,6 @@
       <Parameter Name="DatoAdicional" Mode="In" Type="String" />
       <Parameter Name="resultado" Mode="InOut" Type="Boolean" />
     </FunctionImport>
-    <FunctionImport Name="proc_ActualizarTiposFacturas">
-      <Parameter Name="TipoFacturaID" Mode="In" Type="Int32" />
-      <Parameter Name="TipoFactura" Mode="In" Type="String" />
-      <Parameter Name="resultado" Mode="InOut" Type="Boolean" />
-    </FunctionImport>
-    <FunctionImport Name="proc_ActualizarTiposPagos">
-      <Parameter Name="TipoPagoID" Mode="In" Type="Int32" />
-      <Parameter Name="TipoDePago" Mode="In" Type="String" />
-      <Parameter Name="resultado" Mode="InOut" Type="Boolean" />
-    </FunctionImport>
     <FunctionImport Name="proc_ActualizarUsers">
       <Parameter Name="UserID" Mode="In" Type="Int32" />
       <Parameter Name="UserName" Mode="In" Type="String" />
@@ -552,41 +527,15 @@
       <Parameter Name="ProveedorID" Mode="In" Type="Int32" />
       <Parameter Name="resultado" Mode="InOut" Type="Boolean" />
     </FunctionImport>
-    <FunctionImport Name="proc_BorrarTiposFacturas">
-      <Parameter Name="TipoFacturaID" Mode="In" Type="Int32" />
-      <Parameter Name="resultado" Mode="InOut" Type="Boolean" />
-    </FunctionImport>
-    <FunctionImport Name="proc_BorrarTiposPagos">
-      <Parameter Name="TipoPagoID" Mode="In" Type="Int32" />
-      <Parameter Name="resultado" Mode="InOut" Type="Boolean" />
-    </FunctionImport>
     <FunctionImport Name="proc_BorrarUser">
       <Parameter Name="UserID" Mode="In" Type="Int32" />
       <Parameter Name="resultado" Mode="InOut" Type="Boolean" />
-    </FunctionImport>
-    <FunctionImport Name="proc_BuscarClientesPorID" ReturnType="Collection(SFacturacionModel.proc_BuscarClientesPorID_Result)">
-      <Parameter Name="ClienteID" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="proc_BuscarFacturaPorID">
-      <Parameter Name="FacturaID" Mode="In" Type="Int32" />
-      <Parameter Name="resultado" Mode="InOut" Type="Boolean" />
-    </FunctionImport>
-    <FunctionImport Name="proc_BuscarFechaFacturaYDescuento">
-      <Parameter Name="FacturaID" Mode="In" Type="Int32" />
-      <Parameter Name="Fecha" Mode="InOut" Type="DateTime" />
-      <Parameter Name="DescuentoCliente" Mode="InOut" Type="Decimal" />
     </FunctionImport>
     <FunctionImport Name="proc_BuscarLineaDeCreditoVentaIDFactura">
       <Parameter Name="FacturaID" Mode="In" Type="Int32" />
       <Parameter Name="LineaCreditoVentaID" Mode="InOut" Type="Int32" />
     </FunctionImport>
-    <FunctionImport Name="proc_BuscarProductosPorID" ReturnType="Collection(SFacturacionModel.proc_BuscarProductosPorID_Result)">
-      <Parameter Name="ProductoID" Mode="In" Type="Int32" />
-    </FunctionImport>
     <FunctionImport Name="proc_BuscarProductosPorProveedor" ReturnType="Collection(SFacturacionModel.proc_BuscarProductosPorProveedor_Result)">
-      <Parameter Name="ProveedorID" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="proc_BuscarProveedoresPorID" ReturnType="Collection(SFacturacionModel.proc_BuscarProveedoresPorID_Result)">
       <Parameter Name="ProveedorID" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="proc_CalcularGanancias">
@@ -598,33 +547,13 @@
       <Parameter Name="GananciaFCredMes" Mode="InOut" Type="Decimal" />
       <Parameter Name="Itbis" Mode="In" Type="Decimal" />
     </FunctionImport>
-    <FunctionImport Name="proc_Cargar10ProductosVendidosPFecha" ReturnType="Collection(SFacturacionModel.proc_Cargar10ProductosVendidosPFecha_Result)">
-      <Parameter Name="FechaInicial" Mode="In" Type="DateTime" />
-      <Parameter Name="FechaFinal" Mode="In" Type="DateTime" />
-    </FunctionImport>
     <FunctionImport Name="proc_CargarCobrosVentaCredito" ReturnType="Collection(SFacturacionModel.proc_CargarCobrosVentaCredito_Result)">
       <Parameter Name="LineaVentaCreditoID" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="proc_CargarCobrosVentaCreditoPFecha" ReturnType="Collection(SFacturacionModel.proc_CargarCobrosVentaCreditoPFecha_Result)">
-      <Parameter Name="FechaInicial" Mode="In" Type="DateTime" />
-      <Parameter Name="FechaFinal" Mode="In" Type="DateTime" />
     </FunctionImport>
     <FunctionImport Name="proc_CargarFacturasPendientes" ReturnType="Collection(SFacturacionModel.proc_CargarFacturasPendientes_Result)">
       <Parameter Name="ClienteID" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="proc_CargarFacturasPFecha" ReturnType="Collection(SFacturacionModel.proc_CargarFacturasPFecha_Result)">
-      <Parameter Name="FechaInicial" Mode="In" Type="DateTime" />
-      <Parameter Name="FechaFinal" Mode="In" Type="DateTime" />
-    </FunctionImport>
-    <FunctionImport Name="proc_CargarLineasCreditoVentasCompletadasPFecha" ReturnType="Collection(SFacturacionModel.proc_CargarLineasCreditoVentasCompletadasPFecha_Result)">
-      <Parameter Name="FechaInicial" Mode="In" Type="DateTime" />
-      <Parameter Name="FechaFinal" Mode="In" Type="DateTime" />
-    </FunctionImport>
-    <FunctionImport Name="proc_CargarLineasCreditoVentasPendientesPFecha" ReturnType="Collection(SFacturacionModel.proc_CargarLineasCreditoVentasPendientesPFecha_Result)">
-      <Parameter Name="FechaInicial" Mode="In" Type="DateTime" />
-      <Parameter Name="FechaFinal" Mode="In" Type="DateTime" />
-    </FunctionImport>
-    <FunctionImport Name="proc_CargarLineasCreditoVentasVencidas30PFecha" ReturnType="Collection(SFacturacionModel.proc_CargarLineasCreditoVentasVencidas30PFecha_Result)">
       <Parameter Name="FechaInicial" Mode="In" Type="DateTime" />
       <Parameter Name="FechaFinal" Mode="In" Type="DateTime" />
     </FunctionImport>
@@ -642,9 +571,6 @@
     <FunctionImport Name="proc_CargarProductosExistBaja" ReturnType="Collection(SFacturacionModel.proc_CargarProductosExistBaja_Result)" />
     <FunctionImport Name="proc_CargarTodasFacturas" ReturnType="Collection(SFacturacionModel.proc_CargarTodasFacturas_Result)" />
     <FunctionImport Name="proc_CargarTodasLineasCreditoVentas" ReturnType="Collection(SFacturacionModel.proc_CargarTodasLineasCreditoVentas_Result)" />
-    <FunctionImport Name="proc_CargarTodasLineasCreditoVentasCompletadas" ReturnType="Collection(SFacturacionModel.proc_CargarTodasLineasCreditoVentasCompletadas_Result)" />
-    <FunctionImport Name="proc_CargarTodasLineasCreditoVentasPendientes" ReturnType="Collection(SFacturacionModel.proc_CargarTodasLineasCreditoVentasPendientes_Result)" />
-    <FunctionImport Name="proc_CargarTodasLineasCreditoVentasVencidas" ReturnType="Collection(SFacturacionModel.proc_CargarTodasLineasCreditoVentasVencidas_Result)" />
     <FunctionImport Name="proc_CargarTodasNotasDeCredito" ReturnType="Collection(SFacturacionModel.proc_CargarTodasNotasDeCredito_Result)" />
     <FunctionImport Name="proc_CargarTodasOrdenesCompra" ReturnType="Collection(SFacturacionModel.proc_CargarTodasOrdenesCompra_Result)" />
     <FunctionImport Name="proc_CargarTodosClientes" ReturnType="Collection(SFacturacionModel.proc_CargarTodosClientes_Result)" />
@@ -661,16 +587,6 @@
     </FunctionImport>
     <FunctionImport Name="proc_ComprobantePagoLineaCreditoVenta" ReturnType="Collection(SFacturacionModel.proc_ComprobantePagoLineaCreditoVenta_Result)">
       <Parameter Name="CobroVentaCreditoID" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="proc_ComprobarPagoLineaCreditoVenta">
-      <Parameter Name="LineaCreditoVentaID" Mode="In" Type="Int32" />
-      <Parameter Name="PagoLineaCreditoVenta" Mode="In" Type="Decimal" />
-      <Parameter Name="resultado" Mode="InOut" Type="Boolean" />
-    </FunctionImport>
-    <FunctionImport Name="proc_ConfirmarFacturaYCliente">
-      <Parameter Name="FacturaID" Mode="In" Type="Int32" />
-      <Parameter Name="ClienteID" Mode="In" Type="Int32" />
-      <Parameter Name="resultado" Mode="InOut" Type="Boolean" />
     </FunctionImport>
     <FunctionImport Name="proc_InsertarCategoriaProd">
       <Parameter Name="CategoriaProdID" Mode="InOut" Type="Int32" />
@@ -785,16 +701,6 @@
       <Parameter Name="Contacto_1" Mode="In" Type="String" />
       <Parameter Name="Contacto_2" Mode="In" Type="String" />
       <Parameter Name="DatoAdicional" Mode="In" Type="String" />
-      <Parameter Name="resultado" Mode="InOut" Type="Boolean" />
-    </FunctionImport>
-    <FunctionImport Name="proc_InsertarTipoPago">
-      <Parameter Name="TipoPagoID" Mode="InOut" Type="Int32" />
-      <Parameter Name="TipoDePago" Mode="In" Type="String" />
-      <Parameter Name="resultado" Mode="InOut" Type="Boolean" />
-    </FunctionImport>
-    <FunctionImport Name="proc_InsertarTiposFactura">
-      <Parameter Name="TipoFacturaID" Mode="InOut" Type="Int32" />
-      <Parameter Name="TipoFactura" Mode="In" Type="String" />
       <Parameter Name="resultado" Mode="InOut" Type="Boolean" />
     </FunctionImport>
     <FunctionImport Name="proc_InsertarUser">
@@ -916,7 +822,7 @@
       <Parameter Name="resultado" Mode="InOut" Type="Boolean" />
     </FunctionImport>
     <FunctionImport Name="proc_CargarPagosCompraCredito" ReturnType="Collection(SFacturacionModel.proc_CargarPagosCompraCredito_Result)">
-      <Parameter Name="LineaCompraCreditoID" Mode="In" Type="Int32" />
+      <Parameter Name="LineaCreditoCompraID" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="proc_InsertarLineaCreditoCompra">
       <Parameter Name="LineaCreditoCompraID" Mode="InOut" Type="Int32" />
@@ -926,26 +832,17 @@
     </FunctionImport>
     <FunctionImport Name="proc_InsertarPagoCompraCredito">
       <Parameter Name="PagoCompraCreditoID" Mode="InOut" Type="Int32" />
-      <Parameter Name="LineaCompraCreditoID" Mode="In" Type="Int32" />
+      <Parameter Name="LineaCreditoCompraID" Mode="In" Type="Int32" />
       <Parameter Name="FechaPago" Mode="In" Type="DateTime" />
       <Parameter Name="Monto" Mode="In" Type="Decimal" />
       <Parameter Name="UserID" Mode="In" Type="Int32" />
       <Parameter Name="Concepto" Mode="In" Type="String" />
       <Parameter Name="resultado" Mode="InOut" Type="Boolean" />
     </FunctionImport>
-    <FunctionImport Name="proc_ComprobarPagoLineaCreditoCompra">
-      <Parameter Name="LineaCreditoCompraID" Mode="In" Type="Int32" />
-      <Parameter Name="PagoLineaCreditoCompra" Mode="In" Type="Decimal" />
-      <Parameter Name="resultado" Mode="InOut" Type="Boolean" />
-    </FunctionImport>
     <FunctionImport Name="proc_ActualizarCantidadProductoPorID">
       <Parameter Name="ProductoID" Mode="In" Type="Int32" />
       <Parameter Name="Existencia" Mode="In" Type="Double" />
       <Parameter Name="resultado" Mode="InOut" Type="Boolean" />
-    </FunctionImport>
-    <FunctionImport Name="Procedure" ReturnType="Collection(SFacturacionModel.Procedure_Result)">
-      <Parameter Name="param1" Mode="In" Type="Int32" />
-      <Parameter Name="param2" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="proc_ComprobanteOrdenCompra" ReturnType="Collection(SFacturacionModel.proc_ComprobanteOrdenCompra_Result)">
       <Parameter Name="OrdenCompraID" Mode="In" Type="Int32" />
@@ -964,6 +861,66 @@
       <Parameter Name="FechaInicial" Mode="In" Type="DateTime" />
       <Parameter Name="FechaFinal" Mode="In" Type="DateTime" />
     </FunctionImport>
+    <AssociationSet Name="FK_Cotizaciones_Clientes" Association="SFacturacionModel.FK_Cotizaciones_Clientes">
+      <End Role="Cliente" EntitySet="Clientes" />
+      <End Role="Cotizacione" EntitySet="Cotizaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Facturas_Clientes" Association="SFacturacionModel.FK_Facturas_Clientes">
+      <End Role="Cliente" EntitySet="Clientes" />
+      <End Role="Factura" EntitySet="Facturas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cotizaciones_Users" Association="SFacturacionModel.FK_Cotizaciones_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Cotizacione" EntitySet="Cotizaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DetalleCotizaciones_Cotizaciones" Association="SFacturacionModel.FK_DetalleCotizaciones_Cotizaciones">
+      <End Role="Cotizacione" EntitySet="Cotizaciones" />
+      <End Role="DetalleCotizacione" EntitySet="DetalleCotizaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DetalleCotizaciones_Productos" Association="SFacturacionModel.FK_DetalleCotizaciones_Productos">
+      <End Role="Producto" EntitySet="Productos" />
+      <End Role="DetalleCotizacione" EntitySet="DetalleCotizaciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DetalleOrdenesCompra_OrdenesCompra1" Association="SFacturacionModel.FK_DetalleOrdenesCompra_OrdenesCompra1">
+      <End Role="OrdenesCompra" EntitySet="OrdenesCompras" />
+      <End Role="DetalleOrdenesCompra" EntitySet="DetalleOrdenesCompras" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Facturas_TiposFactura" Association="SFacturacionModel.FK_Facturas_TiposFactura">
+      <End Role="TiposFactura" EntitySet="TiposFacturas" />
+      <End Role="Factura" EntitySet="Facturas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Facturas_TiposPago" Association="SFacturacionModel.FK_Facturas_TiposPago">
+      <End Role="TiposPago" EntitySet="TiposPagoes" />
+      <End Role="Factura" EntitySet="Facturas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Facturas_Users" Association="SFacturacionModel.FK_Facturas_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Factura" EntitySet="Facturas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NotasDeCredito_FacturasAplicar" Association="SFacturacionModel.FK_NotasDeCredito_FacturasAplicar">
+      <End Role="Factura" EntitySet="Facturas" />
+      <End Role="NotasDeCredito" EntitySet="NotasDeCreditoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FacturasCompra_OrdenesCompra1" Association="SFacturacionModel.FK_FacturasCompra_OrdenesCompra1">
+      <End Role="OrdenesCompra" EntitySet="OrdenesCompras" />
+      <End Role="FacturasCompra" EntitySet="FacturasCompras" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LineasCreditoCompras_FacturasCompra" Association="SFacturacionModel.FK_LineasCreditoCompras_FacturasCompra">
+      <End Role="FacturasCompra" EntitySet="FacturasCompras" />
+      <End Role="LineasCreditoCompra" EntitySet="LineasCreditoCompras" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PagosComprasCredito_LineasCreditoCompras" Association="SFacturacionModel.FK_PagosComprasCredito_LineasCreditoCompras">
+      <End Role="LineasCreditoCompra" EntitySet="LineasCreditoCompras" />
+      <End Role="PagosComprasCredito" EntitySet="PagosComprasCreditoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrdenesCompra_Proveedores" Association="SFacturacionModel.FK_OrdenesCompra_Proveedores">
+      <End Role="Proveedore" EntitySet="Proveedores" />
+      <End Role="OrdenesCompra" EntitySet="OrdenesCompras" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PagosComprasCredito_Users" Association="SFacturacionModel.FK_PagosComprasCredito_Users">
+      <End Role="User" EntitySet="Users" />
+      <End Role="PagosComprasCredito" EntitySet="PagosComprasCreditoes" />
+    </AssociationSet>
   </EntityContainer>
   <ComplexType Name="proc_BuscarClientesPorID_Result">
     <Property Type="Int32" Name="ClienteID" Nullable="false" />
@@ -1366,6 +1323,9 @@
     <Property Name="UserID" Type="Int32" Nullable="false" />
     <Property Name="Facturada" Type="Boolean" Nullable="false" />
     <Property Name="DescuentoCliente" Type="Decimal" Precision="18" Scale="2" />
+    <NavigationProperty Name="Cliente" Relationship="SFacturacionModel.FK_Cotizaciones_Clientes" FromRole="Cotizacione" ToRole="Cliente" />
+    <NavigationProperty Name="User" Relationship="SFacturacionModel.FK_Cotizaciones_Users" FromRole="Cotizacione" ToRole="User" />
+    <NavigationProperty Name="DetalleCotizaciones" Relationship="SFacturacionModel.FK_DetalleCotizaciones_Cotizaciones" FromRole="Cotizacione" ToRole="DetalleCotizacione" />
   </EntityType>
   <EntityType Name="DetalleCotizacione">
     <Key>
@@ -1378,6 +1338,8 @@
     <Property Name="Precio" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
     <Property Name="ITBIS" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
     <Property Name="Descuento" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <NavigationProperty Name="Cotizacione" Relationship="SFacturacionModel.FK_DetalleCotizaciones_Cotizaciones" FromRole="DetalleCotizacione" ToRole="Cotizacione" />
+    <NavigationProperty Name="Producto" Relationship="SFacturacionModel.FK_DetalleCotizaciones_Productos" FromRole="DetalleCotizacione" ToRole="Producto" />
   </EntityType>
   <ComplexType Name="proc_CargarCotizacionesPFecha_Result">
     <Property Type="Int32" Name="CotizacionID" Nullable="false" />
@@ -1487,17 +1449,21 @@
     <Property Name="LineaCreditoCompraID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Estatus" Type="Boolean" Nullable="false" />
     <Property Name="FacturaCompraID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="FacturasCompra" Relationship="SFacturacionModel.FK_LineasCreditoCompras_FacturasCompra" FromRole="LineasCreditoCompra" ToRole="FacturasCompra" />
+    <NavigationProperty Name="PagosComprasCreditoes" Relationship="SFacturacionModel.FK_PagosComprasCredito_LineasCreditoCompras" FromRole="LineasCreditoCompra" ToRole="PagosComprasCredito" />
   </EntityType>
   <EntityType Name="PagosComprasCredito">
     <Key>
       <PropertyRef Name="PagoCompraCreditoID" />
     </Key>
     <Property Name="PagoCompraCreditoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="LineaCompraCreditoID" Type="Int32" Nullable="false" />
     <Property Name="FechaPago" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="Monto" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
     <Property Name="UserID" Type="Int32" Nullable="false" />
     <Property Name="Concepto" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="LineaCreditoCompraID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="LineasCreditoCompra" Relationship="SFacturacionModel.FK_PagosComprasCredito_LineasCreditoCompras" FromRole="PagosComprasCredito" ToRole="LineasCreditoCompra" />
+    <NavigationProperty Name="User" Relationship="SFacturacionModel.FK_PagosComprasCredito_Users" FromRole="PagosComprasCredito" ToRole="User" />
   </EntityType>
   <ComplexType Name="proc_CargarPagosCompraCredito_Result">
     <Property Type="Int32" Name="PagoCompraCreditoID" Nullable="false" />
@@ -1604,4 +1570,184 @@
     <Property Type="String" Name="Cliente" Nullable="false" MaxLength="100" />
     <Property Type="DateTime" Name="FechaVencimiento" Nullable="true" />
   </ComplexType>
+  <Association Name="FK_Cotizaciones_Clientes">
+    <End Type="SFacturacionModel.Cliente" Role="Cliente" Multiplicity="1" />
+    <End Type="SFacturacionModel.Cotizacione" Role="Cotizacione" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="ClienteID" />
+      </Principal>
+      <Dependent Role="Cotizacione">
+        <PropertyRef Name="ClienteID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Facturas_Clientes">
+    <End Type="SFacturacionModel.Cliente" Role="Cliente" Multiplicity="1" />
+    <End Type="SFacturacionModel.Factura" Role="Factura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="ClienteID" />
+      </Principal>
+      <Dependent Role="Factura">
+        <PropertyRef Name="ClienteID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cotizaciones_Users">
+    <End Type="SFacturacionModel.User" Role="User" Multiplicity="1" />
+    <End Type="SFacturacionModel.Cotizacione" Role="Cotizacione" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Cotizacione">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DetalleCotizaciones_Cotizaciones">
+    <End Type="SFacturacionModel.Cotizacione" Role="Cotizacione" Multiplicity="1" />
+    <End Type="SFacturacionModel.DetalleCotizacione" Role="DetalleCotizacione" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cotizacione">
+        <PropertyRef Name="CotizacionID" />
+      </Principal>
+      <Dependent Role="DetalleCotizacione">
+        <PropertyRef Name="CotizacionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DetalleCotizaciones_Productos">
+    <End Type="SFacturacionModel.Producto" Role="Producto" Multiplicity="1" />
+    <End Type="SFacturacionModel.DetalleCotizacione" Role="DetalleCotizacione" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Producto">
+        <PropertyRef Name="ProductoID" />
+      </Principal>
+      <Dependent Role="DetalleCotizacione">
+        <PropertyRef Name="ProductoID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DetalleOrdenesCompra_OrdenesCompra1">
+    <End Type="SFacturacionModel.OrdenesCompra" Role="OrdenesCompra" Multiplicity="1" />
+    <End Type="SFacturacionModel.DetalleOrdenesCompra" Role="DetalleOrdenesCompra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrdenesCompra">
+        <PropertyRef Name="OrdenCompraID" />
+      </Principal>
+      <Dependent Role="DetalleOrdenesCompra">
+        <PropertyRef Name="OrdenCompraID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Facturas_TiposFactura">
+    <End Type="SFacturacionModel.TiposFactura" Role="TiposFactura" Multiplicity="1" />
+    <End Type="SFacturacionModel.Factura" Role="Factura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TiposFactura">
+        <PropertyRef Name="TipoFacturaID" />
+      </Principal>
+      <Dependent Role="Factura">
+        <PropertyRef Name="TipoFacturaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Facturas_TiposPago">
+    <End Type="SFacturacionModel.TiposPago" Role="TiposPago" Multiplicity="1" />
+    <End Type="SFacturacionModel.Factura" Role="Factura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TiposPago">
+        <PropertyRef Name="TipoPagoID" />
+      </Principal>
+      <Dependent Role="Factura">
+        <PropertyRef Name="TipoPagoID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Facturas_Users">
+    <End Type="SFacturacionModel.User" Role="User" Multiplicity="1" />
+    <End Type="SFacturacionModel.Factura" Role="Factura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Factura">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NotasDeCredito_FacturasAplicar">
+    <End Type="SFacturacionModel.Factura" Role="Factura" Multiplicity="1" />
+    <End Type="SFacturacionModel.NotasDeCredito" Role="NotasDeCredito" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Factura">
+        <PropertyRef Name="FacturaID" />
+      </Principal>
+      <Dependent Role="NotasDeCredito">
+        <PropertyRef Name="FacturaAplicarID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FacturasCompra_OrdenesCompra1">
+    <End Type="SFacturacionModel.OrdenesCompra" Role="OrdenesCompra" Multiplicity="1" />
+    <End Type="SFacturacionModel.FacturasCompra" Role="FacturasCompra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrdenesCompra">
+        <PropertyRef Name="OrdenCompraID" />
+      </Principal>
+      <Dependent Role="FacturasCompra">
+        <PropertyRef Name="OrdenCompraID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LineasCreditoCompras_FacturasCompra">
+    <End Type="SFacturacionModel.FacturasCompra" Role="FacturasCompra" Multiplicity="1" />
+    <End Type="SFacturacionModel.LineasCreditoCompra" Role="LineasCreditoCompra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FacturasCompra">
+        <PropertyRef Name="FacturaCompraID" />
+      </Principal>
+      <Dependent Role="LineasCreditoCompra">
+        <PropertyRef Name="FacturaCompraID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PagosComprasCredito_LineasCreditoCompras">
+    <End Type="SFacturacionModel.LineasCreditoCompra" Role="LineasCreditoCompra" Multiplicity="1" />
+    <End Type="SFacturacionModel.PagosComprasCredito" Role="PagosComprasCredito" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LineasCreditoCompra">
+        <PropertyRef Name="LineaCreditoCompraID" />
+      </Principal>
+      <Dependent Role="PagosComprasCredito">
+        <PropertyRef Name="LineaCreditoCompraID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrdenesCompra_Proveedores">
+    <End Type="SFacturacionModel.Proveedore" Role="Proveedore" Multiplicity="1" />
+    <End Type="SFacturacionModel.OrdenesCompra" Role="OrdenesCompra" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Proveedore">
+        <PropertyRef Name="ProveedorID" />
+      </Principal>
+      <Dependent Role="OrdenesCompra">
+        <PropertyRef Name="ProveedorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PagosComprasCredito_Users">
+    <End Type="SFacturacionModel.User" Role="User" Multiplicity="1" />
+    <End Type="SFacturacionModel.PagosComprasCredito" Role="PagosComprasCredito" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="PagosComprasCredito">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

@@ -22,6 +22,6 @@ namespace CapaDatos
         public decimal Precio { get; set; }
         public bool Estatus { get; set; }
     
-        public virtual OrdenesCompra OrdenesCompra { get; set; }
+        public virtual OrdenesCompra OrdenesCompra1 { get; set; }
     }
 }

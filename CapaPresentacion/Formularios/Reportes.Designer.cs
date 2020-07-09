@@ -128,6 +128,7 @@
             // 
             // pictureBoxGanancias
             // 
+            this.pictureBoxGanancias.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBoxGanancias.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxGanancias.Image")));
             this.pictureBoxGanancias.Location = new System.Drawing.Point(3, 34);
             this.pictureBoxGanancias.Name = "pictureBoxGanancias";
@@ -171,6 +172,7 @@
             // 
             // pictureBoxProductos
             // 
+            this.pictureBoxProductos.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBoxProductos.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxProductos.Image")));
             this.pictureBoxProductos.Location = new System.Drawing.Point(3, 34);
             this.pictureBoxProductos.Name = "pictureBoxProductos";
@@ -214,6 +216,7 @@
             // 
             // pictureBoxClientes
             // 
+            this.pictureBoxClientes.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBoxClientes.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxClientes.Image")));
             this.pictureBoxClientes.Location = new System.Drawing.Point(3, 34);
             this.pictureBoxClientes.Name = "pictureBoxClientes";
@@ -257,6 +260,7 @@
             // 
             // pictureBoxProveedores
             // 
+            this.pictureBoxProveedores.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBoxProveedores.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxProveedores.Image")));
             this.pictureBoxProveedores.Location = new System.Drawing.Point(3, 34);
             this.pictureBoxProveedores.Name = "pictureBoxProveedores";
@@ -300,6 +304,7 @@
             // 
             // pictureBoxFacturasCompra
             // 
+            this.pictureBoxFacturasCompra.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBoxFacturasCompra.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxFacturasCompra.Image")));
             this.pictureBoxFacturasCompra.Location = new System.Drawing.Point(3, 34);
             this.pictureBoxFacturasCompra.Name = "pictureBoxFacturasCompra";
@@ -343,6 +348,7 @@
             // 
             // pictureBoxFacturasCGubernamental
             // 
+            this.pictureBoxFacturasCGubernamental.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBoxFacturasCGubernamental.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxFacturasCGubernamental.Image")));
             this.pictureBoxFacturasCGubernamental.Location = new System.Drawing.Point(3, 52);
             this.pictureBoxFacturasCGubernamental.Name = "pictureBoxFacturasCGubernamental";
@@ -387,6 +393,7 @@
             // 
             // pictureBoxNotasCredito
             // 
+            this.pictureBoxNotasCredito.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBoxNotasCredito.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxNotasCredito.Image")));
             this.pictureBoxNotasCredito.Location = new System.Drawing.Point(3, 52);
             this.pictureBoxNotasCredito.Name = "pictureBoxNotasCredito";
@@ -431,6 +438,7 @@
             // 
             // pictureBoxFacturasCFinal
             // 
+            this.pictureBoxFacturasCFinal.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBoxFacturasCFinal.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxFacturasCFinal.Image")));
             this.pictureBoxFacturasCFinal.Location = new System.Drawing.Point(3, 52);
             this.pictureBoxFacturasCFinal.Name = "pictureBoxFacturasCFinal";
@@ -475,6 +483,7 @@
             // 
             // pictureBoxFacturasCFiscal
             // 
+            this.pictureBoxFacturasCFiscal.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBoxFacturasCFiscal.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxFacturasCFiscal.Image")));
             this.pictureBoxFacturasCFiscal.Location = new System.Drawing.Point(3, 52);
             this.pictureBoxFacturasCFiscal.Name = "pictureBoxFacturasCFiscal";
@@ -519,6 +528,7 @@
             // 
             // pictureBoxFacturas
             // 
+            this.pictureBoxFacturas.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBoxFacturas.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxFacturas.Image")));
             this.pictureBoxFacturas.Location = new System.Drawing.Point(3, 52);
             this.pictureBoxFacturas.Name = "pictureBoxFacturas";

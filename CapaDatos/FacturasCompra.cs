@@ -14,6 +14,12 @@ namespace CapaDatos
     
     public partial class FacturasCompra
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public FacturasCompra()
+        {
+            this.LineasCreditoCompras = new HashSet<LineasCreditoCompra>();
+        }
+    
         public int FacturaCompraID { get; set; }
         public int OrdenCompraID { get; set; }
         public string NCF { get; set; }
@@ -23,7 +29,9 @@ namespace CapaDatos
         public decimal ITBIS { get; set; }
         public System.DateTime FechaVencimiento { get; set; }
     
-        public virtual OrdenesCompra OrdenesCompra { get; set; }
         public virtual TiposPago TiposPago { get; set; }
+        public virtual OrdenesCompra OrdenesCompra1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LineasCreditoCompra> LineasCreditoCompras { get; set; }
     }
 }

@@ -151,6 +151,7 @@
             this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPassword.Location = new System.Drawing.Point(146, 133);
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(195, 24);
             this.txtPassword.TabIndex = 48;
             // 
@@ -229,7 +230,7 @@
             this.cbNivel.Location = new System.Drawing.Point(146, 170);
             this.cbNivel.Name = "cbNivel";
             this.cbNivel.Size = new System.Drawing.Size(195, 26);
-            this.cbNivel.TabIndex = 62;
+            this.cbNivel.TabIndex = 49;
             this.cbNivel.Validating += new System.ComponentModel.CancelEventHandler(this.cbNivel_Validating);
             // 
             // MantenimientoUsuario

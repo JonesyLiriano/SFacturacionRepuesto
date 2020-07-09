@@ -21,11 +21,6 @@ namespace CapaNegocios
             return proveedoresDatos.CargarTodosProveedores();
         }
 
-        public ObjectResult<proc_BuscarProveedoresPorID_Result> BuscarProveedoresPorID(int proveedorID)
-        {
-            return proveedoresDatos.BuscarProveedoresPorID(proveedorID);
-        }
-
         public bool EditarProveedor(Proveedore proveedor)
         {
             return proveedoresDatos.EditarProveedor(proveedor);

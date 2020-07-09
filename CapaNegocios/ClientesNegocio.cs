@@ -21,12 +21,7 @@ namespace CapaNegocios
         {
             return clientesDatos.CargarTodosClientes();
         }
-
-        public ObjectResult<proc_BuscarClientesPorID_Result> BuscarClientesPorID(int clienteID)
-        {
-            return clientesDatos.BuscarClientesPorID(clienteID);
-        }
-
+      
         public bool EditarCliente(Cliente cliente)
         {
             return clientesDatos.EditarCliente(cliente);
@@ -36,7 +31,6 @@ namespace CapaNegocios
         {
             return clientesDatos.BorrarCliente(clienteID);
         }
-
         public bool VerificarCredito(int clienteID, decimal montoFactura)
         {
             return clientesDatos.VerificarCredito(clienteID, montoFactura);

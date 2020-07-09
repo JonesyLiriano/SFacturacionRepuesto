@@ -26,12 +26,23 @@ namespace SFacturacion
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparam);
 
-        public Principal()
+        public Principal(string userLevel)
         {
             InitializeComponent();
             bordeIzquierdoBtn = new Panel();
             bordeIzquierdoBtn.Size = new Size(7, 60);
             MenuVertical.Controls.Add(bordeIzquierdoBtn);
+            if (userLevel == "Usuario")
+            {
+                btnProductos.Enabled = false;
+                btnClientes.Enabled = false;
+                btnProveedores.Enabled = false;
+                btnCompras.Enabled = false;
+                btnUsuarios.Enabled = false;
+                btnReportes.Enabled = false;
+                btnCXP.Enabled = false;
+                btnConfiguraciones.Enabled = false;
+            }
         }      
 
         private void ActivarScrollBar()
@@ -59,7 +70,7 @@ namespace SFacturacion
             {
                 if (MenuVertical.Width == 250)
                 {
-                    MenuVertical.Width = 90;
+                    MenuVertical.Width = 70;
                 }
                 else
                 {
@@ -69,7 +80,7 @@ namespace SFacturacion
             {
                 if (MenuVertical.Width == 250)
                 {
-                    MenuVertical.Width = 70;
+                    MenuVertical.Width = 60;
                 }
                 else
                 {
@@ -114,11 +125,10 @@ namespace SFacturacion
         {
             try
             {
-                //if (panelContenedor.Controls.Count > 0 && !(panelContenedor.Controls.OfType<MiForm>().FirstOrDefault().Text == "InicioResumen"))
-                //{
-                //    CerrarFormularioResumenSistema();
-                //    MessageBox.Show("asdasd");
-                //}
+                if (panelContenedor.Controls.Count > 1)
+                {
+                    CerrarFormularioResumenSistema();
+                }
                 Form fh;
                 fh = panelContenedor.Controls.OfType<MiForm>().FirstOrDefault();
 
@@ -133,8 +143,7 @@ namespace SFacturacion
                     fh.BringToFront();
                 }
                 else
-                {
-                    fh.Activate();
+                {                                      
                     fh.BringToFront();
 
                 }
@@ -288,10 +297,10 @@ namespace SFacturacion
         }
 
         private void btnVentas_Click(object sender, EventArgs e)
-        {            
-            AbrirFormEnPanel<RegistrarVenta>();
+        {
+            AbrirFormEnPanel<TabsFormularioVentas>();
             SeleccionarButton("Ventas");
-            CerrarFormulariosCotizacionFacturasYCuentasPorCobrar();
+            CerrarFormulariosAntesAbrirVentas();
         }
 
         private void btnClientes_Click(object sender, EventArgs e)
@@ -345,11 +354,11 @@ namespace SFacturacion
             SeleccionarButton("Cotizaciones");
         }
 
-        private void CerrarFormulariosCotizacionFacturasYCuentasPorCobrar()
+        private void CerrarFormulariosAntesAbrirVentas()
         {
             foreach (Control item in panelContenedor.Controls)
             {
-               if (item.Text == "Cotizaciones" || item.Text == "Facturas" || item.Text == "CuentasPorCobrar")
+               if (item.Text == "Cotizaciones" || item.Text == "Facturas" || item.Text == "CuentasPorCobrar" || item.Text == "Productos")
                 {
                     panelContenedor.Controls.Remove(item);
                 }
@@ -404,6 +413,7 @@ namespace SFacturacion
 
         private void btnReportes_Click(object sender, EventArgs e)
         {
+            AbrirFormEnPanel<Reportes>();
             SeleccionarButton("Reportes");
         }
     }

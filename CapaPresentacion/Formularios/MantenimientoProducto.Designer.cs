@@ -185,7 +185,7 @@
             this.txtPrecioCompra.Location = new System.Drawing.Point(507, 51);
             this.txtPrecioCompra.Name = "txtPrecioCompra";
             this.txtPrecioCompra.Size = new System.Drawing.Size(116, 24);
-            this.txtPrecioCompra.TabIndex = 51;
+            this.txtPrecioCompra.TabIndex = 9;
             // 
             // pictureBox1
             // 
@@ -204,7 +204,7 @@
             this.txtDescripcion.Location = new System.Drawing.Point(145, 131);
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.Size = new System.Drawing.Size(195, 24);
-            this.txtDescripcion.TabIndex = 47;
+            this.txtDescripcion.TabIndex = 4;
             // 
             // txtID
             // 
@@ -270,7 +270,7 @@
             this.txtCantMax.Location = new System.Drawing.Point(507, 281);
             this.txtCantMax.Name = "txtCantMax";
             this.txtCantMax.Size = new System.Drawing.Size(116, 24);
-            this.txtCantMax.TabIndex = 73;
+            this.txtCantMax.TabIndex = 15;
             // 
             // label7
             // 
@@ -350,7 +350,7 @@
             this.txtCantMin.Location = new System.Drawing.Point(507, 241);
             this.txtCantMin.Name = "txtCantMin";
             this.txtCantMin.Size = new System.Drawing.Size(116, 24);
-            this.txtCantMin.TabIndex = 66;
+            this.txtCantMin.TabIndex = 14;
             // 
             // txtExistencia
             // 
@@ -358,7 +358,7 @@
             this.txtExistencia.Location = new System.Drawing.Point(507, 204);
             this.txtExistencia.Name = "txtExistencia";
             this.txtExistencia.Size = new System.Drawing.Size(116, 24);
-            this.txtExistencia.TabIndex = 65;
+            this.txtExistencia.TabIndex = 13;
             // 
             // txtDescuento
             // 
@@ -366,7 +366,7 @@
             this.txtDescuento.Location = new System.Drawing.Point(507, 166);
             this.txtDescuento.Name = "txtDescuento";
             this.txtDescuento.Size = new System.Drawing.Size(116, 24);
-            this.txtDescuento.TabIndex = 64;
+            this.txtDescuento.TabIndex = 12;
             // 
             // txtPrecioVentaMin
             // 
@@ -374,7 +374,7 @@
             this.txtPrecioVentaMin.Location = new System.Drawing.Point(507, 129);
             this.txtPrecioVentaMin.Name = "txtPrecioVentaMin";
             this.txtPrecioVentaMin.Size = new System.Drawing.Size(116, 24);
-            this.txtPrecioVentaMin.TabIndex = 63;
+            this.txtPrecioVentaMin.TabIndex = 11;
             // 
             // txtPrecioVenta
             // 
@@ -382,7 +382,7 @@
             this.txtPrecioVenta.Location = new System.Drawing.Point(507, 90);
             this.txtPrecioVenta.Name = "txtPrecioVenta";
             this.txtPrecioVenta.Size = new System.Drawing.Size(116, 24);
-            this.txtPrecioVenta.TabIndex = 62;
+            this.txtPrecioVenta.TabIndex = 10;
             // 
             // checkboxServicio
             // 
@@ -390,7 +390,7 @@
             this.checkboxServicio.Location = new System.Drawing.Point(145, 243);
             this.checkboxServicio.Name = "checkboxServicio";
             this.checkboxServicio.Size = new System.Drawing.Size(104, 24);
-            this.checkboxServicio.TabIndex = 74;
+            this.checkboxServicio.TabIndex = 7;
             this.checkboxServicio.UseVisualStyleBackColor = true;
             this.checkboxServicio.CheckedChanged += new System.EventHandler(this.checkboxServicio_CheckedChanged);
             // 
@@ -400,7 +400,7 @@
             this.checkboxITBIS.Location = new System.Drawing.Point(145, 283);
             this.checkboxITBIS.Name = "checkboxITBIS";
             this.checkboxITBIS.Size = new System.Drawing.Size(80, 17);
-            this.checkboxITBIS.TabIndex = 75;
+            this.checkboxITBIS.TabIndex = 8;
             this.checkboxITBIS.UseVisualStyleBackColor = true;
             // 
             // cbProveedor
@@ -412,7 +412,7 @@
             this.cbProveedor.Location = new System.Drawing.Point(145, 202);
             this.cbProveedor.Name = "cbProveedor";
             this.cbProveedor.Size = new System.Drawing.Size(195, 26);
-            this.cbProveedor.TabIndex = 76;
+            this.cbProveedor.TabIndex = 6;
             this.cbProveedor.Validating += new System.ComponentModel.CancelEventHandler(this.cbProveedor_Validating);
             // 
             // label6
@@ -433,7 +433,7 @@
             this.txtCodigoBarra.Location = new System.Drawing.Point(145, 90);
             this.txtCodigoBarra.Name = "txtCodigoBarra";
             this.txtCodigoBarra.Size = new System.Drawing.Size(195, 24);
-            this.txtCodigoBarra.TabIndex = 77;
+            this.txtCodigoBarra.TabIndex = 3;
             // 
             // label14
             // 
@@ -453,7 +453,7 @@
             this.txtUnidadMedida.Location = new System.Drawing.Point(145, 166);
             this.txtUnidadMedida.Name = "txtUnidadMedida";
             this.txtUnidadMedida.Size = new System.Drawing.Size(116, 24);
-            this.txtUnidadMedida.TabIndex = 79;
+            this.txtUnidadMedida.TabIndex = 5;
             // 
             // MantenimientoProducto
             // 

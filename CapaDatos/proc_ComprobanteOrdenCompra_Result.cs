@@ -13,7 +13,6 @@ namespace CapaDatos
     
     public partial class proc_ComprobanteOrdenCompra_Result
     {
-        public int OrdencompraID { get; set; }
         public int ProveedorID { get; set; }
         public string NombreProveedor { get; set; }
         public string CedulaORncProveedor { get; set; }
@@ -28,5 +27,6 @@ namespace CapaDatos
         public double Ordenada { get; set; }
         public Nullable<double> Recibida { get; set; }
         public bool Estatus { get; set; }
+        public int OrdenCompraID { get; set; }
     }
 }

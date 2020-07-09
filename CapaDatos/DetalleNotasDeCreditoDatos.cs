@@ -19,20 +19,5 @@ namespace CapaDatos
 
             return Tuple.Create((bool)resultado.Value, (int)detalleNotaDeCreditoID.Value);
         }
-
-        public ObjectResult<proc_CargarDetalleNotaDeCredito_Result> CargarDetalleNotaDeCredito(int notaDeCreditoID)
-        {
-            var result = modelDB.proc_CargarDetalleNotaDeCredito(notaDeCreditoID);
-
-            return result;
-        }
-
-
-        public ObjectResult<proc_ComprobanteNotaDeCredito_Result> CargarComprobanteNotaDeCredito(int notaDeCreditoID)
-        {
-            var result = modelDB.proc_ComprobanteNotaDeCredito(notaDeCreditoID);
-
-            return result;
-        }
     }
 }

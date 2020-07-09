@@ -167,6 +167,7 @@
             this.btnCerrar.Size = new System.Drawing.Size(20, 20);
             this.btnCerrar.TabIndex = 61;
             this.btnCerrar.Text = "X";
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
             // txtFiltro
             // 

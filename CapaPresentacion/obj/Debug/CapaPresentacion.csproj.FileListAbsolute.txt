@@ -68,9 +68,6 @@ F:\C#\CapaPresentacion\obj\Debug\CapaPresentacion.Cotizaciones.resources
 F:\C#\CapaPresentacion\obj\Debug\CapaPresentacion.Ventas.resources
 F:\C#\SFacturacion\CapaPresentacion\bin\Debug\SFacturacion.mdf
 F:\C#\SFacturacion\CapaPresentacion\bin\Debug\SFacturacion_log.ldf
-F:\C#\SFacturacion\CapaPresentacion\bin\Debug\CapaPresentacion.exe.config
-F:\C#\SFacturacion\CapaPresentacion\bin\Debug\CapaPresentacion.exe
-F:\C#\SFacturacion\CapaPresentacion\bin\Debug\CapaPresentacion.pdb
 F:\C#\SFacturacion\CapaPresentacion\bin\Debug\CapaDatos.dll
 F:\C#\SFacturacion\CapaPresentacion\bin\Debug\CapaNegocios.dll
 F:\C#\SFacturacion\CapaPresentacion\bin\Debug\EntityFramework.dll
@@ -98,8 +95,6 @@ F:\C#\SFacturacion\CapaPresentacion\obj\Debug\CapaPresentacion.Usuarios.resource
 F:\C#\SFacturacion\CapaPresentacion\obj\Debug\CapaPresentacion.csproj.GenerateResource.cache
 F:\C#\SFacturacion\CapaPresentacion\obj\Debug\CapaPresentacion.csproj.CoreCompileInputs.cache
 F:\C#\SFacturacion\CapaPresentacion\obj\Debug\CapaPresentacion.csproj.CopyComplete
-F:\C#\SFacturacion\CapaPresentacion\obj\Debug\CapaPresentacion.exe
-F:\C#\SFacturacion\CapaPresentacion\obj\Debug\CapaPresentacion.pdb
 F:\C#\SFacturacion\CapaPresentacion\obj\Debug\CapaPresentacion.RegistrarVenta.resources
 F:\C#\SFacturacion\CapaPresentacion\bin\Debug\SqlServerTypes\x64\msvcr120.dll
 F:\C#\SFacturacion\CapaPresentacion\bin\Debug\SqlServerTypes\x64\SqlServerSpatial140.dll
@@ -218,3 +213,10 @@ F:\C#\SFacturacion\CapaPresentacion\obj\Debug\CapaPresentacion.Reportes.ReporteG
 F:\C#\SFacturacion\CapaPresentacion\obj\Debug\CapaPresentacion.Impresiones.ImpresionEtiquetaProducto.resources
 F:\C#\SFacturacion\CapaPresentacion\bin\Debug\BarcodeLib.dll
 F:\C#\SFacturacion\CapaPresentacion\obj\Debug\CapaPresentacion.Formularios.CantidadEtiquetasImprimir.resources
+F:\C#\SFacturacion\CapaPresentacion\obj\Debug\CapaPresentacion.Formularios.TabsFormularioVentas.resources
+F:\C#\SFacturacion\CapaPresentacion\bin\Debug\SFacturacion.exe.config
+F:\C#\SFacturacion\CapaPresentacion\bin\Debug\SFacturacion.exe
+F:\C#\SFacturacion\CapaPresentacion\bin\Debug\SFacturacion.pdb
+F:\C#\SFacturacion\CapaPresentacion\obj\Debug\SFacturacion.exe
+F:\C#\SFacturacion\CapaPresentacion\obj\Debug\SFacturacion.pdb
+F:\C#\SFacturacion\CapaPresentacion\obj\Debug\CapaPresentacion.Formularios.RegistrarPago.resources

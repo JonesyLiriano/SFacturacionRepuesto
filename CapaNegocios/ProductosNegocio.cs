@@ -32,11 +32,6 @@ namespace CapaNegocios
         }
 
 
-        public ObjectResult<proc_BuscarProductosPorID_Result> BuscarProductosPorID(int productoID)
-        {
-            return productosDatos.BuscarProductosPorID(productoID);
-        }
-
         public ObjectResult<proc_CargarProductosPorProveedor_Result> CargarProductosPorProveedor(int proveedorID)
         {
             return productosDatos.CargarProductosPorProveedor(proveedorID);
@@ -51,11 +46,6 @@ namespace CapaNegocios
         public bool BorrarProducto(int productoID)
         {
             return productosDatos.BorrarProducto(productoID);
-        }
-
-        public ObjectResult<proc_Cargar10ProductosVendidosPFecha_Result> Cargar10ProductosVendidosPFecha(DateTime fInicial, DateTime fFinal)
-        {
-            return productosDatos.Cargar10ProductosVendidosPFecha(fInicial, fFinal);
         }
 
         public ObjectResult<proc_CargarProductosMasVendidos_Result> CargarProductosMasVendidos()

@@ -23,21 +23,10 @@ namespace CapaNegocios
             return cobrosVentaCreditoDatos.CargarCobrosVentaCredito(lineaCreditoVentaID);
         }
 
-        public bool ComprobarPagoLineaCreditoVenta (int lineaCreditoVentaID, decimal pagoLineaCreditoVenta)
-        {
-            return cobrosVentaCreditoDatos.ComprobarPagoLineaCreditoVenta(lineaCreditoVentaID, pagoLineaCreditoVenta);
-        }
-
         public ObjectResult<proc_ComprobantePagoLineaCreditoVenta_Result> ComprobantePagoLineaCreditoVenta(int cobrosVentasCreditoID)
         {
             return cobrosVentaCreditoDatos.ComprobantePagoLineaCreditoVenta(cobrosVentasCreditoID);
         }
-
-        public ObjectResult<proc_CargarCobrosVentaCreditoPFecha_Result> CargarCobrosVentaCreditoPFecha(DateTime fInicial, DateTime fFinal)
-        {
-            return cobrosVentaCreditoDatos.CargarCobrosVentaCreditoPFecha(fInicial, fFinal);
-        }
-
         public bool BorrarCobroVentaCredito(int cobroVentaCreditoID)
         {
             return cobrosVentaCreditoDatos.BorrarCobroVentaCredito(cobroVentaCreditoID);          

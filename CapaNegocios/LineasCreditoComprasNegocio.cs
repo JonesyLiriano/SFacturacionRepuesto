@@ -10,25 +10,20 @@ namespace CapaNegocios
 {
     public class LineasCreditoComprasNegocio
     {
-        LineasCreditoComprasDatos lineasCreditoVentasDatos = new LineasCreditoComprasDatos();
+        LineasCreditoComprasDatos lineasCreditoComprasDatos = new LineasCreditoComprasDatos();
 
         public Tuple<bool, int> InsertarLineaCreditoCompra(LineasCreditoCompra lineaCreditoCompra)
         {
-            return lineasCreditoVentasDatos.InsertarLineaCreditoCompra(lineaCreditoCompra);
+            return lineasCreditoComprasDatos.InsertarLineaCreditoCompra(lineaCreditoCompra);
         }
 
         public ObjectResult<proc_CargarTodasLineasCreditoCompras_Result> CargarTodasLineasCreditoCompras()
         {
-            return lineasCreditoVentasDatos.CargarTodasLineasCreditoCompras();
+            return lineasCreditoComprasDatos.CargarTodasLineasCreditoCompras();
         }
-        public bool ActualizarLineaCreditoVenta(int lineaCreditoCompraID, bool estatus)
+        public bool ActualizarLineaCreditoCompra(int lineaCreditoCompraID, bool estatus)
         {
-            return lineasCreditoVentasDatos.ActualizarLineaCreditoCompra(lineaCreditoCompraID, estatus);
+            return lineasCreditoComprasDatos.ActualizarLineaCreditoCompra(lineaCreditoCompraID, estatus);
         }
-
-        //public int BuscarLineaDeCreditoVentaIDFactura(int facturaID)
-        //{
-        //    return lineasCreditoVentasDatos.BuscarLineaDeCreditoVentaIDFactura(facturaID);
-        //}
     }
 }

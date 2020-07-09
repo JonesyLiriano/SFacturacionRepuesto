@@ -102,6 +102,7 @@ namespace CapaPresentacion.Formularios
                     }
                 }
             }
+            Properties.Settings.Default.Save();
             MessageBox.Show("Los cambios se aplicaron correctamente.", "Cambios Aplicados", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
         }

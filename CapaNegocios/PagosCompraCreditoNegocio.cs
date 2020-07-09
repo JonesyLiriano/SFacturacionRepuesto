@@ -20,12 +20,6 @@ namespace CapaNegocios
         {   
             return pagosCompraCreditoDatos.CargarPagosCompraCredito(lineaCompraCreditoID);
         }
-
-        public bool ComprobarPagoLineaCreditoCompra(int lineaCreditoCompra, decimal pagoLineaCreditoCompra)
-        {
-            return pagosCompraCreditoDatos.ComprobarPagoLineaCreditoCompra(lineaCreditoCompra, pagoLineaCreditoCompra);
-        }
-
         public bool BorrarPagoCompraCredito(int pagoCompraCreditoID)
         {
             return pagosCompraCreditoDatos.BorrarPagoCompraCredito(pagoCompraCreditoID);

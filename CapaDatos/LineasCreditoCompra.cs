@@ -14,8 +14,18 @@ namespace CapaDatos
     
     public partial class LineasCreditoCompra
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public LineasCreditoCompra()
+        {
+            this.PagosComprasCreditoes = new HashSet<PagosComprasCredito>();
+        }
+    
         public int LineaCreditoCompraID { get; set; }
         public bool Estatus { get; set; }
         public int FacturaCompraID { get; set; }
+    
+        public virtual FacturasCompra FacturasCompra { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PagosComprasCredito> PagosComprasCreditoes { get; set; }
     }
 }

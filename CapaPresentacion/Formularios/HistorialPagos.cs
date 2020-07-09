@@ -19,8 +19,8 @@ namespace CapaPresentacion.Formularios
         List<proc_CargarPagosCompraCredito_Result> proc_CargarPagosCompraCredito_Results;
         PagosCompraCreditoNegocio pagosCompraCreditoNegocio = new PagosCompraCreditoNegocio();
         CultureInfo ci = new CultureInfo("en-us");
-        bool status, resultado;
-        int lineaCreditoCompraID;
+        private bool resultado;
+        private int lineaCreditoCompraID;
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
@@ -41,7 +41,11 @@ namespace CapaPresentacion.Formularios
             txtLineaCreditoCompraID.Text = this.lineaCreditoCompraID.ToString();
             txtProveedor.Text = proveedor;
             txtBalancePendiente.Text = montoPendiente.ToString("C", ci);
-            this.status = status;
+            
+            if(status)
+            {
+                btnEliminar.Enabled = false;
+            }
         }
         private void CargarDataGridView()
         {
@@ -65,13 +69,13 @@ namespace CapaPresentacion.Formularios
             {
                 if (dgvPagos.SelectedRows.Count > 0)
                 {
-                    DialogResult dialogResult = MessageBox.Show(string.Format("Esta seguro que desea eliminar el cobro {0}?", dgvPagos.CurrentRow.Cells["CobroVentaCreditoID"].Value), "Eliminar Cobro", MessageBoxButtons.OKCancel);
-                    if (dialogResult == DialogResult.OK)
-                    {
-                        resultado = pagosCompraCreditoNegocio.BorrarPagoCompraCredito(Convert.ToInt32(dgvPagos.CurrentRow.Cells["PagoCompraCreditoID"].Value));
-                        CargarDataGridView();
-                        ValidarBorrarPago(resultado);
-                    }
+                        DialogResult dialogResult = MessageBox.Show(string.Format("Esta seguro que desea eliminar el cobro {0}?", dgvPagos.CurrentRow.Cells["CobroVentaCreditoID"].Value), "Eliminar Cobro", MessageBoxButtons.OKCancel);
+                        if (dialogResult == DialogResult.OK)
+                        {
+                            resultado = pagosCompraCreditoNegocio.BorrarPagoCompraCredito(Convert.ToInt32(dgvPagos.CurrentRow.Cells["PagoCompraCreditoID"].Value));
+                            CargarDataGridView();
+                            ValidarBorrarPago(resultado);
+                        }                   
                 }
                 else
                 {

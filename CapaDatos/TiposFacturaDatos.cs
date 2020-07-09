@@ -18,24 +18,6 @@ namespace CapaDatos
             var result = modelDB.proc_CargarTodosTiposFactura();
 
             return result;
-        }
-        public Tuple<bool, int> AgregarTipoFactura(TiposFactura tiposFactura)
-        {
-            modelDB.proc_InsertarTiposFactura(tipoFacturaID, tiposFactura.TipoFactura, resultado);
-
-            return Tuple.Create((bool)resultado.Value, (int)tipoFacturaID.Value);
-        }
-
-        public bool EditarTipoFactura(TiposFactura tiposFactura)
-        {
-            modelDB.proc_ActualizarTiposFacturas(tiposFactura.TipoFacturaID, tiposFactura.TipoFactura, resultado);
-            return (bool)resultado.Value;
-        }
-
-        public bool BorrarTipoFactura(int tiposFacturaID)
-        {
-            modelDB.proc_BorrarTiposFacturas(tiposFacturaID, resultado);
-            return (bool)resultado.Value;
-        }
+        }       
     }
 }

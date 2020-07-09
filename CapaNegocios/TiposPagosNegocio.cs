@@ -16,21 +16,5 @@ namespace CapaNegocios
         {
             return tiposPagosDatos.CargarTodosTiposPagos();
         }
-
-        public Tuple<bool, int> AgregarTipoPago(TiposPago tiposPago)
-        {
-
-            return tiposPagosDatos.AgregarTipoPago(tiposPago);
-        }
-
-        public bool EditarTipoPago(TiposPago tipoPago)
-        {
-            return tiposPagosDatos.EditarTipoPago(tipoPago);
-        }
-
-        public bool BorrarTipoPago(int tipoPagoID)
-        {
-            return tiposPagosDatos.BorrarTipoPago(tipoPagoID);
-        }
     }
 }

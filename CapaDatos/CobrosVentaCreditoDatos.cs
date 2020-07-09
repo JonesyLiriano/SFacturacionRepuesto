@@ -26,14 +26,6 @@ namespace CapaDatos
 
             return result;
         }
-
-        public bool ComprobarPagoLineaCreditoVenta(int lineaCreditoVenta, decimal pagoLineaCreditoVenta)
-        {
-            modelDB.proc_ComprobarPagoLineaCreditoVenta(lineaCreditoVenta, pagoLineaCreditoVenta, resultado);
-
-            return (bool)resultado.Value;
-        }
-
         public bool BorrarCobroVentaCredito(int cobroVentaCreditoID)
         {
             modelDB.proc_BorrarCobroVentaCredito(cobroVentaCreditoID, resultado);
@@ -46,13 +38,6 @@ namespace CapaDatos
             var result = modelDB.proc_ComprobantePagoLineaCreditoVenta(cobrosVentasCreditoID);
 
             return result;
-        }
-
-        public ObjectResult<proc_CargarCobrosVentaCreditoPFecha_Result> CargarCobrosVentaCreditoPFecha(DateTime fInicial, DateTime fFinal)
-        {
-            var result = modelDB.proc_CargarCobrosVentaCreditoPFecha(fInicial,fFinal);
-
-            return result;
-        }
+        }              
     }
 }

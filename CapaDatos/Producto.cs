@@ -19,6 +19,7 @@ namespace CapaDatos
         {
             this.DetalleFacturas = new HashSet<DetalleFactura>();
             this.DetalleNotaDeCreditoes = new HashSet<DetalleNotaDeCredito>();
+            this.DetalleCotizaciones = new HashSet<DetalleCotizacione>();
         }
     
         public int ProductoID { get; set; }
@@ -41,5 +42,7 @@ namespace CapaDatos
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DetalleNotaDeCredito> DetalleNotaDeCreditoes { get; set; }
         public virtual Proveedore Proveedore { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DetalleCotizacione> DetalleCotizaciones { get; set; }
     }
 }

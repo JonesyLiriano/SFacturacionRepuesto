@@ -149,7 +149,7 @@
             this.txtDescuento.Location = new System.Drawing.Point(150, 304);
             this.txtDescuento.Name = "txtDescuento";
             this.txtDescuento.Size = new System.Drawing.Size(116, 24);
-            this.txtDescuento.TabIndex = 12;
+            this.txtDescuento.TabIndex = 13;
             // 
             // txtContacto2
             // 
@@ -157,7 +157,7 @@
             this.txtContacto2.Location = new System.Drawing.Point(150, 265);
             this.txtContacto2.Name = "txtContacto2";
             this.txtContacto2.Size = new System.Drawing.Size(195, 24);
-            this.txtContacto2.TabIndex = 11;
+            this.txtContacto2.TabIndex = 12;
             // 
             // txtContacto1
             // 
@@ -165,7 +165,7 @@
             this.txtContacto1.Location = new System.Drawing.Point(150, 223);
             this.txtContacto1.Name = "txtContacto1";
             this.txtContacto1.Size = new System.Drawing.Size(195, 24);
-            this.txtContacto1.TabIndex = 10;
+            this.txtContacto1.TabIndex = 11;
             // 
             // label8
             // 
@@ -257,7 +257,7 @@
             this.txtCredito.Location = new System.Drawing.Point(150, 344);
             this.txtCredito.Name = "txtCredito";
             this.txtCredito.Size = new System.Drawing.Size(116, 24);
-            this.txtCredito.TabIndex = 23;
+            this.txtCredito.TabIndex = 14;
             // 
             // btnAplicar
             // 
@@ -315,7 +315,7 @@
             this.txtDireccion.Multiline = true;
             this.txtDireccion.Name = "txtDireccion";
             this.txtDireccion.Size = new System.Drawing.Size(195, 35);
-            this.txtDireccion.TabIndex = 26;
+            this.txtDireccion.TabIndex = 10;
             // 
             // MantenimientoCliente
             // 

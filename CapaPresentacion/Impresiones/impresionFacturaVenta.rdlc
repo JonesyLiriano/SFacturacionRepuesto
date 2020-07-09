@@ -1032,7 +1032,6 @@
               </Style>
             </Textbox>
             <Textbox Name="Textbox9">
-              <CanGrow>true</CanGrow>
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
@@ -1049,8 +1048,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>2.54656in</Top>
-              <Left>5.25478in</Left>
+              <Top>2.50489in</Top>
+              <Left>5.25472in</Left>
               <Height>0.25in</Height>
               <Width>1.16666in</Width>
               <ZIndex>7</ZIndex>
@@ -1065,7 +1064,6 @@
               </Style>
             </Textbox>
             <Textbox Name="Textbox10">
-              <CanGrow>true</CanGrow>
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
@@ -1082,8 +1080,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>2.79656in</Top>
-              <Left>5.25478in</Left>
+              <Top>2.75489in</Top>
+              <Left>5.25474in</Left>
               <Height>0.25in</Height>
               <Width>1.16666in</Width>
               <ZIndex>8</ZIndex>
@@ -1098,7 +1096,6 @@
               </Style>
             </Textbox>
             <Textbox Name="Textbox11">
-              <CanGrow>true</CanGrow>
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
@@ -1115,8 +1112,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>3.29656in</Top>
-              <Left>5.25478in</Left>
+              <Top>3.25489in</Top>
+              <Left>5.25473in</Left>
               <Height>0.25in</Height>
               <Width>1.16667in</Width>
               <ZIndex>9</ZIndex>
@@ -1166,7 +1163,6 @@
               </Style>
             </Textbox>
             <Textbox Name="Textbox13">
-              <CanGrow>true</CanGrow>
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
@@ -1185,8 +1181,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>2.54656in</Top>
-              <Left>6.42146in</Left>
+              <Top>2.50489in</Top>
+              <Left>6.4214in</Left>
               <Height>0.25in</Height>
               <Width>1.72921in</Width>
               <ZIndex>11</ZIndex>
@@ -1201,7 +1197,6 @@
               </Style>
             </Textbox>
             <Textbox Name="Textbox14">
-              <CanGrow>true</CanGrow>
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
@@ -1220,8 +1215,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>2.79656in</Top>
-              <Left>6.42146in</Left>
+              <Top>2.75489in</Top>
+              <Left>6.42142in</Left>
               <Height>0.25in</Height>
               <Width>1.72921in</Width>
               <ZIndex>12</ZIndex>
@@ -1236,7 +1231,6 @@
               </Style>
             </Textbox>
             <Textbox Name="Textbox16">
-              <CanGrow>true</CanGrow>
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
@@ -1255,8 +1249,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>3.29656in</Top>
-              <Left>6.42145in</Left>
+              <Top>3.25489in</Top>
+              <Left>6.4214in</Left>
               <Height>0.25in</Height>
               <Width>1.72921in</Width>
               <ZIndex>13</ZIndex>
@@ -1367,7 +1361,7 @@
               <Width>3.74633in</Width>
               <ZIndex>16</ZIndex>
               <Visibility>
-                <Hidden>= IIf((Fields!DireccionCliente.Value = "" Or Fields!DireccionCliente.Value = 0),True, False)</Hidden>
+                <Hidden>= IIf((Fields!DireccionCliente.Value = "" Or Fields!DireccionCliente.Value = "0"),True, False)</Hidden>
               </Visibility>
               <Style>
                 <Border>
@@ -1380,7 +1374,6 @@
               </Style>
             </Textbox>
             <Textbox Name="Textbox15">
-              <CanGrow>true</CanGrow>
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
@@ -1397,8 +1390,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>3.54656in</Top>
-              <Left>5.25478in</Left>
+              <Top>3.50489in</Top>
+              <Left>5.25473in</Left>
               <Height>0.25in</Height>
               <Width>1.16667in</Width>
               <ZIndex>17</ZIndex>
@@ -1413,7 +1406,6 @@
               </Style>
             </Textbox>
             <Textbox Name="Textbox20">
-              <CanGrow>true</CanGrow>
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
@@ -1432,8 +1424,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>3.54656in</Top>
-              <Left>6.42145in</Left>
+              <Top>3.50489in</Top>
+              <Left>6.4214in</Left>
               <Height>0.25in</Height>
               <Width>1.72921in</Width>
               <ZIndex>18</ZIndex>
@@ -1577,7 +1569,6 @@
               </Style>
             </Textbox>
             <Textbox Name="Textbox40">
-              <CanGrow>true</CanGrow>
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
@@ -1594,8 +1585,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>3.04656in</Top>
-              <Left>5.25478in</Left>
+              <Top>3.00489in</Top>
+              <Left>5.25473in</Left>
               <Height>0.25in</Height>
               <Width>1.16666in</Width>
               <ZIndex>22</ZIndex>
@@ -1613,7 +1604,6 @@
               </Style>
             </Textbox>
             <Textbox Name="Textbox42">
-              <CanGrow>true</CanGrow>
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
@@ -1632,8 +1622,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>3.04656in</Top>
-              <Left>6.42146in</Left>
+              <Top>3.00489in</Top>
+              <Left>6.42141in</Left>
               <Height>0.25in</Height>
               <Width>1.7292in</Width>
               <ZIndex>23</ZIndex>
@@ -1690,7 +1680,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Fields!FechaVencimiento.Value.ToString("dd/MM/yyyy")</Value>
+                      <Value>=Fields!FechaVencimiento.Value</Value>
                       <Style>
                         <FontFamily>Segoe UI</FontFamily>
                         <FontSize>9pt</FontSize>
@@ -1867,7 +1857,6 @@
               </Style>
             </Textbox>
             <Textbox Name="Textbox49">
-              <CanGrow>true</CanGrow>
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
@@ -1887,8 +1876,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>2.29656in</Top>
-              <Left>6.42147in</Left>
+              <Top>2.25489in</Top>
+              <Left>6.42143in</Left>
               <Height>0.25in</Height>
               <Width>1.72921in</Width>
               <ZIndex>30</ZIndex>
@@ -1903,7 +1892,6 @@
               </Style>
             </Textbox>
             <Textbox Name="Textbox50">
-              <CanGrow>true</CanGrow>
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
@@ -1920,8 +1908,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>2.29656in</Top>
-              <Left>5.25479in</Left>
+              <Top>2.25489in</Top>
+              <Left>5.25475in</Left>
               <Height>0.25in</Height>
               <Width>1.16666in</Width>
               <ZIndex>31</ZIndex>

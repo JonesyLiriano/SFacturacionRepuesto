@@ -42,6 +42,7 @@ namespace CapaPresentacion
         LineasCreditoVentasNegocio lineasCreditoVentasNegocio = new LineasCreditoVentasNegocio();
         List<proc_CargarCotizacionesActivas_Result> proc_CargarCotizacionesActivas_Results;
         List<proc_CargarProductosCotizacion_Result> proc_CargarProductosCotizacion_Results;
+        List<proc_CargarTodosClientes_Result> proc_CargarTodosClientes_Results;
         private bool existe;
         private decimal descuentoProd, campoPrecio;
         private decimal itbisProd, itbisTotal,
@@ -683,6 +684,7 @@ namespace CapaPresentacion
                 formProductos.Controls["btnNuevo"].Visible = false;
                 formProductos.Controls["btnEliminar"].Visible = false;
                 formProductos.Controls["btnEditar"].Visible = false;
+                formProductos.Controls["btnImprimirEtiqueta"].Visible = false;
                 formProductos.AcceptButton = (IButtonControl)formProductos.Controls["btnSeleccionar"];
                 formProductos.ShowDialog();
                 if (codigoBarraProd != null)
@@ -722,7 +724,8 @@ namespace CapaPresentacion
             cbClientes.DataSource = null;
             cbClientes.DisplayMember = "Nombre";
             cbClientes.ValueMember = "ClienteID";
-            cbClientes.DataSource = clientesNegocio.CargarTodosClientes();
+            proc_CargarTodosClientes_Results = clientesNegocio.CargarTodosClientes().ToList();
+            cbClientes.DataSource = proc_CargarTodosClientes_Results;
             cbClientes.SelectedIndex = 0;
 
         }
@@ -737,7 +740,8 @@ namespace CapaPresentacion
 
         private void cbClientes_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            txtDescuentoCliente.Text = proc_CargarTodosClientes_Results.Where(r => r.ClienteID == Convert.ToInt32(cbClientes.SelectedValue))
+                        .FirstOrDefault().Descuento.ToString();
         }
 
         private void cbTipoFactura_SelectedIndexChanged(object sender, EventArgs e)

@@ -14,11 +14,22 @@ namespace CapaDatos
     
     public partial class Cotizacione
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Cotizacione()
+        {
+            this.DetalleCotizaciones = new HashSet<DetalleCotizacione>();
+        }
+    
         public int CotizacionID { get; set; }
         public int ClienteID { get; set; }
         public System.DateTime Fecha { get; set; }
         public int UserID { get; set; }
         public bool Facturada { get; set; }
         public Nullable<decimal> DescuentoCliente { get; set; }
+    
+        public virtual Cliente Cliente { get; set; }
+        public virtual User User { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DetalleCotizacione> DetalleCotizaciones { get; set; }
     }
 }
