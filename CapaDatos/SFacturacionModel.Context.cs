@@ -1218,5 +1218,14 @@ namespace CapaDatos
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_CargarFacturasCGubernamentalPFecha_Result>("proc_CargarFacturasCGubernamentalPFecha", fechaInicialParameter, fechaFinalParameter);
         }
+    
+        public virtual int proc_BuscarLineaDeCreditoVentaIDFactura(Nullable<int> facturaID, ObjectParameter lineaCreditoVentaID)
+        {
+            var facturaIDParameter = facturaID.HasValue ?
+                new ObjectParameter("FacturaID", facturaID) :
+                new ObjectParameter("FacturaID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("proc_BuscarLineaDeCreditoVentaIDFactura", facturaIDParameter, lineaCreditoVentaID);
+        }
     }
 }

@@ -650,6 +650,10 @@
           <Parameter Name="UserID" Type="int" Mode="In" />
           <Parameter Name="resultado" Type="bit" Mode="InOut" />
         </Function>
+        <Function Name="proc_BuscarLineaDeCreditoVentaIDFactura" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FacturaID" Type="int" Mode="In" />
+          <Parameter Name="LineaCreditoVentaID" Type="int" Mode="InOut" />
+        </Function>
         <Function Name="proc_BuscarProductosPorCodigoBarra" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="CodigoBarra" Type="varchar" Mode="In" />
         </Function>
@@ -1972,6 +1976,10 @@
             <End Role="User" EntitySet="Users" />
             <End Role="PagosComprasCredito" EntitySet="PagosComprasCreditoes" />
           </AssociationSet>
+          <FunctionImport Name="proc_BuscarLineaDeCreditoVentaIDFactura">
+            <Parameter Name="FacturaID" Mode="In" Type="Int32" />
+            <Parameter Name="LineaCreditoVentaID" Mode="InOut" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="proc_BuscarProductosPorProveedor_Result">
           <Property Type="Int32" Name="ProductoID" Nullable="false" />
@@ -3571,6 +3579,7 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="proc_BuscarLineaDeCreditoVentaIDFactura" FunctionName="SFacturacionModel.Store.proc_BuscarLineaDeCreditoVentaIDFactura" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

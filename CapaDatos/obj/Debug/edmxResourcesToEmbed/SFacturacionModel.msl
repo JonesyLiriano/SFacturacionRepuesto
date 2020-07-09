@@ -295,7 +295,6 @@
     <FunctionImportMapping FunctionImportName="proc_CargarOrdenesCompraPFecha" FunctionName="SFacturacionModel.Store.proc_CargarOrdenesCompraPFecha">
       <ResultMapping>
         <ComplexTypeMapping TypeName="SFacturacionModel.proc_CargarOrdenesCompraPFecha_Result">
-          <ScalarProperty Name="OrdencompraID" ColumnName="OrdencompraID" />
           <ScalarProperty Name="ProveedorID" ColumnName="ProveedorID" />
           <ScalarProperty Name="NCF" ColumnName="NCF" />
           <ScalarProperty Name="FechaPedido" ColumnName="FechaPedido" />
@@ -308,6 +307,7 @@
           <ScalarProperty Name="FechaVencimiento" ColumnName="FechaVencimiento" />
           <ScalarProperty Name="TipoDePago" ColumnName="TipoDePago" />
           <ScalarProperty Name="FacturaCompraID" ColumnName="FacturaCompraID" />
+          <ScalarProperty Name="OrdenCompraID" ColumnName="OrdenCompraID" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
@@ -376,7 +376,6 @@
     <FunctionImportMapping FunctionImportName="proc_CargarTodasOrdenesCompra" FunctionName="SFacturacionModel.Store.proc_CargarTodasOrdenesCompra">
       <ResultMapping>
         <ComplexTypeMapping TypeName="SFacturacionModel.proc_CargarTodasOrdenesCompra_Result">
-          <ScalarProperty Name="OrdencompraID" ColumnName="OrdencompraID" />
           <ScalarProperty Name="FechaPedido" ColumnName="FechaPedido" />
           <ScalarProperty Name="FechaCompletado" ColumnName="FechaCompletado" />
           <ScalarProperty Name="NCF" ColumnName="NCF" />
@@ -388,6 +387,7 @@
           <ScalarProperty Name="Completado" ColumnName="Completado" />
           <ScalarProperty Name="Total" ColumnName="Total" />
           <ScalarProperty Name="FechaVencimiento" ColumnName="FechaVencimiento" />
+          <ScalarProperty Name="OrdenCompraID" ColumnName="OrdenCompraID" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
@@ -783,7 +783,6 @@
     <FunctionImportMapping FunctionImportName="proc_ComprobanteOrdenCompra" FunctionName="SFacturacionModel.Store.proc_ComprobanteOrdenCompra">
       <ResultMapping>
         <ComplexTypeMapping TypeName="SFacturacionModel.proc_ComprobanteOrdenCompra_Result">
-          <ScalarProperty Name="OrdencompraID" ColumnName="OrdencompraID" />
           <ScalarProperty Name="ProveedorID" ColumnName="ProveedorID" />
           <ScalarProperty Name="NombreProveedor" ColumnName="NombreProveedor" />
           <ScalarProperty Name="CedulaORncProveedor" ColumnName="CedulaORncProveedor" />
@@ -798,6 +797,7 @@
           <ScalarProperty Name="Ordenada" ColumnName="Ordenada" />
           <ScalarProperty Name="Recibida" ColumnName="Recibida" />
           <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+          <ScalarProperty Name="OrdenCompraID" ColumnName="OrdenCompraID" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
@@ -898,5 +898,6 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="proc_BuscarLineaDeCreditoVentaIDFactura" FunctionName="SFacturacionModel.Store.proc_BuscarLineaDeCreditoVentaIDFactura" />
   </EntityContainerMapping>
 </Mapping>

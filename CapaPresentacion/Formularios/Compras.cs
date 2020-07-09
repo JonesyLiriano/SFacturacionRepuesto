@@ -244,7 +244,7 @@ namespace CapaPresentacion.Formularios
                     switch (cbFiltro.SelectedItem.ToString())
                     {
                         case "ID":
-                            dgvCompras.DataSource = proc_CargarTodasOrdenesCompra_Results.Where(p => p.OrdencompraID.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                            dgvCompras.DataSource = proc_CargarTodasOrdenesCompra_Results.Where(p => p.OrdenCompraID.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
                             break;
                         case "Proveedor":
                             dgvCompras.DataSource = proc_CargarTodasOrdenesCompra_Results.Where(p => p.Proveedor.ToLower().Contains(txtFiltro.Text.ToLower())).ToList();

@@ -188,7 +188,7 @@ namespace CapaPresentacion.Impresiones
                 controladorImpresoraMatricial.lineasGuio();
                 controladorImpresoraMatricial.TextoIzquierda("COD. PROVEEDOR: " + proc_ComprobanteOrdenCompra_Results.First().ProveedorID);
                 controladorImpresoraMatricial.TextoIzquierda("PROVEEDOR: " + proc_ComprobanteOrdenCompra_Results.First().NombreProveedor.ToUpper());
-                controladorImpresoraMatricial.TextoIzquierda("COD. ORDEN COMPRA: " + proc_ComprobanteOrdenCompra_Results.First().OrdencompraID.ToString());
+                controladorImpresoraMatricial.TextoIzquierda("COD. ORDEN COMPRA: " + proc_ComprobanteOrdenCompra_Results.First().OrdenCompraID.ToString());
                 controladorImpresoraMatricial.lineasGuio();
                 controladorImpresoraMatricial.TextoCentro("SISTEMA REALIZADO POR JONESY LIRIANO");
                 controladorImpresoraMatricial.TextoCentro("TEL/WSS: 809-222-3740");
