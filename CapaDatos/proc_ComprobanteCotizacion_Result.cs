@@ -28,5 +28,6 @@ namespace CapaDatos
         public string ClienteDireccion { get; set; }
         public string UserName { get; set; }
         public string UnidadMedida { get; set; }
+        public string Referencia { get; set; }
     }
 }

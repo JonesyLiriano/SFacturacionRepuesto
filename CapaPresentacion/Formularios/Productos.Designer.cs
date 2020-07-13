@@ -42,7 +42,10 @@
             this.ProductoID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Servicio = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.CodigoBarra = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Referencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Marca = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Calidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Proveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UnidadMedida = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Existencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -117,7 +120,10 @@
             this.ProductoID,
             this.Servicio,
             this.CodigoBarra,
+            this.Referencia,
             this.Descripcion,
+            this.Marca,
+            this.Calidad,
             this.Proveedor,
             this.UnidadMedida,
             this.Existencia,
@@ -268,6 +274,14 @@
             this.CodigoBarra.ReadOnly = true;
             this.CodigoBarra.Width = 114;
             // 
+            // Referencia
+            // 
+            this.Referencia.DataPropertyName = "Referencia";
+            this.Referencia.HeaderText = "Referencia";
+            this.Referencia.Name = "Referencia";
+            this.Referencia.ReadOnly = true;
+            this.Referencia.Width = 99;
+            // 
             // Descripcion
             // 
             this.Descripcion.DataPropertyName = "Descripcion";
@@ -275,6 +289,22 @@
             this.Descripcion.Name = "Descripcion";
             this.Descripcion.ReadOnly = true;
             this.Descripcion.Width = 106;
+            // 
+            // Marca
+            // 
+            this.Marca.DataPropertyName = "Marca";
+            this.Marca.HeaderText = "Marca";
+            this.Marca.Name = "Marca";
+            this.Marca.ReadOnly = true;
+            this.Marca.Width = 72;
+            // 
+            // Calidad
+            // 
+            this.Calidad.DataPropertyName = "Calidad";
+            this.Calidad.HeaderText = "Calidad";
+            this.Calidad.Name = "Calidad";
+            this.Calidad.ReadOnly = true;
+            this.Calidad.Width = 84;
             // 
             // Proveedor
             // 
@@ -404,7 +434,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductoID;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Servicio;
         private System.Windows.Forms.DataGridViewTextBoxColumn CodigoBarra;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Referencia;
         private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Marca;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Calidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn Proveedor;
         private System.Windows.Forms.DataGridViewTextBoxColumn UnidadMedida;
         private System.Windows.Forms.DataGridViewTextBoxColumn Existencia;

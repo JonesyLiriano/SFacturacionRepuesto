@@ -126,7 +126,7 @@ namespace CapaDatos
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("proc_ActualizarLineaCreditoVenta", lineaCreditoVentaIDParameter, estatusParameter, resultado);
         }
     
-        public virtual int proc_ActualizarProducto(Nullable<int> productoID, string descripcion, Nullable<double> existencia, Nullable<decimal> precioCompra, Nullable<decimal> precioVenta, Nullable<decimal> precioVentaMin, Nullable<int> proveedorID, Nullable<bool> servicio, Nullable<bool> iTBIS, Nullable<decimal> descuento, Nullable<double> cantMin, Nullable<double> cantMax, string codigoBarra, string unidadMedida, ObjectParameter resultado)
+        public virtual int proc_ActualizarProducto(Nullable<int> productoID, string descripcion, Nullable<double> existencia, Nullable<decimal> precioCompra, Nullable<decimal> precioVenta, Nullable<decimal> precioVentaMin, Nullable<int> proveedorID, Nullable<bool> servicio, Nullable<bool> iTBIS, Nullable<decimal> descuento, Nullable<double> cantMin, Nullable<double> cantMax, string codigoBarra, string unidadMedida, string referencia, string marca, string calidad, ObjectParameter resultado)
         {
             var productoIDParameter = productoID.HasValue ?
                 new ObjectParameter("ProductoID", productoID) :
@@ -184,7 +184,19 @@ namespace CapaDatos
                 new ObjectParameter("UnidadMedida", unidadMedida) :
                 new ObjectParameter("UnidadMedida", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("proc_ActualizarProducto", productoIDParameter, descripcionParameter, existenciaParameter, precioCompraParameter, precioVentaParameter, precioVentaMinParameter, proveedorIDParameter, servicioParameter, iTBISParameter, descuentoParameter, cantMinParameter, cantMaxParameter, codigoBarraParameter, unidadMedidaParameter, resultado);
+            var referenciaParameter = referencia != null ?
+                new ObjectParameter("Referencia", referencia) :
+                new ObjectParameter("Referencia", typeof(string));
+    
+            var marcaParameter = marca != null ?
+                new ObjectParameter("Marca", marca) :
+                new ObjectParameter("Marca", typeof(string));
+    
+            var calidadParameter = calidad != null ?
+                new ObjectParameter("Calidad", calidad) :
+                new ObjectParameter("Calidad", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("proc_ActualizarProducto", productoIDParameter, descripcionParameter, existenciaParameter, precioCompraParameter, precioVentaParameter, precioVentaMinParameter, proveedorIDParameter, servicioParameter, iTBISParameter, descuentoParameter, cantMinParameter, cantMaxParameter, codigoBarraParameter, unidadMedidaParameter, referenciaParameter, marcaParameter, calidadParameter, resultado);
         }
     
         public virtual int proc_ActualizarProveedor(Nullable<int> proveedorID, string nombre, string cedulaORnc, string direccion, string contacto_1, string contacto_2, string datoAdicional, ObjectParameter resultado)
@@ -872,7 +884,7 @@ namespace CapaDatos
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_CargarProductosExistBajaPorProveedor_Result>("proc_CargarProductosExistBajaPorProveedor", proveedorIDParameter);
         }
     
-        public virtual int proc_InsertarProducto(ObjectParameter productoID, string descripcion, Nullable<double> existencia, Nullable<decimal> precioCompra, Nullable<decimal> precioVenta, Nullable<decimal> precioVentaMin, Nullable<int> proveedorID, Nullable<bool> servicio, Nullable<bool> iTBIS, Nullable<decimal> descuento, Nullable<double> cantMin, Nullable<double> cantMax, string codigoBarra, string unidadMedida, ObjectParameter resultado)
+        public virtual int proc_InsertarProducto(ObjectParameter productoID, string descripcion, Nullable<double> existencia, Nullable<decimal> precioCompra, Nullable<decimal> precioVenta, Nullable<decimal> precioVentaMin, Nullable<int> proveedorID, Nullable<bool> servicio, Nullable<bool> iTBIS, Nullable<decimal> descuento, Nullable<double> cantMin, Nullable<double> cantMax, string codigoBarra, string unidadMedida, string referencia, string marca, string calidad, ObjectParameter resultado)
         {
             var descripcionParameter = descripcion != null ?
                 new ObjectParameter("Descripcion", descripcion) :
@@ -926,7 +938,19 @@ namespace CapaDatos
                 new ObjectParameter("UnidadMedida", unidadMedida) :
                 new ObjectParameter("UnidadMedida", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("proc_InsertarProducto", productoID, descripcionParameter, existenciaParameter, precioCompraParameter, precioVentaParameter, precioVentaMinParameter, proveedorIDParameter, servicioParameter, iTBISParameter, descuentoParameter, cantMinParameter, cantMaxParameter, codigoBarraParameter, unidadMedidaParameter, resultado);
+            var referenciaParameter = referencia != null ?
+                new ObjectParameter("Referencia", referencia) :
+                new ObjectParameter("Referencia", typeof(string));
+    
+            var marcaParameter = marca != null ?
+                new ObjectParameter("Marca", marca) :
+                new ObjectParameter("Marca", typeof(string));
+    
+            var calidadParameter = calidad != null ?
+                new ObjectParameter("Calidad", calidad) :
+                new ObjectParameter("Calidad", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("proc_InsertarProducto", productoID, descripcionParameter, existenciaParameter, precioCompraParameter, precioVentaParameter, precioVentaMinParameter, proveedorIDParameter, servicioParameter, iTBISParameter, descuentoParameter, cantMinParameter, cantMaxParameter, codigoBarraParameter, unidadMedidaParameter, referenciaParameter, marcaParameter, calidadParameter, resultado);
         }
     
         public virtual ObjectResult<proc_BuscarProductosPorCodigoBarra_Result> proc_BuscarProductosPorCodigoBarra(string codigoBarra)

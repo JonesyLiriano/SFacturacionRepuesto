@@ -81,6 +81,10 @@
           <DataField>ProductoID</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
+        <Field Name="Referencia">
+          <DataField>Referencia</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="UnidadMedida">
           <DataField>UnidadMedida</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -105,25 +109,25 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>0.71751in</Width>
+                  <Width>0.70603in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.56283in</Width>
+                  <Width>1.07293in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.18474in</Width>
+                  <Width>2.01355in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.76405in</Width>
+                  <Width>0.64901in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.9539in</Width>
+                  <Width>0.87098in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.78488in</Width>
+                  <Width>0.78786in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.84376in</Width>
+                  <Width>1.73215in</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -177,7 +181,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Codigo</Value>
+                                  <Value>Referencia</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontWeight>Bold</FontWeight>
@@ -445,14 +449,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="ProductoID">
+                        <Textbox Name="Referencia">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!ProductoID.Value</Value>
+                                  <Value>=Fields!Referencia.Value</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                   </Style>
@@ -463,7 +467,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>ProductoID</rd:DefaultName>
+                          <rd:DefaultName>Referencia</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -675,7 +679,7 @@
             <Top>0.05417in</Top>
             <Left>0.33895in</Left>
             <Height>0.52083in</Height>
-            <Width>7.81167in</Width>
+            <Width>7.8325in</Width>
             <Style>
               <Border>
                 <Style>None</Style>

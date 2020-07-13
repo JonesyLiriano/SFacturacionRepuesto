@@ -36,7 +36,7 @@ namespace CapaPresentacion.Formularios
             {
                 switch (e.ColumnIndex)
                 {
-                    case 6:
+                    case 7:
                         if (!ValidarCeldasNumero(e.FormattedValue.ToString(),
                               dgvProductos.Rows[e.RowIndex].Cells["CantVen"].Value.ToString()))
                         {
@@ -57,7 +57,7 @@ namespace CapaPresentacion.Formularios
                         }                        
                         dgvProductos.Rows[e.RowIndex].Cells["Inventariada"].Value = e.FormattedValue;
                         break;
-                    case 7:
+                    case 8:
                         if (!ValidarCeldasNumero(e.FormattedValue.ToString(),
                               dgvProductos.Rows[e.RowIndex].Cells["Recibida"].Value.ToString()))
                         {
@@ -116,7 +116,7 @@ namespace CapaPresentacion.Formularios
                     {
                         if (Convert.ToDecimal(row.Cells["Recibida"].Value) > 0)
                         {
-                            dtProductosRecibidos.Rows.Add(row.Cells["ProductoID"].Value, row.Cells["Descripcion"].Value, row.Cells["UnidadMedida"].Value,
+                            dtProductosRecibidos.Rows.Add(row.Cells["ProductoID"].Value, row.Cells["Referencia"].Value, row.Cells["Descripcion"].Value, row.Cells["UnidadMedida"].Value,
                                 row.Cells["CantVen"].Value, row.Cells["Precio"].Value, row.Cells["PrecioSinITBIS"].Value,
                                 row.Cells["Recibida"].Value, row.Cells["Inventariada"].Value, row.Cells["Comentario"].Value);
                         }
@@ -132,6 +132,7 @@ namespace CapaPresentacion.Formularios
         {
             dtProductosRecibidos = new DataTable();
             dtProductosRecibidos.Columns.Add("ProductoID", typeof(int));
+            dtProductosRecibidos.Columns.Add("Referencia", typeof(string));
             dtProductosRecibidos.Columns.Add("Descripcion", typeof(string));
             dtProductosRecibidos.Columns.Add("UnidadMedida", typeof(string));
             dtProductosRecibidos.Columns.Add("CantVen", typeof(double));
@@ -195,6 +196,7 @@ namespace CapaPresentacion.Formularios
                 dgvProductos.Columns["UnidadMedida"].ReadOnly = true;
                 dgvProductos.Columns["Precio"].ReadOnly = true;
                 dgvProductos.Columns["PrecioSinITBIS"].ReadOnly = true;
+                dgvProductos.Columns["Referencia"].ReadOnly = true;
                 dgvProductos.Refresh();
             }
         }

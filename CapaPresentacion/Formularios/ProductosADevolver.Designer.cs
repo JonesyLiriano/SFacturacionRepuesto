@@ -38,6 +38,7 @@
             this.btnGuardar = new System.Windows.Forms.Button();
             this.dgvProductos = new System.Windows.Forms.DataGridView();
             this.ProductoID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Referencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UnidadMedida = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CantVen = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -142,6 +143,7 @@
             this.dgvProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvProductos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ProductoID,
+            this.Referencia,
             this.Descripcion,
             this.UnidadMedida,
             this.CantVen,
@@ -175,6 +177,13 @@
             this.ProductoID.HeaderText = "ID";
             this.ProductoID.Name = "ProductoID";
             this.ProductoID.Width = 41;
+            // 
+            // Referencia
+            // 
+            this.Referencia.DataPropertyName = "Referencia";
+            this.Referencia.HeaderText = "Referencia";
+            this.Referencia.Name = "Referencia";
+            this.Referencia.Width = 82;
             // 
             // Descripcion
             // 
@@ -265,6 +274,7 @@
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.DataGridView dgvProductos;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductoID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Referencia;
         private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
         private System.Windows.Forms.DataGridViewTextBoxColumn UnidadMedida;
         private System.Windows.Forms.DataGridViewTextBoxColumn CantVen;

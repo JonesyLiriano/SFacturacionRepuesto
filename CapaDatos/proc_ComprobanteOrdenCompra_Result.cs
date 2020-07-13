@@ -28,5 +28,8 @@ namespace CapaDatos
         public Nullable<double> Recibida { get; set; }
         public bool Estatus { get; set; }
         public int OrdenCompraID { get; set; }
+        public string Referencia { get; set; }
+        public string Marca { get; set; }
+        public string Calidad { get; set; }
     }
 }

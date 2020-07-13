@@ -19,7 +19,7 @@ namespace CapaPresentacion.Impresiones
     public partial class ImpresionEtiquetaProducto : Form
     {
         private int cantidad;
-        ReportParameter[] parameters = new ReportParameter[4];
+        ReportParameter[] parameters = new ReportParameter[5];
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
@@ -31,10 +31,10 @@ namespace CapaPresentacion.Impresiones
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
 
-        public ImpresionEtiquetaProducto(string descripcionProd, string codigoBarra, int cantidad, string precioVenta)
+        public ImpresionEtiquetaProducto(string descripcionProd, string codigoBarra, int cantidad, string precioVenta, string referencia)
         {
             InitializeComponent();
-            CargarParametros(descripcionProd, codigoBarra, precioVenta);
+            CargarParametros(descripcionProd, codigoBarra, precioVenta, referencia);
             this.cantidad = cantidad;
         }
 
@@ -103,7 +103,7 @@ namespace CapaPresentacion.Impresiones
             }
         }
 
-        private void CargarParametros(string descripcionProd, string codigoBarra, string precioVenta)
+        private void CargarParametros(string descripcionProd, string codigoBarra, string precioVenta, string referencia)
         {
             try
             {
@@ -111,6 +111,7 @@ namespace CapaPresentacion.Impresiones
                 parameters[1] = new ReportParameter("CodigoBarra", GenerarCodigoBarra(codigoBarra));
                 parameters[2] = new ReportParameter("DescripcionProducto", descripcionProd);
                 parameters[3] = new ReportParameter("PrecioVenta", precioVenta);
+                parameters[4] = new ReportParameter("Referencia", referencia);
             }
             catch (Exception exc)
             {

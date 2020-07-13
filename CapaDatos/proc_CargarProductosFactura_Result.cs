@@ -19,5 +19,6 @@ namespace CapaDatos
         public string UnidadMedida { get; set; }
         public int ProductoID { get; set; }
         public Nullable<decimal> PrecioSinITBIS { get; set; }
+        public string Referencia { get; set; }
     }
 }

@@ -15,7 +15,7 @@ namespace CapaDatos
 
         public Tuple<bool, int> AgregarProducto(Producto producto)
         {
-            modelDB.proc_InsertarProducto(productoID,producto.Descripcion,producto.Existencia, producto.PrecioCompra, producto.PrecioVenta, producto.PrecioVentaMin, producto.ProveedorID, producto.Servicio, producto.ITBIS, producto.Descuento, producto.CantMin, producto.CantMax, producto.CodigoBarra, producto.UnidadMedida ,resultado);
+            modelDB.proc_InsertarProducto(productoID,producto.Descripcion,producto.Existencia, producto.PrecioCompra, producto.PrecioVenta, producto.PrecioVentaMin, producto.ProveedorID, producto.Servicio, producto.ITBIS, producto.Descuento, producto.CantMin, producto.CantMax, producto.CodigoBarra, producto.UnidadMedida, producto.Referencia, producto.Marca, producto.Calidad, resultado);
 
             return Tuple.Create((bool)resultado.Value, (int)productoID.Value);
         }
@@ -55,7 +55,7 @@ namespace CapaDatos
 
         public bool EditarProducto(Producto producto)
         {
-            modelDB.proc_ActualizarProducto(producto.ProductoID, producto.Descripcion, producto.Existencia, producto.PrecioCompra, producto.PrecioVenta, producto.PrecioVentaMin, producto.ProveedorID, producto.Servicio, producto.ITBIS, producto.Descuento, producto.CantMin, producto.CantMax, producto.CodigoBarra, producto.UnidadMedida, resultado);
+            modelDB.proc_ActualizarProducto(producto.ProductoID, producto.Descripcion, producto.Existencia, producto.PrecioCompra, producto.PrecioVenta, producto.PrecioVentaMin, producto.ProveedorID, producto.Servicio, producto.ITBIS, producto.Descuento, producto.CantMin, producto.CantMax, producto.CodigoBarra, producto.UnidadMedida, producto.Referencia, producto.Marca, producto.Calidad, resultado);
             return (bool)resultado.Value;
         }
 

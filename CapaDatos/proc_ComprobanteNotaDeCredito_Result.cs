@@ -31,5 +31,6 @@ namespace CapaDatos
         public System.DateTime FechaVencimiento { get; set; }
         public int NotaDeCreditoID { get; set; }
         public string UnidadMedida { get; set; }
+        public string Referencia { get; set; }
     }
 }

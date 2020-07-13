@@ -34,17 +34,22 @@ namespace CapaPresentacion.Formularios
         {
             dtProductosMarcados = new DataTable();
             dtProductosMarcados.Columns.Add("ProductoID", typeof(int));
+            dtProductosMarcados.Columns.Add("Referencia", typeof(double));
             dtProductosMarcados.Columns.Add("Descripcion", typeof(string));
+            dtProductosMarcados.Columns.Add("Marca", typeof(double));
+            dtProductosMarcados.Columns.Add("Calidad", typeof(double));
             dtProductosMarcados.Columns.Add("UnidadMedida", typeof(string));
             dtProductosMarcados.Columns.Add("Existencia", typeof(double));
             dtProductosMarcados.Columns.Add("PrecioCompra", typeof(decimal));
             dtProductosMarcados.Columns.Add("CantMin", typeof(double));
             dtProductosMarcados.Columns.Add("CantMax", typeof(double));
+
             
         }
 
         private void CargarDataGridView()
         {
+            dgvProductos.AutoGenerateColumns = false;
             if (checkBoxProdExistBaja.Checked == true)
             {
                 proc_CargarProductosExistBajaPorProveedor_Results = productosNegocio.CargarProductosExistBajaPorProveedor(proveedorID).ToList();
@@ -63,12 +68,15 @@ namespace CapaPresentacion.Formularios
         {
             dgvProductos.Columns["Seleccionar"].DisplayIndex = 0;
             dgvProductos.Columns["ProductoID"].DisplayIndex = 1;
-            dgvProductos.Columns["Descripcion"].DisplayIndex = 2;
-            dgvProductos.Columns["UnidadMedida"].DisplayIndex = 3;
-            dgvProductos.Columns["Existencia"].DisplayIndex = 4;
-            dgvProductos.Columns["PrecioCompra"].DisplayIndex = 5;
-            dgvProductos.Columns["CantMin"].DisplayIndex = 6;
-            dgvProductos.Columns["CantMax"].DisplayIndex = 7;
+            dgvProductos.Columns["Referencia"].DisplayIndex = 2;
+            dgvProductos.Columns["Descripcion"].DisplayIndex = 3;
+            dgvProductos.Columns["Marca"].DisplayIndex = 4;
+            dgvProductos.Columns["Calidad"].DisplayIndex = 5;
+            dgvProductos.Columns["UnidadMedida"].DisplayIndex = 6;
+            dgvProductos.Columns["Existencia"].DisplayIndex = 7;
+            dgvProductos.Columns["PrecioCompra"].DisplayIndex = 8;
+            dgvProductos.Columns["CantMin"].DisplayIndex = 9;
+            dgvProductos.Columns["CantMax"].DisplayIndex = 10;
 
             dgvProductos.Columns["CantMin"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgvProductos.Columns["CantMax"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
@@ -81,6 +89,9 @@ namespace CapaPresentacion.Formularios
             dgvProductos.Columns["PrecioCompra"].ReadOnly = true;
             dgvProductos.Columns["CantMin"].ReadOnly = true;
             dgvProductos.Columns["CantMax"].ReadOnly = true;
+            dgvProductos.Columns["Referencia"].ReadOnly = true;
+            dgvProductos.Columns["Marca"].ReadOnly = true;
+            dgvProductos.Columns["Calidad"].ReadOnly = true;
             dgvProductos.Refresh();
         }
 
@@ -180,7 +191,10 @@ namespace CapaPresentacion.Formularios
                 {
                     dtProductosMarcados.Rows.Add(
                           Convert.ToInt32(rowMarcados.Cells["ProductoID"].Value)
+                          , Convert.ToString(rowMarcados.Cells["Referencia"].Value)
                         , Convert.ToString(rowMarcados.Cells["Descripcion"].Value)
+                        , Convert.ToString(rowMarcados.Cells["Marca"].Value)
+                        , Convert.ToString(rowMarcados.Cells["Calidad"].Value)
                         , Convert.ToString(rowMarcados.Cells["UnidadMedida"].Value)
                         , Convert.ToString(rowMarcados.Cells["Existencia"].Value)
                         , Convert.ToDouble(rowMarcados.Cells["PrecioCompra"].Value)
@@ -219,7 +233,10 @@ namespace CapaPresentacion.Formularios
         private void CargarCBFiltro()
         {
             cbFiltro.Items.Add("ID");
+            cbFiltro.Items.Add("Referencia");
             cbFiltro.Items.Add("Descripcion");
+            cbFiltro.Items.Add("Marca");
+            cbFiltro.Items.Add("Calidad");
             cbFiltro.Items.Add("Unidad de Medida");
             cbFiltro.SelectedIndex = 0;
         }
@@ -254,8 +271,17 @@ namespace CapaPresentacion.Formularios
                             case "ID":
                                 dgvProductos.DataSource = proc_CargarProductosExistBajaPorProveedor_Results.Where(p => p.ProductoID.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
                                 break;
+                            case "Referencia":
+                                dgvProductos.DataSource = proc_CargarProductosExistBajaPorProveedor_Results.Where(p => p.Referencia.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                                break;
                             case "Descripcion":
                                 dgvProductos.DataSource = proc_CargarProductosExistBajaPorProveedor_Results.Where(p => p.Descripcion.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                                break;
+                            case "Marca":
+                                dgvProductos.DataSource = proc_CargarProductosExistBajaPorProveedor_Results.Where(p => p.Marca.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                                break;
+                            case "Calidad":
+                                dgvProductos.DataSource = proc_CargarProductosExistBajaPorProveedor_Results.Where(p => p.Calidad.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
                                 break;
                             case "Unidad de Medida":
                                 dgvProductos.DataSource = proc_CargarProductosExistBajaPorProveedor_Results.Where(p => p.UnidadMedida.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
@@ -271,8 +297,17 @@ namespace CapaPresentacion.Formularios
                             case "ID":
                                 dgvProductos.DataSource = proc_BuscarProductosPorProveedor_Results.Where(p => p.ProductoID.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
                                 break;
+                            case "Referencia":
+                                dgvProductos.DataSource = proc_BuscarProductosPorProveedor_Results.Where(p => p.Referencia.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                                break;
                             case "Descripcion":
                                 dgvProductos.DataSource = proc_BuscarProductosPorProveedor_Results.Where(p => p.Descripcion.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                                break;
+                            case "Marca":
+                                dgvProductos.DataSource = proc_BuscarProductosPorProveedor_Results.Where(p => p.Marca.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                                break;
+                            case "Calidad":
+                                dgvProductos.DataSource = proc_BuscarProductosPorProveedor_Results.Where(p => p.Calidad.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
                                 break;
                             case "Unidad de Medida":
                                 dgvProductos.DataSource = proc_BuscarProductosPorProveedor_Results.Where(p => p.UnidadMedida.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();

@@ -65,6 +65,10 @@ namespace SFacturacion
             productoEntidad.CantMax = dgvProductos.CurrentRow.Cells["CantMax"].Value == null ? null : (double?)Convert.ToDouble(dgvProductos.CurrentRow.Cells["CantMax"].Value.ToString());
             productoEntidad.CodigoBarra = dgvProductos.CurrentRow.Cells["CodigoBarra"].Value.ToString();
             productoEntidad.UnidadMedida = dgvProductos.CurrentRow.Cells["UnidadMedida"].Value.ToString();
+            productoEntidad.Referencia = dgvProductos.CurrentRow.Cells["Referencia"].Value.ToString();
+            productoEntidad.Marca = dgvProductos.CurrentRow.Cells["Marca"].Value.ToString();
+            productoEntidad.Calidad = dgvProductos.CurrentRow.Cells["Calidad"].Value.ToString();
+
             return productoEntidad;
         }
 
@@ -90,18 +94,21 @@ namespace SFacturacion
             dgvProductos.Columns["ProductoID"].DisplayIndex = 0;
             dgvProductos.Columns["Servicio"].DisplayIndex = 1;
             dgvProductos.Columns["CodigoBarra"].DisplayIndex = 2;
-            dgvProductos.Columns["Descripcion"].DisplayIndex = 3;
-            dgvProductos.Columns["Proveedor"].DisplayIndex = 4;
-            dgvProductos.Columns["UnidadMedida"].DisplayIndex = 5;            
-            dgvProductos.Columns["Existencia"].DisplayIndex = 6;
-            dgvProductos.Columns["ITBIS"].DisplayIndex = 7;
-            dgvProductos.Columns["PrecioCompra"].DisplayIndex = 8;
-            dgvProductos.Columns["PrecioVenta"].DisplayIndex = 9;
-            dgvProductos.Columns["PrecioVentaMin"].DisplayIndex = 10;
-            dgvProductos.Columns["Descuento"].DisplayIndex = 11;
-            dgvProductos.Columns["CantMin"].DisplayIndex = 12;
-            dgvProductos.Columns["CantMax"].DisplayIndex = 13;
-            dgvProductos.Columns["ProveedorID"].DisplayIndex = 14;
+            dgvProductos.Columns["Referencia"].DisplayIndex = 3;
+            dgvProductos.Columns["Descripcion"].DisplayIndex = 4;
+            dgvProductos.Columns["Marca"].DisplayIndex = 5;
+            dgvProductos.Columns["Calidad"].DisplayIndex = 6;
+            dgvProductos.Columns["Proveedor"].DisplayIndex = 7;
+            dgvProductos.Columns["UnidadMedida"].DisplayIndex = 8;            
+            dgvProductos.Columns["Existencia"].DisplayIndex = 9;
+            dgvProductos.Columns["ITBIS"].DisplayIndex = 10;
+            dgvProductos.Columns["PrecioCompra"].DisplayIndex = 11;
+            dgvProductos.Columns["PrecioVenta"].DisplayIndex = 12;
+            dgvProductos.Columns["PrecioVentaMin"].DisplayIndex = 13;
+            dgvProductos.Columns["Descuento"].DisplayIndex = 14;
+            dgvProductos.Columns["CantMin"].DisplayIndex = 15;
+            dgvProductos.Columns["CantMax"].DisplayIndex = 16;
+            dgvProductos.Columns["ProveedorID"].DisplayIndex = 17;
 
             dgvProductos.Columns["Existencia"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgvProductos.Columns["PrecioCompra"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
@@ -187,7 +194,7 @@ namespace SFacturacion
                 if (dgvProductos.SelectedRows.Count > 0)
                 {
                     CantidadEtiquetasImprimir cantidadEtiquetasImprimir = new CantidadEtiquetasImprimir(dgvProductos.CurrentRow.Cells["Descripcion"].Value.ToString(),
-                        dgvProductos.CurrentRow.Cells["CodigoBarra"].Value.ToString(), dgvProductos.CurrentRow.Cells["PrecioVenta"].Value.ToString());
+                        dgvProductos.CurrentRow.Cells["CodigoBarra"].Value.ToString(), dgvProductos.CurrentRow.Cells["PrecioVenta"].Value.ToString(), dgvProductos.CurrentRow.Cells["Referenia"].Value.ToString());
                     cantidadEtiquetasImprimir.ShowDialog();
                 } 
                 else
@@ -209,7 +216,10 @@ namespace SFacturacion
             cbFiltro.Items.Add("ID");
             cbFiltro.Items.Add("Servicio");
             cbFiltro.Items.Add("Codigo de Barra");
+            cbFiltro.Items.Add("Referencia");
             cbFiltro.Items.Add("Descripcion");
+            cbFiltro.Items.Add("Marca");
+            cbFiltro.Items.Add("Calidad");
             cbFiltro.Items.Add("Unidad de Medida");
             cbFiltro.Items.Add("Proveedor");
             cbFiltro.SelectedIndex = 0;
@@ -257,6 +267,15 @@ namespace SFacturacion
                             break;
                         case "Proveedor":
                             dgvProductos.DataSource = proc_CargarTodosProductos_Results.Where(p => p.Proveedor.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                            break;
+                        case "Referencia":
+                            dgvProductos.DataSource = proc_CargarTodosProductos_Results.Where(p => p.Referencia.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                            break;
+                        case "Marca":
+                            dgvProductos.DataSource = proc_CargarTodosProductos_Results.Where(p => p.Marca.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                            break;
+                        case "Calidad":
+                            dgvProductos.DataSource = proc_CargarTodosProductos_Results.Where(p => p.Calidad.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
                             break;
 
                         default:

@@ -136,6 +136,9 @@
     <EntitySetMapping Name="Productos">
       <EntityTypeMapping TypeName="SFacturacionModel.Producto">
         <MappingFragment StoreEntitySet="Productos">
+          <ScalarProperty Name="Calidad" ColumnName="Calidad" />
+          <ScalarProperty Name="Marca" ColumnName="Marca" />
+          <ScalarProperty Name="Referencia" ColumnName="Referencia" />
           <ScalarProperty Name="UnidadMedida" ColumnName="UnidadMedida" />
           <ScalarProperty Name="CodigoBarra" ColumnName="CodigoBarra" />
           <ScalarProperty Name="ProductoID" ColumnName="ProductoID" />
@@ -221,6 +224,9 @@
           <ScalarProperty Name="CantMax" ColumnName="CantMax" />
           <ScalarProperty Name="CodigoBarra" ColumnName="CodigoBarra" />
           <ScalarProperty Name="UnidadMedida" ColumnName="UnidadMedida" />
+          <ScalarProperty Name="Referencia" ColumnName="Referencia" />
+          <ScalarProperty Name="Marca" ColumnName="Marca" />
+          <ScalarProperty Name="Calidad" ColumnName="Calidad" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
@@ -322,6 +328,7 @@
           <ScalarProperty Name="CodigoBarra" ColumnName="CodigoBarra" />
           <ScalarProperty Name="UnidadMedida" ColumnName="UnidadMedida" />
           <ScalarProperty Name="Proveedor" ColumnName="Proveedor" />
+          <ScalarProperty Name="Referencia" ColumnName="Referencia" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
@@ -423,6 +430,9 @@
           <ScalarProperty Name="Proveedor" ColumnName="Proveedor" />
           <ScalarProperty Name="CodigoBarra" ColumnName="CodigoBarra" />
           <ScalarProperty Name="UnidadMedida" ColumnName="UnidadMedida" />
+          <ScalarProperty Name="Referencia" ColumnName="Referencia" />
+          <ScalarProperty Name="Marca" ColumnName="Marca" />
+          <ScalarProperty Name="Calidad" ColumnName="Calidad" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
@@ -487,6 +497,7 @@
           <ScalarProperty Name="FechaVencimiento" ColumnName="FechaVencimiento" />
           <ScalarProperty Name="NotaDeCreditoID" ColumnName="NotaDeCreditoID" />
           <ScalarProperty Name="UnidadMedida" ColumnName="UnidadMedida" />
+          <ScalarProperty Name="Referencia" ColumnName="Referencia" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
@@ -543,6 +554,7 @@
           <ScalarProperty Name="UnidadMedida" ColumnName="UnidadMedida" />
           <ScalarProperty Name="ProductoID" ColumnName="ProductoID" />
           <ScalarProperty Name="PrecioSinITBIS" ColumnName="PrecioSinITBIS" />
+          <ScalarProperty Name="Referencia" ColumnName="Referencia" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
@@ -558,6 +570,9 @@
           <ScalarProperty Name="Ordenada" ColumnName="Ordenada" />
           <ScalarProperty Name="Recibida" ColumnName="Recibida" />
           <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+          <ScalarProperty Name="Referencia" ColumnName="Referencia" />
+          <ScalarProperty Name="Marca" ColumnName="Marca" />
+          <ScalarProperty Name="Calidad" ColumnName="Calidad" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
@@ -571,6 +586,9 @@
           <ScalarProperty Name="CantMax" ColumnName="CantMax" />
           <ScalarProperty Name="PrecioCompra" ColumnName="PrecioCompra" />
           <ScalarProperty Name="UnidadMedida" ColumnName="UnidadMedida" />
+          <ScalarProperty Name="Referencia" ColumnName="Referencia" />
+          <ScalarProperty Name="Marca" ColumnName="Marca" />
+          <ScalarProperty Name="Calidad" ColumnName="Calidad" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
@@ -592,6 +610,9 @@
           <ScalarProperty Name="CantMax" ColumnName="CantMax" />
           <ScalarProperty Name="CodigoBarra" ColumnName="CodigoBarra" />
           <ScalarProperty Name="UnidadMedida" ColumnName="UnidadMedida" />
+          <ScalarProperty Name="Referencia" ColumnName="Referencia" />
+          <ScalarProperty Name="Marca" ColumnName="Marca" />
+          <ScalarProperty Name="Calidad" ColumnName="Calidad" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
@@ -652,6 +673,7 @@
           <ScalarProperty Name="ClienteDireccion" ColumnName="ClienteDireccion" />
           <ScalarProperty Name="UserName" ColumnName="UserName" />
           <ScalarProperty Name="UnidadMedida" ColumnName="UnidadMedida" />
+          <ScalarProperty Name="Referencia" ColumnName="Referencia" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
@@ -683,6 +705,7 @@
           <ScalarProperty Name="Importe" ColumnName="Importe" />
           <ScalarProperty Name="Servicio" ColumnName="Servicio" />
           <ScalarProperty Name="UnidadMedida" ColumnName="UnidadMedida" />
+          <ScalarProperty Name="Referencia" ColumnName="Referencia" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
@@ -711,6 +734,7 @@
           <ScalarProperty Name="ClienteID" ColumnName="ClienteID" />
           <ScalarProperty Name="CedulaORncCliente" ColumnName="CedulaORncCliente" />
           <ScalarProperty Name="UnidadMedida" ColumnName="UnidadMedida" />
+          <ScalarProperty Name="Referencia" ColumnName="Referencia" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
@@ -726,6 +750,9 @@
           <ScalarProperty Name="PrecioCompra" ColumnName="PrecioCompra" />
           <ScalarProperty Name="CantMin" ColumnName="CantMin" />
           <ScalarProperty Name="CantMax" ColumnName="CantMax" />
+          <ScalarProperty Name="Referencia" ColumnName="Referencia" />
+          <ScalarProperty Name="Marca" ColumnName="Marca" />
+          <ScalarProperty Name="Calidad" ColumnName="Calidad" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
@@ -798,6 +825,9 @@
           <ScalarProperty Name="Recibida" ColumnName="Recibida" />
           <ScalarProperty Name="Estatus" ColumnName="Estatus" />
           <ScalarProperty Name="OrdenCompraID" ColumnName="OrdenCompraID" />
+          <ScalarProperty Name="Referencia" ColumnName="Referencia" />
+          <ScalarProperty Name="Marca" ColumnName="Marca" />
+          <ScalarProperty Name="Calidad" ColumnName="Calidad" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
@@ -826,6 +856,7 @@
           <ScalarProperty Name="Proveedor" ColumnName="Proveedor" />
           <ScalarProperty Name="Existencia" ColumnName="Existencia" />
           <ScalarProperty Name="CantidadVendida" ColumnName="CantidadVendida" />
+          <ScalarProperty Name="Referencia" ColumnName="Referencia" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>

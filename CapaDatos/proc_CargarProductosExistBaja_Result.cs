@@ -21,5 +21,6 @@ namespace CapaDatos
         public string CodigoBarra { get; set; }
         public string UnidadMedida { get; set; }
         public string Proveedor { get; set; }
+        public string Referencia { get; set; }
     }
 }

@@ -27,5 +27,8 @@ namespace CapaDatos
         public Nullable<double> CantMax { get; set; }
         public string CodigoBarra { get; set; }
         public string UnidadMedida { get; set; }
+        public string Referencia { get; set; }
+        public string Marca { get; set; }
+        public string Calidad { get; set; }
     }
 }

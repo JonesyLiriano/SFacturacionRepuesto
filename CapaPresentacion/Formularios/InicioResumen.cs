@@ -44,16 +44,17 @@ namespace SFacturacion
         }
         private void CargarProductoExistenciaBajaDGV()
         {
-
+            dgvProductos.AutoGenerateColumns = false;
             dgvProductos.DataSource = productosNegocio.CargarProductosExistBaja();
             dgvProductos.Columns["ProductoID"].DisplayIndex = 0;
-            dgvProductos.Columns["CodigoBarra"].DisplayIndex = 1;
-            dgvProductos.Columns["Descripcion"].DisplayIndex = 2;
-            dgvProductos.Columns["Proveedor"].DisplayIndex = 3;
-            dgvProductos.Columns["UnidadMedida"].DisplayIndex = 4;
-            dgvProductos.Columns["Existencia"].DisplayIndex = 5;
-            dgvProductos.Columns["CantMin"].DisplayIndex = 6;
-            dgvProductos.Columns["CantMax"].DisplayIndex = 7;
+            dgvProductos.Columns["Referencia"].DisplayIndex = 1;
+            dgvProductos.Columns["CodigoBarra"].DisplayIndex = 2;
+            dgvProductos.Columns["Descripcion"].DisplayIndex = 3;
+            dgvProductos.Columns["Proveedor"].DisplayIndex = 4;
+            dgvProductos.Columns["UnidadMedida"].DisplayIndex = 5;
+            dgvProductos.Columns["Existencia"].DisplayIndex = 6;
+            dgvProductos.Columns["CantMin"].DisplayIndex = 7;
+            dgvProductos.Columns["CantMax"].DisplayIndex = 8;
 
             dgvProductos.Columns["Existencia"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgvProductos.Columns["CantMin"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;

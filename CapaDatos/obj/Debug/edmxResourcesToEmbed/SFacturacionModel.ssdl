@@ -182,6 +182,9 @@
     <Property Name="CantMax" Type="float" />
     <Property Name="CodigoBarra" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="UnidadMedida" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Referencia" Type="varchar" MaxLength="100" />
+    <Property Name="Marca" Type="varchar" MaxLength="100" />
+    <Property Name="Calidad" Type="varchar" MaxLength="100" />
   </EntityType>
   <EntityType Name="Proveedores">
     <Key>
@@ -589,6 +592,9 @@
     <Parameter Name="CantMax" Type="float" Mode="In" />
     <Parameter Name="CodigoBarra" Type="varchar" Mode="In" />
     <Parameter Name="UnidadMedida" Type="varchar" Mode="In" />
+    <Parameter Name="Referencia" Type="varchar" Mode="In" />
+    <Parameter Name="Marca" Type="varchar" Mode="In" />
+    <Parameter Name="Calidad" Type="varchar" Mode="In" />
     <Parameter Name="resultado" Type="bit" Mode="InOut" />
   </Function>
   <Function Name="proc_ActualizarProveedor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -901,6 +907,9 @@
     <Parameter Name="CantMax" Type="float" Mode="In" />
     <Parameter Name="CodigoBarra" Type="varchar" Mode="In" />
     <Parameter Name="UnidadMedida" Type="varchar" Mode="In" />
+    <Parameter Name="Referencia" Type="varchar" Mode="In" />
+    <Parameter Name="Marca" Type="varchar" Mode="In" />
+    <Parameter Name="Calidad" Type="varchar" Mode="In" />
     <Parameter Name="resultado" Type="bit" Mode="InOut" />
   </Function>
   <Function Name="proc_InsertarProveedor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">

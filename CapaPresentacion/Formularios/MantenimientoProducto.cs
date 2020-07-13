@@ -100,6 +100,9 @@ namespace CapaPresentacion
                         productoEntidad.CantMax = !string.IsNullOrEmpty(txtCantMax.Text) ? (double?)Convert.ToDouble(txtCantMax.Text) : null;
                         productoEntidad.CodigoBarra = txtCodigoBarra.Text;
                         productoEntidad.UnidadMedida = txtUnidadMedida.Text.ToUpper();
+                        productoEntidad.Referencia = txtReferencia.Text;
+                        productoEntidad.Marca = txtMarca.Text;
+                        productoEntidad.Calidad = txtCalidad.Text;
 
                         var result = productosNegocio.AgregarProducto(productoEntidad);
 
@@ -158,6 +161,9 @@ namespace CapaPresentacion
                         productoEntidad.CantMax = !string.IsNullOrEmpty(txtCantMax.Text) ? (double?)Convert.ToDouble(txtCantMax.Text) : null;
                         productoEntidad.CodigoBarra = txtCodigoBarra.Text;
                         productoEntidad.UnidadMedida = txtUnidadMedida.Text.ToUpper();
+                        productoEntidad.Referencia = txtReferencia.Text;
+                        productoEntidad.Marca = txtMarca.Text;
+                        productoEntidad.Calidad = txtCalidad.Text;
 
                         respuesta = productosNegocio.EditarProducto(productoEntidad);
                         ValidarEditarProducto(respuesta);
@@ -244,6 +250,22 @@ namespace CapaPresentacion
                     MessageBox.Show("El Campo EXISTENCIA no puede estar vacio o tiene que ser un numero valido.");
                     return false;
                 }
+                if (string.IsNullOrEmpty(txtReferencia.Text))
+                {
+                    MessageBox.Show("El Campo REFERENCIA no puede estar vacio.");
+                    return false;
+                }
+                if (string.IsNullOrEmpty(txtMarca.Text))
+                {
+                    MessageBox.Show("El Campo MARCA no puede estar vacio.");
+                    return false;
+                }
+                if (string.IsNullOrEmpty(txtCalidad.Text))
+                {
+                    MessageBox.Show("El Campo CALIDAD no puede estar vacio.");
+                    return false;
+                }
+
             }
             return true;
         }
@@ -264,6 +286,9 @@ namespace CapaPresentacion
             txtCantMax.Text = producto.CantMax.ToString();
             txtCodigoBarra.Text = producto.CodigoBarra.ToString();
             txtUnidadMedida.Text = producto.UnidadMedida.ToString();
+            txtReferencia.Text = producto.Referencia;
+            txtMarca.Text = producto.Marca;
+            txtCalidad.Text = producto.Calidad;
         }
 
         private void checkboxServicio_CheckedChanged(object sender, EventArgs e)
@@ -280,7 +305,13 @@ namespace CapaPresentacion
                 txtCantMin.Enabled = false;
                 txtCantMax.Clear();
                 txtCantMax.Enabled = false;
-                
+                txtReferencia.Clear();
+                txtReferencia.Enabled = false;
+                txtMarca.Clear();
+                txtMarca.Enabled = false;
+                txtCalidad.Clear();
+                txtCalidad.Enabled = false;
+
             } else
             {
                 txtExistencia.Enabled = true;
@@ -288,6 +319,9 @@ namespace CapaPresentacion
                 txtPrecioCompra.Enabled = true;
                 txtCantMin.Enabled = true;
                 txtCantMax.Enabled = true;
+                txtReferencia.Enabled = true;
+                txtMarca.Enabled = true;
+                txtCalidad.Enabled = true;
             }
         }
 

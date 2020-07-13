@@ -111,8 +111,8 @@ namespace CapaPresentacion.Formularios
             proc_CargarDetalleOrdenCompra_Results = detalleOrdenCompraNegocio.CargarDetalleOrdenCompra(ordenCompraID).ToList();
             foreach (proc_CargarDetalleOrdenCompra_Result list in proc_CargarDetalleOrdenCompra_Results)
             {
-                dgvProductos.Rows.Add(list.ProductoID, list.Descripcion, list.UnidadMedida, list.Existencia,
-                    list.CantMin, list.PrecioCompra, list.Ordenada, list.Recibida, list.Estatus);
+                dgvProductos.Rows.Add(list.ProductoID, list.Referencia, list.Descripcion, list.Marca, list.Calidad, list.UnidadMedida, list.Existencia,
+                    list.CantMin, list.PrecioCompra, list.Ordenada, list.Recibida, list.Estatus);;
             }
         }
 
@@ -127,6 +127,9 @@ namespace CapaPresentacion.Formularios
             dgvProductos.Columns["UnidadMedida"].ReadOnly = true;
             dgvProductos.Columns["Existencia"].ReadOnly = true;
             dgvProductos.Columns["CantMin"].ReadOnly = true;
+            dgvProductos.Columns["Referencia"].ReadOnly = true;
+            dgvProductos.Columns["Marca"].ReadOnly = true;
+            dgvProductos.Columns["Calidad"].ReadOnly = true;
             dgvProductos.AllowUserToOrderColumns = false;
             dgvProductos.Refresh();
         }
@@ -148,7 +151,7 @@ namespace CapaPresentacion.Formularios
                         }
                         if (!existe)
                         {
-                            dgvProductos.Rows.Add(dtRow["ProductoID"], dtRow["Descripcion"],
+                            dgvProductos.Rows.Add(dtRow["ProductoID"], dtRow["Referencia"], dtRow["Descripcion"], dtRow["Marca"], dtRow["Calidad"],
                                 dtRow["UnidadMedida"], dtRow["Existencia"], dtRow["CantMin"], Convert.ToDecimal(dtRow["PrecioCompra"]).ToString("F"), Math.Abs((Convert.ToDouble(dtRow["CantMax"]) - Convert.ToDouble(dtRow["Existencia"]))), 0);
 
                         }
@@ -245,7 +248,7 @@ namespace CapaPresentacion.Formularios
             {
                 switch (e.ColumnIndex)
                 {
-                    case 5:
+                    case 8:
                         if (!ValidarCeldasNumero(e.FormattedValue.ToString(),
                                e.FormattedValue.ToString()))
                         {
@@ -272,7 +275,7 @@ namespace CapaPresentacion.Formularios
                             }                            
                         }
                         break;
-                    case 6:
+                    case 9:
                         if (!ValidarCeldasNumero(e.FormattedValue.ToString(),
                               e.FormattedValue.ToString()))
                         {
@@ -300,7 +303,7 @@ namespace CapaPresentacion.Formularios
                         }
                         break;
 
-                    case 7:
+                    case 10:
                         if (!ValidarCeldasNumero(e.FormattedValue.ToString(),
                                dgvProductos.Rows[e.RowIndex].Cells["Ordenada"].Value.ToString()))
                         {

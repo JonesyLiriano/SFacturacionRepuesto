@@ -20,5 +20,6 @@ namespace CapaDatos
         public string Proveedor { get; set; }
         public Nullable<double> Existencia { get; set; }
         public Nullable<double> CantidadVendida { get; set; }
+        public string Referencia { get; set; }
     }
 }

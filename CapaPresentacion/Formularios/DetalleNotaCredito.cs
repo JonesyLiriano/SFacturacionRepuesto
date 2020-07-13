@@ -54,7 +54,7 @@ namespace CapaPresentacion.Formularios
                 {
                     foreach (var item in proc_ComprobanteNotaDeCredito_Results)
                     {
-                        dgvCarrito.Rows.Add(item.ProductoID, item.Descripcion, item.UnidadMedida, item.CantDevuelta,
+                        dgvCarrito.Rows.Add(item.ProductoID, item.Referencia, item.Descripcion, item.UnidadMedida, item.CantDevuelta,
                             item.Precio, (Convert.ToDecimal(item.CantDevuelta) * (item.Precio))?.ToString("F"),item.Comentario);
                     }
                 }

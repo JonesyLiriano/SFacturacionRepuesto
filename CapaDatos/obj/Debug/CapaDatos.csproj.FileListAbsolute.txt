@@ -39,3 +39,17 @@ F:\C#\SFacturacion\CapaDatos\obj\Debug\CapaDatos.csproj.CoreCompileInputs.cache
 F:\C#\SFacturacion\CapaDatos\obj\Debug\CapaDatos.csproj.CopyComplete
 F:\C#\SFacturacion\CapaDatos\obj\Debug\CapaDatos.dll
 F:\C#\SFacturacion\CapaDatos\obj\Debug\CapaDatos.pdb
+F:\C#\SFacturacionRepuesto\CapaDatos\bin\Debug\SFacturacion.mdf
+F:\C#\SFacturacionRepuesto\CapaDatos\bin\Debug\SFacturacion_log.ldf
+F:\C#\SFacturacionRepuesto\CapaDatos\bin\Debug\CapaDatos.dll.config
+F:\C#\SFacturacionRepuesto\CapaDatos\bin\Debug\CapaDatos.dll
+F:\C#\SFacturacionRepuesto\CapaDatos\bin\Debug\CapaDatos.pdb
+F:\C#\SFacturacionRepuesto\CapaDatos\bin\Debug\EntityFramework.dll
+F:\C#\SFacturacionRepuesto\CapaDatos\bin\Debug\EntityFramework.SqlServer.dll
+F:\C#\SFacturacionRepuesto\CapaDatos\bin\Debug\EntityFramework.xml
+F:\C#\SFacturacionRepuesto\CapaDatos\bin\Debug\EntityFramework.SqlServer.xml
+F:\C#\SFacturacionRepuesto\CapaDatos\obj\Debug\CapaDatos.csproj.CoreCompileInputs.cache
+F:\C#\SFacturacionRepuesto\CapaDatos\obj\Debug\CapaDatos.csproj.CopyComplete
+F:\C#\SFacturacionRepuesto\CapaDatos\obj\Debug\CapaDatos.dll
+F:\C#\SFacturacionRepuesto\CapaDatos\obj\Debug\CapaDatos.pdb
+F:\C#\SFacturacionRepuesto\CapaDatos\obj\Debug\CapaDatos.csprojAssemblyReference.cache

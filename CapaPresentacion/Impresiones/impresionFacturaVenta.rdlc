@@ -85,6 +85,10 @@
           <DataField>ProductoID</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
+        <Field Name="Referencia">
+          <DataField>Referencia</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="RNC">
           <DataField>RNC</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -121,28 +125,28 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>0.71751in</Width>
+                  <Width>0.6691in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.56283in</Width>
+                  <Width>1.23873in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.18474in</Width>
+                  <Width>2.18607in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.76405in</Width>
+                  <Width>0.59869in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.9539in</Width>
+                  <Width>0.95523in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.78488in</Width>
+                  <Width>0.69246in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.91223in</Width>
+                  <Width>0.66356in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.94195in</Width>
+                  <Width>0.81828in</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -196,7 +200,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Codigo</Value>
+                                  <Value>Referenncia</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontWeight>Bold</FontWeight>
@@ -392,7 +396,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Descuento</Value>
+                                  <Value>Des.</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontWeight>Bold</FontWeight>
@@ -504,14 +508,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="ProductoID">
+                        <Textbox Name="Referencia">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!ProductoID.Value</Value>
+                                  <Value>=Fields!Referencia.Value</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                   </Style>
@@ -522,7 +526,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>ProductoID</rd:DefaultName>
+                          <rd:DefaultName>Referencia</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>

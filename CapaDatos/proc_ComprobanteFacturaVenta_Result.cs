@@ -35,5 +35,6 @@ namespace CapaDatos
         public int ClienteID { get; set; }
         public string CedulaORncCliente { get; set; }
         public string UnidadMedida { get; set; }
+        public string Referencia { get; set; }
     }
 }

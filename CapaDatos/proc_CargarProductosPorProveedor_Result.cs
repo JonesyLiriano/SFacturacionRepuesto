@@ -20,5 +20,8 @@ namespace CapaDatos
         public Nullable<decimal> PrecioCompra { get; set; }
         public Nullable<decimal> CantMin { get; set; }
         public Nullable<decimal> CantMax { get; set; }
+        public string Referencia { get; set; }
+        public string Marca { get; set; }
+        public string Calidad { get; set; }
     }
 }

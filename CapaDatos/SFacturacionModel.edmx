@@ -187,6 +187,9 @@
           <Property Name="CantMax" Type="float" />
           <Property Name="CodigoBarra" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="UnidadMedida" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Referencia" Type="varchar" MaxLength="100" />
+          <Property Name="Marca" Type="varchar" MaxLength="100" />
+          <Property Name="Calidad" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="Proveedores">
           <Key>
@@ -594,6 +597,9 @@
           <Parameter Name="CantMax" Type="float" Mode="In" />
           <Parameter Name="CodigoBarra" Type="varchar" Mode="In" />
           <Parameter Name="UnidadMedida" Type="varchar" Mode="In" />
+          <Parameter Name="Referencia" Type="varchar" Mode="In" />
+          <Parameter Name="Marca" Type="varchar" Mode="In" />
+          <Parameter Name="Calidad" Type="varchar" Mode="In" />
           <Parameter Name="resultado" Type="bit" Mode="InOut" />
         </Function>
         <Function Name="proc_ActualizarProveedor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -906,6 +912,9 @@
           <Parameter Name="CantMax" Type="float" Mode="In" />
           <Parameter Name="CodigoBarra" Type="varchar" Mode="In" />
           <Parameter Name="UnidadMedida" Type="varchar" Mode="In" />
+          <Parameter Name="Referencia" Type="varchar" Mode="In" />
+          <Parameter Name="Marca" Type="varchar" Mode="In" />
+          <Parameter Name="Calidad" Type="varchar" Mode="In" />
           <Parameter Name="resultado" Type="bit" Mode="InOut" />
         </Function>
         <Function Name="proc_InsertarProveedor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -1243,6 +1252,9 @@
           <Property Name="CodigoBarra" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="UnidadMedida" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="DetalleCotizaciones" Relationship="SFacturacionModel.FK_DetalleCotizaciones_Productos" FromRole="Producto" ToRole="DetalleCotizacione" />
+          <Property Name="Referencia" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Marca" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Calidad" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Proveedore">
           <Key>
@@ -1553,6 +1565,9 @@
             <Parameter Name="CantMax" Mode="In" Type="Double" />
             <Parameter Name="CodigoBarra" Mode="In" Type="String" />
             <Parameter Name="UnidadMedida" Mode="In" Type="String" />
+            <Parameter Name="Referencia" Mode="In" Type="String" />
+            <Parameter Name="Marca" Mode="In" Type="String" />
+            <Parameter Name="Calidad" Mode="In" Type="String" />
             <Parameter Name="resultado" Mode="InOut" Type="Boolean" />
           </FunctionImport>
           <FunctionImport Name="proc_ActualizarProveedor">
@@ -1808,6 +1823,9 @@
             <Parameter Name="CantMax" Mode="In" Type="Double" />
             <Parameter Name="CodigoBarra" Mode="In" Type="String" />
             <Parameter Name="UnidadMedida" Mode="In" Type="String" />
+            <Parameter Name="Referencia" Mode="In" Type="String" />
+            <Parameter Name="Marca" Mode="In" Type="String" />
+            <Parameter Name="Calidad" Mode="In" Type="String" />
             <Parameter Name="resultado" Mode="InOut" Type="Boolean" />
           </FunctionImport>
           <FunctionImport Name="proc_BuscarProductosPorCodigoBarra" ReturnType="Collection(SFacturacionModel.proc_BuscarProductosPorCodigoBarra_Result)">
@@ -1998,6 +2016,9 @@
           <Property Type="Double" Name="CantMax" Nullable="true" />
           <Property Type="String" Name="CodigoBarra" Nullable="false" MaxLength="100" />
           <Property Type="String" Name="UnidadMedida" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Referencia" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Marca" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Calidad" Nullable="true" MaxLength="100" />
         </ComplexType>
         <ComplexType Name="proc_CargarCobrosVentaCredito_Result">
           <Property Type="Int32" Name="CobroVentaCreditoID" Nullable="false" />
@@ -2152,14 +2173,15 @@
           <Property Type="Boolean" Name="ITBIS" Nullable="false" />
           <Property Type="Int32" Name="ClienteID" Nullable="false" />
           <Property Type="String" Name="NombreCliente" Nullable="false" MaxLength="100" />
-          <Property Type="String" Name="DireccionCliente" Nullable="false" MaxLength="200" />
-          <Property Type="String" Name="CedulaORncCliente" Nullable="false" MaxLength="11" />
+          <Property Type="String" Name="DireccionCliente" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="CedulaORncCliente" Nullable="false" MaxLength="50" />
           <Property Type="Int32" Name="ProductoID" Nullable="false" />
           <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" />
           <Property Type="DateTime" Name="Fecha" Nullable="false" Precision="23" />
           <Property Type="DateTime" Name="FechaVencimiento" Nullable="false" />
           <Property Type="Int32" Name="NotaDeCreditoID" Nullable="false" />
           <Property Type="String" Name="UnidadMedida" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Referencia" Nullable="true" MaxLength="100" />
         </ComplexType>
         <ComplexType Name="proc_ComprobantePagoLineaCreditoVenta_Result">
           <Property Type="DateTime" Name="FechaCobro" Nullable="true" Precision="23" />
@@ -2174,8 +2196,8 @@
           <Property Type="String" Name="Cliente" Nullable="false" MaxLength="100" />
           <Property Type="String" Name="Usuario" Nullable="false" MaxLength="50" />
           <Property Type="Int32" Name="ClienteID" Nullable="false" />
-          <Property Type="String" Name="DireccionCliente" Nullable="false" MaxLength="200" />
-          <Property Type="String" Name="CedulaORncCliente" Nullable="false" MaxLength="11" />
+          <Property Type="String" Name="DireccionCliente" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="CedulaORncCliente" Nullable="false" MaxLength="50" />
         </ComplexType>
         <ComplexType Name="proc_ValidarUsuario_Result">
           <Property Type="Int32" Name="UserID" Nullable="false" />
@@ -2193,6 +2215,7 @@
           <Property Type="String" Name="UnidadMedida" Nullable="false" MaxLength="50" />
           <Property Type="Int32" Name="ProductoID" Nullable="false" />
           <Property Type="Decimal" Name="PrecioSinITBIS" Nullable="true" Precision="19" Scale="2" />
+          <Property Type="String" Name="Referencia" Nullable="true" MaxLength="100" />
         </ComplexType>
         <ComplexType Name="proc_CargarDetalleOrdenCompra_Result">
           <Property Type="Int32" Name="ProductoID" Nullable="false" />
@@ -2204,6 +2227,9 @@
           <Property Type="Double" Name="Ordenada" Nullable="false" />
           <Property Type="Double" Name="Recibida" Nullable="true" />
           <Property Type="Boolean" Name="Estatus" Nullable="false" />
+          <Property Type="String" Name="Referencia" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Marca" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Calidad" Nullable="true" MaxLength="100" />
           </ComplexType>
         <ComplexType Name="proc_CargarProductosExistBajaPorProveedor_Result">
           <Property Type="Int32" Name="ProductoID" Nullable="false" />
@@ -2213,6 +2239,9 @@
           <Property Type="Decimal" Name="CantMax" Nullable="true" Precision="18" Scale="2" />
           <Property Type="Decimal" Name="PrecioCompra" Nullable="true" Precision="18" Scale="2" />
           <Property Type="String" Name="UnidadMedida" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Referencia" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Marca" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Calidad" Nullable="true" MaxLength="100" />
         </ComplexType>
         <ComplexType Name="proc_CargarProductosExistBaja_Result">
           <Property Type="Int32" Name="ProductoID" Nullable="false" />
@@ -2223,6 +2252,7 @@
           <Property Type="String" Name="CodigoBarra" Nullable="false" MaxLength="100" />
           <Property Type="String" Name="UnidadMedida" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="Proveedor" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Referencia" Nullable="true" MaxLength="100" />
         </ComplexType>
         <ComplexType Name="proc_CargarTodosProductos_Result">
           <Property Type="Int32" Name="ProductoID" Nullable="false" />
@@ -2240,6 +2270,9 @@
           <Property Type="String" Name="Proveedor" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="CodigoBarra" Nullable="false" MaxLength="100" />
           <Property Type="String" Name="UnidadMedida" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Referencia" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Marca" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Calidad" Nullable="true" MaxLength="100" />
         </ComplexType>
         <ComplexType Name="proc_BuscarProductosPorCodigoBarra_Result">
           <Property Type="Int32" Name="ProductoID" Nullable="false" />
@@ -2256,6 +2289,9 @@
           <Property Type="Double" Name="CantMax" Nullable="true" />
           <Property Type="String" Name="CodigoBarra" Nullable="false" MaxLength="100" />
           <Property Type="String" Name="UnidadMedida" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Referencia" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Marca" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Calidad" Nullable="true" MaxLength="100" />
         </ComplexType>
         <EntityType Name="Cotizacione">
           <Key>
@@ -2306,10 +2342,11 @@
           <Property Type="Decimal" Name="ITBIS" Nullable="false" Precision="18" Scale="2" />
           <Property Type="Int32" Name="ClienteID" Nullable="false" />
           <Property Type="String" Name="NombreCliente" Nullable="false" MaxLength="100" />
-          <Property Type="String" Name="CedulaORncCliente" Nullable="false" MaxLength="11" />
-          <Property Type="String" Name="ClienteDireccion" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="CedulaORncCliente" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ClienteDireccion" Nullable="true" MaxLength="200" />
           <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="UnidadMedida" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Referencia" Nullable="true" MaxLength="100" />
         </ComplexType>
         <ComplexType Name="proc_CargarCotizacionesActivas_Result">
           <Property Type="Int32" Name="CotizacionID" Nullable="false" />
@@ -2330,11 +2367,12 @@
           <Property Type="Decimal" Name="Importe" Nullable="true" Precision="18" Scale="2" />
           <Property Type="Boolean" Name="Servicio" Nullable="false" />
           <Property Type="String" Name="UnidadMedida" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Referencia" Nullable="true" MaxLength="100" />
         </ComplexType>
         <ComplexType Name="proc_ComprobanteFacturaVenta_Result">
           <Property Type="Int32" Name="FacturaID" Nullable="false" />
           <Property Type="String" Name="NombreCliente" Nullable="false" MaxLength="100" />
-          <Property Type="String" Name="DireccionCliente" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="DireccionCliente" Nullable="true" MaxLength="200" />
           <Property Type="Decimal" Name="DescuentoCliente" Nullable="true" Precision="18" Scale="2" />
           <Property Type="DateTime" Name="Fecha" Nullable="false" Precision="23" />
           <Property Type="String" Name="NCF" Nullable="false" MaxLength="50" />
@@ -2342,7 +2380,7 @@
           <Property Type="String" Name="TipoDePago" Nullable="false" MaxLength="50" />
           <Property Type="Int32" Name="Cotizacion" Nullable="true" />
           <Property Type="DateTime" Name="FechaVencimiento" Nullable="true" />
-          <Property Type="String" Name="RNC" Nullable="true" MaxLength="11" />
+          <Property Type="String" Name="RNC" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="Entidad" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" />
           <Property Type="Int32" Name="ProductoID" Nullable="false" />
@@ -2352,8 +2390,9 @@
           <Property Type="Decimal" Name="Descuento" Nullable="false" Precision="18" Scale="2" />
           <Property Type="Decimal" Name="ITBIS" Nullable="false" Precision="18" Scale="2" />
           <Property Type="Int32" Name="ClienteID" Nullable="false" />
-          <Property Type="String" Name="CedulaORncCliente" Nullable="false" MaxLength="11" />
+          <Property Type="String" Name="CedulaORncCliente" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="UnidadMedida" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Referencia" Nullable="true" MaxLength="100" />
         </ComplexType>
         <ComplexType Name="proc_CargarProductosPorProveedor_Result">
           <Property Type="Int32" Name="ProductoID" Nullable="false" />
@@ -2363,6 +2402,9 @@
           <Property Type="Decimal" Name="PrecioCompra" Nullable="true" Precision="18" Scale="2" />
           <Property Type="Decimal" Name="CantMin" Nullable="true" Precision="18" Scale="2" />
           <Property Type="Decimal" Name="CantMax" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="String" Name="Referencia" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Marca" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Calidad" Nullable="true" MaxLength="100" />
         </ComplexType>
         <ComplexType Name="proc_CargarTodasLineasCreditoCompras_Result">
           <Property Type="Int32" Name="LineaCreditoCompraID" Nullable="false" />
@@ -2420,6 +2462,9 @@
           <Property Type="Double" Name="Recibida" Nullable="true" />
           <Property Type="Boolean" Name="Estatus" Nullable="false" />
           <Property Type="Int32" Name="OrdenCompraID" Nullable="false" />
+          <Property Type="String" Name="Referencia" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Marca" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Calidad" Nullable="true" MaxLength="100" />
         </ComplexType>
         <ComplexType Name="proc_ResumenSistema_Result">
           <Property Type="Int32" Name="Clientes" Nullable="true" />
@@ -2440,6 +2485,7 @@
           <Property Type="String" Name="Proveedor" Nullable="true" MaxLength="100" />
           <Property Type="Double" Name="Existencia" Nullable="true" />
           <Property Type="Double" Name="CantidadVendida" Nullable="true" />
+          <Property Type="String" Name="Referencia" Nullable="true" MaxLength="100" />
         </ComplexType>
         <ComplexType Name="proc_CargarFacturasCFinalPFecha_Result">
           <Property Type="Int32" Name="FacturaID" Nullable="false" />
@@ -2819,6 +2865,9 @@
           <EntitySetMapping Name="Productos">
             <EntityTypeMapping TypeName="SFacturacionModel.Producto">
               <MappingFragment StoreEntitySet="Productos">
+                <ScalarProperty Name="Calidad" ColumnName="Calidad" />
+                <ScalarProperty Name="Marca" ColumnName="Marca" />
+                <ScalarProperty Name="Referencia" ColumnName="Referencia" />
                 <ScalarProperty Name="UnidadMedida" ColumnName="UnidadMedida" />
                 <ScalarProperty Name="CodigoBarra" ColumnName="CodigoBarra" />
                 <ScalarProperty Name="ProductoID" ColumnName="ProductoID" />
@@ -2904,6 +2953,9 @@
                 <ScalarProperty Name="CantMax" ColumnName="CantMax" />
                 <ScalarProperty Name="CodigoBarra" ColumnName="CodigoBarra" />
                 <ScalarProperty Name="UnidadMedida" ColumnName="UnidadMedida" />
+                <ScalarProperty Name="Referencia" ColumnName="Referencia" />
+                <ScalarProperty Name="Marca" ColumnName="Marca" />
+                <ScalarProperty Name="Calidad" ColumnName="Calidad" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -3005,6 +3057,7 @@
                 <ScalarProperty Name="CodigoBarra" ColumnName="CodigoBarra" />
                 <ScalarProperty Name="UnidadMedida" ColumnName="UnidadMedida" />
                 <ScalarProperty Name="Proveedor" ColumnName="Proveedor" />
+                <ScalarProperty Name="Referencia" ColumnName="Referencia" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -3106,6 +3159,9 @@
                 <ScalarProperty Name="Proveedor" ColumnName="Proveedor" />
                 <ScalarProperty Name="CodigoBarra" ColumnName="CodigoBarra" />
                 <ScalarProperty Name="UnidadMedida" ColumnName="UnidadMedida" />
+                <ScalarProperty Name="Referencia" ColumnName="Referencia" />
+                <ScalarProperty Name="Marca" ColumnName="Marca" />
+                <ScalarProperty Name="Calidad" ColumnName="Calidad" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -3170,6 +3226,7 @@
                 <ScalarProperty Name="FechaVencimiento" ColumnName="FechaVencimiento" />
                 <ScalarProperty Name="NotaDeCreditoID" ColumnName="NotaDeCreditoID" />
                 <ScalarProperty Name="UnidadMedida" ColumnName="UnidadMedida" />
+                <ScalarProperty Name="Referencia" ColumnName="Referencia" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -3226,6 +3283,7 @@
                 <ScalarProperty Name="UnidadMedida" ColumnName="UnidadMedida" />
                 <ScalarProperty Name="ProductoID" ColumnName="ProductoID" />
                 <ScalarProperty Name="PrecioSinITBIS" ColumnName="PrecioSinITBIS" />
+                <ScalarProperty Name="Referencia" ColumnName="Referencia" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -3241,6 +3299,9 @@
                 <ScalarProperty Name="Ordenada" ColumnName="Ordenada" />
                 <ScalarProperty Name="Recibida" ColumnName="Recibida" />
                 <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+                <ScalarProperty Name="Referencia" ColumnName="Referencia" />
+                <ScalarProperty Name="Marca" ColumnName="Marca" />
+                <ScalarProperty Name="Calidad" ColumnName="Calidad" />
                 </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -3254,6 +3315,9 @@
                 <ScalarProperty Name="CantMax" ColumnName="CantMax" />
                 <ScalarProperty Name="PrecioCompra" ColumnName="PrecioCompra" />
                 <ScalarProperty Name="UnidadMedida" ColumnName="UnidadMedida" />
+                <ScalarProperty Name="Referencia" ColumnName="Referencia" />
+                <ScalarProperty Name="Marca" ColumnName="Marca" />
+                <ScalarProperty Name="Calidad" ColumnName="Calidad" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -3275,6 +3339,9 @@
                 <ScalarProperty Name="CantMax" ColumnName="CantMax" />
                 <ScalarProperty Name="CodigoBarra" ColumnName="CodigoBarra" />
                 <ScalarProperty Name="UnidadMedida" ColumnName="UnidadMedida" />
+                <ScalarProperty Name="Referencia" ColumnName="Referencia" />
+                <ScalarProperty Name="Marca" ColumnName="Marca" />
+                <ScalarProperty Name="Calidad" ColumnName="Calidad" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -3335,6 +3402,7 @@
                 <ScalarProperty Name="ClienteDireccion" ColumnName="ClienteDireccion" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="UnidadMedida" ColumnName="UnidadMedida" />
+                <ScalarProperty Name="Referencia" ColumnName="Referencia" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -3366,6 +3434,7 @@
                 <ScalarProperty Name="Importe" ColumnName="Importe" />
                 <ScalarProperty Name="Servicio" ColumnName="Servicio" />
                 <ScalarProperty Name="UnidadMedida" ColumnName="UnidadMedida" />
+                <ScalarProperty Name="Referencia" ColumnName="Referencia" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -3394,6 +3463,7 @@
                 <ScalarProperty Name="ClienteID" ColumnName="ClienteID" />
                 <ScalarProperty Name="CedulaORncCliente" ColumnName="CedulaORncCliente" />
                 <ScalarProperty Name="UnidadMedida" ColumnName="UnidadMedida" />
+                <ScalarProperty Name="Referencia" ColumnName="Referencia" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -3409,6 +3479,9 @@
                 <ScalarProperty Name="PrecioCompra" ColumnName="PrecioCompra" />
                 <ScalarProperty Name="CantMin" ColumnName="CantMin" />
                 <ScalarProperty Name="CantMax" ColumnName="CantMax" />
+                <ScalarProperty Name="Referencia" ColumnName="Referencia" />
+                <ScalarProperty Name="Marca" ColumnName="Marca" />
+                <ScalarProperty Name="Calidad" ColumnName="Calidad" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -3481,6 +3554,9 @@
                 <ScalarProperty Name="Recibida" ColumnName="Recibida" />
                 <ScalarProperty Name="Estatus" ColumnName="Estatus" />
                 <ScalarProperty Name="OrdenCompraID" ColumnName="OrdenCompraID" />
+                <ScalarProperty Name="Referencia" ColumnName="Referencia" />
+                <ScalarProperty Name="Marca" ColumnName="Marca" />
+                <ScalarProperty Name="Calidad" ColumnName="Calidad" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -3509,6 +3585,7 @@
                 <ScalarProperty Name="Proveedor" ColumnName="Proveedor" />
                 <ScalarProperty Name="Existencia" ColumnName="Existencia" />
                 <ScalarProperty Name="CantidadVendida" ColumnName="CantidadVendida" />
+                <ScalarProperty Name="Referencia" ColumnName="Referencia" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

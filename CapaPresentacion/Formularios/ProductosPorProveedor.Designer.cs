@@ -33,14 +33,22 @@
             this.btnDesmarcarTodos = new System.Windows.Forms.Button();
             this.btnMarcarTodos = new System.Windows.Forms.Button();
             this.dgvProductos = new System.Windows.Forms.DataGridView();
-            this.Seleccionar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ProductoID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UnidadMedida = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnCerrar = new System.Windows.Forms.Label();
             this.btnSeleccionar = new System.Windows.Forms.Button();
             this.checkBoxProdExistBaja = new System.Windows.Forms.CheckBox();
             this.txtFiltro = new System.Windows.Forms.TextBox();
             this.cbFiltro = new System.Windows.Forms.ComboBox();
+            this.Seleccionar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ProductoID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Referencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Marca = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Calidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UnidadMedida = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Existencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PrecioCompra = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CantMin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CantMax = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -103,7 +111,15 @@
             this.dgvProductos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Seleccionar,
             this.ProductoID,
-            this.UnidadMedida});
+            this.Referencia,
+            this.Descripcion,
+            this.Marca,
+            this.Calidad,
+            this.UnidadMedida,
+            this.Existencia,
+            this.PrecioCompra,
+            this.CantMin,
+            this.CantMax});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.WhiteSmoke;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -121,28 +137,6 @@
             this.dgvProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvProductos.Size = new System.Drawing.Size(725, 422);
             this.dgvProductos.TabIndex = 45;
-            // 
-            // Seleccionar
-            // 
-            this.Seleccionar.HeaderText = "";
-            this.Seleccionar.Name = "Seleccionar";
-            this.Seleccionar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Seleccionar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Seleccionar.Width = 20;
-            // 
-            // ProductoID
-            // 
-            this.ProductoID.DataPropertyName = "ProductoID";
-            this.ProductoID.HeaderText = "ID";
-            this.ProductoID.Name = "ProductoID";
-            this.ProductoID.Width = 44;
-            // 
-            // UnidadMedida
-            // 
-            this.UnidadMedida.DataPropertyName = "UnidadMedida";
-            this.UnidadMedida.HeaderText = "UM";
-            this.UnidadMedida.Name = "UnidadMedida";
-            this.UnidadMedida.Width = 50;
             // 
             // btnCerrar
             // 
@@ -218,6 +212,84 @@
             this.cbFiltro.TabIndex = 94;
             this.cbFiltro.Validating += new System.ComponentModel.CancelEventHandler(this.cbFiltro_Validating);
             // 
+            // Seleccionar
+            // 
+            this.Seleccionar.HeaderText = "";
+            this.Seleccionar.Name = "Seleccionar";
+            this.Seleccionar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Seleccionar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Seleccionar.Width = 20;
+            // 
+            // ProductoID
+            // 
+            this.ProductoID.DataPropertyName = "ProductoID";
+            this.ProductoID.HeaderText = "ID";
+            this.ProductoID.Name = "ProductoID";
+            this.ProductoID.Width = 44;
+            // 
+            // Referencia
+            // 
+            this.Referencia.DataPropertyName = "Referencia";
+            this.Referencia.HeaderText = "Referencia";
+            this.Referencia.Name = "Referencia";
+            this.Referencia.Width = 99;
+            // 
+            // Descripcion
+            // 
+            this.Descripcion.DataPropertyName = "Descripcion";
+            this.Descripcion.HeaderText = "Descripcion";
+            this.Descripcion.Name = "Descripcion";
+            this.Descripcion.Width = 106;
+            // 
+            // Marca
+            // 
+            this.Marca.DataPropertyName = "Marca";
+            this.Marca.HeaderText = "Marca";
+            this.Marca.Name = "Marca";
+            this.Marca.Width = 72;
+            // 
+            // Calidad
+            // 
+            this.Calidad.DataPropertyName = "Calidad";
+            this.Calidad.HeaderText = "Calidad";
+            this.Calidad.Name = "Calidad";
+            this.Calidad.Width = 84;
+            // 
+            // UnidadMedida
+            // 
+            this.UnidadMedida.DataPropertyName = "UnidadMedida";
+            this.UnidadMedida.HeaderText = "UM";
+            this.UnidadMedida.Name = "UnidadMedida";
+            this.UnidadMedida.Width = 50;
+            // 
+            // Existencia
+            // 
+            this.Existencia.DataPropertyName = "Existencia";
+            this.Existencia.HeaderText = "Existencia";
+            this.Existencia.Name = "Existencia";
+            this.Existencia.Width = 93;
+            // 
+            // PrecioCompra
+            // 
+            this.PrecioCompra.DataPropertyName = "PrecioCompra";
+            this.PrecioCompra.HeaderText = "PrecioCompra";
+            this.PrecioCompra.Name = "PrecioCompra";
+            this.PrecioCompra.Width = 126;
+            // 
+            // CantMin
+            // 
+            this.CantMin.DataPropertyName = "CantMin";
+            this.CantMin.HeaderText = "CantMin";
+            this.CantMin.Name = "CantMin";
+            this.CantMin.Width = 86;
+            // 
+            // CantMax
+            // 
+            this.CantMax.DataPropertyName = "CantMax";
+            this.CantMax.HeaderText = "CantMax";
+            this.CantMax.Name = "CantMax";
+            this.CantMax.Width = 90;
+            // 
             // ProductosPorProveedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -251,10 +323,18 @@
         private System.Windows.Forms.Label btnCerrar;
         private System.Windows.Forms.Button btnSeleccionar;
         private System.Windows.Forms.CheckBox checkBoxProdExistBaja;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccionar;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ProductoID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UnidadMedida;
         private System.Windows.Forms.TextBox txtFiltro;
         private System.Windows.Forms.ComboBox cbFiltro;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Seleccionar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProductoID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Referencia;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Marca;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Calidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UnidadMedida;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Existencia;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PrecioCompra;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CantMin;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CantMax;
     }
 }

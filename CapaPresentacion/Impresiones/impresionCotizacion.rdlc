@@ -69,6 +69,10 @@
           <DataField>ProductoID</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
+        <Field Name="Referencia">
+          <DataField>Referencia</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="UnidadMedida">
           <DataField>UnidadMedida</DataField>
           <rd:TypeName>System.String</rd:TypeName>
@@ -93,28 +97,28 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>0.72049in</Width>
+                  <Width>0.69967in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.56581in</Width>
+                  <Width>1.17141in</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>2.09397in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.78039in</Width>
+                  <Width>0.62414in</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>0.93688in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.77744in</Width>
+                  <Width>0.68369in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.97771in</Width>
+                  <Width>0.66522in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.99021in</Width>
+                  <Width>0.96792in</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -168,7 +172,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Codigo</Value>
+                                  <Value>Referencia</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontWeight>Bold</FontWeight>
@@ -364,7 +368,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Descuento</Value>
+                                  <Value>Desc.</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                     <FontWeight>Bold</FontWeight>
@@ -476,14 +480,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="ProductoID">
+                        <Textbox Name="Referencia">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!ProductoID.Value</Value>
+                                  <Value>=Fields!Referencia.Value</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                   </Style>
@@ -494,7 +498,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>ProductoID</rd:DefaultName>
+                          <rd:DefaultName>Referencia</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -741,7 +745,7 @@
             <Top>0.06944in</Top>
             <Left>0.32167in</Left>
             <Height>0.52083in</Height>
-            <Width>7.8429in</Width>
+            <Width>7.84291in</Width>
             <Style>
               <Border>
                 <Style>None</Style>

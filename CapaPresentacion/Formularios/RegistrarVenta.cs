@@ -188,7 +188,7 @@ namespace CapaPresentacion
                 campoPrecio = Convert.ToDecimal(txtPrecio.Text) - (Convert.ToDecimal(txtPrecio.Text) * itbisProd);
                 campoDescuento = campoPrecio * descuentoProd;
                 campoITBIS = Convert.ToDecimal(txtPrecio.Text) * itbisProd;
-                dgvCarrito.Rows.Add(productoCarritoEntidad.ProductoID, txtCodigoBarra.Text, txtDescripcion.Text, txtUnidadMedida.Text, txtCantidad.Text, 
+                dgvCarrito.Rows.Add(productoCarritoEntidad.ProductoID, txtCodigoBarra.Text, productoCarritoEntidad.Referencia, txtDescripcion.Text, txtUnidadMedida.Text, txtCantidad.Text, 
                     campoPrecio.ToString("F"), campoITBIS.ToString("F"), campoDescuento.ToString("F"),
                     (Convert.ToDecimal(txtCantidad.Text) * (campoPrecio + campoITBIS - campoDescuento)).ToString("F") ,productoCarritoEntidad.Servicio);        
                 
@@ -220,7 +220,7 @@ namespace CapaPresentacion
                     campoPrecio = Convert.ToDecimal(txtPrecio.Text) - (Convert.ToDecimal(txtPrecio.Text) * itbisProd);
                     campoDescuento = campoPrecio * descuentoProd;
                     campoITBIS = Convert.ToDecimal(txtPrecio.Text) * itbisProd;
-                    dgvCarrito.Rows.Add(productoCarritoEntidad.ProductoID, txtCodigoBarra.Text, txtDescripcion.Text, txtUnidadMedida.Text,txtCantidad.Text, 
+                    dgvCarrito.Rows.Add(productoCarritoEntidad.ProductoID, txtCodigoBarra.Text, productoCarritoEntidad.Referencia, txtDescripcion.Text, txtUnidadMedida.Text,txtCantidad.Text, 
                         campoPrecio.ToString("F"), campoITBIS.ToString("F"), campoDescuento.ToString("F"),
                         (Convert.ToDecimal(txtCantidad.Text) * (campoPrecio + campoITBIS - campoDescuento)).ToString("F"), productoCarritoEntidad.Servicio);
 
@@ -674,7 +674,7 @@ namespace CapaPresentacion
             {
                 foreach (proc_CargarProductosCotizacion_Result item in proc_CargarProductosCotizacion_Results)
                 {
-                    dgvCarrito.Rows.Add(item.ID, item.CodigoBarra, item.Descripcion, item.UnidadMedida, item.Cantidad, item.Precio, item.ITBIS,
+                    dgvCarrito.Rows.Add(item.ID, item.CodigoBarra, item.Referencia, item.Descripcion, item.UnidadMedida, item.Cantidad, item.Precio, item.ITBIS,
                         item.Descuento, item.Importe, item.Servicio);
                     contFila++;
                 }
@@ -1081,6 +1081,7 @@ namespace CapaPresentacion
                     productoCarritoEntidad.CantMax = result.CantMax;
                     productoCarritoEntidad.CodigoBarra = result.CodigoBarra;
                     productoCarritoEntidad.UnidadMedida = result.UnidadMedida;
+                    productoCarritoEntidad.Referencia = result.Referencia;
 
                     txtDescripcion.Text = productoCarritoEntidad.Descripcion;
                     txtCantidad.Text = "1";

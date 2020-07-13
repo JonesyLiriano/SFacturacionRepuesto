@@ -23,5 +23,6 @@ namespace CapaDatos
         public Nullable<decimal> Importe { get; set; }
         public bool Servicio { get; set; }
         public string UnidadMedida { get; set; }
+        public string Referencia { get; set; }
     }
 }

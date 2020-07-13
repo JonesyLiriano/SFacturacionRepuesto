@@ -43,6 +43,7 @@
             this.label14 = new System.Windows.Forms.Label();
             this.dgvCarrito = new System.Windows.Forms.DataGridView();
             this.ProductoID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Referencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UnidadMedida = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CantDevuelta = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -197,6 +198,7 @@
             this.dgvCarrito.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvCarrito.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ProductoID,
+            this.Referencia,
             this.Descripcion,
             this.UnidadMedida,
             this.CantDevuelta,
@@ -228,6 +230,14 @@
             this.ProductoID.Name = "ProductoID";
             this.ProductoID.ReadOnly = true;
             this.ProductoID.Width = 41;
+            // 
+            // Referencia
+            // 
+            this.Referencia.DataPropertyName = "Referencia";
+            this.Referencia.HeaderText = "Referencia";
+            this.Referencia.Name = "Referencia";
+            this.Referencia.ReadOnly = true;
+            this.Referencia.Width = 82;
             // 
             // Descripcion
             // 
@@ -321,6 +331,7 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.DataGridView dgvCarrito;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductoID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Referencia;
         private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
         private System.Windows.Forms.DataGridViewTextBoxColumn UnidadMedida;
         private System.Windows.Forms.DataGridViewTextBoxColumn CantDevuelta;

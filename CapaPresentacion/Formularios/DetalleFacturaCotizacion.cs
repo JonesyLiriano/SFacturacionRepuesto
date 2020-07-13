@@ -88,7 +88,7 @@ namespace CapaPresentacion.Formularios
             {
                 foreach (var item in proc_ComprobanteCotizacion_Results)
                 {
-                    dgvCarrito.Rows.Add(item.ProductoID, item.Descripcion, item.UnidadMedida, item.CantVen,
+                    dgvCarrito.Rows.Add(item.ProductoID, item.Referencia, item.Descripcion, item.UnidadMedida, item.CantVen,
                         item.Precio, item.ITBIS, item.Descuento, (Convert.ToDecimal(item.CantVen) * (item.Precio + item.ITBIS - item.Descuento)).ToString("F"));
                 }
             }
@@ -103,7 +103,7 @@ namespace CapaPresentacion.Formularios
             {
                 foreach (var item in proc_ComprobanteFacturaVenta_Results)
                 {
-                    dgvCarrito.Rows.Add(item.ProductoID, item.Descripcion, item.UnidadMedida, item.CantVen,
+                    dgvCarrito.Rows.Add(item.ProductoID, item.Referencia, item.Descripcion, item.UnidadMedida, item.CantVen,
                         item.Precio, item.ITBIS, item.Descuento, (Convert.ToDecimal(item.CantVen) * (item.Precio + item.ITBIS - item.Descuento)).ToString("F"));
                 }
             }          
