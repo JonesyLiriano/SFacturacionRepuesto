@@ -122,6 +122,7 @@ namespace CapaPresentacion.Formularios
             dgvProductos.Columns["Ordenada"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgvProductos.Columns["Existencia"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgvProductos.Columns["PrecioCompra"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvProductos.Columns["CantMin"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgvProductos.Columns["ProductoID"].ReadOnly = true;
             dgvProductos.Columns["Descripcion"].ReadOnly = true;
             dgvProductos.Columns["UnidadMedida"].ReadOnly = true;
@@ -466,14 +467,10 @@ namespace CapaPresentacion.Formularios
                     detalleOrdenCompraEntidad.Estatus = false;
 
                 }
-                var result = detalleOrdenCompraNegocio.ActualizarDetalleOrdenCompra(detalleOrdenCompraEntidad);
-
-                if (result)
-                    MessageBox.Show(string.Format("Orden de Compra #{0} Actualizada Correctamente", ordenCompraID), "Actualizacion Correcta", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                else
-                    MessageBox.Show("No se pudo actualizar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                var result = detalleOrdenCompraNegocio.ActualizarDetalleOrdenCompra(detalleOrdenCompraEntidad);               
 
             }
+            MessageBox.Show(string.Format("Orden de Compra #{0} Actualizada Correctamente", ordenCompraID), "Actualizacion Correcta", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
         }
 

@@ -147,8 +147,8 @@
       <PropertyRef Name="OrdenCompraID" />
     </Key>
     <Property Name="ProveedorID" Type="Int32" Nullable="false" />
-    <Property Name="FechaPedido" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="FechaCompletado" Type="DateTime" Precision="0" />
+    <Property Name="FechaPedido" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FechaCompletado" Type="DateTime" Precision="3" />
     <Property Name="Estatus" Type="Boolean" Nullable="false" />
     <Property Name="OrdenCompraID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <NavigationProperty Name="DetalleOrdenesCompras1" Relationship="SFacturacionModel.FK_DetalleOrdenesCompra_OrdenesCompra1" FromRole="OrdenesCompra" ToRole="DetalleOrdenesCompra" />
@@ -991,9 +991,9 @@
   <ComplexType Name="proc_CargarOrdenesCompraPFecha_Result">
     <Property Type="Int32" Name="ProveedorID" Nullable="false" />
     <Property Type="String" Name="NCF" Nullable="true" MaxLength="50" />
-    <Property Type="DateTime" Name="FechaPedido" Nullable="false" />
+    <Property Type="DateTime" Name="FechaPedido" Nullable="false" Precision="23" />
     <Property Type="String" Name="Estatus" Nullable="false" MaxLength="10" />
-    <Property Type="DateTime" Name="FechaCompletado" Nullable="true" />
+    <Property Type="DateTime" Name="FechaCompletado" Nullable="true" Precision="23" />
     <Property Type="Decimal" Name="ITBIS" Nullable="true" Precision="18" Scale="2" />
     <Property Type="Decimal" Name="SubTotal" Nullable="true" Precision="18" Scale="2" />
     <Property Type="Decimal" Name="Total" Nullable="true" Precision="19" Scale="2" />
@@ -1040,8 +1040,8 @@
     <Property Type="DateTime" Name="FechaVencimiento" Nullable="false" />
   </ComplexType>
   <ComplexType Name="proc_CargarTodasOrdenesCompra_Result">
-    <Property Type="DateTime" Name="FechaPedido" Nullable="false" />
-    <Property Type="DateTime" Name="FechaCompletado" Nullable="true" />
+    <Property Type="DateTime" Name="FechaPedido" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="FechaCompletado" Nullable="true" Precision="23" />
     <Property Type="String" Name="NCF" Nullable="true" MaxLength="50" />
     <Property Type="DateTime" Name="FechaFactura" Nullable="true" />
     <Property Type="String" Name="Proveedor" Nullable="false" MaxLength="100" />
@@ -1334,7 +1334,7 @@
     <Property Type="Int32" Name="LineaCreditoCompraID" Nullable="false" />
     <Property Type="String" Name="Proveedor" Nullable="false" MaxLength="100" />
     <Property Type="Int32" Name="OrdenCompra" Nullable="false" />
-    <Property Type="DateTime" Name="Fecha" Nullable="false" />
+    <Property Type="DateTime" Name="Fecha" Nullable="false" Precision="23" />
     <Property Type="Int32" Name="FacturaCompra" Nullable="false" />
     <Property Type="Decimal" Name="MontoFactura" Nullable="true" Precision="18" Scale="2" />
     <Property Type="Decimal" Name="BalancePendiente" Nullable="true" Precision="18" Scale="2" />
@@ -1375,7 +1375,7 @@
     <Property Type="String" Name="NombreProveedor" Nullable="false" MaxLength="100" />
     <Property Type="String" Name="CedulaORncProveedor" Nullable="false" MaxLength="50" />
     <Property Type="String" Name="DireccionProveedor" Nullable="true" MaxLength="200" />
-    <Property Type="DateTime" Name="FechaPedido" Nullable="false" />
+    <Property Type="DateTime" Name="FechaPedido" Nullable="false" Precision="23" />
     <Property Type="Int32" Name="ProductoID" Nullable="false" />
     <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="100" />
     <Property Type="String" Name="UnidadMedida" Nullable="false" MaxLength="50" />

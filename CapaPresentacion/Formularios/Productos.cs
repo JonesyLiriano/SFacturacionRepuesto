@@ -54,7 +54,7 @@ namespace SFacturacion
             productoEntidad.ProductoID = Convert.ToInt32(dgvProductos.CurrentRow.Cells["ProductoID"].Value);
             productoEntidad.Servicio = Convert.ToBoolean(dgvProductos.CurrentRow.Cells["Servicio"].Value.ToString());
             productoEntidad.Descripcion = dgvProductos.CurrentRow.Cells["Descripcion"].Value.ToString();
-            productoEntidad.ProveedorID = dgvProductos.CurrentRow.Cells["ProveedorID"].Value == null ? null : (int?)Convert.ToInt32(dgvProductos.CurrentRow.Cells["ProveedorID"].Value.ToString());
+            productoEntidad.ProveedorID = dgvProductos.CurrentRow.Cells["ProveedorID"].Value == null ? -1 : (int?)Convert.ToInt32(dgvProductos.CurrentRow.Cells["ProveedorID"].Value.ToString());
             productoEntidad.Existencia = dgvProductos.CurrentRow.Cells["Existencia"].Value  == null ? null : (double?)Convert.ToDouble(dgvProductos.CurrentRow.Cells["Existencia"].Value.ToString());
             productoEntidad.ITBIS = Convert.ToBoolean(dgvProductos.CurrentRow.Cells["ITBIS"].Value.ToString());
             productoEntidad.PrecioCompra = dgvProductos.CurrentRow.Cells["PrecioCompra"].Value == null ? null : (decimal?)Convert.ToDecimal(dgvProductos.CurrentRow.Cells["PrecioCompra"].Value.ToString());
@@ -193,9 +193,17 @@ namespace SFacturacion
             {
                 if (dgvProductos.SelectedRows.Count > 0)
                 {
-                    CantidadEtiquetasImprimir cantidadEtiquetasImprimir = new CantidadEtiquetasImprimir(dgvProductos.CurrentRow.Cells["Descripcion"].Value.ToString(),
-                        dgvProductos.CurrentRow.Cells["CodigoBarra"].Value.ToString(), dgvProductos.CurrentRow.Cells["PrecioVenta"].Value.ToString(), dgvProductos.CurrentRow.Cells["Referenia"].Value.ToString());
-                    cantidadEtiquetasImprimir.ShowDialog();
+                    if(!Convert.ToBoolean(dgvProductos.CurrentRow.Cells["Servicio"].Value))
+                    {
+                        CantidadEtiquetasImprimir cantidadEtiquetasImprimir = new CantidadEtiquetasImprimir(dgvProductos.CurrentRow.Cells["Descripcion"].Value.ToString(),
+                        dgvProductos.CurrentRow.Cells["CodigoBarra"].Value.ToString(), dgvProductos.CurrentRow.Cells["PrecioVenta"].Value.ToString(), dgvProductos.CurrentRow.Cells["Referencia"].Value.ToString());
+                        cantidadEtiquetasImprimir.ShowDialog();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se le puede imprimir etiquetas a los servicios.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    }
                 } 
                 else
                 {

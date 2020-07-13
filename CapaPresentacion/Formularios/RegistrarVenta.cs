@@ -503,7 +503,7 @@ namespace CapaPresentacion
             {
                 if (contFila != 0)
                 {
-                    DialogResult dialogResult = MessageBox.Show("Esta seguro que desea facturar los productos/servicios en el carrito?", "Confirme para facturar", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    DialogResult dialogResult = MessageBox.Show("Esta seguro que desea cotizar los productos/servicios en el carrito?", "Confirme para cotizar", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                     if (dialogResult == DialogResult.Yes)
                     {
                         CrearCotizacion();
@@ -762,7 +762,6 @@ namespace CapaPresentacion
         private void cbClientes_Enter(object sender, EventArgs e)
         {
             CargarCBClientes();
-            cbClientes.DroppedDown = true;
             cbClientes.Focus();            
         }
 

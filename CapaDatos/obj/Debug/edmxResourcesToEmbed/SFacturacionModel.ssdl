@@ -149,8 +149,8 @@
     </Key>
     <Property Name="OrdenCompraID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ProveedorID" Type="int" Nullable="false" />
-    <Property Name="FechaPedido" Type="date" Nullable="false" />
-    <Property Name="FechaCompletado" Type="date" />
+    <Property Name="FechaPedido" Type="datetime" Nullable="false" />
+    <Property Name="FechaCompletado" Type="datetime" />
     <Property Name="Estatus" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="PagosComprasCredito">

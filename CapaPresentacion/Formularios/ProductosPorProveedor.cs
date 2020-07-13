@@ -34,10 +34,10 @@ namespace CapaPresentacion.Formularios
         {
             dtProductosMarcados = new DataTable();
             dtProductosMarcados.Columns.Add("ProductoID", typeof(int));
-            dtProductosMarcados.Columns.Add("Referencia", typeof(double));
+            dtProductosMarcados.Columns.Add("Referencia", typeof(string));
             dtProductosMarcados.Columns.Add("Descripcion", typeof(string));
-            dtProductosMarcados.Columns.Add("Marca", typeof(double));
-            dtProductosMarcados.Columns.Add("Calidad", typeof(double));
+            dtProductosMarcados.Columns.Add("Marca", typeof(string));
+            dtProductosMarcados.Columns.Add("Calidad", typeof(string));
             dtProductosMarcados.Columns.Add("UnidadMedida", typeof(string));
             dtProductosMarcados.Columns.Add("Existencia", typeof(double));
             dtProductosMarcados.Columns.Add("PrecioCompra", typeof(decimal));

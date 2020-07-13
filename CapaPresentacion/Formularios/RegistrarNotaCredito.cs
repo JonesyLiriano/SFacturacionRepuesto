@@ -343,11 +343,11 @@ namespace CapaPresentacion.Formularios
         {
             if(checkBoxITBIS.Checked)
             {
-                txtValorAplicarNotaCredito.Text = valorFacturaTotal.ToString("C", ci);
+                txtValorAplicarNotaCredito.Text = valorFacturaTotal.ToString("F");
             }
             else
             {
-                txtValorAplicarNotaCredito.Text = valorFacturaTotalSinITBIS.ToString("C", ci);
+                txtValorAplicarNotaCredito.Text = valorFacturaTotalSinITBIS.ToString("F");
             }
         }
 
@@ -430,8 +430,8 @@ namespace CapaPresentacion.Formularios
 
                     foreach (DataRow dtRow in ProductosADevolver.dtProductosRecibidos.Rows)
                     {
-                        valorFacturaTotal += Convert.ToDecimal(dtRow["cantVen"]) * Convert.ToDecimal(dtRow["Precio"]);
-                            valorFacturaTotalSinITBIS += Convert.ToDecimal(dtRow["cantVen"]) * Convert.ToDecimal(dtRow["PrecioSinITBIS"]);
+                        valorFacturaTotal += Convert.ToDecimal(dtRow["Recibida"]) * Convert.ToDecimal(dtRow["Precio"]);
+                            valorFacturaTotalSinITBIS += Convert.ToDecimal(dtRow["Recibida"]) * Convert.ToDecimal(dtRow["PrecioSinITBIS"]);
                     }
                     txtValorNotaCredito.Text = (valorFacturaTotal - (valorFacturaTotal * (descuentoCliente / 100)))?.ToString("C", ci);
 
