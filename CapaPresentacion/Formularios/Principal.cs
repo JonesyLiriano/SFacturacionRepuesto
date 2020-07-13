@@ -101,7 +101,6 @@ namespace SFacturacion
             {
                 MenuVertical.Width = 70;
             }
-            DesactivarScrollBar();
             this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
             this.WindowState = FormWindowState.Maximized;
             iconrestaurar.Visible = true;
@@ -110,7 +109,6 @@ namespace SFacturacion
 
         private void iconrestaurar_Click(object sender, EventArgs e)
         {            
-            ActivarScrollBar();
             this.WindowState = FormWindowState.Normal;
             iconrestaurar.Visible = false;
             iconmaximizar.Visible = true;
@@ -187,7 +185,7 @@ namespace SFacturacion
                 case "Productos":
                     ActivarButton(btnProductos);
                     break;
-                case "Ventas":
+                case "TabsFormularioVentas":
                     ActivarButton(btnVentas);
                     break;
                 case "Clientes":
@@ -299,7 +297,7 @@ namespace SFacturacion
         private void btnVentas_Click(object sender, EventArgs e)
         {
             AbrirFormEnPanel<TabsFormularioVentas>();
-            SeleccionarButton("Ventas");
+            SeleccionarButton("TabsFormularioVentas");
             CerrarFormulariosAntesAbrirVentas();
         }
 
@@ -319,7 +317,7 @@ namespace SFacturacion
         {
             AbrirFormEnPanel<Compras>();
             SeleccionarButton("Compras");
-            CerrarFormularioCuentasPorPagar();
+            CerrarFormularioCuentasPorPagarYProductos();
         }
         private void btnUsuarios_Click(object sender, EventArgs e)
         {
@@ -364,11 +362,21 @@ namespace SFacturacion
                 }
             }            
         }
-        private void CerrarFormularioCuentasPorPagar()
+        private void CerrarFormularioCuentasPorPagarYProductos()
         {
             foreach (Control item in panelContenedor.Controls)
             {
-                if (item.Text == "CuentasPorPagar")
+                if (item.Text == "CuentasPorPagar" || item.Text == "Productos")
+                {
+                    panelContenedor.Controls.Remove(item);
+                }
+            }
+        }
+        private void CerrarFormularioCuentasPorCobrarYProductos()
+        {
+            foreach (Control item in panelContenedor.Controls)
+            {
+                if (item.Text == "CuentasPorCobrar" || item.Text == "Productos")
                 {
                     panelContenedor.Controls.Remove(item);
                 }
@@ -397,6 +405,7 @@ namespace SFacturacion
         {
             AbrirFormEnPanel<NotasCredito>();
             SeleccionarButton("NotasCredito");
+            CerrarFormularioCuentasPorCobrarYProductos();
         }
 
         private void btnCXC_Click(object sender, EventArgs e)
@@ -416,5 +425,7 @@ namespace SFacturacion
             AbrirFormEnPanel<Reportes>();
             SeleccionarButton("Reportes");
         }
+
+
     }
 }

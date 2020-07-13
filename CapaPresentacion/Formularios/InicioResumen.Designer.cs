@@ -122,7 +122,7 @@
             this.labelProductos.AutoSize = true;
             this.labelProductos.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelProductos.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.labelProductos.Location = new System.Drawing.Point(13, 111);
+            this.labelProductos.Location = new System.Drawing.Point(3, 107);
             this.labelProductos.Name = "labelProductos";
             this.labelProductos.Size = new System.Drawing.Size(33, 20);
             this.labelProductos.TabIndex = 16;
@@ -134,9 +134,9 @@
             this.panel3.Controls.Add(this.labelVentas);
             this.panel3.Controls.Add(this.pictureBox4);
             this.panel3.Controls.Add(this.panel4);
-            this.panel3.Location = new System.Drawing.Point(399, 28);
+            this.panel3.Location = new System.Drawing.Point(386, 28);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(110, 150);
+            this.panel3.Size = new System.Drawing.Size(95, 132);
             this.panel3.TabIndex = 31;
             // 
             // labelVentas
@@ -144,7 +144,7 @@
             this.labelVentas.AutoSize = true;
             this.labelVentas.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelVentas.ForeColor = System.Drawing.Color.Orange;
-            this.labelVentas.Location = new System.Drawing.Point(10, 111);
+            this.labelVentas.Location = new System.Drawing.Point(3, 107);
             this.labelVentas.Name = "labelVentas";
             this.labelVentas.Size = new System.Drawing.Size(33, 20);
             this.labelVentas.TabIndex = 16;
@@ -153,9 +153,9 @@
             // pictureBox4
             // 
             this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(14, 34);
+            this.pictureBox4.Location = new System.Drawing.Point(3, 34);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(80, 80);
+            this.pictureBox4.Size = new System.Drawing.Size(87, 70);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox4.TabIndex = 4;
             this.pictureBox4.TabStop = false;
@@ -167,18 +167,18 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(108, 30);
+            this.panel4.Size = new System.Drawing.Size(93, 30);
             this.panel4.TabIndex = 0;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
             this.label12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label12.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Font = new System.Drawing.Font("Century Gothic", 9.5F);
             this.label12.ForeColor = System.Drawing.Color.White;
             this.label12.Location = new System.Drawing.Point(23, 4);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(60, 20);
+            this.label12.Size = new System.Drawing.Size(52, 17);
             this.label12.TabIndex = 15;
             this.label12.Text = "Ventas";
             // 
@@ -189,9 +189,9 @@
             this.panel1.Controls.Add(this.pictureBox2);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.ForeColor = System.Drawing.Color.SeaGreen;
-            this.panel1.Location = new System.Drawing.Point(913, 28);
+            this.panel1.Location = new System.Drawing.Point(880, 28);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(110, 150);
+            this.panel1.Size = new System.Drawing.Size(95, 132);
             this.panel1.TabIndex = 30;
             // 
             // labelCXC
@@ -199,7 +199,7 @@
             this.labelCXC.AutoSize = true;
             this.labelCXC.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelCXC.ForeColor = System.Drawing.Color.Orange;
-            this.labelCXC.Location = new System.Drawing.Point(11, 111);
+            this.labelCXC.Location = new System.Drawing.Point(3, 107);
             this.labelCXC.Name = "labelCXC";
             this.labelCXC.Size = new System.Drawing.Size(33, 20);
             this.labelCXC.TabIndex = 16;
@@ -208,9 +208,9 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(15, 34);
+            this.pictureBox2.Location = new System.Drawing.Point(3, 34);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(80, 80);
+            this.pictureBox2.Size = new System.Drawing.Size(87, 70);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 2;
             this.pictureBox2.TabStop = false;
@@ -222,18 +222,18 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(108, 30);
+            this.panel2.Size = new System.Drawing.Size(93, 30);
             this.panel2.TabIndex = 0;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label6.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Font = new System.Drawing.Font("Century Gothic", 9.5F);
             this.label6.ForeColor = System.Drawing.Color.White;
             this.label6.Location = new System.Drawing.Point(33, 4);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(42, 20);
+            this.label6.Size = new System.Drawing.Size(38, 17);
             this.label6.TabIndex = 15;
             this.label6.Text = "CXC";
             // 
@@ -243,9 +243,9 @@
             this.panel13.Controls.Add(this.labelCotizaciones);
             this.panel13.Controls.Add(this.pictureBox7);
             this.panel13.Controls.Add(this.panel14);
-            this.panel13.Location = new System.Drawing.Point(656, 28);
+            this.panel13.Location = new System.Drawing.Point(630, 28);
             this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(110, 150);
+            this.panel13.Size = new System.Drawing.Size(95, 132);
             this.panel13.TabIndex = 34;
             // 
             // labelCotizaciones
@@ -253,7 +253,7 @@
             this.labelCotizaciones.AutoSize = true;
             this.labelCotizaciones.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelCotizaciones.ForeColor = System.Drawing.Color.Crimson;
-            this.labelCotizaciones.Location = new System.Drawing.Point(10, 111);
+            this.labelCotizaciones.Location = new System.Drawing.Point(3, 107);
             this.labelCotizaciones.Name = "labelCotizaciones";
             this.labelCotizaciones.Size = new System.Drawing.Size(33, 20);
             this.labelCotizaciones.TabIndex = 16;
@@ -262,9 +262,9 @@
             // pictureBox7
             // 
             this.pictureBox7.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox7.Image")));
-            this.pictureBox7.Location = new System.Drawing.Point(14, 34);
+            this.pictureBox7.Location = new System.Drawing.Point(3, 34);
             this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(80, 80);
+            this.pictureBox7.Size = new System.Drawing.Size(87, 70);
             this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox7.TabIndex = 5;
             this.pictureBox7.TabStop = false;
@@ -276,18 +276,18 @@
             this.panel14.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel14.Location = new System.Drawing.Point(0, 0);
             this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(108, 30);
+            this.panel14.Size = new System.Drawing.Size(93, 30);
             this.panel14.TabIndex = 0;
             // 
             // label18
             // 
             this.label18.AutoSize = true;
             this.label18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label18.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.Font = new System.Drawing.Font("Century Gothic", 9.5F);
             this.label18.ForeColor = System.Drawing.Color.White;
             this.label18.Location = new System.Drawing.Point(2, 4);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(103, 20);
+            this.label18.Size = new System.Drawing.Size(92, 17);
             this.label18.TabIndex = 15;
             this.label18.Text = "Cotizaciones";
             // 
@@ -328,7 +328,7 @@
             this.dgvProductos.ReadOnly = true;
             this.dgvProductos.RowHeadersVisible = false;
             this.dgvProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProductos.Size = new System.Drawing.Size(628, 420);
+            this.dgvProductos.Size = new System.Drawing.Size(628, 320);
             this.dgvProductos.TabIndex = 39;
             // 
             // ProductoID
@@ -343,11 +343,11 @@
             // 
             this.label10.AutoSize = true;
             this.label10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label10.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Font = new System.Drawing.Font("Century Gothic", 9.5F);
             this.label10.ForeColor = System.Drawing.Color.White;
             this.label10.Location = new System.Drawing.Point(13, 4);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(83, 20);
+            this.label10.Size = new System.Drawing.Size(73, 17);
             this.label10.TabIndex = 15;
             this.label10.Text = "Productos";
             // 
@@ -379,9 +379,9 @@
             this.panel11.Controls.Add(this.labelProveedores);
             this.panel11.Controls.Add(this.pictureBox6);
             this.panel11.Controls.Add(this.panel12);
-            this.panel11.Location = new System.Drawing.Point(144, 28);
+            this.panel11.Location = new System.Drawing.Point(139, 28);
             this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(110, 150);
+            this.panel11.Size = new System.Drawing.Size(95, 132);
             this.panel11.TabIndex = 35;
             // 
             // labelProveedores
@@ -389,7 +389,7 @@
             this.labelProveedores.AutoSize = true;
             this.labelProveedores.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelProveedores.ForeColor = System.Drawing.Color.Crimson;
-            this.labelProveedores.Location = new System.Drawing.Point(10, 111);
+            this.labelProveedores.Location = new System.Drawing.Point(3, 107);
             this.labelProveedores.Name = "labelProveedores";
             this.labelProveedores.Size = new System.Drawing.Size(33, 20);
             this.labelProveedores.TabIndex = 16;
@@ -398,9 +398,9 @@
             // pictureBox6
             // 
             this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
-            this.pictureBox6.Location = new System.Drawing.Point(14, 34);
+            this.pictureBox6.Location = new System.Drawing.Point(3, 34);
             this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(80, 80);
+            this.pictureBox6.Size = new System.Drawing.Size(87, 70);
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox6.TabIndex = 6;
             this.pictureBox6.TabStop = false;
@@ -412,18 +412,18 @@
             this.panel12.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel12.Location = new System.Drawing.Point(0, 0);
             this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(108, 30);
+            this.panel12.Size = new System.Drawing.Size(93, 30);
             this.panel12.TabIndex = 0;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label8.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Font = new System.Drawing.Font("Century Gothic", 9.5F);
             this.label8.ForeColor = System.Drawing.Color.White;
             this.label8.Location = new System.Drawing.Point(1, 4);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(104, 20);
+            this.label8.Size = new System.Drawing.Size(88, 17);
             this.label8.TabIndex = 15;
             this.label8.Text = "Proveedores";
             // 
@@ -433,9 +433,9 @@
             this.panel9.Controls.Add(this.labelClientes);
             this.panel9.Controls.Add(this.pictureBox1);
             this.panel9.Controls.Add(this.panel10);
-            this.panel9.Location = new System.Drawing.Point(18, 28);
+            this.panel9.Location = new System.Drawing.Point(13, 29);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(110, 150);
+            this.panel9.Size = new System.Drawing.Size(95, 131);
             this.panel9.TabIndex = 36;
             // 
             // labelClientes
@@ -443,7 +443,7 @@
             this.labelClientes.AutoSize = true;
             this.labelClientes.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelClientes.ForeColor = System.Drawing.Color.SeaGreen;
-            this.labelClientes.Location = new System.Drawing.Point(9, 111);
+            this.labelClientes.Location = new System.Drawing.Point(3, 106);
             this.labelClientes.Name = "labelClientes";
             this.labelClientes.Size = new System.Drawing.Size(33, 20);
             this.labelClientes.TabIndex = 1;
@@ -452,9 +452,9 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(13, 34);
+            this.pictureBox1.Location = new System.Drawing.Point(3, 34);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(80, 80);
+            this.pictureBox1.Size = new System.Drawing.Size(87, 69);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
@@ -468,7 +468,7 @@
             this.panel10.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel10.Location = new System.Drawing.Point(0, 0);
             this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(108, 30);
+            this.panel10.Size = new System.Drawing.Size(93, 30);
             this.panel10.TabIndex = 0;
             // 
             // label3
@@ -496,11 +496,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 9.5F);
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(20, 4);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(67, 20);
+            this.label1.Size = new System.Drawing.Size(59, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "Clientes";
             // 
@@ -510,9 +510,9 @@
             this.panel7.Controls.Add(this.labelCompras);
             this.panel7.Controls.Add(this.pictureBox5);
             this.panel7.Controls.Add(this.panel8);
-            this.panel7.Location = new System.Drawing.Point(528, 28);
+            this.panel7.Location = new System.Drawing.Point(506, 28);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(110, 150);
+            this.panel7.Size = new System.Drawing.Size(95, 132);
             this.panel7.TabIndex = 33;
             // 
             // labelCompras
@@ -520,7 +520,7 @@
             this.labelCompras.AutoSize = true;
             this.labelCompras.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelCompras.ForeColor = System.Drawing.Color.SeaGreen;
-            this.labelCompras.Location = new System.Drawing.Point(15, 111);
+            this.labelCompras.Location = new System.Drawing.Point(3, 107);
             this.labelCompras.Name = "labelCompras";
             this.labelCompras.Size = new System.Drawing.Size(33, 20);
             this.labelCompras.TabIndex = 16;
@@ -529,9 +529,9 @@
             // pictureBox5
             // 
             this.pictureBox5.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox5.Image")));
-            this.pictureBox5.Location = new System.Drawing.Point(14, 34);
+            this.pictureBox5.Location = new System.Drawing.Point(3, 34);
             this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(80, 80);
+            this.pictureBox5.Size = new System.Drawing.Size(87, 70);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox5.TabIndex = 5;
             this.pictureBox5.TabStop = false;
@@ -543,27 +543,27 @@
             this.panel8.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel8.Location = new System.Drawing.Point(0, 0);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(108, 30);
+            this.panel8.Size = new System.Drawing.Size(93, 30);
             this.panel8.TabIndex = 0;
             // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label14.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Font = new System.Drawing.Font("Century Gothic", 9.5F);
             this.label14.ForeColor = System.Drawing.Color.White;
             this.label14.Location = new System.Drawing.Point(16, 4);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(75, 20);
+            this.label14.Size = new System.Drawing.Size(68, 17);
             this.label14.TabIndex = 15;
             this.label14.Text = "Compras";
             // 
             // pictureBox3
             // 
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(14, 34);
+            this.pictureBox3.Location = new System.Drawing.Point(3, 34);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(80, 80);
+            this.pictureBox3.Size = new System.Drawing.Size(87, 70);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox3.TabIndex = 3;
             this.pictureBox3.TabStop = false;
@@ -574,7 +574,7 @@
             this.panel6.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel6.Location = new System.Drawing.Point(0, 0);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(108, 30);
+            this.panel6.Size = new System.Drawing.Size(93, 30);
             this.panel6.TabIndex = 0;
             // 
             // panel5
@@ -584,9 +584,9 @@
             this.panel5.Controls.Add(this.label10);
             this.panel5.Controls.Add(this.pictureBox3);
             this.panel5.Controls.Add(this.panel6);
-            this.panel5.Location = new System.Drawing.Point(271, 28);
+            this.panel5.Location = new System.Drawing.Point(262, 28);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(110, 150);
+            this.panel5.Size = new System.Drawing.Size(95, 132);
             this.panel5.TabIndex = 32;
             // 
             // panel15
@@ -596,9 +596,9 @@
             this.panel15.Controls.Add(this.pictureBox8);
             this.panel15.Controls.Add(this.panel16);
             this.panel15.ForeColor = System.Drawing.Color.SeaGreen;
-            this.panel15.Location = new System.Drawing.Point(1041, 28);
+            this.panel15.Location = new System.Drawing.Point(1003, 28);
             this.panel15.Name = "panel15";
-            this.panel15.Size = new System.Drawing.Size(110, 150);
+            this.panel15.Size = new System.Drawing.Size(95, 132);
             this.panel15.TabIndex = 31;
             // 
             // labelCXP
@@ -606,7 +606,7 @@
             this.labelCXP.AutoSize = true;
             this.labelCXP.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelCXP.ForeColor = System.Drawing.Color.SeaGreen;
-            this.labelCXP.Location = new System.Drawing.Point(11, 111);
+            this.labelCXP.Location = new System.Drawing.Point(3, 107);
             this.labelCXP.Name = "labelCXP";
             this.labelCXP.Size = new System.Drawing.Size(33, 20);
             this.labelCXP.TabIndex = 16;
@@ -615,9 +615,9 @@
             // pictureBox8
             // 
             this.pictureBox8.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox8.Image")));
-            this.pictureBox8.Location = new System.Drawing.Point(15, 34);
+            this.pictureBox8.Location = new System.Drawing.Point(3, 34);
             this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(80, 80);
+            this.pictureBox8.Size = new System.Drawing.Size(87, 70);
             this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox8.TabIndex = 2;
             this.pictureBox8.TabStop = false;
@@ -629,18 +629,18 @@
             this.panel16.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel16.Location = new System.Drawing.Point(0, 0);
             this.panel16.Name = "panel16";
-            this.panel16.Size = new System.Drawing.Size(108, 30);
+            this.panel16.Size = new System.Drawing.Size(93, 30);
             this.panel16.TabIndex = 0;
             // 
             // label20
             // 
             this.label20.AutoSize = true;
             this.label20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label20.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Font = new System.Drawing.Font("Century Gothic", 9.5F);
             this.label20.ForeColor = System.Drawing.Color.White;
             this.label20.Location = new System.Drawing.Point(33, 4);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(39, 20);
+            this.label20.Size = new System.Drawing.Size(35, 17);
             this.label20.TabIndex = 15;
             this.label20.Text = "CXP";
             // 
@@ -651,9 +651,9 @@
             this.panel17.Controls.Add(this.pictureBox9);
             this.panel17.Controls.Add(this.panel18);
             this.panel17.ForeColor = System.Drawing.Color.SeaGreen;
-            this.panel17.Location = new System.Drawing.Point(784, 28);
+            this.panel17.Location = new System.Drawing.Point(755, 28);
             this.panel17.Name = "panel17";
-            this.panel17.Size = new System.Drawing.Size(110, 150);
+            this.panel17.Size = new System.Drawing.Size(95, 132);
             this.panel17.TabIndex = 32;
             // 
             // labelNotasCredito
@@ -661,7 +661,7 @@
             this.labelNotasCredito.AutoSize = true;
             this.labelNotasCredito.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelNotasCredito.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.labelNotasCredito.Location = new System.Drawing.Point(11, 111);
+            this.labelNotasCredito.Location = new System.Drawing.Point(3, 107);
             this.labelNotasCredito.Name = "labelNotasCredito";
             this.labelNotasCredito.Size = new System.Drawing.Size(33, 20);
             this.labelNotasCredito.TabIndex = 16;
@@ -670,9 +670,9 @@
             // pictureBox9
             // 
             this.pictureBox9.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox9.Image")));
-            this.pictureBox9.Location = new System.Drawing.Point(15, 34);
+            this.pictureBox9.Location = new System.Drawing.Point(3, 34);
             this.pictureBox9.Name = "pictureBox9";
-            this.pictureBox9.Size = new System.Drawing.Size(80, 80);
+            this.pictureBox9.Size = new System.Drawing.Size(87, 70);
             this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox9.TabIndex = 2;
             this.pictureBox9.TabStop = false;
@@ -684,18 +684,18 @@
             this.panel18.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel18.Location = new System.Drawing.Point(0, 0);
             this.panel18.Name = "panel18";
-            this.panel18.Size = new System.Drawing.Size(108, 30);
+            this.panel18.Size = new System.Drawing.Size(93, 30);
             this.panel18.TabIndex = 0;
             // 
             // label22
             // 
             this.label22.AutoSize = true;
             this.label22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label22.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.Font = new System.Drawing.Font("Century Gothic", 9.5F);
             this.label22.ForeColor = System.Drawing.Color.White;
             this.label22.Location = new System.Drawing.Point(-1, 4);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(110, 20);
+            this.label22.Size = new System.Drawing.Size(99, 17);
             this.label22.TabIndex = 15;
             this.label22.Text = "Notas Credito";
             // 
@@ -731,7 +731,7 @@
             series1.Name = "Series1";
             series1.ShadowColor = System.Drawing.Color.Transparent;
             this.chartProductosMasVendidos.Series.Add(series1);
-            this.chartProductosMasVendidos.Size = new System.Drawing.Size(494, 420);
+            this.chartProductosMasVendidos.Size = new System.Drawing.Size(442, 320);
             this.chartProductosMasVendidos.TabIndex = 40;
             this.chartProductosMasVendidos.Text = "chart1";
             // 
@@ -751,7 +751,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(1170, 700);
+            this.ClientSize = new System.Drawing.Size(1110, 600);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.chartProductosMasVendidos);
             this.Controls.Add(this.panel17);

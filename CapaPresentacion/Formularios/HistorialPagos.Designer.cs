@@ -62,7 +62,7 @@
             this.btnEliminar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEliminar.ForeColor = System.Drawing.Color.White;
             this.btnEliminar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEliminar.Location = new System.Drawing.Point(584, 62);
+            this.btnEliminar.Location = new System.Drawing.Point(578, 62);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(180, 35);
             this.btnEliminar.TabIndex = 125;
@@ -83,7 +83,7 @@
             this.groupBox4.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.Location = new System.Drawing.Point(21, 42);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(530, 107);
+            this.groupBox4.Size = new System.Drawing.Size(524, 107);
             this.groupBox4.TabIndex = 122;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Linea de credito";
@@ -195,7 +195,7 @@
             this.dgvPagos.ReadOnly = true;
             this.dgvPagos.RowHeadersVisible = false;
             this.dgvPagos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPagos.Size = new System.Drawing.Size(529, 325);
+            this.dgvPagos.Size = new System.Drawing.Size(523, 318);
             this.dgvPagos.TabIndex = 121;
             // 
             // PagoCompraCreditoID
@@ -215,7 +215,7 @@
             this.BarraTitulo.Dock = System.Windows.Forms.DockStyle.Top;
             this.BarraTitulo.Location = new System.Drawing.Point(0, 0);
             this.BarraTitulo.Name = "BarraTitulo";
-            this.BarraTitulo.Size = new System.Drawing.Size(786, 36);
+            this.BarraTitulo.Size = new System.Drawing.Size(780, 36);
             this.BarraTitulo.TabIndex = 126;
             this.BarraTitulo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.BarraTitulo_MouseDown);
             // 
@@ -246,7 +246,7 @@
             this.iconcerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.iconcerrar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.iconcerrar.Image = ((System.Drawing.Image)(resources.GetObject("iconcerrar.Image")));
-            this.iconcerrar.Location = new System.Drawing.Point(756, 9);
+            this.iconcerrar.Location = new System.Drawing.Point(750, 9);
             this.iconcerrar.Name = "iconcerrar";
             this.iconcerrar.Size = new System.Drawing.Size(18, 18);
             this.iconcerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -258,8 +258,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(786, 507);
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.ClientSize = new System.Drawing.Size(780, 500);
             this.Controls.Add(this.BarraTitulo);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.groupBox4);

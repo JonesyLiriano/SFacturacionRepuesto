@@ -64,6 +64,11 @@ namespace CapaPresentacion.Formularios
             }
         }
 
+        private void CantidadEtiquetasImprimir_Load(object sender, EventArgs e)
+        {
+            txtCantidad.Select();
+        }
+
         private bool ValidarTextBox()
         {            
             if (string.IsNullOrEmpty(txtCantidad.Text) || !int.TryParse(txtCantidad.Text, out numeroEntero))

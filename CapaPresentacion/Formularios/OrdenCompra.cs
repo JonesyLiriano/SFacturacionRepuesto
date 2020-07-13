@@ -15,13 +15,13 @@ namespace CapaPresentacion.Formularios
 {
     public partial class OrdenCompra : Form
     {
-        TiposPagosNegocio tiposPagosNegocio = new TiposPagosNegocio();
         ProveedoresNegocio proveedoresNegocio = new ProveedoresNegocio();
         OrdenesCompra ordenCompraEntidad = new OrdenesCompra();
         OrdenesCompraNegocio ordenesCompraNegocio = new OrdenesCompraNegocio();
         DetalleOrdenCompraNegocio detalleOrdenCompraNegocio = new DetalleOrdenCompraNegocio();
         DetalleOrdenesCompra detalleOrdenCompraEntidad = new DetalleOrdenesCompra();
         List<proc_CargarDetalleOrdenCompra_Result> proc_CargarDetalleOrdenCompra_Results;
+        List<proc_CargarTodosProveedores_Result> proc_CargarTodosProveedores_Results;
         Producto productoEntidad = new Producto();
         ProductosNegocio productosNegocio = new ProductosNegocio();
         private int ordenCompraID;
@@ -39,12 +39,13 @@ namespace CapaPresentacion.Formularios
             InitializeComponent();
             CargarCbProveedores();
         }
-        public OrdenCompra(string proveedor, int ordenCompraID ,bool status)
+        public OrdenCompra(string proveedor, int ordenCompraID, bool status)
         {
             InitializeComponent();
             this.ordenCompraID = ordenCompraID;
             CargarCbProveedores();
-            cbProveedor.SelectedItem = proveedor;
+            cbProveedor.SelectedValue = proc_CargarTodosProveedores_Results.Where(r => r.Nombre == proveedor)
+                .FirstOrDefault().ProveedorID;
             cbProveedor.Enabled = false;
 
             if (status)
@@ -67,7 +68,7 @@ namespace CapaPresentacion.Formularios
 
         private void btnBuscarProd_Click(object sender, EventArgs e)
         {
-            if (cbProveedor.SelectedIndex != 1)
+            if (cbProveedor.SelectedIndex != -1)
             {
                 ProductosPorProveedor productosPorProveedor = new ProductosPorProveedor(Convert.ToInt32(cbProveedor.SelectedValue));
                 productosPorProveedor.ShowDialog();
@@ -89,7 +90,8 @@ namespace CapaPresentacion.Formularios
         {
             cbProveedor.DisplayMember = "Nombre";
             cbProveedor.ValueMember = "ProveedorID";
-            cbProveedor.DataSource = proveedoresNegocio.CargarTodosProveedores();
+            proc_CargarTodosProveedores_Results = proveedoresNegocio.CargarTodosProveedores().ToList();
+            cbProveedor.DataSource = proc_CargarTodosProveedores_Results;
             cbProveedor.SelectedIndex = -1;
         }
 
@@ -110,7 +112,7 @@ namespace CapaPresentacion.Formularios
             foreach (proc_CargarDetalleOrdenCompra_Result list in proc_CargarDetalleOrdenCompra_Results)
             {
                 dgvProductos.Rows.Add(list.ProductoID, list.Descripcion, list.UnidadMedida, list.Existencia,
-                    list.CantMin,list.PrecioCompra, list.Ordenada, list.Recibida);
+                    list.CantMin, list.PrecioCompra, list.Ordenada, list.Recibida, list.Estatus);
             }
         }
 
@@ -125,35 +127,33 @@ namespace CapaPresentacion.Formularios
             dgvProductos.Columns["UnidadMedida"].ReadOnly = true;
             dgvProductos.Columns["Existencia"].ReadOnly = true;
             dgvProductos.Columns["CantMin"].ReadOnly = true;
+            dgvProductos.AllowUserToOrderColumns = false;
             dgvProductos.Refresh();
         }
 
         private void AgregarProductosDGV()
         {
-            try {
+            try
+            {
                 if (ProductosPorProveedor.dtProductosMarcados.Rows.Count > 0)
                 {
+                    cbProveedor.Enabled = false;
                     foreach (DataRow dtRow in ProductosPorProveedor.dtProductosMarcados.Rows)
                     {
                         bool existe = false;
                         foreach (DataGridViewRow dgvRow in dgvProductos.Rows)
                         {
-                            if (dtRow["ProductoID"] == dgvRow.Cells["ProductoID"].Value)
+                            if (Convert.ToInt32(dtRow["ProductoID"]) == Convert.ToInt32(dgvRow.Cells["ProductoID"].Value))
                                 existe = true;
                         }
                         if (!existe)
                         {
                             dgvProductos.Rows.Add(dtRow["ProductoID"], dtRow["Descripcion"],
-                                dtRow["UnidadMedida"], dtRow["Existencia"], dtRow["CantMin"], Convert.ToDecimal(dtRow["PrecioCompra"]).ToString("F") ,Math.Abs((Convert.ToDouble(dtRow["CantMax"]) - Convert.ToDouble(dtRow["Existencia"]))), 0);
+                                dtRow["UnidadMedida"], dtRow["Existencia"], dtRow["CantMin"], Convert.ToDecimal(dtRow["PrecioCompra"]).ToString("F"), Math.Abs((Convert.ToDouble(dtRow["CantMax"]) - Convert.ToDouble(dtRow["Existencia"]))), 0);
 
                         }
-                    }                    
+                    }
                 }
-                else
-                {
-                    MessageBox.Show("No se selecciono ningun producto para realizar la compra", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                }                
             }
             catch (Exception exc)
             {
@@ -166,11 +166,11 @@ namespace CapaPresentacion.Formularios
         private void btnRecibirTodo_Click(object sender, EventArgs e)
         {
             try
-            {               
-                if(dgvProductos.Rows.Count > 0)
+            {
+                if (dgvProductos.Rows.Count > 0)
                 {
                     LlenarCamposCantidadRecibida();
-                }                    
+                }
                 else
                 {
                     MessageBox.Show("No hay productos para recibir", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -189,7 +189,7 @@ namespace CapaPresentacion.Formularios
         {
             foreach (DataGridViewRow row in dgvProductos.Rows)
             {
-                if (row.Cells["Recibida"].Value == null)
+                if (row.Cells["Recibida"].Value != row.Cells["Ordenada"].Value && Convert.ToBoolean(row.Cells["Estatus"].Value) == false)
                     row.Cells["Recibida"].Value = row.Cells["Ordenada"].Value;
             }
         }
@@ -198,10 +198,10 @@ namespace CapaPresentacion.Formularios
         {
             try
             {
-                if (dgvProductos.SelectedRows.Count > 0)
+                if (dgvProductos.SelectedCells.Count > 0)
                 {
                     EliminarProducto();
-                }                
+                }
                 else
                 {
                     MessageBox.Show("No hay productos para eliminar de la orden de compra", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -219,15 +219,24 @@ namespace CapaPresentacion.Formularios
         }
 
         private void EliminarProducto()
-        {        
-            if (ordenCompraID > 0)
+        {
+            if (Convert.ToBoolean(dgvProductos.Rows[dgvProductos.CurrentRow.Index].Cells["Estatus"].Value) == false)
             {
-                detalleOrdenCompraEntidad.OrdenCompraID = ordenCompraID;
-                detalleOrdenCompraEntidad.ProductoID = Convert.ToInt32(dgvProductos.Rows[dgvProductos.CurrentRow.Index].Cells["ProductoID"].Value);
-                detalleOrdenCompraNegocio.BorrarDetalleOrdenCompra(detalleOrdenCompraEntidad);                
+                if (ordenCompraID > 0)
+                {
+                    detalleOrdenCompraEntidad.OrdenCompraID = ordenCompraID;
+                    detalleOrdenCompraEntidad.ProductoID = Convert.ToInt32(dgvProductos.Rows[dgvProductos.CurrentRow.Index].Cells["ProductoID"].Value);
+                    detalleOrdenCompraNegocio.BorrarDetalleOrdenCompra(detalleOrdenCompraEntidad);
+                }
+                dgvProductos.Rows.RemoveAt(dgvProductos.CurrentRow.Index);
+                MessageBox.Show("Producto removido de la orden de compra correctamente.", "Producto Removido", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             }
-            dgvProductos.Rows.RemoveAt(dgvProductos.CurrentRow.Index);
-            MessageBox.Show("Producto removido de la orden de compra correctamente.", "Producto Removido", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            else
+            {
+                MessageBox.Show("Producto ya ha sido entregado, no se puede eliminar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
         }
 
         private void dgvProductos_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
@@ -237,31 +246,87 @@ namespace CapaPresentacion.Formularios
                 switch (e.ColumnIndex)
                 {
                     case 5:
-                        if (!ValidarCeldasNumero(dgvProductos.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString(),
-                           dgvProductos.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()))
+                        if (!ValidarCeldasNumero(e.FormattedValue.ToString(),
+                               e.FormattedValue.ToString()))
                         {
+                            MessageBox.Show("Debe ingresar una cantidad valida.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            e.Cancel = true;
+                            dgvProductos.CancelEdit();
                             return;
+                        }
+                        if (Convert.ToDecimal(dgvProductos.Rows[e.RowIndex].Cells[e.ColumnIndex].Value) != Convert.ToDecimal(e.FormattedValue))
+                        {
+                            if (Convert.ToBoolean(dgvProductos.Rows[e.RowIndex].Cells["Estatus"].Value))
+                            {
+                                MessageBox.Show("No se puede modificar la cantidad COSTO, ya se completo esta entrega.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                e.Cancel = true;
+                                dgvProductos.CancelEdit();
+                                return;
+                            }
+                            if (e.FormattedValue == null)
+                            {
+                                MessageBox.Show("El campo COSTO no puede estar vacio.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                e.Cancel = true;
+                                dgvProductos.CancelEdit();
+                                return;
+                            }                            
                         }
                         break;
                     case 6:
-                        if (!ValidarCeldasNumero(dgvProductos.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString(),
-                           dgvProductos.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()))
-                        {   
+                        if (!ValidarCeldasNumero(e.FormattedValue.ToString(),
+                              e.FormattedValue.ToString()))
+                        {
+                            MessageBox.Show("Debe ingresar una cantidad valida.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            e.Cancel = true;
+                            dgvProductos.CancelEdit();
                             return;
                         }
-                        dgvProductos.Rows[e.RowIndex].Cells["Ordenada"].Value = "";
+                        if (Convert.ToDecimal(dgvProductos.Rows[e.RowIndex].Cells[e.ColumnIndex].Value) != Convert.ToDecimal(e.FormattedValue))
+                        {
+                            if (Convert.ToBoolean(dgvProductos.Rows[e.RowIndex].Cells["Estatus"].Value))
+                            {
+                                MessageBox.Show("No se puede modificar la cantidad ORDENADA, ya se completo esta entrega.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                e.Cancel = true;
+                                dgvProductos.CancelEdit();
+                                return;
+                            }
+                            if (e.FormattedValue == null)
+                            {
+                                MessageBox.Show("El campo ORDENADA no puede estar vacio.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                e.Cancel = true;
+                                dgvProductos.CancelEdit();
+                                return;
+                            }                           
+                        }
                         break;
+
                     case 7:
-                        if (!ValidarCeldasNumero(dgvProductos.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString(),
-                           dgvProductos.Rows[e.RowIndex].Cells["Recibida"].Value.ToString()))
+                        if (!ValidarCeldasNumero(e.FormattedValue.ToString(),
+                               dgvProductos.Rows[e.RowIndex].Cells["Ordenada"].Value.ToString()))
                         {
-                            MessageBox.Show("La cantidad RECIBIDA no puede mayor a la cantidad ordenada", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("La cantidad RECIBIDA no puede mayor a la cantidad ordenada | Debe ingresar una cantidad valida.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            e.Cancel = true;
+                            dgvProductos.CancelEdit();
                             return;
+
                         }
-                        if(Convert.ToBoolean(dgvProductos.Rows[e.RowIndex].Cells["Estatus"].Value))
+                        if (Convert.ToDecimal(dgvProductos.Rows[e.RowIndex].Cells[e.ColumnIndex].Value) != Convert.ToDecimal(e.FormattedValue))
                         {
-                            MessageBox.Show("No se puede modificar la cantidad recibida, ya se completo esta entrega.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
+                            if (Convert.ToBoolean(dgvProductos.Rows[e.RowIndex].Cells["Estatus"].Value))
+                            {
+                                MessageBox.Show("No se puede modificar la cantidad RECIBIDA, ya se completo esta entrega.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                e.Cancel = true;
+                                dgvProductos.CancelEdit();
+                                return;
+                            }
+
+                            if (e.FormattedValue == null)
+                            {
+                                MessageBox.Show("El campo RECIBIDA no puede estar vacio.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                e.Cancel = true;
+                                dgvProductos.CancelEdit();
+                                return;
+                            }                                                    
                         }
                         break;
                     default:
@@ -276,16 +341,14 @@ namespace CapaPresentacion.Formularios
 
             if (!decimal.TryParse(valor1, out valor1Convertido))
             {
-                MessageBox.Show("Debe de ingresar un numero valido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-            if(!decimal.TryParse(valor2, out valor2Convertido))
+            if (!decimal.TryParse(valor2, out valor2Convertido))
             {
-                MessageBox.Show("Debe de ingresar un numero valido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
-            if (valor1Convertido  > valor2Convertido )
+            if (valor1Convertido > valor2Convertido)
             {
                 return false;
             }
@@ -296,7 +359,7 @@ namespace CapaPresentacion.Formularios
         {
             try
             {
-                if(dgvProductos.Rows.Count > 0 && cbProveedor.SelectedIndex != 0)
+                if (dgvProductos.Rows.Count > 0 && cbProveedor.SelectedIndex != -1)
                 {
                     if (ordenCompraID > 0)
                     {
@@ -350,8 +413,24 @@ namespace CapaPresentacion.Formularios
                 detalleOrdenCompraEntidad.OrdenCompraID = ordenCompraID;
                 detalleOrdenCompraEntidad.ProductoID = Convert.ToInt32(row.Cells["ProductoID"].Value);
                 detalleOrdenCompraEntidad.CantidadOrdenada = Convert.ToDouble(row.Cells["Ordenada"].Value);
+                detalleOrdenCompraEntidad.CantidadRecibida = Convert.ToDouble(row.Cells["Recibida"].Value);
                 detalleOrdenCompraEntidad.Precio = Convert.ToDecimal(row.Cells["PrecioCompra"].Value);
-                detalleOrdenCompraEntidad.Estatus = false;
+
+                if (Convert.ToDouble(row.Cells["Ordenada"].Value) == Convert.ToDouble(row.Cells["Recibida"].Value))
+                {
+
+                    productoEntidad.ProductoID = Convert.ToInt32(row.Cells["ProductoID"].Value);
+                    productoEntidad.Existencia = Convert.ToDouble(row.Cells["Recibida"].Value);
+                    productosNegocio.ActualizarCantidadProductoPorID(productoEntidad);
+
+                    detalleOrdenCompraEntidad.Estatus = true;
+
+                }
+                else
+                {
+                    detalleOrdenCompraEntidad.Estatus = false;
+
+                }
 
                 detalleOrdenCompraNegocio.InsertarDetalleOrdenCompra(detalleOrdenCompraEntidad);
             }
@@ -366,8 +445,9 @@ namespace CapaPresentacion.Formularios
                 detalleOrdenCompraEntidad.CantidadOrdenada = Convert.ToDouble(row.Cells["Ordenada"].Value);
                 detalleOrdenCompraEntidad.CantidadRecibida = Convert.ToDouble(row.Cells["Recibida"].Value);
                 detalleOrdenCompraEntidad.Precio = Convert.ToDecimal(row.Cells["PrecioCompra"].Value);
-                
-                if(Convert.ToDouble(row.Cells["Ordenada"].Value) == Convert.ToDouble(row.Cells["Recibida"].Value))
+                detalleOrdenCompraEntidad.Estatus = Convert.ToBoolean(row.Cells["Estatus"].Value);
+
+                if (Convert.ToDouble(row.Cells["Ordenada"].Value) == Convert.ToDouble(row.Cells["Recibida"].Value))
                 {
                     if (!detalleOrdenCompraEntidad.Estatus)
                     {
@@ -376,7 +456,7 @@ namespace CapaPresentacion.Formularios
                         productosNegocio.ActualizarCantidadProductoPorID(productoEntidad);
                     }
                     detalleOrdenCompraEntidad.Estatus = true;
-                                       
+
                 }
                 else
                 {
@@ -389,14 +469,14 @@ namespace CapaPresentacion.Formularios
                     MessageBox.Show(string.Format("Orden de Compra #{0} Actualizada Correctamente", ordenCompraID), "Actualizacion Correcta", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 else
                     MessageBox.Show("No se pudo actualizar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            
-        }
+
+            }
 
         }
 
         private void btnFacturarOrdenCorte_Click(object sender, EventArgs e)
         {
-            if (dgvProductos.Rows.Count > 0 && cbProveedor.SelectedIndex != 0 && ordenCompraID > 0)
+            if (dgvProductos.Rows.Count > 0 && cbProveedor.SelectedIndex != -1 && ordenCompraID > 0)
             {
                 if (ValidarProductosRecibidos())
                 {
@@ -416,7 +496,7 @@ namespace CapaPresentacion.Formularios
         {
             foreach (DataGridViewRow row in dgvProductos.Rows)
             {
-                if(Convert.ToDecimal(row.Cells["Ordenada"].Value) < Convert.ToDecimal(row.Cells["Recibida"].Value))
+                if (Convert.ToDecimal(row.Cells["Ordenada"].Value) < Convert.ToDecimal(row.Cells["Recibida"].Value))
                 {
                     MessageBox.Show("Debe primero recibir todos los productos para poder facturar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return false;
@@ -424,6 +504,6 @@ namespace CapaPresentacion.Formularios
             }
             return true;
         }
-
     }
+
 }

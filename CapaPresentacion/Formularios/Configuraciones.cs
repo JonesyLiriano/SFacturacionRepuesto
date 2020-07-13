@@ -189,10 +189,8 @@ namespace CapaPresentacion.Formularios
 
         private void SubirBackupAGoogleDrive()
         {
-            ControladorGoogleDrive controladorGoogleDrive = new ControladorGoogleDrive();
-
-            controladorGoogleDrive.UploadZipFile(@"C:\SFacturacion\BD\BackUpBaseDatos"
-                + Properties.Settings.Default.NombreEmpresa.Replace(" ", "") + ".zip");
+            ControladorMegaApi controladorMegaApi = new ControladorMegaApi();
+            controladorMegaApi.UploadFileToMega();
             MessageBox.Show("Copia de Seguridad fue realizada con exito", "Copia de Seguridad Completada", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
         }

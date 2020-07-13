@@ -42,7 +42,7 @@
             this.UnidadMedida = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CantVen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PrecionSinITBIS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PrecioSinITBIS = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Recibida = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Inventariada = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Comentario = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -61,7 +61,7 @@
             this.BarraTitulo.Dock = System.Windows.Forms.DockStyle.Top;
             this.BarraTitulo.Location = new System.Drawing.Point(0, 0);
             this.BarraTitulo.Name = "BarraTitulo";
-            this.BarraTitulo.Size = new System.Drawing.Size(1110, 36);
+            this.BarraTitulo.Size = new System.Drawing.Size(1000, 36);
             this.BarraTitulo.TabIndex = 6;
             this.BarraTitulo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.BarraTitulo_MouseDown);
             // 
@@ -92,7 +92,7 @@
             this.iconcerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.iconcerrar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.iconcerrar.Image = ((System.Drawing.Image)(resources.GetObject("iconcerrar.Image")));
-            this.iconcerrar.Location = new System.Drawing.Point(1080, 9);
+            this.iconcerrar.Location = new System.Drawing.Point(970, 9);
             this.iconcerrar.Name = "iconcerrar";
             this.iconcerrar.Size = new System.Drawing.Size(18, 18);
             this.iconcerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -110,7 +110,7 @@
             this.btnGuardar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.ForeColor = System.Drawing.Color.White;
             this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGuardar.Location = new System.Drawing.Point(891, 196);
+            this.btnGuardar.Location = new System.Drawing.Point(781, 196);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(180, 35);
             this.btnGuardar.TabIndex = 124;
@@ -146,7 +146,7 @@
             this.UnidadMedida,
             this.CantVen,
             this.Precio,
-            this.PrecionSinITBIS,
+            this.PrecioSinITBIS,
             this.Recibida,
             this.Inventariada,
             this.Comentario});
@@ -165,7 +165,7 @@
             this.dgvProductos.Name = "dgvProductos";
             this.dgvProductos.RowHeadersVisible = false;
             this.dgvProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProductos.Size = new System.Drawing.Size(833, 361);
+            this.dgvProductos.Size = new System.Drawing.Size(723, 337);
             this.dgvProductos.TabIndex = 121;
             this.dgvProductos.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvProductos_CellValidating);
             // 
@@ -185,29 +185,32 @@
             // 
             // UnidadMedida
             // 
+            this.UnidadMedida.DataPropertyName = "UnidadMedida";
             this.UnidadMedida.HeaderText = "UM";
             this.UnidadMedida.Name = "UnidadMedida";
             this.UnidadMedida.Width = 47;
             // 
             // CantVen
             // 
+            this.CantVen.DataPropertyName = "CantVen";
             this.CantVen.HeaderText = "Cant. Vendida";
             this.CantVen.Name = "CantVen";
             this.CantVen.Width = 89;
             // 
             // Precio
             // 
+            this.Precio.DataPropertyName = "Precio";
             this.Precio.HeaderText = "Precio";
             this.Precio.Name = "Precio";
             this.Precio.Width = 60;
             // 
-            // PrecionSinITBIS
+            // PrecioSinITBIS
             // 
-            this.PrecionSinITBIS.DataPropertyName = "PrecionSinITBIS";
-            this.PrecionSinITBIS.HeaderText = "PrecionSinITBIS";
-            this.PrecionSinITBIS.Name = "PrecionSinITBIS";
-            this.PrecionSinITBIS.Visible = false;
-            this.PrecionSinITBIS.Width = 110;
+            this.PrecioSinITBIS.DataPropertyName = "PrecioSinITBIS";
+            this.PrecioSinITBIS.HeaderText = "PrecioSinITBIS";
+            this.PrecioSinITBIS.Name = "PrecioSinITBIS";
+            this.PrecioSinITBIS.Visible = false;
+            this.PrecioSinITBIS.Width = 102;
             // 
             // Recibida
             // 
@@ -225,6 +228,7 @@
             // 
             // Comentario
             // 
+            this.Comentario.DataPropertyName = "Comentario";
             this.Comentario.HeaderText = "Comentario";
             this.Comentario.Name = "Comentario";
             this.Comentario.Width = 83;
@@ -233,8 +237,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(1110, 424);
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.ClientSize = new System.Drawing.Size(1000, 400);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.dgvProductos);
             this.Controls.Add(this.BarraTitulo);
@@ -265,7 +269,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn UnidadMedida;
         private System.Windows.Forms.DataGridViewTextBoxColumn CantVen;
         private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PrecionSinITBIS;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PrecioSinITBIS;
         private System.Windows.Forms.DataGridViewTextBoxColumn Recibida;
         private System.Windows.Forms.DataGridViewTextBoxColumn Inventariada;
         private System.Windows.Forms.DataGridViewTextBoxColumn Comentario;

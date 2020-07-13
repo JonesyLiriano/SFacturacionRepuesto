@@ -1053,11 +1053,14 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>1.67236in</Top>
+              <Top>2.20014in</Top>
               <Left>5.02999in</Left>
               <Height>0.25in</Height>
               <Width>1.16666in</Width>
               <ZIndex>8</ZIndex>
+              <Visibility>
+                <Hidden>=IIf(Fields!DescuentoCliente.Value = "0", True, False)</Hidden>
+              </Visibility>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -1086,7 +1089,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>1.92236in</Top>
+              <Top>1.70014in</Top>
               <Left>5.03in</Left>
               <Height>0.25in</Height>
               <Width>1.16666in</Width>
@@ -1191,11 +1194,14 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>1.67236in</Top>
+              <Top>2.20014in</Top>
               <Left>6.19665in</Left>
               <Height>0.25in</Height>
               <Width>1.9471in</Width>
               <ZIndex>12</ZIndex>
+              <Visibility>
+                <Hidden>=IIf(Fields!DescuentoCliente.Value = "0", True, False)</Hidden>
+              </Visibility>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -1226,7 +1232,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>1.92236in</Top>
+              <Top>1.70014in</Top>
               <Left>6.19665in</Left>
               <Height>0.25in</Height>
               <Width>1.9471in</Width>
@@ -1368,7 +1374,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>2.17236in</Top>
+              <Top>1.95014in</Top>
               <Left>5.03in</Left>
               <Height>0.25in</Height>
               <Width>1.16666in</Width>
@@ -1403,7 +1409,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>2.17236in</Top>
+              <Top>1.95014in</Top>
               <Left>6.19665in</Left>
               <Height>0.25in</Height>
               <Width>1.9471in</Width>
@@ -1501,7 +1507,7 @@
               <Width>1.99652in</Width>
               <ZIndex>20</ZIndex>
               <Visibility>
-                <Hidden>=IIf((Fields!CedulaORncCliente.Value = "" Or Fields!CedulaORncCliente.Value = 0),True, False)</Hidden>
+                <Hidden>=IIf((Fields!CedulaORncCliente.Value = "" Or Fields!CedulaORncCliente.Value = "0"),True, False)</Hidden>
               </Visibility>
               <Style>
                 <Border>

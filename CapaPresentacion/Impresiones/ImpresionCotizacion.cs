@@ -43,29 +43,48 @@ namespace CapaPresentacion.Impresiones
         }
 
         public void ImprimirDirecto()
-        {           
-            ConfirmarTipoImpresora();
+        {
+            try
+            {
+                ConfirmarTipoImpresora();
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Error: " + exc.ToString(),
+                  "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Loggeator.EscribeEnArchivo(exc.ToString());
+            }
         }
 
         public void ImprimirConVistaPrevia()
         {
-            CargarParametros();
-            CargarVistaPreviaRV();
+            try
+            {
+                CargarParametros();
+                CargarVistaPreviaRV();
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Error: " + exc.ToString(),
+                  "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Loggeator.EscribeEnArchivo(exc.ToString());
+            }
         }
 
         private void ConfirmarTipoImpresora()
         {
-            if(Properties.Settings.Default.TipoImpresora == "Matricial")
-            {
-                CargarImpresionMatricial();
-            }
-            else if (Properties.Settings.Default.TipoImpresora == "Papel A4")
-            {
-                CargarParametros();
-                ControladorImpresoraPapelA4 controladorImpresoraPapelA4 = new ControladorImpresoraPapelA4();
-                controladorImpresoraPapelA4.Imprime(CargarImpresionRV());
-            }
-            this.Close();
+                if (Properties.Settings.Default.TipoImpresora == "Matricial")
+                {
+                    CargarImpresionMatricial();
+                }
+                else if (Properties.Settings.Default.TipoImpresora == "Papel A4")
+                {
+                    CargarParametros();
+                    ControladorImpresoraPapelA4 controladorImpresoraPapelA4 = new ControladorImpresoraPapelA4();
+                    controladorImpresoraPapelA4.Imprime(CargarImpresionRV());
+                }
+                this.Close();
+            
         }
         private void CargarParametros()
         {

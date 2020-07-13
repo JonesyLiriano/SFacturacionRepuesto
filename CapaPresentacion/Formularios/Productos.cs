@@ -72,34 +72,10 @@ namespace SFacturacion
         {
             try
             {
+                dgvProductos.AutoGenerateColumns = false;
                 proc_CargarTodosProductos_Results = productosNegocio.CargarTodosProductos().ToList();
                 dgvProductos.DataSource = proc_CargarTodosProductos_Results;
-
-                dgvProductos.Columns["ProductoID"].DisplayIndex = 0;
-                dgvProductos.Columns["Servicio"].DisplayIndex = 1;
-                dgvProductos.Columns["CodigoBarra"].DisplayIndex = 2;
-                dgvProductos.Columns["Descripcion"].DisplayIndex = 3;
-                dgvProductos.Columns["UnidadMedida"].DisplayIndex = 4;                
-                dgvProductos.Columns["Proveedor"].DisplayIndex = 5;
-                dgvProductos.Columns["Existencia"].DisplayIndex = 6;
-                dgvProductos.Columns["ITBIS"].DisplayIndex = 7;
-                dgvProductos.Columns["PrecioCompra"].DisplayIndex = 8;
-                dgvProductos.Columns["PrecioVenta"].DisplayIndex = 9;
-                dgvProductos.Columns["PrecioVentaMin"].DisplayIndex = 10;                
-                dgvProductos.Columns["Descuento"].DisplayIndex = 11;
-                dgvProductos.Columns["CantMin"].DisplayIndex = 12;
-                dgvProductos.Columns["CantMax"].DisplayIndex = 13;
-                dgvProductos.Columns["ProveedorID"].DisplayIndex = 14;
-
-                dgvProductos.Columns["Existencia"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                dgvProductos.Columns["PrecioCompra"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                dgvProductos.Columns["PrecioVenta"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                dgvProductos.Columns["PrecioVentaMin"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                dgvProductos.Columns["Descuento"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                dgvProductos.Columns["CantMin"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                dgvProductos.Columns["CantMax"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-
-                dgvProductos.Refresh();
+                OrdenarColumnasDGV();
             }
             catch (Exception exc)
             {
@@ -107,6 +83,34 @@ namespace SFacturacion
                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Loggeator.EscribeEnArchivo(exc.ToString());
             }
+        }
+
+        private void OrdenarColumnasDGV()
+        {
+            dgvProductos.Columns["ProductoID"].DisplayIndex = 0;
+            dgvProductos.Columns["Servicio"].DisplayIndex = 1;
+            dgvProductos.Columns["CodigoBarra"].DisplayIndex = 2;
+            dgvProductos.Columns["Descripcion"].DisplayIndex = 3;
+            dgvProductos.Columns["Proveedor"].DisplayIndex = 4;
+            dgvProductos.Columns["UnidadMedida"].DisplayIndex = 5;            
+            dgvProductos.Columns["Existencia"].DisplayIndex = 6;
+            dgvProductos.Columns["ITBIS"].DisplayIndex = 7;
+            dgvProductos.Columns["PrecioCompra"].DisplayIndex = 8;
+            dgvProductos.Columns["PrecioVenta"].DisplayIndex = 9;
+            dgvProductos.Columns["PrecioVentaMin"].DisplayIndex = 10;
+            dgvProductos.Columns["Descuento"].DisplayIndex = 11;
+            dgvProductos.Columns["CantMin"].DisplayIndex = 12;
+            dgvProductos.Columns["CantMax"].DisplayIndex = 13;
+            dgvProductos.Columns["ProveedorID"].DisplayIndex = 14;
+
+            dgvProductos.Columns["Existencia"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvProductos.Columns["PrecioCompra"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvProductos.Columns["PrecioVenta"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvProductos.Columns["PrecioVentaMin"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvProductos.Columns["Descuento"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvProductos.Columns["CantMin"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvProductos.Columns["CantMax"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvProductos.Refresh();
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -259,6 +263,7 @@ namespace SFacturacion
                             break;
                     }
                 }
+               OrdenarColumnasDGV();
             }
             catch (Exception exc)
             {

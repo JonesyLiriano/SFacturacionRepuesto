@@ -6,10 +6,10 @@
     </Key>
     <Property Name="ClienteID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
-    <Property Name="CedulaORnc" Type="varchar" MaxLength="11" Nullable="false" />
-    <Property Name="Direccion" Type="varchar" MaxLength="200" Nullable="false" />
-    <Property Name="Contacto_1" Type="varchar" MaxLength="10" Nullable="false" />
-    <Property Name="Contacto_2" Type="varchar" MaxLength="10" />
+    <Property Name="CedulaORnc" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Direccion" Type="varchar" MaxLength="200" />
+    <Property Name="Contacto_1" Type="varchar" MaxLength="50" />
+    <Property Name="Contacto_2" Type="varchar" MaxLength="50" />
     <Property Name="Descuento" Type="float" />
     <Property Name="Credito" Type="float" />
   </EntityType>
@@ -95,7 +95,7 @@
     <Property Name="NCF" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="FechaVencimiento" Type="date" />
     <Property Name="UserID" Type="int" Nullable="false" />
-    <Property Name="RNC" Type="varchar" MaxLength="11" />
+    <Property Name="RNC" Type="varchar" MaxLength="50" />
     <Property Name="Entidad" Type="varchar" MaxLength="100" />
     <Property Name="DescuentoCliente" Type="decimal" Precision="18" Scale="2" />
     <Property Name="CotizacionID" Type="int" />
@@ -106,7 +106,7 @@
     </Key>
     <Property Name="FacturaCompraID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="OrdenCompraID" Type="int" Nullable="false" />
-    <Property Name="NCF" Type="varchar" MaxLength="16" Nullable="false" />
+    <Property Name="NCF" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="FechaVencimiento" Type="date" Nullable="false" />
     <Property Name="FechaFactura" Type="date" Nullable="false" />
     <Property Name="TipoDePagoID" Type="int" Nullable="false" />
@@ -189,11 +189,11 @@
     </Key>
     <Property Name="ProveedorID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
-    <Property Name="CedulaORnc" Type="varchar" MaxLength="11" Nullable="false" />
-    <Property Name="Direccion" Type="varchar" MaxLength="200" Nullable="false" />
-    <Property Name="Contacto_1" Type="varchar" MaxLength="10" Nullable="false" />
-    <Property Name="Contacto_2" Type="varchar" MaxLength="10" />
-    <Property Name="DatoAdicional" Type="varchar" MaxLength="50" />
+    <Property Name="CedulaORnc" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Direccion" Type="varchar" MaxLength="200" />
+    <Property Name="Contacto_1" Type="varchar" MaxLength="50" />
+    <Property Name="Contacto_2" Type="varchar" MaxLength="50" />
+    <Property Name="DatoAdicional" Type="varchar" MaxLength="100" />
   </EntityType>
   <EntityType Name="TiposFactura">
     <Key>
@@ -815,6 +815,7 @@
     <Parameter Name="OrdenCompraID" Type="int" Mode="In" />
     <Parameter Name="ProductoID" Type="int" Mode="In" />
     <Parameter Name="CantOrdenada" Type="float" Mode="In" />
+    <Parameter Name="CantRecibida" Type="float" Mode="In" />
     <Parameter Name="Precio" Type="decimal" Mode="In" />
     <Parameter Name="Estatus" Type="bit" Mode="In" />
     <Parameter Name="resultado" Type="bit" Mode="InOut" />

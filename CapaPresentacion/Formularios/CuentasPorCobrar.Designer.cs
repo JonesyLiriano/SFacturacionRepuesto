@@ -38,6 +38,11 @@
             this.txtFiltro = new System.Windows.Forms.TextBox();
             this.cbFiltro = new System.Windows.Forms.ComboBox();
             this.LineaCreditoVentaID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Factura = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MontoFactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BalancePendiente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Completado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLineasCreditoVenta)).BeginInit();
             this.SuspendLayout();
@@ -52,7 +57,7 @@
             this.btnConsultaFactura.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConsultaFactura.ForeColor = System.Drawing.Color.White;
             this.btnConsultaFactura.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnConsultaFactura.Location = new System.Drawing.Point(963, 129);
+            this.btnConsultaFactura.Location = new System.Drawing.Point(903, 129);
             this.btnConsultaFactura.Name = "btnConsultaFactura";
             this.btnConsultaFactura.Size = new System.Drawing.Size(180, 35);
             this.btnConsultaFactura.TabIndex = 46;
@@ -82,6 +87,11 @@
             this.dgvLineasCreditoVenta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvLineasCreditoVenta.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.LineaCreditoVentaID,
+            this.Cliente,
+            this.Factura,
+            this.Fecha,
+            this.MontoFactura,
+            this.BalancePendiente,
             this.Completado});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -99,7 +109,7 @@
             this.dgvLineasCreditoVenta.ReadOnly = true;
             this.dgvLineasCreditoVenta.RowHeadersVisible = false;
             this.dgvLineasCreditoVenta.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvLineasCreditoVenta.Size = new System.Drawing.Size(895, 622);
+            this.dgvLineasCreditoVenta.Size = new System.Drawing.Size(835, 522);
             this.dgvLineasCreditoVenta.TabIndex = 45;
             // 
             // btnCerrar
@@ -126,7 +136,7 @@
             this.btnRealizarCobro.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRealizarCobro.ForeColor = System.Drawing.Color.White;
             this.btnRealizarCobro.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRealizarCobro.Location = new System.Drawing.Point(963, 67);
+            this.btnRealizarCobro.Location = new System.Drawing.Point(903, 67);
             this.btnRealizarCobro.Name = "btnRealizarCobro";
             this.btnRealizarCobro.Size = new System.Drawing.Size(180, 35);
             this.btnRealizarCobro.TabIndex = 43;
@@ -144,7 +154,7 @@
             this.btnHistorialCobros.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHistorialCobros.ForeColor = System.Drawing.Color.White;
             this.btnHistorialCobros.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnHistorialCobros.Location = new System.Drawing.Point(963, 190);
+            this.btnHistorialCobros.Location = new System.Drawing.Point(903, 190);
             this.btnHistorialCobros.Name = "btnHistorialCobros";
             this.btnHistorialCobros.Size = new System.Drawing.Size(180, 35);
             this.btnHistorialCobros.TabIndex = 47;
@@ -154,9 +164,10 @@
             // 
             // txtFiltro
             // 
+            this.txtFiltro.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtFiltro.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFiltro.ForeColor = System.Drawing.Color.Gray;
-            this.txtFiltro.Location = new System.Drawing.Point(560, 21);
+            this.txtFiltro.Location = new System.Drawing.Point(500, 21);
             this.txtFiltro.Name = "txtFiltro";
             this.txtFiltro.Size = new System.Drawing.Size(213, 24);
             this.txtFiltro.TabIndex = 86;
@@ -167,11 +178,12 @@
             // 
             // cbFiltro
             // 
+            this.cbFiltro.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cbFiltro.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cbFiltro.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbFiltro.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbFiltro.FormattingEnabled = true;
-            this.cbFiltro.Location = new System.Drawing.Point(772, 21);
+            this.cbFiltro.Location = new System.Drawing.Point(712, 21);
             this.cbFiltro.Name = "cbFiltro";
             this.cbFiltro.Size = new System.Drawing.Size(161, 24);
             this.cbFiltro.TabIndex = 85;
@@ -184,6 +196,46 @@
             this.LineaCreditoVentaID.Name = "LineaCreditoVentaID";
             this.LineaCreditoVentaID.ReadOnly = true;
             this.LineaCreditoVentaID.Width = 44;
+            // 
+            // Cliente
+            // 
+            this.Cliente.DataPropertyName = "Cliente";
+            this.Cliente.HeaderText = "Cliente";
+            this.Cliente.Name = "Cliente";
+            this.Cliente.ReadOnly = true;
+            this.Cliente.Width = 77;
+            // 
+            // Factura
+            // 
+            this.Factura.DataPropertyName = "Factura";
+            this.Factura.HeaderText = "Factura";
+            this.Factura.Name = "Factura";
+            this.Factura.ReadOnly = true;
+            this.Factura.Width = 80;
+            // 
+            // Fecha
+            // 
+            this.Fecha.DataPropertyName = "Fecha";
+            this.Fecha.HeaderText = "Fecha";
+            this.Fecha.Name = "Fecha";
+            this.Fecha.ReadOnly = true;
+            this.Fecha.Width = 70;
+            // 
+            // MontoFactura
+            // 
+            this.MontoFactura.DataPropertyName = "MontoFactura";
+            this.MontoFactura.HeaderText = "MontoFactura";
+            this.MontoFactura.Name = "MontoFactura";
+            this.MontoFactura.ReadOnly = true;
+            this.MontoFactura.Width = 122;
+            // 
+            // BalancePendiente
+            // 
+            this.BalancePendiente.DataPropertyName = "BalancePendiente";
+            this.BalancePendiente.HeaderText = "BalancePendiente";
+            this.BalancePendiente.Name = "BalancePendiente";
+            this.BalancePendiente.ReadOnly = true;
+            this.BalancePendiente.Width = 148;
             // 
             // Completado
             // 
@@ -201,7 +253,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(1170, 700);
+            this.ClientSize = new System.Drawing.Size(1110, 600);
             this.Controls.Add(this.txtFiltro);
             this.Controls.Add(this.cbFiltro);
             this.Controls.Add(this.btnHistorialCobros);
@@ -212,7 +264,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "CuentasPorCobrar";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "CXC";
+            this.Text = "CuentasPorCobrar";
             this.Load += new System.EventHandler(this.CuentasPorCobrar_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvLineasCreditoVenta)).EndInit();
             this.ResumeLayout(false);
@@ -229,6 +281,11 @@
         private System.Windows.Forms.TextBox txtFiltro;
         private System.Windows.Forms.ComboBox cbFiltro;
         private System.Windows.Forms.DataGridViewTextBoxColumn LineaCreditoVentaID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cliente;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Factura;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MontoFactura;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BalancePendiente;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Completado;
     }
 }

@@ -82,8 +82,10 @@ namespace CapaPresentacion
         {
             try
             {
+                dgvProveedores.AutoGenerateColumns = false;
                 proc_CargarTodosProveedores_Results = proveedoresNegocio.CargarTodosProveedores().ToList();
                 dgvProveedores.DataSource = proc_CargarTodosProveedores_Results;
+                OrdenarColumnasDGV();
             }
             catch (Exception exc)
             {
@@ -91,6 +93,18 @@ namespace CapaPresentacion
                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Loggeator.EscribeEnArchivo(exc.ToString());
             }
+        }
+
+        private void OrdenarColumnasDGV()
+        {
+            dgvProveedores.Columns["ProveedorID"].DisplayIndex = 0;
+            dgvProveedores.Columns["Nombre"].DisplayIndex = 1;
+            dgvProveedores.Columns["CedulaORnc"].DisplayIndex = 2;
+            dgvProveedores.Columns["Direccion"].DisplayIndex = 3;
+            dgvProveedores.Columns["Contacto_1"].DisplayIndex = 4;
+            dgvProveedores.Columns["Contacto_2"].DisplayIndex = 5;
+            dgvProveedores.Columns["DatoAdicional"].DisplayIndex = 6;
+            dgvProveedores.Refresh();
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -177,6 +191,7 @@ namespace CapaPresentacion
                             break;
                     }
                 }
+                OrdenarColumnasDGV();
             }
             catch (Exception exc)
             {

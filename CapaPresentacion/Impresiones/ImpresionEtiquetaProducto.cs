@@ -19,7 +19,7 @@ namespace CapaPresentacion.Impresiones
     public partial class ImpresionEtiquetaProducto : Form
     {
         private int cantidad;
-        ReportParameter[] parameters = new ReportParameter[3];
+        ReportParameter[] parameters = new ReportParameter[4];
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
@@ -105,10 +105,19 @@ namespace CapaPresentacion.Impresiones
 
         private void CargarParametros(string descripcionProd, string codigoBarra, string precioVenta)
         {
-            parameters[0] = new ReportParameter("NombreEmpresa", Properties.Settings.Default.NombreEmpresa);
-            parameters[1] = new ReportParameter("CodigoBarra", GenerarCodigoBarra(codigoBarra));
-            parameters[2] = new ReportParameter("DescripcionProducto", descripcionProd);
-            parameters[3] = new ReportParameter("PrecioVenta", precioVenta);
+            try
+            {
+                parameters[0] = new ReportParameter("NombreEmpresa", Properties.Settings.Default.NombreEmpresa);
+                parameters[1] = new ReportParameter("CodigoBarra", GenerarCodigoBarra(codigoBarra));
+                parameters[2] = new ReportParameter("DescripcionProducto", descripcionProd);
+                parameters[3] = new ReportParameter("PrecioVenta", precioVenta);
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Error: " + exc.ToString(),
+                  "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Loggeator.EscribeEnArchivo(exc.ToString());
+            }
 
         }
 

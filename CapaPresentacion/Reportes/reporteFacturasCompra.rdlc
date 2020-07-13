@@ -45,8 +45,8 @@
           <DataField>NCF</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="OrdencompraID">
-          <DataField>OrdencompraID</DataField>
+        <Field Name="OrdenCompraID">
+          <DataField>OrdenCompraID</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
         <Field Name="Proveedor">
@@ -660,7 +660,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!OrdencompraID.Value</Value>
+                                  <Value>=Fields!OrdenCompraID.Value</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                   </Style>
@@ -1587,7 +1587,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Count(Fields!OrdencompraID.Value, "DataSetTodasFacturasCompra")</Value>
+                      <Value>=Count(Fields!OrdenCompraID.Value, "DataSetTodasFacturasCompra")</Value>
                       <Style>
                         <FontFamily>Segoe UI</FontFamily>
                         <FontWeight>Bold</FontWeight>

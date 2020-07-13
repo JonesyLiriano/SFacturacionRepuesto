@@ -39,9 +39,14 @@ namespace CapaPresentacion.Formularios
       
         private void CargarTodasLineasCreditoVenta()
         {
+            dgvLineasCreditoVenta.AutoGenerateColumns = false;
             proc_CargarTodasLineasCreditoVentas_Results = lineasCreditoVentasNegocio.CargarTodasLineasCreditoVentas().ToList();
             dgvLineasCreditoVenta.DataSource = proc_CargarTodasLineasCreditoVentas_Results;
-
+            OrdenarColumnasDGV();
+            
+        }
+        private void OrdenarColumnasDGV()
+        {
             dgvLineasCreditoVenta.Columns["LineaCreditoVentaID"].DisplayIndex = 0;
             dgvLineasCreditoVenta.Columns["Cliente"].DisplayIndex = 1;
             dgvLineasCreditoVenta.Columns["Factura"].DisplayIndex = 2;
@@ -103,6 +108,7 @@ namespace CapaPresentacion.Formularios
                         , Convert.ToDecimal(dgvLineasCreditoVenta.CurrentRow.Cells["BalancePendiente"].Value)
                         , Convert.ToBoolean(dgvLineasCreditoVenta.CurrentRow.Cells["Completado"].Value));
                     historialCobros.ShowDialog();
+                    CargarTodasLineasCreditoVenta();
                 }
             }
             catch (Exception exc)
@@ -196,6 +202,7 @@ namespace CapaPresentacion.Formularios
                             break;
                     }
                 }
+                OrdenarColumnasDGV();
             }
             catch (Exception exc)
             {

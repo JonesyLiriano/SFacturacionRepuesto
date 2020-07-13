@@ -220,3 +220,5 @@ F:\C#\SFacturacion\CapaPresentacion\bin\Debug\SFacturacion.pdb
 F:\C#\SFacturacion\CapaPresentacion\obj\Debug\SFacturacion.exe
 F:\C#\SFacturacion\CapaPresentacion\obj\Debug\SFacturacion.pdb
 F:\C#\SFacturacion\CapaPresentacion\obj\Debug\CapaPresentacion.Formularios.RegistrarPago.resources
+F:\C#\SFacturacion\CapaPresentacion\bin\Debug\MegaApiClient.dll
+F:\C#\SFacturacion\CapaPresentacion\bin\Debug\MegaApiClient.xml

@@ -37,21 +37,45 @@ namespace CapaPresentacion.Formularios
                 switch (e.ColumnIndex)
                 {
                     case 6:
-                        if (!ValidarCeldasNumero(dgvProductos.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString(),
-                           dgvProductos.Rows[e.RowIndex].Cells["CantVen"].Value.ToString()))
+                        if (!ValidarCeldasNumero(e.FormattedValue.ToString(),
+                              dgvProductos.Rows[e.RowIndex].Cells["CantVen"].Value.ToString()))
                         {
-                            MessageBox.Show("La cantidad RECIBIDA no puede mayor a la cantidad VENDIDA", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("La cantidad RECIBIDA no puede ser mayor a la cantidad VENDIDA | Debe de ingresar un numero valido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            e.Cancel = true;
+                            dgvProductos.CancelEdit();
                             return;
                         }
-                        dgvProductos.Rows[e.RowIndex].Cells["Inventariada"].Value = "";
+                        if (Convert.ToDecimal(dgvProductos.Rows[e.RowIndex].Cells[e.ColumnIndex].Value) != Convert.ToDecimal(e.FormattedValue))
+                        {
+                            if (e.FormattedValue == null)
+                            {
+                                MessageBox.Show("El campo RECIBIDA no puede estar vacio.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                e.Cancel = true;
+                                dgvProductos.CancelEdit();
+                                return;
+                            }                           
+                        }                        
+                        dgvProductos.Rows[e.RowIndex].Cells["Inventariada"].Value = e.FormattedValue;
                         break;
-                    case 7: 
-                        if(!ValidarCeldasNumero(dgvProductos.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString(), 
-                           dgvProductos.Rows[e.RowIndex].Cells["Recibida"].Value.ToString()))
-                        {   
-                            MessageBox.Show("La cantidad INVENTARIADA no puede mayor a la cantidad recibida", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;                            
+                    case 7:
+                        if (!ValidarCeldasNumero(e.FormattedValue.ToString(),
+                              dgvProductos.Rows[e.RowIndex].Cells["Recibida"].Value.ToString()))
+                        {
+                            MessageBox.Show("La cantidad INVENTARIADA no puede mayor a la cantidad RECIBIDA | Debe ingresar un numero valido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            e.Cancel = true;
+                            dgvProductos.CancelEdit();
+                            return;
                         }
+                        if (Convert.ToDecimal(dgvProductos.Rows[e.RowIndex].Cells[e.ColumnIndex].Value) != Convert.ToDecimal(e.FormattedValue))
+                        {
+                            if (e.FormattedValue == null)
+                            {
+                                MessageBox.Show("El campo INVENTARIADA no puede estar vacio.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                e.Cancel = true;
+                                dgvProductos.CancelEdit();
+                                return;
+                            }                           
+                        }                       
                         break;                    
                     default:
                         break;
@@ -66,12 +90,10 @@ namespace CapaPresentacion.Formularios
 
             if (!decimal.TryParse(valor1, out valor1Convertido))
             {
-                MessageBox.Show("Debe de ingresar un numero valido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             if(!decimal.TryParse(valor2, out valor2Convertido))
             {
-                MessageBox.Show("Debe de ingresar un numero valido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
@@ -93,7 +115,11 @@ namespace CapaPresentacion.Formularios
                     foreach (DataGridViewRow row in dgvProductos.Rows)
                     {
                         if (Convert.ToDecimal(row.Cells["Recibida"].Value) > 0)
-                            dtProductosRecibidos.Rows.Add(row);
+                        {
+                            dtProductosRecibidos.Rows.Add(row.Cells["ProductoID"].Value, row.Cells["Descripcion"].Value, row.Cells["UnidadMedida"].Value,
+                                row.Cells["CantVen"].Value, row.Cells["Precio"].Value, row.Cells["PrecioSinITBIS"].Value,
+                                row.Cells["Recibida"].Value, row.Cells["Inventariada"].Value, row.Cells["Comentario"].Value);
+                        }
                     }
                     this.Close();
                 } else
@@ -144,7 +170,7 @@ namespace CapaPresentacion.Formularios
                     {
                         if (row.Cells["ProductoID"].Value.ToString() == dtRow["ProductoID"].ToString())
                         {
-                            row.Cells["Recibido"].Value = dtRow["Recibido"].ToString();
+                            row.Cells["Recibida"].Value = dtRow["Recibida"].ToString();
                             row.Cells["Inventariada"].Value = dtRow["Inventariada"].ToString();
                             row.Cells["Comentario"].Value = dtRow["Comentario"].ToString();
                         }
@@ -155,12 +181,15 @@ namespace CapaPresentacion.Formularios
         }
         private void CargarDGV()
         {
+            dgvProductos.AutoGenerateColumns = false;
             var result = facturasNegocio.CargarProductosFactura(facturaID).ToList();
             if (result != null)
             {
                 dgvProductos.DataSource = result;
                 dgvProductos.Columns["CantVen"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                 dgvProductos.Columns["Precio"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dgvProductos.Columns["Recibida"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dgvProductos.Columns["Inventariada"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                 dgvProductos.Columns["ProductoID"].ReadOnly = true;
                 dgvProductos.Columns["Descripcion"].ReadOnly = true;
                 dgvProductos.Columns["UnidadMedida"].ReadOnly = true;

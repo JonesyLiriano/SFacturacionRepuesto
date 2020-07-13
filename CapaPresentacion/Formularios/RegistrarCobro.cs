@@ -74,9 +74,9 @@ namespace CapaPresentacion.Formularios
         private bool ValidarTxtCobro()
         {
 
-            if(string.IsNullOrEmpty(txtCobro.Text) || !decimal.TryParse(txtCobro.Text, out montoCobro))
+            if(string.IsNullOrEmpty(txtCobro.Text) || !decimal.TryParse(txtCobro.Text, out montoCobro) || montoCobro > decimal.Parse(Regex.Replace(txtBalancePendiente.Text, @"[^\d.]", "")))
             {
-                MessageBox.Show("Favor de digitar un monto valido a cobrar.", "Valor ingresado incorrecto.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Favor de digitar un monto valido a cobrar | El valor a cobrar no puede sobrepasar el balance pendiente.", "Valor ingresado incorrecto.", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             return true;

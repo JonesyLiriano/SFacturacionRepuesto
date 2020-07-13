@@ -33,17 +33,27 @@
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
             this.dgvProductos = new System.Windows.Forms.DataGridView();
-            this.ProductoID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProveedorID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ITBIS = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Servicio = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.UnidadMedida = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnCerrar = new System.Windows.Forms.Label();
             this.btnNuevo = new System.Windows.Forms.Button();
             this.btnSeleccionar = new System.Windows.Forms.Button();
             this.btnImprimirEtiqueta = new System.Windows.Forms.Button();
             this.txtFiltro = new System.Windows.Forms.TextBox();
             this.cbFiltro = new System.Windows.Forms.ComboBox();
+            this.ProductoID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Servicio = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.CodigoBarra = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Proveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UnidadMedida = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Existencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ITBIS = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.PrecioCompra = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PrecioVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PrecioVentaMin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descuento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CantMin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CantMax = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProveedorID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -57,7 +67,7 @@
             this.btnEliminar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEliminar.ForeColor = System.Drawing.Color.White;
             this.btnEliminar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEliminar.Location = new System.Drawing.Point(966, 190);
+            this.btnEliminar.Location = new System.Drawing.Point(906, 190);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(180, 35);
             this.btnEliminar.TabIndex = 52;
@@ -75,7 +85,7 @@
             this.btnEditar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEditar.ForeColor = System.Drawing.Color.White;
             this.btnEditar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEditar.Location = new System.Drawing.Point(966, 129);
+            this.btnEditar.Location = new System.Drawing.Point(906, 129);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(180, 35);
             this.btnEditar.TabIndex = 51;
@@ -105,10 +115,20 @@
             this.dgvProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvProductos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ProductoID,
-            this.ProveedorID,
-            this.ITBIS,
             this.Servicio,
-            this.UnidadMedida});
+            this.CodigoBarra,
+            this.Descripcion,
+            this.Proveedor,
+            this.UnidadMedida,
+            this.Existencia,
+            this.ITBIS,
+            this.PrecioCompra,
+            this.PrecioVenta,
+            this.PrecioVentaMin,
+            this.Descuento,
+            this.CantMin,
+            this.CantMax,
+            this.ProveedorID});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.WhiteSmoke;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -125,49 +145,8 @@
             this.dgvProductos.ReadOnly = true;
             this.dgvProductos.RowHeadersVisible = false;
             this.dgvProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProductos.Size = new System.Drawing.Size(898, 621);
+            this.dgvProductos.Size = new System.Drawing.Size(838, 521);
             this.dgvProductos.TabIndex = 50;
-            // 
-            // ProductoID
-            // 
-            this.ProductoID.DataPropertyName = "ProductoID";
-            this.ProductoID.HeaderText = "ID";
-            this.ProductoID.Name = "ProductoID";
-            this.ProductoID.ReadOnly = true;
-            this.ProductoID.Width = 44;
-            // 
-            // ProveedorID
-            // 
-            this.ProveedorID.DataPropertyName = "ProveedorID";
-            this.ProveedorID.HeaderText = "ProveedorID";
-            this.ProveedorID.Name = "ProveedorID";
-            this.ProveedorID.ReadOnly = true;
-            this.ProveedorID.Visible = false;
-            this.ProveedorID.Width = 113;
-            // 
-            // ITBIS
-            // 
-            this.ITBIS.DataPropertyName = "ITBIS";
-            this.ITBIS.HeaderText = "ITBIS";
-            this.ITBIS.Name = "ITBIS";
-            this.ITBIS.ReadOnly = true;
-            this.ITBIS.Width = 36;
-            // 
-            // Servicio
-            // 
-            this.Servicio.DataPropertyName = "Servicio";
-            this.Servicio.HeaderText = "Servicio";
-            this.Servicio.Name = "Servicio";
-            this.Servicio.ReadOnly = true;
-            this.Servicio.Width = 61;
-            // 
-            // UnidadMedida
-            // 
-            this.UnidadMedida.DataPropertyName = "UnidadMedida";
-            this.UnidadMedida.HeaderText = "UM";
-            this.UnidadMedida.Name = "UnidadMedida";
-            this.UnidadMedida.ReadOnly = true;
-            this.UnidadMedida.Width = 50;
             // 
             // btnCerrar
             // 
@@ -193,7 +172,7 @@
             this.btnNuevo.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNuevo.ForeColor = System.Drawing.Color.White;
             this.btnNuevo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNuevo.Location = new System.Drawing.Point(966, 67);
+            this.btnNuevo.Location = new System.Drawing.Point(906, 67);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(180, 35);
             this.btnNuevo.TabIndex = 48;
@@ -211,7 +190,7 @@
             this.btnSeleccionar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSeleccionar.ForeColor = System.Drawing.Color.White;
             this.btnSeleccionar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSeleccionar.Location = new System.Drawing.Point(966, 99);
+            this.btnSeleccionar.Location = new System.Drawing.Point(906, 99);
             this.btnSeleccionar.Name = "btnSeleccionar";
             this.btnSeleccionar.Size = new System.Drawing.Size(180, 35);
             this.btnSeleccionar.TabIndex = 53;
@@ -230,7 +209,7 @@
             this.btnImprimirEtiqueta.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnImprimirEtiqueta.ForeColor = System.Drawing.Color.White;
             this.btnImprimirEtiqueta.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnImprimirEtiqueta.Location = new System.Drawing.Point(966, 250);
+            this.btnImprimirEtiqueta.Location = new System.Drawing.Point(906, 250);
             this.btnImprimirEtiqueta.Name = "btnImprimirEtiqueta";
             this.btnImprimirEtiqueta.Size = new System.Drawing.Size(180, 35);
             this.btnImprimirEtiqueta.TabIndex = 54;
@@ -240,9 +219,10 @@
             // 
             // txtFiltro
             // 
+            this.txtFiltro.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtFiltro.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFiltro.ForeColor = System.Drawing.Color.Gray;
-            this.txtFiltro.Location = new System.Drawing.Point(561, 21);
+            this.txtFiltro.Location = new System.Drawing.Point(501, 21);
             this.txtFiltro.Name = "txtFiltro";
             this.txtFiltro.Size = new System.Drawing.Size(213, 24);
             this.txtFiltro.TabIndex = 86;
@@ -253,22 +233,143 @@
             // 
             // cbFiltro
             // 
+            this.cbFiltro.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cbFiltro.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cbFiltro.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbFiltro.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbFiltro.FormattingEnabled = true;
-            this.cbFiltro.Location = new System.Drawing.Point(773, 21);
+            this.cbFiltro.Location = new System.Drawing.Point(713, 21);
             this.cbFiltro.Name = "cbFiltro";
             this.cbFiltro.Size = new System.Drawing.Size(161, 24);
             this.cbFiltro.TabIndex = 85;
             this.cbFiltro.Validating += new System.ComponentModel.CancelEventHandler(this.cbFiltro_Validating);
+            // 
+            // ProductoID
+            // 
+            this.ProductoID.DataPropertyName = "ProductoID";
+            this.ProductoID.HeaderText = "ID";
+            this.ProductoID.Name = "ProductoID";
+            this.ProductoID.ReadOnly = true;
+            this.ProductoID.Width = 44;
+            // 
+            // Servicio
+            // 
+            this.Servicio.DataPropertyName = "Servicio";
+            this.Servicio.HeaderText = "Servicio";
+            this.Servicio.Name = "Servicio";
+            this.Servicio.ReadOnly = true;
+            this.Servicio.Width = 61;
+            // 
+            // CodigoBarra
+            // 
+            this.CodigoBarra.DataPropertyName = "CodigoBarra";
+            this.CodigoBarra.HeaderText = "CodigoBarra";
+            this.CodigoBarra.Name = "CodigoBarra";
+            this.CodigoBarra.ReadOnly = true;
+            this.CodigoBarra.Width = 114;
+            // 
+            // Descripcion
+            // 
+            this.Descripcion.DataPropertyName = "Descripcion";
+            this.Descripcion.HeaderText = "Descripcion";
+            this.Descripcion.Name = "Descripcion";
+            this.Descripcion.ReadOnly = true;
+            this.Descripcion.Width = 106;
+            // 
+            // Proveedor
+            // 
+            this.Proveedor.DataPropertyName = "Proveedor";
+            this.Proveedor.HeaderText = "Proveedor";
+            this.Proveedor.Name = "Proveedor";
+            this.Proveedor.ReadOnly = true;
+            this.Proveedor.Width = 98;
+            // 
+            // UnidadMedida
+            // 
+            this.UnidadMedida.DataPropertyName = "UnidadMedida";
+            this.UnidadMedida.HeaderText = "UM";
+            this.UnidadMedida.Name = "UnidadMedida";
+            this.UnidadMedida.ReadOnly = true;
+            this.UnidadMedida.Width = 50;
+            // 
+            // Existencia
+            // 
+            this.Existencia.DataPropertyName = "Existencia";
+            this.Existencia.HeaderText = "Existencia";
+            this.Existencia.Name = "Existencia";
+            this.Existencia.ReadOnly = true;
+            this.Existencia.Width = 93;
+            // 
+            // ITBIS
+            // 
+            this.ITBIS.DataPropertyName = "ITBIS";
+            this.ITBIS.HeaderText = "ITBIS";
+            this.ITBIS.Name = "ITBIS";
+            this.ITBIS.ReadOnly = true;
+            this.ITBIS.Width = 36;
+            // 
+            // PrecioCompra
+            // 
+            this.PrecioCompra.DataPropertyName = "PrecioCompra";
+            this.PrecioCompra.HeaderText = "PrecioCompra";
+            this.PrecioCompra.Name = "PrecioCompra";
+            this.PrecioCompra.ReadOnly = true;
+            this.PrecioCompra.Width = 126;
+            // 
+            // PrecioVenta
+            // 
+            this.PrecioVenta.DataPropertyName = "PrecioVenta";
+            this.PrecioVenta.HeaderText = "PrecioVenta";
+            this.PrecioVenta.Name = "PrecioVenta";
+            this.PrecioVenta.ReadOnly = true;
+            this.PrecioVenta.Width = 110;
+            // 
+            // PrecioVentaMin
+            // 
+            this.PrecioVentaMin.DataPropertyName = "PrecioVentaMin";
+            this.PrecioVentaMin.HeaderText = "PrecioVentaMin";
+            this.PrecioVentaMin.Name = "PrecioVentaMin";
+            this.PrecioVentaMin.ReadOnly = true;
+            this.PrecioVentaMin.Width = 132;
+            // 
+            // Descuento
+            // 
+            this.Descuento.DataPropertyName = "Descuento";
+            this.Descuento.HeaderText = "Descuento";
+            this.Descuento.Name = "Descuento";
+            this.Descuento.ReadOnly = true;
+            // 
+            // CantMin
+            // 
+            this.CantMin.DataPropertyName = "CantMin";
+            this.CantMin.HeaderText = "CantMin";
+            this.CantMin.Name = "CantMin";
+            this.CantMin.ReadOnly = true;
+            this.CantMin.Width = 86;
+            // 
+            // CantMax
+            // 
+            this.CantMax.DataPropertyName = "CantMax";
+            this.CantMax.HeaderText = "CantMax";
+            this.CantMax.Name = "CantMax";
+            this.CantMax.ReadOnly = true;
+            this.CantMax.Width = 90;
+            // 
+            // ProveedorID
+            // 
+            this.ProveedorID.DataPropertyName = "ProveedorID";
+            this.ProveedorID.HeaderText = "ProveedorID";
+            this.ProveedorID.Name = "ProveedorID";
+            this.ProveedorID.ReadOnly = true;
+            this.ProveedorID.Visible = false;
+            this.ProveedorID.Width = 111;
             // 
             // Productos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(1170, 700);
+            this.ClientSize = new System.Drawing.Size(1110, 600);
             this.Controls.Add(this.txtFiltro);
             this.Controls.Add(this.cbFiltro);
             this.Controls.Add(this.btnImprimirEtiqueta);
@@ -298,12 +399,22 @@
         private System.Windows.Forms.Button btnNuevo;
         private System.Windows.Forms.Button btnSeleccionar;
         private System.Windows.Forms.Button btnImprimirEtiqueta;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ProductoID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ProveedorID;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn ITBIS;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Servicio;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UnidadMedida;
         private System.Windows.Forms.TextBox txtFiltro;
         private System.Windows.Forms.ComboBox cbFiltro;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProductoID;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Servicio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CodigoBarra;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Proveedor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UnidadMedida;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Existencia;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn ITBIS;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PrecioCompra;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PrecioVenta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PrecioVentaMin;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Descuento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CantMin;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CantMax;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProveedorID;
     }
 }

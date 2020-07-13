@@ -23,7 +23,7 @@ namespace CapaPresentacion
         public bool valida = false;
         private int contFila = 0;
         private decimal total = 0;
-        private int facturaID, numFila, NCF, cotizacionID;
+        private int facturaID, numFila, NCF, cotizacionID, clienteID;
         CotizacionesNegocio cotizacionesNegocio = new CotizacionesNegocio();
         Cotizacione cotizacionEntidad = new Cotizacione();
         DetalleCotizacione detalleCotizacionEntidad = new DetalleCotizacione();
@@ -63,11 +63,11 @@ namespace CapaPresentacion
         {
             this.Close();
         }
-
         private void RegistrarVenta_Load(object sender, EventArgs e)
         {
             try
             {
+                dgvCarrito.AutoGenerateColumns = false;
                 CargarCBTipoPago();
                 CargarCBTipoFactura();
                 CargarCBClientes();
@@ -585,7 +585,6 @@ namespace CapaPresentacion
                 {                    
                     txtDescuentoCliente.Enabled = true;
                     cbClientes.Enabled = true;
-                    cbClientes.SelectedIndex = 0;
                 }
 
             }
@@ -635,6 +634,7 @@ namespace CapaPresentacion
                     {
                         LimpiarCarrito();
                         cbCotizacion.Enabled = false;
+                        CargarDatosCotizacion();
                         CargarProdCotizacionEnCarrito();
                         CalcularTotalFactura();
 
@@ -654,6 +654,17 @@ namespace CapaPresentacion
                 Loggeator.EscribeEnArchivo(exc.ToString());
             }
 
+        }
+
+        private void CargarDatosCotizacion()
+        {
+            cbClientes.SelectedValue = proc_CargarCotizacionesActivas_Results.Where(r => r.CotizacionID == Convert.ToInt32(cbCotizacion.SelectedValue))
+                .FirstOrDefault().ClienteID;
+
+            if(Convert.ToInt32(cbClientes.SelectedValue) != 0)
+            {
+                checkBoxClienteAnonimo.Checked = false;
+            }
         }
 
         private void CargarProdCotizacionEnCarrito()
@@ -725,8 +736,7 @@ namespace CapaPresentacion
             cbClientes.DisplayMember = "Nombre";
             cbClientes.ValueMember = "ClienteID";
             proc_CargarTodosClientes_Results = clientesNegocio.CargarTodosClientes().ToList();
-            cbClientes.DataSource = proc_CargarTodosClientes_Results;
-            cbClientes.SelectedIndex = 0;
+            cbClientes.DataSource = proc_CargarTodosClientes_Results;            
 
         }
         private void CargarCBTipoFactura()
@@ -740,8 +750,20 @@ namespace CapaPresentacion
 
         private void cbClientes_SelectedIndexChanged(object sender, EventArgs e)
         {
-            txtDescuentoCliente.Text = proc_CargarTodosClientes_Results.Where(r => r.ClienteID == Convert.ToInt32(cbClientes.SelectedValue))
+            if (cbClientes.SelectedIndex != -1)
+            {
+                txtDescuentoCliente.Text = proc_CargarTodosClientes_Results.Where(r => r.ClienteID == Convert.ToInt32(cbClientes.SelectedValue))
                         .FirstOrDefault().Descuento.ToString();
+                clienteID = Convert.ToInt32(cbClientes.SelectedValue);
+            }
+            
+        }
+
+        private void cbClientes_Enter(object sender, EventArgs e)
+        {
+            CargarCBClientes();
+            cbClientes.DroppedDown = true;
+            cbClientes.Focus();            
         }
 
         private void cbTipoFactura_SelectedIndexChanged(object sender, EventArgs e)
@@ -761,6 +783,10 @@ namespace CapaPresentacion
                     gbComprobante.Visible = true;
                     txtRazonSocial.Enabled = true;
                     txtRNC.Enabled = true;
+                    txtRazonSocial.Text = proc_CargarTodosClientes_Results.Where(r => r.ClienteID == Convert.ToInt32(cbClientes.SelectedValue))
+                       .FirstOrDefault().Nombre.ToString();
+                    txtRNC.Text = proc_CargarTodosClientes_Results.Where(r => r.ClienteID == Convert.ToInt32(cbClientes.SelectedValue))
+                                .FirstOrDefault().CedulaORnc.ToString();
                 }
             }
             catch (Exception exc)
@@ -799,6 +825,7 @@ namespace CapaPresentacion
                         {
                             VerificarTipoFactura();
                         }
+                        CargarCBCotizaciones();
                     }
                     else
                     {

@@ -590,7 +590,7 @@ namespace CapaDatos
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("proc_InsertarDetalleNotaDeCredito", detalleNotaDeCreditoID, notaDeCreditoIDParameter, productoIDParameter, cantDevueltaParameter, cantInventariadaParameter, precioParameter, comentarioParameter, resultado);
         }
     
-        public virtual int proc_InsertarDetalleOrdenCompra(ObjectParameter detalleOrdenCompraID, Nullable<int> ordenCompraID, Nullable<int> productoID, Nullable<double> cantOrdenada, Nullable<decimal> precio, Nullable<bool> estatus, ObjectParameter resultado)
+        public virtual int proc_InsertarDetalleOrdenCompra(ObjectParameter detalleOrdenCompraID, Nullable<int> ordenCompraID, Nullable<int> productoID, Nullable<double> cantOrdenada, Nullable<double> cantRecibida, Nullable<decimal> precio, Nullable<bool> estatus, ObjectParameter resultado)
         {
             var ordenCompraIDParameter = ordenCompraID.HasValue ?
                 new ObjectParameter("OrdenCompraID", ordenCompraID) :
@@ -604,6 +604,10 @@ namespace CapaDatos
                 new ObjectParameter("CantOrdenada", cantOrdenada) :
                 new ObjectParameter("CantOrdenada", typeof(double));
     
+            var cantRecibidaParameter = cantRecibida.HasValue ?
+                new ObjectParameter("CantRecibida", cantRecibida) :
+                new ObjectParameter("CantRecibida", typeof(double));
+    
             var precioParameter = precio.HasValue ?
                 new ObjectParameter("Precio", precio) :
                 new ObjectParameter("Precio", typeof(decimal));
@@ -612,7 +616,7 @@ namespace CapaDatos
                 new ObjectParameter("Estatus", estatus) :
                 new ObjectParameter("Estatus", typeof(bool));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("proc_InsertarDetalleOrdenCompra", detalleOrdenCompraID, ordenCompraIDParameter, productoIDParameter, cantOrdenadaParameter, precioParameter, estatusParameter, resultado);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("proc_InsertarDetalleOrdenCompra", detalleOrdenCompraID, ordenCompraIDParameter, productoIDParameter, cantOrdenadaParameter, cantRecibidaParameter, precioParameter, estatusParameter, resultado);
         }
     
         public virtual int proc_InsertarFactura(ObjectParameter facturaID, Nullable<int> clienteID, Nullable<System.DateTime> fecha, Nullable<int> tipoPagoID, Nullable<int> tipoFacturaID, string nCF, Nullable<System.DateTime> fechaVencimiento, Nullable<int> userID, string rNC, string entidad, Nullable<decimal> descuentoCliente, Nullable<int> cotizacionID, ObjectParameter resultado)

@@ -70,7 +70,7 @@
             this.BarraTitulo.Dock = System.Windows.Forms.DockStyle.Top;
             this.BarraTitulo.Location = new System.Drawing.Point(0, 0);
             this.BarraTitulo.Name = "BarraTitulo";
-            this.BarraTitulo.Size = new System.Drawing.Size(1016, 36);
+            this.BarraTitulo.Size = new System.Drawing.Size(1000, 36);
             this.BarraTitulo.TabIndex = 4;
             this.BarraTitulo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.BarraTitulo_MouseDown);
             // 
@@ -101,7 +101,7 @@
             this.iconcerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.iconcerrar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.iconcerrar.Image = ((System.Drawing.Image)(resources.GetObject("iconcerrar.Image")));
-            this.iconcerrar.Location = new System.Drawing.Point(986, 9);
+            this.iconcerrar.Location = new System.Drawing.Point(970, 9);
             this.iconcerrar.Name = "iconcerrar";
             this.iconcerrar.Size = new System.Drawing.Size(18, 18);
             this.iconcerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -114,7 +114,7 @@
             this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox4.Controls.Add(this.txtCantProd);
             this.groupBox4.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.Location = new System.Drawing.Point(693, 111);
+            this.groupBox4.Location = new System.Drawing.Point(677, 111);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(157, 107);
             this.groupBox4.TabIndex = 113;
@@ -136,7 +136,7 @@
             this.txtTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.txtTotal.BackColor = System.Drawing.SystemColors.Info;
             this.txtTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
-            this.txtTotal.Location = new System.Drawing.Point(785, 472);
+            this.txtTotal.Location = new System.Drawing.Point(769, 366);
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.Size = new System.Drawing.Size(201, 44);
             this.txtTotal.TabIndex = 121;
@@ -146,7 +146,7 @@
             // 
             this.txtDescuento.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.txtDescuento.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
-            this.txtDescuento.Location = new System.Drawing.Point(832, 435);
+            this.txtDescuento.Location = new System.Drawing.Point(816, 329);
             this.txtDescuento.Name = "txtDescuento";
             this.txtDescuento.Size = new System.Drawing.Size(154, 27);
             this.txtDescuento.TabIndex = 120;
@@ -156,7 +156,7 @@
             // 
             this.txtITBIS.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.txtITBIS.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
-            this.txtITBIS.Location = new System.Drawing.Point(832, 398);
+            this.txtITBIS.Location = new System.Drawing.Point(816, 292);
             this.txtITBIS.Name = "txtITBIS";
             this.txtITBIS.Size = new System.Drawing.Size(154, 27);
             this.txtITBIS.TabIndex = 119;
@@ -166,7 +166,7 @@
             // 
             this.txtSubTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSubTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
-            this.txtSubTotal.Location = new System.Drawing.Point(832, 360);
+            this.txtSubTotal.Location = new System.Drawing.Point(816, 254);
             this.txtSubTotal.Name = "txtSubTotal";
             this.txtSubTotal.Size = new System.Drawing.Size(154, 27);
             this.txtSubTotal.TabIndex = 114;
@@ -179,7 +179,7 @@
             this.label16.BackColor = System.Drawing.Color.Transparent;
             this.label16.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label16.Location = new System.Drawing.Point(687, 481);
+            this.label16.Location = new System.Drawing.Point(671, 375);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(66, 28);
             this.label16.TabIndex = 118;
@@ -192,7 +192,7 @@
             this.label15.BackColor = System.Drawing.Color.Transparent;
             this.label15.Font = new System.Drawing.Font("Century Gothic", 13F);
             this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label15.Location = new System.Drawing.Point(717, 439);
+            this.label15.Location = new System.Drawing.Point(701, 333);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(107, 21);
             this.label15.TabIndex = 117;
@@ -205,7 +205,7 @@
             this.label14.BackColor = System.Drawing.Color.Transparent;
             this.label14.Font = new System.Drawing.Font("Century Gothic", 13F);
             this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label14.Location = new System.Drawing.Point(717, 402);
+            this.label14.Location = new System.Drawing.Point(701, 296);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(47, 21);
             this.label14.TabIndex = 116;
@@ -218,7 +218,7 @@
             this.lblhora.BackColor = System.Drawing.Color.Transparent;
             this.lblhora.Font = new System.Drawing.Font("Century Gothic", 13F);
             this.lblhora.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lblhora.Location = new System.Drawing.Point(717, 364);
+            this.lblhora.Location = new System.Drawing.Point(701, 258);
             this.lblhora.Name = "lblhora";
             this.lblhora.Size = new System.Drawing.Size(90, 21);
             this.lblhora.TabIndex = 115;
@@ -270,7 +270,7 @@
             this.dgvCarrito.ReadOnly = true;
             this.dgvCarrito.RowHeadersVisible = false;
             this.dgvCarrito.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCarrito.Size = new System.Drawing.Size(632, 424);
+            this.dgvCarrito.Size = new System.Drawing.Size(616, 318);
             this.dgvCarrito.TabIndex = 112;
             // 
             // ProductoID
@@ -341,8 +341,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(1016, 606);
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.ClientSize = new System.Drawing.Size(1000, 500);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.txtTotal);
             this.Controls.Add(this.txtDescuento);

@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OrdenCompra));
             this.dgvProductos = new System.Windows.Forms.DataGridView();
             this.ProductoID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -40,7 +40,7 @@
             this.PrecioCompra = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ordenada = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Recibida = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Estatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Estatus = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.BarraTitulo = new System.Windows.Forms.Panel();
             this.pbBarraMenu = new System.Windows.Forms.PictureBox();
             this.labelBarraMenu = new System.Windows.Forms.Label();
@@ -72,14 +72,14 @@
             this.dgvProductos.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dgvProductos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgvProductos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.LightSeaGreen;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvProductos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.LightSeaGreen;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvProductos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvProductos.ColumnHeadersHeight = 30;
             this.dgvProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvProductos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -92,22 +92,22 @@
             this.Ordenada,
             this.Recibida,
             this.Estatus});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvProductos.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvProductos.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvProductos.EnableHeadersVisualStyles = false;
             this.dgvProductos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.dgvProductos.Location = new System.Drawing.Point(49, 118);
             this.dgvProductos.MultiSelect = false;
             this.dgvProductos.Name = "dgvProductos";
             this.dgvProductos.RowHeadersVisible = false;
-            this.dgvProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProductos.Size = new System.Drawing.Size(770, 447);
+            this.dgvProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dgvProductos.Size = new System.Drawing.Size(700, 370);
             this.dgvProductos.TabIndex = 115;
             this.dgvProductos.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvProductos_CellValidating);
             // 
@@ -116,64 +116,73 @@
             this.ProductoID.DataPropertyName = "ProductoID";
             this.ProductoID.HeaderText = "ID";
             this.ProductoID.Name = "ProductoID";
-            this.ProductoID.Width = 41;
+            this.ProductoID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ProductoID.Width = 22;
             // 
             // Descripcion
             // 
             this.Descripcion.DataPropertyName = "Descripcion";
             this.Descripcion.HeaderText = "Descripcion";
             this.Descripcion.Name = "Descripcion";
-            this.Descripcion.Width = 86;
+            this.Descripcion.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Descripcion.Width = 67;
             // 
             // UnidadMedida
             // 
             this.UnidadMedida.DataPropertyName = "UnidadMedida";
             this.UnidadMedida.HeaderText = "UM";
             this.UnidadMedida.Name = "UnidadMedida";
-            this.UnidadMedida.Width = 47;
+            this.UnidadMedida.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.UnidadMedida.Width = 28;
             // 
             // Existencia
             // 
             this.Existencia.DataPropertyName = "Existencia";
             this.Existencia.HeaderText = "Existencia";
             this.Existencia.Name = "Existencia";
-            this.Existencia.Width = 78;
+            this.Existencia.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Existencia.Width = 59;
             // 
             // CantMin
             // 
             this.CantMin.DataPropertyName = "CantMin";
             this.CantMin.HeaderText = "Cant Min";
             this.CantMin.Name = "CantMin";
-            this.CantMin.Width = 67;
+            this.CantMin.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.CantMin.Width = 48;
             // 
             // PrecioCompra
             // 
             this.PrecioCompra.DataPropertyName = "PrecioCompra";
             this.PrecioCompra.HeaderText = "Costo";
             this.PrecioCompra.Name = "PrecioCompra";
-            this.PrecioCompra.Width = 57;
+            this.PrecioCompra.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.PrecioCompra.Width = 38;
             // 
             // Ordenada
             // 
             this.Ordenada.DataPropertyName = "Ordenada";
             this.Ordenada.HeaderText = "Ordenada";
             this.Ordenada.Name = "Ordenada";
-            this.Ordenada.Width = 77;
+            this.Ordenada.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Ordenada.Width = 58;
             // 
             // Recibida
             // 
             this.Recibida.DataPropertyName = "Recibida";
             this.Recibida.HeaderText = "Recibida";
             this.Recibida.Name = "Recibida";
-            this.Recibida.Width = 72;
+            this.Recibida.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Recibida.Width = 53;
             // 
             // Estatus
             // 
             this.Estatus.DataPropertyName = "Estatus";
             this.Estatus.HeaderText = "Estatus";
             this.Estatus.Name = "Estatus";
+            this.Estatus.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Estatus.Visible = false;
-            this.Estatus.Width = 67;
+            this.Estatus.Width = 48;
             // 
             // BarraTitulo
             // 
@@ -184,7 +193,7 @@
             this.BarraTitulo.Dock = System.Windows.Forms.DockStyle.Top;
             this.BarraTitulo.Location = new System.Drawing.Point(0, 0);
             this.BarraTitulo.Name = "BarraTitulo";
-            this.BarraTitulo.Size = new System.Drawing.Size(1070, 36);
+            this.BarraTitulo.Size = new System.Drawing.Size(1000, 36);
             this.BarraTitulo.TabIndex = 114;
             this.BarraTitulo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.BarraTitulo_MouseDown);
             // 
@@ -215,7 +224,7 @@
             this.iconcerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.iconcerrar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.iconcerrar.Image = ((System.Drawing.Image)(resources.GetObject("iconcerrar.Image")));
-            this.iconcerrar.Location = new System.Drawing.Point(1040, 9);
+            this.iconcerrar.Location = new System.Drawing.Point(970, 9);
             this.iconcerrar.Name = "iconcerrar";
             this.iconcerrar.Size = new System.Drawing.Size(18, 18);
             this.iconcerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -269,7 +278,7 @@
             this.btnRecibirTodo.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRecibirTodo.ForeColor = System.Drawing.Color.White;
             this.btnRecibirTodo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRecibirTodo.Location = new System.Drawing.Point(859, 235);
+            this.btnRecibirTodo.Location = new System.Drawing.Point(789, 235);
             this.btnRecibirTodo.Name = "btnRecibirTodo";
             this.btnRecibirTodo.Size = new System.Drawing.Size(180, 35);
             this.btnRecibirTodo.TabIndex = 118;
@@ -287,7 +296,7 @@
             this.btnQuitar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnQuitar.ForeColor = System.Drawing.Color.White;
             this.btnQuitar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnQuitar.Location = new System.Drawing.Point(859, 355);
+            this.btnQuitar.Location = new System.Drawing.Point(789, 355);
             this.btnQuitar.Name = "btnQuitar";
             this.btnQuitar.Size = new System.Drawing.Size(180, 35);
             this.btnQuitar.TabIndex = 122;
@@ -305,7 +314,7 @@
             this.btnGuardar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.ForeColor = System.Drawing.Color.White;
             this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGuardar.Location = new System.Drawing.Point(859, 118);
+            this.btnGuardar.Location = new System.Drawing.Point(789, 118);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(180, 35);
             this.btnGuardar.TabIndex = 120;
@@ -324,7 +333,7 @@
             this.btnBuscarProd.ForeColor = System.Drawing.Color.White;
             this.btnBuscarProd.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscarProd.Image")));
             this.btnBuscarProd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBuscarProd.Location = new System.Drawing.Point(859, 177);
+            this.btnBuscarProd.Location = new System.Drawing.Point(789, 177);
             this.btnBuscarProd.Name = "btnBuscarProd";
             this.btnBuscarProd.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.btnBuscarProd.Size = new System.Drawing.Size(180, 35);
@@ -344,11 +353,11 @@
             this.btnFacturarOrdenCorte.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFacturarOrdenCorte.ForeColor = System.Drawing.Color.White;
             this.btnFacturarOrdenCorte.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnFacturarOrdenCorte.Location = new System.Drawing.Point(859, 297);
+            this.btnFacturarOrdenCorte.Location = new System.Drawing.Point(789, 297);
             this.btnFacturarOrdenCorte.Name = "btnFacturarOrdenCorte";
             this.btnFacturarOrdenCorte.Size = new System.Drawing.Size(180, 35);
             this.btnFacturarOrdenCorte.TabIndex = 124;
-            this.btnFacturarOrdenCorte.Text = "Facturar Orden Corte";
+            this.btnFacturarOrdenCorte.Text = "Facturar Orden";
             this.btnFacturarOrdenCorte.UseVisualStyleBackColor = false;
             this.btnFacturarOrdenCorte.Click += new System.EventHandler(this.btnFacturarOrdenCorte_Click);
             // 
@@ -356,8 +365,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(1070, 577);
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.ClientSize = new System.Drawing.Size(1000, 500);
             this.Controls.Add(this.btnFacturarOrdenCorte);
             this.Controls.Add(this.btnBuscarProd);
             this.Controls.Add(this.btnQuitar);
@@ -404,6 +413,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn PrecioCompra;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ordenada;
         private System.Windows.Forms.DataGridViewTextBoxColumn Recibida;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Estatus;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Estatus;
     }
 }

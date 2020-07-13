@@ -54,7 +54,7 @@
             this.btnDesmarcarTodos.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDesmarcarTodos.ForeColor = System.Drawing.Color.White;
             this.btnDesmarcarTodos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDesmarcarTodos.Location = new System.Drawing.Point(967, 239);
+            this.btnDesmarcarTodos.Location = new System.Drawing.Point(797, 239);
             this.btnDesmarcarTodos.Name = "btnDesmarcarTodos";
             this.btnDesmarcarTodos.Size = new System.Drawing.Size(180, 35);
             this.btnDesmarcarTodos.TabIndex = 47;
@@ -72,7 +72,7 @@
             this.btnMarcarTodos.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMarcarTodos.ForeColor = System.Drawing.Color.White;
             this.btnMarcarTodos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMarcarTodos.Location = new System.Drawing.Point(967, 180);
+            this.btnMarcarTodos.Location = new System.Drawing.Point(797, 180);
             this.btnMarcarTodos.Name = "btnMarcarTodos";
             this.btnMarcarTodos.Size = new System.Drawing.Size(180, 35);
             this.btnMarcarTodos.TabIndex = 46;
@@ -119,7 +119,7 @@
             this.dgvProductos.Name = "dgvProductos";
             this.dgvProductos.RowHeadersVisible = false;
             this.dgvProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProductos.Size = new System.Drawing.Size(895, 622);
+            this.dgvProductos.Size = new System.Drawing.Size(725, 422);
             this.dgvProductos.TabIndex = 45;
             // 
             // Seleccionar
@@ -147,7 +147,7 @@
             // btnCerrar
             // 
             this.btnCerrar.AutoSize = true;
-            this.btnCerrar.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnCerrar.BackColor = System.Drawing.SystemColors.ControlLight;
             this.btnCerrar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCerrar.ForeColor = System.Drawing.Color.DimGray;
@@ -168,7 +168,7 @@
             this.btnSeleccionar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSeleccionar.ForeColor = System.Drawing.Color.White;
             this.btnSeleccionar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSeleccionar.Location = new System.Drawing.Point(967, 119);
+            this.btnSeleccionar.Location = new System.Drawing.Point(797, 119);
             this.btnSeleccionar.Name = "btnSeleccionar";
             this.btnSeleccionar.Size = new System.Drawing.Size(180, 35);
             this.btnSeleccionar.TabIndex = 43;
@@ -178,11 +178,12 @@
             // 
             // checkBoxProdExistBaja
             // 
+            this.checkBoxProdExistBaja.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBoxProdExistBaja.AutoSize = true;
             this.checkBoxProdExistBaja.Checked = true;
             this.checkBoxProdExistBaja.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxProdExistBaja.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.checkBoxProdExistBaja.Location = new System.Drawing.Point(962, 66);
+            this.checkBoxProdExistBaja.Location = new System.Drawing.Point(785, 66);
             this.checkBoxProdExistBaja.Name = "checkBoxProdExistBaja";
             this.checkBoxProdExistBaja.Size = new System.Drawing.Size(196, 22);
             this.checkBoxProdExistBaja.TabIndex = 93;
@@ -192,9 +193,10 @@
             // 
             // txtFiltro
             // 
+            this.txtFiltro.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtFiltro.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFiltro.ForeColor = System.Drawing.Color.Gray;
-            this.txtFiltro.Location = new System.Drawing.Point(562, 21);
+            this.txtFiltro.Location = new System.Drawing.Point(392, 21);
             this.txtFiltro.Name = "txtFiltro";
             this.txtFiltro.Size = new System.Drawing.Size(213, 24);
             this.txtFiltro.TabIndex = 95;
@@ -205,11 +207,12 @@
             // 
             // cbFiltro
             // 
+            this.cbFiltro.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cbFiltro.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cbFiltro.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbFiltro.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbFiltro.FormattingEnabled = true;
-            this.cbFiltro.Location = new System.Drawing.Point(774, 21);
+            this.cbFiltro.Location = new System.Drawing.Point(604, 21);
             this.cbFiltro.Name = "cbFiltro";
             this.cbFiltro.Size = new System.Drawing.Size(161, 24);
             this.cbFiltro.TabIndex = 94;
@@ -219,7 +222,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1170, 700);
+            this.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.ClientSize = new System.Drawing.Size(1000, 500);
             this.Controls.Add(this.txtFiltro);
             this.Controls.Add(this.cbFiltro);
             this.Controls.Add(this.checkBoxProdExistBaja);

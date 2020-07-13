@@ -31,8 +31,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvNotasCredito = new System.Windows.Forms.DataGridView();
-            this.NotaDeCreditoID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ITBIS = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.btnCerrar = new System.Windows.Forms.Label();
             this.btnRegistrar = new System.Windows.Forms.Button();
             this.btnImprimir = new System.Windows.Forms.Button();
@@ -40,6 +38,16 @@
             this.btnVerDetalles = new System.Windows.Forms.Button();
             this.txtFiltro = new System.Windows.Forms.TextBox();
             this.cbFiltro = new System.Windows.Forms.ComboBox();
+            this.NotaDeCreditoID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Factura = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FacturaAplicada = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NCF = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FechaVencimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ITBIS = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Monto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MontoAplicado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNotasCredito)).BeginInit();
             this.SuspendLayout();
             // 
@@ -65,7 +73,15 @@
             this.dgvNotasCredito.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvNotasCredito.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NotaDeCreditoID,
-            this.ITBIS});
+            this.Cliente,
+            this.Fecha,
+            this.Factura,
+            this.FacturaAplicada,
+            this.NCF,
+            this.FechaVencimiento,
+            this.ITBIS,
+            this.Monto,
+            this.MontoAplicado});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.WhiteSmoke;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -82,24 +98,8 @@
             this.dgvNotasCredito.ReadOnly = true;
             this.dgvNotasCredito.RowHeadersVisible = false;
             this.dgvNotasCredito.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvNotasCredito.Size = new System.Drawing.Size(895, 625);
+            this.dgvNotasCredito.Size = new System.Drawing.Size(835, 525);
             this.dgvNotasCredito.TabIndex = 45;
-            // 
-            // NotaDeCreditoID
-            // 
-            this.NotaDeCreditoID.DataPropertyName = "NotaDeCreditoID";
-            this.NotaDeCreditoID.HeaderText = "ID";
-            this.NotaDeCreditoID.Name = "NotaDeCreditoID";
-            this.NotaDeCreditoID.ReadOnly = true;
-            this.NotaDeCreditoID.Width = 44;
-            // 
-            // ITBIS
-            // 
-            this.ITBIS.HeaderText = "ITBIS";
-            this.ITBIS.Name = "ITBIS";
-            this.ITBIS.ReadOnly = true;
-            this.ITBIS.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ITBIS.Width = 36;
             // 
             // btnCerrar
             // 
@@ -125,7 +125,7 @@
             this.btnRegistrar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRegistrar.ForeColor = System.Drawing.Color.White;
             this.btnRegistrar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRegistrar.Location = new System.Drawing.Point(964, 65);
+            this.btnRegistrar.Location = new System.Drawing.Point(904, 65);
             this.btnRegistrar.Name = "btnRegistrar";
             this.btnRegistrar.Size = new System.Drawing.Size(180, 35);
             this.btnRegistrar.TabIndex = 63;
@@ -143,7 +143,7 @@
             this.btnImprimir.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnImprimir.ForeColor = System.Drawing.Color.White;
             this.btnImprimir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnImprimir.Location = new System.Drawing.Point(964, 182);
+            this.btnImprimir.Location = new System.Drawing.Point(904, 182);
             this.btnImprimir.Name = "btnImprimir";
             this.btnImprimir.Size = new System.Drawing.Size(180, 35);
             this.btnImprimir.TabIndex = 62;
@@ -161,7 +161,7 @@
             this.btnExportar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExportar.ForeColor = System.Drawing.Color.White;
             this.btnExportar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExportar.Location = new System.Drawing.Point(964, 123);
+            this.btnExportar.Location = new System.Drawing.Point(904, 123);
             this.btnExportar.Name = "btnExportar";
             this.btnExportar.Size = new System.Drawing.Size(180, 35);
             this.btnExportar.TabIndex = 65;
@@ -179,7 +179,7 @@
             this.btnVerDetalles.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVerDetalles.ForeColor = System.Drawing.Color.White;
             this.btnVerDetalles.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnVerDetalles.Location = new System.Drawing.Point(964, 242);
+            this.btnVerDetalles.Location = new System.Drawing.Point(904, 242);
             this.btnVerDetalles.Name = "btnVerDetalles";
             this.btnVerDetalles.Size = new System.Drawing.Size(180, 35);
             this.btnVerDetalles.TabIndex = 64;
@@ -189,9 +189,10 @@
             // 
             // txtFiltro
             // 
+            this.txtFiltro.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtFiltro.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFiltro.ForeColor = System.Drawing.Color.Gray;
-            this.txtFiltro.Location = new System.Drawing.Point(562, 21);
+            this.txtFiltro.Location = new System.Drawing.Point(502, 21);
             this.txtFiltro.Name = "txtFiltro";
             this.txtFiltro.Size = new System.Drawing.Size(213, 24);
             this.txtFiltro.TabIndex = 84;
@@ -202,22 +203,104 @@
             // 
             // cbFiltro
             // 
+            this.cbFiltro.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cbFiltro.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cbFiltro.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbFiltro.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbFiltro.FormattingEnabled = true;
-            this.cbFiltro.Location = new System.Drawing.Point(774, 21);
+            this.cbFiltro.Location = new System.Drawing.Point(714, 21);
             this.cbFiltro.Name = "cbFiltro";
             this.cbFiltro.Size = new System.Drawing.Size(161, 24);
             this.cbFiltro.TabIndex = 83;
             this.cbFiltro.Validating += new System.ComponentModel.CancelEventHandler(this.cbFiltro_Validating);
+            // 
+            // NotaDeCreditoID
+            // 
+            this.NotaDeCreditoID.DataPropertyName = "NotaDeCreditoID";
+            this.NotaDeCreditoID.HeaderText = "ID";
+            this.NotaDeCreditoID.Name = "NotaDeCreditoID";
+            this.NotaDeCreditoID.ReadOnly = true;
+            this.NotaDeCreditoID.Width = 44;
+            // 
+            // Cliente
+            // 
+            this.Cliente.DataPropertyName = "Cliente";
+            this.Cliente.HeaderText = "Cliente";
+            this.Cliente.Name = "Cliente";
+            this.Cliente.ReadOnly = true;
+            this.Cliente.Width = 77;
+            // 
+            // Fecha
+            // 
+            this.Fecha.DataPropertyName = "Fecha";
+            this.Fecha.HeaderText = "Fecha";
+            this.Fecha.Name = "Fecha";
+            this.Fecha.ReadOnly = true;
+            this.Fecha.Width = 70;
+            // 
+            // Factura
+            // 
+            this.Factura.DataPropertyName = "Factura";
+            this.Factura.HeaderText = "Factura";
+            this.Factura.Name = "Factura";
+            this.Factura.ReadOnly = true;
+            this.Factura.Width = 80;
+            // 
+            // FacturaAplicada
+            // 
+            this.FacturaAplicada.DataPropertyName = "FacturaAplicada";
+            this.FacturaAplicada.HeaderText = "FacturaAplicada";
+            this.FacturaAplicada.Name = "FacturaAplicada";
+            this.FacturaAplicada.ReadOnly = true;
+            this.FacturaAplicada.Width = 139;
+            // 
+            // NCF
+            // 
+            this.NCF.DataPropertyName = "NCF";
+            this.NCF.HeaderText = "NCF";
+            this.NCF.Name = "NCF";
+            this.NCF.ReadOnly = true;
+            this.NCF.Width = 58;
+            // 
+            // FechaVencimiento
+            // 
+            this.FechaVencimiento.DataPropertyName = "FechaVencimiento";
+            this.FechaVencimiento.HeaderText = "FechaVencimiento";
+            this.FechaVencimiento.Name = "FechaVencimiento";
+            this.FechaVencimiento.ReadOnly = true;
+            this.FechaVencimiento.Width = 152;
+            // 
+            // ITBIS
+            // 
+            this.ITBIS.DataPropertyName = "ITBIS";
+            this.ITBIS.HeaderText = "ITBIS";
+            this.ITBIS.Name = "ITBIS";
+            this.ITBIS.ReadOnly = true;
+            this.ITBIS.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ITBIS.Width = 36;
+            // 
+            // Monto
+            // 
+            this.Monto.DataPropertyName = "Monto";
+            this.Monto.HeaderText = "Monto";
+            this.Monto.Name = "Monto";
+            this.Monto.ReadOnly = true;
+            this.Monto.Width = 73;
+            // 
+            // MontoAplicado
+            // 
+            this.MontoAplicado.DataPropertyName = "MontoAplicado";
+            this.MontoAplicado.HeaderText = "MontoAplicado";
+            this.MontoAplicado.Name = "MontoAplicado";
+            this.MontoAplicado.ReadOnly = true;
+            this.MontoAplicado.Width = 132;
             // 
             // NotasCredito
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(1170, 700);
+            this.ClientSize = new System.Drawing.Size(1110, 600);
             this.Controls.Add(this.txtFiltro);
             this.Controls.Add(this.cbFiltro);
             this.Controls.Add(this.btnExportar);
@@ -243,10 +326,18 @@
         private System.Windows.Forms.Button btnRegistrar;
         private System.Windows.Forms.Button btnImprimir;
         private System.Windows.Forms.Button btnExportar;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NotaDeCreditoID;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn ITBIS;
         private System.Windows.Forms.Button btnVerDetalles;
         private System.Windows.Forms.TextBox txtFiltro;
         private System.Windows.Forms.ComboBox cbFiltro;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NotaDeCreditoID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cliente;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Factura;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FacturaAplicada;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NCF;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FechaVencimiento;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn ITBIS;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Monto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MontoAplicado;
     }
 }

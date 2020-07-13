@@ -87,8 +87,10 @@ namespace CapaPresentacion
         {
             try
             {
+                dgvUsuarios.AutoGenerateColumns = false;
                 proc_CargarTodosUsers_Results = usuariosNegocio.CargarTodosUsers().ToList();
                 dgvUsuarios.DataSource = proc_CargarTodosUsers_Results;
+                OrdenarColumnasDGV();
             }
             catch (Exception exc)
             {
@@ -96,6 +98,14 @@ namespace CapaPresentacion
                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Loggeator.EscribeEnArchivo(exc.ToString());
             }
+        }
+        private void OrdenarColumnasDGV()
+        {
+            dgvUsuarios.Columns["UserID"].DisplayIndex = 0;
+            dgvUsuarios.Columns["UserName"].DisplayIndex = 1;
+            dgvUsuarios.Columns["UserPassword"].DisplayIndex = 2;
+            dgvUsuarios.Columns["UserLevel"].DisplayIndex = 3;
+            dgvUsuarios.Refresh();
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -178,6 +188,7 @@ namespace CapaPresentacion
                             break;
                     }
                 }
+                OrdenarColumnasDGV();
             }
             catch (Exception exc)
             {

@@ -87,11 +87,12 @@ namespace SFacturacion
         {
             try
             {
+                dgvClientes.AutoGenerateColumns = false;
                 proc_CargarTodosClientes_Results = clientesNegocio.CargarTodosClientes().ToList();
                 dgvClientes.DataSource = proc_CargarTodosClientes_Results;
-                dgvClientes.Columns["Descuento"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                dgvClientes.Columns["Credito"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                dgvClientes.Refresh();
+                OrdenarColumnasDGV();
+
+
 
             }
             catch (Exception exc)
@@ -161,6 +162,12 @@ namespace SFacturacion
             }
         }
 
+        private void OrdenarColumnasDGV()
+        {
+            dgvClientes.Columns["Descuento"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvClientes.Columns["Credito"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvClientes.Refresh();
+        }
         private void txtFiltro_TextChanged(object sender, EventArgs e)
         {
             try
@@ -184,6 +191,7 @@ namespace SFacturacion
                         default:
                             break;
                     }
+                    OrdenarColumnasDGV();
                 }                
             }
             catch (Exception exc)

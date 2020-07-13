@@ -396,6 +396,8 @@
             // 
             // checkboxITBIS
             // 
+            this.checkboxITBIS.Checked = true;
+            this.checkboxITBIS.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkboxITBIS.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkboxITBIS.Location = new System.Drawing.Point(145, 283);
             this.checkboxITBIS.Name = "checkboxITBIS";
@@ -460,7 +462,7 @@
             this.AcceptButton = this.btnAplicar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.CancelButton = this.btnCancelar;
             this.ClientSize = new System.Drawing.Size(834, 319);
             this.Controls.Add(this.label14);

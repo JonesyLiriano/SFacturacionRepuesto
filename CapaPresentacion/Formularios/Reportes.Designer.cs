@@ -121,7 +121,7 @@
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.pictureBoxGanancias);
             this.panel1.Controls.Add(this.panel2);
-            this.panel1.Location = new System.Drawing.Point(731, 111);
+            this.panel1.Location = new System.Drawing.Point(702, 100);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(139, 150);
             this.panel1.TabIndex = 50;
@@ -165,7 +165,7 @@
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel3.Controls.Add(this.pictureBoxProductos);
             this.panel3.Controls.Add(this.panel4);
-            this.panel3.Location = new System.Drawing.Point(517, 110);
+            this.panel3.Location = new System.Drawing.Point(488, 99);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(139, 150);
             this.panel3.TabIndex = 51;
@@ -209,7 +209,7 @@
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel5.Controls.Add(this.pictureBoxClientes);
             this.panel5.Controls.Add(this.panel6);
-            this.panel5.Location = new System.Drawing.Point(93, 110);
+            this.panel5.Location = new System.Drawing.Point(64, 99);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(139, 150);
             this.panel5.TabIndex = 50;
@@ -253,7 +253,7 @@
             this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel7.Controls.Add(this.pictureBoxProveedores);
             this.panel7.Controls.Add(this.panel8);
-            this.panel7.Location = new System.Drawing.Point(304, 111);
+            this.panel7.Location = new System.Drawing.Point(275, 100);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(139, 150);
             this.panel7.TabIndex = 51;
@@ -297,7 +297,7 @@
             this.panel9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel9.Controls.Add(this.pictureBoxFacturasCompra);
             this.panel9.Controls.Add(this.panel10);
-            this.panel9.Location = new System.Drawing.Point(936, 110);
+            this.panel9.Location = new System.Drawing.Point(907, 99);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(139, 150);
             this.panel9.TabIndex = 51;
@@ -341,7 +341,7 @@
             this.panel19.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel19.Controls.Add(this.pictureBoxFacturasCGubernamental);
             this.panel19.Controls.Add(this.panel20);
-            this.panel19.Location = new System.Drawing.Point(731, 356);
+            this.panel19.Location = new System.Drawing.Point(702, 345);
             this.panel19.Name = "panel19";
             this.panel19.Size = new System.Drawing.Size(139, 166);
             this.panel19.TabIndex = 53;
@@ -386,7 +386,7 @@
             this.panel13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel13.Controls.Add(this.pictureBoxNotasCredito);
             this.panel13.Controls.Add(this.panel14);
-            this.panel13.Location = new System.Drawing.Point(93, 356);
+            this.panel13.Location = new System.Drawing.Point(64, 345);
             this.panel13.Name = "panel13";
             this.panel13.Size = new System.Drawing.Size(139, 166);
             this.panel13.TabIndex = 54;
@@ -431,7 +431,7 @@
             this.panel15.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel15.Controls.Add(this.pictureBoxFacturasCFinal);
             this.panel15.Controls.Add(this.panel16);
-            this.panel15.Location = new System.Drawing.Point(304, 356);
+            this.panel15.Location = new System.Drawing.Point(275, 345);
             this.panel15.Name = "panel15";
             this.panel15.Size = new System.Drawing.Size(139, 166);
             this.panel15.TabIndex = 54;
@@ -476,7 +476,7 @@
             this.panel17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel17.Controls.Add(this.pictureBoxFacturasCFiscal);
             this.panel17.Controls.Add(this.panel18);
-            this.panel17.Location = new System.Drawing.Point(517, 356);
+            this.panel17.Location = new System.Drawing.Point(488, 345);
             this.panel17.Name = "panel17";
             this.panel17.Size = new System.Drawing.Size(139, 166);
             this.panel17.TabIndex = 54;
@@ -521,7 +521,7 @@
             this.panel11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel11.Controls.Add(this.pictureBoxFacturas);
             this.panel11.Controls.Add(this.panel12);
-            this.panel11.Location = new System.Drawing.Point(936, 356);
+            this.panel11.Location = new System.Drawing.Point(907, 345);
             this.panel11.Name = "panel11";
             this.panel11.Size = new System.Drawing.Size(139, 166);
             this.panel11.TabIndex = 54;
@@ -566,7 +566,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(1170, 700);
+            this.ClientSize = new System.Drawing.Size(1110, 600);
             this.Controls.Add(this.panel11);
             this.Controls.Add(this.panel17);
             this.Controls.Add(this.panel15);

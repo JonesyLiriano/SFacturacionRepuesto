@@ -47,7 +47,7 @@
             // btnCerrar
             // 
             this.btnCerrar.AutoSize = true;
-            this.btnCerrar.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnCerrar.BackColor = System.Drawing.SystemColors.ControlLight;
             this.btnCerrar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCerrar.ForeColor = System.Drawing.Color.DimGray;
@@ -201,9 +201,10 @@
             // 
             // FacturarOrdenCompra
             // 
+            this.AcceptButton = this.btnFacturar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.ClientSize = new System.Drawing.Size(514, 370);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtSubTotal);

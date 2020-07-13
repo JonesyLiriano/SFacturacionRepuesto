@@ -69,7 +69,7 @@ namespace CapaPresentacion.Formularios
             {
                 if (dgvPagos.SelectedRows.Count > 0)
                 {
-                        DialogResult dialogResult = MessageBox.Show(string.Format("Esta seguro que desea eliminar el cobro {0}?", dgvPagos.CurrentRow.Cells["CobroVentaCreditoID"].Value), "Eliminar Cobro", MessageBoxButtons.OKCancel);
+                        DialogResult dialogResult = MessageBox.Show(string.Format("Esta seguro que desea eliminar el Pago {0}?", dgvPagos.CurrentRow.Cells["PagoCompraCreditoID"].Value), "Eliminar Pago", MessageBoxButtons.OKCancel);
                         if (dialogResult == DialogResult.OK)
                         {
                             resultado = pagosCompraCreditoNegocio.BorrarPagoCompraCredito(Convert.ToInt32(dgvPagos.CurrentRow.Cells["PagoCompraCreditoID"].Value));

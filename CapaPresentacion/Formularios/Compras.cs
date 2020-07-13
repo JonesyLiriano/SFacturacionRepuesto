@@ -41,6 +41,7 @@ namespace CapaPresentacion.Formularios
                    Convert.ToBoolean(dgvCompras.Rows[dgvCompras.CurrentRow.Index].Cells["Completado"].Value)
                    );
                     ordenCompra.ShowDialog();
+                    CargarDataGridView();
                 }
                 else
                 {
@@ -134,9 +135,14 @@ namespace CapaPresentacion.Formularios
 
         private void CargarDataGridView()
         {
+            dgvCompras.AutoGenerateColumns = false;
             proc_CargarTodasOrdenesCompra_Results = ordenesCompraNegocio.CargarTodasOrdenesCompra().ToList();
             dgvCompras.DataSource = proc_CargarTodasOrdenesCompra_Results;
+            OrdenarColumnasDGV();
+        }
 
+        private void OrdenarColumnasDGV()
+        {
             dgvCompras.Columns["OrdenCompraID"].DisplayIndex = 0;
             dgvCompras.Columns["Proveedor"].DisplayIndex = 1;
             dgvCompras.Columns["FechaPedido"].DisplayIndex = 2;
@@ -156,7 +162,6 @@ namespace CapaPresentacion.Formularios
 
             dgvCompras.Refresh();
         }
-
         private void btnExportar_Click(object sender, EventArgs e)
         {
             try
@@ -265,6 +270,7 @@ namespace CapaPresentacion.Formularios
                             break;
                     }
                 }
+                OrdenarColumnasDGV();
             }
             catch (Exception exc)
             {

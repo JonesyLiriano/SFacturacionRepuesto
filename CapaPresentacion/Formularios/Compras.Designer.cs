@@ -33,14 +33,24 @@
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnVerDetalle = new System.Windows.Forms.Button();
             this.dgvCompras = new System.Windows.Forms.DataGridView();
-            this.OrdenCompraID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Completado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.btnCerrar = new System.Windows.Forms.Label();
             this.btnRegistrar = new System.Windows.Forms.Button();
             this.btnExportar = new System.Windows.Forms.Button();
             this.btnImprimir = new System.Windows.Forms.Button();
             this.txtFiltro = new System.Windows.Forms.TextBox();
             this.cbFiltro = new System.Windows.Forms.ComboBox();
+            this.OrdenCompraID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Proveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FechaPedido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FechaCompletado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Completado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.TipoDePago = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NCF = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FechaVencimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FechaFactura = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ITBIS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SubTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCompras)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,7 +64,7 @@
             this.btnEliminar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEliminar.ForeColor = System.Drawing.Color.White;
             this.btnEliminar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEliminar.Location = new System.Drawing.Point(965, 303);
+            this.btnEliminar.Location = new System.Drawing.Point(905, 303);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(180, 35);
             this.btnEliminar.TabIndex = 47;
@@ -72,7 +82,7 @@
             this.btnVerDetalle.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVerDetalle.ForeColor = System.Drawing.Color.White;
             this.btnVerDetalle.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnVerDetalle.Location = new System.Drawing.Point(965, 244);
+            this.btnVerDetalle.Location = new System.Drawing.Point(905, 244);
             this.btnVerDetalle.Name = "btnVerDetalle";
             this.btnVerDetalle.Size = new System.Drawing.Size(180, 35);
             this.btnVerDetalle.TabIndex = 46;
@@ -102,7 +112,17 @@
             this.dgvCompras.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvCompras.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.OrdenCompraID,
-            this.Completado});
+            this.Proveedor,
+            this.FechaPedido,
+            this.FechaCompletado,
+            this.Completado,
+            this.TipoDePago,
+            this.NCF,
+            this.FechaVencimiento,
+            this.FechaFactura,
+            this.ITBIS,
+            this.SubTotal,
+            this.Total});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.WhiteSmoke;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -119,26 +139,8 @@
             this.dgvCompras.ReadOnly = true;
             this.dgvCompras.RowHeadersVisible = false;
             this.dgvCompras.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCompras.Size = new System.Drawing.Size(895, 626);
+            this.dgvCompras.Size = new System.Drawing.Size(835, 526);
             this.dgvCompras.TabIndex = 45;
-            // 
-            // OrdenCompraID
-            // 
-            this.OrdenCompraID.DataPropertyName = "OrdenCompraID";
-            this.OrdenCompraID.HeaderText = "ID";
-            this.OrdenCompraID.Name = "OrdenCompraID";
-            this.OrdenCompraID.ReadOnly = true;
-            this.OrdenCompraID.Width = 44;
-            // 
-            // Completado
-            // 
-            this.Completado.DataPropertyName = "Completado";
-            this.Completado.HeaderText = "Completado";
-            this.Completado.Name = "Completado";
-            this.Completado.ReadOnly = true;
-            this.Completado.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Completado.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Completado.Width = 116;
             // 
             // btnCerrar
             // 
@@ -164,7 +166,7 @@
             this.btnRegistrar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRegistrar.ForeColor = System.Drawing.Color.White;
             this.btnRegistrar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRegistrar.Location = new System.Drawing.Point(965, 64);
+            this.btnRegistrar.Location = new System.Drawing.Point(905, 64);
             this.btnRegistrar.Name = "btnRegistrar";
             this.btnRegistrar.Size = new System.Drawing.Size(180, 35);
             this.btnRegistrar.TabIndex = 43;
@@ -182,7 +184,7 @@
             this.btnExportar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExportar.ForeColor = System.Drawing.Color.White;
             this.btnExportar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExportar.Location = new System.Drawing.Point(965, 124);
+            this.btnExportar.Location = new System.Drawing.Point(905, 124);
             this.btnExportar.Name = "btnExportar";
             this.btnExportar.Size = new System.Drawing.Size(180, 35);
             this.btnExportar.TabIndex = 48;
@@ -200,7 +202,7 @@
             this.btnImprimir.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnImprimir.ForeColor = System.Drawing.Color.White;
             this.btnImprimir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnImprimir.Location = new System.Drawing.Point(965, 184);
+            this.btnImprimir.Location = new System.Drawing.Point(905, 184);
             this.btnImprimir.Name = "btnImprimir";
             this.btnImprimir.Size = new System.Drawing.Size(180, 35);
             this.btnImprimir.TabIndex = 49;
@@ -210,9 +212,10 @@
             // 
             // txtFiltro
             // 
+            this.txtFiltro.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtFiltro.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFiltro.ForeColor = System.Drawing.Color.Gray;
-            this.txtFiltro.Location = new System.Drawing.Point(562, 21);
+            this.txtFiltro.Location = new System.Drawing.Point(502, 21);
             this.txtFiltro.Name = "txtFiltro";
             this.txtFiltro.Size = new System.Drawing.Size(213, 24);
             this.txtFiltro.TabIndex = 82;
@@ -223,22 +226,121 @@
             // 
             // cbFiltro
             // 
+            this.cbFiltro.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cbFiltro.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cbFiltro.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbFiltro.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbFiltro.FormattingEnabled = true;
-            this.cbFiltro.Location = new System.Drawing.Point(774, 21);
+            this.cbFiltro.Location = new System.Drawing.Point(714, 21);
             this.cbFiltro.Name = "cbFiltro";
             this.cbFiltro.Size = new System.Drawing.Size(161, 24);
             this.cbFiltro.TabIndex = 81;
             this.cbFiltro.Validating += new System.ComponentModel.CancelEventHandler(this.cbFiltro_Validating);
+            // 
+            // OrdenCompraID
+            // 
+            this.OrdenCompraID.DataPropertyName = "OrdenCompraID";
+            this.OrdenCompraID.HeaderText = "ID";
+            this.OrdenCompraID.Name = "OrdenCompraID";
+            this.OrdenCompraID.ReadOnly = true;
+            this.OrdenCompraID.Width = 44;
+            // 
+            // Proveedor
+            // 
+            this.Proveedor.DataPropertyName = "Proveedor";
+            this.Proveedor.HeaderText = "Proveedor";
+            this.Proveedor.Name = "Proveedor";
+            this.Proveedor.ReadOnly = true;
+            this.Proveedor.Width = 98;
+            // 
+            // FechaPedido
+            // 
+            this.FechaPedido.DataPropertyName = "FechaPedido";
+            this.FechaPedido.HeaderText = "FechaPedido";
+            this.FechaPedido.Name = "FechaPedido";
+            this.FechaPedido.ReadOnly = true;
+            this.FechaPedido.Width = 116;
+            // 
+            // FechaCompletado
+            // 
+            this.FechaCompletado.DataPropertyName = "FechaCompletado";
+            this.FechaCompletado.HeaderText = "FechaCompletado";
+            this.FechaCompletado.Name = "FechaCompletado";
+            this.FechaCompletado.ReadOnly = true;
+            this.FechaCompletado.Width = 155;
+            // 
+            // Completado
+            // 
+            this.Completado.DataPropertyName = "Completado";
+            this.Completado.HeaderText = "Completado";
+            this.Completado.Name = "Completado";
+            this.Completado.ReadOnly = true;
+            this.Completado.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Completado.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Completado.Width = 116;
+            // 
+            // TipoDePago
+            // 
+            this.TipoDePago.DataPropertyName = "TipoDePago";
+            this.TipoDePago.HeaderText = "TipoDePago";
+            this.TipoDePago.Name = "TipoDePago";
+            this.TipoDePago.ReadOnly = true;
+            this.TipoDePago.Width = 110;
+            // 
+            // NCF
+            // 
+            this.NCF.DataPropertyName = "NCF";
+            this.NCF.HeaderText = "NCF";
+            this.NCF.Name = "NCF";
+            this.NCF.ReadOnly = true;
+            this.NCF.Width = 58;
+            // 
+            // FechaVencimiento
+            // 
+            this.FechaVencimiento.DataPropertyName = "FechaVencimiento";
+            this.FechaVencimiento.HeaderText = "FechaVencimiento";
+            this.FechaVencimiento.Name = "FechaVencimiento";
+            this.FechaVencimiento.ReadOnly = true;
+            this.FechaVencimiento.Width = 152;
+            // 
+            // FechaFactura
+            // 
+            this.FechaFactura.DataPropertyName = "FechaFactura";
+            this.FechaFactura.HeaderText = "FechaFactura";
+            this.FechaFactura.Name = "FechaFactura";
+            this.FechaFactura.ReadOnly = true;
+            this.FechaFactura.Width = 119;
+            // 
+            // ITBIS
+            // 
+            this.ITBIS.DataPropertyName = "ITBIS";
+            this.ITBIS.HeaderText = "ITBIS";
+            this.ITBIS.Name = "ITBIS";
+            this.ITBIS.ReadOnly = true;
+            this.ITBIS.Width = 55;
+            // 
+            // SubTotal
+            // 
+            this.SubTotal.DataPropertyName = "SubTotal";
+            this.SubTotal.HeaderText = "SubTotal";
+            this.SubTotal.Name = "SubTotal";
+            this.SubTotal.ReadOnly = true;
+            this.SubTotal.Width = 85;
+            // 
+            // Total
+            // 
+            this.Total.DataPropertyName = "Total";
+            this.Total.HeaderText = "Total";
+            this.Total.Name = "Total";
+            this.Total.ReadOnly = true;
+            this.Total.Width = 62;
             // 
             // Compras
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(1170, 700);
+            this.ClientSize = new System.Drawing.Size(1110, 600);
             this.Controls.Add(this.txtFiltro);
             this.Controls.Add(this.cbFiltro);
             this.Controls.Add(this.btnImprimir);
@@ -268,9 +370,19 @@
         private System.Windows.Forms.Button btnRegistrar;
         private System.Windows.Forms.Button btnExportar;
         private System.Windows.Forms.Button btnImprimir;
-        private System.Windows.Forms.DataGridViewTextBoxColumn OrdenCompraID;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Completado;
         private System.Windows.Forms.TextBox txtFiltro;
         private System.Windows.Forms.ComboBox cbFiltro;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OrdenCompraID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Proveedor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FechaPedido;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FechaCompletado;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Completado;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TipoDePago;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NCF;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FechaVencimiento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FechaFactura;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ITBIS;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SubTotal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Total;
     }
 }

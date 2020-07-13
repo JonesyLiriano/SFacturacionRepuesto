@@ -63,20 +63,10 @@ namespace CapaPresentacion
         {
             try
             {
+                dgvCotizaciones.AutoGenerateColumns = false;
                 proc_CargarTodasCotizaciones_Results = cotizacionesNegocio.CargarTodasCotizaciones().ToList();
                 dgvCotizaciones.DataSource = proc_CargarTodasCotizaciones_Results;
-
-                dgvCotizaciones.Columns["CotizacionID"].DisplayIndex = 0;
-                dgvCotizaciones.Columns["Cliente"].DisplayIndex = 1;
-                dgvCotizaciones.Columns["DescuentoCliente"].DisplayIndex = 2;
-                dgvCotizaciones.Columns["Fecha"].DisplayIndex = 3;
-                dgvCotizaciones.Columns["Factura"].DisplayIndex = 3;
-                dgvCotizaciones.Columns["Valor"].DisplayIndex = 4;
-                dgvCotizaciones.Columns["Usuario"].DisplayIndex = 5;
-
-                dgvCotizaciones.Columns["DescuentoCliente"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                dgvCotizaciones.Columns["Valor"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                dgvCotizaciones.Refresh();
+                OrdenarColumnasDGV();
             }
             catch (Exception exc)
             {
@@ -86,6 +76,20 @@ namespace CapaPresentacion
             }
         }
 
+        private void OrdenarColumnasDGV()
+        {
+            dgvCotizaciones.Columns["CotizacionID"].DisplayIndex = 0;
+            dgvCotizaciones.Columns["Cliente"].DisplayIndex = 1;
+            dgvCotizaciones.Columns["DescuentoCliente"].DisplayIndex = 2;
+            dgvCotizaciones.Columns["Fecha"].DisplayIndex = 3;
+            dgvCotizaciones.Columns["Factura"].DisplayIndex = 3;
+            dgvCotizaciones.Columns["Valor"].DisplayIndex = 4;
+            dgvCotizaciones.Columns["Usuario"].DisplayIndex = 5;
+
+            dgvCotizaciones.Columns["DescuentoCliente"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvCotizaciones.Columns["Valor"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvCotizaciones.Refresh();
+        }
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             try
@@ -227,6 +231,7 @@ namespace CapaPresentacion
                             break;
                     }
                 }
+                OrdenarColumnasDGV();
             }
             catch (Exception exc)
             {

@@ -15,7 +15,7 @@ namespace CapaDatos
 
         public Tuple<bool, int> InsertarDetalleOrdenCompra(DetalleOrdenesCompra detalleOrdenCompra)
         {
-            modelDB.proc_InsertarDetalleOrdenCompra(detalleOrdenCompraID, detalleOrdenCompra.OrdenCompraID, detalleOrdenCompra.ProductoID, detalleOrdenCompra.CantidadOrdenada, detalleOrdenCompra.Precio, detalleOrdenCompra.Estatus, resultado);
+            modelDB.proc_InsertarDetalleOrdenCompra(detalleOrdenCompraID, detalleOrdenCompra.OrdenCompraID, detalleOrdenCompra.ProductoID, detalleOrdenCompra.CantidadOrdenada, detalleOrdenCompra.CantidadRecibida,detalleOrdenCompra.Precio, detalleOrdenCompra.Estatus, resultado);
 
             return Tuple.Create((bool)resultado.Value, (int)detalleOrdenCompraID.Value);
         }

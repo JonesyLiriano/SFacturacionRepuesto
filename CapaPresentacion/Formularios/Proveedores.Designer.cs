@@ -33,11 +33,17 @@
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
             this.dgvProveedores = new System.Windows.Forms.DataGridView();
-            this.ProveedorID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnCerrar = new System.Windows.Forms.Label();
             this.btnNuevo = new System.Windows.Forms.Button();
             this.txtFiltro = new System.Windows.Forms.TextBox();
             this.cbFiltro = new System.Windows.Forms.ComboBox();
+            this.ProveedorID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CedulaORnc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Direccion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Contacto_1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Contacto_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DatoAdicional = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProveedores)).BeginInit();
             this.SuspendLayout();
             // 
@@ -51,7 +57,7 @@
             this.btnEliminar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEliminar.ForeColor = System.Drawing.Color.White;
             this.btnEliminar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEliminar.Location = new System.Drawing.Point(965, 187);
+            this.btnEliminar.Location = new System.Drawing.Point(905, 187);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(180, 35);
             this.btnEliminar.TabIndex = 47;
@@ -69,7 +75,7 @@
             this.btnEditar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEditar.ForeColor = System.Drawing.Color.White;
             this.btnEditar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEditar.Location = new System.Drawing.Point(965, 127);
+            this.btnEditar.Location = new System.Drawing.Point(905, 127);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(180, 35);
             this.btnEditar.TabIndex = 46;
@@ -98,7 +104,13 @@
             this.dgvProveedores.ColumnHeadersHeight = 30;
             this.dgvProveedores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvProveedores.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ProveedorID});
+            this.ProveedorID,
+            this.Nombre,
+            this.CedulaORnc,
+            this.Direccion,
+            this.Contacto_1,
+            this.Contacto_2,
+            this.DatoAdicional});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.WhiteSmoke;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -115,16 +127,8 @@
             this.dgvProveedores.ReadOnly = true;
             this.dgvProveedores.RowHeadersVisible = false;
             this.dgvProveedores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProveedores.Size = new System.Drawing.Size(898, 621);
+            this.dgvProveedores.Size = new System.Drawing.Size(838, 521);
             this.dgvProveedores.TabIndex = 45;
-            // 
-            // ProveedorID
-            // 
-            this.ProveedorID.DataPropertyName = "ProveedorID";
-            this.ProveedorID.HeaderText = "ID";
-            this.ProveedorID.Name = "ProveedorID";
-            this.ProveedorID.ReadOnly = true;
-            this.ProveedorID.Width = 44;
             // 
             // btnCerrar
             // 
@@ -150,7 +154,7 @@
             this.btnNuevo.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNuevo.ForeColor = System.Drawing.Color.White;
             this.btnNuevo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNuevo.Location = new System.Drawing.Point(965, 67);
+            this.btnNuevo.Location = new System.Drawing.Point(905, 67);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(180, 35);
             this.btnNuevo.TabIndex = 43;
@@ -160,9 +164,10 @@
             // 
             // txtFiltro
             // 
+            this.txtFiltro.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtFiltro.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFiltro.ForeColor = System.Drawing.Color.Gray;
-            this.txtFiltro.Location = new System.Drawing.Point(560, 22);
+            this.txtFiltro.Location = new System.Drawing.Point(500, 22);
             this.txtFiltro.Name = "txtFiltro";
             this.txtFiltro.Size = new System.Drawing.Size(213, 24);
             this.txtFiltro.TabIndex = 82;
@@ -173,22 +178,79 @@
             // 
             // cbFiltro
             // 
+            this.cbFiltro.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cbFiltro.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cbFiltro.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbFiltro.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbFiltro.FormattingEnabled = true;
-            this.cbFiltro.Location = new System.Drawing.Point(772, 22);
+            this.cbFiltro.Location = new System.Drawing.Point(712, 22);
             this.cbFiltro.Name = "cbFiltro";
             this.cbFiltro.Size = new System.Drawing.Size(161, 24);
             this.cbFiltro.TabIndex = 81;
             this.cbFiltro.Validating += new System.ComponentModel.CancelEventHandler(this.cbFiltro_Validating);
+            // 
+            // ProveedorID
+            // 
+            this.ProveedorID.DataPropertyName = "ProveedorID";
+            this.ProveedorID.HeaderText = "ID";
+            this.ProveedorID.Name = "ProveedorID";
+            this.ProveedorID.ReadOnly = true;
+            this.ProveedorID.Width = 44;
+            // 
+            // Nombre
+            // 
+            this.Nombre.DataPropertyName = "Nombre";
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
+            this.Nombre.Width = 84;
+            // 
+            // CedulaORnc
+            // 
+            this.CedulaORnc.DataPropertyName = "CedulaORnc";
+            this.CedulaORnc.HeaderText = "CedulaORnc";
+            this.CedulaORnc.Name = "CedulaORnc";
+            this.CedulaORnc.ReadOnly = true;
+            this.CedulaORnc.Width = 114;
+            // 
+            // Direccion
+            // 
+            this.Direccion.DataPropertyName = "Direccion";
+            this.Direccion.HeaderText = "Direccion";
+            this.Direccion.Name = "Direccion";
+            this.Direccion.ReadOnly = true;
+            this.Direccion.Width = 92;
+            // 
+            // Contacto_1
+            // 
+            this.Contacto_1.DataPropertyName = "Contacto_1";
+            this.Contacto_1.HeaderText = "Contacto_1";
+            this.Contacto_1.Name = "Contacto_1";
+            this.Contacto_1.ReadOnly = true;
+            this.Contacto_1.Width = 109;
+            // 
+            // Contacto_2
+            // 
+            this.Contacto_2.DataPropertyName = "Contacto_2";
+            this.Contacto_2.HeaderText = "Contacto_2";
+            this.Contacto_2.Name = "Contacto_2";
+            this.Contacto_2.ReadOnly = true;
+            this.Contacto_2.Width = 109;
+            // 
+            // DatoAdicional
+            // 
+            this.DatoAdicional.DataPropertyName = "DatoAdicional";
+            this.DatoAdicional.HeaderText = "DatoAdicional";
+            this.DatoAdicional.Name = "DatoAdicional";
+            this.DatoAdicional.ReadOnly = true;
+            this.DatoAdicional.Width = 125;
             // 
             // Proveedores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(1170, 700);
+            this.ClientSize = new System.Drawing.Size(1110, 600);
             this.Controls.Add(this.txtFiltro);
             this.Controls.Add(this.cbFiltro);
             this.Controls.Add(this.btnEliminar);
@@ -214,8 +276,14 @@
         private System.Windows.Forms.DataGridView dgvProveedores;
         private System.Windows.Forms.Label btnCerrar;
         private System.Windows.Forms.Button btnNuevo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ProveedorID;
         private System.Windows.Forms.TextBox txtFiltro;
         private System.Windows.Forms.ComboBox cbFiltro;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProveedorID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CedulaORnc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Direccion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Contacto_1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Contacto_2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DatoAdicional;
     }
 }

@@ -151,7 +151,6 @@
             this.cbFacturasAAplicar.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cbFacturasAAplicar.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbFacturasAAplicar.BackColor = System.Drawing.SystemColors.Window;
-            this.cbFacturasAAplicar.Enabled = false;
             this.cbFacturasAAplicar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbFacturasAAplicar.ForeColor = System.Drawing.SystemColors.WindowText;
             this.cbFacturasAAplicar.FormattingEnabled = true;
@@ -211,7 +210,6 @@
             this.cbFacturas.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cbFacturas.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbFacturas.BackColor = System.Drawing.SystemColors.Window;
-            this.cbFacturas.Enabled = false;
             this.cbFacturas.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbFacturas.ForeColor = System.Drawing.SystemColors.WindowText;
             this.cbFacturas.FormattingEnabled = true;
@@ -263,7 +261,6 @@
             this.cbClientes.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cbClientes.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbClientes.BackColor = System.Drawing.SystemColors.Window;
-            this.cbClientes.Enabled = false;
             this.cbClientes.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbClientes.ForeColor = System.Drawing.SystemColors.WindowText;
             this.cbClientes.FormattingEnabled = true;
@@ -408,7 +405,6 @@
             this.txtValorAplicarNotaCredito.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtValorAplicarNotaCredito.Location = new System.Drawing.Point(180, 150);
             this.txtValorAplicarNotaCredito.Name = "txtValorAplicarNotaCredito";
-            this.txtValorAplicarNotaCredito.ReadOnly = true;
             this.txtValorAplicarNotaCredito.Size = new System.Drawing.Size(157, 24);
             this.txtValorAplicarNotaCredito.TabIndex = 87;
             this.txtValorAplicarNotaCredito.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -447,9 +443,10 @@
             // 
             // RegistrarNotaCredito
             // 
+            this.AcceptButton = this.btnGuardar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(745, 421);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.groupBox3);
@@ -461,6 +458,7 @@
             this.Name = "RegistrarNotaCredito";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RegistrarNotaCredito";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.RegistrarNotaCredito_FormClosing);
             this.Load += new System.EventHandler(this.RegistrarNotaCredito_Load);
             this.BarraTitulo.ResumeLayout(false);
             this.BarraTitulo.PerformLayout();

@@ -11,6 +11,7 @@ using System.Globalization;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -36,7 +37,7 @@ namespace CapaPresentacion.Formularios
         CultureInfo ci = new CultureInfo("en-us");
         private decimal valorFacturaTotal, valorFacturaTotalSinITBIS;
         private decimal? descuentoCliente;
-        private int notaCreditoID;
+        private int notaCreditoID, lineaCreditoVentaID;
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
@@ -113,7 +114,7 @@ namespace CapaPresentacion.Formularios
 
         private void cbFacturas_Validating(object sender, CancelEventArgs e)
         {
-            if (cbFacturas.SelectedIndex == -1)
+            if (cbFacturas.SelectedIndex == -1 && cbFacturas.Items.Count > 0)
             {
                 cbFacturas.Focus();
             }
@@ -122,7 +123,7 @@ namespace CapaPresentacion.Formularios
 
         private void cbFacturasAAplicar_Validating(object sender, CancelEventArgs e)
         {
-            if (cbFacturasAAplicar.SelectedIndex == -1)
+            if (cbFacturasAAplicar.SelectedIndex == -1 && cbFacturasAAplicar.Items.Count > 0)
             {
                 cbFacturasAAplicar.Focus();
             }
@@ -248,18 +249,18 @@ namespace CapaPresentacion.Formularios
                 {
                     decimal valorAplicar;
                     if (ProductosADevolver.dtProductosRecibidos.Rows.Count > 0
-                        && decimal.TryParse(txtValorAplicarNotaCredito.Text, out valorAplicar) && valorAplicar > 0)
+                        && decimal.TryParse(txtValorAplicarNotaCredito.Text, out valorAplicar) && valorAplicar > 0 
+                        && !(decimal.Parse(Regex.Replace(txtBalancePendiente.Text, @"[^\d.]", "")) < valorAplicar))
                     {
                         if (CrearNotaDeCredito())
                         {
                             AplicarNotaDeCredito(valorAplicar);
                             this.Close();
-                        }
-
+                        }                      
                     }
                     else
                     {
-                        MessageBox.Show("Debe de haber productos recibidos para procesar la nota de credito | El valor a aplicar para la nota  de credito debe ser valido y mayor que 0", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Debe de haber productos recibidos para procesar la nota de credito | El valor a aplicar para la nota  de credito debe ser valido y mayor que 0 | El valor a aplicar no puede sobrepasar el valor pendiente de la factura", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
@@ -276,7 +277,8 @@ namespace CapaPresentacion.Formularios
         {
             try
             {
-                cobrosVentasCreditoEntidad.LineaCreditoVentaID = lineasCreditoVentasNegocio.BuscarLineaDeCreditoVentaIDFactura(Convert.ToInt32(cbFacturasAAplicar.SelectedValue));
+                lineaCreditoVentaID = lineasCreditoVentasNegocio.BuscarLineaDeCreditoVentaIDFactura(Convert.ToInt32(cbFacturasAAplicar.SelectedValue));
+                cobrosVentasCreditoEntidad.LineaCreditoVentaID = lineaCreditoVentaID;
                 cobrosVentasCreditoEntidad.FechaCobro = DateTime.Now;
                 cobrosVentasCreditoEntidad.Monto = valorAplicar;
                 cobrosVentasCreditoEntidad.UserID = Login.userID;
@@ -286,9 +288,12 @@ namespace CapaPresentacion.Formularios
 
                 if (result.Item1)
                 {
-                    ImprimirComprobanteNotaDeCredito();
-                    MessageBox.Show("Nota de Credito Aplicada Correctamente...", "Nota De Credito Aplicada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (decimal.Parse(Regex.Replace(txtBalancePendiente.Text, @"[^\d.]", "")) == valorAplicar)
+                    {
+                        lineasCreditoVentasNegocio.ActualizarLineaCreditoVenta(lineaCreditoVentaID, true);
 
+                    }
+                    ImprimirComprobanteNotaDeCredito();
                 }
                 else
                 {
@@ -389,6 +394,11 @@ namespace CapaPresentacion.Formularios
             }
         }
 
+        private void RegistrarNotaCredito_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            ProductosADevolver.dtProductosRecibidos = null;
+        }
+
         private void cbFacturasAAplicar_SelectionChangeCommitted(object sender, EventArgs e)
         {
             if (cbFacturasAAplicar.SelectedIndex != -1)
@@ -427,11 +437,11 @@ namespace CapaPresentacion.Formularios
 
                     if (checkBoxITBIS.Checked)
                     {
-                        txtValorAplicarNotaCredito.Text = valorFacturaTotal.ToString("C", ci);
+                        txtValorAplicarNotaCredito.Text = valorFacturaTotal.ToString("F");
                     }
                     else
                     {
-                        txtValorAplicarNotaCredito.Text = valorFacturaTotalSinITBIS.ToString("C", ci);
+                        txtValorAplicarNotaCredito.Text = valorFacturaTotalSinITBIS.ToString("F");
                     }     
                     txtValorAplicarNotaCredito.Select();
                 }

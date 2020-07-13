@@ -53,8 +53,8 @@
           <DataField>Ordenada</DataField>
           <rd:TypeName>System.Double</rd:TypeName>
         </Field>
-        <Field Name="OrdencompraID">
-          <DataField>OrdencompraID</DataField>
+        <Field Name="OrdenCompraID">
+          <DataField>OrdenCompraID</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
         <Field Name="PrecioCompra">
@@ -887,7 +887,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Fields!OrdencompraID.Value</Value>
+                      <Value>=Fields!OrdenCompraID.Value</Value>
                       <Style>
                         <FontFamily>Segoe UI</FontFamily>
                         <FontWeight>Bold</FontWeight>
@@ -1141,7 +1141,7 @@
               <Width>1.99652in</Width>
               <ZIndex>14</ZIndex>
               <Visibility>
-                <Hidden>=IIf((Fields!CedulaORncProveedor.Value = "" Or Fields!CedulaORncProveedor.Value = 0),True, False)</Hidden>
+                <Hidden>=IIf((Fields!CedulaORncProveedor.Value = "" Or Fields!CedulaORncProveedor.Value = "0"),True, False)</Hidden>
               </Visibility>
               <Style>
                 <Border>

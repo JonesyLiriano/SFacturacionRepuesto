@@ -90,7 +90,7 @@
             this.MenuVertical.Dock = System.Windows.Forms.DockStyle.Left;
             this.MenuVertical.Location = new System.Drawing.Point(0, 0);
             this.MenuVertical.Name = "MenuVertical";
-            this.MenuVertical.Size = new System.Drawing.Size(250, 953);
+            this.MenuVertical.Size = new System.Drawing.Size(250, 680);
             this.MenuVertical.TabIndex = 0;
             // 
             // btnNotasCredito
@@ -392,7 +392,7 @@
             this.BarraTitulo.Dock = System.Windows.Forms.DockStyle.Top;
             this.BarraTitulo.Location = new System.Drawing.Point(250, 0);
             this.BarraTitulo.Name = "BarraTitulo";
-            this.BarraTitulo.Size = new System.Drawing.Size(1170, 80);
+            this.BarraTitulo.Size = new System.Drawing.Size(1110, 80);
             this.BarraTitulo.TabIndex = 1;
             this.BarraTitulo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.BarraTitulo_MouseDown);
             // 
@@ -403,7 +403,7 @@
             this.labelBarraMenu.AutoSize = true;
             this.labelBarraMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelBarraMenu.ForeColor = System.Drawing.Color.White;
-            this.labelBarraMenu.Location = new System.Drawing.Point(605, 33);
+            this.labelBarraMenu.Location = new System.Drawing.Point(593, 30);
             this.labelBarraMenu.Name = "labelBarraMenu";
             this.labelBarraMenu.Size = new System.Drawing.Size(0, 20);
             this.labelBarraMenu.TabIndex = 2;
@@ -413,10 +413,10 @@
             this.pbBarraMenu.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pbBarraMenu.ErrorImage = ((System.Drawing.Image)(resources.GetObject("pbBarraMenu.ErrorImage")));
-            this.pbBarraMenu.Location = new System.Drawing.Point(546, 15);
+            this.pbBarraMenu.Location = new System.Drawing.Point(534, 12);
             this.pbBarraMenu.Name = "pbBarraMenu";
             this.pbBarraMenu.Padding = new System.Windows.Forms.Padding(10, 10, 0, 0);
-            this.pbBarraMenu.Size = new System.Drawing.Size(53, 50);
+            this.pbBarraMenu.Size = new System.Drawing.Size(50, 50);
             this.pbBarraMenu.TabIndex = 5;
             this.pbBarraMenu.TabStop = false;
             // 
@@ -425,7 +425,7 @@
             this.iconminimizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.iconminimizar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.iconminimizar.Image = ((System.Drawing.Image)(resources.GetObject("iconminimizar.Image")));
-            this.iconminimizar.Location = new System.Drawing.Point(1089, 7);
+            this.iconminimizar.Location = new System.Drawing.Point(1029, 7);
             this.iconminimizar.Name = "iconminimizar";
             this.iconminimizar.Size = new System.Drawing.Size(18, 18);
             this.iconminimizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -438,7 +438,7 @@
             this.iconrestaurar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.iconrestaurar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.iconrestaurar.Image = ((System.Drawing.Image)(resources.GetObject("iconrestaurar.Image")));
-            this.iconrestaurar.Location = new System.Drawing.Point(1115, 7);
+            this.iconrestaurar.Location = new System.Drawing.Point(1055, 7);
             this.iconrestaurar.Name = "iconrestaurar";
             this.iconrestaurar.Size = new System.Drawing.Size(18, 18);
             this.iconrestaurar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -452,7 +452,7 @@
             this.iconmaximizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.iconmaximizar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.iconmaximizar.Image = ((System.Drawing.Image)(resources.GetObject("iconmaximizar.Image")));
-            this.iconmaximizar.Location = new System.Drawing.Point(1115, 5);
+            this.iconmaximizar.Location = new System.Drawing.Point(1055, 5);
             this.iconmaximizar.Name = "iconmaximizar";
             this.iconmaximizar.Size = new System.Drawing.Size(18, 18);
             this.iconmaximizar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -465,7 +465,7 @@
             this.iconcerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.iconcerrar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.iconcerrar.Image = ((System.Drawing.Image)(resources.GetObject("iconcerrar.Image")));
-            this.iconcerrar.Location = new System.Drawing.Point(1141, 7);
+            this.iconcerrar.Location = new System.Drawing.Point(1081, 7);
             this.iconcerrar.Name = "iconcerrar";
             this.iconcerrar.Size = new System.Drawing.Size(18, 18);
             this.iconcerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -487,11 +487,12 @@
             // 
             // panelContenedor
             // 
+            this.panelContenedor.AutoScroll = true;
             this.panelContenedor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
             this.panelContenedor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelContenedor.Location = new System.Drawing.Point(250, 80);
             this.panelContenedor.Name = "panelContenedor";
-            this.panelContenedor.Size = new System.Drawing.Size(1170, 873);
+            this.panelContenedor.Size = new System.Drawing.Size(1110, 600);
             this.panelContenedor.TabIndex = 2;
             this.panelContenedor.ControlRemoved += new System.Windows.Forms.ControlEventHandler(this.panelContenedor_ControlRemoved);
             // 
@@ -499,7 +500,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1420, 953);
+            this.ClientSize = new System.Drawing.Size(1360, 680);
             this.Controls.Add(this.panelContenedor);
             this.Controls.Add(this.BarraTitulo);
             this.Controls.Add(this.MenuVertical);

@@ -39,9 +39,15 @@ namespace CapaPresentacion.Formularios
 
         private void CargarTodasLineasCreditoCompra()
         {
+            dgvLineasCreditoCompra.AutoGenerateColumns = false;
             proc_CargarTodasLineasCreditoCompras_Results = lineasCreditoComprasNegocio.CargarTodasLineasCreditoCompras().ToList();
             dgvLineasCreditoCompra.DataSource = proc_CargarTodasLineasCreditoCompras_Results;
+            OrdenarColumnasDGV();
+            
+        }
 
+        private void OrdenarColumnasDGV()
+        {
             dgvLineasCreditoCompra.Columns["LineaCreditoCompraID"].DisplayIndex = 0;
             dgvLineasCreditoCompra.Columns["Proveedor"].DisplayIndex = 1;
             dgvLineasCreditoCompra.Columns["OrdenCompra"].DisplayIndex = 2;
@@ -56,7 +62,6 @@ namespace CapaPresentacion.Formularios
             dgvLineasCreditoCompra.Refresh();
 
         }
-
         private void btnConsultaFactura_Click(object sender, EventArgs e)
         {
             try
@@ -66,8 +71,7 @@ namespace CapaPresentacion.Formularios
                     OrdenCompra ordenCompra = new OrdenCompra(
                    dgvLineasCreditoCompra.CurrentRow.Cells["Proveedor"].Value.ToString(),
                    Convert.ToInt32(dgvLineasCreditoCompra.Rows[dgvLineasCreditoCompra.CurrentRow.Index].Cells["OrdenCompra"].Value),
-                   Convert.ToBoolean(dgvLineasCreditoCompra.Rows[dgvLineasCreditoCompra.CurrentRow.Index].Cells["Completado"].Value)
-                   );
+                   true);
                     ordenCompra.ShowDialog();
                 }
                 else
@@ -130,6 +134,7 @@ namespace CapaPresentacion.Formularios
                         , Convert.ToDecimal(dgvLineasCreditoCompra.CurrentRow.Cells["BalancePendiente"].Value)
                         , Convert.ToBoolean(dgvLineasCreditoCompra.CurrentRow.Cells["Completado"].Value));
                     historialPagos.ShowDialog();
+                    CargarTodasLineasCreditoCompra();
                 }
             }
             catch (Exception exc)
@@ -199,6 +204,7 @@ namespace CapaPresentacion.Formularios
                             break;
                     }
                 }
+                OrdenarColumnasDGV();
             }
             catch (Exception exc)
             {

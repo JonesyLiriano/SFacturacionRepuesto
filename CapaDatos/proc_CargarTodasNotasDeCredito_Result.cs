@@ -20,8 +20,8 @@ namespace CapaDatos
         public string Cliente { get; set; }
         public int Factura { get; set; }
         public int FacturaAplicada { get; set; }
-        public Nullable<double> Monto { get; set; }
-        public decimal MontoAplicado { get; set; }
+        public Nullable<decimal> Monto { get; set; }
+        public Nullable<decimal> MontoAplicado { get; set; }
         public string Usuario { get; set; }
         public System.DateTime FechaVencimiento { get; set; }
     }

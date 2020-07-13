@@ -39,13 +39,31 @@ namespace CapaPresentacion.Impresiones
 
         public void ImprimirDirecto()
         {
-            ConfirmarTipoImpresora();
+            try
+            {
+                ConfirmarTipoImpresora();
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Error: " + exc.ToString(),
+                  "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Loggeator.EscribeEnArchivo(exc.ToString());
+            }
         }
 
         public void ImprimirConVistaPrevia()
         {
-            CargarParametros();
-            CargarVistaPreviaRV();
+            try
+            {
+                CargarParametros();
+                CargarVistaPreviaRV();
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Error: " + exc.ToString(),
+                  "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Loggeator.EscribeEnArchivo(exc.ToString());
+            }
         }
 
         private void ConfirmarTipoImpresora()

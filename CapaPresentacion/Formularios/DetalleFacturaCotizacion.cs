@@ -21,7 +21,7 @@ namespace CapaPresentacion.Formularios
         List<proc_ComprobanteCotizacion_Result> proc_ComprobanteCotizacion_Results;
         FacturasNegocio facturasNegocio = new FacturasNegocio();
         List<proc_ComprobanteFacturaVenta_Result> proc_ComprobanteFacturaVenta_Results;
-        decimal itbisTotal, descuentoTotal, total, subtotal, cantProd;
+        decimal itbisTotal, descuentoTotal, subtotal, cantProd;
         int id;
         CultureInfo ci = new CultureInfo("en-us");
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
@@ -58,14 +58,14 @@ namespace CapaPresentacion.Formularios
                 if (detalle == "Cotizacion")
                 {
                     CargarProdCotizacion();
-                    CargarTextBoxs();
+                    CargarTextBoxs(detalle);
                 }
                 else
                 {
                     CargarProdFactura();
-                    CargarTextBoxs();
+                    CargarTextBoxs(detalle);
                 }
-
+                dgvCarrito.AutoGenerateColumns = false;
                 dgvCarrito.Columns["Precio"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                 dgvCarrito.Columns["ITBIS"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                 dgvCarrito.Columns["Descuento"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
@@ -110,7 +110,7 @@ namespace CapaPresentacion.Formularios
 
 
         }
-        private void CargarTextBoxs()
+        private void CargarTextBoxs(string detalle)
         {
             itbisTotal = 0;
             descuentoTotal = 0;
@@ -122,15 +122,23 @@ namespace CapaPresentacion.Formularios
                 itbisTotal += (Convert.ToDecimal(row.Cells["ITBIS"].Value) * Convert.ToDecimal(row.Cells["Cantidad"].Value));
                 descuentoTotal += (Convert.ToDecimal(row.Cells["Cantidad"].Value) * Convert.ToDecimal(row.Cells["Descuento"].Value));
                 subtotal += (Convert.ToDecimal(row.Cells["Cantidad"].Value) * Convert.ToDecimal(row.Cells["Precio"].Value));
-                total += (Convert.ToDecimal(row.Cells["Importe"].Value));
                 cantProd++;
             }
-            descuentoTotal += (proc_ComprobanteFacturaVenta_Results.FirstOrDefault().Descuento * (subtotal + itbisTotal - descuentoTotal));           
+            if(detalle == "Cotizacion")
+            {
+                descuentoTotal += ((Convert.ToDecimal(proc_ComprobanteCotizacion_Results.FirstOrDefault().DescuentoCliente) /100) * (subtotal + itbisTotal - descuentoTotal));
+
+            }
+            else
+            {
+                descuentoTotal += ((Convert.ToDecimal(proc_ComprobanteFacturaVenta_Results.FirstOrDefault().DescuentoCliente) / 100) * (subtotal + itbisTotal - descuentoTotal));
+
+            }
 
             txtSubTotal.Text = subtotal.ToString("C", ci);
             txtITBIS.Text = itbisTotal.ToString("C", ci);
             txtDescuento.Text = descuentoTotal.ToString("C", ci);
-            txtTotal.Text = (total - descuentoTotal).ToString("C", ci);
+            txtTotal.Text = (subtotal + itbisTotal - descuentoTotal).ToString("C", ci);
             txtCantProd.Text = cantProd.ToString();           
         }
     }

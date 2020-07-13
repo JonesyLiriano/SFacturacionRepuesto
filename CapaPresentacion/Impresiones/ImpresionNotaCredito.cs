@@ -19,7 +19,7 @@ namespace CapaPresentacion.Impresiones
     {
         NotasDeCreditoNegocio notaDeCreditoNegocio = new NotasDeCreditoNegocio();
         List<proc_ComprobanteNotaDeCredito_Result> proc_ComprobanteNotaDeCredito_Results;
-        ReportParameter[] parameters = new ReportParameter[6];
+        ReportParameter[] parameters = new ReportParameter[7];
         int cantArticulos;
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
@@ -40,13 +40,31 @@ namespace CapaPresentacion.Impresiones
 
         public void ImprimirDirecto()
         {
-            ConfirmarTipoImpresora();
+            try
+            {
+                ConfirmarTipoImpresora();
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Error: " + exc.ToString(),
+                  "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Loggeator.EscribeEnArchivo(exc.ToString());
+            }
         }
 
         public void ImprimirConVistaPrevia()
         {
-            CargarParametros();
-            CargarVistaPreviaRV();
+            try
+            {
+                CargarParametros();
+                CargarVistaPreviaRV();
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Error: " + exc.ToString(),
+                  "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Loggeator.EscribeEnArchivo(exc.ToString());
+            }
         }
 
         private void ConfirmarTipoImpresora()
@@ -125,7 +143,7 @@ namespace CapaPresentacion.Impresiones
         {
             try
             {
-                var dataSource = new ReportDataSource("DataSetComprobanteCredito", proc_ComprobanteNotaDeCredito_Results);
+                var dataSource = new ReportDataSource("DataSetComprobanteNotaCredito", proc_ComprobanteNotaDeCredito_Results);
                 reportViewer1.ProcessingMode = ProcessingMode.Local;
                 reportViewer1.LocalReport.ReportPath = @"C:/SFacturacion/impresionNotaCredito.rdlc";
                 reportViewer1.LocalReport.DataSources.Clear();

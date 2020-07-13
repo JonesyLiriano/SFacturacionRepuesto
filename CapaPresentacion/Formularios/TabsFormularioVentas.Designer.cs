@@ -48,7 +48,7 @@
             this.tabControlVentas.Name = "tabControlVentas";
             this.tabControlVentas.Padding = new System.Drawing.Point(0, 0);
             this.tabControlVentas.SelectedIndex = 0;
-            this.tabControlVentas.Size = new System.Drawing.Size(1170, 700);
+            this.tabControlVentas.Size = new System.Drawing.Size(1110, 600);
             this.tabControlVentas.TabIndex = 0;
             this.tabControlVentas.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.tabControlVentas_DrawItem);
             this.tabControlVentas.ControlRemoved += new System.Windows.Forms.ControlEventHandler(this.tabControlVentas_ControlRemoved);
@@ -60,7 +60,7 @@
             this.tabAgregar.Location = new System.Drawing.Point(4, 29);
             this.tabAgregar.Name = "tabAgregar";
             this.tabAgregar.Padding = new System.Windows.Forms.Padding(3);
-            this.tabAgregar.Size = new System.Drawing.Size(1162, 667);
+            this.tabAgregar.Size = new System.Drawing.Size(1102, 567);
             this.tabAgregar.TabIndex = 0;
             this.tabAgregar.UseVisualStyleBackColor = true;
             // 
@@ -76,7 +76,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(1170, 700);
+            this.ClientSize = new System.Drawing.Size(1110, 600);
             this.Controls.Add(this.tabControlVentas);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "TabsFormularioVentas";

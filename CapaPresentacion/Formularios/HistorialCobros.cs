@@ -131,10 +131,18 @@ namespace CapaPresentacion.Formularios
                     
                         DialogResult dialogResult = MessageBox.Show(string.Format("Esta seguro que desea eliminar el cobro {0}?", dgvCobros.CurrentRow.Cells["CobroVentaCreditoID"].Value), "Eliminar Cobro", MessageBoxButtons.OKCancel);
                     if (dialogResult == DialogResult.OK)
-                    {
-                        resultado = cobrosVentaCreditoNegocio.BorrarCobroVentaCredito(Convert.ToInt32(dgvCobros.CurrentRow.Cells["CobroVentaCreditoID"].Value));
-                        CargarDataGridView();
-                        ValidarBorrarCobro(resultado);
+                    {                        
+                        if (!(dgvCobros.Rows[dgvCobros.CurrentRow.Index].Cells["Concepto"].Value.ToString() == "Nota de credito"))
+                        {   
+                            resultado = cobrosVentaCreditoNegocio.BorrarCobroVentaCredito(Convert.ToInt32(dgvCobros.CurrentRow.Cells["CobroVentaCreditoID"].Value));
+                            CargarDataGridView();
+                            ValidarBorrarCobro(resultado);
+                        } 
+                        else
+                        {
+                            MessageBox.Show("No se puede eliminar los cobros asociados a una nota de credito.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                        }
                     }
                 }
                 else
@@ -160,6 +168,11 @@ namespace CapaPresentacion.Formularios
             {
                 MessageBox.Show("El Cobro no pudo ser eliminada, favor de verificar los requerimientros", "Ha Ocurrido un error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void HistorialCobros_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

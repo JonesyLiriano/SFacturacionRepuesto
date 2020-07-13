@@ -76,25 +76,11 @@ namespace CapaPresentacion.Formularios
         {
             try
             {
+                dgvFacturas.AutoGenerateColumns = false;
                 proc_CargarTodasFacturas_Results = facturasNegocio.CargarTodasFacturas().ToList();
                 dgvFacturas.DataSource = proc_CargarTodasFacturas_Results;
-
-                dgvFacturas.Columns["FacturaID"].DisplayIndex = 0;
-                dgvFacturas.Columns["Cliente"].DisplayIndex = 1;
-                dgvFacturas.Columns["DescuentoCliente"].DisplayIndex = 2;
-                dgvFacturas.Columns["Fecha"].DisplayIndex = 3;
-                dgvFacturas.Columns["TipoDePago"].DisplayIndex = 4;
-                dgvFacturas.Columns["TipoFactura"].DisplayIndex = 5;
-                dgvFacturas.Columns["Cotizacion"].DisplayIndex = 6;
-                dgvFacturas.Columns["NCF"].DisplayIndex = 7;
-                dgvFacturas.Columns["FechaVencimiento"].DisplayIndex = 8;
-                dgvFacturas.Columns["Valor"].DisplayIndex = 9;
-                dgvFacturas.Columns["Usuario"].DisplayIndex = 10;
-                dgvFacturas.Columns["ClienteID"].DisplayIndex = 11;
-
-                dgvFacturas.Columns["DescuentoCliente"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                dgvFacturas.Columns["Valor"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                dgvFacturas.Refresh();
+                OrdenarColumnasDGV();
+                
             }
             catch (Exception exc)
             {
@@ -103,6 +89,25 @@ namespace CapaPresentacion.Formularios
                 Loggeator.EscribeEnArchivo(exc.ToString());
             }
         } 
+        private void OrdenarColumnasDGV()
+        {
+            dgvFacturas.Columns["FacturaID"].DisplayIndex = 0;
+            dgvFacturas.Columns["Cliente"].DisplayIndex = 1;
+            dgvFacturas.Columns["DescuentoCliente"].DisplayIndex = 2;
+            dgvFacturas.Columns["Fecha"].DisplayIndex = 3;
+            dgvFacturas.Columns["TipoDePago"].DisplayIndex = 4;
+            dgvFacturas.Columns["TipoFactura"].DisplayIndex = 5;
+            dgvFacturas.Columns["Cotizacion"].DisplayIndex = 6;
+            dgvFacturas.Columns["NCF"].DisplayIndex = 7;
+            dgvFacturas.Columns["FechaVencimiento"].DisplayIndex = 8;
+            dgvFacturas.Columns["Valor"].DisplayIndex = 9;
+            dgvFacturas.Columns["Usuario"].DisplayIndex = 10;
+            dgvFacturas.Columns["ClienteID"].DisplayIndex = 11;
+
+            dgvFacturas.Columns["DescuentoCliente"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvFacturas.Columns["Valor"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvFacturas.Refresh();
+        }
         private void btnExportar_Click(object sender, EventArgs e)
         {
             try
@@ -212,6 +217,7 @@ namespace CapaPresentacion.Formularios
                             break;
                     }
                 }
+                OrdenarColumnasDGV();
             }
             catch (Exception exc)
             {
@@ -228,5 +234,6 @@ namespace CapaPresentacion.Formularios
                 cbFiltro.Focus();
             }
         }
+
     }
 }

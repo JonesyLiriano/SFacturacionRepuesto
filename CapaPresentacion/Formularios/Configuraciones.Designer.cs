@@ -105,7 +105,7 @@
             this.btnGuardar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.ForeColor = System.Drawing.Color.White;
             this.btnGuardar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGuardar.Location = new System.Drawing.Point(933, 42);
+            this.btnGuardar.Location = new System.Drawing.Point(821, 42);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(180, 35);
             this.btnGuardar.TabIndex = 42;
@@ -138,7 +138,7 @@
             this.groupBox1.Controls.Add(this.txtITBIS);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold);
-            this.groupBox1.Location = new System.Drawing.Point(62, 42);
+            this.groupBox1.Location = new System.Drawing.Point(34, 42);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(169, 96);
             this.groupBox1.TabIndex = 54;
@@ -150,7 +150,7 @@
             this.groupBox3.Controls.Add(this.txtSNCredito);
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold);
-            this.groupBox3.Location = new System.Drawing.Point(62, 354);
+            this.groupBox3.Location = new System.Drawing.Point(34, 354);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(311, 82);
             this.groupBox3.TabIndex = 56;
@@ -183,7 +183,7 @@
             this.groupBox2.Controls.Add(this.txtSFacturaFiscal);
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold);
-            this.groupBox2.Location = new System.Drawing.Point(62, 144);
+            this.groupBox2.Location = new System.Drawing.Point(34, 144);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(311, 204);
             this.groupBox2.TabIndex = 55;
@@ -246,7 +246,7 @@
             this.groupBox4.Controls.Add(this.dtFechaVencimiento);
             this.groupBox4.Controls.Add(this.label9);
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.Location = new System.Drawing.Point(62, 442);
+            this.groupBox4.Location = new System.Drawing.Point(34, 442);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(311, 69);
             this.groupBox4.TabIndex = 57;
@@ -279,7 +279,7 @@
             this.groupBox6.Controls.Add(this.txtNombreImpresora);
             this.groupBox6.Controls.Add(this.label12);
             this.groupBox6.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold);
-            this.groupBox6.Location = new System.Drawing.Point(519, 460);
+            this.groupBox6.Location = new System.Drawing.Point(733, 324);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(343, 181);
             this.groupBox6.TabIndex = 58;
@@ -357,9 +357,9 @@
             this.groupBox5.Controls.Add(this.txtNombreEmpresa);
             this.groupBox5.Controls.Add(this.label4);
             this.groupBox5.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold);
-            this.groupBox5.Location = new System.Drawing.Point(519, 42);
+            this.groupBox5.Location = new System.Drawing.Point(368, 42);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(343, 412);
+            this.groupBox5.Size = new System.Drawing.Size(343, 466);
             this.groupBox5.TabIndex = 59;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Empresa";
@@ -392,7 +392,7 @@
             this.btnCargarLogo.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCargarLogo.ForeColor = System.Drawing.Color.White;
             this.btnCargarLogo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCargarLogo.Location = new System.Drawing.Point(162, 363);
+            this.btnCargarLogo.Location = new System.Drawing.Point(162, 408);
             this.btnCargarLogo.Name = "btnCargarLogo";
             this.btnCargarLogo.Size = new System.Drawing.Size(175, 35);
             this.btnCargarLogo.TabIndex = 58;
@@ -403,9 +403,9 @@
             // pbLogo
             // 
             this.pbLogo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pbLogo.Location = new System.Drawing.Point(162, 280);
+            this.pbLogo.Location = new System.Drawing.Point(162, 282);
             this.pbLogo.Name = "pbLogo";
-            this.pbLogo.Size = new System.Drawing.Size(175, 69);
+            this.pbLogo.Size = new System.Drawing.Size(175, 112);
             this.pbLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbLogo.TabIndex = 10;
             this.pbLogo.TabStop = false;
@@ -414,7 +414,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Century Gothic", 11F);
-            this.label14.Location = new System.Drawing.Point(8, 304);
+            this.label14.Location = new System.Drawing.Point(8, 336);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(46, 20);
             this.label14.TabIndex = 9;
@@ -515,7 +515,7 @@
             // 
             this.label5.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(247, 42);
+            this.label5.Location = new System.Drawing.Point(219, 42);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(126, 96);
             this.label5.TabIndex = 60;
@@ -533,7 +533,7 @@
             this.btnSubirBackupNube.ForeColor = System.Drawing.Color.White;
             this.btnSubirBackupNube.Image = ((System.Drawing.Image)(resources.GetObject("btnSubirBackupNube.Image")));
             this.btnSubirBackupNube.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSubirBackupNube.Location = new System.Drawing.Point(933, 105);
+            this.btnSubirBackupNube.Location = new System.Drawing.Point(821, 105);
             this.btnSubirBackupNube.Name = "btnSubirBackupNube";
             this.btnSubirBackupNube.Size = new System.Drawing.Size(180, 54);
             this.btnSubirBackupNube.TabIndex = 61;
@@ -548,7 +548,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(1170, 700);
+            this.ClientSize = new System.Drawing.Size(1110, 600);
             this.Controls.Add(this.btnSubirBackupNube);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.groupBox6);

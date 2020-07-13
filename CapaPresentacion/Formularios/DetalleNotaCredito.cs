@@ -58,6 +58,7 @@ namespace CapaPresentacion.Formularios
                             item.Precio, (Convert.ToDecimal(item.CantDevuelta) * (item.Precio))?.ToString("F"),item.Comentario);
                     }
                 }
+                dgvCarrito.AutoGenerateColumns = false;
                 dgvCarrito.Columns["Precio"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                 dgvCarrito.Columns["CantDevuelta"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                 dgvCarrito.Columns["Importe"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
@@ -93,6 +94,11 @@ namespace CapaPresentacion.Formularios
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Loggeator.EscribeEnArchivo(exc.ToString());
             }
+        }
+
+        private void DetalleNotaCredito_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
