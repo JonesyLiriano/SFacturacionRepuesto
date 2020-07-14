@@ -106,6 +106,7 @@
             this.cbTipoPago.Name = "cbTipoPago";
             this.cbTipoPago.Size = new System.Drawing.Size(192, 26);
             this.cbTipoPago.TabIndex = 125;
+            this.cbTipoPago.Validating += new System.ComponentModel.CancelEventHandler(this.cbTipoPago_Validating);
             // 
             // label6
             // 

@@ -125,17 +125,25 @@ namespace CapaPresentacion.Formularios
                 MessageBox.Show("Debe de seleccionar un TIPO DE PAGO");
                 return false;
             }
-            if (string.IsNullOrEmpty(txtITBIS.Text) && decimal.TryParse(txtITBIS.Text ,out numberoDecimal))
+            if (string.IsNullOrEmpty(txtITBIS.Text) || !decimal.TryParse(txtITBIS.Text ,out numberoDecimal))
             {
                 MessageBox.Show("El Campo ITBIS no puede estar vacío y debe ser un numero valido");
                 return false;
             }
-            if (string.IsNullOrEmpty(txtSubTotal.Text) && decimal.TryParse(txtSubTotal.Text, out numberoDecimal))
+            if (string.IsNullOrEmpty(txtSubTotal.Text) || !decimal.TryParse(txtSubTotal.Text, out numberoDecimal))
             {
                 MessageBox.Show("El Campo SUBTOTAL no puede estar vacío y debe ser un numero valido");
                 return false;
             }
             return true;
+        }
+
+        private void cbTipoPago_Validating(object sender, CancelEventArgs e)
+        {
+            if (cbTipoPago.SelectedIndex == -1 && cbTipoPago.Items.Count > 0)
+            {
+                cbTipoPago.Focus();
+            }
         }
     }
 }
