@@ -373,7 +373,6 @@ namespace CapaPresentacion.Formularios
                     {
                         CrearOrdenCompra();
                     }
-                    this.Close();
                 }
                 else
                 {
