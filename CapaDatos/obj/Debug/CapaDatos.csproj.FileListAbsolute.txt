@@ -52,3 +52,4 @@ F:\C#\SFacturacionRepuesto\CapaDatos\obj\Debug\CapaDatos.csproj.CoreCompileInput
 F:\C#\SFacturacionRepuesto\CapaDatos\obj\Debug\CapaDatos.csproj.CopyComplete
 F:\C#\SFacturacionRepuesto\CapaDatos\obj\Debug\CapaDatos.dll
 F:\C#\SFacturacionRepuesto\CapaDatos\obj\Debug\CapaDatos.pdb
+F:\C#\SFacturacionRepuesto\CapaDatos\obj\Debug\CapaDatos.csprojAssemblyReference.cache
