@@ -92,7 +92,12 @@ namespace SFacturacion
 
         private void iconcerrar_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            DialogResult result = MessageBox.Show("Esta seguro que desea salir del programa?", "Confirmacion para salir", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                Application.Exit();
+
+            }
         }
 
         private void iconmaximizar_Click(object sender, EventArgs e)
@@ -125,7 +130,7 @@ namespace SFacturacion
             {
                 if (panelContenedor.Controls.Count > 1)
                 {
-                    CerrarFormularioResumenSistema();
+                    CerrarFormularioResumenSistemaYConfiguraciones();
                 }
                 Form fh;
                 fh = panelContenedor.Controls.OfType<MiForm>().FirstOrDefault();
@@ -149,7 +154,7 @@ namespace SFacturacion
             catch (Exception exc)
             {
 
-                MessageBox.Show("Error: " + exc.ToString(),
+                MessageBox.Show("Error: Se ha intentado abrir un formulario pero este se cerro inesperadamente, intente de nuevo por favor.",
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Loggeator.EscribeEnArchivo(exc.ToString());
             }
@@ -264,7 +269,7 @@ namespace SFacturacion
             catch (Exception exc)
             {
 
-                MessageBox.Show("Error: " + exc.ToString(),
+                MessageBox.Show("Error: No se ha podido activar el boton del formulario que se intento abrir, intente de nuevo por favor.",
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Loggeator.EscribeEnArchivo(exc.ToString());
             }
@@ -287,7 +292,7 @@ namespace SFacturacion
             catch (Exception exc)
             {
 
-                MessageBox.Show("Error: " + exc.ToString(),
+                MessageBox.Show("Error: No se ha podido desactivar el boton en el menu lateral, intente de nuevo por favor.. " + exc.ToString(),
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Loggeator.EscribeEnArchivo(exc.ToString());
             }
@@ -384,11 +389,11 @@ namespace SFacturacion
         }
 
 
-        private void CerrarFormularioResumenSistema()
+        private void CerrarFormularioResumenSistemaYConfiguraciones()
         {
             foreach (Control item in panelContenedor.Controls)
             {
-                if (item.Text == "InicioResumen")
+                if (item.Text == "InicioResumen" || item.Text == "Configuraciones")
                 {
                     panelContenedor.Controls.Remove(item);
                 }

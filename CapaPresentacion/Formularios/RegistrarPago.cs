@@ -62,7 +62,7 @@ namespace CapaPresentacion.Formularios
             catch (Exception exc)
             {
 
-                MessageBox.Show("Error: " + exc.ToString(),
+                MessageBox.Show("Error: No se ha podido registrar el pago, verifique el monto a pagar e intente de nuevo por favor.",
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Loggeator.EscribeEnArchivo(exc.ToString());
             }

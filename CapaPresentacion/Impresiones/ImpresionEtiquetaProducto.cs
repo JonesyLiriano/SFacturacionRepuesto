@@ -96,7 +96,7 @@ namespace CapaPresentacion.Impresiones
             }
             catch (Exception exc)
             {
-                MessageBox.Show("Error: " + exc.ToString(),
+                MessageBox.Show("Error: No se ha podido imprimir, verifique si las configuraciones del sistema estan correctas e intente de nuevo por favor.",
                   "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Loggeator.EscribeEnArchivo(exc.ToString());
                 return null;
@@ -115,7 +115,7 @@ namespace CapaPresentacion.Impresiones
             }
             catch (Exception exc)
             {
-                MessageBox.Show("Error: " + exc.ToString(),
+                MessageBox.Show("Error: No se ha podido imprimir, verifique si las configuraciones del sistema estan correctas e intente de nuevo por favor.",
                   "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Loggeator.EscribeEnArchivo(exc.ToString());
             }
@@ -135,7 +135,7 @@ namespace CapaPresentacion.Impresiones
             }
             catch (Exception exc)
             {
-                MessageBox.Show("Error: " + exc.ToString(),
+                MessageBox.Show("Error: No se ha podido imprimir, verifique si las configuraciones del sistema estan correctas e intente de nuevo por favor.",
                   "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Loggeator.EscribeEnArchivo(exc.ToString());
                 return null;

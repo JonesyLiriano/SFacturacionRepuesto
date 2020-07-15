@@ -1585,7 +1585,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>1.97048in</Top>
+              <Top>1.9427in</Top>
               <Left>0.32854in</Left>
               <Height>0.5in</Height>
               <Width>3.74633in</Width>
@@ -1802,6 +1802,7 @@
                       <Style>
                         <FontFamily>Segoe UI</FontFamily>
                         <FontSize>9pt</FontSize>
+                        <Format>dd/MM/yyyy hh:mm:ss tt</Format>
                       </Style>
                     </TextRun>
                   </TextRuns>
@@ -1971,7 +1972,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=FormatNumber(SUM((Fields!PrecioCompra.Value * Fields!Existencia.Value), "DataSetTodosProductos"), 2)</Value>
+                      <Value>=FormatNumber(SUM((CDec(Fields!PrecioCompra.Value) * CDec(Fields!Existencia.Value)), "DataSetTodosProductos"), 2)</Value>
                       <Style>
                         <FontFamily>Segoe UI</FontFamily>
                         <FontWeight>Normal</FontWeight>
@@ -2009,7 +2010,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=FormatNumber(SUM((Fields!PrecioVenta.Value * Fields!Existencia.Value), "DataSetTodosProductos"), 2)</Value>
+                      <Value>=FormatNumber(SUM((CDec(Fields!PrecioVenta.Value) * CDec(Fields!Existencia.Value)), "DataSetTodosProductos"), 2)</Value>
                       <Style>
                         <FontFamily>Segoe UI</FontFamily>
                         <FontWeight>Bold</FontWeight>

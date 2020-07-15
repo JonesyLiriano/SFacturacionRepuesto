@@ -154,7 +154,7 @@ namespace CapaPresentacion.Formularios
             }
             catch (Exception exc)
             {
-                MessageBox.Show("Error: " + exc.ToString(),
+                MessageBox.Show("Error: No se ha podido calcular el total de la nota de credito, favor de intentar nuevamente.",
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Loggeator.EscribeEnArchivo(exc.ToString());
             }
@@ -175,7 +175,7 @@ namespace CapaPresentacion.Formularios
             }
             catch (Exception exc)
             {
-                MessageBox.Show("Error: " + exc.ToString(),
+                MessageBox.Show("Error: No se ha podido imprimir la nota de credito, verifique si las configuraciones del sistema estan correctas e intente de nuevo por favor.",
                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Loggeator.EscribeEnArchivo(exc.ToString());
             }
@@ -234,7 +234,7 @@ namespace CapaPresentacion.Formularios
             catch (Exception exc)
             {
 
-                MessageBox.Show("Error: " + exc.ToString(),
+                MessageBox.Show("Error: No se ha podido crear el detalle de la nota de credito, intente de nuevo por favor.",
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Loggeator.EscribeEnArchivo(exc.ToString());
             }
@@ -267,7 +267,7 @@ namespace CapaPresentacion.Formularios
             catch (Exception exc)
             {
 
-                MessageBox.Show("Error: " + exc.ToString(),
+                MessageBox.Show("Error: No se ha podido guardar esta nota de credito, favor de verificar los campos e intentar nuevamente.",
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Loggeator.EscribeEnArchivo(exc.ToString());
             }
@@ -303,7 +303,7 @@ namespace CapaPresentacion.Formularios
             catch (Exception exc)
             {
 
-                MessageBox.Show("Error: " + exc.ToString(),
+                MessageBox.Show("Error: La nota de credito no ha podido ser aplicada, verificar e intente de nuevo por favor",
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Loggeator.EscribeEnArchivo(exc.ToString());
             }
@@ -454,7 +454,7 @@ namespace CapaPresentacion.Formularios
             catch (Exception exc)
             {
 
-                MessageBox.Show("Error: " + exc.ToString(),
+                MessageBox.Show("Error: Se intento cargar los productos recibidos pero ha ocurrido un error, intente de nuevo por favor.",
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Loggeator.EscribeEnArchivo(exc.ToString());
             }

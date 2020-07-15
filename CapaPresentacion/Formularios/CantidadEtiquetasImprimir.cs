@@ -59,7 +59,7 @@ namespace CapaPresentacion.Formularios
             }
             catch (Exception exc)
             {
-                MessageBox.Show("Error: " + exc.ToString(),
+                MessageBox.Show("Ha ocurrido un error intentando imprimir las etiquetas, valide nuevamente el producto que quiere imprimir.",
                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Loggeator.EscribeEnArchivo(exc.ToString());
             }

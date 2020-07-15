@@ -90,7 +90,7 @@ namespace CapaPresentacion
             }
             catch (Exception exc)
             {
-                MessageBox.Show("Error: " + exc.ToString(),
+                MessageBox.Show("Error: Proveedor no pudo ser agregado, verifique que el proveedor no exista e intente de nuevo por favor.",
                   "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Loggeator.EscribeEnArchivo(exc.ToString());
 
@@ -138,7 +138,7 @@ namespace CapaPresentacion
             }
             catch (Exception exc)
             {
-                MessageBox.Show("Error: " + exc.ToString(),
+                MessageBox.Show("Error: Proveedor no pudo ser editado, verifique los campos e intente de nuevo por favor.",
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Loggeator.EscribeEnArchivo(exc.ToString());
             }

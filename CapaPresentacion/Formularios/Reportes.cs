@@ -37,7 +37,7 @@ namespace CapaPresentacion.Formularios
             }
             catch (Exception exc)
             {
-                MessageBox.Show("Error: " + exc.ToString(),
+                MessageBox.Show("Error: No se ha podido exportar los clientes, verifique si las configuraciones del sistema estan correctas e intente de nuevo por favor.",
                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Loggeator.EscribeEnArchivo(exc.ToString());
             }
@@ -52,7 +52,7 @@ namespace CapaPresentacion.Formularios
             }
             catch (Exception exc)
             {
-                MessageBox.Show("Error: " + exc.ToString(),
+                MessageBox.Show("Error: No se ha podido exportar los proveedores, verifique si las configuraciones del sistema estan correctas e intente de nuevo por favor.",
                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Loggeator.EscribeEnArchivo(exc.ToString());
             }
@@ -67,7 +67,7 @@ namespace CapaPresentacion.Formularios
             }
             catch (Exception exc)
             {
-                MessageBox.Show("Error: " + exc.ToString(),
+                MessageBox.Show("Error: No se ha podido exportar los productos, verifique si las configuraciones del sistema estan correctas e intente de nuevo por favor.",
                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Loggeator.EscribeEnArchivo(exc.ToString());
             }
@@ -82,7 +82,7 @@ namespace CapaPresentacion.Formularios
             }
             catch (Exception exc)
             {
-                MessageBox.Show("Error: " + exc.ToString(),
+                MessageBox.Show("Error: No se ha podido exportar las ganancias, verifique si las configuraciones del sistema estan correctas e intente de nuevo por favor.",
                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Loggeator.EscribeEnArchivo(exc.ToString());
             }
@@ -97,7 +97,7 @@ namespace CapaPresentacion.Formularios
             }
             catch (Exception exc)
             {
-                MessageBox.Show("Error: " + exc.ToString(),
+                MessageBox.Show("Error: No se ha podido exportar las facturas de compras, verifique si las configuraciones del sistema estan correctas e intente de nuevo por favor.",
                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Loggeator.EscribeEnArchivo(exc.ToString());
             }
@@ -112,7 +112,7 @@ namespace CapaPresentacion.Formularios
             }
             catch (Exception exc)
             {
-                MessageBox.Show("Error: " + exc.ToString(),
+                MessageBox.Show("Error: No se ha podido exportar las notas de credito, verifique si las configuraciones del sistema estan correctas e intente de nuevo por favor.",
                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Loggeator.EscribeEnArchivo(exc.ToString());
             }
@@ -127,7 +127,7 @@ namespace CapaPresentacion.Formularios
             }
             catch (Exception exc)
             {
-                MessageBox.Show("Error: " + exc.ToString(),
+                MessageBox.Show("Error: No se ha podido exportar las facturas, verifique si las configuraciones del sistema estan correctas e intente de nuevo por favor.",
                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Loggeator.EscribeEnArchivo(exc.ToString());
             }
@@ -142,7 +142,7 @@ namespace CapaPresentacion.Formularios
             }
             catch (Exception exc)
             {
-                MessageBox.Show("Error: " + exc.ToString(),
+                MessageBox.Show("Error: No se ha podido exportar las facturas, verifique si las configuraciones del sistema estan correctas e intente de nuevo por favor.",
                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Loggeator.EscribeEnArchivo(exc.ToString());
             }
@@ -157,7 +157,7 @@ namespace CapaPresentacion.Formularios
             }
             catch (Exception exc)
             {
-                MessageBox.Show("Error: " + exc.ToString(),
+                MessageBox.Show("Error: No se ha podido exportar las facturas, verifique si las configuraciones del sistema estan correctas e intente de nuevo por favor.",
                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Loggeator.EscribeEnArchivo(exc.ToString());
             }
@@ -172,7 +172,7 @@ namespace CapaPresentacion.Formularios
             }
             catch (Exception exc)
             {
-                MessageBox.Show("Error: " + exc.ToString(),
+                MessageBox.Show("Error: No se ha podido exportar las facturas, verifique si las configuraciones del sistema estan correctas e intente de nuevo por favor.",
                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Loggeator.EscribeEnArchivo(exc.ToString());
             }

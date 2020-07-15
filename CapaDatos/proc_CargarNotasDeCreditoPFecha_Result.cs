@@ -24,5 +24,6 @@ namespace CapaDatos
         public bool ITBIS { get; set; }
         public string Usuario { get; set; }
         public string Cliente { get; set; }
+        public System.DateTime FechaVencimiento { get; set; }
     }
 }

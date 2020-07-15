@@ -68,7 +68,7 @@ namespace CapaPresentacion
             }
             catch (Exception exc)
             {
-                MessageBox.Show("Error: " + exc.ToString(),
+                MessageBox.Show("Error: No se ha podido cargar todos los usuarios correctamente, intente de nuevo por favor.",
                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Loggeator.EscribeEnArchivo(exc.ToString());
             }
@@ -94,7 +94,7 @@ namespace CapaPresentacion
             }
             catch (Exception exc)
             {
-                MessageBox.Show("Error: " + exc.ToString(),
+                MessageBox.Show("Error: No se ha podido cargar todos los usuarios correctamente, intente de nuevo por favor.",
                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Loggeator.EscribeEnArchivo(exc.ToString());
             }
@@ -125,7 +125,7 @@ namespace CapaPresentacion
             catch (Exception exc)
             {
 
-                MessageBox.Show("Error: " + exc.ToString(),
+                MessageBox.Show("Error: Usuario no puede ser eliminado, posiblemente este usuario ya este relacionado con alguna factura, factura de compra, cotizacion, etc...",
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Loggeator.EscribeEnArchivo(exc.ToString());
             }
@@ -192,7 +192,7 @@ namespace CapaPresentacion
             }
             catch (Exception exc)
             {
-                MessageBox.Show("Error: " + exc.ToString(),
+                MessageBox.Show("Error: No se ha podido realizar la busqueda, intente de nuevo por favor.",
                       "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Loggeator.EscribeEnArchivo(exc.ToString());
             }

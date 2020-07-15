@@ -81,7 +81,7 @@ namespace CapaPresentacion.Formularios
             }
             catch (Exception exc)
             {
-                MessageBox.Show("Error: " + exc.ToString(),
+                MessageBox.Show("Error: No se ha podido mostrar correctamente el reporte, verifique si los datos de configuracion del sistema estan correctos.",
                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Loggeator.EscribeEnArchivo(exc.ToString());
             }

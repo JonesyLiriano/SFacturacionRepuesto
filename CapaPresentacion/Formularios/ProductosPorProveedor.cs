@@ -105,7 +105,7 @@ namespace CapaPresentacion.Formularios
             catch (Exception exc)
             {
 
-                MessageBox.Show("Error: " + exc.ToString(),
+                MessageBox.Show("Error: No se ha podido cargar los productos correctamente, intente de nuevo por favor.",
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Loggeator.EscribeEnArchivo(exc.ToString());
             }
@@ -121,7 +121,7 @@ namespace CapaPresentacion.Formularios
             }
             catch (Exception exc)
             {
-                MessageBox.Show("Error: " + exc.ToString(),
+                MessageBox.Show("Error: No se ha podido cargar los productos correctamente, intente de nuevo por favor.",
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Loggeator.EscribeEnArchivo(exc.ToString());
             }
@@ -144,7 +144,7 @@ namespace CapaPresentacion.Formularios
             catch (Exception exc)
             {
 
-                MessageBox.Show("Error: " + exc.ToString(),
+                MessageBox.Show("Error: No se ha podido marcar los productos correctamente, intente de nuevo por favor.",
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Loggeator.EscribeEnArchivo(exc.ToString());
             }
@@ -167,7 +167,7 @@ namespace CapaPresentacion.Formularios
             }
             catch (Exception exc)
             {
-                MessageBox.Show("Error: " + exc.ToString(),
+                MessageBox.Show("Error: No se ha podido desmarcar los productos correctamente, intente de nuevo por favor.",
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Loggeator.EscribeEnArchivo(exc.ToString());
             }
@@ -224,7 +224,7 @@ namespace CapaPresentacion.Formularios
             catch (Exception exc)
             {
 
-                MessageBox.Show("Error: " + exc.ToString(),
+                MessageBox.Show("Error: No se ha podido seleccionar los productos correctamente, intente de nuevo por favor.",
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Loggeator.EscribeEnArchivo(exc.ToString());
             }
@@ -321,7 +321,7 @@ namespace CapaPresentacion.Formularios
             }
             catch (Exception exc)
             {
-                MessageBox.Show("Error: " + exc.ToString(),
+                MessageBox.Show("Error: No se ha podido realizar la busqueda, intente de nuevo por favor.",
                       "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Loggeator.EscribeEnArchivo(exc.ToString());
             }

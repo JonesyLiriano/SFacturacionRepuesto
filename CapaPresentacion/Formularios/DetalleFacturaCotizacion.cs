@@ -74,7 +74,7 @@ namespace CapaPresentacion.Formularios
             }
             catch (Exception exc)
             {
-                MessageBox.Show("Error: " + exc.ToString(),
+                MessageBox.Show("Error: No se ha podido llenar los detalles de esta factura o cotizacion, intente de nuevo por favor.",
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Loggeator.EscribeEnArchivo(exc.ToString());
             }
@@ -126,12 +126,12 @@ namespace CapaPresentacion.Formularios
             }
             if(detalle == "Cotizacion")
             {
-                descuentoTotal += ((Convert.ToDecimal(proc_ComprobanteCotizacion_Results.FirstOrDefault().DescuentoCliente) /100) * (subtotal + itbisTotal - descuentoTotal));
+                descuentoTotal += ((Convert.ToDecimal(proc_ComprobanteCotizacion_Results.FirstOrDefault().DescuentoCliente) / 100) * (subtotal));
 
             }
             else
             {
-                descuentoTotal += ((Convert.ToDecimal(proc_ComprobanteFacturaVenta_Results.FirstOrDefault().DescuentoCliente) / 100) * (subtotal + itbisTotal - descuentoTotal));
+                descuentoTotal += ((Convert.ToDecimal(proc_ComprobanteFacturaVenta_Results.FirstOrDefault().DescuentoCliente) / 100) * (subtotal));
 
             }
 

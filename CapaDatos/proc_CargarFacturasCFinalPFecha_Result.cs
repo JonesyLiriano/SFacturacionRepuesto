@@ -25,7 +25,7 @@ namespace CapaDatos
         public Nullable<decimal> Descuento { get; set; }
         public Nullable<decimal> ITBIS { get; set; }
         public Nullable<decimal> SubTotal { get; set; }
-        public Nullable<decimal> Valor { get; set; }
+        public Nullable<double> Valor { get; set; }
         public string RNC { get; set; }
         public string Entidad { get; set; }
         public string Cliente { get; set; }

@@ -962,7 +962,7 @@
     <Property Type="Decimal" Name="Descuento" Nullable="true" Precision="18" Scale="2" />
     <Property Type="Decimal" Name="ITBIS" Nullable="true" Precision="18" Scale="2" />
     <Property Type="Decimal" Name="SubTotal" Nullable="true" Precision="18" Scale="2" />
-    <Property Type="Decimal" Name="Valor" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Double" Name="Valor" Nullable="true" />
     <Property Type="String" Name="RNC" Nullable="true" MaxLength="50" />
     <Property Type="String" Name="Entidad" Nullable="true" MaxLength="100" />
     <Property Type="Int32" Name="Cotizacion" Nullable="true" />
@@ -987,6 +987,7 @@
     <Property Type="Boolean" Name="ITBIS" Nullable="false" />
     <Property Type="String" Name="Usuario" Nullable="false" MaxLength="50" />
     <Property Type="String" Name="Cliente" Nullable="false" MaxLength="100" />
+    <Property Type="DateTime" Name="FechaVencimiento" Nullable="false" />
   </ComplexType>
   <ComplexType Name="proc_CargarOrdenesCompraPFecha_Result">
     <Property Type="Int32" Name="ProveedorID" Nullable="false" />
@@ -1424,7 +1425,7 @@
     <Property Type="Decimal" Name="Descuento" Nullable="true" Precision="18" Scale="2" />
     <Property Type="Decimal" Name="ITBIS" Nullable="true" Precision="18" Scale="2" />
     <Property Type="Decimal" Name="SubTotal" Nullable="true" Precision="18" Scale="2" />
-    <Property Type="Decimal" Name="Valor" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Double" Name="Valor" Nullable="true" />
     <Property Type="String" Name="RNC" Nullable="true" MaxLength="50" />
     <Property Type="String" Name="Entidad" Nullable="true" MaxLength="100" />
     <Property Type="String" Name="Cliente" Nullable="false" MaxLength="100" />
@@ -1443,7 +1444,7 @@
     <Property Type="Decimal" Name="Descuento" Nullable="true" Precision="18" Scale="2" />
     <Property Type="Decimal" Name="ITBIS" Nullable="true" Precision="18" Scale="2" />
     <Property Type="Decimal" Name="SubTotal" Nullable="true" Precision="18" Scale="2" />
-    <Property Type="Decimal" Name="Valor" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Double" Name="Valor" Nullable="true" />
     <Property Type="String" Name="RNC" Nullable="true" MaxLength="50" />
     <Property Type="String" Name="Entidad" Nullable="true" MaxLength="100" />
     <Property Type="String" Name="Cliente" Nullable="false" MaxLength="100" />
@@ -1462,7 +1463,7 @@
     <Property Type="Decimal" Name="Descuento" Nullable="true" Precision="18" Scale="2" />
     <Property Type="Decimal" Name="ITBIS" Nullable="true" Precision="18" Scale="2" />
     <Property Type="Decimal" Name="SubTotal" Nullable="true" Precision="18" Scale="2" />
-    <Property Type="Decimal" Name="Valor" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Double" Name="Valor" Nullable="true" />
     <Property Type="String" Name="RNC" Nullable="true" MaxLength="50" />
     <Property Type="String" Name="Entidad" Nullable="true" MaxLength="100" />
     <Property Type="String" Name="Cliente" Nullable="false" MaxLength="100" />

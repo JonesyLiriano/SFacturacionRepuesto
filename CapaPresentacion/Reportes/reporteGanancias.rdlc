@@ -426,11 +426,15 @@
                 <TextRuns>
                   <TextRun>
                     <Value>Desde: </Value>
-                    <Style />
+                    <Style>
+                      <FontFamily>Segoe UI</FontFamily>
+                    </Style>
                   </TextRun>
                   <TextRun>
                     <Value>=Parameters!FSemana.Value</Value>
-                    <Style />
+                    <Style>
+                      <FontFamily>Segoe UI</FontFamily>
+                    </Style>
                   </TextRun>
                 </TextRuns>
                 <Style>
@@ -705,11 +709,15 @@
                 <TextRuns>
                   <TextRun>
                     <Value>Desde: </Value>
-                    <Style />
+                    <Style>
+                      <FontFamily>Segoe UI</FontFamily>
+                    </Style>
                   </TextRun>
                   <TextRun>
                     <Value>=Parameters!FSemana.Value</Value>
-                    <Style />
+                    <Style>
+                      <FontFamily>Segoe UI</FontFamily>
+                    </Style>
                   </TextRun>
                 </TextRuns>
                 <Style>
@@ -952,11 +960,15 @@
                 <TextRuns>
                   <TextRun>
                     <Value>Desde: </Value>
-                    <Style />
+                    <Style>
+                      <FontFamily>Segoe UI</FontFamily>
+                    </Style>
                   </TextRun>
                   <TextRun>
                     <Value>=Parameters!FSemana.Value</Value>
-                    <Style />
+                    <Style>
+                      <FontFamily>Segoe UI</FontFamily>
+                    </Style>
                   </TextRun>
                 </TextRuns>
                 <Style>
@@ -1326,6 +1338,7 @@
                       <Style>
                         <FontFamily>Segoe UI</FontFamily>
                         <FontSize>9pt</FontSize>
+                        <Format>dd/MM/yyyy hh:mm:ss tt</Format>
                       </Style>
                     </TextRun>
                   </TextRuns>

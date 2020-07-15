@@ -799,6 +799,7 @@
                                   <Value>=Fields!FechaPedido.Value</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
+                                    <Format>dd/MM/yyyy hh:mm:ss tt</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -901,6 +902,7 @@
                                   <Value>=Fields!FechaCompletado.Value</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
+                                    <Format>dd/MM/yyyy hh:mm:ss tt</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -969,6 +971,7 @@
                                   <Value>=Fields!FechaVencimiento.Value</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
+                                    <Format>dd/MM/yyyy</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -1253,7 +1256,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>1.99653in</Top>
+              <Top>1.96875in</Top>
               <Left>0.26467in</Left>
               <Height>0.5in</Height>
               <Width>3.74633in</Width>
@@ -1470,6 +1473,7 @@
                       <Style>
                         <FontFamily>Segoe UI</FontFamily>
                         <FontSize>9pt</FontSize>
+                        <Format>dd/MM/yyyy hh:mm:ss tt</Format>
                       </Style>
                     </TextRun>
                   </TextRuns>

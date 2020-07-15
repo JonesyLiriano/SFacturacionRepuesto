@@ -78,7 +78,7 @@ namespace SFacturacion
             catch (Exception exc)
             {
 
-                MessageBox.Show("Error: " + exc.ToString(),
+                MessageBox.Show("Error: El resumen del sistema no pudo ser cargado correctamente, intente de nuevo por favor." + exc.ToString(),
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Loggeator.EscribeEnArchivo(exc.ToString());
             }

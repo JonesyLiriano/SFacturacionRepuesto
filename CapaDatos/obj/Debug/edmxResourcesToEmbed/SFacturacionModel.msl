@@ -295,6 +295,7 @@
           <ScalarProperty Name="ITBIS" ColumnName="ITBIS" />
           <ScalarProperty Name="Usuario" ColumnName="Usuario" />
           <ScalarProperty Name="Cliente" ColumnName="Cliente" />
+          <ScalarProperty Name="FechaVencimiento" ColumnName="FechaVencimiento" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>

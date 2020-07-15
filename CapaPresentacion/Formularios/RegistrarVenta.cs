@@ -78,7 +78,7 @@ namespace CapaPresentacion
             catch (Exception exc)
             {
 
-                MessageBox.Show("Error: " + exc.ToString(),
+                MessageBox.Show("Error: No se ha podido cargar los comboboxes de este formulario, intente cargar el formulario de nuevo por favor.",
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Loggeator.EscribeEnArchivo(exc.ToString());
             }
@@ -103,7 +103,7 @@ namespace CapaPresentacion
             catch (Exception exc)
             {
 
-                MessageBox.Show("Error: " + exc.ToString(),
+                MessageBox.Show("Error: Ha ocurrido un inconveniente al momento de buscar los datos del producto, intente de nuevo por favor.",
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Loggeator.EscribeEnArchivo(exc.ToString());
             }
@@ -284,7 +284,7 @@ namespace CapaPresentacion
             catch (Exception exc)
             {
 
-                MessageBox.Show("Error: " + exc.ToString(),
+                MessageBox.Show("Error: El producto no pudo ser colocado en el carrito, intente de nuevo por favor.",
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Loggeator.EscribeEnArchivo(exc.ToString());
             }
@@ -319,7 +319,7 @@ namespace CapaPresentacion
             catch (Exception exc)
             {
 
-                MessageBox.Show("Error: " + exc.ToString(),
+                MessageBox.Show("Error: El formulario no se pudo cerrar o se cerro de manera erronea.",
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Loggeator.EscribeEnArchivo(exc.ToString());
             }
@@ -344,7 +344,7 @@ namespace CapaPresentacion
             catch (Exception exc)
             {
 
-                MessageBox.Show("Error: " + exc.ToString(),
+                MessageBox.Show("Error: El producto no pudo ser removido del carrito, intente de nuevo por favor.",
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Loggeator.EscribeEnArchivo(exc.ToString());
             }
@@ -368,7 +368,7 @@ namespace CapaPresentacion
             catch (Exception exc)
             {
 
-                MessageBox.Show("Error: " + exc.ToString(),
+                MessageBox.Show("Error: No se pudo seleccionar la linea del carrito correctamente, intente de nuevo por favor.",
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Loggeator.EscribeEnArchivo(exc.ToString());
             }
@@ -390,7 +390,7 @@ namespace CapaPresentacion
                 catch (Exception exc)
                 {
 
-                    MessageBox.Show("Error: " + exc.ToString(),
+                    MessageBox.Show("Error: No se ha podido validar el precio de venta correctamente, intente de nuevo por favor.",
                         "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     Loggeator.EscribeEnArchivo(exc.ToString());
                 }
@@ -445,7 +445,7 @@ namespace CapaPresentacion
             catch (Exception exc)
             {
 
-                MessageBox.Show("Error: " + exc.ToString(),
+                MessageBox.Show("Error: No se ha podido limpiar el carrito correctamente, intente de nuevo por favor.",
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Loggeator.EscribeEnArchivo(exc.ToString());
             }
@@ -523,7 +523,7 @@ namespace CapaPresentacion
             catch (Exception exc)
             {
 
-                MessageBox.Show("Error: " + exc.ToString(),
+                MessageBox.Show("Error: No se ha podido realizar la cotizacion, verificar que todos los campos esten correcto e intentar de nuevo por favor.",
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Loggeator.EscribeEnArchivo(exc.ToString());
             }
@@ -577,7 +577,7 @@ namespace CapaPresentacion
                     cbClientes.SelectedIndex = 0;
                     cbClientes.Enabled = false;
                     txtDescuentoCliente.Enabled = false;
-                    txtDescuento.Text = "0";
+                    txtDescuentoCliente.Text = "0";
 
 
                 }
@@ -591,7 +591,7 @@ namespace CapaPresentacion
             catch (Exception exc)
             {
 
-                MessageBox.Show("Error: " + exc.ToString(),
+                MessageBox.Show("Error: No se ha podido cambiar al cliente anonimo, intente de nuevo por favor.",
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Loggeator.EscribeEnArchivo(exc.ToString());
             }
@@ -617,7 +617,7 @@ namespace CapaPresentacion
             catch (Exception exc)
             {
 
-                MessageBox.Show("Error: " + exc.ToString(),
+                MessageBox.Show("Error: Los datos de la cotizacion no pudieron buscarse, intente de nuevo por favor.",
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Loggeator.EscribeEnArchivo(exc.ToString());
             }
@@ -649,7 +649,7 @@ namespace CapaPresentacion
             catch (Exception exc)
             {
 
-                MessageBox.Show("Error: " + exc.ToString(),
+                MessageBox.Show("Error: No se pudo llevar los productos de la cotizacion al carrito, intente de nuevo por favor.",
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Loggeator.EscribeEnArchivo(exc.ToString());
             }
@@ -706,7 +706,7 @@ namespace CapaPresentacion
             catch (Exception exc)
             {
 
-                MessageBox.Show("Error: " + exc.ToString(),
+                MessageBox.Show("Error: El formulario para buscar productos no se pudo abrir correctamente, intente de nuevo por favor.",
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Loggeator.EscribeEnArchivo(exc.ToString());
             }
@@ -755,6 +755,7 @@ namespace CapaPresentacion
                 txtDescuentoCliente.Text = proc_CargarTodosClientes_Results.Where(r => r.ClienteID == Convert.ToInt32(cbClientes.SelectedValue))
                         .FirstOrDefault().Descuento.ToString();
                 clienteID = Convert.ToInt32(cbClientes.SelectedValue);
+                CalcularTotalFactura();
             }
             
         }
@@ -791,7 +792,7 @@ namespace CapaPresentacion
             catch (Exception exc)
             {
 
-                MessageBox.Show("Error: " + exc.ToString(),
+                MessageBox.Show("Error: No se pudo cambiar el tipo de factura, intente de nuevo por favor.",
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Loggeator.EscribeEnArchivo(exc.ToString());
             }
@@ -835,7 +836,7 @@ namespace CapaPresentacion
             catch (Exception exc)
             {
 
-                MessageBox.Show("Error: " + exc.ToString(),
+                MessageBox.Show("Error: No se pudo crear la factura, posiblemente el numero de comprobante con que intenta generar la factura ya esta creado, verifique e intente de nuevo por favor.",
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Loggeator.EscribeEnArchivo(exc.ToString());
             }
@@ -1045,7 +1046,7 @@ namespace CapaPresentacion
             catch (Exception exc)
             {
 
-                MessageBox.Show("Error: " + exc.ToString(),
+                MessageBox.Show("Error: El colocado automatico no se pudo activar, intente de nuevo por favor.",
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Loggeator.EscribeEnArchivo(exc.ToString());
             }

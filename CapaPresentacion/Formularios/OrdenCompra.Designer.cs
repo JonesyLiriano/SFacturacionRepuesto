@@ -32,18 +32,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OrdenCompra));
             this.dgvProductos = new System.Windows.Forms.DataGridView();
-            this.BarraTitulo = new System.Windows.Forms.Panel();
-            this.pbBarraMenu = new System.Windows.Forms.PictureBox();
-            this.labelBarraMenu = new System.Windows.Forms.Label();
-            this.iconcerrar = new System.Windows.Forms.PictureBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.cbProveedor = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btnRecibirTodo = new System.Windows.Forms.Button();
-            this.btnQuitar = new System.Windows.Forms.Button();
-            this.btnGuardar = new System.Windows.Forms.Button();
-            this.btnBuscarProd = new System.Windows.Forms.Button();
-            this.btnFacturarOrdenCorte = new System.Windows.Forms.Button();
             this.ProductoID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Referencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,6 +44,18 @@
             this.Ordenada = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Recibida = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Estatus = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.BarraTitulo = new System.Windows.Forms.Panel();
+            this.pbBarraMenu = new System.Windows.Forms.PictureBox();
+            this.labelBarraMenu = new System.Windows.Forms.Label();
+            this.iconcerrar = new System.Windows.Forms.PictureBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.cbProveedor = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnRecibirTodo = new System.Windows.Forms.Button();
+            this.btnQuitar = new System.Windows.Forms.Button();
+            this.btnGuardar = new System.Windows.Forms.Button();
+            this.btnBuscarProd = new System.Windows.Forms.Button();
+            this.btnFacturarOrden = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             this.BarraTitulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbBarraMenu)).BeginInit();
@@ -116,6 +116,100 @@
             this.dgvProductos.Size = new System.Drawing.Size(700, 370);
             this.dgvProductos.TabIndex = 115;
             this.dgvProductos.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvProductos_CellValidating);
+            // 
+            // ProductoID
+            // 
+            this.ProductoID.DataPropertyName = "ProductoID";
+            this.ProductoID.HeaderText = "ID";
+            this.ProductoID.Name = "ProductoID";
+            this.ProductoID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ProductoID.Width = 22;
+            // 
+            // Referencia
+            // 
+            this.Referencia.DataPropertyName = "Referencia";
+            this.Referencia.HeaderText = "Referencia";
+            this.Referencia.Name = "Referencia";
+            this.Referencia.Width = 82;
+            // 
+            // Descripcion
+            // 
+            this.Descripcion.DataPropertyName = "Descripcion";
+            this.Descripcion.HeaderText = "Descripcion";
+            this.Descripcion.Name = "Descripcion";
+            this.Descripcion.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Descripcion.Width = 67;
+            // 
+            // Marca
+            // 
+            this.Marca.DataPropertyName = "Marca";
+            this.Marca.HeaderText = "Marca";
+            this.Marca.Name = "Marca";
+            this.Marca.Width = 60;
+            // 
+            // Calidad
+            // 
+            this.Calidad.DataPropertyName = "Calidad";
+            this.Calidad.HeaderText = "Calidad";
+            this.Calidad.Name = "Calidad";
+            this.Calidad.Width = 65;
+            // 
+            // UnidadMedida
+            // 
+            this.UnidadMedida.DataPropertyName = "UnidadMedida";
+            this.UnidadMedida.HeaderText = "UM";
+            this.UnidadMedida.Name = "UnidadMedida";
+            this.UnidadMedida.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.UnidadMedida.Width = 28;
+            // 
+            // Existencia
+            // 
+            this.Existencia.DataPropertyName = "Existencia";
+            this.Existencia.HeaderText = "Existencia";
+            this.Existencia.Name = "Existencia";
+            this.Existencia.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Existencia.Width = 59;
+            // 
+            // CantMin
+            // 
+            this.CantMin.DataPropertyName = "CantMin";
+            this.CantMin.HeaderText = "Cant Min";
+            this.CantMin.Name = "CantMin";
+            this.CantMin.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.CantMin.Width = 48;
+            // 
+            // PrecioCompra
+            // 
+            this.PrecioCompra.DataPropertyName = "PrecioCompra";
+            this.PrecioCompra.HeaderText = "Costo";
+            this.PrecioCompra.Name = "PrecioCompra";
+            this.PrecioCompra.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.PrecioCompra.Width = 38;
+            // 
+            // Ordenada
+            // 
+            this.Ordenada.DataPropertyName = "Ordenada";
+            this.Ordenada.HeaderText = "Ordenada";
+            this.Ordenada.Name = "Ordenada";
+            this.Ordenada.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Ordenada.Width = 58;
+            // 
+            // Recibida
+            // 
+            this.Recibida.DataPropertyName = "Recibida";
+            this.Recibida.HeaderText = "Recibida";
+            this.Recibida.Name = "Recibida";
+            this.Recibida.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Recibida.Width = 53;
+            // 
+            // Estatus
+            // 
+            this.Estatus.DataPropertyName = "Estatus";
+            this.Estatus.HeaderText = "Estatus";
+            this.Estatus.Name = "Estatus";
+            this.Estatus.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Estatus.Visible = false;
+            this.Estatus.Width = 48;
             // 
             // BarraTitulo
             // 
@@ -276,117 +370,23 @@
             this.btnBuscarProd.UseVisualStyleBackColor = false;
             this.btnBuscarProd.Click += new System.EventHandler(this.btnBuscarProd_Click);
             // 
-            // btnFacturarOrdenCorte
+            // btnFacturarOrden
             // 
-            this.btnFacturarOrdenCorte.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnFacturarOrdenCorte.BackColor = System.Drawing.Color.ForestGreen;
-            this.btnFacturarOrdenCorte.FlatAppearance.BorderSize = 0;
-            this.btnFacturarOrdenCorte.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.btnFacturarOrdenCorte.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFacturarOrdenCorte.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFacturarOrdenCorte.ForeColor = System.Drawing.Color.White;
-            this.btnFacturarOrdenCorte.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnFacturarOrdenCorte.Location = new System.Drawing.Point(789, 297);
-            this.btnFacturarOrdenCorte.Name = "btnFacturarOrdenCorte";
-            this.btnFacturarOrdenCorte.Size = new System.Drawing.Size(180, 35);
-            this.btnFacturarOrdenCorte.TabIndex = 124;
-            this.btnFacturarOrdenCorte.Text = "Facturar Orden";
-            this.btnFacturarOrdenCorte.UseVisualStyleBackColor = false;
-            this.btnFacturarOrdenCorte.Click += new System.EventHandler(this.btnFacturarOrdenCorte_Click);
-            // 
-            // ProductoID
-            // 
-            this.ProductoID.DataPropertyName = "ProductoID";
-            this.ProductoID.HeaderText = "ID";
-            this.ProductoID.Name = "ProductoID";
-            this.ProductoID.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.ProductoID.Width = 22;
-            // 
-            // Referencia
-            // 
-            this.Referencia.DataPropertyName = "Referencia";
-            this.Referencia.HeaderText = "Referencia";
-            this.Referencia.Name = "Referencia";
-            this.Referencia.Width = 82;
-            // 
-            // Descripcion
-            // 
-            this.Descripcion.DataPropertyName = "Descripcion";
-            this.Descripcion.HeaderText = "Descripcion";
-            this.Descripcion.Name = "Descripcion";
-            this.Descripcion.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Descripcion.Width = 67;
-            // 
-            // Marca
-            // 
-            this.Marca.DataPropertyName = "Marca";
-            this.Marca.HeaderText = "Marca";
-            this.Marca.Name = "Marca";
-            this.Marca.Width = 60;
-            // 
-            // Calidad
-            // 
-            this.Calidad.DataPropertyName = "Calidad";
-            this.Calidad.HeaderText = "Calidad";
-            this.Calidad.Name = "Calidad";
-            this.Calidad.Width = 65;
-            // 
-            // UnidadMedida
-            // 
-            this.UnidadMedida.DataPropertyName = "UnidadMedida";
-            this.UnidadMedida.HeaderText = "UM";
-            this.UnidadMedida.Name = "UnidadMedida";
-            this.UnidadMedida.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.UnidadMedida.Width = 28;
-            // 
-            // Existencia
-            // 
-            this.Existencia.DataPropertyName = "Existencia";
-            this.Existencia.HeaderText = "Existencia";
-            this.Existencia.Name = "Existencia";
-            this.Existencia.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Existencia.Width = 59;
-            // 
-            // CantMin
-            // 
-            this.CantMin.DataPropertyName = "CantMin";
-            this.CantMin.HeaderText = "Cant Min";
-            this.CantMin.Name = "CantMin";
-            this.CantMin.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.CantMin.Width = 48;
-            // 
-            // PrecioCompra
-            // 
-            this.PrecioCompra.DataPropertyName = "PrecioCompra";
-            this.PrecioCompra.HeaderText = "Costo";
-            this.PrecioCompra.Name = "PrecioCompra";
-            this.PrecioCompra.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.PrecioCompra.Width = 38;
-            // 
-            // Ordenada
-            // 
-            this.Ordenada.DataPropertyName = "Ordenada";
-            this.Ordenada.HeaderText = "Ordenada";
-            this.Ordenada.Name = "Ordenada";
-            this.Ordenada.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Ordenada.Width = 58;
-            // 
-            // Recibida
-            // 
-            this.Recibida.DataPropertyName = "Recibida";
-            this.Recibida.HeaderText = "Recibida";
-            this.Recibida.Name = "Recibida";
-            this.Recibida.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Recibida.Width = 53;
-            // 
-            // Estatus
-            // 
-            this.Estatus.DataPropertyName = "Estatus";
-            this.Estatus.HeaderText = "Estatus";
-            this.Estatus.Name = "Estatus";
-            this.Estatus.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Estatus.Visible = false;
-            this.Estatus.Width = 46;
+            this.btnFacturarOrden.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFacturarOrden.BackColor = System.Drawing.Color.ForestGreen;
+            this.btnFacturarOrden.FlatAppearance.BorderSize = 0;
+            this.btnFacturarOrden.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.btnFacturarOrden.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFacturarOrden.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFacturarOrden.ForeColor = System.Drawing.Color.White;
+            this.btnFacturarOrden.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnFacturarOrden.Location = new System.Drawing.Point(789, 297);
+            this.btnFacturarOrden.Name = "btnFacturarOrden";
+            this.btnFacturarOrden.Size = new System.Drawing.Size(180, 35);
+            this.btnFacturarOrden.TabIndex = 124;
+            this.btnFacturarOrden.Text = "Facturar Orden";
+            this.btnFacturarOrden.UseVisualStyleBackColor = false;
+            this.btnFacturarOrden.Click += new System.EventHandler(this.btnFacturarOrdenCorte_Click);
             // 
             // OrdenCompra
             // 
@@ -394,7 +394,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1000, 500);
-            this.Controls.Add(this.btnFacturarOrdenCorte);
+            this.Controls.Add(this.btnFacturarOrden);
             this.Controls.Add(this.btnBuscarProd);
             this.Controls.Add(this.btnQuitar);
             this.Controls.Add(this.btnGuardar);
@@ -431,7 +431,7 @@
         private System.Windows.Forms.Button btnQuitar;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Button btnBuscarProd;
-        private System.Windows.Forms.Button btnFacturarOrdenCorte;
+        private System.Windows.Forms.Button btnFacturarOrden;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductoID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Referencia;
         private System.Windows.Forms.DataGridViewTextBoxColumn Descripcion;

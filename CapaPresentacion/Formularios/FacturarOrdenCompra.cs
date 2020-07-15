@@ -59,7 +59,7 @@ namespace CapaPresentacion.Formularios
                 }
                 catch (Exception exc)
                 {
-                    MessageBox.Show("Error: " + exc.ToString(),
+                    MessageBox.Show("Error: No se ha podido facturar esta orden de compra, verifique los campos e intente nuevamente. ",
                         "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     Loggeator.EscribeEnArchivo(exc.ToString());
                 }
@@ -125,7 +125,7 @@ namespace CapaPresentacion.Formularios
                 MessageBox.Show("Debe de seleccionar un TIPO DE PAGO");
                 return false;
             }
-            if (string.IsNullOrEmpty(txtITBIS.Text) || !decimal.TryParse(txtITBIS.Text ,out numberoDecimal))
+            if (string.IsNullOrEmpty(txtITBIS.Text) || !decimal.TryParse(txtITBIS.Text, out numberoDecimal))
             {
                 MessageBox.Show("El Campo ITBIS no puede estar vacío y debe ser un numero valido");
                 return false;

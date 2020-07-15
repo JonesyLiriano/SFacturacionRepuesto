@@ -37,6 +37,10 @@
           <DataField>Fecha</DataField>
           <rd:TypeName>System.DateTime</rd:TypeName>
         </Field>
+        <Field Name="FechaVencimiento">
+          <DataField>FechaVencimiento</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
         <Field Name="ITBIS">
           <DataField>ITBIS</DataField>
           <rd:TypeName>System.Boolean</rd:TypeName>
@@ -93,6 +97,9 @@
                 </TablixColumn>
                 <TablixColumn>
                   <Width>1.87779in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>1.53125in</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>1.14521in</Width>
@@ -331,6 +338,46 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox40</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>None</Style>
+                            </Border>
+                            <BottomBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1.5pt</Width>
+                            </BottomBorder>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox7">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Fecha Vencimiento</Value>
+                                  <Style>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Left</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox7</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -662,6 +709,7 @@
                                   <Value>=Fields!Fecha.Value</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
+                                    <Format>dd/MM/yyyy hh:mm:ss tt</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -705,6 +753,41 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>NCF1</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>None</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="FechaVencimiento">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!FechaVencimiento.Value</Value>
+                                  <Style>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                    <Format>dd/MM/yyyy</Format>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Left</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>FechaVencimiento</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -870,6 +953,7 @@
                 <TablixMember />
                 <TablixMember />
                 <TablixMember />
+                <TablixMember />
               </TablixMembers>
             </TablixColumnHierarchy>
             <TablixRowHierarchy>
@@ -887,7 +971,7 @@
             <Top>0.06944in</Top>
             <Left>0.30084in</Left>
             <Height>0.52083in</Height>
-            <Width>14.72969in</Width>
+            <Width>16.26093in</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -898,7 +982,7 @@
         <Height>0.69792in</Height>
         <Style />
       </Body>
-      <Width>15.13469in</Width>
+      <Width>16.56177in</Width>
       <Page>
         <PageHeader>
           <Height>2.5625in</Height>
@@ -1011,7 +1095,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>1.95486in</Top>
+              <Top>1.92708in</Top>
               <Left>0.30081in</Left>
               <Height>0.5in</Height>
               <Width>3.74633in</Width>
@@ -1160,6 +1244,7 @@
                       <Style>
                         <FontFamily>Segoe UI</FontFamily>
                         <FontSize>9pt</FontSize>
+                        <Format>dd/MM/yyyy hh:mm:ss tt</Format>
                       </Style>
                     </TextRun>
                   </TextRuns>

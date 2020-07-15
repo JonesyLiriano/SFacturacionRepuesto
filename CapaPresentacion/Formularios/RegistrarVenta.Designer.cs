@@ -32,6 +32,17 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegistrarVenta));
             this.dgvCarrito = new System.Windows.Forms.DataGridView();
+            this.ProductoID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CodigoBarra = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Referencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UnidadMedida = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ITBIS = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descuento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Importe = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Servicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cbClientes = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -84,17 +95,6 @@
             this.txtTotal = new System.Windows.Forms.TextBox();
             this.txtCantProd = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.ProductoID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CodigoBarra = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Referencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UnidadMedida = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ITBIS = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descuento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Importe = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Servicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCarrito)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -156,6 +156,95 @@
             this.dgvCarrito.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCarrito.Size = new System.Drawing.Size(598, 324);
             this.dgvCarrito.TabIndex = 56;
+            // 
+            // ProductoID
+            // 
+            this.ProductoID.DataPropertyName = "ID";
+            this.ProductoID.HeaderText = "ID";
+            this.ProductoID.Name = "ProductoID";
+            this.ProductoID.ReadOnly = true;
+            this.ProductoID.Width = 41;
+            // 
+            // CodigoBarra
+            // 
+            this.CodigoBarra.DataPropertyName = "CodigoBarra";
+            this.CodigoBarra.HeaderText = "CodigoBarra";
+            this.CodigoBarra.Name = "CodigoBarra";
+            this.CodigoBarra.ReadOnly = true;
+            this.CodigoBarra.Width = 88;
+            // 
+            // Referencia
+            // 
+            this.Referencia.DataPropertyName = "Referencia";
+            this.Referencia.HeaderText = "Referecia";
+            this.Referencia.Name = "Referencia";
+            this.Referencia.ReadOnly = true;
+            this.Referencia.Width = 76;
+            // 
+            // Descripcion
+            // 
+            this.Descripcion.DataPropertyName = "Descripcion";
+            this.Descripcion.HeaderText = "Descripcion";
+            this.Descripcion.Name = "Descripcion";
+            this.Descripcion.ReadOnly = true;
+            this.Descripcion.Width = 86;
+            // 
+            // UnidadMedida
+            // 
+            this.UnidadMedida.DataPropertyName = "UnidadMedida";
+            this.UnidadMedida.HeaderText = "UM";
+            this.UnidadMedida.Name = "UnidadMedida";
+            this.UnidadMedida.ReadOnly = true;
+            this.UnidadMedida.Width = 47;
+            // 
+            // Cantidad
+            // 
+            this.Cantidad.DataPropertyName = "Cantidad";
+            this.Cantidad.HeaderText = "Cantidad";
+            this.Cantidad.Name = "Cantidad";
+            this.Cantidad.ReadOnly = true;
+            this.Cantidad.Width = 72;
+            // 
+            // Precio
+            // 
+            this.Precio.DataPropertyName = "Precio";
+            this.Precio.HeaderText = "Precio";
+            this.Precio.Name = "Precio";
+            this.Precio.ReadOnly = true;
+            this.Precio.Width = 60;
+            // 
+            // ITBIS
+            // 
+            this.ITBIS.DataPropertyName = "ITBIS";
+            this.ITBIS.HeaderText = "ITBIS";
+            this.ITBIS.Name = "ITBIS";
+            this.ITBIS.ReadOnly = true;
+            this.ITBIS.Width = 57;
+            // 
+            // Descuento
+            // 
+            this.Descuento.DataPropertyName = "Descuento";
+            this.Descuento.HeaderText = "Descuento";
+            this.Descuento.Name = "Descuento";
+            this.Descuento.ReadOnly = true;
+            this.Descuento.Width = 82;
+            // 
+            // Importe
+            // 
+            this.Importe.DataPropertyName = "Importe";
+            this.Importe.HeaderText = "Importe";
+            this.Importe.Name = "Importe";
+            this.Importe.ReadOnly = true;
+            this.Importe.Width = 65;
+            // 
+            // Servicio
+            // 
+            this.Servicio.DataPropertyName = "Servicio";
+            this.Servicio.HeaderText = "Servicio";
+            this.Servicio.Name = "Servicio";
+            this.Servicio.ReadOnly = true;
+            this.Servicio.Visible = false;
+            this.Servicio.Width = 70;
             // 
             // cbClientes
             // 
@@ -397,6 +486,7 @@
             // 
             // txtCantidad
             // 
+            this.txtCantidad.DecimalPlaces = 2;
             this.txtCantidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.txtCantidad.Location = new System.Drawing.Point(438, 51);
             this.txtCantidad.Name = "txtCantidad";
@@ -855,95 +945,6 @@
             this.groupBox4.TabIndex = 87;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Cantidad de Items        en el carrito";
-            // 
-            // ProductoID
-            // 
-            this.ProductoID.DataPropertyName = "ID";
-            this.ProductoID.HeaderText = "ID";
-            this.ProductoID.Name = "ProductoID";
-            this.ProductoID.ReadOnly = true;
-            this.ProductoID.Width = 41;
-            // 
-            // CodigoBarra
-            // 
-            this.CodigoBarra.DataPropertyName = "CodigoBarra";
-            this.CodigoBarra.HeaderText = "CodigoBarra";
-            this.CodigoBarra.Name = "CodigoBarra";
-            this.CodigoBarra.ReadOnly = true;
-            this.CodigoBarra.Width = 88;
-            // 
-            // Referencia
-            // 
-            this.Referencia.DataPropertyName = "Referencia";
-            this.Referencia.HeaderText = "Referecia";
-            this.Referencia.Name = "Referencia";
-            this.Referencia.ReadOnly = true;
-            this.Referencia.Width = 76;
-            // 
-            // Descripcion
-            // 
-            this.Descripcion.DataPropertyName = "Descripcion";
-            this.Descripcion.HeaderText = "Descripcion";
-            this.Descripcion.Name = "Descripcion";
-            this.Descripcion.ReadOnly = true;
-            this.Descripcion.Width = 86;
-            // 
-            // UnidadMedida
-            // 
-            this.UnidadMedida.DataPropertyName = "UnidadMedida";
-            this.UnidadMedida.HeaderText = "UM";
-            this.UnidadMedida.Name = "UnidadMedida";
-            this.UnidadMedida.ReadOnly = true;
-            this.UnidadMedida.Width = 47;
-            // 
-            // Cantidad
-            // 
-            this.Cantidad.DataPropertyName = "Cantidad";
-            this.Cantidad.HeaderText = "Cantidad";
-            this.Cantidad.Name = "Cantidad";
-            this.Cantidad.ReadOnly = true;
-            this.Cantidad.Width = 72;
-            // 
-            // Precio
-            // 
-            this.Precio.DataPropertyName = "Precio";
-            this.Precio.HeaderText = "Precio";
-            this.Precio.Name = "Precio";
-            this.Precio.ReadOnly = true;
-            this.Precio.Width = 60;
-            // 
-            // ITBIS
-            // 
-            this.ITBIS.DataPropertyName = "ITBIS";
-            this.ITBIS.HeaderText = "ITBIS";
-            this.ITBIS.Name = "ITBIS";
-            this.ITBIS.ReadOnly = true;
-            this.ITBIS.Width = 57;
-            // 
-            // Descuento
-            // 
-            this.Descuento.DataPropertyName = "Descuento";
-            this.Descuento.HeaderText = "Descuento";
-            this.Descuento.Name = "Descuento";
-            this.Descuento.ReadOnly = true;
-            this.Descuento.Width = 82;
-            // 
-            // Importe
-            // 
-            this.Importe.DataPropertyName = "Importe";
-            this.Importe.HeaderText = "Importe";
-            this.Importe.Name = "Importe";
-            this.Importe.ReadOnly = true;
-            this.Importe.Width = 65;
-            // 
-            // Servicio
-            // 
-            this.Servicio.DataPropertyName = "Servicio";
-            this.Servicio.HeaderText = "Servicio";
-            this.Servicio.Name = "Servicio";
-            this.Servicio.ReadOnly = true;
-            this.Servicio.Visible = false;
-            this.Servicio.Width = 68;
             // 
             // RegistrarVenta
             // 
