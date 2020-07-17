@@ -65,10 +65,11 @@ namespace CapaPresentacion.Formularios
             dgvNotasCredito.Columns["Factura"].DisplayIndex = 3;
             dgvNotasCredito.Columns["FacturaAplicada"].DisplayIndex = 4;
             dgvNotasCredito.Columns["NCF"].DisplayIndex = 5;
-            dgvNotasCredito.Columns["FechaVencimiento"].DisplayIndex = 6;
-            dgvNotasCredito.Columns["ITBIS"].DisplayIndex = 7;
-            dgvNotasCredito.Columns["Monto"].DisplayIndex = 8;
-            dgvNotasCredito.Columns["MontoAplicado"].DisplayIndex = 9;
+            dgvNotasCredito.Columns["NCFAfectado"].DisplayIndex = 6;
+            dgvNotasCredito.Columns["FechaVencimiento"].DisplayIndex = 7;
+            dgvNotasCredito.Columns["ITBIS"].DisplayIndex = 8;
+            dgvNotasCredito.Columns["Monto"].DisplayIndex = 9;
+            dgvNotasCredito.Columns["MontoAplicado"].DisplayIndex = 10;
 
             dgvNotasCredito.Columns["Monto"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgvNotasCredito.Columns["MontoAplicado"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
@@ -178,6 +179,7 @@ namespace CapaPresentacion.Formularios
             cbFiltro.Items.Add("Factura");
             cbFiltro.Items.Add("Factura Aplicada");
             cbFiltro.Items.Add("NCF");
+            cbFiltro.Items.Add("NCFAfectado");
             cbFiltro.SelectedIndex = 0;
         }
         private void txtFiltro_Leave(object sender, EventArgs e)
@@ -223,6 +225,9 @@ namespace CapaPresentacion.Formularios
                             break;
                         case "NCF":
                             dgvNotasCredito.DataSource = proc_CargarTodasNotasDeCredito_Results.Where(p => p.NCF.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                            break;
+                        case "NCFAfectado":
+                            dgvNotasCredito.DataSource = proc_CargarTodasNotasDeCredito_Results.Where(p => p.NCFAfectado.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
                             break;
 
                         default:

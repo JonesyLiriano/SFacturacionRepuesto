@@ -185,9 +185,9 @@ namespace CapaPresentacion
 
             if (contFila == 0)
             {
-                campoPrecio = Convert.ToDecimal(txtPrecio.Text) - (Convert.ToDecimal(txtPrecio.Text) * itbisProd);
+                campoPrecio = Convert.ToDecimal(txtPrecio.Text) / (itbisProd == 0 ? 1 : itbisProd);
                 campoDescuento = campoPrecio * descuentoProd;
-                campoITBIS = Convert.ToDecimal(txtPrecio.Text) * itbisProd;
+                campoITBIS = itbisProd == 0 ? 0 : Convert.ToDecimal(txtPrecio.Text) - (Convert.ToDecimal(txtPrecio.Text) / itbisProd);
                 dgvCarrito.Rows.Add(productoCarritoEntidad.ProductoID, txtCodigoBarra.Text, productoCarritoEntidad.Referencia, txtDescripcion.Text, txtUnidadMedida.Text, txtCantidad.Text, 
                     campoPrecio.ToString("F"), campoITBIS.ToString("F"), campoDescuento.ToString("F"),
                     (Convert.ToDecimal(txtCantidad.Text) * (campoPrecio + campoITBIS - campoDescuento)).ToString("F") ,productoCarritoEntidad.Servicio);        
@@ -210,16 +210,17 @@ namespace CapaPresentacion
                     dgvCarrito.Rows[numFila].Cells["Cantidad"].Value = Convert.ToDecimal(txtCantidad.Value) 
                         + Convert.ToDecimal(dgvCarrito.Rows[numFila].Cells["Cantidad"].Value);
 
-                    dgvCarrito.Rows[numFila].Cells["Importe"].Value = (Convert.ToDecimal(dgvCarrito.Rows[numFila].Cells["Cantidad"].Value)
+                    dgvCarrito.Rows[numFila].Cells["Importe"].Value =
+                        (Convert.ToDecimal(dgvCarrito.Rows[numFila].Cells["Cantidad"].Value)
                         * (Convert.ToDecimal(dgvCarrito.Rows[numFila].Cells["Precio"].Value)
                         + Convert.ToDecimal(dgvCarrito.Rows[numFila].Cells["ITBIS"].Value)
                         - Convert.ToDecimal(dgvCarrito.Rows[numFila].Cells["Descuento"].Value))).ToString("F");
                 }
                 else
                 {
-                    campoPrecio = Convert.ToDecimal(txtPrecio.Text) - (Convert.ToDecimal(txtPrecio.Text) * itbisProd);
+                    campoPrecio = Convert.ToDecimal(txtPrecio.Text) / (itbisProd == 0 ? 1 : itbisProd);
                     campoDescuento = campoPrecio * descuentoProd;
-                    campoITBIS = Convert.ToDecimal(txtPrecio.Text) * itbisProd;
+                    campoITBIS = itbisProd == 0 ? 0 : Convert.ToDecimal(txtPrecio.Text) - (Convert.ToDecimal(txtPrecio.Text) / itbisProd);
                     dgvCarrito.Rows.Add(productoCarritoEntidad.ProductoID, txtCodigoBarra.Text, productoCarritoEntidad.Referencia, txtDescripcion.Text, txtUnidadMedida.Text,txtCantidad.Text, 
                         campoPrecio.ToString("F"), campoITBIS.ToString("F"), campoDescuento.ToString("F"),
                         (Convert.ToDecimal(txtCantidad.Text) * (campoPrecio + campoITBIS - campoDescuento)).ToString("F"), productoCarritoEntidad.Servicio);
@@ -1090,7 +1091,7 @@ namespace CapaPresentacion
 
                     if (productoCarritoEntidad.ITBIS)
                     {
-                        itbisProd = Properties.Settings.Default.ITBIS / 100;
+                        itbisProd = Properties.Settings.Default.ITBIS == 0 ? 0 : (Properties.Settings.Default.ITBIS / 100) + 1;
                     }
                     else
                     {

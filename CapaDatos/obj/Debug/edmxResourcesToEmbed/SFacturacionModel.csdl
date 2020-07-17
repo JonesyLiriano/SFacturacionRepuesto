@@ -988,6 +988,7 @@
     <Property Type="String" Name="Usuario" Nullable="false" MaxLength="50" />
     <Property Type="String" Name="Cliente" Nullable="false" MaxLength="100" />
     <Property Type="DateTime" Name="FechaVencimiento" Nullable="false" />
+    <Property Type="String" Name="NCFAfectado" Nullable="false" MaxLength="50" />
   </ComplexType>
   <ComplexType Name="proc_CargarOrdenesCompraPFecha_Result">
     <Property Type="Int32" Name="ProveedorID" Nullable="false" />
@@ -1039,6 +1040,7 @@
     <Property Type="Decimal" Name="MontoAplicado" Nullable="true" Precision="18" Scale="2" />
     <Property Type="String" Name="Usuario" Nullable="false" MaxLength="50" />
     <Property Type="DateTime" Name="FechaVencimiento" Nullable="false" />
+    <Property Type="String" Name="NCFAfectado" Nullable="false" MaxLength="50" />
   </ComplexType>
   <ComplexType Name="proc_CargarTodasOrdenesCompra_Result">
     <Property Type="DateTime" Name="FechaPedido" Nullable="false" Precision="23" />

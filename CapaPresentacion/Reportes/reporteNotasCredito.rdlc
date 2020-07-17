@@ -49,6 +49,10 @@
           <DataField>NCF</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="NCFAfectado">
+          <DataField>NCFAfectado</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
         <Field Name="NotaDeCreditoID">
           <DataField>NotaDeCreditoID</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
@@ -90,13 +94,16 @@
                   <Width>1.17915in</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.8601in</Width>
+                  <Width>1.27677in</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>1.61909in</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>1.87779in</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>1.58333in</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>1.53125in</Width>
@@ -338,6 +345,46 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox40</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>None</Style>
+                            </Border>
+                            <BottomBorder>
+                              <Color>Black</Color>
+                              <Style>Solid</Style>
+                              <Width>1.5pt</Width>
+                            </BottomBorder>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox11">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>NCFAfectado</Value>
+                                  <Style>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Left</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox11</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -768,6 +815,40 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
+                        <Textbox Name="NCFAfectado">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!NCFAfectado.Value</Value>
+                                  <Style>
+                                    <FontFamily>Segoe UI</FontFamily>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Left</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>NCFAfectado</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>None</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
                         <Textbox Name="FechaVencimiento">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
@@ -844,7 +925,9 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=IIf(Fields!ITBIS.Value = true, FormatNumber(((CDec(Parameters!Itbis.Value) / 100) * Fields!ValorAplicado.Value),2), 0.00)</Value>
+                                  <Value>=FormatNumber(IIf(Fields!ITBIS.Value = true, 
+IIf(Parameters!Itbis.Value = 0, 0, Fields!ValorAplicado.Value - ( Fields!ValorAplicado.Value / (CDec(Parameters!Itbis.Value / 100) + 1)))
+, 0.00),2)</Value>
                                   <Style>
                                     <FontFamily>Segoe UI</FontFamily>
                                   </Style>
@@ -954,6 +1037,7 @@
                 <TablixMember />
                 <TablixMember />
                 <TablixMember />
+                <TablixMember />
               </TablixMembers>
             </TablixColumnHierarchy>
             <TablixRowHierarchy>
@@ -971,7 +1055,7 @@
             <Top>0.06944in</Top>
             <Left>0.30084in</Left>
             <Height>0.52083in</Height>
-            <Width>16.26093in</Width>
+            <Width>17.26093in</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -982,7 +1066,7 @@
         <Height>0.69792in</Height>
         <Style />
       </Body>
-      <Width>16.56177in</Width>
+      <Width>17.56177in</Width>
       <Page>
         <PageHeader>
           <Height>2.5625in</Height>
@@ -1096,7 +1180,7 @@
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
               <Top>1.92708in</Top>
-              <Left>0.30081in</Left>
+              <Left>0.3008in</Left>
               <Height>0.5in</Height>
               <Width>3.74633in</Width>
               <ZIndex>3</ZIndex>
@@ -1402,42 +1486,6 @@
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
-            <Textbox Name="Textbox23">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>Sub Total RD$:</Value>
-                      <Style>
-                        <FontFamily>Segoe UI</FontFamily>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Right</TextAlign>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>0.06944in</Top>
-              <Left>5.00915in</Left>
-              <Height>0.25in</Height>
-              <Width>1.55205in</Width>
-              <Visibility>
-                <Hidden>=Globals.PageNumber&lt;Globals.TotalPages</Hidden>
-              </Visibility>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
             <Textbox Name="Textbox24">
               <CanGrow>true</CanGrow>
               <KeepTogether>true</KeepTogether>
@@ -1461,7 +1509,6 @@
               <Left>5.00915in</Left>
               <Height>0.25in</Height>
               <Width>1.55204in</Width>
-              <ZIndex>1</ZIndex>
               <Visibility>
                 <Hidden>=Globals.PageNumber&lt;Globals.TotalPages</Hidden>
               </Visibility>
@@ -1509,45 +1556,7 @@
               <Left>5.00915in</Left>
               <Height>0.25in</Height>
               <Width>1.55205in</Width>
-              <ZIndex>2</ZIndex>
-              <Visibility>
-                <Hidden>=Globals.PageNumber&lt;Globals.TotalPages</Hidden>
-              </Visibility>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Textbox Name="Textbox30">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=FormatNumber(Sum((Fields!ValorAplicado.Value - (IIf(Fields!ITBIS.Value = true, FormatNumber(((CDec(Parameters!Itbis.Value) / 100) * Fields!ValorAplicado.Value),2), 0.00))), "DataSetTodasNotasCredito"),2)</Value>
-                      <Style>
-                        <FontFamily>Segoe UI</FontFamily>
-                        <FontWeight>Normal</FontWeight>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Right</TextAlign>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>0.06944in</Top>
-              <Left>6.5612in</Left>
-              <Height>0.25in</Height>
-              <Width>1.56169in</Width>
-              <ZIndex>3</ZIndex>
+              <ZIndex>1</ZIndex>
               <Visibility>
                 <Hidden>=Globals.PageNumber&lt;Globals.TotalPages</Hidden>
               </Visibility>
@@ -1568,7 +1577,11 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=FormatNumber(Sum(IIf(Fields!ITBIS.Value = true, FormatNumber(((CDec(Parameters!Itbis.Value) / 100) * Fields!ValorAplicado.Value),2), 0.00), "DataSetTodasNotasCredito"),2)</Value>
+                      <Value>=FormatNumber(
+Sum(
+IIf(Parameters!Itbis.Value = 0, 0, Fields!ValorAplicado.Value - ( Fields!ValorAplicado.Value / (CDec(Parameters!Itbis.Value / 100) + 1)))
+, "DataSetTodasNotasCredito")
+,2)</Value>
                       <Style>
                         <FontFamily>Segoe UI</FontFamily>
                       </Style>
@@ -1584,7 +1597,7 @@
               <Left>6.5612in</Left>
               <Height>0.25in</Height>
               <Width>1.56169in</Width>
-              <ZIndex>4</ZIndex>
+              <ZIndex>2</ZIndex>
               <Visibility>
                 <Hidden>=Globals.PageNumber&lt;Globals.TotalPages</Hidden>
               </Visibility>
@@ -1605,7 +1618,8 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=FormatNumber(SUM(Fields!ValorAplicado.Value, "DataSetTodasNotasCredito"),2)</Value>
+                      <Value>=FormatNumber(
+SUM(Fields!ValorAplicado.Value, "DataSetTodasNotasCredito"),2)</Value>
                       <Style>
                         <FontFamily>Segoe UI</FontFamily>
                         <FontWeight>Bold</FontWeight>
@@ -1622,7 +1636,7 @@
               <Left>6.5612in</Left>
               <Height>0.25in</Height>
               <Width>1.56169in</Width>
-              <ZIndex>5</ZIndex>
+              <ZIndex>3</ZIndex>
               <Visibility>
                 <Hidden>=Globals.PageNumber&lt;Globals.TotalPages</Hidden>
               </Visibility>

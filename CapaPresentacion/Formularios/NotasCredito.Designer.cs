@@ -44,6 +44,7 @@
             this.Factura = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FacturaAplicada = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NCF = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NCFAfectado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FechaVencimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ITBIS = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Monto = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -78,6 +79,7 @@
             this.Factura,
             this.FacturaAplicada,
             this.NCF,
+            this.NCFAfectado,
             this.FechaVencimiento,
             this.ITBIS,
             this.Monto,
@@ -262,6 +264,14 @@
             this.NCF.ReadOnly = true;
             this.NCF.Width = 58;
             // 
+            // NCFAfectado
+            // 
+            this.NCFAfectado.DataPropertyName = "NCFAfectado";
+            this.NCFAfectado.HeaderText = "NCFAfectado";
+            this.NCFAfectado.Name = "NCFAfectado";
+            this.NCFAfectado.ReadOnly = true;
+            this.NCFAfectado.Width = 119;
+            // 
             // FechaVencimiento
             // 
             this.FechaVencimiento.DataPropertyName = "FechaVencimiento";
@@ -335,6 +345,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Factura;
         private System.Windows.Forms.DataGridViewTextBoxColumn FacturaAplicada;
         private System.Windows.Forms.DataGridViewTextBoxColumn NCF;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NCFAfectado;
         private System.Windows.Forms.DataGridViewTextBoxColumn FechaVencimiento;
         private System.Windows.Forms.DataGridViewCheckBoxColumn ITBIS;
         private System.Windows.Forms.DataGridViewTextBoxColumn Monto;

@@ -301,9 +301,10 @@ namespace SFacturacion
 
         private void btnVentas_Click(object sender, EventArgs e)
         {
+            CerrarFormulariosAntesAbrirVentas();
             AbrirFormEnPanel<TabsFormularioVentas>();
             SeleccionarButton("TabsFormularioVentas");
-            CerrarFormulariosAntesAbrirVentas();
+            
         }
 
         private void btnClientes_Click(object sender, EventArgs e)
@@ -320,9 +321,10 @@ namespace SFacturacion
 
         private void btnCompras_Click(object sender, EventArgs e)
         {
+            CerrarFormularioCuentasPorPagarYProductos();
             AbrirFormEnPanel<Compras>();
             SeleccionarButton("Compras");
-            CerrarFormularioCuentasPorPagarYProductos();
+            
         }
         private void btnUsuarios_Click(object sender, EventArgs e)
         {
@@ -408,9 +410,10 @@ namespace SFacturacion
 
         private void btnNotasCredito_Click(object sender, EventArgs e)
         {
+            CerrarFormularioCuentasPorCobrarYProductos();
             AbrirFormEnPanel<NotasCredito>();
             SeleccionarButton("NotasCredito");
-            CerrarFormularioCuentasPorCobrarYProductos();
+            
         }
 
         private void btnCXC_Click(object sender, EventArgs e)

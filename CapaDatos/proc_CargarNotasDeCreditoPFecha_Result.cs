@@ -25,5 +25,6 @@ namespace CapaDatos
         public string Usuario { get; set; }
         public string Cliente { get; set; }
         public System.DateTime FechaVencimiento { get; set; }
+        public string NCFAfectado { get; set; }
     }
 }

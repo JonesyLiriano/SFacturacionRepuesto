@@ -24,5 +24,6 @@ namespace CapaDatos
         public Nullable<decimal> MontoAplicado { get; set; }
         public string Usuario { get; set; }
         public System.DateTime FechaVencimiento { get; set; }
+        public string NCFAfectado { get; set; }
     }
 }

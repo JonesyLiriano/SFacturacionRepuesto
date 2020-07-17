@@ -78,7 +78,9 @@ namespace CapaPresentacion.Formularios
             {              
                if(proc_ComprobanteNotaDeCredito_Results.FirstOrDefault().ITBIS)
                 {
-                    txtITBIS.Text = (proc_ComprobanteNotaDeCredito_Results.FirstOrDefault().PrecioTotal * (Properties.Settings.Default.ITBIS / 100))?.ToString("C", ci);
+                    txtITBIS.Text = (proc_ComprobanteNotaDeCredito_Results.FirstOrDefault().PrecioTotal
+                                            - (proc_ComprobanteNotaDeCredito_Results.FirstOrDefault().PrecioTotal
+                                            / (Properties.Settings.Default.ITBIS == 0 ? 0 : ((Properties.Settings.Default.ITBIS / 100) + 1))))?.ToString("C", ci);
                 }
                else
                 {

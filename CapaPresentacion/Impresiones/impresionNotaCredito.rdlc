@@ -806,7 +806,7 @@
               <Top>1.92014in</Top>
               <Left>0.32855in</Left>
               <Height>0.5in</Height>
-              <Width>3.74633in</Width>
+              <Width>3.74632in</Width>
               <ZIndex>3</ZIndex>
               <Style>
                 <Border>
@@ -1650,7 +1650,10 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=FormatNumber(IIf(Fields!ITBIS.Value = true, (Fields!PrecioTotal.Value * (CDec(Parameters!ITBISActual.Value) / 100)), 0.00) ,2)</Value>
+                      <Value>=FormatNumber(
+IIf(Fields!ITBIS.Value = true, IIf(Parameters!ITBISActual.Value = 0, 0, Fields!PrecioTotal.Value - ( Fields!PrecioTotal.Value / (CDec(Parameters!ITBISActual.Value / 100) + 1)))
+ , 0.00)
+,2)</Value>
                       <Style>
                         <FontFamily>Segoe UI</FontFamily>
                         <FontWeight>Normal</FontWeight>
