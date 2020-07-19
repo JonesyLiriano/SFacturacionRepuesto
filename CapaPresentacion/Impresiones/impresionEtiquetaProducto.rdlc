@@ -60,7 +60,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=UCase(Parameters!DescripcionProducto.Value)</Value>
+                    <Value>=UCase(Parameters!Referencia.Value)</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>7pt</FontSize>
@@ -94,7 +94,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>="$" + FormatNumber(Parameters!PrecioVenta.Value)</Value>
+                    <Value>=Parameters!PrecioCompra.Value</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>6pt</FontSize>
@@ -109,13 +109,18 @@
             <rd:DefaultName>Textbox1</rd:DefaultName>
             <Top>0.55556in</Top>
             <Left>1.375in</Left>
-            <Height>0.22917in</Height>
+            <Height>0.20834in</Height>
             <Width>0.625in</Width>
             <ZIndex>3</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
               </Border>
+              <BottomBorder>
+                <Color>Black</Color>
+                <Style>Solid</Style>
+                <Width>1pt</Width>
+              </BottomBorder>
               <PaddingLeft>2pt</PaddingLeft>
               <PaddingRight>2pt</PaddingRight>
               <PaddingTop>2pt</PaddingTop>
@@ -129,7 +134,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>=UCase(Parameters!Referencia.Value)</Value>
+                    <Value>=UCase(Parameters!DescripcionProducto.Value)</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>7pt</FontSize>
@@ -146,6 +151,41 @@
             <Height>0.18056in</Height>
             <Width>2in</Width>
             <ZIndex>4</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox11">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Parameters!PrecioVenta.Value</Value>
+                    <Style>
+                      <FontFamily>Segoe UI</FontFamily>
+                      <FontSize>6pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox1</rd:DefaultName>
+            <Top>0.7639in</Top>
+            <Left>1.375in</Left>
+            <Height>0.2361in</Height>
+            <Width>0.625in</Width>
+            <ZIndex>5</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -189,6 +229,10 @@
       <DataType>String</DataType>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
+    <ReportParameter Name="PrecioCompra">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
   </ReportParameters>
   <ReportParametersLayout>
     <GridLayoutDefinition>
@@ -219,6 +263,11 @@
           <ColumnIndex>0</ColumnIndex>
           <RowIndex>1</RowIndex>
           <ParameterName>Referencia</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>1</ColumnIndex>
+          <RowIndex>1</RowIndex>
+          <ParameterName>PrecioCompra</ParameterName>
         </CellDefinition>
       </CellDefinitions>
     </GridLayoutDefinition>

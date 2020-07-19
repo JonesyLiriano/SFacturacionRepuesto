@@ -19,7 +19,7 @@ namespace CapaPresentacion.Impresiones
     public partial class ImpresionEtiquetaProducto : Form
     {
         private int cantidad;
-        ReportParameter[] parameters = new ReportParameter[5];
+        ReportParameter[] parameters = new ReportParameter[6];
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
@@ -31,10 +31,11 @@ namespace CapaPresentacion.Impresiones
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
 
-        public ImpresionEtiquetaProducto(string descripcionProd, string codigoBarra, int cantidad, string precioVenta, string referencia)
+        public ImpresionEtiquetaProducto(string descripcionProd, string codigoBarra, int cantidad, string precioVenta, string referencia,
+            string precioCompra)
         {
             InitializeComponent();
-            CargarParametros(descripcionProd, codigoBarra, precioVenta, referencia);
+            CargarParametros(descripcionProd, codigoBarra, precioVenta, referencia, precioCompra);
             this.cantidad = cantidad;
         }
 
@@ -48,7 +49,7 @@ namespace CapaPresentacion.Impresiones
             for (int i = 0; i < cantidad; i++)
             {
                 ControladorImpresoraPapelA4 controladorImpresoraPapelA4 = new ControladorImpresoraPapelA4();
-                controladorImpresoraPapelA4.Imprime(CargarImpresionRV());
+                controladorImpresoraPapelA4.ImprimeLabel(CargarImpresionRV());
             }            
             this.Close();
         }
@@ -103,15 +104,16 @@ namespace CapaPresentacion.Impresiones
             }
         }
 
-        private void CargarParametros(string descripcionProd, string codigoBarra, string precioVenta, string referencia)
+        private void CargarParametros(string descripcionProd, string codigoBarra, string precioVenta, string referencia, string precioCompra)
         {
             try
             {
                 parameters[0] = new ReportParameter("NombreEmpresa", Properties.Settings.Default.NombreEmpresa);
                 parameters[1] = new ReportParameter("CodigoBarra", GenerarCodigoBarra(codigoBarra));
                 parameters[2] = new ReportParameter("DescripcionProducto", descripcionProd);
-                parameters[3] = new ReportParameter("PrecioVenta", precioVenta);
-                parameters[4] = new ReportParameter("Referencia", referencia);
+                parameters[3] = new ReportParameter("PrecioCompra", ConvertirPrecioNumeroALetras(precioCompra));
+                parameters[4] = new ReportParameter("PrecioVenta", ConvertirPrecioNumeroALetras(precioVenta));
+                parameters[5] = new ReportParameter("Referencia", referencia);
             }
             catch (Exception exc)
             {
@@ -122,6 +124,44 @@ namespace CapaPresentacion.Impresiones
 
         }
 
+        private string ConvertirPrecioNumeroALetras(string precio)
+        {
+            string precioLetras = "";
+            for (int i = 0; i < precio.Length; i++)
+            {                              
+                 precioLetras = String.Concat(precioLetras, BaseNumeroALetra(precio.Substring(i, 1)));
+            }
+            return precioLetras;
+        }
+
+        private string BaseNumeroALetra(string numero)
+        {
+            switch (numero)
+            {
+                case "0":
+                    return "N";
+                case "1":
+                    return "R";
+                case "2":
+                    return "E";
+                case "3":
+                    return "P";
+                case "4":
+                    return "U";
+                case "5":
+                    return "B";
+                case "6":
+                    return "L";
+                case "7":
+                    return "I";
+                case "8":
+                    return "C";
+                case "9":
+                    return "A";
+                default:
+                    return "";
+            }
+        }
         private LocalReport CargarImpresionRV()
         {
             try
