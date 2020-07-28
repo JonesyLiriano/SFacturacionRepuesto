@@ -378,3 +378,4 @@ F:\C#\SFacturacionRepuesto\CapaPresentacion\obj\Debug\CapaPresentacion.csproj.Co
 F:\C#\SFacturacionRepuesto\CapaPresentacion\obj\Debug\CapaPresentacion.csproj.CopyComplete
 F:\C#\SFacturacionRepuesto\CapaPresentacion\obj\Debug\SFacturacion.exe
 F:\C#\SFacturacionRepuesto\CapaPresentacion\obj\Debug\SFacturacion.pdb
+F:\C#\SFacturacionRepuesto\CapaPresentacion\obj\Debug\CapaPresentacion.NombreTabRegistrarVenta.resources

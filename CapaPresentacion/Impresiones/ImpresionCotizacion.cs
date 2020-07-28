@@ -1,4 +1,5 @@
-﻿using CapaDatos;
+﻿
+using CapaDatos;
 using CapaNegocios;
 using CapaPresentacion.Clases;
 using Microsoft.Reporting.WinForms;
@@ -73,17 +74,23 @@ namespace CapaPresentacion.Impresiones
 
         private void ConfirmarTipoImpresora()
         {
-                if (Properties.Settings.Default.TipoImpresora == "Matricial")
-                {
-                    CargarImpresionMatricial();
-                }
-                else if (Properties.Settings.Default.TipoImpresora == "Papel A4")
-                {
-                    CargarParametros();
-                    ControladorImpresoraPapelA4 controladorImpresoraPapelA4 = new ControladorImpresoraPapelA4();
-                    controladorImpresoraPapelA4.Imprime(CargarImpresionRV());
-                }
-                this.Close();
+            if (Properties.Settings.Default.TipoImpresora == "Matricial")
+            {
+                CargarImpresionMatricial();
+            }
+            else if (Properties.Settings.Default.TipoImpresora == "Papel A4")
+            {
+                CargarParametros();
+                ControladorImpresoraPapelA4 controladorImpresoraPapelA4 = new ControladorImpresoraPapelA4();
+                controladorImpresoraPapelA4.Imprime(CargarImpresionRV());
+            }
+            else if (Properties.Settings.Default.TipoImpresora == "Termica")
+            {
+                CargarParametros();
+                ControladorImpresoraPapelA4 controladorImpresoraPapelA4 = new ControladorImpresoraPapelA4();
+                controladorImpresoraPapelA4.ImprimeTermica(CargarImpresionTermicaRV());
+            }
+            this.Close();
             
         }
         private void CargarParametros()
@@ -124,6 +131,27 @@ namespace CapaPresentacion.Impresiones
         private void ImpresionCotizacion_Load(object sender, EventArgs e)
         {
 
+        }
+        private LocalReport CargarImpresionTermicaRV()
+        {
+            try
+            {
+                var dataSource = new ReportDataSource("DataSetComprobanteCotizacion", proc_ComprobanteCotizacion_Results);
+                LocalReport rdlc = new LocalReport();
+                rdlc.ReportPath = @"C:/SFacturacion/impresionTermicaCotizacion.rdlc";
+                rdlc.DataSources.Clear();
+                rdlc.DataSources.Add(dataSource);
+                rdlc.EnableExternalImages = true;
+                rdlc.SetParameters(parameters);
+                return rdlc;
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Error: No se ha podido imprimir, verifique si las configuraciones del sistema estan correctas e intente de nuevo por favor.",
+                  "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Loggeator.EscribeEnArchivo(exc.ToString());
+                return null;
+            }
         }
 
         private LocalReport CargarImpresionRV()
@@ -202,15 +230,15 @@ namespace CapaPresentacion.Impresiones
                 }
                 descTotal = Convert.ToDecimal((desc + ((proc_ComprobanteCotizacion_Results.First().DescuentoCliente / 100) * subtotal)));
                 controladorImpresoraMatricial.lineasGuio();
-                controladorImpresoraMatricial.TextoIzquierda("CANTIDAD DE PRODUCTOS/SERVICIOS:" + " " + cantArticulos);
-                controladorImpresoraMatricial.lineasGuio();
-                controladorImpresoraMatricial.TextoIzquierda("LAS COTIZACIONES SOLAMENTE");
-                controladorImpresoraMatricial.TextoIzquierda("SON VALIDAS POR 30 DIAS");
-                controladorImpresoraMatricial.lineasGuio();
                 controladorImpresoraMatricial.AgregarTotales("                SUBTOTAL : $ ", subtotal);
                 controladorImpresoraMatricial.AgregarTotales("                   ITBIS : $ ", itbis);
                 controladorImpresoraMatricial.AgregarTotales("                   DESC. : $ ", descTotal);
                 controladorImpresoraMatricial.AgregarTotales("                   TOTAL : $ ", Convert.ToDecimal(subtotal + itbis - descTotal));
+                controladorImpresoraMatricial.lineasGuio();                
+                controladorImpresoraMatricial.TextoIzquierda("CANTIDAD DE PRODUCTOS/SERVICIOS:" + " " + cantArticulos);
+                controladorImpresoraMatricial.lineasGuio();
+                controladorImpresoraMatricial.TextoIzquierda("LAS COTIZACIONES SOLAMENTE");
+                controladorImpresoraMatricial.TextoIzquierda("SON VALIDAS POR 30 DIAS");
                 controladorImpresoraMatricial.lineasGuio();
                 controladorImpresoraMatricial.TextoIzquierda("COD. CLIENTE: " + proc_ComprobanteCotizacion_Results.First().ClienteID);
                 controladorImpresoraMatricial.TextoIzquierda("CLIENTE: " + proc_ComprobanteCotizacion_Results.First().NombreCliente.ToUpper());

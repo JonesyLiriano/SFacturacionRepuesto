@@ -78,6 +78,12 @@ namespace CapaPresentacion.Impresiones
                 ControladorImpresoraPapelA4 controladorImpresoraPapelA4 = new ControladorImpresoraPapelA4();
                 controladorImpresoraPapelA4.Imprime(CargarImpresionRV());
             }
+            else if (Properties.Settings.Default.TipoImpresora == "Termica")
+            {
+                CargarParametros();
+                ControladorImpresoraPapelA4 controladorImpresoraPapelA4 = new ControladorImpresoraPapelA4();
+                controladorImpresoraPapelA4.ImprimeTermica(CargarImpresionTermicaRV());
+            }
             this.Close();
         }
         private void CargarParametros()
@@ -122,6 +128,28 @@ namespace CapaPresentacion.Impresiones
                 var dataSource = new ReportDataSource("DataSetReciboCobro", proc_ComprobantePagoLineaCreditoVenta_Results);
                 LocalReport rdlc = new LocalReport();
                 rdlc.ReportPath = @"C:/SFacturacion/impresionReciboCobro.rdlc";
+                rdlc.DataSources.Clear();
+                rdlc.DataSources.Add(dataSource);
+                rdlc.EnableExternalImages = true;
+                rdlc.SetParameters(parameters);
+                return rdlc;
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Error: No se ha podido imprimir, verifique si las configuraciones del sistema estan correctas e intente de nuevo por favor.",
+                  "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Loggeator.EscribeEnArchivo(exc.ToString());
+                return null;
+            }
+        }
+
+        private LocalReport CargarImpresionTermicaRV()
+        {
+            try
+            {
+                var dataSource = new ReportDataSource("DataSetReciboCobro", proc_ComprobantePagoLineaCreditoVenta_Results);
+                LocalReport rdlc = new LocalReport();
+                rdlc.ReportPath = @"C:/SFacturacion/impresionTermicaReciboCobro.rdlc";
                 rdlc.DataSources.Clear();
                 rdlc.DataSources.Add(dataSource);
                 rdlc.EnableExternalImages = true;

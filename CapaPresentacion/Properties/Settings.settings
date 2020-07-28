@@ -59,5 +59,8 @@
     <Setting Name="ImpresoraTermica" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="CodigoLetras" Type="System.String" Scope="User">
+      <Value Profile="(Default)">REPUBLICAN</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

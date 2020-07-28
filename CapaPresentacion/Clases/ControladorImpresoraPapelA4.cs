@@ -33,12 +33,12 @@ namespace CapaPresentacion.Clases
             string deviceInfo =
               @"<DeviceInfo>
                 <OutputFormat>EMF</OutputFormat>
-                <PageWidth>21.59cm</PageWidth>
-                <PageHeight>27.94cm</PageHeight>
-                <MarginTop>0cm</MarginTop>
-                <MarginLeft>0,2cm</MarginLeft>
-                <MarginRight>0cm</MarginRight>
-                <MarginBottom>0cm</MarginBottom>
+                <PageWidth>8.5in</PageWidth>
+                <PageHeight>11in</PageHeight>
+                <MarginTop>0in</MarginTop>
+                <MarginLeft>0.078in</MarginLeft>
+                <MarginRight>0in</MarginRight>
+                <MarginBottom>0in</MarginBottom>
             </DeviceInfo>";
             Warning[] warnings;
             m_streams = new List<Stream>();
@@ -48,6 +48,27 @@ namespace CapaPresentacion.Clases
             { stream.Position = 0; }
         }
         // Impresora Para Etiquetas
+        private void ExportTermica(LocalReport report)
+        {
+            //las siguientes lineas definen el tamaño de la hoja, en mi caso es de tamaño ticket
+            //los tamaños pueden ser en pulgadas(in) o en centimetros(cm), quiza aceptan mas formatos pero no los probé.
+            string deviceInfo =
+              @"<DeviceInfo>
+                <OutputFormat>EMF</OutputFormat>
+                <PageWidth>3.5in</PageWidth>
+                <PageHeight>6.5in</PageHeight>
+                <MarginTop>0in</MarginTop>
+                <MarginLeft>0in</MarginLeft>
+                <MarginRight>0in</MarginRight>
+                <MarginBottom>0in</MarginBottom>
+            </DeviceInfo>";
+            Warning[] warnings;
+            m_streams = new List<Stream>();
+            //renderizamos el reporte
+            report.Render("Image", deviceInfo, CreateStream, out warnings);
+            foreach (Stream stream in m_streams)
+            { stream.Position = 0; }
+        }
         private void ExportLabel(LocalReport report)
         {
             //las siguientes lineas definen el tamaño de la hoja, en mi caso es de tamaño ticket
@@ -55,12 +76,12 @@ namespace CapaPresentacion.Clases
             string deviceInfo =
               @"<DeviceInfo>
                 <OutputFormat>EMF</OutputFormat>
-                <PageWidth>5.08cm</PageWidth>
-                <PageHeight>2.54cm</PageHeight>
-                <MarginTop>0cm</MarginTop>
-                <MarginLeft>0cm</MarginLeft>
-                <MarginRight>0cm</MarginRight>
-                <MarginBottom>0cm</MarginBottom>
+                <PageWidth>2.1in</PageWidth>
+                <PageHeight>1in</PageHeight>
+                <MarginTop>0in</MarginTop>
+                <MarginLeft>0.078in</MarginLeft>
+                <MarginRight>0in</MarginRight>
+                <MarginBottom>0in</MarginBottom>
             </DeviceInfo>";
             Warning[] warnings;
             m_streams = new List<Stream>();
@@ -71,6 +92,29 @@ namespace CapaPresentacion.Clases
         }
 
         // Handler para los eventos PrintPageEvents
+        private void PrintPageTermica(object sender, PrintPageEventArgs ev)
+        {
+            Metafile pageImage = new Metafile(m_streams[m_currentPageIndex]);
+
+            // ajusta el area rectangular con margenes.
+            Rectangle adjustedRect = new Rectangle(
+                ev.PageBounds.Left - (int)ev.PageSettings.HardMarginX,
+                ev.PageBounds.Top - (int)ev.PageSettings.HardMarginY,
+                ev.PageBounds.Width,
+                ev.PageBounds.Height);
+
+            // Dibuja un fondo blanco para el reporte
+            ev.Graphics.FillRectangle(Brushes.White, adjustedRect);
+
+            // Dibuja el contenido del reporte
+            ev.Graphics.DrawImage(pageImage, adjustedRect);
+
+            // pasa a la siguiente pagina y comprueba que no se haya terminado el contenido
+            m_currentPageIndex++;
+            ev.HasMorePages = (m_currentPageIndex < m_streams.Count);
+
+        }
+
         private void PrintPage(object sender, PrintPageEventArgs ev)
         {
             Metafile pageImage = new Metafile(m_streams[m_currentPageIndex]);
@@ -91,9 +135,34 @@ namespace CapaPresentacion.Clases
             // pasa a la siguiente pagina y comprueba que no se haya terminado el contenido
             m_currentPageIndex++;
             ev.HasMorePages = (m_currentPageIndex < m_streams.Count);
+
         }
 
         private void Print()
+        {
+            PrintDocument printDoc;
+            //busca el nombre de la impresora predeterminada
+            String printerName = Properties.Settings.Default.Impresora;
+
+            if (m_streams == null || m_streams.Count == 0)
+                throw new Exception("Error: No hay datos que imprimir.");
+
+            printDoc = new PrintDocument();
+            printDoc.PrinterSettings.PrinterName = printerName;
+           
+            if (!printDoc.PrinterSettings.IsValid)
+            {
+                MessageBox.Show(String.Format("No se pudo encontrar la impresora \"{0}\".", printerName));
+            }
+            else
+            {
+                printDoc.PrintPage += new PrintPageEventHandler(PrintPage);
+                m_currentPageIndex = 0;
+                printDoc.Print();
+            }
+        }
+        //Impresora de etiquetas
+        private void PrintTermica()
         {
             PrintDocument printDoc;
             //busca el nombre de la impresora predeterminada
@@ -110,17 +179,17 @@ namespace CapaPresentacion.Clases
             }
             else
             {
-                printDoc.PrintPage += new PrintPageEventHandler(PrintPage);
+                printDoc.PrintPage += new PrintPageEventHandler(PrintPageTermica);
                 m_currentPageIndex = 0;
                 printDoc.Print();
             }
         }
-        //Impresora de etiquetas
+
         private void PrintLabel()
         {
             PrintDocument printDoc;
             //busca el nombre de la impresora predeterminada
-            String printerName = Properties.Settings.Default.ImpresoraTermica;
+            String printerName = Properties.Settings.Default.Impresora;
 
             if (m_streams == null || m_streams.Count == 0)
                 throw new Exception("Error: No hay datos que imprimir.");
@@ -133,7 +202,7 @@ namespace CapaPresentacion.Clases
             }
             else
             {
-                printDoc.PrintPage += new PrintPageEventHandler(PrintPage);
+                printDoc.PrintPage += new PrintPageEventHandler(PrintPageTermica);
                 m_currentPageIndex = 0;
                 printDoc.Print();
             }
@@ -155,14 +224,41 @@ namespace CapaPresentacion.Clases
         // Exporta el reporte a un archivo .emf y lo imprime
         public void Imprime(LocalReport rdlc)
         {
-            Export(rdlc);
-            Print();
+            try
+            {
+                Export(rdlc);
+                Print();
+            }
+            catch (Exception exc)
+            {
+                Loggeator.EscribeEnArchivo(exc.ToString());
+            }
         }
         // Impresora de etiquetas
+        public void ImprimeTermica(LocalReport rdlc)
+        {
+            try
+            {
+                ExportTermica(rdlc);
+                PrintTermica();
+            }
+            catch (Exception exc)
+            {
+                Loggeator.EscribeEnArchivo(exc.ToString());
+            }
+        }
+
         public void ImprimeLabel(LocalReport rdlc)
         {
-            ExportLabel(rdlc);
-            PrintLabel();
+            try
+            {
+                ExportLabel(rdlc);
+                PrintLabel();
+            }
+            catch (Exception exc)
+            {
+                Loggeator.EscribeEnArchivo(exc.ToString());
+            }
         }
 
 
@@ -174,6 +270,7 @@ namespace CapaPresentacion.Clases
                     stream.Close();
                 m_streams = null;
             }
+
         }
     }
 }

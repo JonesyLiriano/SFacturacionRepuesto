@@ -335,7 +335,7 @@ namespace CapaPresentacion.Clases
 
             }
             else
-            {
+            {                
                 linea.AppendLine("Los valores ingresados para esta fila");
                 linea.AppendLine("superan las columnas soportdas por éste.");
                 throw new Exception("Los valores ingresados para algunas filas del ticket\nsuperan las columnas soportdas por éste.");
@@ -353,11 +353,18 @@ namespace CapaPresentacion.Clases
         //Para mandara a imprimir el texto a la impresora que le indiquemos.
         public void ImprimirTicket()
         {
-            string impresora = Properties.Settings.Default.Impresora;
-            //Usaremos un código que nos proporciona Microsoft. https://support.microsoft.com/es-es/kb/322091
+            try
+            {
+                string impresora = Properties.Settings.Default.Impresora;
+                //Usaremos un código que nos proporciona Microsoft. https://support.microsoft.com/es-es/kb/322091
 
-            RawPrinterHelper.SendStringToPrinter(impresora, linea.ToString()); //Imprime texto.
-            linea.Clear();  //linea.Clear();//Al cabar de imprimir limpia la linea de todo el texto agregado.
+                RawPrinterHelper.SendStringToPrinter(impresora, linea.ToString()); //Imprime texto.
+                linea.Clear();  //linea.Clear();//Al cabar de imprimir limpia la linea de todo el texto agregado.
+            }
+            catch (Exception exc)
+            {
+                Loggeator.EscribeEnArchivo(exc.ToString());
+            }
         }
     }
 

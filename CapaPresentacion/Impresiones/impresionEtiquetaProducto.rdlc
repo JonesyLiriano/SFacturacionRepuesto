@@ -10,10 +10,10 @@
             <Value>=Parameters!CodigoBarra.Value</Value>
             <MIMEType>image/jpeg</MIMEType>
             <Sizing>FitProportional</Sizing>
-            <Top>0.55556in</Top>
-            <Left>0.10417in</Left>
-            <Height>0.44444in</Height>
-            <Width>1.27083in</Width>
+            <Top>0.38889in</Top>
+            <Left>0.125in</Left>
+            <Height>0.61111in</Height>
+            <Width>1.20139in</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -21,7 +21,6 @@
             </Style>
           </Image>
           <Textbox Name="Textbox7">
-            <CanGrow>true</CanGrow>
             <KeepTogether>true</KeepTogether>
             <Paragraphs>
               <Paragraph>
@@ -40,21 +39,17 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox1</rd:DefaultName>
-            <Height>0.18056in</Height>
-            <Width>2in</Width>
+            <Left>0.125in</Left>
+            <Height>0.125in</Height>
+            <Width>1.82986in</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
               </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
           <Textbox Name="Textbox8">
-            <CanGrow>true</CanGrow>
             <KeepTogether>true</KeepTogether>
             <Paragraphs>
               <Paragraph>
@@ -73,22 +68,18 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox1</rd:DefaultName>
-            <Top>0.18056in</Top>
-            <Height>0.18056in</Height>
-            <Width>2in</Width>
+            <Top>0.125in</Top>
+            <Left>0.125in</Left>
+            <Height>0.13888in</Height>
+            <Width>1.81944in</Width>
             <ZIndex>2</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
               </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
           <Textbox Name="Textbox9">
-            <CanGrow>true</CanGrow>
             <KeepTogether>true</KeepTogether>
             <Paragraphs>
               <Paragraph>
@@ -97,7 +88,7 @@
                     <Value>=Parameters!PrecioCompra.Value</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
-                      <FontSize>6pt</FontSize>
+                      <FontSize>7pt</FontSize>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -107,10 +98,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox1</rd:DefaultName>
-            <Top>0.55556in</Top>
-            <Left>1.375in</Left>
+            <Top>0.38889in</Top>
+            <Left>1.34027in</Left>
             <Height>0.20834in</Height>
-            <Width>0.625in</Width>
+            <Width>0.61459in</Width>
             <ZIndex>3</ZIndex>
             <Style>
               <Border>
@@ -121,14 +112,9 @@
                 <Style>Solid</Style>
                 <Width>1pt</Width>
               </BottomBorder>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
           <Textbox Name="Textbox10">
-            <CanGrow>true</CanGrow>
             <KeepTogether>true</KeepTogether>
             <Paragraphs>
               <Paragraph>
@@ -147,22 +133,18 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox1</rd:DefaultName>
-            <Top>0.375in</Top>
-            <Height>0.18056in</Height>
-            <Width>2in</Width>
+            <Top>0.26389in</Top>
+            <Left>0.125in</Left>
+            <Height>0.125in</Height>
+            <Width>1.81944in</Width>
             <ZIndex>4</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
               </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
           <Textbox Name="Textbox11">
-            <CanGrow>true</CanGrow>
             <KeepTogether>true</KeepTogether>
             <Paragraphs>
               <Paragraph>
@@ -171,7 +153,7 @@
                     <Value>=Parameters!PrecioVenta.Value</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
-                      <FontSize>6pt</FontSize>
+                      <FontSize>7pt</FontSize>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -181,19 +163,15 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox1</rd:DefaultName>
-            <Top>0.7639in</Top>
-            <Left>1.375in</Left>
-            <Height>0.2361in</Height>
-            <Width>0.625in</Width>
+            <Top>0.59723in</Top>
+            <Left>1.34027in</Left>
+            <Height>0.19443in</Height>
+            <Width>0.60417in</Width>
             <ZIndex>5</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
               </Border>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
         </ReportItems>

@@ -1530,7 +1530,7 @@
           </Style>
         </PageHeader>
         <PageFooter>
-          <Height>1.417in</Height>
+          <Height>1.86111in</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -1544,7 +1544,7 @@
                       <Value>-Las devoluciones deberán realizarse dentro de los 30 días posteriores a la fecha de la factura o sino el ITBIS no se contemplará en la nota de crédito.</Value>
                       <Style>
                         <FontFamily>Segoe UI</FontFamily>
-                        <FontSize>8pt</FontSize>
+                        <FontSize>7pt</FontSize>
                       </Style>
                     </TextRun>
                   </TextRuns>
@@ -1555,7 +1555,7 @@
               <Top>0.06944in</Top>
               <Left>0.30773in</Left>
               <Height>0.5in</Height>
-              <Width>3.02083in</Width>
+              <Width>4.58645in</Width>
               <Visibility>
                 <Hidden>=Globals.PageNumber&lt;Globals.TotalPages</Hidden>
               </Visibility>
@@ -1588,8 +1588,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>0.56944in</Top>
-              <Left>5.0048in</Left>
+              <Top>1.09722in</Top>
+              <Left>5.01177in</Left>
               <Height>0.25in</Height>
               <Width>1.55208in</Width>
               <ZIndex>1</ZIndex>
@@ -1625,8 +1625,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>0.81944in</Top>
-              <Left>5.0048in</Left>
+              <Top>1.34722in</Top>
+              <Left>5.01177in</Left>
               <Height>0.25in</Height>
               <Width>1.55207in</Width>
               <ZIndex>2</ZIndex>
@@ -1666,8 +1666,8 @@ IIf(Fields!ITBIS.Value = true, IIf(Parameters!ITBISActual.Value = 0, 0, Fields!P
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>0.56944in</Top>
-              <Left>6.55687in</Left>
+              <Top>1.09722in</Top>
+              <Left>6.56384in</Left>
               <Height>0.25in</Height>
               <Width>1.61459in</Width>
               <ZIndex>3</ZIndex>
@@ -1703,8 +1703,8 @@ IIf(Fields!ITBIS.Value = true, IIf(Parameters!ITBISActual.Value = 0, 0, Fields!P
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>0.81944in</Top>
-              <Left>6.55687in</Left>
+              <Top>1.34722in</Top>
+              <Left>6.56384in</Left>
               <Height>0.25in</Height>
               <Width>1.61459in</Width>
               <ZIndex>4</ZIndex>
@@ -1728,7 +1728,7 @@ IIf(Fields!ITBIS.Value = true, IIf(Parameters!ITBISActual.Value = 0, 0, Fields!P
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>APROBADO POR</Value>
+                      <Value>RECIBIDO POR</Value>
                       <Style>
                         <FontFamily>Segoe UI</FontFamily>
                       </Style>
@@ -1740,10 +1740,10 @@ IIf(Fields!ITBIS.Value = true, IIf(Parameters!ITBISActual.Value = 0, 0, Fields!P
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>0.81944in</Top>
-              <Left>2.89231in</Left>
+              <Top>1.09722in</Top>
+              <Left>2.75769in</Left>
               <Height>0.25in</Height>
-              <Width>1.93857in</Width>
+              <Width>2.13649in</Width>
               <ZIndex>5</ZIndex>
               <Visibility>
                 <Hidden>=Globals.PageNumber&lt;Globals.TotalPages</Hidden>
@@ -1770,11 +1770,10 @@ IIf(Fields!ITBIS.Value = true, IIf(Parameters!ITBISActual.Value = 0, 0, Fields!P
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>Sistema realizado por Jonesy Liriano
-TEL/WSS: 809-222-3740</Value>
+                      <Value>Sistema realizado por Jonesy Liriano, TEL/WSS: 809-222-3740</Value>
                       <Style>
                         <FontFamily>Segoe UI</FontFamily>
-                        <FontSize>8pt</FontSize>
+                        <FontSize>7pt</FontSize>
                       </Style>
                     </TextRun>
                   </TextRuns>
@@ -1782,10 +1781,10 @@ TEL/WSS: 809-222-3740</Value>
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>0.73611in</Top>
-              <Left>0.30773in</Left>
-              <Height>0.33333in</Height>
-              <Width>2.07291in</Width>
+              <Top>1.38889in</Top>
+              <Left>0.33895in</Left>
+              <Height>0.20833in</Height>
+              <Width>4.55523in</Width>
               <ZIndex>6</ZIndex>
               <Visibility>
                 <Hidden>=Globals.PageNumber&lt;Globals.TotalPages</Hidden>
@@ -1794,6 +1793,48 @@ TEL/WSS: 809-222-3740</Value>
                 <Border>
                   <Style>None</Style>
                 </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox52">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>AUTORIZADO POR</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Center</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox1</rd:DefaultName>
+              <Top>1.09722in</Top>
+              <Left>0.33895in</Left>
+              <Height>0.25in</Height>
+              <Width>2.06357in</Width>
+              <ZIndex>7</ZIndex>
+              <Visibility>
+                <Hidden>=Globals.PageNumber&lt;Globals.TotalPages</Hidden>
+              </Visibility>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <TopBorder>
+                  <Color>Black</Color>
+                  <Style>Solid</Style>
+                  <Width>1pt</Width>
+                </TopBorder>
                 <PaddingLeft>2pt</PaddingLeft>
                 <PaddingRight>2pt</PaddingRight>
                 <PaddingTop>2pt</PaddingTop>

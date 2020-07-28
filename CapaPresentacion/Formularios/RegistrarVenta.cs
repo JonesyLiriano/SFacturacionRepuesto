@@ -378,29 +378,34 @@ namespace CapaPresentacion
         private void txtPrecioVenta_Leave(object sender, EventArgs e)
         {
             decimal precioConvertido;
-            if (decimal.TryParse(txtPrecio.Text, out precioConvertido))
+            if(!string.IsNullOrEmpty(txtCodigoBarra.Text))
             {
-                try
+                if (decimal.TryParse(txtPrecio.Text, out precioConvertido))
                 {
-                    if (productoCarritoEntidad.PrecioVentaMin > precioConvertido)
+                    try
                     {
-                        MessageBox.Show("El precio de venta esta por debajo de lo permitido, favor de digitar otro precio", "Error en Precio", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        txtPrecio.Text = productoCarritoEntidad.PrecioVentaMin.ToString();
+                        if (productoCarritoEntidad.PrecioVentaMin > precioConvertido)
+                        {
+                            MessageBox.Show("El precio de venta esta por debajo de lo permitido, favor de digitar otro precio", "Error en Precio", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            txtPrecio.Text = productoCarritoEntidad.PrecioVentaMin.ToString();
+                        }
+                    }
+                    catch (Exception exc)
+                    {
+
+                        MessageBox.Show("Error: No se ha podido validar el precio de venta correctamente, intente de nuevo por favor.",
+                            "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Loggeator.EscribeEnArchivo(exc.ToString());
                     }
                 }
-                catch (Exception exc)
+                else
                 {
-
-                    MessageBox.Show("Error: No se ha podido validar el precio de venta correctamente, intente de nuevo por favor.",
-                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    Loggeator.EscribeEnArchivo(exc.ToString());
+                    MessageBox.Show("Debe de digitar un numero valido", "Error en Precio", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txtPrecio.Text = productoCarritoEntidad.PrecioVenta.ToString();
                 }
+
             }
-            else
-            {
-                MessageBox.Show("Debe de digitar un numero valido", "Error en Precio", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtPrecio.Text = productoCarritoEntidad.PrecioVenta.ToString();
-            }
+            checkboxColocarAuto_CheckedChanged(null, null);
         }
 
         private void LimpiarFormulario()
@@ -691,7 +696,7 @@ namespace CapaPresentacion
             try
             {
                 codigoBarraProd = null;
-                Productos formProductos = new Productos();
+                Productos formProductos = new Productos();                
                 formProductos.Controls["btnSeleccionar"].Visible = true;
                 formProductos.Controls["btnNuevo"].Visible = false;
                 formProductos.Controls["btnEliminar"].Visible = false;
@@ -759,6 +764,11 @@ namespace CapaPresentacion
                 CalcularTotalFactura();
             }
             
+        }
+
+        private void txtPrecio_Enter(object sender, EventArgs e)
+        {
+            this.AcceptButton = null;
         }
 
         private void cbClientes_Enter(object sender, EventArgs e)
@@ -1118,8 +1128,29 @@ namespace CapaPresentacion
 
         }
 
-
-
-
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            switch (keyData)
+            {
+                case Keys.F1:
+                    txtCodigoBarra.Focus();
+                    return true;
+                case Keys.F2:
+                    btnColocar.PerformClick();
+                    return true;
+                case Keys.F3:
+                    btnBuscarProd.PerformClick();
+                    return true;
+                case Keys.F4:
+                    btnFacturar.PerformClick();
+                    return true;
+                case Keys.F5:
+                    btnCotizar.PerformClick();
+                    return true;
+                default:
+                    return base.ProcessCmdKey(ref msg, keyData);                    
+            }
+           
+            }  
     }
 }

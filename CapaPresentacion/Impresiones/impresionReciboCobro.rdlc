@@ -203,17 +203,6 @@
                   <TextAlign>Right</TextAlign>
                 </Style>
               </Paragraph>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value />
-                    <Style>
-                      <FontFamily>Segoe UI</FontFamily>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox1</rd:DefaultName>
             <Top>1.08333in</Top>
@@ -1213,10 +1202,45 @@
           </Style>
         </PageHeader>
         <PageFooter>
-          <Height>1.28125in</Height>
+          <Height>1.86111in</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
+            <Textbox Name="Textbox40">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>¡Gracias por su pago!</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                        <FontSize>8pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox1</rd:DefaultName>
+              <Top>0.04167in</Top>
+              <Left>0.34374in</Left>
+              <Height>0.33333in</Height>
+              <Width>2.07291in</Width>
+              <Visibility>
+                <Hidden>=Globals.PageNumber&lt;Globals.TotalPages</Hidden>
+              </Visibility>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
             <Textbox Name="Textbox38">
               <CanGrow>true</CanGrow>
               <KeepTogether>true</KeepTogether>
@@ -1224,7 +1248,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>APROBADO POR</Value>
+                      <Value>RECIBIDO POR</Value>
                       <Style>
                         <FontFamily>Segoe UI</FontFamily>
                       </Style>
@@ -1236,10 +1260,11 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>0.70834in</Top>
-              <Left>3.44915in</Left>
+              <Top>1.07813in</Top>
+              <Left>2.76247in</Left>
               <Height>0.25in</Height>
-              <Width>1.93857in</Width>
+              <Width>2.13649in</Width>
+              <ZIndex>1</ZIndex>
               <Visibility>
                 <Hidden>=Globals.PageNumber&lt;Globals.TotalPages</Hidden>
               </Visibility>
@@ -1265,11 +1290,10 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>Sistema realizado por Jonesy Liriano
-TEL/WSS: 809-222-3740</Value>
+                      <Value>Sistema realizado por Jonesy Liriano, TEL/WSS: 809-222-3740</Value>
                       <Style>
                         <FontFamily>Segoe UI</FontFamily>
-                        <FontSize>8pt</FontSize>
+                        <FontSize>7pt</FontSize>
                       </Style>
                     </TextRun>
                   </TextRuns>
@@ -1277,11 +1301,11 @@ TEL/WSS: 809-222-3740</Value>
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>0.62501in</Top>
-              <Left>0.34374in</Left>
-              <Height>0.33333in</Height>
-              <Width>2.07291in</Width>
-              <ZIndex>1</ZIndex>
+              <Top>1.3698in</Top>
+              <Left>0.34373in</Left>
+              <Height>0.20833in</Height>
+              <Width>4.55523in</Width>
+              <ZIndex>2</ZIndex>
               <Visibility>
                 <Hidden>=Globals.PageNumber&lt;Globals.TotalPages</Hidden>
               </Visibility>
@@ -1295,29 +1319,30 @@ TEL/WSS: 809-222-3740</Value>
                 <PaddingBottom>2pt</PaddingBottom>
               </Style>
             </Textbox>
-            <Textbox Name="Textbox40">
+            <Textbox Name="Textbox52">
               <CanGrow>true</CanGrow>
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>¡Gracias por su pago!</Value>
+                      <Value>AUTORIZADO POR</Value>
                       <Style>
                         <FontFamily>Segoe UI</FontFamily>
-                        <FontSize>8pt</FontSize>
                       </Style>
                     </TextRun>
                   </TextRuns>
-                  <Style />
+                  <Style>
+                    <TextAlign>Center</TextAlign>
+                  </Style>
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>0.04167in</Top>
-              <Left>0.34374in</Left>
-              <Height>0.33333in</Height>
-              <Width>2.07291in</Width>
-              <ZIndex>2</ZIndex>
+              <Top>1.07813in</Top>
+              <Left>0.34373in</Left>
+              <Height>0.25in</Height>
+              <Width>2.06357in</Width>
+              <ZIndex>3</ZIndex>
               <Visibility>
                 <Hidden>=Globals.PageNumber&lt;Globals.TotalPages</Hidden>
               </Visibility>
@@ -1325,6 +1350,11 @@ TEL/WSS: 809-222-3740</Value>
                 <Border>
                   <Style>None</Style>
                 </Border>
+                <TopBorder>
+                  <Color>Black</Color>
+                  <Style>Solid</Style>
+                  <Width>1pt</Width>
+                </TopBorder>
                 <PaddingLeft>2pt</PaddingLeft>
                 <PaddingRight>2pt</PaddingRight>
                 <PaddingTop>2pt</PaddingTop>

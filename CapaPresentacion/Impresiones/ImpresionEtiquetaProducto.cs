@@ -136,28 +136,29 @@ namespace CapaPresentacion.Impresiones
 
         private string BaseNumeroALetra(string numero)
         {
+            string palabra = Properties.Settings.Default.CodigoLetras;
             switch (numero)
             {
                 case "0":
-                    return "N";
+                    return palabra.Substring(9,1);
                 case "1":
-                    return "R";
+                    return palabra.Substring(0, 1);
                 case "2":
-                    return "E";
+                    return palabra.Substring(1, 1);
                 case "3":
-                    return "P";
+                    return palabra.Substring(2, 1);
                 case "4":
-                    return "U";
+                    return palabra.Substring(3, 1);
                 case "5":
-                    return "B";
+                    return palabra.Substring(4, 1);
                 case "6":
-                    return "L";
+                    return palabra.Substring(5, 1);
                 case "7":
-                    return "I";
+                    return palabra.Substring(6, 1);
                 case "8":
-                    return "C";
+                    return palabra.Substring(7, 1);
                 case "9":
-                    return "A";
+                    return palabra.Substring(8, 1);
                 default:
                     return "";
             }

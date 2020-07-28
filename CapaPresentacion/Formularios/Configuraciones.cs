@@ -44,6 +44,7 @@ namespace CapaPresentacion.Formularios
         {
             cbTipoImpresora.Items.Add("Papel A4");
             cbTipoImpresora.Items.Add("Matricial");
+            cbTipoImpresora.Items.Add("Termica");
             cbTipoImpresora.SelectedIndex = 0;
         }
         private void btnCargarLogo_Click(object sender, EventArgs e)
@@ -91,6 +92,7 @@ namespace CapaPresentacion.Formularios
             Properties.Settings.Default.TipoImpresora = cbTipoImpresora.SelectedItem.ToString();
             Properties.Settings.Default.Email = txtEmail.Text;
             Properties.Settings.Default.ImpresoraTermica = txtImpresoraTermica.Text;
+            Properties.Settings.Default.CodigoLetras = txtCodigoLetras.Text;
             if (pbLogo.Image != null)
             {
                 using (var b = new Bitmap(pbLogo.Image))
@@ -126,6 +128,7 @@ namespace CapaPresentacion.Formularios
                 cbTipoImpresora.SelectedItem = Properties.Settings.Default.TipoImpresora.ToString();
                 txtEmail.Text = Properties.Settings.Default.Email.ToString();
                 txtImpresoraTermica.Text = Properties.Settings.Default.ImpresoraTermica.ToString();
+                txtCodigoLetras.Text = Properties.Settings.Default.CodigoLetras;
                 if (Properties.Settings.Default.Logo != "")
                 {
                     byte[] imageBytes = Convert.FromBase64String(Properties.Settings.Default.Logo);

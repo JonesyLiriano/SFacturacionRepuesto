@@ -329,6 +329,12 @@
     <Compile Include="Impresiones\ImpresionReciboCobro.Designer.cs">
       <DependentUpon>ImpresionReciboCobro.cs</DependentUpon>
     </Compile>
+    <Compile Include="NombreTabRegistrarVenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NombreTabRegistrarVenta.Designer.cs">
+      <DependentUpon>NombreTabRegistrarVenta.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Formularios\Proveedores.cs">
@@ -516,6 +522,14 @@
     <EmbeddedResource Include="Impresiones\impresionReciboCobro.rdlc" />
     <EmbeddedResource Include="Impresiones\ImpresionReciboCobro.resx">
       <DependentUpon>ImpresionReciboCobro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Impresiones\impresionTermicaNotaCredito.rdlc" />
+    <EmbeddedResource Include="Impresiones\impresionTermicaReciboCobro.rdlc" />
+    <EmbeddedResource Include="Impresiones\impresionTermicaOrdenCompra.rdlc" />
+    <EmbeddedResource Include="Impresiones\impresionTermicaFacturaVenta.rdlc" />
+    <EmbeddedResource Include="Impresiones\impresionTermicaCotizacion.rdlc" />
+    <EmbeddedResource Include="NombreTabRegistrarVenta.resx">
+      <DependentUpon>NombreTabRegistrarVenta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

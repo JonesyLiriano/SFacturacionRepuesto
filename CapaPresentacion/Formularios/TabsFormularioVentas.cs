@@ -80,8 +80,27 @@ namespace CapaPresentacion.Formularios
             }
         }
         private void AgregarFormVentas()
-        {            
-            TabPage tabPage = new TabPage("Tab");
+        {
+            if(tabControlVentas.Controls.Count > 1)
+            {
+                NombreTabRegistrarVenta nombreTabsDialog = new NombreTabRegistrarVenta();
+                // Show testDialog as a modal dialog and determine if DialogResult = OK.
+                if (nombreTabsDialog.ShowDialog(this) == DialogResult.OK)
+                {
+                    AgregarTabs(nombreTabsDialog.nombre);
+                }
+                nombreTabsDialog.Dispose();
+
+            } 
+            else
+            {
+                AgregarTabs("Tab");
+            }    
+        }
+
+        private void AgregarTabs(string nombre)
+        {
+            TabPage tabPage = new TabPage(nombre);
             tabPage.Margin = new Padding(0);
             tabPage.Padding = new Padding(0);
             RegistrarVenta registrarVenta = new RegistrarVenta();
@@ -91,6 +110,16 @@ namespace CapaPresentacion.Formularios
             tabControlVentas.Controls.Add(tabPage);
             registrarVenta.Show();
             tabControlVentas.SelectedTab = tabPage;
+        }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == (Keys.F6))
+            {
+                AgregarFormVentas();
+                return true;
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
         }
 
     }

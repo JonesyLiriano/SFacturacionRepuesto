@@ -196,8 +196,8 @@ namespace SFacturacion
                     if(!Convert.ToBoolean(dgvProductos.CurrentRow.Cells["Servicio"].Value))
                     {
                         CantidadEtiquetasImprimir cantidadEtiquetasImprimir = new CantidadEtiquetasImprimir(dgvProductos.CurrentRow.Cells["Descripcion"].Value.ToString(),
-                        dgvProductos.CurrentRow.Cells["CodigoBarra"].Value.ToString(), dgvProductos.CurrentRow.Cells["PrecioVenta"].Value.ToString(), dgvProductos.CurrentRow.Cells["Referencia"].Value.ToString(),
-                        dgvProductos.CurrentRow.Cells["PrecioCompra"].Value.ToString());
+                        dgvProductos.CurrentRow.Cells["CodigoBarra"].Value.ToString(), Convert.ToInt32(dgvProductos.CurrentRow.Cells["PrecioVenta"].Value).ToString(), dgvProductos.CurrentRow.Cells["Referencia"].Value.ToString(),
+                        Convert.ToInt32(dgvProductos.CurrentRow.Cells["PrecioCompra"].Value).ToString());
                         cantidadEtiquetasImprimir.ShowDialog();
                     }
                     else

@@ -1248,7 +1248,7 @@
           </Style>
         </PageHeader>
         <PageFooter>
-          <Height>1.417in</Height>
+          <Height>1.86111in</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -1262,7 +1262,7 @@
                       <Value>-El precio de los productos pueden variar.</Value>
                       <Style>
                         <FontFamily>Segoe UI</FontFamily>
-                        <FontSize>8pt</FontSize>
+                        <FontSize>7pt</FontSize>
                       </Style>
                     </TextRun>
                   </TextRuns>
@@ -1380,7 +1380,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>APROBADO POR</Value>
+                      <Value>RECIBIDO POR</Value>
                       <Style>
                         <FontFamily>Segoe UI</FontFamily>
                       </Style>
@@ -1392,10 +1392,10 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>0.87517in</Top>
-              <Left>3.38188in</Left>
+              <Top>1.09722in</Top>
+              <Left>2.74729in</Left>
               <Height>0.25in</Height>
-              <Width>1.93857in</Width>
+              <Width>2.13649in</Width>
               <ZIndex>3</ZIndex>
               <Visibility>
                 <Hidden>=Globals.PageNumber&lt;Globals.TotalPages</Hidden>
@@ -1422,11 +1422,10 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>Sistema realizado por Jonesy Liriano
-TEL/WSS: 809-222-3740</Value>
+                      <Value>Sistema realizado por Jonesy Liriano, TEL/WSS: 809-222-3740</Value>
                       <Style>
                         <FontFamily>Segoe UI</FontFamily>
-                        <FontSize>8pt</FontSize>
+                        <FontSize>7pt</FontSize>
                       </Style>
                     </TextRun>
                   </TextRuns>
@@ -1434,10 +1433,10 @@ TEL/WSS: 809-222-3740</Value>
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>0.79184in</Top>
+              <Top>1.38889in</Top>
               <Left>0.32855in</Left>
-              <Height>0.33333in</Height>
-              <Width>2.07291in</Width>
+              <Height>0.20833in</Height>
+              <Width>4.55523in</Width>
               <ZIndex>4</ZIndex>
               <Visibility>
                 <Hidden>=Globals.PageNumber&lt;Globals.TotalPages</Hidden>
@@ -1446,6 +1445,48 @@ TEL/WSS: 809-222-3740</Value>
                 <Border>
                   <Style>None</Style>
                 </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox52">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>AUTORIZADO POR</Value>
+                      <Style>
+                        <FontFamily>Segoe UI</FontFamily>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Center</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox1</rd:DefaultName>
+              <Top>1.09722in</Top>
+              <Left>0.32855in</Left>
+              <Height>0.25in</Height>
+              <Width>2.06357in</Width>
+              <ZIndex>5</ZIndex>
+              <Visibility>
+                <Hidden>=Globals.PageNumber&lt;Globals.TotalPages</Hidden>
+              </Visibility>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <TopBorder>
+                  <Color>Black</Color>
+                  <Style>Solid</Style>
+                  <Width>1pt</Width>
+                </TopBorder>
                 <PaddingLeft>2pt</PaddingLeft>
                 <PaddingRight>2pt</PaddingRight>
                 <PaddingTop>2pt</PaddingTop>

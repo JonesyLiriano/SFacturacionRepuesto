@@ -45,6 +45,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_049BF73727924A9C837153E7FCC9C866"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_04E9CF23D45C4F85903E409E890A472D"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -87,8 +93,20 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_1440678BF2D1467E8BC488C41D2F8E19"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_1BDAC3C4000F250AB8060C35BE10E1E6"
         "OwnerKey" = "8:_B76F8C1014E84EB7A31355A6CE444A8B"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_202BD32EC70646E3AEB7C82E6B529A31"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -179,6 +197,18 @@
         {
         "MsmKey" = "8:_46841ABE5A901B9C1840BDD04F8C9D8F"
         "OwnerKey" = "8:_83D2DCD6B6D978C7312B002DBEC5C0B3"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_4DF8C797F82348E699916D06D908D247"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_54A659D26DD14C30945C893003F755CC"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -880,6 +910,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_049BF73727924A9C837153E7FCC9C866"
+            {
+            "SourcePath" = "8:..\\CapaPresentacion\\Impresiones\\impresionTermicaNotaCredito.rdlc"
+            "TargetName" = "8:impresionTermicaNotaCredito.rdlc"
+            "Tag" = "8:"
+            "Folder" = "8:_427249BB3C3D4382BEEB4A10F40DE901"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_04E9CF23D45C4F85903E409E890A472D"
             {
             "SourcePath" = "8:..\\CapaPresentacion\\iconoprincipal.ico"
@@ -982,6 +1032,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1440678BF2D1467E8BC488C41D2F8E19"
+            {
+            "SourcePath" = "8:..\\CapaPresentacion\\Impresiones\\impresionTermicaFacturaVenta.rdlc"
+            "TargetName" = "8:impresionTermicaFacturaVenta.rdlc"
+            "Tag" = "8:"
+            "Folder" = "8:_427249BB3C3D4382BEEB4A10F40DE901"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_1BDAC3C4000F250AB8060C35BE10E1E6"
             {
             "AssemblyRegister" = "3:1"
@@ -1011,6 +1081,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_202BD32EC70646E3AEB7C82E6B529A31"
+            {
+            "SourcePath" = "8:..\\CapaPresentacion\\Impresiones\\impresionTermicaReciboCobro.rdlc"
+            "TargetName" = "8:impresionTermicaReciboCobro.rdlc"
+            "Tag" = "8:"
+            "Folder" = "8:_427249BB3C3D4382BEEB4A10F40DE901"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_20769321D00A4AB294C18B54DD9FA264"
@@ -1255,6 +1345,46 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4DF8C797F82348E699916D06D908D247"
+            {
+            "SourcePath" = "8:..\\CapaPresentacion\\Impresiones\\impresionTermicaOrdenCompra.rdlc"
+            "TargetName" = "8:impresionTermicaOrdenCompra.rdlc"
+            "Tag" = "8:"
+            "Folder" = "8:_427249BB3C3D4382BEEB4A10F40DE901"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_54A659D26DD14C30945C893003F755CC"
+            {
+            "SourcePath" = "8:..\\CapaPresentacion\\Impresiones\\impresionTermicaCotizacion.rdlc"
+            "TargetName" = "8:impresionTermicaCotizacion.rdlc"
+            "Tag" = "8:"
+            "Folder" = "8:_427249BB3C3D4382BEEB4A10F40DE901"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5531EBA4BCCB49D48962B93146452B94"
@@ -2178,7 +2308,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:SFacturacion"
         "ProductCode" = "8:{AB0CF015-8485-486F-8E98-CC248F77E9D2}"
-        "PackageCode" = "8:{17640B48-2BAD-4102-AE89-12A0BF5C1095}"
+        "PackageCode" = "8:{C91F30C2-8CBE-47AC-BD33-BDD063B8974A}"
         "UpgradeCode" = "8:{83E792F2-95B8-4775-A9FA-7B3156022226}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"

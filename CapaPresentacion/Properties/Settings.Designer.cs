@@ -250,5 +250,17 @@ namespace CapaPresentacion.Properties {
                 this["ImpresoraTermica"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("REPUBLICAN")]
+        public string CodigoLetras {
+            get {
+                return ((string)(this["CodigoLetras"]));
+            }
+            set {
+                this["CodigoLetras"] = value;
+            }
+        }
     }
 }

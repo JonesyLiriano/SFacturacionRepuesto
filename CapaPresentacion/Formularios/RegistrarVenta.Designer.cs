@@ -390,7 +390,7 @@
             this.btnBuscarProd.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnBuscarProd.Size = new System.Drawing.Size(115, 59);
             this.btnBuscarProd.TabIndex = 93;
-            this.btnBuscarProd.Text = "Buscar \r\nProd.  ";
+            this.btnBuscarProd.Text = "Buscar \r\n&Prod.  ";
             this.btnBuscarProd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnBuscarProd.UseVisualStyleBackColor = false;
             this.btnBuscarProd.Click += new System.EventHandler(this.btnBuscarProd_Click);
@@ -449,6 +449,7 @@
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(88, 24);
             this.txtPrecio.TabIndex = 88;
+            this.txtPrecio.Enter += new System.EventHandler(this.txtPrecio_Enter);
             this.txtPrecio.Leave += new System.EventHandler(this.txtPrecioVenta_Leave);
             // 
             // label4
