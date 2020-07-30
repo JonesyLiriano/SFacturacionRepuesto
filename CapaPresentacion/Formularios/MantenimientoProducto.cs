@@ -129,7 +129,7 @@ namespace CapaPresentacion
             if (respuesta)
             {
                 MessageBox.Show(string.Format("El proveedor/servicio ha sido agregado correctamente a la base de datos, con el codigo: {0}", productoID), "Producto/Servicio Agregado Correctamente!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close();
+                this.txtCodigoBarra.Clear();
             }
             else
             {

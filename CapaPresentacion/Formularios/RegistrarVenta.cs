@@ -67,6 +67,7 @@ namespace CapaPresentacion
         {
             try
             {
+                txtCantidad.Maximum = Decimal.MaxValue;
                 dgvCarrito.AutoGenerateColumns = false;
                 CargarCBTipoPago();
                 CargarCBTipoFactura();
@@ -708,6 +709,7 @@ namespace CapaPresentacion
                 {
                     txtCodigoBarra.Text = codigoBarraProd;
                 }
+                btnColocar.Focus();
             }
             catch (Exception exc)
             {

@@ -97,17 +97,17 @@ namespace SFacturacion
             dgvProductos.Columns["Referencia"].DisplayIndex = 3;
             dgvProductos.Columns["Descripcion"].DisplayIndex = 4;
             dgvProductos.Columns["Marca"].DisplayIndex = 5;
-            dgvProductos.Columns["Calidad"].DisplayIndex = 6;
-            dgvProductos.Columns["Proveedor"].DisplayIndex = 7;
-            dgvProductos.Columns["UnidadMedida"].DisplayIndex = 8;            
-            dgvProductos.Columns["Existencia"].DisplayIndex = 9;
-            dgvProductos.Columns["ITBIS"].DisplayIndex = 10;
-            dgvProductos.Columns["PrecioCompra"].DisplayIndex = 11;
-            dgvProductos.Columns["PrecioVenta"].DisplayIndex = 12;
-            dgvProductos.Columns["PrecioVentaMin"].DisplayIndex = 13;
-            dgvProductos.Columns["Descuento"].DisplayIndex = 14;
-            dgvProductos.Columns["CantMin"].DisplayIndex = 15;
-            dgvProductos.Columns["CantMax"].DisplayIndex = 16;
+            dgvProductos.Columns["Calidad"].DisplayIndex = 6;            
+            dgvProductos.Columns["UnidadMedida"].DisplayIndex = 7;            
+            dgvProductos.Columns["Existencia"].DisplayIndex = 8;
+            dgvProductos.Columns["PrecioVenta"].DisplayIndex = 9;
+            dgvProductos.Columns["PrecioVentaMin"].DisplayIndex = 10;
+            dgvProductos.Columns["PrecioCompra"].DisplayIndex = 11; 
+            dgvProductos.Columns["ITBIS"].DisplayIndex = 12;
+            dgvProductos.Columns["Descuento"].DisplayIndex = 13;
+            dgvProductos.Columns["CantMin"].DisplayIndex = 14;
+            dgvProductos.Columns["CantMax"].DisplayIndex = 15;
+            dgvProductos.Columns["Proveedor"].DisplayIndex = 16;
             dgvProductos.Columns["ProveedorID"].DisplayIndex = 17;
 
             dgvProductos.Columns["Existencia"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
@@ -231,7 +231,7 @@ namespace SFacturacion
             cbFiltro.Items.Add("Calidad");
             cbFiltro.Items.Add("Unidad de Medida");
             cbFiltro.Items.Add("Proveedor");
-            cbFiltro.SelectedIndex = 0;
+            cbFiltro.SelectedIndex = 4;
         }
         private void txtFiltro_Leave(object sender, EventArgs e)
         {

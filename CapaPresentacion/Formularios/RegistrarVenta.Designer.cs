@@ -356,7 +356,7 @@
             // 
             this.txtUnidadMedida.BackColor = System.Drawing.Color.White;
             this.txtUnidadMedida.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUnidadMedida.Location = new System.Drawing.Point(361, 51);
+            this.txtUnidadMedida.Location = new System.Drawing.Point(354, 51);
             this.txtUnidadMedida.Name = "txtUnidadMedida";
             this.txtUnidadMedida.ReadOnly = true;
             this.txtUnidadMedida.Size = new System.Drawing.Size(66, 24);
@@ -436,7 +436,7 @@
             this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.label5.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(507, 22);
+            this.label5.Location = new System.Drawing.Point(511, 22);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(87, 20);
             this.label5.TabIndex = 89;
@@ -445,9 +445,9 @@
             // txtPrecio
             // 
             this.txtPrecio.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPrecio.Location = new System.Drawing.Point(506, 51);
+            this.txtPrecio.Location = new System.Drawing.Point(515, 51);
             this.txtPrecio.Name = "txtPrecio";
-            this.txtPrecio.Size = new System.Drawing.Size(88, 24);
+            this.txtPrecio.Size = new System.Drawing.Size(79, 24);
             this.txtPrecio.TabIndex = 88;
             this.txtPrecio.Enter += new System.EventHandler(this.txtPrecio_Enter);
             this.txtPrecio.Leave += new System.EventHandler(this.txtPrecioVenta_Leave);
@@ -489,9 +489,14 @@
             // 
             this.txtCantidad.DecimalPlaces = 2;
             this.txtCantidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.txtCantidad.Location = new System.Drawing.Point(438, 51);
+            this.txtCantidad.Location = new System.Drawing.Point(426, 51);
+            this.txtCantidad.Maximum = new decimal(new int[] {
+            9999999,
+            0,
+            0,
+            0});
             this.txtCantidad.Name = "txtCantidad";
-            this.txtCantidad.Size = new System.Drawing.Size(56, 24);
+            this.txtCantidad.Size = new System.Drawing.Size(83, 24);
             this.txtCantidad.TabIndex = 86;
             this.txtCantidad.Value = new decimal(new int[] {
             1,
