@@ -1294,5 +1294,18 @@ namespace CapaDatos
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("proc_InsertarMovimiento", movimientoID, productoIDParameter, fechaParameter, tipoMovimientoParameter, referenciaParameter, cantidadParameter, usuarioIDParameter, resultado);
         }
+    
+        public virtual ObjectResult<proc_CargarFacturasRapidaPFecha_Result> proc_CargarFacturasRapidaPFecha(Nullable<System.DateTime> fechaInicial, Nullable<System.DateTime> fechaFinal)
+        {
+            var fechaInicialParameter = fechaInicial.HasValue ?
+                new ObjectParameter("FechaInicial", fechaInicial) :
+                new ObjectParameter("FechaInicial", typeof(System.DateTime));
+    
+            var fechaFinalParameter = fechaFinal.HasValue ?
+                new ObjectParameter("FechaFinal", fechaFinal) :
+                new ObjectParameter("FechaFinal", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_CargarFacturasRapidaPFecha_Result>("proc_CargarFacturasRapidaPFecha", fechaInicialParameter, fechaFinalParameter);
+        }
     }
 }

@@ -177,5 +177,20 @@ namespace CapaPresentacion.Formularios
                 Loggeator.EscribeEnArchivo(exc.ToString());
             }
         }
+
+        private void pictureBoxFacturasRapida_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ElegirRangoFechas elegirRangoFechas = new ElegirRangoFechas("Facturas Rapida");
+                elegirRangoFechas.ShowDialog();
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Error: No se ha podido exportar las facturas, verifique si las configuraciones del sistema estan correctas e intente de nuevo por favor.",
+                   "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Loggeator.EscribeEnArchivo(exc.ToString());
+            }
+        }
     }
 }

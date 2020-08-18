@@ -717,6 +717,10 @@
           <Parameter Name="FechaInicial" Type="date" Mode="In" />
           <Parameter Name="FechaFinal" Type="date" Mode="In" />
         </Function>
+        <Function Name="proc_CargarFacturasRapidaPFecha" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FechaInicial" Type="date" Mode="In" />
+          <Parameter Name="FechaFinal" Type="date" Mode="In" />
+        </Function>
         <Function Name="proc_CargarMontoFacturaNC" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="FacturaID" Type="int" Mode="In" />
         </Function>
@@ -2041,6 +2045,10 @@
             <Parameter Name="UsuarioID" Mode="In" Type="Int32" />
             <Parameter Name="resultado" Mode="InOut" Type="Boolean" />
           </FunctionImport>
+          <FunctionImport Name="proc_CargarFacturasRapidaPFecha" ReturnType="Collection(SFacturacionModel.proc_CargarFacturasRapidaPFecha_Result)">
+            <Parameter Name="FechaInicial" Mode="In" Type="DateTime" />
+            <Parameter Name="FechaFinal" Mode="In" Type="DateTime" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="proc_BuscarProductosPorProveedor_Result">
           <Property Type="Int32" Name="ProductoID" Nullable="false" />
@@ -2789,6 +2797,25 @@
           <Property Type="Decimal" Name="Existencia" Nullable="true" Precision="18" Scale="2" />
           <Property Type="Decimal" Name="Cantidad" Nullable="true" Precision="18" Scale="2" />
           <Property Type="String" Name="Usuario" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="proc_CargarFacturasRapidaPFecha_Result">
+          <Property Type="Int32" Name="FacturaID" Nullable="false" />
+          <Property Type="String" Name="Usuario" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="ClienteID" Nullable="false" />
+          <Property Type="String" Name="Cliente" Nullable="false" MaxLength="100" />
+          <Property Type="Decimal" Name="DescuentoCliente" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="DateTime" Name="Fecha" Nullable="false" Precision="23" />
+          <Property Type="String" Name="TipoDePago" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="TipoFactura" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Cotizacion" Nullable="true" />
+          <Property Type="String" Name="NCF" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="FechaVencimiento" Nullable="true" />
+          <Property Type="Decimal" Name="Descuento" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="ITBIS" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="SubTotal" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Double" Name="Valor" Nullable="true" />
+          <Property Type="String" Name="RNC" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Entidad" Nullable="true" MaxLength="100" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -3756,6 +3783,29 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="proc_InsertarMovimiento" FunctionName="SFacturacionModel.Store.proc_InsertarMovimiento" />
+          <FunctionImportMapping FunctionImportName="proc_CargarFacturasRapidaPFecha" FunctionName="SFacturacionModel.Store.proc_CargarFacturasRapidaPFecha">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SFacturacionModel.proc_CargarFacturasRapidaPFecha_Result">
+                <ScalarProperty Name="FacturaID" ColumnName="FacturaID" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="ClienteID" ColumnName="ClienteID" />
+                <ScalarProperty Name="Cliente" ColumnName="Cliente" />
+                <ScalarProperty Name="DescuentoCliente" ColumnName="DescuentoCliente" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="TipoDePago" ColumnName="TipoDePago" />
+                <ScalarProperty Name="TipoFactura" ColumnName="TipoFactura" />
+                <ScalarProperty Name="Cotizacion" ColumnName="Cotizacion" />
+                <ScalarProperty Name="NCF" ColumnName="NCF" />
+                <ScalarProperty Name="FechaVencimiento" ColumnName="FechaVencimiento" />
+                <ScalarProperty Name="Descuento" ColumnName="Descuento" />
+                <ScalarProperty Name="ITBIS" ColumnName="ITBIS" />
+                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="RNC" ColumnName="RNC" />
+                <ScalarProperty Name="Entidad" ColumnName="Entidad" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

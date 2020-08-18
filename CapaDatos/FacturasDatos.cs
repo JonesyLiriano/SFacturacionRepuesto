@@ -75,5 +75,10 @@ namespace CapaDatos
             var result = modelDB.proc_CargarFacturasCGubernamentalPFecha(fInicial, fFinal);
             return result;
         }
+        public ObjectResult<proc_CargarFacturasRapidaPFecha_Result> CargarFacturasRapidaPFecha(DateTime fInicial, DateTime fFinal)
+        {
+            var result = modelDB.proc_CargarFacturasRapidaPFecha(fInicial, fFinal);
+            return result;
+        }
     }
 }

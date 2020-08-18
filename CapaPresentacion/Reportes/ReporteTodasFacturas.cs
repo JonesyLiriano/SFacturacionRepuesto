@@ -21,6 +21,7 @@ namespace CapaPresentacion.Reportes
         List<proc_CargarFacturasCFinalPFecha_Result> proc_CargarFacturasCFinalPFecha_Results;
         List<proc_CargarFacturasCFiscalPFecha_Result> proc_CargarFacturasCFiscalPFecha_Results;
         List<proc_CargarFacturasCGubernamentalPFecha_Result> proc_CargarFacturasCGubernamentalPFecha_Results;
+        List<proc_CargarFacturasRapidaPFecha_Result> proc_CargarFacturasRapidaPFecha_Results;
         ReportParameter[] parameters = new ReportParameter[6];
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
@@ -150,6 +151,31 @@ namespace CapaPresentacion.Reportes
             {
                 proc_CargarFacturasCGubernamentalPFecha_Results = facturasNegocio.CargarFacturasCGubernamentalPFecha(fechaInicial, fechaFinal).ToList();
                 var dataSource = new ReportDataSource("DataSetTodasFacturas", proc_CargarFacturasCGubernamentalPFecha_Results);
+                reportViewer1.ProcessingMode = ProcessingMode.Local;
+                reportViewer1.LocalReport.ReportPath = @"C:/SFacturacion/reporteTodasFacturas.rdlc";
+                reportViewer1.LocalReport.DataSources.Clear();
+                reportViewer1.LocalReport.DataSources.Add(dataSource);
+                reportViewer1.ZoomMode = ZoomMode.PageWidth;
+                reportViewer1.LocalReport.EnableExternalImages = true;
+                reportViewer1.LocalReport.SetParameters(parameters);
+                reportViewer1.RefreshReport();
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Error: No se ha podido exportar, verifique si las configuraciones del sistema estan correctas e intente de nuevo por favor.",
+                  "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Loggeator.EscribeEnArchivo(exc.ToString());
+
+            }
+
+        }
+
+        public void CargarTodasFacturasRapida(DateTime fechaInicial, DateTime fechaFinal)
+        {
+            try
+            {
+                proc_CargarFacturasRapidaPFecha_Results = facturasNegocio.CargarFacturasRapidaPFecha(fechaInicial, fechaFinal).ToList();
+                var dataSource = new ReportDataSource("DataSetTodasFacturas", proc_CargarFacturasRapidaPFecha_Results);
                 reportViewer1.ProcessingMode = ProcessingMode.Local;
                 reportViewer1.LocalReport.ReportPath = @"C:/SFacturacion/reporteTodasFacturas.rdlc";
                 reportViewer1.LocalReport.DataSources.Clear();

@@ -158,6 +158,9 @@
     <Compile Include="proc_CargarFacturasPFecha_Result.cs">
       <DependentUpon>SFacturacionModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="proc_CargarFacturasRapidaPFecha_Result.cs">
+      <DependentUpon>SFacturacionModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="proc_CargarMontoFacturaNC_Result.cs">
       <DependentUpon>SFacturacionModel.tt</DependentUpon>
     </Compile>

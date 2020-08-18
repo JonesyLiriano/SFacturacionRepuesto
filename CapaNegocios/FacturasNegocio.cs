@@ -63,5 +63,10 @@ namespace CapaNegocios
         {
             return facturasDatos.CargarFacturasCGubernamentalPFecha(fInicial, fFinal);
         }
+
+        public ObjectResult<proc_CargarFacturasRapidaPFecha_Result> CargarFacturasRapidaPFecha(DateTime fInicial, DateTime fFinal)
+        {
+            return facturasDatos.CargarFacturasRapidaPFecha(fInicial, fFinal);
+        }
     }
 }

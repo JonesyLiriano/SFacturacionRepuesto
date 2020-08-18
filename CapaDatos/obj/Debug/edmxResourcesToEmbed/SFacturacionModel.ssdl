@@ -712,6 +712,10 @@
     <Parameter Name="FechaInicial" Type="date" Mode="In" />
     <Parameter Name="FechaFinal" Type="date" Mode="In" />
   </Function>
+  <Function Name="proc_CargarFacturasRapidaPFecha" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FechaInicial" Type="date" Mode="In" />
+    <Parameter Name="FechaFinal" Type="date" Mode="In" />
+  </Function>
   <Function Name="proc_CargarMontoFacturaNC" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="FacturaID" Type="int" Mode="In" />
   </Function>

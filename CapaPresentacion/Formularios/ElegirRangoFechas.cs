@@ -63,6 +63,11 @@ namespace CapaPresentacion.Formularios
                         reporteTodasFacturas.TopMost = true;
                         reporteTodasFacturas.Show();
                         break;
+                    case "Facturas Rapida":
+                        reporteTodasFacturas.CargarTodasFacturasRapida(dtPickerFechaInicial.Value, dtPickerFechaFinal.Value);
+                        reporteTodasFacturas.TopMost = true;
+                        reporteTodasFacturas.Show();
+                        break;
                     case "Facturas Compras":
                         ReporteFacturasCompra reporteFacturasCompra = new ReporteFacturasCompra(dtPickerFechaInicial.Value, dtPickerFechaFinal.Value);
                         reporteFacturasCompra.TopMost = true;
