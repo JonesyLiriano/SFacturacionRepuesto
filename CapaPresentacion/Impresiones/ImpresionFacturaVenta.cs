@@ -256,6 +256,13 @@ namespace CapaPresentacion.Impresiones
                 controladorImpresoraMatricial.AgregarTotales("                   ITBIS : $ ", itbis);
                 controladorImpresoraMatricial.AgregarTotales("                   DESC. : $ ", descTotal);
                 controladorImpresoraMatricial.AgregarTotales("                   TOTAL : $ ", Convert.ToDecimal(subtotal + itbis - descTotal));
+                if (!(proc_ComprobanteFacturaVenta_Results.First().TipoDePago == "Credito 30 dias" || proc_ComprobanteFacturaVenta_Results.First().TipoDePago == "Credito 60 dias"))
+                {
+                    controladorImpresoraMatricial.AgregarTotales("                 Tarjeta : $ ", Convert.ToDecimal(tarjeta));
+                    controladorImpresoraMatricial.AgregarTotales("                Efectivo : $ ", Convert.ToDecimal(efectivo));
+                    controladorImpresoraMatricial.AgregarTotales("                Recibido : $ ", Convert.ToDecimal(recibido));
+                    controladorImpresoraMatricial.AgregarTotales("                Devuelta : $ ", Convert.ToDecimal(devuelta));
+                }
                 controladorImpresoraMatricial.lineasGuio();
                 controladorImpresoraMatricial.TextoIzquierda("CANTIDAD DE PRODUCTOS/SERVICIOS:" + " " + cantArticulos);
                 controladorImpresoraMatricial.lineasGuio();

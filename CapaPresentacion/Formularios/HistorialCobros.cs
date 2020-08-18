@@ -133,10 +133,15 @@ namespace CapaPresentacion.Formularios
                     if (dialogResult == DialogResult.OK)
                     {                        
                         if (!(dgvCobros.Rows[dgvCobros.CurrentRow.Index].Cells["Concepto"].Value.ToString() == "Nota de credito"))
-                        {   
-                            resultado = cobrosVentaCreditoNegocio.BorrarCobroVentaCredito(Convert.ToInt32(dgvCobros.CurrentRow.Cells["CobroVentaCreditoID"].Value));
-                            CargarDataGridView();
-                            ValidarBorrarCobro(resultado);
+                        {
+                            Autorizar autorizar = new Autorizar();
+                            DialogResult dr = autorizar.ShowDialog(this);
+                            if (autorizar.DialogResult != DialogResult.OK)
+                            {
+                                resultado = cobrosVentaCreditoNegocio.BorrarCobroVentaCredito(Convert.ToInt32(dgvCobros.CurrentRow.Cells["CobroVentaCreditoID"].Value));
+                                CargarDataGridView();
+                                ValidarBorrarCobro(resultado);
+                            }
                         } 
                         else
                         {

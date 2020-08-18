@@ -111,16 +111,5 @@ namespace CapaPresentacion.Formularios
             registrarVenta.Show();
             tabControlVentas.SelectedTab = tabPage;
         }
-
-        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
-        {
-            if (keyData == (Keys.F6))
-            {
-                AgregarFormVentas();
-                return true;
-            }
-            return base.ProcessCmdKey(ref msg, keyData);
-        }
-
     }
 }

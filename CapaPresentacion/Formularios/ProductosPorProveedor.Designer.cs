@@ -50,13 +50,13 @@
             this.txtFiltro = new System.Windows.Forms.TextBox();
             this.cbFiltro = new System.Windows.Forms.ComboBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             this.groupBox6.SuspendLayout();
             this.SuspendLayout();
@@ -316,6 +316,16 @@
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "ATAJOS";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 10F);
+            this.label2.Location = new System.Drawing.Point(14, 107);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(129, 19);
+            this.label2.TabIndex = 93;
+            this.label2.Text = "F4 = Marcar Prod.";
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -375,16 +385,6 @@
             this.label18.Size = new System.Drawing.Size(158, 19);
             this.label18.TabIndex = 87;
             this.label18.Text = "F2 = Seleccionar Grid.";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 10F);
-            this.label2.Location = new System.Drawing.Point(14, 107);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(129, 19);
-            this.label2.TabIndex = 93;
-            this.label2.Text = "F4 = Marcar Prod.";
             // 
             // ProductosPorProveedor
             // 
