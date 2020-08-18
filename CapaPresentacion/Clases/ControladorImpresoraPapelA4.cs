@@ -56,7 +56,7 @@ namespace CapaPresentacion.Clases
               @"<DeviceInfo>
                 <OutputFormat>EMF</OutputFormat>
                 <PageWidth>3.5in</PageWidth>
-                <PageHeight>6.5in</PageHeight>
+                <PageHeight>6.9in</PageHeight>
                 <MarginTop>0in</MarginTop>
                 <MarginLeft>0in</MarginLeft>
                 <MarginRight>0in</MarginRight>

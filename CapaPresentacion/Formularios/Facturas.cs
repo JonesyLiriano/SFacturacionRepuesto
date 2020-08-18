@@ -52,7 +52,7 @@ namespace CapaPresentacion.Formularios
                 {
                     hilo = new Thread(() =>
                     {
-                        ImpresionFacturaVenta impresionFacturaVenta = new ImpresionFacturaVenta(Convert.ToInt32(dgvFacturas.CurrentRow.Cells["FacturaID"].Value));
+                        ImpresionFacturaVenta impresionFacturaVenta = new ImpresionFacturaVenta(Convert.ToInt32(dgvFacturas.CurrentRow.Cells["FacturaID"].Value),0,0,0,0);
                         impresionFacturaVenta.Visible = false;
                         impresionFacturaVenta.ImprimirDirecto();
                     });
@@ -114,7 +114,7 @@ namespace CapaPresentacion.Formularios
             {
                 if (dgvFacturas.SelectedRows.Count > 0)
                 {                   
-                        ImpresionFacturaVenta impresionFacturaVenta = new ImpresionFacturaVenta(Convert.ToInt32(dgvFacturas.CurrentRow.Cells["FacturaID"].Value));
+                        ImpresionFacturaVenta impresionFacturaVenta = new ImpresionFacturaVenta(Convert.ToInt32(dgvFacturas.CurrentRow.Cells["FacturaID"].Value),0,0,0,0);
                         impresionFacturaVenta.ImprimirConVistaPrevia();
                         impresionFacturaVenta.Show();                   
                 }

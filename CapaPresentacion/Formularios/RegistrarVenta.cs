@@ -23,12 +23,12 @@ namespace CapaPresentacion
     {
         public bool valida = false;
         private int contFila = 0;
-        private decimal total = 0;
+        private decimal total, tarjeta, efectivo, recibido, devuelta = 0;
         private int facturaID, numFila, NCF, cotizacionID, clienteID;
         CotizacionesNegocio cotizacionesNegocio = new CotizacionesNegocio();
         Movimiento movimientoEntidad = new Movimiento();
         Cotizacione cotizacionEntidad = new Cotizacione();
-        MovimientoNegocio movimientoNegocio = new MovimientoNegocio();        
+        MovimientoNegocio movimientoNegocio = new MovimientoNegocio();
         DetalleCotizacione detalleCotizacionEntidad = new DetalleCotizacione();
         DetalleCotizacionesNegocio detalleCotizacionesNegocio = new DetalleCotizacionesNegocio();
         ClientesNegocio clientesNegocio = new ClientesNegocio();
@@ -120,7 +120,7 @@ namespace CapaPresentacion
             {
                 foreach (DataGridViewRow Fila in dgvCarrito.Rows)
                 {
-                    if(!Convert.ToBoolean(Fila.Cells["Servicio"].Value))
+                    if (!Convert.ToBoolean(Fila.Cells["Servicio"].Value))
                     {
                         movimientoEntidad.ProductoID = Convert.ToInt32(Fila.Cells["ProductoID"].Value); ;
                         movimientoEntidad.Fecha = DateTime.Now;
@@ -133,7 +133,7 @@ namespace CapaPresentacion
                         productoEntidad.Existencia = Convert.ToDouble(Fila.Cells["Cantidad"].Value);
                         productoEntidad.CodigoBarra = Convert.ToString(Fila.Cells["CodigoBarra"].Value);
                         productosNegocio.ActualizarCantidadProducto(productoEntidad);
-                    }                    
+                    }
                 }
             }
         }
@@ -142,7 +142,7 @@ namespace CapaPresentacion
         private bool VerificarCantidadProducto()
         {
             if (!string.IsNullOrEmpty(txtCodigoBarra.Text) && !string.IsNullOrEmpty(txtDescripcion.Text) && !string.IsNullOrEmpty(txtPrecio.Text) && !string.IsNullOrEmpty(txtCantidad.Text))
-            {               
+            {
                 if (productoCarritoEntidad != null)
                 {
                     if (productoCarritoEntidad.Servicio)
@@ -200,10 +200,10 @@ namespace CapaPresentacion
                 campoPrecio = Convert.ToDecimal(txtPrecio.Text) / (itbisProd == 0 ? 1 : itbisProd);
                 campoDescuento = campoPrecio * descuentoProd;
                 campoITBIS = itbisProd == 0 ? 0 : Convert.ToDecimal(txtPrecio.Text) - (Convert.ToDecimal(txtPrecio.Text) / itbisProd);
-                dgvCarrito.Rows.Add(productoCarritoEntidad.ProductoID, txtCodigoBarra.Text, productoCarritoEntidad.Referencia, txtDescripcion.Text, txtUnidadMedida.Text, txtCantidad.Text, 
+                dgvCarrito.Rows.Add(productoCarritoEntidad.ProductoID, txtCodigoBarra.Text, productoCarritoEntidad.Referencia, txtDescripcion.Text, txtUnidadMedida.Text, txtCantidad.Text,
                     campoPrecio.ToString("F"), campoITBIS.ToString("F"), campoDescuento.ToString("F"),
-                    (Convert.ToDecimal(txtCantidad.Text) * (campoPrecio + campoITBIS - campoDescuento)).ToString("F") ,productoCarritoEntidad.Servicio);        
-                
+                    (Convert.ToDecimal(txtCantidad.Text) * (campoPrecio + campoITBIS - campoDescuento)).ToString("F"), productoCarritoEntidad.Servicio);
+
                 contFila++;
             }
             else
@@ -219,7 +219,7 @@ namespace CapaPresentacion
 
                 if (existe == true)
                 {
-                    dgvCarrito.Rows[numFila].Cells["Cantidad"].Value = Convert.ToDecimal(txtCantidad.Value) 
+                    dgvCarrito.Rows[numFila].Cells["Cantidad"].Value = Convert.ToDecimal(txtCantidad.Value)
                         + Convert.ToDecimal(dgvCarrito.Rows[numFila].Cells["Cantidad"].Value);
 
                     dgvCarrito.Rows[numFila].Cells["Importe"].Value =
@@ -233,7 +233,7 @@ namespace CapaPresentacion
                     campoPrecio = Convert.ToDecimal(txtPrecio.Text) / (itbisProd == 0 ? 1 : itbisProd);
                     campoDescuento = campoPrecio * descuentoProd;
                     campoITBIS = itbisProd == 0 ? 0 : Convert.ToDecimal(txtPrecio.Text) - (Convert.ToDecimal(txtPrecio.Text) / itbisProd);
-                    dgvCarrito.Rows.Add(productoCarritoEntidad.ProductoID, txtCodigoBarra.Text, productoCarritoEntidad.Referencia, txtDescripcion.Text, txtUnidadMedida.Text,txtCantidad.Text, 
+                    dgvCarrito.Rows.Add(productoCarritoEntidad.ProductoID, txtCodigoBarra.Text, productoCarritoEntidad.Referencia, txtDescripcion.Text, txtUnidadMedida.Text, txtCantidad.Text,
                         campoPrecio.ToString("F"), campoITBIS.ToString("F"), campoDescuento.ToString("F"),
                         (Convert.ToDecimal(txtCantidad.Text) * (campoPrecio + campoITBIS - campoDescuento)).ToString("F"), productoCarritoEntidad.Servicio);
 
@@ -390,22 +390,22 @@ namespace CapaPresentacion
         private void txtPrecioVenta_Leave(object sender, EventArgs e)
         {
             decimal precioConvertido;
-            if(!string.IsNullOrEmpty(txtCodigoBarra.Text))
+            if (!string.IsNullOrEmpty(txtCodigoBarra.Text))
             {
                 if (decimal.TryParse(txtPrecio.Text, out precioConvertido))
                 {
                     try
                     {
                         if (productoCarritoEntidad.PrecioVentaMin > precioConvertido)
-                        {                            
+                        {
                             Autorizar autorizar = new Autorizar();
                             DialogResult dr = autorizar.ShowDialog(this);
                             if (autorizar.DialogResult != DialogResult.OK)
                             {
                                 MessageBox.Show("El precio de venta esta por debajo de lo permitido, favor de digitar otro precio o solicite autorizacion", "Error en Precio", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 txtPrecio.Text = productoCarritoEntidad.PrecioVentaMin.ToString();
-                            } 
-                            
+                            }
+
                         }
                     }
                     catch (Exception exc)
@@ -427,30 +427,30 @@ namespace CapaPresentacion
         }
 
         private void LimpiarFormulario()
-        {            
-                dgvCarrito.Rows.Clear();
-                dgvCarrito.Refresh();
-                total = 0;
-                subTotal = 0;
-                itbisTotal = 0;
-                descuentoTotal = 0;
-                txtCodigoBarra.Clear();
-                txtDescripcion.Clear();
-                txtUnidadMedida.Clear();
-                txtCantidad.Value = 1;
-                txtPrecio.Clear();
-                txtCodigoBarra.Select();
-                cbTipoFactura.SelectedIndex = 0;
-                cbTipoPago.SelectedIndex = 0;
-                txtRNC.Clear();
-                txtRazonSocial.Clear();
-                checkBoxClienteAnonimo.Checked = true;
-                CalcularTotalFactura();
-                contFila = 0;
-                cbCotizacion.Enabled = true;
-                cbCotizacion.SelectedIndex = -1;
-                txtMontoCotizacion.Clear();
-                txtFechaCotizacion.Clear();           
+        {
+            dgvCarrito.Rows.Clear();
+            dgvCarrito.Refresh();
+            total = 0;
+            subTotal = 0;
+            itbisTotal = 0;
+            descuentoTotal = 0;
+            txtCodigoBarra.Clear();
+            txtDescripcion.Clear();
+            txtUnidadMedida.Clear();
+            txtCantidad.Value = 1;
+            txtPrecio.Clear();
+            txtCodigoBarra.Select();
+            cbTipoFactura.SelectedIndex = 0;
+            cbTipoPago.SelectedIndex = 0;
+            txtRNC.Clear();
+            txtRazonSocial.Clear();
+            checkBoxClienteAnonimo.Checked = true;
+            CalcularTotalFactura();
+            contFila = 0;
+            cbCotizacion.Enabled = true;
+            cbCotizacion.SelectedIndex = -1;
+            txtMontoCotizacion.Clear();
+            txtFechaCotizacion.Clear();
 
         }
 
@@ -476,7 +476,7 @@ namespace CapaPresentacion
 
         }
         private void LimpiarCarrito()
-        {            
+        {
             dgvCarrito.Rows.Clear();
             dgvCarrito.Refresh();
             total = 0;
@@ -519,7 +519,7 @@ namespace CapaPresentacion
             {
                 cbTipoFactura.Focus();
             }
-        }       
+        }
 
         private void btnCotizar_Click(object sender, EventArgs e)
         {
@@ -571,7 +571,7 @@ namespace CapaPresentacion
 
                 var result = cotizacionesNegocio.InsertarCotizacion(cotizacionEntidad);
                 if (result.Item1)
-                {                    
+                {
                     cotizacionID = result.Item2;
                     CrearDetalleCotizacion();
                 }
@@ -606,7 +606,7 @@ namespace CapaPresentacion
 
                 }
                 else
-                {                    
+                {
                     txtDescuentoCliente.Enabled = true;
                     cbClientes.Enabled = true;
                 }
@@ -631,7 +631,7 @@ namespace CapaPresentacion
                         .FirstOrDefault().Fecha.ToString();
                     txtMontoCotizacion.Text = proc_CargarCotizacionesActivas_Results.Where(r => r.CotizacionID == Convert.ToInt32(cbCotizacion.SelectedValue))
                         .FirstOrDefault().Valor.Value.ToString("C", ci);
-                } 
+                }
                 else
                 {
                     txtFechaCotizacion.Clear();
@@ -667,7 +667,7 @@ namespace CapaPresentacion
                 } else
                 {
                     MessageBox.Show("Debe de elegir un numero de cotizacion que se encuentre activo", "Cotizacion no encontrada", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                
+
                 }
             }
             catch (Exception exc)
@@ -685,7 +685,7 @@ namespace CapaPresentacion
             cbClientes.SelectedValue = proc_CargarCotizacionesActivas_Results.Where(r => r.CotizacionID == Convert.ToInt32(cbCotizacion.SelectedValue))
                 .FirstOrDefault().ClienteID;
 
-            if(Convert.ToInt32(cbClientes.SelectedValue) != 0)
+            if (Convert.ToInt32(cbClientes.SelectedValue) != 0)
             {
                 checkBoxClienteAnonimo.Checked = false;
             }
@@ -694,7 +694,7 @@ namespace CapaPresentacion
         private void CargarProdCotizacionEnCarrito()
         {
             proc_CargarProductosCotizacion_Results = cotizacionesNegocio.CargarProductosCotizacion(Convert.ToInt32(cbCotizacion.SelectedValue)).ToList();
-           if(proc_CargarProductosCotizacion_Results.Count > 0)
+            if (proc_CargarProductosCotizacion_Results.Count > 0)
             {
                 foreach (proc_CargarProductosCotizacion_Result item in proc_CargarProductosCotizacion_Results)
                 {
@@ -714,7 +714,7 @@ namespace CapaPresentacion
             try
             {
                 codigoBarraProd = null;
-                Productos formProductos = new Productos();                
+                Productos formProductos = new Productos();
                 formProductos.Controls["btnSeleccionar"].Visible = true;
                 formProductos.Controls["btnNuevo"].Visible = false;
                 formProductos.Controls["btnEliminar"].Visible = false;
@@ -754,15 +754,15 @@ namespace CapaPresentacion
             cbCotizacion.ValueMember = "CotizacionID";
             cbCotizacion.DataSource = proc_CargarCotizacionesActivas_Results;
             cbCotizacion.SelectedIndex = -1;
-            
+
         }
-        private void CargarCBClientes() 
+        private void CargarCBClientes()
         {
             cbClientes.DataSource = null;
             cbClientes.DisplayMember = "Nombre";
             cbClientes.ValueMember = "ClienteID";
             proc_CargarTodosClientes_Results = clientesNegocio.CargarTodosClientes().ToList();
-            cbClientes.DataSource = proc_CargarTodosClientes_Results;            
+            cbClientes.DataSource = proc_CargarTodosClientes_Results;
 
         }
         private void CargarCBTipoFactura()
@@ -770,7 +770,7 @@ namespace CapaPresentacion
             cbTipoFactura.DataSource = null;
             cbTipoFactura.DisplayMember = "TipoFactura";
             cbTipoFactura.ValueMember = "TipoFacturaID";
-            cbTipoFactura.DataSource = tiposFacturaNegocio.CargarTodosTiposFactura();            
+            cbTipoFactura.DataSource = tiposFacturaNegocio.CargarTodosTiposFactura();
             cbTipoFactura.SelectedIndex = 0;
         }
 
@@ -783,7 +783,7 @@ namespace CapaPresentacion
                 clienteID = Convert.ToInt32(cbClientes.SelectedValue);
                 CalcularTotalFactura();
             }
-            
+
         }
 
         private void txtPrecio_Enter(object sender, EventArgs e)
@@ -794,7 +794,7 @@ namespace CapaPresentacion
         private void cbClientes_Enter(object sender, EventArgs e)
         {
             CargarCBClientes();
-            cbClientes.Focus();            
+            cbClientes.Focus();
         }
 
         private void cbTipoFactura_SelectedIndexChanged(object sender, EventArgs e)
@@ -828,6 +828,66 @@ namespace CapaPresentacion
                 Loggeator.EscribeEnArchivo(exc.ToString());
             }
 
+        }
+
+        private void txtTarjeta_TextChanged(object sender, EventArgs e)
+        {
+            CargarDevuelta();
+        }
+
+        private void txtEfectivo_TextChanged(object sender, EventArgs e)
+        {
+            CargarDevuelta();
+        }
+
+        private void CargarDevuelta()
+        {
+            try
+            {
+                tarjeta = Convert.ToDecimal(string.IsNullOrEmpty(txtTarjeta.Text) == true? "0" : txtTarjeta.Text);
+                efectivo = Convert.ToDecimal(string.IsNullOrEmpty(txtEfectivo.Text) == true ? "0" : txtEfectivo.Text);
+                recibido = (tarjeta + efectivo);
+                devuelta = recibido - decimal.Parse(Regex.Replace(txtTotal.Text, @"[^\d.]", ""));
+                txtRecibido.Text = recibido.ToString("C", ci);
+                txtDevuelta.Text = devuelta.ToString("C", ci);              
+            }            
+            catch (Exception exc)
+            {
+
+                MessageBox.Show("Error: No se ha podido validar la devuelta correctamente, intente de nuevo por favor.",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Loggeator.EscribeEnArchivo(exc.ToString());
+            }
+        }
+
+        private void txtTarjeta_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+        (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtEfectivo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+        (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
         }
 
         private void btnFacturar_Click(object sender, EventArgs e)
@@ -909,7 +969,7 @@ namespace CapaPresentacion
         {
             hilo = new Thread(() =>
             {
-                ImpresionFacturaVenta impresionFacturaVenta = new ImpresionFacturaVenta(facturaID);
+                ImpresionFacturaVenta impresionFacturaVenta = new ImpresionFacturaVenta(facturaID, tarjeta, efectivo, recibido, devuelta);
                 impresionFacturaVenta.Visible = false;
                 impresionFacturaVenta.ImprimirDirecto();
             });
@@ -1206,9 +1266,15 @@ namespace CapaPresentacion
                     btnBuscarProd.PerformClick();
                     return true;
                 case Keys.F4:
-                    btnFacturar.PerformClick();
+                    txtTarjeta.Focus();
                     return true;
                 case Keys.F5:
+                    txtEfectivo.Focus();
+                    return true;
+                case Keys.F6:
+                    btnFacturar.PerformClick();
+                    return true;
+                case Keys.F7:
                     btnCotizar.PerformClick();
                     return true;
                 default:

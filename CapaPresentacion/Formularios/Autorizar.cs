@@ -18,9 +18,6 @@ namespace CapaPresentacion.Formularios
         UsersNegocio usersNegocios = new UsersNegocio();
         User usersEntidad = new User();
         bool respuesta;
-        private string userLevel;
-        private int userID;
-        private string userName;
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]

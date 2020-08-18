@@ -19,9 +19,9 @@ namespace CapaPresentacion.Impresiones
     {
         FacturasNegocio facturasNegocio = new FacturasNegocio();
         List<proc_ComprobanteFacturaVenta_Result> proc_ComprobanteFacturaVenta_Results;
-        ReportParameter[] parameters = new ReportParameter[6];
+        ReportParameter[] parameters = new ReportParameter[10];
         int cantArticulos;
-        decimal subtotal, itbis, desc, descTotal;
+        decimal subtotal, itbis, desc, descTotal, tarjeta, efectivo, recibido, devuelta;
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
@@ -31,10 +31,14 @@ namespace CapaPresentacion.Impresiones
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
-        public ImpresionFacturaVenta(int facturaID)
+        public ImpresionFacturaVenta(int facturaID, decimal tarjeta, decimal efecto, decimal recibido, decimal devuelta)
         {
             InitializeComponent();
             proc_ComprobanteFacturaVenta_Results = facturasNegocio.CargarComprobanteFacturaVenta(facturaID).ToList();
+            this.tarjeta = tarjeta;
+            this.efectivo = efecto;
+            this.recibido = recibido;
+            this.devuelta = devuelta;
         }
 
         private void ImpresionFacturaVenta_Load(object sender, EventArgs e)
@@ -115,6 +119,10 @@ namespace CapaPresentacion.Impresiones
             parameters[3] = new ReportParameter("TelefonoEmpresa", Properties.Settings.Default.Telefono);
             parameters[4] = new ReportParameter("EmailEmpresa", Properties.Settings.Default.Email);
             parameters[5] = new ReportParameter("Logo", Properties.Settings.Default.Logo);
+            parameters[6] = new ReportParameter("Tarjeta", tarjeta.ToString());
+            parameters[7] = new ReportParameter("Efectivo", efectivo.ToString());
+            parameters[8] = new ReportParameter("Recibido", recibido.ToString());
+            parameters[9] = new ReportParameter("Devuelta", devuelta.ToString());
         }
 
         private LocalReport CargarImpresionRV()
@@ -330,6 +338,13 @@ namespace CapaPresentacion.Impresiones
                 controladorImpresoraMatricial.AgregarTotales("                   ITBIS : $ ", itbis);
                 controladorImpresoraMatricial.AgregarTotales("                   DESC. : $ ", descTotal);
                 controladorImpresoraMatricial.AgregarTotales("                   TOTAL : $ ", Convert.ToDecimal(subtotal + itbis - descTotal));
+                if (!(proc_ComprobanteFacturaVenta_Results.First().TipoDePago == "Credito 30 dias" || proc_ComprobanteFacturaVenta_Results.First().TipoDePago == "Credito 60 dias"))
+                {
+                    controladorImpresoraMatricial.AgregarTotales("                 Tarjeta : $ ", Convert.ToDecimal(tarjeta));
+                    controladorImpresoraMatricial.AgregarTotales("                Efectivo : $ ", Convert.ToDecimal(efectivo));
+                    controladorImpresoraMatricial.AgregarTotales("                Recibido : $ ", Convert.ToDecimal(recibido));
+                    controladorImpresoraMatricial.AgregarTotales("                Devuelta : $ ", Convert.ToDecimal(devuelta));
+                }
                 controladorImpresoraMatricial.lineasGuio();                
                 controladorImpresoraMatricial.TextoIzquierda("CANTIDAD DE PRODUCTOS/SERVICIOS:" + " " + cantArticulos);
                 controladorImpresoraMatricial.lineasGuio();
@@ -409,6 +424,13 @@ namespace CapaPresentacion.Impresiones
                 controladorImpresoraMatricial.AgregarTotales("                   ITBIS : $ ", itbis);
                 controladorImpresoraMatricial.AgregarTotales("                   DESC. : $ ", descTotal);
                 controladorImpresoraMatricial.AgregarTotales("                   TOTAL : $ ", Convert.ToDecimal(subtotal + itbis - descTotal));
+                if (!(proc_ComprobanteFacturaVenta_Results.First().TipoDePago == "Credito 30 dias" || proc_ComprobanteFacturaVenta_Results.First().TipoDePago == "Credito 60 dias"))
+                {
+                    controladorImpresoraMatricial.AgregarTotales("                 Tarjeta : $ ", Convert.ToDecimal(tarjeta));
+                    controladorImpresoraMatricial.AgregarTotales("                Efectivo : $ ", Convert.ToDecimal(efectivo));
+                    controladorImpresoraMatricial.AgregarTotales("                Recibido : $ ", Convert.ToDecimal(recibido));
+                    controladorImpresoraMatricial.AgregarTotales("                Devuelta : $ ", Convert.ToDecimal(devuelta));
+                }
                 controladorImpresoraMatricial.lineasGuio();                
                 controladorImpresoraMatricial.TextoIzquierda("CANTIDAD DE PRODUCTOS/SERVICIOS:" + " " + cantArticulos);
                 controladorImpresoraMatricial.lineasGuio();
@@ -491,6 +513,13 @@ namespace CapaPresentacion.Impresiones
                 controladorImpresoraMatricial.AgregarTotales("                   ITBIS : $ ", itbis);
                 controladorImpresoraMatricial.AgregarTotales("                   DESC. : $ ", descTotal);
                 controladorImpresoraMatricial.AgregarTotales("                   TOTAL : $ ", Convert.ToDecimal(subtotal + itbis - descTotal));
+                if (!(proc_ComprobanteFacturaVenta_Results.First().TipoDePago == "Credito 30 dias" || proc_ComprobanteFacturaVenta_Results.First().TipoDePago == "Credito 60 dias"))
+                {
+                    controladorImpresoraMatricial.AgregarTotales("                 Tarjeta : $ ", Convert.ToDecimal(tarjeta));
+                    controladorImpresoraMatricial.AgregarTotales("                Efectivo : $ ", Convert.ToDecimal(efectivo));
+                    controladorImpresoraMatricial.AgregarTotales("                Recibido : $ ", Convert.ToDecimal(recibido));
+                    controladorImpresoraMatricial.AgregarTotales("                Devuelta : $ ", Convert.ToDecimal(devuelta));
+                }
                 controladorImpresoraMatricial.lineasGuio();                
                 controladorImpresoraMatricial.TextoIzquierda("CANTIDAD DE PRODUCTOS/SERVICIOS:" + " " + cantArticulos);
                 controladorImpresoraMatricial.lineasGuio();
