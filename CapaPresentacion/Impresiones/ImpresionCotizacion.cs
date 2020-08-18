@@ -240,7 +240,7 @@ namespace CapaPresentacion.Impresiones
                 controladorImpresoraMatricial.TextoIzquierda("LAS COTIZACIONES SOLAMENTE");
                 controladorImpresoraMatricial.TextoIzquierda("SON VALIDAS POR 30 DIAS");
                 controladorImpresoraMatricial.lineasGuio();
-                controladorImpresoraMatricial.TextoIzquierda("COD. CLIENTE: " + proc_ComprobanteCotizacion_Results.First().ClienteID);
+               // controladorImpresoraMatricial.TextoIzquierda("COD. CLIENTE: " + proc_ComprobanteCotizacion_Results.First().ClienteID);
                 controladorImpresoraMatricial.TextoIzquierda("CLIENTE: " + proc_ComprobanteCotizacion_Results.First().NombreCliente.ToUpper());
                 controladorImpresoraMatricial.TextoIzquierda("COD. COTIZACION: " + proc_ComprobanteCotizacion_Results.First().CotizacionID.ToString());
                 controladorImpresoraMatricial.TextoIzquierda("USUARIO: " + proc_ComprobanteCotizacion_Results.First().UserName.ToUpper());

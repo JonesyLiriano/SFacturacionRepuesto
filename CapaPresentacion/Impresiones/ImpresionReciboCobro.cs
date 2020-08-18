@@ -215,7 +215,7 @@ namespace CapaPresentacion.Impresiones
                 controladorImpresoraMatricial.TextoCentro("___________________________");
                 controladorImpresoraMatricial.TextoCentro("FIRMA/CEDULA");
                 controladorImpresoraMatricial.lineasGuio();
-                controladorImpresoraMatricial.TextoIzquierda("COD. CLIENTE: " + proc_ComprobantePagoLineaCreditoVenta_Results.First().ClienteID);
+               //  controladorImpresoraMatricial.TextoIzquierda("COD. CLIENTE: " + proc_ComprobantePagoLineaCreditoVenta_Results.First().ClienteID);
                 controladorImpresoraMatricial.TextoIzquierda("CLIENTE: " + proc_ComprobantePagoLineaCreditoVenta_Results.First().Cliente.ToUpper());
                 controladorImpresoraMatricial.TextoDerecha("USUARIO: " + proc_ComprobantePagoLineaCreditoVenta_Results.First().Usuario.ToUpper());
                 controladorImpresoraMatricial.lineasGuio();

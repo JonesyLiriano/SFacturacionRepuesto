@@ -110,6 +110,7 @@ namespace CapaPresentacion.Formularios
         private void FacturarOrdenCompra_Load(object sender, EventArgs e)
         {
             CargarCBTipoPago();
+            txtNCF.Focus();
         }
 
         private bool ValidarCampos()

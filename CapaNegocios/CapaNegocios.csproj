@@ -63,6 +63,7 @@
     <Compile Include="FacturasNegocio.cs" />
     <Compile Include="LineasCreditoComprasNegocio.cs" />
     <Compile Include="LineasCreditoVentasNegocio.cs" />
+    <Compile Include="MovimientoNegocio.cs" />
     <Compile Include="NotasDeCreditoNegocio.cs" />
     <Compile Include="OrdenesCompraNegocio.cs" />
     <Compile Include="PagosCompraCreditoNegocio.cs" />

@@ -46,6 +46,7 @@ namespace CapaDatos
         public virtual DbSet<DetalleCotizacione> DetalleCotizaciones { get; set; }
         public virtual DbSet<LineasCreditoCompra> LineasCreditoCompras { get; set; }
         public virtual DbSet<PagosComprasCredito> PagosComprasCreditoes { get; set; }
+        public virtual DbSet<Movimiento> Movimientos { get; set; }
     
         public virtual int proc_ActualizarCliente(Nullable<int> clienteID, string nombre, string cedulaORnc, string direccion, string contacto_1, string contacto_2, Nullable<double> descuento, Nullable<double> credito, ObjectParameter resultado)
         {
@@ -1254,6 +1255,44 @@ namespace CapaDatos
                 new ObjectParameter("FacturaID", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("proc_BuscarLineaDeCreditoVentaIDFactura", facturaIDParameter, lineaCreditoVentaID);
+        }
+    
+        public virtual ObjectResult<proc_CargarMovimientos_Result> proc_CargarMovimientos(Nullable<int> productoID)
+        {
+            var productoIDParameter = productoID.HasValue ?
+                new ObjectParameter("ProductoID", productoID) :
+                new ObjectParameter("ProductoID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_CargarMovimientos_Result>("proc_CargarMovimientos", productoIDParameter);
+        }
+    
+        public virtual int proc_InsertarMovimiento(ObjectParameter movimientoID, Nullable<int> productoID, Nullable<System.DateTime> fecha, string tipoMovimiento, Nullable<int> referencia, Nullable<decimal> cantidad, Nullable<int> usuarioID, ObjectParameter resultado)
+        {
+            var productoIDParameter = productoID.HasValue ?
+                new ObjectParameter("ProductoID", productoID) :
+                new ObjectParameter("ProductoID", typeof(int));
+    
+            var fechaParameter = fecha.HasValue ?
+                new ObjectParameter("Fecha", fecha) :
+                new ObjectParameter("Fecha", typeof(System.DateTime));
+    
+            var tipoMovimientoParameter = tipoMovimiento != null ?
+                new ObjectParameter("TipoMovimiento", tipoMovimiento) :
+                new ObjectParameter("TipoMovimiento", typeof(string));
+    
+            var referenciaParameter = referencia.HasValue ?
+                new ObjectParameter("Referencia", referencia) :
+                new ObjectParameter("Referencia", typeof(int));
+    
+            var cantidadParameter = cantidad.HasValue ?
+                new ObjectParameter("Cantidad", cantidad) :
+                new ObjectParameter("Cantidad", typeof(decimal));
+    
+            var usuarioIDParameter = usuarioID.HasValue ?
+                new ObjectParameter("UsuarioID", usuarioID) :
+                new ObjectParameter("UsuarioID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("proc_InsertarMovimiento", movimientoID, productoIDParameter, fechaParameter, tipoMovimientoParameter, referenciaParameter, cantidadParameter, usuarioIDParameter, resultado);
         }
     }
 }

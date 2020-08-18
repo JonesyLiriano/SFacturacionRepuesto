@@ -1,5 +1,6 @@
 ﻿using CapaDatos;
 using CapaNegocios;
+using CapaPresentacion.Formularios;
 using CapaPresentacion.Impresiones;
 using SFacturacion;
 using System;
@@ -25,7 +26,9 @@ namespace CapaPresentacion
         private decimal total = 0;
         private int facturaID, numFila, NCF, cotizacionID, clienteID;
         CotizacionesNegocio cotizacionesNegocio = new CotizacionesNegocio();
+        Movimiento movimientoEntidad = new Movimiento();
         Cotizacione cotizacionEntidad = new Cotizacione();
+        MovimientoNegocio movimientoNegocio = new MovimientoNegocio();        
         DetalleCotizacione detalleCotizacionEntidad = new DetalleCotizacione();
         DetalleCotizacionesNegocio detalleCotizacionesNegocio = new DetalleCotizacionesNegocio();
         ClientesNegocio clientesNegocio = new ClientesNegocio();
@@ -118,7 +121,15 @@ namespace CapaPresentacion
                 foreach (DataGridViewRow Fila in dgvCarrito.Rows)
                 {
                     if(!Convert.ToBoolean(Fila.Cells["Servicio"].Value))
-                    {   
+                    {
+                        movimientoEntidad.ProductoID = Convert.ToInt32(Fila.Cells["ProductoID"].Value); ;
+                        movimientoEntidad.Fecha = DateTime.Now;
+                        movimientoEntidad.TipoMovimiento = "Factura";
+                        movimientoEntidad.Referencia = facturaID;
+                        movimientoEntidad.Cantidad = -Convert.ToDecimal(Fila.Cells["Cantidad"].Value);
+                        movimientoEntidad.UsuarioID = Login.userID;
+                        movimientoNegocio.AgregarMovimiento(movimientoEntidad);
+
                         productoEntidad.Existencia = Convert.ToDouble(Fila.Cells["Cantidad"].Value);
                         productoEntidad.CodigoBarra = Convert.ToString(Fila.Cells["CodigoBarra"].Value);
                         productosNegocio.ActualizarCantidadProducto(productoEntidad);
@@ -386,9 +397,15 @@ namespace CapaPresentacion
                     try
                     {
                         if (productoCarritoEntidad.PrecioVentaMin > precioConvertido)
-                        {
-                            MessageBox.Show("El precio de venta esta por debajo de lo permitido, favor de digitar otro precio", "Error en Precio", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            txtPrecio.Text = productoCarritoEntidad.PrecioVentaMin.ToString();
+                        {                            
+                            Autorizar autorizar = new Autorizar();
+                            DialogResult dr = autorizar.ShowDialog(this);
+                            if (autorizar.DialogResult != DialogResult.OK)
+                            {
+                                MessageBox.Show("El precio de venta esta por debajo de lo permitido, favor de digitar otro precio o solicite autorizacion", "Error en Precio", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                txtPrecio.Text = productoCarritoEntidad.PrecioVentaMin.ToString();
+                            } 
+                            
                         }
                     }
                     catch (Exception exc)
@@ -703,6 +720,7 @@ namespace CapaPresentacion
                 formProductos.Controls["btnEliminar"].Visible = false;
                 formProductos.Controls["btnEditar"].Visible = false;
                 formProductos.Controls["btnImprimirEtiqueta"].Visible = false;
+                formProductos.Controls["btnMovimientos"].Visible = false;
                 formProductos.AcceptButton = (IButtonControl)formProductos.Controls["btnSeleccionar"];
                 formProductos.ShowDialog();
                 if (codigoBarraProd != null)
@@ -783,7 +801,7 @@ namespace CapaPresentacion
         {
             try
             {
-                if (Convert.ToInt32(cbTipoFactura.SelectedValue) == 1)
+                if (Convert.ToInt32(cbTipoFactura.SelectedValue) == 1 || Convert.ToInt32(cbTipoFactura.SelectedValue) == 4)
                 {
                     txtRNC.Clear();
                     txtRazonSocial.Clear();
@@ -875,6 +893,9 @@ namespace CapaPresentacion
                 case 3:
                     CrearFacturaCGubernamental();
                     break;
+                case 4:
+                    CrearFacturaRapida();
+                    break;
                 default:
                     break;
             }
@@ -893,6 +914,47 @@ namespace CapaPresentacion
                 impresionFacturaVenta.ImprimirDirecto();
             });
             hilo.Start();
+        }
+
+        private void CrearFacturaRapida()
+        {
+            if (checkBoxClienteAnonimo.Checked == true)
+            {
+                facturaEntidad.ClienteID = 1;
+            }
+            else
+            {
+                facturaEntidad.ClienteID = Convert.ToInt32(cbClientes.SelectedValue);
+            }
+
+            facturaEntidad.Fecha = DateTime.Now;
+            facturaEntidad.TipoPagoID = Convert.ToInt32(cbTipoPago.SelectedValue);
+            facturaEntidad.TipoFacturaID = Convert.ToInt32(cbTipoFactura.SelectedValue);
+            facturaEntidad.NCF = null;
+            facturaEntidad.UserID = Login.userID;
+            facturaEntidad.RNC = txtRNC.Text;
+            facturaEntidad.Entidad = txtRazonSocial.Text;
+            facturaEntidad.FechaVencimiento = null;
+            facturaEntidad.DescuentoCliente = Convert.ToDecimal(txtDescuentoCliente.Text);
+
+            if (Convert.ToInt32(cbCotizacion.SelectedValue) > 0 && cbCotizacion.Enabled == false)
+            {
+                facturaEntidad.CotizacionID = Convert.ToInt32(cbCotizacion.SelectedValue);
+            }
+            else
+            {
+                facturaEntidad.CotizacionID = null;
+            }
+            var result = facturasNegocio.InsertarFactura(facturaEntidad);
+            if (result.Item1)
+            {
+                if (facturaEntidad.CotizacionID != null)
+                {
+                    cotizacionesNegocio.ActualizarEstatusCotizacion((int)facturaEntidad.CotizacionID);
+                }
+                facturaID = result.Item2;
+                CrearDetalleFactura();
+            }
         }
         private void CrearFacturaCGubernamental()
         {
@@ -1153,6 +1215,6 @@ namespace CapaPresentacion
                     return base.ProcessCmdKey(ref msg, keyData);                    
             }
            
-            }  
+        }  
     }
 }

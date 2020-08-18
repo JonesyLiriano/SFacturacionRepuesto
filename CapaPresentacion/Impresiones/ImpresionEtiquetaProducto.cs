@@ -19,7 +19,7 @@ namespace CapaPresentacion.Impresiones
     public partial class ImpresionEtiquetaProducto : Form
     {
         private int cantidad;
-        ReportParameter[] parameters = new ReportParameter[6];
+        ReportParameter[] parameters = new ReportParameter[7];
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
@@ -86,7 +86,7 @@ namespace CapaPresentacion.Impresiones
                 Barcode CodigoBarra = new Barcode();
                 CodigoBarra.IncludeLabel = true;
 
-                using (var b = new Bitmap(CodigoBarra.Encode(TYPE.CODE128, codigoBarra, Color.Black, Color.White)))
+                using (var b = new Bitmap(CodigoBarra.Encode(TYPE.CODE128, codigoBarra, Color.Black, Color.White, 150, 48)))
                 {
                     using (var ms = new MemoryStream())
                     {
@@ -97,7 +97,7 @@ namespace CapaPresentacion.Impresiones
             }
             catch (Exception exc)
             {
-                MessageBox.Show("Error: No se ha podido imprimir, verifique si las configuraciones del sistema estan correctas e intente de nuevo por favor.",
+                MessageBox.Show("Error: No se ha podido imprimir, verifique si las configuraciones del sistema estan correctas e intente de nuevo por favor." + exc.ToString(),
                   "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Loggeator.EscribeEnArchivo(exc.ToString());
                 return null;
@@ -114,6 +114,7 @@ namespace CapaPresentacion.Impresiones
                 parameters[3] = new ReportParameter("PrecioCompra", ConvertirPrecioNumeroALetras(precioCompra));
                 parameters[4] = new ReportParameter("PrecioVenta", ConvertirPrecioNumeroALetras(precioVenta));
                 parameters[5] = new ReportParameter("Referencia", referencia);
+                parameters[6] = new ReportParameter("TelefonoEtiqueta", Properties.Settings.Default.TelefonoEtiqueta);
             }
             catch (Exception exc)
             {

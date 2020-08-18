@@ -933,5 +933,33 @@
       </ResultMapping>
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="proc_BuscarLineaDeCreditoVentaIDFactura" FunctionName="SFacturacionModel.Store.proc_BuscarLineaDeCreditoVentaIDFactura" />
+    <EntitySetMapping Name="Movimientos">
+      <EntityTypeMapping TypeName="SFacturacionModel.Movimiento">
+        <MappingFragment StoreEntitySet="Movimientos">
+          <ScalarProperty Name="UsuarioID" ColumnName="UsuarioID" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="Existencia" ColumnName="Existencia" />
+          <ScalarProperty Name="Referencia" ColumnName="Referencia" />
+          <ScalarProperty Name="TipoMovimiento" ColumnName="TipoMovimiento" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="ProductoID" ColumnName="ProductoID" />
+          <ScalarProperty Name="MovimientoID" ColumnName="MovimientoID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="proc_CargarMovimientos" FunctionName="SFacturacionModel.Store.proc_CargarMovimientos">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SFacturacionModel.proc_CargarMovimientos_Result">
+          <ScalarProperty Name="Producto" ColumnName="Producto" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="TipoMovimiento" ColumnName="TipoMovimiento" />
+          <ScalarProperty Name="Referencia" ColumnName="Referencia" />
+          <ScalarProperty Name="Existencia" ColumnName="Existencia" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="proc_InsertarMovimiento" FunctionName="SFacturacionModel.Store.proc_InsertarMovimiento" />
   </EntityContainerMapping>
 </Mapping>

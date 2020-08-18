@@ -10,10 +10,9 @@
             <Value>=Parameters!CodigoBarra.Value</Value>
             <MIMEType>image/jpeg</MIMEType>
             <Sizing>FitProportional</Sizing>
-            <Top>0.38889in</Top>
-            <Left>0.125in</Left>
-            <Height>0.61111in</Height>
-            <Width>1.20139in</Width>
+            <Top>0.51388in</Top>
+            <Height>0.48612in</Height>
+            <Width>0.93403in</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -29,7 +28,8 @@
                     <Value>=UCase(Parameters!NombreEmpresa.Value)</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
-                      <FontSize>7pt</FontSize>
+                      <FontSize>8pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -39,9 +39,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox1</rd:DefaultName>
-            <Left>0.125in</Left>
             <Height>0.125in</Height>
-            <Width>1.82986in</Width>
+            <Width>1.5in</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <Border>
@@ -68,10 +67,9 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox1</rd:DefaultName>
-            <Top>0.125in</Top>
-            <Left>0.125in</Left>
+            <Top>0.375in</Top>
             <Height>0.13888in</Height>
-            <Width>1.81944in</Width>
+            <Width>1.5in</Width>
             <ZIndex>2</ZIndex>
             <Style>
               <Border>
@@ -98,10 +96,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox1</rd:DefaultName>
-            <Top>0.38889in</Top>
-            <Left>1.34027in</Left>
+            <Top>0.59723in</Top>
+            <Left>0.94792in</Left>
             <Height>0.20834in</Height>
-            <Width>0.61459in</Width>
+            <Width>0.55208in</Width>
             <ZIndex>3</ZIndex>
             <Style>
               <Border>
@@ -133,10 +131,9 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox1</rd:DefaultName>
-            <Top>0.26389in</Top>
-            <Left>0.125in</Left>
+            <Top>0.25in</Top>
             <Height>0.125in</Height>
-            <Width>1.81944in</Width>
+            <Width>1.5in</Width>
             <ZIndex>4</ZIndex>
             <Style>
               <Border>
@@ -154,6 +151,7 @@
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>7pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -163,11 +161,40 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox1</rd:DefaultName>
-            <Top>0.59723in</Top>
-            <Left>1.34027in</Left>
+            <Top>0.80557in</Top>
+            <Left>0.94792in</Left>
             <Height>0.19443in</Height>
-            <Width>0.60417in</Width>
+            <Width>0.55208in</Width>
             <ZIndex>5</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox12">
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Parameters!TelefonoEtiqueta.Value</Value>
+                    <Style>
+                      <FontFamily>Segoe UI</FontFamily>
+                      <FontSize>7pt</FontSize>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox1</rd:DefaultName>
+            <Top>0.125in</Top>
+            <Height>0.125in</Height>
+            <Width>1.5in</Width>
+            <ZIndex>6</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -178,10 +205,10 @@
         <Height>1in</Height>
         <Style />
       </Body>
-      <Width>2in</Width>
+      <Width>1.5in</Width>
       <Page>
         <PageHeight>1in</PageHeight>
-        <PageWidth>2in</PageWidth>
+        <PageWidth>1.5in</PageWidth>
         <Style />
       </Page>
     </ReportSection>
@@ -208,6 +235,10 @@
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
     <ReportParameter Name="PrecioCompra">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="TelefonoEtiqueta">
       <DataType>String</DataType>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
@@ -246,6 +277,11 @@
           <ColumnIndex>1</ColumnIndex>
           <RowIndex>1</RowIndex>
           <ParameterName>PrecioCompra</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>2</ColumnIndex>
+          <RowIndex>1</RowIndex>
+          <ParameterName>TelefonoEtiqueta</ParameterName>
         </CellDefinition>
       </CellDefinitions>
     </GridLayoutDefinition>

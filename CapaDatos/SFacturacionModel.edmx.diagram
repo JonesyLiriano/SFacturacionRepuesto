@@ -50,15 +50,16 @@
         <AssociationConnector Association="SFacturacionModel.FK_FacturasCompra_OrdenesCompra1" />
         <AssociationConnector Association="SFacturacionModel.FK_LineasCreditoCompras_FacturasCompra" />
         <AssociationConnector Association="SFacturacionModel.FK_PagosComprasCredito_LineasCreditoCompras" ManuallyRouted="true" >
-          <ConnectorPoint PointX="11.875" PointY="2.6261105152459439" />
-          <ConnectorPoint PointX="12.535" PointY="2.6261105152459439" />
+          <ConnectorPoint PointX="11.875" PointY="2.7302864583333335" />
+          <ConnectorPoint PointX="12.535" PointY="30.471889981426525" />
           <ConnectorPoint PointX="12.535" PointY="2.4594438485792773" />
           <ConnectorPoint PointX="13.215" PointY="2.4594438485792773" />
-          <ConnectorPoint PointX="13.215" PointY="2.6261105152459439" />
-          <ConnectorPoint PointX="13.875" PointY="2.6261105152459439" />
+          <ConnectorPoint PointX="13.215" PointY="5.1821907552083326" />
+          <ConnectorPoint PointX="13.875" PointY="17.990862925813559" />
         </AssociationConnector>
         <AssociationConnector Association="SFacturacionModel.FK_OrdenesCompra_Proveedores" />
         <AssociationConnector Association="SFacturacionModel.FK_PagosComprasCredito_Users" />
+        <EntityTypeShape EntityType="SFacturacionModel.Movimiento" Width="1.5" PointX="10.375" PointY="8.125" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

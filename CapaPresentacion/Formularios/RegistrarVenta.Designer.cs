@@ -95,6 +95,12 @@
             this.txtTotal = new System.Windows.Forms.TextBox();
             this.txtCantProd = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCarrito)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -103,6 +109,7 @@
             this.gbComprobante.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvCarrito
@@ -952,11 +959,77 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Cantidad de Items        en el carrito";
             // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.label25);
+            this.groupBox6.Controls.Add(this.label21);
+            this.groupBox6.Controls.Add(this.label20);
+            this.groupBox6.Controls.Add(this.label19);
+            this.groupBox6.Controls.Add(this.label18);
+            this.groupBox6.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold);
+            this.groupBox6.Location = new System.Drawing.Point(802, 264);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(304, 143);
+            this.groupBox6.TabIndex = 102;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "ATAJOS";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Century Gothic", 10F);
+            this.label18.Location = new System.Drawing.Point(21, 34);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(131, 19);
+            this.label18.TabIndex = 87;
+            this.label18.Text = "F1 = Codigo Barra";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Century Gothic", 10F);
+            this.label19.Location = new System.Drawing.Point(21, 67);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(134, 19);
+            this.label19.TabIndex = 88;
+            this.label19.Text = "F2 = Colocar Prod.";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Century Gothic", 10F);
+            this.label20.Location = new System.Drawing.Point(21, 102);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(124, 19);
+            this.label20.TabIndex = 89;
+            this.label20.Text = "F3 = Buscar Prod.";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Century Gothic", 10F);
+            this.label21.Location = new System.Drawing.Point(182, 34);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(98, 19);
+            this.label21.TabIndex = 90;
+            this.label21.Text = "F4 = Facturar";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Century Gothic", 10F);
+            this.label25.Location = new System.Drawing.Point(182, 67);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(88, 19);
+            this.label25.TabIndex = 91;
+            this.label25.Text = "F5 = Cotizar";
+            // 
             // RegistrarVenta
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1110, 600);
+            this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.txtTotal);
             this.Controls.Add(this.txtDescuento);
@@ -994,6 +1067,8 @@
             this.groupBox5.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1064,5 +1139,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Descuento;
         private System.Windows.Forms.DataGridViewTextBoxColumn Importe;
         private System.Windows.Forms.DataGridViewTextBoxColumn Servicio;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label18;
     }
 }

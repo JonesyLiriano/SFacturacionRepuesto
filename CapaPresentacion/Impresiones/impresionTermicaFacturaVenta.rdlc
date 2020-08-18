@@ -366,7 +366,7 @@
             <DataSetName>DataSetComprobanteFacturaVenta</DataSetName>
             <Top>2.78477in</Top>
             <Height>0.41666in</Height>
-            <Width>2.88544in</Width>
+            <Width>2.88543in</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -650,7 +650,7 @@
             <rd:DefaultName>Textbox1</rd:DefaultName>
             <Top>2.06253in</Top>
             <Height>0.18056in</Height>
-            <Width>1.13543in</Width>
+            <Width>1.14238in</Width>
             <ZIndex>9</ZIndex>
             <Style>
               <Border>
@@ -775,7 +775,8 @@
                   <TextRun>
                     <Value>= Switch(Fields!TipoFactura.Value = "Consumidor Final", "FACTURA PARA CONSUMIDOR FINAL",
 Fields!TipoFactura.Value = "Comprobante Fiscal", "FACTURA PARA CREDITO FISCAL",
-Fields!TipoFactura.Value = "Comprobante Gubernamental", "FACTURA GUBERNAMENTAL")</Value>
+Fields!TipoFactura.Value = "Comprobante Gubernamental", "FACTURA GUBERNAMENTAL",
+Fields!TipoFactura.Value = "Factura Rapida", "FACTURA")</Value>
                     <Style>
                       <FontFamily>Segoe UI</FontFamily>
                       <FontSize>9pt</FontSize>
@@ -1049,45 +1050,6 @@ Fields!TipoFactura.Value = "Comprobante Gubernamental", "FACTURA GUBERNAMENTAL")
               </BottomBorder>
             </Style>
           </Textbox>
-          <Textbox Name="Textbox18">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>Cod. Cliente: </Value>
-                    <Style>
-                      <FontFamily>Segoe UI</FontFamily>
-                    </Style>
-                  </TextRun>
-                  <TextRun>
-                    <Value>=Fields!ClienteID.Value</Value>
-                    <Style>
-                      <FontFamily>Segoe UI</FontFamily>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Left</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox1</rd:DefaultName>
-            <Top>5.02784in</Top>
-            <Height>0.18056in</Height>
-            <Width>2.88543in</Width>
-            <ZIndex>22</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <TopBorder>
-                <Style>Dashed</Style>
-              </TopBorder>
-              <VerticalAlign>Top</VerticalAlign>
-            </Style>
-          </Textbox>
           <Textbox Name="Textbox19">
             <CanGrow>true</CanGrow>
             <KeepTogether>true</KeepTogether>
@@ -1107,10 +1069,11 @@ Fields!TipoFactura.Value = "Comprobante Gubernamental", "FACTURA GUBERNAMENTAL")
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox1</rd:DefaultName>
-            <Top>5.2084in</Top>
+            <Top>4.50701in</Top>
+            <Left>0.00001in</Left>
             <Height>0.18056in</Height>
             <Width>2.87501in</Width>
-            <ZIndex>23</ZIndex>
+            <ZIndex>22</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1143,10 +1106,11 @@ Fields!TipoFactura.Value = "Comprobante Gubernamental", "FACTURA GUBERNAMENTAL")
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox1</rd:DefaultName>
-            <Top>5.38896in</Top>
+            <Top>4.68757in</Top>
+            <Left>0.00001in</Left>
             <Height>0.18056in</Height>
             <Width>2.88543in</Width>
-            <ZIndex>24</ZIndex>
+            <ZIndex>23</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1179,10 +1143,11 @@ Fields!TipoFactura.Value = "Comprobante Gubernamental", "FACTURA GUBERNAMENTAL")
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox1</rd:DefaultName>
-            <Top>5.56952in</Top>
+            <Top>4.86813in</Top>
+            <Left>0.00001in</Left>
             <Height>0.18056in</Height>
             <Width>2.88543in</Width>
-            <ZIndex>25</ZIndex>
+            <ZIndex>24</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1215,49 +1180,17 @@ TEL/WSS: 809-222-3740
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox1</rd:DefaultName>
-            <Top>5.75008in</Top>
+            <Top>5.04869in</Top>
+            <Left>0.00001in</Left>
             <Height>0.53473in</Height>
             <Width>2.88543in</Width>
-            <ZIndex>26</ZIndex>
+            <ZIndex>25</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
               </Border>
               <TopBorder>
                 <Style>None</Style>
-              </TopBorder>
-              <VerticalAlign>Top</VerticalAlign>
-            </Style>
-          </Textbox>
-          <Textbox Name="Textbox37">
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>Firma/Cedula</Value>
-                    <Style>
-                      <FontFamily>Segoe UI</FontFamily>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style>
-                  <TextAlign>Center</TextAlign>
-                </Style>
-              </Paragraph>
-            </Paragraphs>
-            <rd:DefaultName>Textbox1</rd:DefaultName>
-            <Top>4.82645in</Top>
-            <Height>0.20139in</Height>
-            <Width>2.87501in</Width>
-            <ZIndex>27</ZIndex>
-            <Style>
-              <Border>
-                <Style>None</Style>
-              </Border>
-              <TopBorder>
-                <Style>Solid</Style>
               </TopBorder>
               <VerticalAlign>Top</VerticalAlign>
             </Style>
@@ -1287,7 +1220,7 @@ TEL/WSS: 809-222-3740
             <Left>1.15627in</Left>
             <Height>0.18056in</Height>
             <Width>1.72916in</Width>
-            <ZIndex>28</ZIndex>
+            <ZIndex>26</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1319,7 +1252,7 @@ TEL/WSS: 809-222-3740
             <Left>0.00001in</Left>
             <Height>0.18056in</Height>
             <Width>2.88543in</Width>
-            <ZIndex>29</ZIndex>
+            <ZIndex>27</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -1357,14 +1290,48 @@ Las piezas electricas no tiene devolucion.</Value>
             <Left>0.00001in</Left>
             <Height>0.41667in</Height>
             <Width>2.87501in</Width>
-            <ZIndex>30</ZIndex>
+            <ZIndex>28</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
               </Border>
-              <BottomBorder>
+              <VerticalAlign>Top</VerticalAlign>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox37">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Firma/Cedula</Value>
+                    <Style>
+                      <FontFamily>Segoe UI</FontFamily>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox1</rd:DefaultName>
+            <Top>5.94723in</Top>
+            <Left>0.02084in</Left>
+            <Height>0.20139in</Height>
+            <Width>2.87501in</Width>
+            <ZIndex>29</ZIndex>
+            <Visibility>
+              <Hidden>=IIf(Fields!TipoDePago.Value = "Efectivo" Or Fields!TipoDePago.Value = "Tarjeta/Transferencia", True, False)</Hidden>
+            </Visibility>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <TopBorder>
                 <Style>Solid</Style>
-              </BottomBorder>
+              </TopBorder>
               <VerticalAlign>Top</VerticalAlign>
             </Style>
           </Textbox>
@@ -1372,7 +1339,7 @@ Las piezas electricas no tiene devolucion.</Value>
         <Height>6.32918in</Height>
         <Style />
       </Body>
-      <Width>3in</Width>
+      <Width>2.95139in</Width>
       <Page>
         <PageHeight>6.5in</PageHeight>
         <PageWidth>3in</PageWidth>

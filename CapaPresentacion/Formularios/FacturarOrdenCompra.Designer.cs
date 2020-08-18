@@ -94,7 +94,7 @@
             this.txtNCF.Location = new System.Drawing.Point(203, 49);
             this.txtNCF.Name = "txtNCF";
             this.txtNCF.Size = new System.Drawing.Size(192, 24);
-            this.txtNCF.TabIndex = 122;
+            this.txtNCF.TabIndex = 0;
             // 
             // cbTipoPago
             // 
@@ -105,7 +105,7 @@
             this.cbTipoPago.Location = new System.Drawing.Point(203, 135);
             this.cbTipoPago.Name = "cbTipoPago";
             this.cbTipoPago.Size = new System.Drawing.Size(192, 26);
-            this.cbTipoPago.TabIndex = 125;
+            this.cbTipoPago.TabIndex = 2;
             this.cbTipoPago.Validating += new System.ComponentModel.CancelEventHandler(this.cbTipoPago_Validating);
             // 
             // label6
@@ -126,7 +126,7 @@
             this.dtPickerFechaVencimiento.Location = new System.Drawing.Point(203, 92);
             this.dtPickerFechaVencimiento.Name = "dtPickerFechaVencimiento";
             this.dtPickerFechaVencimiento.Size = new System.Drawing.Size(279, 24);
-            this.dtPickerFechaVencimiento.TabIndex = 126;
+            this.dtPickerFechaVencimiento.TabIndex = 1;
             // 
             // dtPickerFecha
             // 
@@ -134,7 +134,7 @@
             this.dtPickerFecha.Location = new System.Drawing.Point(203, 178);
             this.dtPickerFecha.Name = "dtPickerFecha";
             this.dtPickerFecha.Size = new System.Drawing.Size(279, 24);
-            this.dtPickerFecha.TabIndex = 127;
+            this.dtPickerFecha.TabIndex = 3;
             // 
             // label2
             // 
@@ -178,7 +178,7 @@
             this.txtITBIS.Location = new System.Drawing.Point(203, 218);
             this.txtITBIS.Name = "txtITBIS";
             this.txtITBIS.Size = new System.Drawing.Size(192, 24);
-            this.txtITBIS.TabIndex = 130;
+            this.txtITBIS.TabIndex = 4;
             // 
             // label5
             // 
@@ -198,7 +198,7 @@
             this.txtSubTotal.Location = new System.Drawing.Point(203, 255);
             this.txtSubTotal.Name = "txtSubTotal";
             this.txtSubTotal.Size = new System.Drawing.Size(192, 24);
-            this.txtSubTotal.TabIndex = 132;
+            this.txtSubTotal.TabIndex = 5;
             // 
             // FacturarOrdenCompra
             // 

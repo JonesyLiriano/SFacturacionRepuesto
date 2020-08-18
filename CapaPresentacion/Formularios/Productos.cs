@@ -40,6 +40,8 @@ namespace SFacturacion
             {
                 CargarProductos();
                 CargarCBFiltro();
+                txtFiltro.Select();
+
             }
             catch (Exception exc)
             {
@@ -90,24 +92,24 @@ namespace SFacturacion
         }
 
         private void OrdenarColumnasDGV()
-        {
-            dgvProductos.Columns["ProductoID"].DisplayIndex = 0;
-            dgvProductos.Columns["Servicio"].DisplayIndex = 1;
-            dgvProductos.Columns["CodigoBarra"].DisplayIndex = 2;
-            dgvProductos.Columns["Referencia"].DisplayIndex = 3;
-            dgvProductos.Columns["Descripcion"].DisplayIndex = 4;
+        {           
+            dgvProductos.Columns["Descripcion"].DisplayIndex = 0;
+            dgvProductos.Columns["PrecioVenta"].DisplayIndex = 1;
+            dgvProductos.Columns["PrecioVentaMin"].DisplayIndex = 2;
+            dgvProductos.Columns["UnidadMedida"].DisplayIndex = 3;
+            dgvProductos.Columns["Existencia"].DisplayIndex = 4;
             dgvProductos.Columns["Marca"].DisplayIndex = 5;
-            dgvProductos.Columns["Calidad"].DisplayIndex = 6;            
-            dgvProductos.Columns["UnidadMedida"].DisplayIndex = 7;            
-            dgvProductos.Columns["Existencia"].DisplayIndex = 8;
-            dgvProductos.Columns["PrecioVenta"].DisplayIndex = 9;
-            dgvProductos.Columns["PrecioVentaMin"].DisplayIndex = 10;
-            dgvProductos.Columns["PrecioCompra"].DisplayIndex = 11; 
-            dgvProductos.Columns["ITBIS"].DisplayIndex = 12;
-            dgvProductos.Columns["Descuento"].DisplayIndex = 13;
-            dgvProductos.Columns["CantMin"].DisplayIndex = 14;
-            dgvProductos.Columns["CantMax"].DisplayIndex = 15;
-            dgvProductos.Columns["Proveedor"].DisplayIndex = 16;
+            dgvProductos.Columns["PrecioCompra"].DisplayIndex = 6;
+            dgvProductos.Columns["ProductoID"].DisplayIndex = 7;
+            dgvProductos.Columns["Servicio"].DisplayIndex = 8;
+            dgvProductos.Columns["CodigoBarra"].DisplayIndex = 9;
+            dgvProductos.Columns["Referencia"].DisplayIndex = 10;
+            dgvProductos.Columns["Calidad"].DisplayIndex = 11;
+            dgvProductos.Columns["Proveedor"].DisplayIndex = 12;
+            dgvProductos.Columns["ITBIS"].DisplayIndex = 13;
+            dgvProductos.Columns["Descuento"].DisplayIndex = 14;
+            dgvProductos.Columns["CantMin"].DisplayIndex = 15;
+            dgvProductos.Columns["CantMax"].DisplayIndex = 16;            
             dgvProductos.Columns["ProveedorID"].DisplayIndex = 17;
 
             dgvProductos.Columns["Existencia"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
@@ -308,5 +310,56 @@ namespace SFacturacion
                 cbFiltro.Focus();
             }
         }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            switch (keyData)
+            {
+                case Keys.F1:
+                    txtFiltro.Focus();
+                    return true;
+                case Keys.F2:
+                    dgvProductos.Focus();
+                    return true;
+                case Keys.Escape:
+                    this.Close();
+                    return true;              
+                default:
+                    return base.ProcessCmdKey(ref msg, keyData);
+            }
+
+        }
+
+        private void btnMovimientos_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dgvProductos.SelectedRows.Count > 0)
+                {
+                    if (!Convert.ToBoolean(dgvProductos.CurrentRow.Cells["Servicio"].Value))
+                    {
+                        Movimientos movimientos = new Movimientos(Convert.ToInt32(dgvProductos.CurrentRow.Cells["ProductoID"].Value));
+                        movimientos.ShowDialog();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se puede ver los movimientos de los servicios.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Debe de seleccionar al menos un producto para ver sus movimientos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Error: No se ha podido ver los movimientos de este producto, verifique el producto e intente de nuevo por favor.",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Loggeator.EscribeEnArchivo(exc.ToString());
+            }
+        }
+        
     }
 }

@@ -79,7 +79,7 @@
     <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="TipoPagoID" Type="Int32" Nullable="false" />
     <Property Name="TipoFacturaID" Type="Int32" Nullable="false" />
-    <Property Name="NCF" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NCF" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="FechaVencimiento" Type="DateTime" Precision="0" />
     <Property Name="UserID" Type="Int32" Nullable="false" />
     <Property Name="RNC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -924,6 +924,20 @@
       <Parameter Name="FacturaID" Mode="In" Type="Int32" />
       <Parameter Name="LineaCreditoVentaID" Mode="InOut" Type="Int32" />
     </FunctionImport>
+    <EntitySet Name="Movimientos" EntityType="SFacturacionModel.Movimiento" />
+    <FunctionImport Name="proc_CargarMovimientos" ReturnType="Collection(SFacturacionModel.proc_CargarMovimientos_Result)">
+      <Parameter Name="ProductoID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="proc_InsertarMovimiento">
+      <Parameter Name="MovimientoID" Mode="InOut" Type="Int32" />
+      <Parameter Name="ProductoID" Mode="In" Type="Int32" />
+      <Parameter Name="Fecha" Mode="In" Type="DateTime" />
+      <Parameter Name="TipoMovimiento" Mode="In" Type="String" />
+      <Parameter Name="Referencia" Mode="In" Type="Int32" />
+      <Parameter Name="Cantidad" Mode="In" Type="Decimal" />
+      <Parameter Name="UsuarioID" Mode="In" Type="Int32" />
+      <Parameter Name="resultado" Mode="InOut" Type="Boolean" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="proc_BuscarProductosPorProveedor_Result">
     <Property Type="Int32" Name="ProductoID" Nullable="false" />
@@ -1651,4 +1665,26 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="Movimiento">
+    <Key>
+      <PropertyRef Name="MovimientoID" />
+    </Key>
+    <Property Name="MovimientoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductoID" Type="Int32" Nullable="false" />
+    <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="TipoMovimiento" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Referencia" Type="Int32" />
+    <Property Name="Existencia" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="Cantidad" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="UsuarioID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <ComplexType Name="proc_CargarMovimientos_Result">
+    <Property Type="String" Name="Producto" Nullable="false" MaxLength="100" />
+    <Property Type="DateTime" Name="Fecha" Nullable="false" Precision="23" />
+    <Property Type="String" Name="TipoMovimiento" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="Referencia" Nullable="true" />
+    <Property Type="Decimal" Name="Existencia" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="Cantidad" Nullable="true" Precision="18" Scale="2" />
+    <Property Type="String" Name="Usuario" Nullable="false" MaxLength="50" />
+  </ComplexType>
 </Schema>

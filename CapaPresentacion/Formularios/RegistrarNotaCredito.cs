@@ -21,6 +21,8 @@ namespace CapaPresentacion.Formularios
     public partial class RegistrarNotaCredito : Form
     {
         Thread hilo;
+        Movimiento movimientoEntidad = new Movimiento();
+        MovimientoNegocio movimientoNegocio = new MovimientoNegocio();
         Producto productoEntidad = new Producto();
         ProductosNegocio productosNegocio = new ProductosNegocio();
         ClientesNegocio clientesNegocio = new ClientesNegocio();
@@ -225,6 +227,14 @@ namespace CapaPresentacion.Formularios
                     detalleNotasDeCreditoNegocio.AgregarDetalleNotaDeCredito(detalleNotaDeCreditoEntidad);
                     if(Convert.ToDouble(dtRow["Inventariada"]) > 0)
                     {
+                        movimientoEntidad.ProductoID = Convert.ToInt32(dtRow["ProductoID"]); ;
+                        movimientoEntidad.Fecha = DateTime.Now;
+                        movimientoEntidad.TipoMovimiento = "Nota de Credito";
+                        movimientoEntidad.Referencia = notaCreditoID;
+                        movimientoEntidad.Cantidad = Convert.ToDecimal(dtRow["Inventariada"]);
+                        movimientoEntidad.UsuarioID = Login.userID;
+                        movimientoNegocio.AgregarMovimiento(movimientoEntidad);
+
                         productoEntidad.ProductoID = Convert.ToInt32(dtRow["ProductoID"]);
                         productoEntidad.Existencia = Convert.ToDouble(dtRow["Inventariada"]);
                         productosNegocio.ActualizarCantidadProductoPorID(productoEntidad);

@@ -70,10 +70,13 @@
             this.txtReferencia = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.txtMarca = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.BarraTitulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbBarraMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconcerrar)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnCancelar
@@ -87,7 +90,7 @@
             this.btnCancelar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.Color.White;
             this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancelar.Location = new System.Drawing.Point(642, 280);
+            this.btnCancelar.Location = new System.Drawing.Point(642, 320);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(180, 35);
             this.btnCancelar.TabIndex = 61;
@@ -105,7 +108,7 @@
             this.btnAplicar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAplicar.ForeColor = System.Drawing.Color.White;
             this.btnAplicar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAplicar.Location = new System.Drawing.Point(642, 219);
+            this.btnAplicar.Location = new System.Drawing.Point(642, 259);
             this.btnAplicar.Name = "btnAplicar";
             this.btnAplicar.Size = new System.Drawing.Size(180, 35);
             this.btnAplicar.TabIndex = 19;
@@ -389,6 +392,7 @@
             this.txtPrecioVenta.Name = "txtPrecioVenta";
             this.txtPrecioVenta.Size = new System.Drawing.Size(116, 24);
             this.txtPrecioVenta.TabIndex = 13;
+            this.txtPrecioVenta.Leave += new System.EventHandler(this.txtPrecioVenta_Leave);
             // 
             // checkboxServicio
             // 
@@ -524,13 +528,34 @@
             this.txtMarca.Size = new System.Drawing.Size(195, 24);
             this.txtMarca.TabIndex = 7;
             // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Century Gothic", 10F);
+            this.label18.Location = new System.Drawing.Point(43, 24);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(96, 19);
+            this.label18.TabIndex = 87;
+            this.label18.Text = "F1 = Aceptar";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label18);
+            this.groupBox1.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold);
+            this.groupBox1.Location = new System.Drawing.Point(642, 189);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(180, 57);
+            this.groupBox1.TabIndex = 88;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "ATAJOS";
+            // 
             // MantenimientoProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.CancelButton = this.btnCancelar;
-            this.ClientSize = new System.Drawing.Size(834, 393);
+            this.ClientSize = new System.Drawing.Size(834, 387);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.txtMarca);
             this.Controls.Add(this.label16);
@@ -569,6 +594,7 @@
             this.Controls.Add(this.txtDescripcion);
             this.Controls.Add(this.txtID);
             this.Controls.Add(this.BarraTitulo);
+            this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MantenimientoProducto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -579,6 +605,8 @@
             this.BarraTitulo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbBarraMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconcerrar)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -627,5 +655,7 @@
         private System.Windows.Forms.TextBox txtReferencia;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox txtMarca;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }

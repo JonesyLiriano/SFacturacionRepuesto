@@ -75,6 +75,8 @@
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.txtCodigoLetras = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
+            this.txtTelefonoEtiqueta = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -283,7 +285,7 @@
             this.groupBox6.Controls.Add(this.txtNombreImpresora);
             this.groupBox6.Controls.Add(this.label12);
             this.groupBox6.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold);
-            this.groupBox6.Location = new System.Drawing.Point(733, 324);
+            this.groupBox6.Location = new System.Drawing.Point(733, 330);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(343, 181);
             this.groupBox6.TabIndex = 58;
@@ -363,7 +365,7 @@
             this.groupBox5.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold);
             this.groupBox5.Location = new System.Drawing.Point(368, 42);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(343, 466);
+            this.groupBox5.Size = new System.Drawing.Size(343, 469);
             this.groupBox5.TabIndex = 59;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Empresa";
@@ -548,12 +550,14 @@
             // 
             // groupBox7
             // 
+            this.groupBox7.Controls.Add(this.txtTelefonoEtiqueta);
+            this.groupBox7.Controls.Add(this.label19);
             this.groupBox7.Controls.Add(this.txtCodigoLetras);
             this.groupBox7.Controls.Add(this.label18);
             this.groupBox7.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold);
-            this.groupBox7.Location = new System.Drawing.Point(733, 235);
+            this.groupBox7.Location = new System.Drawing.Point(733, 203);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(343, 82);
+            this.groupBox7.Size = new System.Drawing.Size(343, 121);
             this.groupBox7.TabIndex = 62;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Codigo Letras - Numeros";
@@ -561,7 +565,7 @@
             // txtCodigoLetras
             // 
             this.txtCodigoLetras.Font = new System.Drawing.Font("Century Gothic", 11.25F);
-            this.txtCodigoLetras.Location = new System.Drawing.Point(162, 25);
+            this.txtCodigoLetras.Location = new System.Drawing.Point(163, 30);
             this.txtCodigoLetras.Name = "txtCodigoLetras";
             this.txtCodigoLetras.Size = new System.Drawing.Size(175, 26);
             this.txtCodigoLetras.TabIndex = 50;
@@ -569,11 +573,28 @@
             // label18
             // 
             this.label18.Font = new System.Drawing.Font("Century Gothic", 11F);
-            this.label18.Location = new System.Drawing.Point(7, 25);
+            this.label18.Location = new System.Drawing.Point(8, 30);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(131, 46);
+            this.label18.Size = new System.Drawing.Size(131, 26);
             this.label18.TabIndex = 0;
             this.label18.Text = "Palabra Codigo";
+            // 
+            // txtTelefonoEtiqueta
+            // 
+            this.txtTelefonoEtiqueta.Font = new System.Drawing.Font("Century Gothic", 11.25F);
+            this.txtTelefonoEtiqueta.Location = new System.Drawing.Point(162, 77);
+            this.txtTelefonoEtiqueta.Name = "txtTelefonoEtiqueta";
+            this.txtTelefonoEtiqueta.Size = new System.Drawing.Size(175, 26);
+            this.txtTelefonoEtiqueta.TabIndex = 52;
+            // 
+            // label19
+            // 
+            this.label19.Font = new System.Drawing.Font("Century Gothic", 11F);
+            this.label19.Location = new System.Drawing.Point(7, 77);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(131, 26);
+            this.label19.TabIndex = 51;
+            this.label19.Text = "Telefono Etiq.";
             // 
             // Configuraciones
             // 
@@ -664,5 +685,7 @@
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.TextBox txtCodigoLetras;
         private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox txtTelefonoEtiqueta;
+        private System.Windows.Forms.Label label19;
     }
 }

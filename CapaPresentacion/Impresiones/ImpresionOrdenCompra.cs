@@ -226,7 +226,7 @@ namespace CapaPresentacion.Impresiones
                 controladorImpresoraMatricial.TextoIzquierda("EL PRECIO DE LOS PRODUCTOS");
                 controladorImpresoraMatricial.TextoIzquierda("PUEDE VARIAR.");
                 controladorImpresoraMatricial.lineasGuio();
-                controladorImpresoraMatricial.TextoIzquierda("COD. PROVEEDOR: " + proc_ComprobanteOrdenCompra_Results.First().ProveedorID);
+                // controladorImpresoraMatricial.TextoIzquierda("COD. PROVEEDOR: " + proc_ComprobanteOrdenCompra_Results.First().ProveedorID);
                 controladorImpresoraMatricial.TextoIzquierda("PROVEEDOR: " + proc_ComprobanteOrdenCompra_Results.First().NombreProveedor.ToUpper());
                 controladorImpresoraMatricial.TextoIzquierda("COD. ORDEN COMPRA: " + proc_ComprobanteOrdenCompra_Results.First().OrdenCompraID.ToString());
                 controladorImpresoraMatricial.lineasGuio();

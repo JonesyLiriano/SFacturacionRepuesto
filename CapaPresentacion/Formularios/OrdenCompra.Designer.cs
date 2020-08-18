@@ -56,11 +56,19 @@
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnBuscarProd = new System.Windows.Forms.Button();
             this.btnFacturarOrden = new System.Windows.Forms.Button();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             this.BarraTitulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbBarraMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iconcerrar)).BeginInit();
             this.groupBox4.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvProductos
@@ -113,7 +121,7 @@
             this.dgvProductos.Name = "dgvProductos";
             this.dgvProductos.RowHeadersVisible = false;
             this.dgvProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvProductos.Size = new System.Drawing.Size(700, 370);
+            this.dgvProductos.Size = new System.Drawing.Size(700, 488);
             this.dgvProductos.TabIndex = 115;
             this.dgvProductos.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvProductos_CellValidating);
             // 
@@ -388,12 +396,89 @@
             this.btnFacturarOrden.UseVisualStyleBackColor = false;
             this.btnFacturarOrden.Click += new System.EventHandler(this.btnFacturarOrdenCorte_Click);
             // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.label4);
+            this.groupBox6.Controls.Add(this.label1);
+            this.groupBox6.Controls.Add(this.label3);
+            this.groupBox6.Controls.Add(this.label20);
+            this.groupBox6.Controls.Add(this.label19);
+            this.groupBox6.Controls.Add(this.label18);
+            this.groupBox6.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold);
+            this.groupBox6.Location = new System.Drawing.Point(789, 410);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(180, 196);
+            this.groupBox6.TabIndex = 125;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "ATAJOS";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Century Gothic", 10F);
+            this.label20.Location = new System.Drawing.Point(14, 20);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(159, 19);
+            this.label20.TabIndex = 89;
+            this.label20.Text = "F1 = Buscar Proveedor";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Century Gothic", 10F);
+            this.label19.Location = new System.Drawing.Point(14, 78);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(152, 19);
+            this.label19.TabIndex = 88;
+            this.label19.Text = "F3 = Buscar Producto";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Century Gothic", 10F);
+            this.label18.Location = new System.Drawing.Point(14, 48);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(158, 19);
+            this.label18.TabIndex = 87;
+            this.label18.Text = "F2 = Seleccionar Grid.";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 10F);
+            this.label1.Location = new System.Drawing.Point(14, 135);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(146, 19);
+            this.label1.TabIndex = 91;
+            this.label1.Text = "F5 = Facturar Orden";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Century Gothic", 10F);
+            this.label3.Location = new System.Drawing.Point(14, 107);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(124, 19);
+            this.label3.TabIndex = 90;
+            this.label3.Text = "F4 = Recibir Todo";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Century Gothic", 10F);
+            this.label4.Location = new System.Drawing.Point(14, 164);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(99, 19);
+            this.label4.TabIndex = 92;
+            this.label4.Text = "F6 = Guardar";
+            // 
             // OrdenCompra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1000, 500);
+            this.ClientSize = new System.Drawing.Size(1000, 618);
+            this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.btnFacturarOrden);
             this.Controls.Add(this.btnBuscarProd);
             this.Controls.Add(this.btnQuitar);
@@ -414,6 +499,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.iconcerrar)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -444,5 +531,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Ordenada;
         private System.Windows.Forms.DataGridViewTextBoxColumn Recibida;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Estatus;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label4;
     }
 }

@@ -112,6 +112,10 @@
       <DependentUpon>SFacturacionModel.tt</DependentUpon>
     </Compile>
     <Compile Include="LineasCreditoVentasDatos.cs" />
+    <Compile Include="Movimiento.cs">
+      <DependentUpon>SFacturacionModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MovimientoDatos.cs" />
     <Compile Include="NotasDeCredito.cs">
       <DependentUpon>SFacturacionModel.tt</DependentUpon>
     </Compile>
@@ -155,6 +159,9 @@
       <DependentUpon>SFacturacionModel.tt</DependentUpon>
     </Compile>
     <Compile Include="proc_CargarMontoFacturaNC_Result.cs">
+      <DependentUpon>SFacturacionModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="proc_CargarMovimientos_Result.cs">
       <DependentUpon>SFacturacionModel.tt</DependentUpon>
     </Compile>
     <Compile Include="proc_CargarNotasDeCreditoPFecha_Result.cs">

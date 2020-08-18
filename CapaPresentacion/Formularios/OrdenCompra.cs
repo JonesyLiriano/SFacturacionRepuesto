@@ -1,5 +1,6 @@
 ﻿using CapaDatos;
 using CapaNegocios;
+using SFacturacion;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,6 +16,8 @@ namespace CapaPresentacion.Formularios
 {
     public partial class OrdenCompra : Form
     {
+        Movimiento movimientoEntidad = new Movimiento();
+        MovimientoNegocio movimientoNegocio = new MovimientoNegocio();
         ProveedoresNegocio proveedoresNegocio = new ProveedoresNegocio();
         OrdenesCompra ordenCompraEntidad = new OrdenesCompra();
         OrdenesCompraNegocio ordenesCompraNegocio = new OrdenesCompraNegocio();
@@ -421,6 +424,13 @@ namespace CapaPresentacion.Formularios
 
                 if (Convert.ToDouble(row.Cells["Ordenada"].Value) == Convert.ToDouble(row.Cells["Recibida"].Value))
                 {
+                    movimientoEntidad.ProductoID = Convert.ToInt32(row.Cells["ProductoID"].Value); ;
+                    movimientoEntidad.Fecha = DateTime.Now;
+                    movimientoEntidad.TipoMovimiento = "Compra";
+                    movimientoEntidad.Referencia = ordenCompraID;
+                    movimientoEntidad.Cantidad = Convert.ToDecimal(row.Cells["Recibida"].Value);
+                    movimientoEntidad.UsuarioID = Login.userID;
+                    movimientoNegocio.AgregarMovimiento(movimientoEntidad);
 
                     productoEntidad.ProductoID = Convert.ToInt32(row.Cells["ProductoID"].Value);
                     productoEntidad.Existencia = Convert.ToDouble(row.Cells["Recibida"].Value);
@@ -502,6 +512,37 @@ namespace CapaPresentacion.Formularios
                 }
             }
             return true;
+        }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            switch (keyData)
+            {
+                case Keys.F1:
+                    cbProveedor.Focus();
+                    return true;
+                case Keys.F2:
+                    dgvProductos.Focus();
+                    return true;
+                case Keys.F3:
+                    btnBuscarProd.PerformClick();
+                    return true;
+                case Keys.F4:
+                    btnRecibirTodo.PerformClick();
+                    return true;
+                case Keys.F5:
+                    btnFacturarOrden.PerformClick();
+                    return true;
+                case Keys.F6:
+                    btnGuardar.PerformClick();
+                    return true;
+                case Keys.Escape:
+                    this.Close();
+                    return true;
+                default:
+                    return base.ProcessCmdKey(ref msg, keyData);
+            }
+
         }
     }
 

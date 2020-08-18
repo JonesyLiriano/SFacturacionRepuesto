@@ -238,7 +238,7 @@ namespace CapaPresentacion.Formularios
             cbFiltro.Items.Add("Marca");
             cbFiltro.Items.Add("Calidad");
             cbFiltro.Items.Add("Unidad de Medida");
-            cbFiltro.SelectedIndex = 0;
+            cbFiltro.SelectedIndex = 2;
         }
         private void txtFiltro_Leave(object sender, EventArgs e)
         {
@@ -333,6 +333,47 @@ namespace CapaPresentacion.Formularios
             {
                 cbFiltro.Focus();
             }
+        }
+        private void MarcarProductoGrid()
+        {
+            if(dgvProductos.SelectedRows.Count > 0 )
+            {
+                dgvProductos.CurrentRow.Cells["Seleccionar"].Value = !Convert.ToBoolean(dgvProductos.CurrentRow.Cells["Seleccionar"].Value);
+            }
+        }
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            switch (keyData)
+            {
+                case Keys.F1:
+                    txtFiltro.Focus();
+                    return true;
+                case Keys.F2:
+                    dgvProductos.Focus();
+                    return true;
+                case Keys.F3:
+                    checkBoxProdExistBaja.Checked = !checkBoxProdExistBaja.Checked;
+                    return true;
+                case Keys.F4:
+                    MarcarProductoGrid();
+                    return true;
+                case Keys.F5:
+                    btnSeleccionar.PerformClick();
+                    return true;
+                case Keys.F6:
+                    btnMarcarTodos.PerformClick();
+                    return true;
+                case Keys.F7:
+                    btnDesmarcarTodos.PerformClick();
+                    return true;
+
+                case Keys.Escape:
+                    this.Close();
+                    return true;
+                default:
+                    return base.ProcessCmdKey(ref msg, keyData);
+            }
+
         }
     }
 }

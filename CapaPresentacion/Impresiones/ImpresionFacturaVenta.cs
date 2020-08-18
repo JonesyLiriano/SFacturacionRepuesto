@@ -85,6 +85,9 @@ namespace CapaPresentacion.Impresiones
                     case "Comprobante Gubernamental":
                         CargarImpresionMatricialCGubernamental();
                         break;
+                    case "Factura Rapida":
+                        CargarImpresionMatricialFRapida();
+                        break;
                     default:
                         break;
                 }
@@ -206,6 +209,84 @@ namespace CapaPresentacion.Impresiones
             iconmaximizar.Visible = false;
         }
 
+        private void CargarImpresionMatricialFRapida()
+        {
+            try
+            {
+                cantArticulos = 0;
+                subtotal = 0;
+                itbis = 0;
+                desc = 0;
+                descTotal = 0;
+
+                ControladorImpresoraMatricial controladorImpresoraMatricial = new ControladorImpresoraMatricial();
+
+                controladorImpresoraMatricial.TextoCentro(Properties.Settings.Default.NombreEmpresa.ToUpper());
+                controladorImpresoraMatricial.TextoCentro(Properties.Settings.Default.Direccion);
+                controladorImpresoraMatricial.TextoCentro("TEL: " + Properties.Settings.Default.Telefono);
+                // controladorImpresoraMatricial.TextoIzquierda(Properties.Settings.Default.RazonSocial.ToUpper());
+                controladorImpresoraMatricial.TextoIzquierda("RNC: " + Properties.Settings.Default.CedulaORnc);
+                // controladorImpresoraMatricial.TextoCentro("COMPROBANTE AUTORIZADO POR DGII");
+                controladorImpresoraMatricial.TextoIzquierda(proc_ComprobanteFacturaVenta_Results.First().Fecha.ToString());
+                controladorImpresoraMatricial.TextoIzquierda("TIPO DE PAGO:" + " " + proc_ComprobanteFacturaVenta_Results.First().TipoDePago);
+                controladorImpresoraMatricial.lineasGuio();
+                controladorImpresoraMatricial.TextoCentro("FACTURA");
+                controladorImpresoraMatricial.lineasGuio();
+                controladorImpresoraMatricial.EncabezadoVenta();
+                controladorImpresoraMatricial.lineasGuio();
+                foreach (var fila in proc_ComprobanteFacturaVenta_Results)
+                {
+                    controladorImpresoraMatricial.AgregaArticulo(fila.Descripcion, fila.CantVen, fila.ITBIS, fila.Precio, fila.Descuento);
+                    cantArticulos++;
+                    subtotal += (Convert.ToDecimal(fila.CantVen) * (fila.Precio - fila.Descuento));
+                    itbis += (Convert.ToDecimal(fila.CantVen) * Convert.ToDecimal(fila.ITBIS));
+                    desc += (Convert.ToDecimal(fila.CantVen) * Convert.ToDecimal(fila.Descuento));
+                }
+                descTotal = Convert.ToDecimal((desc + ((proc_ComprobanteFacturaVenta_Results.First().DescuentoCliente / 100) * subtotal)));
+                controladorImpresoraMatricial.lineasGuio();
+                controladorImpresoraMatricial.AgregarTotales("                SUBTOTAL : $ ", subtotal);
+                controladorImpresoraMatricial.AgregarTotales("                   ITBIS : $ ", itbis);
+                controladorImpresoraMatricial.AgregarTotales("                   DESC. : $ ", descTotal);
+                controladorImpresoraMatricial.AgregarTotales("                   TOTAL : $ ", Convert.ToDecimal(subtotal + itbis - descTotal));
+                controladorImpresoraMatricial.lineasGuio();
+                controladorImpresoraMatricial.TextoIzquierda("CANTIDAD DE PRODUCTOS/SERVICIOS:" + " " + cantArticulos);
+                controladorImpresoraMatricial.lineasGuio();
+                controladorImpresoraMatricial.TextoIzquierda("LAS DEVOLUCIONES SE HACEN");
+                controladorImpresoraMatricial.TextoIzquierda("CON CREDITO, NO SE DEVUELVE DINERO");
+                controladorImpresoraMatricial.lineasGuio();
+                if (proc_ComprobanteFacturaVenta_Results.First().TipoDePago == "Credito 30 dias" || proc_ComprobanteFacturaVenta_Results.First().TipoDePago == "Credito 60 dias")
+                {
+                    controladorImpresoraMatricial.TextoIzquierda(" ");
+                    controladorImpresoraMatricial.TextoIzquierda(" ");
+                    controladorImpresoraMatricial.TextoCentro("___________________________");
+                    controladorImpresoraMatricial.TextoCentro("FIRMA/CEDULA");
+                    controladorImpresoraMatricial.lineasGuio();
+                }
+                // controladorImpresoraMatricial.TextoIzquierda("COD. CLIENTE: " + proc_ComprobanteFacturaVenta_Results.First().ClienteID);
+                controladorImpresoraMatricial.TextoIzquierda("CLIENTE: " + proc_ComprobanteFacturaVenta_Results.First().NombreCliente.ToUpper());
+                controladorImpresoraMatricial.TextoIzquierda("COD. FACTURA: " + proc_ComprobanteFacturaVenta_Results.First().FacturaID.ToString());
+                controladorImpresoraMatricial.TextoIzquierda("USUARIO: " + proc_ComprobanteFacturaVenta_Results.First().UserName.ToString().ToUpper());
+                controladorImpresoraMatricial.lineasGuio();
+                controladorImpresoraMatricial.TextoCentro("SISTEMA REALIZADO POR JONESY LIRIANO");
+                controladorImpresoraMatricial.TextoCentro("TEL/WSS: 809-222-3740");
+                controladorImpresoraMatricial.TextoCentro("****GRACIAS POR SU VISITA****");
+                controladorImpresoraMatricial.TextoIzquierda(" ");
+                controladorImpresoraMatricial.TextoIzquierda(" ");
+                controladorImpresoraMatricial.TextoIzquierda(" ");
+                controladorImpresoraMatricial.TextoIzquierda(" ");
+                controladorImpresoraMatricial.TextoIzquierda(" ");
+                controladorImpresoraMatricial.TextoIzquierda(" ");
+                controladorImpresoraMatricial.TextoIzquierda(" ");
+
+                controladorImpresoraMatricial.ImprimirTicket();
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Error: No se ha podido imprimir, verifique si las configuraciones del sistema estan correctas e intente de nuevo por favor.",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Loggeator.EscribeEnArchivo(exc.ToString());
+            }
+        }
         private void CargarImpresionMatricialCFiscal()
         {
             try
@@ -221,7 +302,7 @@ namespace CapaPresentacion.Impresiones
                 controladorImpresoraMatricial.TextoCentro(Properties.Settings.Default.NombreEmpresa.ToUpper());
                 controladorImpresoraMatricial.TextoCentro(Properties.Settings.Default.Direccion);
                 controladorImpresoraMatricial.TextoCentro("TEL: " + Properties.Settings.Default.Telefono);
-                controladorImpresoraMatricial.TextoIzquierda(Properties.Settings.Default.RazonSocial.ToUpper());
+               // controladorImpresoraMatricial.TextoIzquierda(Properties.Settings.Default.RazonSocial.ToUpper());
                 controladorImpresoraMatricial.TextoIzquierda("RNC: " + Properties.Settings.Default.CedulaORnc);
                 controladorImpresoraMatricial.TextoCentro("COMPROBANTE AUTORIZADO POR DGII");
                 controladorImpresoraMatricial.TextoIzquierda(proc_ComprobanteFacturaVenta_Results.First().Fecha.ToString());
@@ -255,12 +336,15 @@ namespace CapaPresentacion.Impresiones
                 controladorImpresoraMatricial.TextoIzquierda("LAS DEVOLUCIONES SE HACEN");
                 controladorImpresoraMatricial.TextoIzquierda("CON CREDITO, NO SE DEVUELVE DINERO");
                 controladorImpresoraMatricial.lineasGuio();
-                controladorImpresoraMatricial.TextoIzquierda(" ");
-                controladorImpresoraMatricial.TextoIzquierda(" ");
-                controladorImpresoraMatricial.TextoCentro("___________________________");
-                controladorImpresoraMatricial.TextoCentro("FIRMA/CEDULA");
-                controladorImpresoraMatricial.lineasGuio();
-                controladorImpresoraMatricial.TextoIzquierda("COD. CLIENTE: " + proc_ComprobanteFacturaVenta_Results.First().ClienteID);
+                if(proc_ComprobanteFacturaVenta_Results.First().TipoDePago == "Credito 30 dias" || proc_ComprobanteFacturaVenta_Results.First().TipoDePago == "Credito 60 dias")
+                {
+                    controladorImpresoraMatricial.TextoIzquierda(" ");
+                    controladorImpresoraMatricial.TextoIzquierda(" ");
+                    controladorImpresoraMatricial.TextoCentro("___________________________");
+                    controladorImpresoraMatricial.TextoCentro("FIRMA/CEDULA");
+                    controladorImpresoraMatricial.lineasGuio();
+                }             
+                // controladorImpresoraMatricial.TextoIzquierda("COD. CLIENTE: " + proc_ComprobanteFacturaVenta_Results.First().ClienteID);
                 controladorImpresoraMatricial.TextoIzquierda("CLIENTE: " + proc_ComprobanteFacturaVenta_Results.First().NombreCliente.ToUpper());
                 controladorImpresoraMatricial.TextoIzquierda("COD. FACTURA: " + proc_ComprobanteFacturaVenta_Results.First().FacturaID.ToString());
                 controladorImpresoraMatricial.TextoIzquierda("USUARIO: " + proc_ComprobanteFacturaVenta_Results.First().UserName.ToString().ToUpper());
@@ -300,11 +384,10 @@ namespace CapaPresentacion.Impresiones
                 controladorImpresoraMatricial.TextoCentro(Properties.Settings.Default.NombreEmpresa.ToUpper());
                 controladorImpresoraMatricial.TextoCentro(Properties.Settings.Default.Direccion);
                 controladorImpresoraMatricial.TextoCentro("TEL: " + Properties.Settings.Default.Telefono);
-                controladorImpresoraMatricial.TextoIzquierda(Properties.Settings.Default.RazonSocial.ToUpper());
+               // controladorImpresoraMatricial.TextoIzquierda(Properties.Settings.Default.RazonSocial.ToUpper());
                 controladorImpresoraMatricial.TextoIzquierda("RNC: " + Properties.Settings.Default.CedulaORnc);
                 controladorImpresoraMatricial.TextoCentro("COMPROBANTE AUTORIZADO POR DGII");
-                controladorImpresoraMatricial.TextoIzquierda(proc_ComprobanteFacturaVenta_Results.First().Fecha.ToString());
-                controladorImpresoraMatricial.TextoIzquierda("FECHA VENCIMIENTO: " + proc_ComprobanteFacturaVenta_Results.First().FechaVencimiento?.ToString("dd/MM/yyyy"));
+                controladorImpresoraMatricial.TextoIzquierda(proc_ComprobanteFacturaVenta_Results.First().Fecha.ToString());                
                 controladorImpresoraMatricial.TextoIzquierda("NCF:" + " " + proc_ComprobanteFacturaVenta_Results.First().NCF.ToString());
                 controladorImpresoraMatricial.TextoIzquierda("TIPO DE PAGO:" + " " + proc_ComprobanteFacturaVenta_Results.First().TipoDePago);
                 controladorImpresoraMatricial.lineasGuio();
@@ -332,12 +415,15 @@ namespace CapaPresentacion.Impresiones
                 controladorImpresoraMatricial.TextoIzquierda("LAS DEVOLUCIONES SE HACEN");
                 controladorImpresoraMatricial.TextoIzquierda("CON CREDITO, NO SE DEVUELVE DINERO");
                 controladorImpresoraMatricial.lineasGuio();
-                controladorImpresoraMatricial.TextoIzquierda(" ");
-                controladorImpresoraMatricial.TextoIzquierda(" ");
-                controladorImpresoraMatricial.TextoCentro("___________________________");
-                controladorImpresoraMatricial.TextoCentro("FIRMA/CEDULA");
-                controladorImpresoraMatricial.lineasGuio();
-                controladorImpresoraMatricial.TextoIzquierda("COD. CLIENTE: " + proc_ComprobanteFacturaVenta_Results.First().ClienteID);
+                if (proc_ComprobanteFacturaVenta_Results.First().TipoDePago == "Credito 30 dias" || proc_ComprobanteFacturaVenta_Results.First().TipoDePago == "Credito 60 dias")
+                {
+                    controladorImpresoraMatricial.TextoIzquierda(" ");
+                    controladorImpresoraMatricial.TextoIzquierda(" ");
+                    controladorImpresoraMatricial.TextoCentro("___________________________");
+                    controladorImpresoraMatricial.TextoCentro("FIRMA/CEDULA");
+                    controladorImpresoraMatricial.lineasGuio();
+                }
+               // controladorImpresoraMatricial.TextoIzquierda("COD. CLIENTE: " + proc_ComprobanteFacturaVenta_Results.First().ClienteID);
                 controladorImpresoraMatricial.TextoIzquierda("CLIENTE: " + proc_ComprobanteFacturaVenta_Results.First().NombreCliente.ToUpper());
                 controladorImpresoraMatricial.TextoIzquierda("COD. FACTURA: " + proc_ComprobanteFacturaVenta_Results.First().FacturaID.ToString());
                 controladorImpresoraMatricial.TextoIzquierda("USUARIO: " + proc_ComprobanteFacturaVenta_Results.First().UserName.ToString().ToUpper());
@@ -411,12 +497,15 @@ namespace CapaPresentacion.Impresiones
                 controladorImpresoraMatricial.TextoIzquierda("LAS DEVOLUCIONES SE HACEN");
                 controladorImpresoraMatricial.TextoIzquierda("CON CREDITO, NO SE DEVUELVE DINERO");
                 controladorImpresoraMatricial.lineasGuio();
-                controladorImpresoraMatricial.TextoIzquierda(" ");
-                controladorImpresoraMatricial.TextoIzquierda(" ");
-                controladorImpresoraMatricial.TextoCentro("___________________________");
-                controladorImpresoraMatricial.TextoCentro("FIRMA/CEDULA");
-                controladorImpresoraMatricial.lineasGuio();
-                controladorImpresoraMatricial.TextoIzquierda("COD. CLIENTE: " + proc_ComprobanteFacturaVenta_Results.First().ClienteID);
+                if (proc_ComprobanteFacturaVenta_Results.First().TipoDePago == "Credito 30 dias" || proc_ComprobanteFacturaVenta_Results.First().TipoDePago == "Credito 60 dias")
+                {
+                    controladorImpresoraMatricial.TextoIzquierda(" ");
+                    controladorImpresoraMatricial.TextoIzquierda(" ");
+                    controladorImpresoraMatricial.TextoCentro("___________________________");
+                    controladorImpresoraMatricial.TextoCentro("FIRMA/CEDULA");
+                    controladorImpresoraMatricial.lineasGuio();
+                }
+                // controladorImpresoraMatricial.TextoIzquierda("COD. CLIENTE: " + proc_ComprobanteFacturaVenta_Results.First().ClienteID);
                 controladorImpresoraMatricial.TextoIzquierda("CLIENTE: " + proc_ComprobanteFacturaVenta_Results.First().NombreCliente.ToUpper());
                 controladorImpresoraMatricial.TextoIzquierda("COD. FACTURA: " + proc_ComprobanteFacturaVenta_Results.First().FacturaID.ToString());
                 controladorImpresoraMatricial.TextoIzquierda("USUARIO: " + proc_ComprobanteFacturaVenta_Results.First().UserName.ToString().ToUpper());

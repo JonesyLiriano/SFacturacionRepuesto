@@ -224,7 +224,7 @@ namespace CapaPresentacion.Impresiones
                 controladorImpresoraMatricial.lineasGuio();
                 controladorImpresoraMatricial.TextoIzquierda("CANTIDAD DE ARTICULOS DEVUELTOS:" + " " + cantArticulos);
                 controladorImpresoraMatricial.lineasGuio();
-                controladorImpresoraMatricial.TextoIzquierda("COD.CLIENTE: " + proc_ComprobanteNotaDeCredito_Results.First().ClienteID.ToString());
+                // controladorImpresoraMatricial.TextoIzquierda("COD.CLIENTE: " + proc_ComprobanteNotaDeCredito_Results.First().ClienteID.ToString());
                 controladorImpresoraMatricial.TextoIzquierda("CLIENTE: " + proc_ComprobanteNotaDeCredito_Results.First().NombreCliente.ToUpper());
                 controladorImpresoraMatricial.TextoIzquierda("COD. NOTA DE CREDITO: " + proc_ComprobanteNotaDeCredito_Results.First().NotaDeCreditoID);
                 controladorImpresoraMatricial.TextoIzquierda("USUARIO: " + proc_ComprobanteNotaDeCredito_Results.First().UserName.ToUpper());

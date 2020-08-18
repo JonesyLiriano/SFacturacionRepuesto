@@ -97,7 +97,7 @@
           <Property Name="Fecha" Type="datetime" Nullable="false" />
           <Property Name="TipoPagoID" Type="int" Nullable="false" />
           <Property Name="TipoFacturaID" Type="int" Nullable="false" />
-          <Property Name="NCF" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="NCF" Type="varchar" MaxLength="50" />
           <Property Name="FechaVencimiento" Type="date" />
           <Property Name="UserID" Type="int" Nullable="false" />
           <Property Name="RNC" Type="varchar" MaxLength="50" />
@@ -133,6 +133,19 @@
           <Property Name="LineaCreditoVentaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FacturaID" Type="int" Nullable="false" />
           <Property Name="Estatus" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Movimientos">
+          <Key>
+            <PropertyRef Name="MovimientoID" />
+          </Key>
+          <Property Name="MovimientoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductoID" Type="int" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" Nullable="false" />
+          <Property Name="TipoMovimiento" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Referencia" Type="int" />
+          <Property Name="Existencia" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Cantidad" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="UsuarioID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="NotasDeCredito">
           <Key>
@@ -667,12 +680,12 @@
           <Parameter Name="ProveedorID" Type="int" Mode="In" />
         </Function>
         <Function Name="proc_CalcularGanancias" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="GananciaFContDia" Type="decimal" Mode="InOut" Precision="18" Scale="2"/>
-          <Parameter Name="GananciaFContSemana" Type="decimal" Mode="InOut" Precision="18" Scale="2"/>
-          <Parameter Name="GananciaFContMes" Type="decimal" Mode="InOut" Precision="18" Scale="2"/>
-          <Parameter Name="GananciaFCredDia" Type="decimal" Mode="InOut" Precision="18" Scale="2"/>
-          <Parameter Name="GananciaFCredSemana" Type="decimal" Mode="InOut" Precision="18" Scale="2"/>
-          <Parameter Name="GananciaFCredMes" Type="decimal" Mode="InOut" Precision="18" Scale="2"/>
+          <Parameter Name="GananciaFContDia" Type="decimal" Mode="InOut" />
+          <Parameter Name="GananciaFContSemana" Type="decimal" Mode="InOut" />
+          <Parameter Name="GananciaFContMes" Type="decimal" Mode="InOut" />
+          <Parameter Name="GananciaFCredDia" Type="decimal" Mode="InOut" />
+          <Parameter Name="GananciaFCredSemana" Type="decimal" Mode="InOut" />
+          <Parameter Name="GananciaFCredMes" Type="decimal" Mode="InOut" />
           <Parameter Name="Itbis" Type="decimal" Mode="In" />
         </Function>
         <Function Name="proc_CargarCobrosVentaCredito" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -706,6 +719,9 @@
         </Function>
         <Function Name="proc_CargarMontoFacturaNC" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="FacturaID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="proc_CargarMovimientos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ProductoID" Type="int" Mode="In" />
         </Function>
         <Function Name="proc_CargarNotasDeCreditoPFecha" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="FechaInicial" Type="date" Mode="In" />
@@ -869,6 +885,16 @@
           <Parameter Name="Estatus" Type="bit" Mode="In" />
           <Parameter Name="resultado" Type="bit" Mode="InOut" />
         </Function>
+        <Function Name="proc_InsertarMovimiento" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="MovimientoID" Type="int" Mode="InOut" />
+          <Parameter Name="ProductoID" Type="int" Mode="In" />
+          <Parameter Name="Fecha" Type="datetime" Mode="In" />
+          <Parameter Name="TipoMovimiento" Type="varchar" Mode="In" />
+          <Parameter Name="Referencia" Type="int" Mode="In" />
+          <Parameter Name="Cantidad" Type="decimal" Mode="In" />
+          <Parameter Name="UsuarioID" Type="int" Mode="In" />
+          <Parameter Name="resultado" Type="bit" Mode="InOut" />
+        </Function>
         <Function Name="proc_InsertarNotaDeCredito" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="NotaDeCreditoID" Type="int" Mode="InOut" />
           <Parameter Name="FacturaID" Type="int" Mode="In" />
@@ -958,6 +984,7 @@
           <EntitySet Name="FacturasCompra" EntityType="Self.FacturasCompra" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LineasCreditoCompras" EntityType="Self.LineasCreditoCompras" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LineasCreditoVentas" EntityType="Self.LineasCreditoVentas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Movimientos" EntityType="Self.Movimientos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NotasDeCredito" EntityType="Self.NotasDeCredito" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OrdenesCompra" EntityType="Self.OrdenesCompra" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PagosComprasCredito" EntityType="Self.PagosComprasCredito" Schema="dbo" store:Type="Tables" />
@@ -1154,7 +1181,7 @@
           <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="TipoPagoID" Type="Int32" Nullable="false" />
           <Property Name="TipoFacturaID" Type="Int32" Nullable="false" />
-          <Property Name="NCF" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NCF" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="FechaVencimiento" Type="DateTime" Precision="0" />
           <Property Name="UserID" Type="Int32" Nullable="false" />
           <Property Name="RNC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -2000,6 +2027,20 @@
             <Parameter Name="FacturaID" Mode="In" Type="Int32" />
             <Parameter Name="LineaCreditoVentaID" Mode="InOut" Type="Int32" />
           </FunctionImport>
+          <EntitySet Name="Movimientos" EntityType="SFacturacionModel.Movimiento" />
+          <FunctionImport Name="proc_CargarMovimientos" ReturnType="Collection(SFacturacionModel.proc_CargarMovimientos_Result)">
+          <Parameter Name="ProductoID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="proc_InsertarMovimiento">
+            <Parameter Name="MovimientoID" Mode="InOut" Type="Int32" />
+            <Parameter Name="ProductoID" Mode="In" Type="Int32" />
+            <Parameter Name="Fecha" Mode="In" Type="DateTime" />
+            <Parameter Name="TipoMovimiento" Mode="In" Type="String" />
+            <Parameter Name="Referencia" Mode="In" Type="Int32" />
+            <Parameter Name="Cantidad" Mode="In" Type="Decimal" />
+            <Parameter Name="UsuarioID" Mode="In" Type="Int32" />
+            <Parameter Name="resultado" Mode="InOut" Type="Boolean" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="proc_BuscarProductosPorProveedor_Result">
           <Property Type="Int32" Name="ProductoID" Nullable="false" />
@@ -2727,6 +2768,28 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Movimiento">
+          <Key>
+            <PropertyRef Name="MovimientoID" />
+          </Key>
+          <Property Name="MovimientoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductoID" Type="Int32" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TipoMovimiento" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Referencia" Type="Int32" />
+          <Property Name="Existencia" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Cantidad" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="UsuarioID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <ComplexType Name="proc_CargarMovimientos_Result">
+          <Property Type="String" Name="Producto" Nullable="false" MaxLength="100" />
+          <Property Type="DateTime" Name="Fecha" Nullable="false" Precision="23" />
+          <Property Type="String" Name="TipoMovimiento" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Referencia" Nullable="true" />
+          <Property Type="Decimal" Name="Existencia" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="Cantidad" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="String" Name="Usuario" Nullable="false" MaxLength="50" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3665,6 +3728,34 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="proc_BuscarLineaDeCreditoVentaIDFactura" FunctionName="SFacturacionModel.Store.proc_BuscarLineaDeCreditoVentaIDFactura" />
+          <EntitySetMapping Name="Movimientos">
+            <EntityTypeMapping TypeName="SFacturacionModel.Movimiento">
+              <MappingFragment StoreEntitySet="Movimientos">
+                <ScalarProperty Name="UsuarioID" ColumnName="UsuarioID" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Existencia" ColumnName="Existencia" />
+                <ScalarProperty Name="Referencia" ColumnName="Referencia" />
+                <ScalarProperty Name="TipoMovimiento" ColumnName="TipoMovimiento" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="ProductoID" ColumnName="ProductoID" />
+                <ScalarProperty Name="MovimientoID" ColumnName="MovimientoID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="proc_CargarMovimientos" FunctionName="SFacturacionModel.Store.proc_CargarMovimientos">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SFacturacionModel.proc_CargarMovimientos_Result">
+                <ScalarProperty Name="Producto" ColumnName="Producto" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="TipoMovimiento" ColumnName="TipoMovimiento" />
+                <ScalarProperty Name="Referencia" ColumnName="Referencia" />
+                <ScalarProperty Name="Existencia" ColumnName="Existencia" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="proc_InsertarMovimiento" FunctionName="SFacturacionModel.Store.proc_InsertarMovimiento" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

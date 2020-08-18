@@ -76,10 +76,10 @@ namespace CapaPresentacion.Clases
             string deviceInfo =
               @"<DeviceInfo>
                 <OutputFormat>EMF</OutputFormat>
-                <PageWidth>2.1in</PageWidth>
+                <PageWidth>1.5in</PageWidth>
                 <PageHeight>1in</PageHeight>
                 <MarginTop>0in</MarginTop>
-                <MarginLeft>0.078in</MarginLeft>
+                <MarginLeft>0in</MarginLeft>
                 <MarginRight>0in</MarginRight>
                 <MarginBottom>0in</MarginBottom>
             </DeviceInfo>";
@@ -116,6 +116,29 @@ namespace CapaPresentacion.Clases
         }
 
         private void PrintPage(object sender, PrintPageEventArgs ev)
+        {
+            Metafile pageImage = new Metafile(m_streams[m_currentPageIndex]);
+
+            // ajusta el area rectangular con margenes.
+            Rectangle adjustedRect = new Rectangle(
+                ev.PageBounds.Left - (int)ev.PageSettings.HardMarginX,
+                ev.PageBounds.Top - (int)ev.PageSettings.HardMarginY,
+                ev.PageBounds.Width,
+                ev.PageBounds.Height);
+
+            // Dibuja un fondo blanco para el reporte
+            ev.Graphics.FillRectangle(Brushes.White, adjustedRect);
+
+            // Dibuja el contenido del reporte
+            ev.Graphics.DrawImage(pageImage, adjustedRect);
+
+            // pasa a la siguiente pagina y comprueba que no se haya terminado el contenido
+            m_currentPageIndex++;
+            ev.HasMorePages = (m_currentPageIndex < m_streams.Count);
+
+        }
+
+        private void PrintPageLabel(object sender, PrintPageEventArgs ev)
         {
             Metafile pageImage = new Metafile(m_streams[m_currentPageIndex]);
 
@@ -189,7 +212,7 @@ namespace CapaPresentacion.Clases
         {
             PrintDocument printDoc;
             //busca el nombre de la impresora predeterminada
-            String printerName = Properties.Settings.Default.Impresora;
+            String printerName = Properties.Settings.Default.ImpresoraTermica;
 
             if (m_streams == null || m_streams.Count == 0)
                 throw new Exception("Error: No hay datos que imprimir.");
@@ -202,7 +225,7 @@ namespace CapaPresentacion.Clases
             }
             else
             {
-                printDoc.PrintPage += new PrintPageEventHandler(PrintPageTermica);
+                printDoc.PrintPage += new PrintPageEventHandler(PrintPageLabel);
                 m_currentPageIndex = 0;
                 printDoc.Print();
             }
