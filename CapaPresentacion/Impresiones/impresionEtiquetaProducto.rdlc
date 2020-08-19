@@ -9,7 +9,7 @@
             <Source>Database</Source>
             <Value>=Parameters!CodigoBarra.Value</Value>
             <MIMEType>image/jpeg</MIMEType>
-            <Sizing>FitProportional</Sizing>
+            <Sizing>Fit</Sizing>
             <Top>0.51388in</Top>
             <Height>0.48612in</Height>
             <Width>0.93403in</Width>

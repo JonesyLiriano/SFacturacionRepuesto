@@ -85,8 +85,11 @@ namespace CapaPresentacion.Impresiones
             {
                 Barcode CodigoBarra = new Barcode();
                 CodigoBarra.IncludeLabel = true;
+                CodigoBarra.BarWidth = 1;
+                CodigoBarra.Width = 150;
+                CodigoBarra.Height = 49;
 
-                using (var b = new Bitmap(CodigoBarra.Encode(TYPE.CODE128, codigoBarra, Color.Black, Color.White, 150, 48)))
+                using (var b = new Bitmap(CodigoBarra.Encode(TYPE.CODE128, codigoBarra)))
                 {
                     using (var ms = new MemoryStream())
                     {
