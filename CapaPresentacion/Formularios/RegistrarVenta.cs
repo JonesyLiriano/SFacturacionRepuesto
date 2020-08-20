@@ -450,7 +450,11 @@ namespace CapaPresentacion
             cbCotizacion.Enabled = true;
             cbCotizacion.SelectedIndex = -1;
             txtMontoCotizacion.Clear();
-            txtFechaCotizacion.Clear();
+            txtFechaCotizacion.Clear(); 
+            txtEfectivo.Clear();
+            txtTarjeta.Clear();
+            txtRecibido.Clear();
+            txtDevuelta.Clear();
 
         }
 
