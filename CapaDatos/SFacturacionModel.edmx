@@ -669,6 +669,9 @@
           <Parameter Name="UserID" Type="int" Mode="In" />
           <Parameter Name="resultado" Type="bit" Mode="InOut" />
         </Function>
+        <Function Name="proc_BuscarClientePID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ClienteID" Type="int" Mode="In" />
+        </Function>
         <Function Name="proc_BuscarLineaDeCreditoVentaIDFactura" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="FacturaID" Type="int" Mode="In" />
           <Parameter Name="LineaCreditoVentaID" Type="int" Mode="InOut" />
@@ -678,14 +681,18 @@
         </Function>
         <Function Name="proc_BuscarProductosPorProveedor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ProveedorID" Type="int" Mode="In" />
+          <Parameter Name="IndicePagina" Type="int" Mode="In" />
+          <Parameter Name="TamanoPagina" Type="int" Mode="In" />
+          <Parameter Name="Filtro" Type="varchar" Mode="In" />
+          <Parameter Name="Columna" Type="varchar" Mode="In" />
         </Function>
         <Function Name="proc_CalcularGanancias" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="GananciaFContDia" Type="decimal" Mode="InOut" Precision="18" Scale="2"/>
-          <Parameter Name="GananciaFContSemana" Type="decimal" Mode="InOut" Precision="18" Scale="2"/>
-          <Parameter Name="GananciaFContMes" Type="decimal" Mode="InOut" Precision="18" Scale="2"/>
-          <Parameter Name="GananciaFCredDia" Type="decimal" Mode="InOut" Precision="18" Scale="2"/>
-          <Parameter Name="GananciaFCredSemana" Type="decimal" Mode="InOut" Precision="18" Scale="2"/>
-          <Parameter Name="GananciaFCredMes" Type="decimal" Mode="InOut" Precision="18" Scale="2"/>
+          <Parameter Name="GananciaFContDia" Type="decimal" Mode="InOut" />
+          <Parameter Name="GananciaFContSemana" Type="decimal" Mode="InOut" />
+          <Parameter Name="GananciaFContMes" Type="decimal" Mode="InOut" />
+          <Parameter Name="GananciaFCredDia" Type="decimal" Mode="InOut" />
+          <Parameter Name="GananciaFCredSemana" Type="decimal" Mode="InOut" />
+          <Parameter Name="GananciaFCredMes" Type="decimal" Mode="InOut" />
           <Parameter Name="Itbis" Type="decimal" Mode="In" />
         </Function>
         <Function Name="proc_CargarCobrosVentaCredito" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -710,6 +717,9 @@
           <Parameter Name="FechaInicial" Type="date" Mode="In" />
           <Parameter Name="FechaFinal" Type="date" Mode="In" />
         </Function>
+        <Function Name="proc_CargarFacturasPCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ClienteID" Type="int" Mode="In" />
+        </Function>
         <Function Name="proc_CargarFacturasPendientes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ClienteID" Type="int" Mode="In" />
         </Function>
@@ -726,6 +736,8 @@
         </Function>
         <Function Name="proc_CargarMovimientos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ProductoID" Type="int" Mode="In" />
+          <Parameter Name="IndicePagina" Type="int" Mode="In" />
+          <Parameter Name="TamanoPagina" Type="int" Mode="In" />
         </Function>
         <Function Name="proc_CargarNotasDeCreditoPFecha" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="FechaInicial" Type="date" Mode="In" />
@@ -741,9 +753,16 @@
         <Function Name="proc_CargarProductosCotizacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="CotizacionID" Type="int" Mode="In" />
         </Function>
-        <Function Name="proc_CargarProductosExistBaja" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="proc_CargarProductosExistBaja" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IndicePagina" Type="int" Mode="In" />
+          <Parameter Name="TamanoPagina" Type="int" Mode="In" />
+        </Function>
         <Function Name="proc_CargarProductosExistBajaPorProveedor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ProveedorID" Type="int" Mode="In" />
+          <Parameter Name="IndicePagina" Type="int" Mode="In" />
+          <Parameter Name="TamanoPagina" Type="int" Mode="In" />
+          <Parameter Name="Filtro" Type="varchar" Mode="In" />
+          <Parameter Name="Columna" Type="varchar" Mode="In" />
         </Function>
         <Function Name="proc_CargarProductosFactura" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="FacturaID" Type="int" Mode="In" />
@@ -751,19 +770,73 @@
         <Function Name="proc_CargarProductosMasVendidos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="proc_CargarProductosPorProveedor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ProveedorID" Type="int" Mode="In" />
+          <Parameter Name="IndicePagina" Type="int" Mode="In" />
+          <Parameter Name="TamanoPagina" Type="int" Mode="In" />
+          <Parameter Name="Filtro" Type="varchar" Mode="In" />
+          <Parameter Name="Columna" Type="varchar" Mode="In" />
         </Function>
-        <Function Name="proc_CargarTodasCotizaciones" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <Function Name="proc_CargarTodasFacturas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <Function Name="proc_CargarTodasLineasCreditoCompras" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <Function Name="proc_CargarTodasLineasCreditoVentas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <Function Name="proc_CargarTodasNotasDeCredito" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <Function Name="proc_CargarTodasOrdenesCompra" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <Function Name="proc_CargarTodosClientes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <Function Name="proc_CargarTodosProductos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <Function Name="proc_CargarTodosProveedores" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="proc_CargarTodasCotizaciones" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IndicePagina" Type="int" Mode="In" />
+          <Parameter Name="TamanoPagina" Type="int" Mode="In" />
+          <Parameter Name="Filtro" Type="varchar" Mode="In" />
+          <Parameter Name="Columna" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="proc_CargarTodasFacturas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IndicePagina" Type="int" Mode="In" />
+          <Parameter Name="TamanoPagina" Type="int" Mode="In" />
+          <Parameter Name="Filtro" Type="varchar" Mode="In" />
+          <Parameter Name="Columna" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="proc_CargarTodasLineasCreditoCompras" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IndicePagina" Type="int" Mode="In" />
+          <Parameter Name="TamanoPagina" Type="int" Mode="In" />
+          <Parameter Name="Filtro" Type="varchar" Mode="In" />
+          <Parameter Name="Columna" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="proc_CargarTodasLineasCreditoVentas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IndicePagina" Type="int" Mode="In" />
+          <Parameter Name="TamanoPagina" Type="int" Mode="In" />
+          <Parameter Name="Filtro" Type="varchar" Mode="In" />
+          <Parameter Name="Columna" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="proc_CargarTodasNotasDeCredito" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IndicePagina" Type="int" Mode="In" />
+          <Parameter Name="TamanoPagina" Type="int" Mode="In" />
+          <Parameter Name="Filtro" Type="varchar" Mode="In" />
+          <Parameter Name="Columna" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="proc_CargarTodasOrdenesCompra" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IndicePagina" Type="int" Mode="In" />
+          <Parameter Name="TamanoPagina" Type="int" Mode="In" />
+          <Parameter Name="Filtro" Type="varchar" Mode="In" />
+          <Parameter Name="Columna" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="proc_CargarTodosClientes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IndicePagina" Type="int" Mode="In" />
+          <Parameter Name="TamanoPagina" Type="int" Mode="In" />
+          <Parameter Name="Filtro" Type="varchar" Mode="In" />
+          <Parameter Name="Columna" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="proc_CargarTodosProductos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IndicePagina" Type="int" Mode="In" />
+          <Parameter Name="TamanoPagina" Type="int" Mode="In" />
+          <Parameter Name="Filtro" Type="varchar" Mode="In" />
+          <Parameter Name="Columna" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="proc_CargarTodosProveedores" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IndicePagina" Type="int" Mode="In" />
+          <Parameter Name="TamanoPagina" Type="int" Mode="In" />
+          <Parameter Name="Filtro" Type="varchar" Mode="In" />
+          <Parameter Name="Columna" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="proc_CargarTodosTiposFactura" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="proc_CargarTodosTiposPagos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <Function Name="proc_CargarTodosUsers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="proc_CargarTodosUsers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IndicePagina" Type="int" Mode="In" />
+          <Parameter Name="TamanoPagina" Type="int" Mode="In" />
+          <Parameter Name="Filtro" Type="varchar" Mode="In" />
+          <Parameter Name="Columna" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="proc_CerrarOrdenCompra" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="OrdenCompraID" Type="int" Mode="In" />
         </Function>
@@ -1644,7 +1717,11 @@
             <Parameter Name="resultado" Mode="InOut" Type="Boolean" />
           </FunctionImport>
           <FunctionImport Name="proc_BuscarProductosPorProveedor" ReturnType="Collection(SFacturacionModel.proc_BuscarProductosPorProveedor_Result)">
-          <Parameter Name="ProveedorID" Mode="In" Type="Int32" />
+            <Parameter Name="ProveedorID" Mode="In" Type="Int32" />
+            <Parameter Name="IndicePagina" Mode="In" Type="Int32" />
+            <Parameter Name="TamanoPagina" Mode="In" Type="Int32" />
+            <Parameter Name="Filtro" Mode="In" Type="String" />
+            <Parameter Name="Columna" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="proc_CalcularGanancias">
             <Parameter Name="GananciaFContDia" Mode="InOut" Type="Decimal" />
@@ -1676,17 +1753,56 @@
             <Parameter Name="FechaInicial" Mode="In" Type="DateTime" />
             <Parameter Name="FechaFinal" Mode="In" Type="DateTime" />
           </FunctionImport>
-          <FunctionImport Name="proc_CargarProductosExistBaja" ReturnType="Collection(SFacturacionModel.proc_CargarProductosExistBaja_Result)" />
-          <FunctionImport Name="proc_CargarTodasFacturas" ReturnType="Collection(SFacturacionModel.proc_CargarTodasFacturas_Result)" />
-          <FunctionImport Name="proc_CargarTodasLineasCreditoVentas" ReturnType="Collection(SFacturacionModel.proc_CargarTodasLineasCreditoVentas_Result)" />
-          <FunctionImport Name="proc_CargarTodasNotasDeCredito" ReturnType="Collection(SFacturacionModel.proc_CargarTodasNotasDeCredito_Result)" />
-          <FunctionImport Name="proc_CargarTodasOrdenesCompra" ReturnType="Collection(SFacturacionModel.proc_CargarTodasOrdenesCompra_Result)" />
-          <FunctionImport Name="proc_CargarTodosClientes" ReturnType="Collection(SFacturacionModel.proc_CargarTodosClientes_Result)" />
-          <FunctionImport Name="proc_CargarTodosProductos" ReturnType="Collection(SFacturacionModel.proc_CargarTodosProductos_Result)" />
-          <FunctionImport Name="proc_CargarTodosProveedores" ReturnType="Collection(SFacturacionModel.proc_CargarTodosProveedores_Result)" />
+          <FunctionImport Name="proc_CargarTodasFacturas" ReturnType="Collection(SFacturacionModel.proc_CargarTodasFacturas_Result)" >
+            <Parameter Name="IndicePagina" Mode="In" Type="Int32" />
+            <Parameter Name="TamanoPagina" Mode="In" Type="Int32" />
+            <Parameter Name="Filtro" Mode="In" Type="String" />
+            <Parameter Name="Columna" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="proc_CargarTodasLineasCreditoVentas" ReturnType="Collection(SFacturacionModel.proc_CargarTodasLineasCreditoVentas_Result)" >
+            <Parameter Name="IndicePagina" Mode="In" Type="Int32" />
+            <Parameter Name="TamanoPagina" Mode="In" Type="Int32" />
+            <Parameter Name="Filtro" Mode="In" Type="String" />
+            <Parameter Name="Columna" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="proc_CargarTodasNotasDeCredito" ReturnType="Collection(SFacturacionModel.proc_CargarTodasNotasDeCredito_Result)" >
+            <Parameter Name="IndicePagina" Mode="In" Type="Int32" />
+            <Parameter Name="TamanoPagina" Mode="In" Type="Int32" />
+            <Parameter Name="Filtro" Mode="In" Type="String" />
+            <Parameter Name="Columna" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="proc_CargarTodasOrdenesCompra" ReturnType="Collection(SFacturacionModel.proc_CargarTodasOrdenesCompra_Result)" >
+            <Parameter Name="IndicePagina" Mode="In" Type="Int32" />
+            <Parameter Name="TamanoPagina" Mode="In" Type="Int32" />
+            <Parameter Name="Filtro" Mode="In" Type="String" />
+            <Parameter Name="Columna" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="proc_CargarTodosClientes" ReturnType="Collection(SFacturacionModel.proc_CargarTodosClientes_Result)" >
+            <Parameter Name="IndicePagina" Mode="In" Type="Int32" />
+            <Parameter Name="TamanoPagina" Mode="In" Type="Int32" />
+            <Parameter Name="Filtro" Mode="In" Type="String" />
+            <Parameter Name="Columna" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="proc_CargarTodosProductos" ReturnType="Collection(SFacturacionModel.proc_CargarTodosProductos_Result)" >
+            <Parameter Name="IndicePagina" Mode="In" Type="Int32" />
+            <Parameter Name="TamanoPagina" Mode="In" Type="Int32" />
+            <Parameter Name="Filtro" Mode="In" Type="String" />
+            <Parameter Name="Columna" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="proc_CargarTodosProveedores" ReturnType="Collection(SFacturacionModel.proc_CargarTodosProveedores_Result)" >
+            <Parameter Name="IndicePagina" Mode="In" Type="Int32" />
+            <Parameter Name="TamanoPagina" Mode="In" Type="Int32" />
+            <Parameter Name="Filtro" Mode="In" Type="String" />
+            <Parameter Name="Columna" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="proc_CargarTodosTiposFactura" ReturnType="Collection(SFacturacionModel.proc_CargarTodosTiposFactura_Result)" />
           <FunctionImport Name="proc_CargarTodosTiposPagos" ReturnType="Collection(SFacturacionModel.proc_CargarTodosTiposPagos_Result)" />
-          <FunctionImport Name="proc_CargarTodosUsers" ReturnType="Collection(SFacturacionModel.proc_CargarTodosUsers_Result)" />
+          <FunctionImport Name="proc_CargarTodosUsers" ReturnType="Collection(SFacturacionModel.proc_CargarTodosUsers_Result)" >
+            <Parameter Name="IndicePagina" Mode="In" Type="Int32" />
+            <Parameter Name="TamanoPagina" Mode="In" Type="Int32" />
+            <Parameter Name="Filtro" Mode="In" Type="String" />
+            <Parameter Name="Columna" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="proc_CerrarOrdenCompra">
           <Parameter Name="OrdenCompraID" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -1837,7 +1953,11 @@
           <Parameter Name="OrdenCompraID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="proc_CargarProductosExistBajaPorProveedor" ReturnType="Collection(SFacturacionModel.proc_CargarProductosExistBajaPorProveedor_Result)">
-          <Parameter Name="ProveedorID" Mode="In" Type="Int32" />
+            <Parameter Name="ProveedorID" Mode="In" Type="Int32" />
+            <Parameter Name="IndicePagina" Mode="In" Type="Int32" />
+            <Parameter Name="TamanoPagina" Mode="In" Type="Int32" />
+            <Parameter Name="Filtro" Mode="In" Type="String" />
+            <Parameter Name="Columna" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="proc_InsertarProducto">
             <Parameter Name="ProductoID" Mode="InOut" Type="Int32" />
@@ -1869,7 +1989,12 @@
           </FunctionImport>
           <EntitySet Name="Cotizaciones" EntityType="SFacturacionModel.Cotizacione" />
           <EntitySet Name="DetalleCotizaciones" EntityType="SFacturacionModel.DetalleCotizacione" />
-          <FunctionImport Name="proc_CargarTodasCotizaciones" ReturnType="Collection(SFacturacionModel.proc_CargarTodasCotizaciones_Result)" />
+          <FunctionImport Name="proc_CargarTodasCotizaciones" ReturnType="Collection(SFacturacionModel.proc_CargarTodasCotizaciones_Result)" >
+            <Parameter Name="IndicePagina" Mode="In" Type="Int32" />
+            <Parameter Name="TamanoPagina" Mode="In" Type="Int32" />
+            <Parameter Name="Filtro" Mode="In" Type="String" />
+            <Parameter Name="Columna" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="proc_ComprobanteCotizacion" ReturnType="Collection(SFacturacionModel.proc_ComprobanteCotizacion_Result)">
           <Parameter Name="CotizacionID" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -1912,14 +2037,23 @@
             <Parameter Name="resultado" Mode="InOut" Type="Boolean" />
           </FunctionImport>
           <FunctionImport Name="proc_CargarProductosPorProveedor" ReturnType="Collection(SFacturacionModel.proc_CargarProductosPorProveedor_Result)">
-          <Parameter Name="ProveedorID" Mode="In" Type="Int32" />
+            <Parameter Name="ProveedorID" Mode="In" Type="Int32" />
+            <Parameter Name="IndicePagina" Mode="In" Type="Int32" />
+            <Parameter Name="TamanoPagina" Mode="In" Type="Int32" />
+            <Parameter Name="Filtro" Mode="In" Type="String" />
+            <Parameter Name="Columna" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="proc_ActualizarLineaCreditoCompra">
             <Parameter Name="LineaCreditoCompraID" Mode="In" Type="Int32" />
             <Parameter Name="Estatus" Mode="In" Type="Boolean" />
             <Parameter Name="resultado" Mode="InOut" Type="Boolean" />
           </FunctionImport>
-          <FunctionImport Name="proc_CargarTodasLineasCreditoCompras" ReturnType="Collection(SFacturacionModel.proc_CargarTodasLineasCreditoCompras_Result)" />
+          <FunctionImport Name="proc_CargarTodasLineasCreditoCompras" ReturnType="Collection(SFacturacionModel.proc_CargarTodasLineasCreditoCompras_Result)" >
+            <Parameter Name="IndicePagina" Mode="In" Type="Int32" />
+            <Parameter Name="TamanoPagina" Mode="In" Type="Int32" />
+            <Parameter Name="Filtro" Mode="In" Type="String" />
+            <Parameter Name="Columna" Mode="In" Type="String" />
+          </FunctionImport>
           <EntitySet Name="LineasCreditoCompras" EntityType="SFacturacionModel.LineasCreditoCompra" />
           <EntitySet Name="PagosComprasCreditoes" EntityType="SFacturacionModel.PagosComprasCredito" />
           <FunctionImport Name="proc_BorrarPagoCompraCredito">
@@ -2033,7 +2167,9 @@
           </FunctionImport>
           <EntitySet Name="Movimientos" EntityType="SFacturacionModel.Movimiento" />
           <FunctionImport Name="proc_CargarMovimientos" ReturnType="Collection(SFacturacionModel.proc_CargarMovimientos_Result)">
-          <Parameter Name="ProductoID" Mode="In" Type="Int32" />
+            <Parameter Name="ProductoID" Mode="In" Type="Int32" />
+            <Parameter Name="IndicePagina" Mode="In" Type="Int32" />
+            <Parameter Name="TamanoPagina" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="proc_InsertarMovimiento">
             <Parameter Name="MovimientoID" Mode="InOut" Type="Int32" />
@@ -2048,6 +2184,16 @@
           <FunctionImport Name="proc_CargarFacturasRapidaPFecha" ReturnType="Collection(SFacturacionModel.proc_CargarFacturasRapidaPFecha_Result)">
             <Parameter Name="FechaInicial" Mode="In" Type="DateTime" />
             <Parameter Name="FechaFinal" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="proc_CargarFacturasPCliente" ReturnType="Collection(SFacturacionModel.proc_CargarFacturasPCliente_Result)">
+          <Parameter Name="ClienteID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="proc_BuscarClientePID" ReturnType="Collection(SFacturacionModel.proc_BuscarClientePID_Result)">
+          <Parameter Name="ClienteID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="proc_CargarProductosExistBaja" ReturnType="Collection(SFacturacionModel.proc_CargarProductosExistBaja_Result)">
+            <Parameter Name="IndicePagina" Mode="In" Type="Int32" />
+            <Parameter Name="TamanoPagina" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="proc_BuscarProductosPorProveedor_Result">
@@ -2068,6 +2214,7 @@
           <Property Type="String" Name="Referencia" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="Marca" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="Calidad" Nullable="true" MaxLength="100" />
+          <Property Type="Int64" Name="RowNumber" Nullable="true" />
         </ComplexType>
         <ComplexType Name="proc_CargarCobrosVentaCredito_Result">
           <Property Type="Int32" Name="CobroVentaCreditoID" Nullable="false" />
@@ -2131,57 +2278,62 @@
           <Property Type="Int32" Name="OrdenCompraID" Nullable="false" />
         </ComplexType>
         <ComplexType Name="proc_CargarTodasFacturas_Result">
+          <Property Type="Int64" Name="RowNumber" Nullable="true" />
           <Property Type="Int32" Name="FacturaID" Nullable="false" />
+          <Property Type="Int32" Name="ClienteID" Nullable="false" />
+          <Property Type="String" Name="Cliente" Nullable="false" MaxLength="100" />
           <Property Type="Decimal" Name="DescuentoCliente" Nullable="true" Precision="18" Scale="2" />
           <Property Type="DateTime" Name="Fecha" Nullable="false" Precision="23" />
           <Property Type="String" Name="TipoDePago" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="TipoFactura" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="NCF" Nullable="false" MaxLength="50" />
-          <Property Type="Decimal" Name="Valor" Nullable="true" Precision="18" Scale="2" />
           <Property Type="Int32" Name="Cotizacion" Nullable="true" />
-          <Property Type="String" Name="Cliente" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="NCF" Nullable="true" MaxLength="50" />
           <Property Type="DateTime" Name="FechaVencimiento" Nullable="true" />
+          <Property Type="Decimal" Name="Valor" Nullable="true" Precision="18" Scale="2" />
           <Property Type="String" Name="Usuario" Nullable="false" MaxLength="50" />
-          <Property Type="Int32" Name="ClienteID" Nullable="false" />
         </ComplexType>
         <ComplexType Name="proc_CargarTodasLineasCreditoVentas_Result">
+          <Property Type="Int64" Name="RowNumber" Nullable="true" />
           <Property Type="Int32" Name="LineaCreditoVentaID" Nullable="false" />
-          <Property Type="DateTime" Name="Fecha" Nullable="false" Precision="23" />
-          <Property Type="Decimal" Name="MontoFactura" Nullable="true" Precision="18" Scale="2" />
           <Property Type="String" Name="Cliente" Nullable="false" MaxLength="100" />
           <Property Type="Int32" Name="Factura" Nullable="false" />
+          <Property Type="DateTime" Name="Fecha" Nullable="false" Precision="23" />
+          <Property Type="Decimal" Name="MontoFactura" Nullable="true" Precision="18" Scale="2" />
           <Property Type="Decimal" Name="BalancePendiente" Nullable="true" Precision="18" Scale="2" />
           <Property Type="Boolean" Name="Completado" Nullable="false" />
-          </ComplexType>
+        </ComplexType>
         <ComplexType Name="proc_CargarTodasNotasDeCredito_Result">
+          <Property Type="Int64" Name="RowNumber" Nullable="true" />
           <Property Type="Int32" Name="NotaDeCreditoID" Nullable="false" />
           <Property Type="DateTime" Name="Fecha" Nullable="false" Precision="23" />
-          <Property Type="String" Name="NCF" Nullable="false" MaxLength="25" />
-          <Property Type="Boolean" Name="ITBIS" Nullable="false" />
           <Property Type="String" Name="Cliente" Nullable="false" MaxLength="100" />
           <Property Type="Int32" Name="Factura" Nullable="false" />
           <Property Type="Int32" Name="FacturaAplicada" Nullable="false" />
+          <Property Type="String" Name="NCF" Nullable="false" MaxLength="25" />
+          <Property Type="String" Name="NCFAfectado" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="FechaVencimiento" Nullable="false" />
+          <Property Type="Boolean" Name="ITBIS" Nullable="false" />
           <Property Type="Decimal" Name="Monto" Nullable="true" Precision="18" Scale="2" />
           <Property Type="Decimal" Name="MontoAplicado" Nullable="true" Precision="18" Scale="2" />
           <Property Type="String" Name="Usuario" Nullable="false" MaxLength="50" />
-          <Property Type="DateTime" Name="FechaVencimiento" Nullable="false" />
-          <Property Type="String" Name="NCFAfectado" Nullable="false" MaxLength="50" />
         </ComplexType>
         <ComplexType Name="proc_CargarTodasOrdenesCompra_Result">
-          <Property Type="DateTime" Name="FechaPedido" Nullable="false" Precision="23" />
-          <Property Type="DateTime" Name="FechaCompletado" Nullable="true" Precision="23" />
-          <Property Type="String" Name="NCF" Nullable="true" MaxLength="50" />
-          <Property Type="DateTime" Name="FechaFactura" Nullable="true" />
+          <Property Type="Int64" Name="RowNumber" Nullable="true" />
+          <Property Type="Int32" Name="OrdenCompraID" Nullable="false" />
           <Property Type="String" Name="Proveedor" Nullable="false" MaxLength="100" />
+          <Property Type="DateTime" Name="FechaPedido" Nullable="false" Precision="23" />
+          <Property Type="Boolean" Name="Completado" Nullable="false" />
+          <Property Type="DateTime" Name="FechaCompletado" Nullable="true" Precision="23" />
           <Property Type="String" Name="TipoDePago" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="NCF" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="FechaVencimiento" Nullable="true" />
+          <Property Type="DateTime" Name="FechaFactura" Nullable="true" />
           <Property Type="Decimal" Name="ITBIS" Nullable="true" Precision="18" Scale="2" />
           <Property Type="Decimal" Name="SubTotal" Nullable="true" Precision="18" Scale="2" />
-          <Property Type="Boolean" Name="Completado" Nullable="false" />
           <Property Type="Decimal" Name="Total" Nullable="true" Precision="18" Scale="2" />
-          <Property Type="DateTime" Name="FechaVencimiento" Nullable="true" />
-          <Property Type="Int32" Name="OrdenCompraID" Nullable="false" />
         </ComplexType>
         <ComplexType Name="proc_CargarTodosClientes_Result">
+          <Property Type="Int64" Name="RowNumber" Nullable="true" />
           <Property Type="Int32" Name="ClienteID" Nullable="false" />
           <Property Type="String" Name="Nombre" Nullable="false" MaxLength="100" />
           <Property Type="String" Name="CedulaORnc" Nullable="false" MaxLength="50" />
@@ -2192,6 +2344,7 @@
           <Property Type="Double" Name="Credito" Nullable="true" />
         </ComplexType>
         <ComplexType Name="proc_CargarTodosProveedores_Result">
+          <Property Type="Int64" Name="RowNumber" Nullable="true" />
           <Property Type="Int32" Name="ProveedorID" Nullable="false" />
           <Property Type="String" Name="Nombre" Nullable="false" MaxLength="100" />
           <Property Type="String" Name="CedulaORnc" Nullable="false" MaxLength="50" />
@@ -2209,6 +2362,7 @@
           <Property Type="String" Name="TipoDePago" Nullable="false" MaxLength="50" />
         </ComplexType>
         <ComplexType Name="proc_CargarTodosUsers_Result">
+          <Property Type="Int64" Name="RowNumber" Nullable="true" />
           <Property Type="Int32" Name="UserID" Nullable="false" />
           <Property Type="String" Name="UserName" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="UserPassword" Nullable="false" MaxLength="50" />
@@ -2284,47 +2438,50 @@
           <Property Type="String" Name="Calidad" Nullable="true" MaxLength="100" />
           </ComplexType>
         <ComplexType Name="proc_CargarProductosExistBajaPorProveedor_Result">
+          <Property Type="Int64" Name="RowNumber" Nullable="true" />
           <Property Type="Int32" Name="ProductoID" Nullable="false" />
-          <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="100" />
-          <Property Type="Decimal" Name="Existencia" Nullable="true" Precision="18" Scale="2" />
-          <Property Type="Decimal" Name="CantMin" Nullable="true" Precision="18" Scale="2" />
-          <Property Type="Decimal" Name="CantMax" Nullable="true" Precision="18" Scale="2" />
-          <Property Type="Decimal" Name="PrecioCompra" Nullable="true" Precision="18" Scale="2" />
-          <Property Type="String" Name="UnidadMedida" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="Referencia" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="100" />
           <Property Type="String" Name="Marca" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="Calidad" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="UnidadMedida" Nullable="false" MaxLength="50" />
+          <Property Type="Decimal" Name="Existencia" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="PrecioCompra" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="CantMin" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="CantMax" Nullable="true" Precision="18" Scale="2" />
         </ComplexType>
         <ComplexType Name="proc_CargarProductosExistBaja_Result">
+          <Property Type="Int64" Name="RowNumber" Nullable="true" />
           <Property Type="Int32" Name="ProductoID" Nullable="false" />
+          <Property Type="String" Name="CodigoBarra" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Referencia" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Proveedor" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="UnidadMedida" Nullable="false" MaxLength="50" />
           <Property Type="Double" Name="Existencia" Nullable="true" />
           <Property Type="Double" Name="CantMin" Nullable="true" />
           <Property Type="Double" Name="CantMax" Nullable="true" />
-          <Property Type="String" Name="CodigoBarra" Nullable="false" MaxLength="100" />
-          <Property Type="String" Name="UnidadMedida" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="Proveedor" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="Referencia" Nullable="true" MaxLength="100" />
         </ComplexType>
         <ComplexType Name="proc_CargarTodosProductos_Result">
+          <Property Type="Int64" Name="RowNumber" Nullable="true" />
           <Property Type="Int32" Name="ProductoID" Nullable="false" />
+          <Property Type="Boolean" Name="Servicio" Nullable="false" />
+          <Property Type="String" Name="CodigoBarra" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Referencia" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Marca" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Calidad" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="UnidadMedida" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="ProveedorID" Nullable="true" />
+          <Property Type="String" Name="Proveedor" Nullable="true" MaxLength="100" />
           <Property Type="Double" Name="Existencia" Nullable="true" />
+          <Property Type="Boolean" Name="ITBIS" Nullable="false" />
           <Property Type="Decimal" Name="PrecioCompra" Nullable="true" Precision="18" Scale="2" />
           <Property Type="Decimal" Name="PrecioVenta" Nullable="false" Precision="18" Scale="2" />
           <Property Type="Decimal" Name="PrecioVentaMin" Nullable="false" Precision="18" Scale="2" />
-          <Property Type="Boolean" Name="ITBIS" Nullable="false" />
           <Property Type="Decimal" Name="Descuento" Nullable="false" Precision="18" Scale="2" />
           <Property Type="Double" Name="CantMin" Nullable="true" />
           <Property Type="Double" Name="CantMax" Nullable="true" />
-          <Property Type="Boolean" Name="Servicio" Nullable="false" />
-          <Property Type="Int32" Name="ProveedorID" Nullable="true" />
-          <Property Type="String" Name="Proveedor" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="CodigoBarra" Nullable="false" MaxLength="100" />
-          <Property Type="String" Name="UnidadMedida" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="Referencia" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="Marca" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="Calidad" Nullable="true" MaxLength="100" />
         </ComplexType>
         <ComplexType Name="proc_BuscarProductosPorCodigoBarra_Result">
           <Property Type="Int32" Name="ProductoID" Nullable="false" />
@@ -2374,13 +2531,14 @@
           <NavigationProperty Name="Producto" Relationship="SFacturacionModel.FK_DetalleCotizaciones_Productos" FromRole="DetalleCotizacione" ToRole="Producto" />
         </EntityType>
         <ComplexType Name="proc_CargarTodasCotizaciones_Result">
+          <Property Type="Int64" Name="RowNumber" Nullable="true" />
           <Property Type="Int32" Name="CotizacionID" Nullable="false" />
+          <Property Type="String" Name="Cliente" Nullable="false" MaxLength="100" />
           <Property Type="Decimal" Name="DescuentoCliente" Nullable="true" Precision="18" Scale="2" />
           <Property Type="DateTime" Name="Fecha" Nullable="false" Precision="23" />
-          <Property Type="Decimal" Name="Valor" Nullable="true" Precision="18" Scale="2" />
-          <Property Type="String" Name="Cliente" Nullable="false" MaxLength="100" />
-          <Property Type="String" Name="Usuario" Nullable="false" MaxLength="50" />
           <Property Type="Int32" Name="Factura" Nullable="true" />
+          <Property Type="String" Name="Usuario" Nullable="false" MaxLength="50" />
+          <Property Type="Decimal" Name="Valor" Nullable="true" Precision="18" Scale="2" />
         </ComplexType>
         <ComplexType Name="proc_ComprobanteCotizacion_Result">
           <Property Type="Int32" Name="CotizacionID" Nullable="false" />
@@ -2447,18 +2605,20 @@
           <Property Type="String" Name="Referencia" Nullable="true" MaxLength="100" />
         </ComplexType>
         <ComplexType Name="proc_CargarProductosPorProveedor_Result">
+          <Property Type="Int64" Name="RowNumber" Nullable="true" />
           <Property Type="Int32" Name="ProductoID" Nullable="false" />
+          <Property Type="String" Name="Referencia" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Marca" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Calidad" Nullable="true" MaxLength="100" />
           <Property Type="String" Name="UnidadMedida" Nullable="false" MaxLength="50" />
           <Property Type="Decimal" Name="Existencia" Nullable="true" Precision="18" Scale="2" />
           <Property Type="Decimal" Name="PrecioCompra" Nullable="true" Precision="18" Scale="2" />
           <Property Type="Decimal" Name="CantMin" Nullable="true" Precision="18" Scale="2" />
           <Property Type="Decimal" Name="CantMax" Nullable="true" Precision="18" Scale="2" />
-          <Property Type="String" Name="Referencia" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="Marca" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="Calidad" Nullable="true" MaxLength="100" />
         </ComplexType>
         <ComplexType Name="proc_CargarTodasLineasCreditoCompras_Result">
+          <Property Type="Int64" Name="RowNumber" Nullable="true" />
           <Property Type="Int32" Name="LineaCreditoCompraID" Nullable="false" />
           <Property Type="String" Name="Proveedor" Nullable="false" MaxLength="100" />
           <Property Type="Int32" Name="OrdenCompra" Nullable="false" />
@@ -2790,6 +2950,7 @@
           <Property Name="UsuarioID" Type="Int32" Nullable="false" />
         </EntityType>
         <ComplexType Name="proc_CargarMovimientos_Result">
+          <Property Type="Int64" Name="RowNumber" Nullable="true" />
           <Property Type="String" Name="Producto" Nullable="false" MaxLength="100" />
           <Property Type="DateTime" Name="Fecha" Nullable="false" Precision="23" />
           <Property Type="String" Name="TipoMovimiento" Nullable="false" MaxLength="50" />
@@ -2816,6 +2977,30 @@
           <Property Type="Double" Name="Valor" Nullable="true" />
           <Property Type="String" Name="RNC" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="Entidad" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="proc_CargarFacturasPCliente_Result">
+          <Property Type="Int32" Name="FacturaID" Nullable="false" />
+          <Property Type="Int32" Name="ClienteID" Nullable="false" />
+          <Property Type="String" Name="Cliente" Nullable="false" MaxLength="100" />
+          <Property Type="Decimal" Name="DescuentoCliente" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="DateTime" Name="Fecha" Nullable="false" Precision="23" />
+          <Property Type="String" Name="TipoDePago" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="TipoFactura" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Cotizacion" Nullable="true" />
+          <Property Type="String" Name="NCF" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="FechaVencimiento" Nullable="true" />
+          <Property Type="Decimal" Name="Valor" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="String" Name="Usuario" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="proc_BuscarClientePID_Result">
+          <Property Type="Int32" Name="ClienteID" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="CedulaORnc" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Direccion" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Contacto_1" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Contacto_2" Nullable="true" MaxLength="50" />
+          <Property Type="Double" Name="Descuento" Nullable="true" />
+          <Property Type="Double" Name="Credito" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -3049,6 +3234,7 @@
                 <ScalarProperty Name="Referencia" ColumnName="Referencia" />
                 <ScalarProperty Name="Marca" ColumnName="Marca" />
                 <ScalarProperty Name="Calidad" ColumnName="Calidad" />
+                <ScalarProperty Name="RowNumber" ColumnName="RowNumber" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -3141,91 +3327,81 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="proc_CargarProductosExistBaja" FunctionName="SFacturacionModel.Store.proc_CargarProductosExistBaja" >
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="SFacturacionModel.proc_CargarProductosExistBaja_Result">
-                <ScalarProperty Name="ProductoID" ColumnName="ProductoID" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="Existencia" ColumnName="Existencia" />
-                <ScalarProperty Name="CantMin" ColumnName="CantMin" />
-                <ScalarProperty Name="CantMax" ColumnName="CantMax" />
-                <ScalarProperty Name="CodigoBarra" ColumnName="CodigoBarra" />
-                <ScalarProperty Name="UnidadMedida" ColumnName="UnidadMedida" />
-                <ScalarProperty Name="Proveedor" ColumnName="Proveedor" />
-                <ScalarProperty Name="Referencia" ColumnName="Referencia" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="proc_CargarTodasFacturas" FunctionName="SFacturacionModel.Store.proc_CargarTodasFacturas">
             <ResultMapping>
               <ComplexTypeMapping TypeName="SFacturacionModel.proc_CargarTodasFacturas_Result">
+                <ScalarProperty Name="RowNumber" ColumnName="RowNumber" />
                 <ScalarProperty Name="FacturaID" ColumnName="FacturaID" />
+                <ScalarProperty Name="ClienteID" ColumnName="ClienteID" />
+                <ScalarProperty Name="Cliente" ColumnName="Cliente" />
                 <ScalarProperty Name="DescuentoCliente" ColumnName="DescuentoCliente" />
                 <ScalarProperty Name="Fecha" ColumnName="Fecha" />
                 <ScalarProperty Name="TipoDePago" ColumnName="TipoDePago" />
                 <ScalarProperty Name="TipoFactura" ColumnName="TipoFactura" />
-                <ScalarProperty Name="NCF" ColumnName="NCF" />
-                <ScalarProperty Name="Valor" ColumnName="Valor" />
                 <ScalarProperty Name="Cotizacion" ColumnName="Cotizacion" />
-                <ScalarProperty Name="Cliente" ColumnName="Cliente" />
+                <ScalarProperty Name="NCF" ColumnName="NCF" />
                 <ScalarProperty Name="FechaVencimiento" ColumnName="FechaVencimiento" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
                 <ScalarProperty Name="Usuario" ColumnName="Usuario" />
-                <ScalarProperty Name="ClienteID" ColumnName="ClienteID" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="proc_CargarTodasLineasCreditoVentas" FunctionName="SFacturacionModel.Store.proc_CargarTodasLineasCreditoVentas">
             <ResultMapping>
               <ComplexTypeMapping TypeName="SFacturacionModel.proc_CargarTodasLineasCreditoVentas_Result">
+                <ScalarProperty Name="RowNumber" ColumnName="RowNumber" />
                 <ScalarProperty Name="LineaCreditoVentaID" ColumnName="LineaCreditoVentaID" />
-                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-                <ScalarProperty Name="MontoFactura" ColumnName="MontoFactura" />
                 <ScalarProperty Name="Cliente" ColumnName="Cliente" />
                 <ScalarProperty Name="Factura" ColumnName="Factura" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="MontoFactura" ColumnName="MontoFactura" />
                 <ScalarProperty Name="BalancePendiente" ColumnName="BalancePendiente" />
                 <ScalarProperty Name="Completado" ColumnName="Completado" />
-                </ComplexTypeMapping>
+              </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="proc_CargarTodasNotasDeCredito" FunctionName="SFacturacionModel.Store.proc_CargarTodasNotasDeCredito">
             <ResultMapping>
               <ComplexTypeMapping TypeName="SFacturacionModel.proc_CargarTodasNotasDeCredito_Result">
+                <ScalarProperty Name="RowNumber" ColumnName="RowNumber" />
                 <ScalarProperty Name="NotaDeCreditoID" ColumnName="NotaDeCreditoID" />
                 <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-                <ScalarProperty Name="NCF" ColumnName="NCF" />
-                <ScalarProperty Name="ITBIS" ColumnName="ITBIS" />
                 <ScalarProperty Name="Cliente" ColumnName="Cliente" />
                 <ScalarProperty Name="Factura" ColumnName="Factura" />
                 <ScalarProperty Name="FacturaAplicada" ColumnName="FacturaAplicada" />
+                <ScalarProperty Name="NCF" ColumnName="NCF" />
+                <ScalarProperty Name="NCFAfectado" ColumnName="NCFAfectado" />
+                <ScalarProperty Name="FechaVencimiento" ColumnName="FechaVencimiento" />
+                <ScalarProperty Name="ITBIS" ColumnName="ITBIS" />
                 <ScalarProperty Name="Monto" ColumnName="Monto" />
                 <ScalarProperty Name="MontoAplicado" ColumnName="MontoAplicado" />
                 <ScalarProperty Name="Usuario" ColumnName="Usuario" />
-                <ScalarProperty Name="FechaVencimiento" ColumnName="FechaVencimiento" />
-                <ScalarProperty Name="NCFAfectado" ColumnName="NCFAfectado" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="proc_CargarTodasOrdenesCompra" FunctionName="SFacturacionModel.Store.proc_CargarTodasOrdenesCompra">
             <ResultMapping>
               <ComplexTypeMapping TypeName="SFacturacionModel.proc_CargarTodasOrdenesCompra_Result">
-                <ScalarProperty Name="FechaPedido" ColumnName="FechaPedido" />
-                <ScalarProperty Name="FechaCompletado" ColumnName="FechaCompletado" />
-                <ScalarProperty Name="NCF" ColumnName="NCF" />
-                <ScalarProperty Name="FechaFactura" ColumnName="FechaFactura" />
+                <ScalarProperty Name="RowNumber" ColumnName="RowNumber" />
+                <ScalarProperty Name="OrdenCompraID" ColumnName="OrdenCompraID" />
                 <ScalarProperty Name="Proveedor" ColumnName="Proveedor" />
+                <ScalarProperty Name="FechaPedido" ColumnName="FechaPedido" />
+                <ScalarProperty Name="Completado" ColumnName="Completado" />
+                <ScalarProperty Name="FechaCompletado" ColumnName="FechaCompletado" />
                 <ScalarProperty Name="TipoDePago" ColumnName="TipoDePago" />
+                <ScalarProperty Name="NCF" ColumnName="NCF" />
+                <ScalarProperty Name="FechaVencimiento" ColumnName="FechaVencimiento" />
+                <ScalarProperty Name="FechaFactura" ColumnName="FechaFactura" />
                 <ScalarProperty Name="ITBIS" ColumnName="ITBIS" />
                 <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
-                <ScalarProperty Name="Completado" ColumnName="Completado" />
                 <ScalarProperty Name="Total" ColumnName="Total" />
-                <ScalarProperty Name="FechaVencimiento" ColumnName="FechaVencimiento" />
-                <ScalarProperty Name="OrdenCompraID" ColumnName="OrdenCompraID" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="proc_CargarTodosClientes" FunctionName="SFacturacionModel.Store.proc_CargarTodosClientes">
             <ResultMapping>
               <ComplexTypeMapping TypeName="SFacturacionModel.proc_CargarTodosClientes_Result">
+                <ScalarProperty Name="RowNumber" ColumnName="RowNumber" />
                 <ScalarProperty Name="ClienteID" ColumnName="ClienteID" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="CedulaORnc" ColumnName="CedulaORnc" />
@@ -3240,30 +3416,32 @@
           <FunctionImportMapping FunctionImportName="proc_CargarTodosProductos" FunctionName="SFacturacionModel.Store.proc_CargarTodosProductos" >
             <ResultMapping>
               <ComplexTypeMapping TypeName="SFacturacionModel.proc_CargarTodosProductos_Result">
+                <ScalarProperty Name="RowNumber" ColumnName="RowNumber" />
                 <ScalarProperty Name="ProductoID" ColumnName="ProductoID" />
+                <ScalarProperty Name="Servicio" ColumnName="Servicio" />
+                <ScalarProperty Name="CodigoBarra" ColumnName="CodigoBarra" />
+                <ScalarProperty Name="Referencia" ColumnName="Referencia" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Marca" ColumnName="Marca" />
+                <ScalarProperty Name="Calidad" ColumnName="Calidad" />
+                <ScalarProperty Name="UnidadMedida" ColumnName="UnidadMedida" />
+                <ScalarProperty Name="ProveedorID" ColumnName="ProveedorID" />
+                <ScalarProperty Name="Proveedor" ColumnName="Proveedor" />
                 <ScalarProperty Name="Existencia" ColumnName="Existencia" />
+                <ScalarProperty Name="ITBIS" ColumnName="ITBIS" />
                 <ScalarProperty Name="PrecioCompra" ColumnName="PrecioCompra" />
                 <ScalarProperty Name="PrecioVenta" ColumnName="PrecioVenta" />
                 <ScalarProperty Name="PrecioVentaMin" ColumnName="PrecioVentaMin" />
-                <ScalarProperty Name="ITBIS" ColumnName="ITBIS" />
                 <ScalarProperty Name="Descuento" ColumnName="Descuento" />
                 <ScalarProperty Name="CantMin" ColumnName="CantMin" />
                 <ScalarProperty Name="CantMax" ColumnName="CantMax" />
-                <ScalarProperty Name="Servicio" ColumnName="Servicio" />
-                <ScalarProperty Name="ProveedorID" ColumnName="ProveedorID" />
-                <ScalarProperty Name="Proveedor" ColumnName="Proveedor" />
-                <ScalarProperty Name="CodigoBarra" ColumnName="CodigoBarra" />
-                <ScalarProperty Name="UnidadMedida" ColumnName="UnidadMedida" />
-                <ScalarProperty Name="Referencia" ColumnName="Referencia" />
-                <ScalarProperty Name="Marca" ColumnName="Marca" />
-                <ScalarProperty Name="Calidad" ColumnName="Calidad" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="proc_CargarTodosProveedores" FunctionName="SFacturacionModel.Store.proc_CargarTodosProveedores">
             <ResultMapping>
               <ComplexTypeMapping TypeName="SFacturacionModel.proc_CargarTodosProveedores_Result">
+                <ScalarProperty Name="RowNumber" ColumnName="RowNumber" />
                 <ScalarProperty Name="ProveedorID" ColumnName="ProveedorID" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="CedulaORnc" ColumnName="CedulaORnc" />
@@ -3293,6 +3471,7 @@
           <FunctionImportMapping FunctionImportName="proc_CargarTodosUsers" FunctionName="SFacturacionModel.Store.proc_CargarTodosUsers">
             <ResultMapping>
               <ComplexTypeMapping TypeName="SFacturacionModel.proc_CargarTodosUsers_Result">
+                <ScalarProperty Name="RowNumber" ColumnName="RowNumber" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
@@ -3404,16 +3583,17 @@
           <FunctionImportMapping FunctionImportName="proc_CargarProductosExistBajaPorProveedor" FunctionName="SFacturacionModel.Store.proc_CargarProductosExistBajaPorProveedor">
             <ResultMapping>
               <ComplexTypeMapping TypeName="SFacturacionModel.proc_CargarProductosExistBajaPorProveedor_Result">
+                <ScalarProperty Name="RowNumber" ColumnName="RowNumber" />
                 <ScalarProperty Name="ProductoID" ColumnName="ProductoID" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="Existencia" ColumnName="Existencia" />
-                <ScalarProperty Name="CantMin" ColumnName="CantMin" />
-                <ScalarProperty Name="CantMax" ColumnName="CantMax" />
-                <ScalarProperty Name="PrecioCompra" ColumnName="PrecioCompra" />
-                <ScalarProperty Name="UnidadMedida" ColumnName="UnidadMedida" />
                 <ScalarProperty Name="Referencia" ColumnName="Referencia" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
                 <ScalarProperty Name="Marca" ColumnName="Marca" />
                 <ScalarProperty Name="Calidad" ColumnName="Calidad" />
+                <ScalarProperty Name="UnidadMedida" ColumnName="UnidadMedida" />
+                <ScalarProperty Name="Existencia" ColumnName="Existencia" />
+                <ScalarProperty Name="PrecioCompra" ColumnName="PrecioCompra" />
+                <ScalarProperty Name="CantMin" ColumnName="CantMin" />
+                <ScalarProperty Name="CantMax" ColumnName="CantMax" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -3470,13 +3650,14 @@
           <FunctionImportMapping FunctionImportName="proc_CargarTodasCotizaciones" FunctionName="SFacturacionModel.Store.proc_CargarTodasCotizaciones">
             <ResultMapping>
               <ComplexTypeMapping TypeName="SFacturacionModel.proc_CargarTodasCotizaciones_Result">
+                <ScalarProperty Name="RowNumber" ColumnName="RowNumber" />
                 <ScalarProperty Name="CotizacionID" ColumnName="CotizacionID" />
+                <ScalarProperty Name="Cliente" ColumnName="Cliente" />
                 <ScalarProperty Name="DescuentoCliente" ColumnName="DescuentoCliente" />
                 <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-                <ScalarProperty Name="Valor" ColumnName="Valor" />
-                <ScalarProperty Name="Cliente" ColumnName="Cliente" />
-                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
                 <ScalarProperty Name="Factura" ColumnName="Factura" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -3568,16 +3749,17 @@
           <FunctionImportMapping FunctionImportName="proc_CargarProductosPorProveedor" FunctionName="SFacturacionModel.Store.proc_CargarProductosPorProveedor">
             <ResultMapping>
               <ComplexTypeMapping TypeName="SFacturacionModel.proc_CargarProductosPorProveedor_Result">
+                <ScalarProperty Name="RowNumber" ColumnName="RowNumber" />
                 <ScalarProperty Name="ProductoID" ColumnName="ProductoID" />
+                <ScalarProperty Name="Referencia" ColumnName="Referencia" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Marca" ColumnName="Marca" />
+                <ScalarProperty Name="Calidad" ColumnName="Calidad" />
                 <ScalarProperty Name="UnidadMedida" ColumnName="UnidadMedida" />
                 <ScalarProperty Name="Existencia" ColumnName="Existencia" />
                 <ScalarProperty Name="PrecioCompra" ColumnName="PrecioCompra" />
                 <ScalarProperty Name="CantMin" ColumnName="CantMin" />
                 <ScalarProperty Name="CantMax" ColumnName="CantMax" />
-                <ScalarProperty Name="Referencia" ColumnName="Referencia" />
-                <ScalarProperty Name="Marca" ColumnName="Marca" />
-                <ScalarProperty Name="Calidad" ColumnName="Calidad" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -3585,6 +3767,7 @@
           <FunctionImportMapping FunctionImportName="proc_CargarTodasLineasCreditoCompras" FunctionName="SFacturacionModel.Store.proc_CargarTodasLineasCreditoCompras">
             <ResultMapping>
               <ComplexTypeMapping TypeName="SFacturacionModel.proc_CargarTodasLineasCreditoCompras_Result">
+                <ScalarProperty Name="RowNumber" ColumnName="RowNumber" />
                 <ScalarProperty Name="LineaCreditoCompraID" ColumnName="LineaCreditoCompraID" />
                 <ScalarProperty Name="Proveedor" ColumnName="Proveedor" />
                 <ScalarProperty Name="OrdenCompra" ColumnName="OrdenCompra" />
@@ -3772,6 +3955,7 @@
           <FunctionImportMapping FunctionImportName="proc_CargarMovimientos" FunctionName="SFacturacionModel.Store.proc_CargarMovimientos">
             <ResultMapping>
               <ComplexTypeMapping TypeName="SFacturacionModel.proc_CargarMovimientos_Result">
+                <ScalarProperty Name="RowNumber" ColumnName="RowNumber" />
                 <ScalarProperty Name="Producto" ColumnName="Producto" />
                 <ScalarProperty Name="Fecha" ColumnName="Fecha" />
                 <ScalarProperty Name="TipoMovimiento" ColumnName="TipoMovimiento" />
@@ -3803,6 +3987,54 @@
                 <ScalarProperty Name="Valor" ColumnName="Valor" />
                 <ScalarProperty Name="RNC" ColumnName="RNC" />
                 <ScalarProperty Name="Entidad" ColumnName="Entidad" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="proc_CargarFacturasPCliente" FunctionName="SFacturacionModel.Store.proc_CargarFacturasPCliente">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SFacturacionModel.proc_CargarFacturasPCliente_Result">
+                <ScalarProperty Name="FacturaID" ColumnName="FacturaID" />
+                <ScalarProperty Name="ClienteID" ColumnName="ClienteID" />
+                <ScalarProperty Name="Cliente" ColumnName="Cliente" />
+                <ScalarProperty Name="DescuentoCliente" ColumnName="DescuentoCliente" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="TipoDePago" ColumnName="TipoDePago" />
+                <ScalarProperty Name="TipoFactura" ColumnName="TipoFactura" />
+                <ScalarProperty Name="Cotizacion" ColumnName="Cotizacion" />
+                <ScalarProperty Name="NCF" ColumnName="NCF" />
+                <ScalarProperty Name="FechaVencimiento" ColumnName="FechaVencimiento" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="proc_BuscarClientePID" FunctionName="SFacturacionModel.Store.proc_BuscarClientePID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SFacturacionModel.proc_BuscarClientePID_Result">
+                <ScalarProperty Name="ClienteID" ColumnName="ClienteID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="CedulaORnc" ColumnName="CedulaORnc" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Contacto_1" ColumnName="Contacto_1" />
+                <ScalarProperty Name="Contacto_2" ColumnName="Contacto_2" />
+                <ScalarProperty Name="Descuento" ColumnName="Descuento" />
+                <ScalarProperty Name="Credito" ColumnName="Credito" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="proc_CargarProductosExistBaja" FunctionName="SFacturacionModel.Store.proc_CargarProductosExistBaja">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SFacturacionModel.proc_CargarProductosExistBaja_Result" >
+                <ScalarProperty Name="RowNumber" ColumnName="RowNumber" />
+                <ScalarProperty Name="ProductoID" ColumnName="ProductoID" />
+                <ScalarProperty Name="CodigoBarra" ColumnName="CodigoBarra" />
+                <ScalarProperty Name="Referencia" ColumnName="Referencia" />
+                <ScalarProperty Name="Proveedor" ColumnName="Proveedor" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="UnidadMedida" ColumnName="UnidadMedida" />
+                <ScalarProperty Name="Existencia" ColumnName="Existencia" />
+                <ScalarProperty Name="CantMin" ColumnName="CantMin" />
+                <ScalarProperty Name="CantMax" ColumnName="CantMax" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

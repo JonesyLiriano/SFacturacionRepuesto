@@ -17,8 +17,11 @@ namespace CapaPresentacion.Formularios
     public partial class NotasCredito : Form
     {
         NotasDeCreditoNegocio notasDeCreditoNegocio = new NotasDeCreditoNegocio();
-        List<proc_CargarTodasNotasDeCredito_Result> proc_CargarTodasNotasDeCredito_Results;
+        BindingList<proc_CargarTodasNotasDeCredito_Result> proc_CargarTodasNotasDeCredito_Results;
         Thread hilo;
+        bool finalLista;
+        int indicePagina, tamanoPagina;
+        string filtro, columna;
         public NotasCredito()
         {
             InitializeComponent();
@@ -45,9 +48,18 @@ namespace CapaPresentacion.Formularios
             try
             {
                 dgvNotasCredito.AutoGenerateColumns = false;
-                proc_CargarTodasNotasDeCredito_Results = notasDeCreditoNegocio.CargarTodasNotasDeCredito().ToList();
+                List<proc_CargarTodasNotasDeCredito_Result> lista = notasDeCreditoNegocio.CargarTodasNotasDeCredito(indicePagina, tamanoPagina, filtro, columna).ToList();
+                if (lista.Count < tamanoPagina)
+                {
+                    finalLista = true;
+                }
+                foreach (var item in lista)
+                {
+                    proc_CargarTodasNotasDeCredito_Results.Add(item);
+                }
                 dgvNotasCredito.DataSource = proc_CargarTodasNotasDeCredito_Results;
-                OrdenarColumnasDGV();               
+
+                OrdenarColumnasDGV();
             }
             catch (Exception exc)
             {
@@ -131,6 +143,9 @@ namespace CapaPresentacion.Formularios
         {
             try
             {
+                proc_CargarTodasNotasDeCredito_Results = new BindingList<proc_CargarTodasNotasDeCredito_Result>();
+                indicePagina = 1;
+                tamanoPagina = 50;
                 CargarNotasDeCredito();
                 CargarCBFiltro();
             }
@@ -188,6 +203,8 @@ namespace CapaPresentacion.Formularios
             {
                 txtFiltro.Text = "Escriba para filtrar...";
                 txtFiltro.ForeColor = Color.Gray;
+                ResetearBusqueda();
+                CargarNotasDeCredito();
             }
         }
 
@@ -199,40 +216,67 @@ namespace CapaPresentacion.Formularios
                 txtFiltro.ForeColor = Color.Black;
             }
         }
+            
 
-        private void txtFiltro_TextChanged(object sender, EventArgs e)
+        private void cbFiltro_Validating(object sender, CancelEventArgs e)
+        {
+            if (cbFiltro.SelectedIndex == -1 && cbFiltro.Items.Count > 0)
+            {
+                cbFiltro.Focus();
+            }
+        }
+
+        private void btnRealizarBusqueda_Click(object sender, EventArgs e)
         {
             try
             {
+                ResetearBusqueda();
                 if (txtFiltro.Text != "Escriba para filtrar...")
                 {
                     switch (cbFiltro.SelectedItem.ToString())
                     {
                         case "ID":
-                            dgvNotasCredito.DataSource = proc_CargarTodasNotasDeCredito_Results.Where(p => p.NotaDeCreditoID.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                            columna = "NotaDeCreditoID";
+                            filtro = txtFiltro.Text;
+                            CargarNotasDeCredito();
                             break;
                         case "Cliente":
-                            dgvNotasCredito.DataSource = proc_CargarTodasNotasDeCredito_Results.Where(p => p.Cliente.ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                            columna = "Cliente";
+                            filtro = txtFiltro.Text;
+                            CargarNotasDeCredito();
                             break;
                         case "Fecha":
-                            dgvNotasCredito.DataSource = proc_CargarTodasNotasDeCredito_Results.Where(p => p.Fecha.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                            columna = "Fecha";
+                            filtro = txtFiltro.Text;
+                            CargarNotasDeCredito();
                             break;
                         case "Factura":
-                            dgvNotasCredito.DataSource = proc_CargarTodasNotasDeCredito_Results.Where(p => p.Factura.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                            columna = "Factura";
+                            filtro = txtFiltro.Text;
+                            CargarNotasDeCredito();
                             break;
                         case "Factura Aplicada":
-                            dgvNotasCredito.DataSource = proc_CargarTodasNotasDeCredito_Results.Where(p => p.FacturaAplicada.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                            columna = "FacturaAplicada";
+                            filtro = txtFiltro.Text;
+                            CargarNotasDeCredito();
                             break;
                         case "NCF":
-                            dgvNotasCredito.DataSource = proc_CargarTodasNotasDeCredito_Results.Where(p => p.NCF.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                            columna = "NCF";
+                            filtro = txtFiltro.Text;
+                            CargarNotasDeCredito();
                             break;
                         case "NCFAfectado":
-                            dgvNotasCredito.DataSource = proc_CargarTodasNotasDeCredito_Results.Where(p => p.NCFAfectado.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                            columna = "NCFAfectado";
+                            filtro = txtFiltro.Text;
+                            CargarNotasDeCredito();
                             break;
-
                         default:
                             break;
                     }
+                }
+                else
+                {
+                    CargarCBFiltro();
                 }
                 OrdenarColumnasDGV();
             }
@@ -244,12 +288,51 @@ namespace CapaPresentacion.Formularios
             }
         }
 
-        private void cbFiltro_Validating(object sender, CancelEventArgs e)
+        private void dgvNotasCredito_Scroll(object sender, ScrollEventArgs e)
         {
-            if (cbFiltro.SelectedIndex == -1 && cbFiltro.Items.Count > 0)
+            if (!finalLista)
             {
-                cbFiltro.Focus();
+                if ((e.Type == ScrollEventType.SmallIncrement || e.Type == ScrollEventType.LargeIncrement) && e.ScrollOrientation == ScrollOrientation.VerticalScroll)
+                {
+                    int display = dgvNotasCredito.Rows.Count - dgvNotasCredito.DisplayedRowCount(false);
+                    if (e.NewValue >= dgvNotasCredito.Rows.Count - GetDisplayedRowsCount())
+                    {
+                        indicePagina++;
+                        CargarNotasDeCredito();
+                    }
+                }
             }
+
+        }
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            switch (keyData)
+            {
+                case Keys.F1:
+                    txtFiltro.Focus();
+                    return true;
+                case Keys.F5:
+                    btnRealizarBusqueda.PerformClick();
+                    return true;
+                default:
+                    return base.ProcessCmdKey(ref msg, keyData);
+            }
+        }
+
+        private int GetDisplayedRowsCount()
+        {
+            int count = dgvNotasCredito.Rows[dgvNotasCredito.FirstDisplayedScrollingRowIndex].Height;
+            count = dgvNotasCredito.Height / count;
+            return count;
+        }
+
+        private void ResetearBusqueda()
+        {
+            proc_CargarTodasNotasDeCredito_Results.Clear();
+            finalLista = false;
+            indicePagina = 1;
+            filtro = null;
+            columna = null;
         }
     }
 }

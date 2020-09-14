@@ -35,6 +35,7 @@ namespace CapaPresentacion.Formularios
         CobrosVentasCredito cobrosVentasCreditoEntidad = new CobrosVentasCredito();
         LineasCreditoVentasNegocio lineasCreditoVentasNegocio = new LineasCreditoVentasNegocio();
         List<proc_CargarFacturasPendientes_Result> proc_CargarFacturasPendientes_Results;
+        List<proc_CargarFacturasPCliente_Result> proc_CargarFacturasPCliente_Results;
         List<proc_CargarTodasFacturas_Result> proc_CargarTodasFacturas_Results;
         CultureInfo ci = new CultureInfo("en-us");
         private decimal valorFacturaTotal, valorFacturaTotalSinITBIS;
@@ -70,7 +71,7 @@ namespace CapaPresentacion.Formularios
             cbClientes.DataSource = null;
             cbClientes.DisplayMember = "Nombre";
             cbClientes.ValueMember = "ClienteID";
-            cbClientes.DataSource = clientesNegocio.CargarTodosClientes();
+            cbClientes.DataSource = clientesNegocio.CargarTodosClientes(1,1,"Reporte","Reporte");
             cbClientes.SelectedIndex = -1;
 
         }
@@ -79,7 +80,7 @@ namespace CapaPresentacion.Formularios
             cbFacturas.DataSource = null;
             cbFacturas.DisplayMember = "FacturaID";
             cbFacturas.ValueMember = "FacturaID";
-            proc_CargarTodasFacturas_Results = facturasNegocio.CargarTodasFacturas().ToList();
+            proc_CargarTodasFacturas_Results = facturasNegocio.CargarTodasFacturas(1, 1, "Reporte", "Reporte").ToList();
             cbFacturas.DataSource = proc_CargarTodasFacturas_Results;
             cbFacturas.SelectedIndex = -1;
 
@@ -89,9 +90,8 @@ namespace CapaPresentacion.Formularios
             cbFacturas.DataSource = null;
             cbFacturas.DisplayMember = "FacturaID";
             cbFacturas.ValueMember = "FacturaID";
-            proc_CargarTodasFacturas_Results = facturasNegocio.CargarTodasFacturas()
-                .Where(f => f.ClienteID == clienteID).ToList();
-            cbFacturas.DataSource = proc_CargarTodasFacturas_Results;
+            proc_CargarFacturasPCliente_Results = facturasNegocio.CargarFacturasPCliente(clienteID).ToList();
+            cbFacturas.DataSource = proc_CargarFacturasPCliente_Results;
             cbFacturas.SelectedIndex = -1;
 
         }
@@ -381,11 +381,11 @@ namespace CapaPresentacion.Formularios
         {
             if (cbFacturas.SelectedIndex != -1)
             {
-                cbClientes.SelectedValue = proc_CargarTodasFacturas_Results.Where(r => r.FacturaID == Convert.ToInt32(cbFacturas.SelectedValue))
+                cbClientes.SelectedValue = proc_CargarFacturasPCliente_Results.Where(r => r.FacturaID == Convert.ToInt32(cbFacturas.SelectedValue))
                 .FirstOrDefault().ClienteID;
-                txtFechaFactura.Text = proc_CargarTodasFacturas_Results.Where(r => r.FacturaID == Convert.ToInt32(cbFacturas.SelectedValue))
+                txtFechaFactura.Text = proc_CargarFacturasPCliente_Results.Where(r => r.FacturaID == Convert.ToInt32(cbFacturas.SelectedValue))
                 .FirstOrDefault().Fecha.ToString();
-                descuentoCliente = proc_CargarTodasFacturas_Results.Where(r => r.FacturaID == Convert.ToInt32(cbFacturas.SelectedValue))
+                descuentoCliente = proc_CargarFacturasPCliente_Results.Where(r => r.FacturaID == Convert.ToInt32(cbFacturas.SelectedValue))
                 .FirstOrDefault().DescuentoCliente;
 
                 // Diferencia de días

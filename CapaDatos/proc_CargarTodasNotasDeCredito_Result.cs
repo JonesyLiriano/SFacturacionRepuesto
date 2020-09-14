@@ -13,17 +13,18 @@ namespace CapaDatos
     
     public partial class proc_CargarTodasNotasDeCredito_Result
     {
+        public Nullable<long> RowNumber { get; set; }
         public int NotaDeCreditoID { get; set; }
         public System.DateTime Fecha { get; set; }
-        public string NCF { get; set; }
-        public bool ITBIS { get; set; }
         public string Cliente { get; set; }
         public int Factura { get; set; }
         public int FacturaAplicada { get; set; }
+        public string NCF { get; set; }
+        public string NCFAfectado { get; set; }
+        public System.DateTime FechaVencimiento { get; set; }
+        public bool ITBIS { get; set; }
         public Nullable<decimal> Monto { get; set; }
         public Nullable<decimal> MontoAplicado { get; set; }
         public string Usuario { get; set; }
-        public System.DateTime FechaVencimiento { get; set; }
-        public string NCFAfectado { get; set; }
     }
 }

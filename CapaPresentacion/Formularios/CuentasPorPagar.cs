@@ -16,7 +16,10 @@ namespace CapaPresentacion.Formularios
     {
         public static decimal montoPendiente;
         LineasCreditoComprasNegocio lineasCreditoComprasNegocio = new LineasCreditoComprasNegocio();
-        List<proc_CargarTodasLineasCreditoCompras_Result> proc_CargarTodasLineasCreditoCompras_Results;
+        BindingList<proc_CargarTodasLineasCreditoCompras_Result> proc_CargarTodasLineasCreditoCompras_Results;
+        bool finalLista;
+        int indicePagina, tamanoPagina;
+        string filtro, columna;
         public CuentasPorPagar()
         {
             InitializeComponent();
@@ -26,6 +29,9 @@ namespace CapaPresentacion.Formularios
         {
             try
             {
+                proc_CargarTodasLineasCreditoCompras_Results = new BindingList<proc_CargarTodasLineasCreditoCompras_Result>();
+                indicePagina = 1;
+                tamanoPagina = 50;
                 CargarTodasLineasCreditoCompra();
                 CargarCBFiltro();
             }
@@ -39,11 +45,29 @@ namespace CapaPresentacion.Formularios
 
         private void CargarTodasLineasCreditoCompra()
         {
-            dgvLineasCreditoCompra.AutoGenerateColumns = false;
-            proc_CargarTodasLineasCreditoCompras_Results = lineasCreditoComprasNegocio.CargarTodasLineasCreditoCompras().ToList();
-            dgvLineasCreditoCompra.DataSource = proc_CargarTodasLineasCreditoCompras_Results;
-            OrdenarColumnasDGV();
-            
+            try
+            {
+                dgvLineasCreditoCompra.AutoGenerateColumns = false;
+                List<proc_CargarTodasLineasCreditoCompras_Result> lista = lineasCreditoComprasNegocio.CargarTodasLineasCreditoCompras(indicePagina, tamanoPagina, filtro, columna).ToList();
+                if (lista.Count < tamanoPagina)
+                {
+                    finalLista = true;
+                }
+                foreach (var item in lista)
+                {
+                    proc_CargarTodasLineasCreditoCompras_Results.Add(item);
+                }
+                dgvLineasCreditoCompra.DataSource = proc_CargarTodasLineasCreditoCompras_Results;
+
+                OrdenarColumnasDGV();
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Error: No se ha podido cargar las lineas de credito correctamente, intente de nuevo por favor. " + exc.ToString(),
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Loggeator.EscribeEnArchivo(exc.ToString());
+            }
+
         }
 
         private void OrdenarColumnasDGV()
@@ -165,6 +189,8 @@ namespace CapaPresentacion.Formularios
             {
                 txtFiltro.Text = "Escriba para filtrar...";
                 txtFiltro.ForeColor = Color.Gray;
+                ResetearBusqueda();
+                CargarTodasLineasCreditoCompra();
             }
         }
 
@@ -175,34 +201,57 @@ namespace CapaPresentacion.Formularios
                 txtFiltro.Text = "";
                 txtFiltro.ForeColor = Color.Black;
             }
+        }    
+
+        private void cbFiltro_Validating(object sender, CancelEventArgs e)
+        {
+            if (cbFiltro.SelectedIndex == -1 && cbFiltro.Items.Count > 0)
+            {
+                cbFiltro.Focus();
+            }
         }
 
-        private void txtFiltro_TextChanged(object sender, EventArgs e)
+        private void btnRealizarBusqueda_Click(object sender, EventArgs e)
         {
             try
             {
+                ResetearBusqueda();
                 if (txtFiltro.Text != "Escriba para filtrar...")
                 {
                     switch (cbFiltro.SelectedItem.ToString())
                     {
                         case "ID":
-                            dgvLineasCreditoCompra.DataSource = proc_CargarTodasLineasCreditoCompras_Results.Where(p => p.LineaCreditoCompraID.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                            columna = "LineaCreditoVentaID";
+                            filtro = txtFiltro.Text;
+                            CargarTodasLineasCreditoCompra();
                             break;
                         case "Proveedor":
-                            dgvLineasCreditoCompra.DataSource = proc_CargarTodasLineasCreditoCompras_Results.Where(p => p.Proveedor.ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                            columna = "Proveedor";
+                            filtro = txtFiltro.Text;
+                            CargarTodasLineasCreditoCompra();
                             break;
                         case "Fecha":
-                            dgvLineasCreditoCompra.DataSource = proc_CargarTodasLineasCreditoCompras_Results.Where(p => p.Fecha.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                            columna = "Fecha";
+                            filtro = txtFiltro.Text;
+                            CargarTodasLineasCreditoCompra();
                             break;
                         case "Factura Compra":
-                            dgvLineasCreditoCompra.DataSource = proc_CargarTodasLineasCreditoCompras_Results.Where(p => p.FacturaCompra.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                            columna = "FacturaCompra";
+                            filtro = txtFiltro.Text;
+                            CargarTodasLineasCreditoCompra();
                             break;
                         case "Completado":
-                            dgvLineasCreditoCompra.DataSource = proc_CargarTodasLineasCreditoCompras_Results.Where(p => p.Completado.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                            columna = "Completado";
+                            filtro = txtFiltro.Text;
+                            CargarTodasLineasCreditoCompra();
                             break;
                         default:
                             break;
                     }
+                }
+                else
+                {
+                    CargarCBFiltro();
                 }
                 OrdenarColumnasDGV();
             }
@@ -214,12 +263,56 @@ namespace CapaPresentacion.Formularios
             }
         }
 
-        private void cbFiltro_Validating(object sender, CancelEventArgs e)
+        private void dgvLineasCreditoCompra_Scroll(object sender, ScrollEventArgs e)
         {
-            if (cbFiltro.SelectedIndex == -1 && cbFiltro.Items.Count > 0)
+            if (!finalLista)
             {
-                cbFiltro.Focus();
+                if ((e.Type == ScrollEventType.SmallIncrement || e.Type == ScrollEventType.LargeIncrement) && e.ScrollOrientation == ScrollOrientation.VerticalScroll)
+                {
+                    int display = dgvLineasCreditoCompra.Rows.Count - dgvLineasCreditoCompra.DisplayedRowCount(false);
+                    if (e.NewValue >= dgvLineasCreditoCompra.Rows.Count - GetDisplayedRowsCount())
+                    {
+                        indicePagina++;
+                        CargarTodasLineasCreditoCompra();
+                    }
+                }
             }
+
+        }
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            switch (keyData)
+            {
+                case Keys.F1:
+                    txtFiltro.Focus();
+                    return true;
+                case Keys.F5:
+                    btnRealizarBusqueda.PerformClick();
+                    return true;
+                default:
+                    return base.ProcessCmdKey(ref msg, keyData);
+            }
+        }
+
+        private void dgvLineasCreditoCompra_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private int GetDisplayedRowsCount()
+        {
+            int count = dgvLineasCreditoCompra.Rows[dgvLineasCreditoCompra.FirstDisplayedScrollingRowIndex].Height;
+            count = dgvLineasCreditoCompra.Height / count;
+            return count;
+        }
+
+        private void ResetearBusqueda()
+        {
+            proc_CargarTodasLineasCreditoCompras_Results.Clear();
+            finalLista = false;
+            indicePagina = 1;
+            filtro = null;
+            columna = null;
         }
     }
 }

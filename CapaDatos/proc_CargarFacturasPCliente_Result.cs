@@ -11,15 +11,19 @@ namespace CapaDatos
 {
     using System;
     
-    public partial class proc_CargarMovimientos_Result
+    public partial class proc_CargarFacturasPCliente_Result
     {
-        public Nullable<long> RowNumber { get; set; }
-        public string Producto { get; set; }
+        public int FacturaID { get; set; }
+        public int ClienteID { get; set; }
+        public string Cliente { get; set; }
+        public Nullable<decimal> DescuentoCliente { get; set; }
         public System.DateTime Fecha { get; set; }
-        public string TipoMovimiento { get; set; }
-        public Nullable<int> Referencia { get; set; }
-        public Nullable<decimal> Existencia { get; set; }
-        public Nullable<decimal> Cantidad { get; set; }
+        public string TipoDePago { get; set; }
+        public string TipoFactura { get; set; }
+        public Nullable<int> Cotizacion { get; set; }
+        public string NCF { get; set; }
+        public Nullable<System.DateTime> FechaVencimiento { get; set; }
+        public Nullable<decimal> Valor { get; set; }
         public string Usuario { get; set; }
     }
 }

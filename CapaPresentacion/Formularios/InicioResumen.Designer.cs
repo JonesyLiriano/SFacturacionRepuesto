@@ -51,6 +51,15 @@
             this.panel14 = new System.Windows.Forms.Panel();
             this.label18 = new System.Windows.Forms.Label();
             this.dgvProductos = new System.Windows.Forms.DataGridView();
+            this.ProductoID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CodigoBarra = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Referencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Proveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UnidadMedida = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Existencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CantMin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CantMax = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label10 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
@@ -86,15 +95,6 @@
             this.label22 = new System.Windows.Forms.Label();
             this.chartProductosMasVendidos = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label2 = new System.Windows.Forms.Label();
-            this.ProductoID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CodigoBarra = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Referencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Proveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UnidadMedida = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Existencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CantMin = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CantMax = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.panel4.SuspendLayout();
@@ -301,6 +301,7 @@
             // 
             // dgvProductos
             // 
+            this.dgvProductos.AllowUserToAddRows = false;
             this.dgvProductos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.dgvProductos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
@@ -346,6 +347,79 @@
             this.dgvProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvProductos.Size = new System.Drawing.Size(628, 320);
             this.dgvProductos.TabIndex = 39;
+            this.dgvProductos.Scroll += new System.Windows.Forms.ScrollEventHandler(this.dgvProductos_Scroll);
+            // 
+            // ProductoID
+            // 
+            this.ProductoID.DataPropertyName = "ProductoID";
+            this.ProductoID.HeaderText = "ID";
+            this.ProductoID.Name = "ProductoID";
+            this.ProductoID.ReadOnly = true;
+            this.ProductoID.Width = 44;
+            // 
+            // CodigoBarra
+            // 
+            this.CodigoBarra.DataPropertyName = "CodigoBarra";
+            this.CodigoBarra.HeaderText = "CodigoBarra";
+            this.CodigoBarra.Name = "CodigoBarra";
+            this.CodigoBarra.ReadOnly = true;
+            this.CodigoBarra.Width = 114;
+            // 
+            // Referencia
+            // 
+            this.Referencia.DataPropertyName = "Referencia";
+            this.Referencia.HeaderText = "Referencia";
+            this.Referencia.Name = "Referencia";
+            this.Referencia.ReadOnly = true;
+            this.Referencia.Width = 99;
+            // 
+            // Descripcion
+            // 
+            this.Descripcion.DataPropertyName = "Descripcion";
+            this.Descripcion.HeaderText = "Descripcion";
+            this.Descripcion.Name = "Descripcion";
+            this.Descripcion.ReadOnly = true;
+            this.Descripcion.Width = 106;
+            // 
+            // Proveedor
+            // 
+            this.Proveedor.DataPropertyName = "Proveedor";
+            this.Proveedor.HeaderText = "Proveedor";
+            this.Proveedor.Name = "Proveedor";
+            this.Proveedor.ReadOnly = true;
+            this.Proveedor.Width = 98;
+            // 
+            // UnidadMedida
+            // 
+            this.UnidadMedida.DataPropertyName = "UnidadMedida";
+            this.UnidadMedida.HeaderText = "UM";
+            this.UnidadMedida.Name = "UnidadMedida";
+            this.UnidadMedida.ReadOnly = true;
+            this.UnidadMedida.Width = 50;
+            // 
+            // Existencia
+            // 
+            this.Existencia.DataPropertyName = "Existencia";
+            this.Existencia.HeaderText = "Existencia";
+            this.Existencia.Name = "Existencia";
+            this.Existencia.ReadOnly = true;
+            this.Existencia.Width = 93;
+            // 
+            // CantMin
+            // 
+            this.CantMin.DataPropertyName = "CantMin";
+            this.CantMin.HeaderText = "CantMin";
+            this.CantMin.Name = "CantMin";
+            this.CantMin.ReadOnly = true;
+            this.CantMin.Width = 86;
+            // 
+            // CantMax
+            // 
+            this.CantMax.DataPropertyName = "CantMax";
+            this.CantMax.HeaderText = "CantMax";
+            this.CantMax.Name = "CantMax";
+            this.CantMax.ReadOnly = true;
+            this.CantMax.Width = 90;
             // 
             // label10
             // 
@@ -753,78 +827,6 @@
             this.label2.Size = new System.Drawing.Size(249, 21);
             this.label2.TabIndex = 41;
             this.label2.Text = "Top 5 Productos mas vendidos:";
-            // 
-            // ProductoID
-            // 
-            this.ProductoID.DataPropertyName = "ProductoID";
-            this.ProductoID.HeaderText = "ID";
-            this.ProductoID.Name = "ProductoID";
-            this.ProductoID.ReadOnly = true;
-            this.ProductoID.Width = 44;
-            // 
-            // CodigoBarra
-            // 
-            this.CodigoBarra.DataPropertyName = "CodigoBarra";
-            this.CodigoBarra.HeaderText = "CodigoBarra";
-            this.CodigoBarra.Name = "CodigoBarra";
-            this.CodigoBarra.ReadOnly = true;
-            this.CodigoBarra.Width = 114;
-            // 
-            // Referencia
-            // 
-            this.Referencia.DataPropertyName = "Referencia";
-            this.Referencia.HeaderText = "Referencia";
-            this.Referencia.Name = "Referencia";
-            this.Referencia.ReadOnly = true;
-            this.Referencia.Width = 99;
-            // 
-            // Descripcion
-            // 
-            this.Descripcion.DataPropertyName = "Descripcion";
-            this.Descripcion.HeaderText = "Descripcion";
-            this.Descripcion.Name = "Descripcion";
-            this.Descripcion.ReadOnly = true;
-            this.Descripcion.Width = 106;
-            // 
-            // Proveedor
-            // 
-            this.Proveedor.DataPropertyName = "Proveedor";
-            this.Proveedor.HeaderText = "Proveedor";
-            this.Proveedor.Name = "Proveedor";
-            this.Proveedor.ReadOnly = true;
-            this.Proveedor.Width = 98;
-            // 
-            // UnidadMedida
-            // 
-            this.UnidadMedida.DataPropertyName = "UnidadMedida";
-            this.UnidadMedida.HeaderText = "UM";
-            this.UnidadMedida.Name = "UnidadMedida";
-            this.UnidadMedida.ReadOnly = true;
-            this.UnidadMedida.Width = 50;
-            // 
-            // Existencia
-            // 
-            this.Existencia.DataPropertyName = "Existencia";
-            this.Existencia.HeaderText = "Existencia";
-            this.Existencia.Name = "Existencia";
-            this.Existencia.ReadOnly = true;
-            this.Existencia.Width = 93;
-            // 
-            // CantMin
-            // 
-            this.CantMin.DataPropertyName = "CantMin";
-            this.CantMin.HeaderText = "CantMin";
-            this.CantMin.Name = "CantMin";
-            this.CantMin.ReadOnly = true;
-            this.CantMin.Width = 86;
-            // 
-            // CantMax
-            // 
-            this.CantMax.DataPropertyName = "CantMax";
-            this.CantMax.HeaderText = "CantMax";
-            this.CantMax.Name = "CantMax";
-            this.CantMax.ReadOnly = true;
-            this.CantMax.Width = 90;
             // 
             // InicioResumen
             // 

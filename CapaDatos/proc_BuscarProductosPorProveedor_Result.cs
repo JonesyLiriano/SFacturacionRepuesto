@@ -30,5 +30,6 @@ namespace CapaDatos
         public string Referencia { get; set; }
         public string Marca { get; set; }
         public string Calidad { get; set; }
+        public Nullable<long> RowNumber { get; set; }
     }
 }

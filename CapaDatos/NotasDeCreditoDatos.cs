@@ -20,9 +20,9 @@ namespace CapaDatos
             return Tuple.Create((bool)resultado.Value, (int)notaDeCreditoID.Value);
         }
 
-        public ObjectResult<proc_CargarTodasNotasDeCredito_Result> CargarTodasNotasDeCredito()
+        public ObjectResult<proc_CargarTodasNotasDeCredito_Result> CargarTodasNotasDeCredito(int indicePagina, int tamanoPagina, string filtro, string columna)
         {
-            var result = modelDB.proc_CargarTodasNotasDeCredito();
+            var result = modelDB.proc_CargarTodasNotasDeCredito(indicePagina, tamanoPagina, filtro, columna);
 
             return result;
         }

@@ -30,14 +30,8 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NotasCredito));
             this.dgvNotasCredito = new System.Windows.Forms.DataGridView();
-            this.btnCerrar = new System.Windows.Forms.Label();
-            this.btnRegistrar = new System.Windows.Forms.Button();
-            this.btnImprimir = new System.Windows.Forms.Button();
-            this.btnExportar = new System.Windows.Forms.Button();
-            this.btnVerDetalles = new System.Windows.Forms.Button();
-            this.txtFiltro = new System.Windows.Forms.TextBox();
-            this.cbFiltro = new System.Windows.Forms.ComboBox();
             this.NotaDeCreditoID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,11 +43,24 @@
             this.ITBIS = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Monto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MontoAplicado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnCerrar = new System.Windows.Forms.Label();
+            this.btnRegistrar = new System.Windows.Forms.Button();
+            this.btnImprimir = new System.Windows.Forms.Button();
+            this.btnExportar = new System.Windows.Forms.Button();
+            this.btnVerDetalles = new System.Windows.Forms.Button();
+            this.txtFiltro = new System.Windows.Forms.TextBox();
+            this.cbFiltro = new System.Windows.Forms.ComboBox();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.btnRealizarBusqueda = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNotasCredito)).BeginInit();
+            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvNotasCredito
             // 
+            this.dgvNotasCredito.AllowUserToAddRows = false;
             this.dgvNotasCredito.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -102,6 +109,96 @@
             this.dgvNotasCredito.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvNotasCredito.Size = new System.Drawing.Size(835, 525);
             this.dgvNotasCredito.TabIndex = 45;
+            this.dgvNotasCredito.Scroll += new System.Windows.Forms.ScrollEventHandler(this.dgvNotasCredito_Scroll);
+            // 
+            // NotaDeCreditoID
+            // 
+            this.NotaDeCreditoID.DataPropertyName = "NotaDeCreditoID";
+            this.NotaDeCreditoID.HeaderText = "ID";
+            this.NotaDeCreditoID.Name = "NotaDeCreditoID";
+            this.NotaDeCreditoID.ReadOnly = true;
+            this.NotaDeCreditoID.Width = 44;
+            // 
+            // Cliente
+            // 
+            this.Cliente.DataPropertyName = "Cliente";
+            this.Cliente.HeaderText = "Cliente";
+            this.Cliente.Name = "Cliente";
+            this.Cliente.ReadOnly = true;
+            this.Cliente.Width = 77;
+            // 
+            // Fecha
+            // 
+            this.Fecha.DataPropertyName = "Fecha";
+            this.Fecha.HeaderText = "Fecha";
+            this.Fecha.Name = "Fecha";
+            this.Fecha.ReadOnly = true;
+            this.Fecha.Width = 70;
+            // 
+            // Factura
+            // 
+            this.Factura.DataPropertyName = "Factura";
+            this.Factura.HeaderText = "Factura";
+            this.Factura.Name = "Factura";
+            this.Factura.ReadOnly = true;
+            this.Factura.Width = 80;
+            // 
+            // FacturaAplicada
+            // 
+            this.FacturaAplicada.DataPropertyName = "FacturaAplicada";
+            this.FacturaAplicada.HeaderText = "FacturaAplicada";
+            this.FacturaAplicada.Name = "FacturaAplicada";
+            this.FacturaAplicada.ReadOnly = true;
+            this.FacturaAplicada.Width = 139;
+            // 
+            // NCF
+            // 
+            this.NCF.DataPropertyName = "NCF";
+            this.NCF.HeaderText = "NCF";
+            this.NCF.Name = "NCF";
+            this.NCF.ReadOnly = true;
+            this.NCF.Width = 58;
+            // 
+            // NCFAfectado
+            // 
+            this.NCFAfectado.DataPropertyName = "NCFAfectado";
+            this.NCFAfectado.HeaderText = "NCFAfectado";
+            this.NCFAfectado.Name = "NCFAfectado";
+            this.NCFAfectado.ReadOnly = true;
+            this.NCFAfectado.Width = 119;
+            // 
+            // FechaVencimiento
+            // 
+            this.FechaVencimiento.DataPropertyName = "FechaVencimiento";
+            this.FechaVencimiento.HeaderText = "FechaVencimiento";
+            this.FechaVencimiento.Name = "FechaVencimiento";
+            this.FechaVencimiento.ReadOnly = true;
+            this.FechaVencimiento.Width = 152;
+            // 
+            // ITBIS
+            // 
+            this.ITBIS.DataPropertyName = "ITBIS";
+            this.ITBIS.HeaderText = "ITBIS";
+            this.ITBIS.Name = "ITBIS";
+            this.ITBIS.ReadOnly = true;
+            this.ITBIS.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ITBIS.Width = 36;
+            // 
+            // Monto
+            // 
+            this.Monto.DataPropertyName = "Monto";
+            this.Monto.HeaderText = "Monto";
+            this.Monto.Name = "Monto";
+            this.Monto.ReadOnly = true;
+            this.Monto.Width = 73;
+            // 
+            // MontoAplicado
+            // 
+            this.MontoAplicado.DataPropertyName = "MontoAplicado";
+            this.MontoAplicado.HeaderText = "MontoAplicado";
+            this.MontoAplicado.Name = "MontoAplicado";
+            this.MontoAplicado.ReadOnly = true;
+            this.MontoAplicado.Width = 132;
             // 
             // btnCerrar
             // 
@@ -194,12 +291,11 @@
             this.txtFiltro.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtFiltro.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFiltro.ForeColor = System.Drawing.Color.Gray;
-            this.txtFiltro.Location = new System.Drawing.Point(502, 21);
+            this.txtFiltro.Location = new System.Drawing.Point(468, 21);
             this.txtFiltro.Name = "txtFiltro";
             this.txtFiltro.Size = new System.Drawing.Size(213, 24);
             this.txtFiltro.TabIndex = 84;
             this.txtFiltro.Text = "Escriba para filtrar...";
-            this.txtFiltro.TextChanged += new System.EventHandler(this.txtFiltro_TextChanged);
             this.txtFiltro.Enter += new System.EventHandler(this.txtFiltro_Enter);
             this.txtFiltro.Leave += new System.EventHandler(this.txtFiltro_Leave);
             // 
@@ -210,100 +306,62 @@
             this.cbFiltro.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbFiltro.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbFiltro.FormattingEnabled = true;
-            this.cbFiltro.Location = new System.Drawing.Point(714, 21);
+            this.cbFiltro.Location = new System.Drawing.Point(680, 21);
             this.cbFiltro.Name = "cbFiltro";
             this.cbFiltro.Size = new System.Drawing.Size(161, 24);
             this.cbFiltro.TabIndex = 83;
             this.cbFiltro.Validating += new System.ComponentModel.CancelEventHandler(this.cbFiltro_Validating);
             // 
-            // NotaDeCreditoID
+            // groupBox6
             // 
-            this.NotaDeCreditoID.DataPropertyName = "NotaDeCreditoID";
-            this.NotaDeCreditoID.HeaderText = "ID";
-            this.NotaDeCreditoID.Name = "NotaDeCreditoID";
-            this.NotaDeCreditoID.ReadOnly = true;
-            this.NotaDeCreditoID.Width = 44;
+            this.groupBox6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox6.Controls.Add(this.label20);
+            this.groupBox6.Controls.Add(this.label18);
+            this.groupBox6.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold);
+            this.groupBox6.Location = new System.Drawing.Point(904, 296);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(180, 87);
+            this.groupBox6.TabIndex = 121;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "ATAJOS";
             // 
-            // Cliente
+            // label20
             // 
-            this.Cliente.DataPropertyName = "Cliente";
-            this.Cliente.HeaderText = "Cliente";
-            this.Cliente.Name = "Cliente";
-            this.Cliente.ReadOnly = true;
-            this.Cliente.Width = 77;
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Century Gothic", 10F);
+            this.label20.Location = new System.Drawing.Point(11, 24);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(134, 19);
+            this.label20.TabIndex = 89;
+            this.label20.Text = "F1 = Filtrar Clientes";
             // 
-            // Fecha
+            // label18
             // 
-            this.Fecha.DataPropertyName = "Fecha";
-            this.Fecha.HeaderText = "Fecha";
-            this.Fecha.Name = "Fecha";
-            this.Fecha.ReadOnly = true;
-            this.Fecha.Width = 70;
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Century Gothic", 10F);
+            this.label18.Location = new System.Drawing.Point(11, 52);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(168, 19);
+            this.label18.TabIndex = 87;
+            this.label18.Text = "F5 = Realizar Busqueda";
             // 
-            // Factura
+            // btnRealizarBusqueda
             // 
-            this.Factura.DataPropertyName = "Factura";
-            this.Factura.HeaderText = "Factura";
-            this.Factura.Name = "Factura";
-            this.Factura.ReadOnly = true;
-            this.Factura.Width = 80;
-            // 
-            // FacturaAplicada
-            // 
-            this.FacturaAplicada.DataPropertyName = "FacturaAplicada";
-            this.FacturaAplicada.HeaderText = "FacturaAplicada";
-            this.FacturaAplicada.Name = "FacturaAplicada";
-            this.FacturaAplicada.ReadOnly = true;
-            this.FacturaAplicada.Width = 139;
-            // 
-            // NCF
-            // 
-            this.NCF.DataPropertyName = "NCF";
-            this.NCF.HeaderText = "NCF";
-            this.NCF.Name = "NCF";
-            this.NCF.ReadOnly = true;
-            this.NCF.Width = 58;
-            // 
-            // NCFAfectado
-            // 
-            this.NCFAfectado.DataPropertyName = "NCFAfectado";
-            this.NCFAfectado.HeaderText = "NCFAfectado";
-            this.NCFAfectado.Name = "NCFAfectado";
-            this.NCFAfectado.ReadOnly = true;
-            this.NCFAfectado.Width = 119;
-            // 
-            // FechaVencimiento
-            // 
-            this.FechaVencimiento.DataPropertyName = "FechaVencimiento";
-            this.FechaVencimiento.HeaderText = "FechaVencimiento";
-            this.FechaVencimiento.Name = "FechaVencimiento";
-            this.FechaVencimiento.ReadOnly = true;
-            this.FechaVencimiento.Width = 152;
-            // 
-            // ITBIS
-            // 
-            this.ITBIS.DataPropertyName = "ITBIS";
-            this.ITBIS.HeaderText = "ITBIS";
-            this.ITBIS.Name = "ITBIS";
-            this.ITBIS.ReadOnly = true;
-            this.ITBIS.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ITBIS.Width = 36;
-            // 
-            // Monto
-            // 
-            this.Monto.DataPropertyName = "Monto";
-            this.Monto.HeaderText = "Monto";
-            this.Monto.Name = "Monto";
-            this.Monto.ReadOnly = true;
-            this.Monto.Width = 73;
-            // 
-            // MontoAplicado
-            // 
-            this.MontoAplicado.DataPropertyName = "MontoAplicado";
-            this.MontoAplicado.HeaderText = "MontoAplicado";
-            this.MontoAplicado.Name = "MontoAplicado";
-            this.MontoAplicado.ReadOnly = true;
-            this.MontoAplicado.Width = 132;
+            this.btnRealizarBusqueda.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRealizarBusqueda.BackColor = System.Drawing.SystemColors.Window;
+            this.btnRealizarBusqueda.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnRealizarBusqueda.FlatAppearance.BorderSize = 0;
+            this.btnRealizarBusqueda.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.btnRealizarBusqueda.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnRealizarBusqueda.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRealizarBusqueda.ForeColor = System.Drawing.Color.White;
+            this.btnRealizarBusqueda.Image = ((System.Drawing.Image)(resources.GetObject("btnRealizarBusqueda.Image")));
+            this.btnRealizarBusqueda.Location = new System.Drawing.Point(838, 21);
+            this.btnRealizarBusqueda.Name = "btnRealizarBusqueda";
+            this.btnRealizarBusqueda.Size = new System.Drawing.Size(37, 24);
+            this.btnRealizarBusqueda.TabIndex = 120;
+            this.btnRealizarBusqueda.UseVisualStyleBackColor = false;
+            this.btnRealizarBusqueda.Click += new System.EventHandler(this.btnRealizarBusqueda_Click);
             // 
             // NotasCredito
             // 
@@ -311,6 +369,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1110, 600);
+            this.Controls.Add(this.groupBox6);
+            this.Controls.Add(this.btnRealizarBusqueda);
             this.Controls.Add(this.txtFiltro);
             this.Controls.Add(this.cbFiltro);
             this.Controls.Add(this.btnExportar);
@@ -325,6 +385,8 @@
             this.Text = "NotasCredito";
             this.Load += new System.EventHandler(this.NotasCredito_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvNotasCredito)).EndInit();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -350,5 +412,9 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn ITBIS;
         private System.Windows.Forms.DataGridViewTextBoxColumn Monto;
         private System.Windows.Forms.DataGridViewTextBoxColumn MontoAplicado;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Button btnRealizarBusqueda;
     }
 }

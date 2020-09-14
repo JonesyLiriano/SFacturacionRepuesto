@@ -765,7 +765,7 @@ namespace CapaPresentacion
             cbClientes.DataSource = null;
             cbClientes.DisplayMember = "Nombre";
             cbClientes.ValueMember = "ClienteID";
-            proc_CargarTodosClientes_Results = clientesNegocio.CargarTodosClientes().ToList();
+            proc_CargarTodosClientes_Results = clientesNegocio.CargarTodosClientes(1,1,"Reporte","Reporte").ToList();
             cbClientes.DataSource = proc_CargarTodosClientes_Results;
 
         }
@@ -819,9 +819,9 @@ namespace CapaPresentacion
                     txtRazonSocial.Enabled = true;
                     txtRNC.Enabled = true;
                     txtRazonSocial.Text = proc_CargarTodosClientes_Results.Where(r => r.ClienteID == Convert.ToInt32(cbClientes.SelectedValue))
-                       .FirstOrDefault().Nombre.ToString();
+                        .FirstOrDefault().Nombre;
                     txtRNC.Text = proc_CargarTodosClientes_Results.Where(r => r.ClienteID == Convert.ToInt32(cbClientes.SelectedValue))
-                                .FirstOrDefault().CedulaORnc.ToString();
+                        .FirstOrDefault().CedulaORnc;
                 }
             }
             catch (Exception exc)

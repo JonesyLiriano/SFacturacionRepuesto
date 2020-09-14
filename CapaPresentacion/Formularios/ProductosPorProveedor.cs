@@ -15,10 +15,13 @@ namespace CapaPresentacion.Formularios
     public partial class ProductosPorProveedor : Form
     {
         ProductosNegocio productosNegocio = new ProductosNegocio();
-        List<proc_CargarProductosExistBajaPorProveedor_Result> proc_CargarProductosExistBajaPorProveedor_Results;
-        List<proc_CargarProductosPorProveedor_Result> proc_BuscarProductosPorProveedor_Results;
+        BindingList<proc_CargarProductosExistBajaPorProveedor_Result> proc_CargarProductosExistBajaPorProveedor_Results;
+        BindingList<proc_CargarProductosPorProveedor_Result> proc_BuscarProductosPorProveedor_Results;
         public static DataTable dtProductosMarcados;
         private int proveedorID;
+        bool finalLista;
+        int indicePagina, tamanoPagina;
+        string filtro, columna;
         public ProductosPorProveedor(int proveedorID)
         {
             InitializeComponent();
@@ -49,20 +52,45 @@ namespace CapaPresentacion.Formularios
 
         private void CargarDataGridView()
         {
-            dgvProductos.AutoGenerateColumns = false;
-            if (checkBoxProdExistBaja.Checked == true)
+            try
             {
-                proc_CargarProductosExistBajaPorProveedor_Results = productosNegocio.CargarProductosExistBajaPorProveedor(proveedorID).ToList();
-                dgvProductos.DataSource = proc_CargarProductosExistBajaPorProveedor_Results;
-            }
-            else
-            {
-                proc_BuscarProductosPorProveedor_Results = productosNegocio.CargarProductosPorProveedor(proveedorID).ToList();
-                dgvProductos.DataSource = proc_BuscarProductosPorProveedor_Results;
-            }
+                dgvProductos.AutoGenerateColumns = false;
+                if (checkBoxProdExistBaja.Checked == true)
+                { 
+                    List<proc_CargarProductosExistBajaPorProveedor_Result> lista = productosNegocio.CargarProductosExistBajaPorProveedor(proveedorID, indicePagina, tamanoPagina, filtro, columna).ToList();
+                    if (lista.Count < tamanoPagina)
+                    {
+                        finalLista = true;
+                    }
+                    foreach (var item in lista)
+                    {
+                        proc_CargarProductosExistBajaPorProveedor_Results.Add(item);
+                    }
+                    dgvProductos.DataSource = proc_CargarProductosExistBajaPorProveedor_Results;
+                }
+                else
+                {
+                    List<proc_CargarProductosPorProveedor_Result> lista = productosNegocio.CargarProductosPorProveedor(proveedorID, indicePagina, tamanoPagina, filtro, columna).ToList();
+                    if (lista.Count < tamanoPagina)
+                    {
+                        finalLista = true;
+                    }
+                    foreach (var item in lista)
+                    {
+                        proc_BuscarProductosPorProveedor_Results.Add(item);
+                    }
+                    dgvProductos.DataSource = proc_BuscarProductosPorProveedor_Results;
+                }      
             OrdenarColumnasDGV();
-            
         }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Error: No se ha podido cargar los productos correctamente, intente de nuevo por favor.",
+                   "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Loggeator.EscribeEnArchivo(exc.ToString());
+            }
+
+}
 
         private void OrdenarColumnasDGV()
         {
@@ -99,6 +127,7 @@ namespace CapaPresentacion.Formularios
         {
             try
             {
+                ResetearBusqueda();
                 CargarDataGridView();
 
             }
@@ -115,6 +144,10 @@ namespace CapaPresentacion.Formularios
         {
             try
             {
+                proc_CargarProductosExistBajaPorProveedor_Results = new BindingList<proc_CargarProductosExistBajaPorProveedor_Result>();
+                proc_BuscarProductosPorProveedor_Results = new BindingList<proc_CargarProductosPorProveedor_Result>();
+                indicePagina = 1;
+                tamanoPagina = 50;
                 InicializarDataTable();
                 CargarDataGridView();
                 CargarCBFiltro();
@@ -256,76 +289,7 @@ namespace CapaPresentacion.Formularios
                 txtFiltro.Text = "";
                 txtFiltro.ForeColor = Color.Black;
             }
-        }
-
-        private void txtFiltro_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                if (txtFiltro.Text != "Escriba para filtrar...")
-                {
-                    if(checkBoxProdExistBaja.Checked)
-                    {
-                        switch (cbFiltro.SelectedItem.ToString())
-                        {
-                            case "ID":
-                                dgvProductos.DataSource = proc_CargarProductosExistBajaPorProveedor_Results.Where(p => p.ProductoID.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
-                                break;
-                            case "Referencia":
-                                dgvProductos.DataSource = proc_CargarProductosExistBajaPorProveedor_Results.Where(p => p.Referencia.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
-                                break;
-                            case "Descripcion":
-                                dgvProductos.DataSource = proc_CargarProductosExistBajaPorProveedor_Results.Where(p => p.Descripcion.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
-                                break;
-                            case "Marca":
-                                dgvProductos.DataSource = proc_CargarProductosExistBajaPorProveedor_Results.Where(p => p.Marca.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
-                                break;
-                            case "Calidad":
-                                dgvProductos.DataSource = proc_CargarProductosExistBajaPorProveedor_Results.Where(p => p.Calidad.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
-                                break;
-                            case "Unidad de Medida":
-                                dgvProductos.DataSource = proc_CargarProductosExistBajaPorProveedor_Results.Where(p => p.UnidadMedida.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
-                                break;
-                            default:
-                                break;
-                        }
-                    }
-                    else
-                    {
-                        switch (cbFiltro.SelectedItem.ToString())
-                        {
-                            case "ID":
-                                dgvProductos.DataSource = proc_BuscarProductosPorProveedor_Results.Where(p => p.ProductoID.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
-                                break;
-                            case "Referencia":
-                                dgvProductos.DataSource = proc_BuscarProductosPorProveedor_Results.Where(p => p.Referencia.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
-                                break;
-                            case "Descripcion":
-                                dgvProductos.DataSource = proc_BuscarProductosPorProveedor_Results.Where(p => p.Descripcion.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
-                                break;
-                            case "Marca":
-                                dgvProductos.DataSource = proc_BuscarProductosPorProveedor_Results.Where(p => p.Marca.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
-                                break;
-                            case "Calidad":
-                                dgvProductos.DataSource = proc_BuscarProductosPorProveedor_Results.Where(p => p.Calidad.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
-                                break;
-                            case "Unidad de Medida":
-                                dgvProductos.DataSource = proc_BuscarProductosPorProveedor_Results.Where(p => p.UnidadMedida.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
-                                break;
-                            default:
-                                break;
-                        }
-                    }                    
-                }
-                OrdenarColumnasDGV();
-            }
-            catch (Exception exc)
-            {
-                MessageBox.Show("Error: No se ha podido realizar la busqueda, intente de nuevo por favor.",
-                      "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Loggeator.EscribeEnArchivo(exc.ToString());
-            }
-        }
+        }      
 
         private void cbFiltro_Validating(object sender, CancelEventArgs e)
         {
@@ -357,11 +321,14 @@ namespace CapaPresentacion.Formularios
                 case Keys.F4:
                     MarcarProductoGrid();
                     return true;
-                case Keys.F5:
+                case Keys.Enter:
                     btnSeleccionar.PerformClick();
                     return true;
                 case Keys.F6:
                     btnMarcarTodos.PerformClick();
+                    return true;
+                case Keys.F5:
+                    btnRealizarBusqueda.PerformClick();
                     return true;
                 case Keys.F7:
                     btnDesmarcarTodos.PerformClick();
@@ -375,5 +342,96 @@ namespace CapaPresentacion.Formularios
             }
 
         }
+
+        private void btnRealizarBusqueda_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ResetearBusqueda();
+                if (txtFiltro.Text != "Escriba para filtrar...")
+                {
+                    switch (cbFiltro.SelectedItem.ToString())
+                    {
+                        case "ID":
+                            columna = "ProductoID";
+                            filtro = txtFiltro.Text;
+                            CargarDataGridView();
+                            break;    
+                        case "Descripcion":
+                            columna = "Descripcion";
+                            filtro = txtFiltro.Text;
+                            CargarDataGridView();
+                            break;
+                        case "Unidad de Medida":
+                            columna = "UnidadMedida";
+                            filtro = txtFiltro.Text;
+                            CargarDataGridView();
+                            break;                       
+                        case "Referencia":
+                            columna = "Referencia";
+                            filtro = txtFiltro.Text;
+                            CargarDataGridView();
+                            break;
+                        case "Marca":
+                            columna = "Marca";
+                            filtro = txtFiltro.Text;
+                            CargarDataGridView();
+                            break;
+                        case "Calidad":
+                            columna = "Calidad";
+                            filtro = txtFiltro.Text;
+                            CargarDataGridView();
+                            break;
+
+                        default:
+                            break;
+                    }
+                }
+                else
+                {
+                    CargarDataGridView();
+                }
+                OrdenarColumnasDGV();
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Error: No se ha podido realizar la busqueda, intente de nuevo por favor.",
+                      "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Loggeator.EscribeEnArchivo(exc.ToString());
+            }
+        }
+
+        private void dgvProductos_Scroll(object sender, ScrollEventArgs e)
+        {
+            if (!finalLista)
+            {
+                if ((e.Type == ScrollEventType.SmallIncrement || e.Type == ScrollEventType.LargeIncrement) && e.ScrollOrientation == ScrollOrientation.VerticalScroll)
+                {
+                    int display = dgvProductos.Rows.Count - dgvProductos.DisplayedRowCount(false);
+                    if (e.NewValue >= dgvProductos.Rows.Count - GetDisplayedRowsCount())
+                    {
+                        indicePagina++;
+                        CargarDataGridView();
+                    }
+                }
+            }
+        }
+        private int GetDisplayedRowsCount()
+        {
+            int count = dgvProductos.Rows[dgvProductos.FirstDisplayedScrollingRowIndex].Height;
+            count = dgvProductos.Height / count;
+            return count;
+        }
+
+        private void ResetearBusqueda()
+        {
+            proc_BuscarProductosPorProveedor_Results.Clear();
+            proc_CargarProductosExistBajaPorProveedor_Results.Clear();
+            finalLista = false;
+            indicePagina = 1;
+            filtro = null;
+            columna = null;
+        }
+
     }
 }

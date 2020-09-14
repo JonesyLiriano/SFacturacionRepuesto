@@ -312,13 +312,29 @@ namespace CapaDatos
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("proc_BorrarUser", userIDParameter, resultado);
         }
     
-        public virtual ObjectResult<proc_BuscarProductosPorProveedor_Result> proc_BuscarProductosPorProveedor(Nullable<int> proveedorID)
+        public virtual ObjectResult<proc_BuscarProductosPorProveedor_Result> proc_BuscarProductosPorProveedor(Nullable<int> proveedorID, Nullable<int> indicePagina, Nullable<int> tamanoPagina, string filtro, string columna)
         {
             var proveedorIDParameter = proveedorID.HasValue ?
                 new ObjectParameter("ProveedorID", proveedorID) :
                 new ObjectParameter("ProveedorID", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_BuscarProductosPorProveedor_Result>("proc_BuscarProductosPorProveedor", proveedorIDParameter);
+            var indicePaginaParameter = indicePagina.HasValue ?
+                new ObjectParameter("IndicePagina", indicePagina) :
+                new ObjectParameter("IndicePagina", typeof(int));
+    
+            var tamanoPaginaParameter = tamanoPagina.HasValue ?
+                new ObjectParameter("TamanoPagina", tamanoPagina) :
+                new ObjectParameter("TamanoPagina", typeof(int));
+    
+            var filtroParameter = filtro != null ?
+                new ObjectParameter("Filtro", filtro) :
+                new ObjectParameter("Filtro", typeof(string));
+    
+            var columnaParameter = columna != null ?
+                new ObjectParameter("Columna", columna) :
+                new ObjectParameter("Columna", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_BuscarProductosPorProveedor_Result>("proc_BuscarProductosPorProveedor", proveedorIDParameter, indicePaginaParameter, tamanoPaginaParameter, filtroParameter, columnaParameter);
         }
     
         public virtual int proc_CalcularGanancias(ObjectParameter gananciaFContDia, ObjectParameter gananciaFContSemana, ObjectParameter gananciaFContMes, ObjectParameter gananciaFCredDia, ObjectParameter gananciaFCredSemana, ObjectParameter gananciaFCredMes, Nullable<decimal> itbis)
@@ -396,44 +412,151 @@ namespace CapaDatos
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_CargarOrdenesCompraPFecha_Result>("proc_CargarOrdenesCompraPFecha", fechaInicialParameter, fechaFinalParameter);
         }
     
-        public virtual ObjectResult<proc_CargarProductosExistBaja_Result> proc_CargarProductosExistBaja()
+        public virtual ObjectResult<proc_CargarTodasFacturas_Result> proc_CargarTodasFacturas(Nullable<int> indicePagina, Nullable<int> tamanoPagina, string filtro, string columna)
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_CargarProductosExistBaja_Result>("proc_CargarProductosExistBaja");
+            var indicePaginaParameter = indicePagina.HasValue ?
+                new ObjectParameter("IndicePagina", indicePagina) :
+                new ObjectParameter("IndicePagina", typeof(int));
+    
+            var tamanoPaginaParameter = tamanoPagina.HasValue ?
+                new ObjectParameter("TamanoPagina", tamanoPagina) :
+                new ObjectParameter("TamanoPagina", typeof(int));
+    
+            var filtroParameter = filtro != null ?
+                new ObjectParameter("Filtro", filtro) :
+                new ObjectParameter("Filtro", typeof(string));
+    
+            var columnaParameter = columna != null ?
+                new ObjectParameter("Columna", columna) :
+                new ObjectParameter("Columna", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_CargarTodasFacturas_Result>("proc_CargarTodasFacturas", indicePaginaParameter, tamanoPaginaParameter, filtroParameter, columnaParameter);
         }
     
-        public virtual ObjectResult<proc_CargarTodasFacturas_Result> proc_CargarTodasFacturas()
+        public virtual ObjectResult<proc_CargarTodasLineasCreditoVentas_Result> proc_CargarTodasLineasCreditoVentas(Nullable<int> indicePagina, Nullable<int> tamanoPagina, string filtro, string columna)
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_CargarTodasFacturas_Result>("proc_CargarTodasFacturas");
+            var indicePaginaParameter = indicePagina.HasValue ?
+                new ObjectParameter("IndicePagina", indicePagina) :
+                new ObjectParameter("IndicePagina", typeof(int));
+    
+            var tamanoPaginaParameter = tamanoPagina.HasValue ?
+                new ObjectParameter("TamanoPagina", tamanoPagina) :
+                new ObjectParameter("TamanoPagina", typeof(int));
+    
+            var filtroParameter = filtro != null ?
+                new ObjectParameter("Filtro", filtro) :
+                new ObjectParameter("Filtro", typeof(string));
+    
+            var columnaParameter = columna != null ?
+                new ObjectParameter("Columna", columna) :
+                new ObjectParameter("Columna", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_CargarTodasLineasCreditoVentas_Result>("proc_CargarTodasLineasCreditoVentas", indicePaginaParameter, tamanoPaginaParameter, filtroParameter, columnaParameter);
         }
     
-        public virtual ObjectResult<proc_CargarTodasLineasCreditoVentas_Result> proc_CargarTodasLineasCreditoVentas()
+        public virtual ObjectResult<proc_CargarTodasNotasDeCredito_Result> proc_CargarTodasNotasDeCredito(Nullable<int> indicePagina, Nullable<int> tamanoPagina, string filtro, string columna)
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_CargarTodasLineasCreditoVentas_Result>("proc_CargarTodasLineasCreditoVentas");
+            var indicePaginaParameter = indicePagina.HasValue ?
+                new ObjectParameter("IndicePagina", indicePagina) :
+                new ObjectParameter("IndicePagina", typeof(int));
+    
+            var tamanoPaginaParameter = tamanoPagina.HasValue ?
+                new ObjectParameter("TamanoPagina", tamanoPagina) :
+                new ObjectParameter("TamanoPagina", typeof(int));
+    
+            var filtroParameter = filtro != null ?
+                new ObjectParameter("Filtro", filtro) :
+                new ObjectParameter("Filtro", typeof(string));
+    
+            var columnaParameter = columna != null ?
+                new ObjectParameter("Columna", columna) :
+                new ObjectParameter("Columna", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_CargarTodasNotasDeCredito_Result>("proc_CargarTodasNotasDeCredito", indicePaginaParameter, tamanoPaginaParameter, filtroParameter, columnaParameter);
         }
     
-        public virtual ObjectResult<proc_CargarTodasNotasDeCredito_Result> proc_CargarTodasNotasDeCredito()
+        public virtual ObjectResult<proc_CargarTodasOrdenesCompra_Result> proc_CargarTodasOrdenesCompra(Nullable<int> indicePagina, Nullable<int> tamanoPagina, string filtro, string columna)
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_CargarTodasNotasDeCredito_Result>("proc_CargarTodasNotasDeCredito");
+            var indicePaginaParameter = indicePagina.HasValue ?
+                new ObjectParameter("IndicePagina", indicePagina) :
+                new ObjectParameter("IndicePagina", typeof(int));
+    
+            var tamanoPaginaParameter = tamanoPagina.HasValue ?
+                new ObjectParameter("TamanoPagina", tamanoPagina) :
+                new ObjectParameter("TamanoPagina", typeof(int));
+    
+            var filtroParameter = filtro != null ?
+                new ObjectParameter("Filtro", filtro) :
+                new ObjectParameter("Filtro", typeof(string));
+    
+            var columnaParameter = columna != null ?
+                new ObjectParameter("Columna", columna) :
+                new ObjectParameter("Columna", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_CargarTodasOrdenesCompra_Result>("proc_CargarTodasOrdenesCompra", indicePaginaParameter, tamanoPaginaParameter, filtroParameter, columnaParameter);
         }
     
-        public virtual ObjectResult<proc_CargarTodasOrdenesCompra_Result> proc_CargarTodasOrdenesCompra()
+        public virtual ObjectResult<proc_CargarTodosClientes_Result> proc_CargarTodosClientes(Nullable<int> indicePagina, Nullable<int> tamanoPagina, string filtro, string columna)
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_CargarTodasOrdenesCompra_Result>("proc_CargarTodasOrdenesCompra");
+            var indicePaginaParameter = indicePagina.HasValue ?
+                new ObjectParameter("IndicePagina", indicePagina) :
+                new ObjectParameter("IndicePagina", typeof(int));
+    
+            var tamanoPaginaParameter = tamanoPagina.HasValue ?
+                new ObjectParameter("TamanoPagina", tamanoPagina) :
+                new ObjectParameter("TamanoPagina", typeof(int));
+    
+            var filtroParameter = filtro != null ?
+                new ObjectParameter("Filtro", filtro) :
+                new ObjectParameter("Filtro", typeof(string));
+    
+            var columnaParameter = columna != null ?
+                new ObjectParameter("Columna", columna) :
+                new ObjectParameter("Columna", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_CargarTodosClientes_Result>("proc_CargarTodosClientes", indicePaginaParameter, tamanoPaginaParameter, filtroParameter, columnaParameter);
         }
     
-        public virtual ObjectResult<proc_CargarTodosClientes_Result> proc_CargarTodosClientes()
+        public virtual ObjectResult<proc_CargarTodosProductos_Result> proc_CargarTodosProductos(Nullable<int> indicePagina, Nullable<int> tamanoPagina, string filtro, string columna)
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_CargarTodosClientes_Result>("proc_CargarTodosClientes");
+            var indicePaginaParameter = indicePagina.HasValue ?
+                new ObjectParameter("IndicePagina", indicePagina) :
+                new ObjectParameter("IndicePagina", typeof(int));
+    
+            var tamanoPaginaParameter = tamanoPagina.HasValue ?
+                new ObjectParameter("TamanoPagina", tamanoPagina) :
+                new ObjectParameter("TamanoPagina", typeof(int));
+    
+            var filtroParameter = filtro != null ?
+                new ObjectParameter("Filtro", filtro) :
+                new ObjectParameter("Filtro", typeof(string));
+    
+            var columnaParameter = columna != null ?
+                new ObjectParameter("Columna", columna) :
+                new ObjectParameter("Columna", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_CargarTodosProductos_Result>("proc_CargarTodosProductos", indicePaginaParameter, tamanoPaginaParameter, filtroParameter, columnaParameter);
         }
     
-        public virtual ObjectResult<proc_CargarTodosProductos_Result> proc_CargarTodosProductos()
+        public virtual ObjectResult<proc_CargarTodosProveedores_Result> proc_CargarTodosProveedores(Nullable<int> indicePagina, Nullable<int> tamanoPagina, string filtro, string columna)
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_CargarTodosProductos_Result>("proc_CargarTodosProductos");
-        }
+            var indicePaginaParameter = indicePagina.HasValue ?
+                new ObjectParameter("IndicePagina", indicePagina) :
+                new ObjectParameter("IndicePagina", typeof(int));
     
-        public virtual ObjectResult<proc_CargarTodosProveedores_Result> proc_CargarTodosProveedores()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_CargarTodosProveedores_Result>("proc_CargarTodosProveedores");
+            var tamanoPaginaParameter = tamanoPagina.HasValue ?
+                new ObjectParameter("TamanoPagina", tamanoPagina) :
+                new ObjectParameter("TamanoPagina", typeof(int));
+    
+            var filtroParameter = filtro != null ?
+                new ObjectParameter("Filtro", filtro) :
+                new ObjectParameter("Filtro", typeof(string));
+    
+            var columnaParameter = columna != null ?
+                new ObjectParameter("Columna", columna) :
+                new ObjectParameter("Columna", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_CargarTodosProveedores_Result>("proc_CargarTodosProveedores", indicePaginaParameter, tamanoPaginaParameter, filtroParameter, columnaParameter);
         }
     
         public virtual ObjectResult<proc_CargarTodosTiposFactura_Result> proc_CargarTodosTiposFactura()
@@ -446,9 +569,25 @@ namespace CapaDatos
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_CargarTodosTiposPagos_Result>("proc_CargarTodosTiposPagos");
         }
     
-        public virtual ObjectResult<proc_CargarTodosUsers_Result> proc_CargarTodosUsers()
+        public virtual ObjectResult<proc_CargarTodosUsers_Result> proc_CargarTodosUsers(Nullable<int> indicePagina, Nullable<int> tamanoPagina, string filtro, string columna)
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_CargarTodosUsers_Result>("proc_CargarTodosUsers");
+            var indicePaginaParameter = indicePagina.HasValue ?
+                new ObjectParameter("IndicePagina", indicePagina) :
+                new ObjectParameter("IndicePagina", typeof(int));
+    
+            var tamanoPaginaParameter = tamanoPagina.HasValue ?
+                new ObjectParameter("TamanoPagina", tamanoPagina) :
+                new ObjectParameter("TamanoPagina", typeof(int));
+    
+            var filtroParameter = filtro != null ?
+                new ObjectParameter("Filtro", filtro) :
+                new ObjectParameter("Filtro", typeof(string));
+    
+            var columnaParameter = columna != null ?
+                new ObjectParameter("Columna", columna) :
+                new ObjectParameter("Columna", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_CargarTodosUsers_Result>("proc_CargarTodosUsers", indicePaginaParameter, tamanoPaginaParameter, filtroParameter, columnaParameter);
         }
     
         public virtual int proc_CerrarOrdenCompra(Nullable<int> ordenCompraID)
@@ -876,13 +1015,29 @@ namespace CapaDatos
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_CargarDetalleOrdenCompra_Result>("proc_CargarDetalleOrdenCompra", ordenCompraIDParameter);
         }
     
-        public virtual ObjectResult<proc_CargarProductosExistBajaPorProveedor_Result> proc_CargarProductosExistBajaPorProveedor(Nullable<int> proveedorID)
+        public virtual ObjectResult<proc_CargarProductosExistBajaPorProveedor_Result> proc_CargarProductosExistBajaPorProveedor(Nullable<int> proveedorID, Nullable<int> indicePagina, Nullable<int> tamanoPagina, string filtro, string columna)
         {
             var proveedorIDParameter = proveedorID.HasValue ?
                 new ObjectParameter("ProveedorID", proveedorID) :
                 new ObjectParameter("ProveedorID", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_CargarProductosExistBajaPorProveedor_Result>("proc_CargarProductosExistBajaPorProveedor", proveedorIDParameter);
+            var indicePaginaParameter = indicePagina.HasValue ?
+                new ObjectParameter("IndicePagina", indicePagina) :
+                new ObjectParameter("IndicePagina", typeof(int));
+    
+            var tamanoPaginaParameter = tamanoPagina.HasValue ?
+                new ObjectParameter("TamanoPagina", tamanoPagina) :
+                new ObjectParameter("TamanoPagina", typeof(int));
+    
+            var filtroParameter = filtro != null ?
+                new ObjectParameter("Filtro", filtro) :
+                new ObjectParameter("Filtro", typeof(string));
+    
+            var columnaParameter = columna != null ?
+                new ObjectParameter("Columna", columna) :
+                new ObjectParameter("Columna", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_CargarProductosExistBajaPorProveedor_Result>("proc_CargarProductosExistBajaPorProveedor", proveedorIDParameter, indicePaginaParameter, tamanoPaginaParameter, filtroParameter, columnaParameter);
         }
     
         public virtual int proc_InsertarProducto(ObjectParameter productoID, string descripcion, Nullable<double> existencia, Nullable<decimal> precioCompra, Nullable<decimal> precioVenta, Nullable<decimal> precioVentaMin, Nullable<int> proveedorID, Nullable<bool> servicio, Nullable<bool> iTBIS, Nullable<decimal> descuento, Nullable<double> cantMin, Nullable<double> cantMax, string codigoBarra, string unidadMedida, string referencia, string marca, string calidad, ObjectParameter resultado)
@@ -976,9 +1131,25 @@ namespace CapaDatos
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("proc_ActualizarCantidadProducto", codigoBarraParameter, existenciaParameter, resultado);
         }
     
-        public virtual ObjectResult<proc_CargarTodasCotizaciones_Result> proc_CargarTodasCotizaciones()
+        public virtual ObjectResult<proc_CargarTodasCotizaciones_Result> proc_CargarTodasCotizaciones(Nullable<int> indicePagina, Nullable<int> tamanoPagina, string filtro, string columna)
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_CargarTodasCotizaciones_Result>("proc_CargarTodasCotizaciones");
+            var indicePaginaParameter = indicePagina.HasValue ?
+                new ObjectParameter("IndicePagina", indicePagina) :
+                new ObjectParameter("IndicePagina", typeof(int));
+    
+            var tamanoPaginaParameter = tamanoPagina.HasValue ?
+                new ObjectParameter("TamanoPagina", tamanoPagina) :
+                new ObjectParameter("TamanoPagina", typeof(int));
+    
+            var filtroParameter = filtro != null ?
+                new ObjectParameter("Filtro", filtro) :
+                new ObjectParameter("Filtro", typeof(string));
+    
+            var columnaParameter = columna != null ?
+                new ObjectParameter("Columna", columna) :
+                new ObjectParameter("Columna", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_CargarTodasCotizaciones_Result>("proc_CargarTodasCotizaciones", indicePaginaParameter, tamanoPaginaParameter, filtroParameter, columnaParameter);
         }
     
         public virtual ObjectResult<proc_ComprobanteCotizacion_Result> proc_ComprobanteCotizacion(Nullable<int> cotizacionID)
@@ -1094,13 +1265,29 @@ namespace CapaDatos
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("proc_BorrarCobroVentaCredito", cobroVentaCreditoIDParameter, resultado);
         }
     
-        public virtual ObjectResult<proc_CargarProductosPorProveedor_Result> proc_CargarProductosPorProveedor(Nullable<int> proveedorID)
+        public virtual ObjectResult<proc_CargarProductosPorProveedor_Result> proc_CargarProductosPorProveedor(Nullable<int> proveedorID, Nullable<int> indicePagina, Nullable<int> tamanoPagina, string filtro, string columna)
         {
             var proveedorIDParameter = proveedorID.HasValue ?
                 new ObjectParameter("ProveedorID", proveedorID) :
                 new ObjectParameter("ProveedorID", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_CargarProductosPorProveedor_Result>("proc_CargarProductosPorProveedor", proveedorIDParameter);
+            var indicePaginaParameter = indicePagina.HasValue ?
+                new ObjectParameter("IndicePagina", indicePagina) :
+                new ObjectParameter("IndicePagina", typeof(int));
+    
+            var tamanoPaginaParameter = tamanoPagina.HasValue ?
+                new ObjectParameter("TamanoPagina", tamanoPagina) :
+                new ObjectParameter("TamanoPagina", typeof(int));
+    
+            var filtroParameter = filtro != null ?
+                new ObjectParameter("Filtro", filtro) :
+                new ObjectParameter("Filtro", typeof(string));
+    
+            var columnaParameter = columna != null ?
+                new ObjectParameter("Columna", columna) :
+                new ObjectParameter("Columna", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_CargarProductosPorProveedor_Result>("proc_CargarProductosPorProveedor", proveedorIDParameter, indicePaginaParameter, tamanoPaginaParameter, filtroParameter, columnaParameter);
         }
     
         public virtual int proc_ActualizarLineaCreditoCompra(Nullable<int> lineaCreditoCompraID, Nullable<bool> estatus, ObjectParameter resultado)
@@ -1116,9 +1303,25 @@ namespace CapaDatos
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("proc_ActualizarLineaCreditoCompra", lineaCreditoCompraIDParameter, estatusParameter, resultado);
         }
     
-        public virtual ObjectResult<proc_CargarTodasLineasCreditoCompras_Result> proc_CargarTodasLineasCreditoCompras()
+        public virtual ObjectResult<proc_CargarTodasLineasCreditoCompras_Result> proc_CargarTodasLineasCreditoCompras(Nullable<int> indicePagina, Nullable<int> tamanoPagina, string filtro, string columna)
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_CargarTodasLineasCreditoCompras_Result>("proc_CargarTodasLineasCreditoCompras");
+            var indicePaginaParameter = indicePagina.HasValue ?
+                new ObjectParameter("IndicePagina", indicePagina) :
+                new ObjectParameter("IndicePagina", typeof(int));
+    
+            var tamanoPaginaParameter = tamanoPagina.HasValue ?
+                new ObjectParameter("TamanoPagina", tamanoPagina) :
+                new ObjectParameter("TamanoPagina", typeof(int));
+    
+            var filtroParameter = filtro != null ?
+                new ObjectParameter("Filtro", filtro) :
+                new ObjectParameter("Filtro", typeof(string));
+    
+            var columnaParameter = columna != null ?
+                new ObjectParameter("Columna", columna) :
+                new ObjectParameter("Columna", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_CargarTodasLineasCreditoCompras_Result>("proc_CargarTodasLineasCreditoCompras", indicePaginaParameter, tamanoPaginaParameter, filtroParameter, columnaParameter);
         }
     
         public virtual int proc_BorrarPagoCompraCredito(Nullable<int> pagoCompraCreditoID, ObjectParameter resultado)
@@ -1257,13 +1460,21 @@ namespace CapaDatos
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("proc_BuscarLineaDeCreditoVentaIDFactura", facturaIDParameter, lineaCreditoVentaID);
         }
     
-        public virtual ObjectResult<proc_CargarMovimientos_Result> proc_CargarMovimientos(Nullable<int> productoID)
+        public virtual ObjectResult<proc_CargarMovimientos_Result> proc_CargarMovimientos(Nullable<int> productoID, Nullable<int> indicePagina, Nullable<int> tamanoPagina)
         {
             var productoIDParameter = productoID.HasValue ?
                 new ObjectParameter("ProductoID", productoID) :
                 new ObjectParameter("ProductoID", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_CargarMovimientos_Result>("proc_CargarMovimientos", productoIDParameter);
+            var indicePaginaParameter = indicePagina.HasValue ?
+                new ObjectParameter("IndicePagina", indicePagina) :
+                new ObjectParameter("IndicePagina", typeof(int));
+    
+            var tamanoPaginaParameter = tamanoPagina.HasValue ?
+                new ObjectParameter("TamanoPagina", tamanoPagina) :
+                new ObjectParameter("TamanoPagina", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_CargarMovimientos_Result>("proc_CargarMovimientos", productoIDParameter, indicePaginaParameter, tamanoPaginaParameter);
         }
     
         public virtual int proc_InsertarMovimiento(ObjectParameter movimientoID, Nullable<int> productoID, Nullable<System.DateTime> fecha, string tipoMovimiento, Nullable<int> referencia, Nullable<decimal> cantidad, Nullable<int> usuarioID, ObjectParameter resultado)
@@ -1306,6 +1517,37 @@ namespace CapaDatos
                 new ObjectParameter("FechaFinal", typeof(System.DateTime));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_CargarFacturasRapidaPFecha_Result>("proc_CargarFacturasRapidaPFecha", fechaInicialParameter, fechaFinalParameter);
+        }
+    
+        public virtual ObjectResult<proc_CargarFacturasPCliente_Result> proc_CargarFacturasPCliente(Nullable<int> clienteID)
+        {
+            var clienteIDParameter = clienteID.HasValue ?
+                new ObjectParameter("ClienteID", clienteID) :
+                new ObjectParameter("ClienteID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_CargarFacturasPCliente_Result>("proc_CargarFacturasPCliente", clienteIDParameter);
+        }
+    
+        public virtual ObjectResult<proc_BuscarClientePID_Result> proc_BuscarClientePID(Nullable<int> clienteID)
+        {
+            var clienteIDParameter = clienteID.HasValue ?
+                new ObjectParameter("ClienteID", clienteID) :
+                new ObjectParameter("ClienteID", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_BuscarClientePID_Result>("proc_BuscarClientePID", clienteIDParameter);
+        }
+    
+        public virtual ObjectResult<proc_CargarProductosExistBaja_Result> proc_CargarProductosExistBaja(Nullable<int> indicePagina, Nullable<int> tamanoPagina)
+        {
+            var indicePaginaParameter = indicePagina.HasValue ?
+                new ObjectParameter("IndicePagina", indicePagina) :
+                new ObjectParameter("IndicePagina", typeof(int));
+    
+            var tamanoPaginaParameter = tamanoPagina.HasValue ?
+                new ObjectParameter("TamanoPagina", tamanoPagina) :
+                new ObjectParameter("TamanoPagina", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<proc_CargarProductosExistBaja_Result>("proc_CargarProductosExistBaja", indicePaginaParameter, tamanoPaginaParameter);
         }
     }
 }

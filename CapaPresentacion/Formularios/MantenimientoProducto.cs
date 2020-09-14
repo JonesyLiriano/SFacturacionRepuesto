@@ -66,7 +66,7 @@ namespace CapaPresentacion
         {
             cbProveedor.DisplayMember = "Nombre";
             cbProveedor.ValueMember = "ProveedorID";
-            cbProveedor.DataSource = proveedoresNegocio.CargarTodosProveedores();
+            cbProveedor.DataSource = proveedoresNegocio.CargarTodosProveedores(1, 1, "Reporte", "Reporte");
             cbProveedor.SelectedIndex = -1;
 
         }

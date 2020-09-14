@@ -47,8 +47,7 @@ namespace CapaPresentacion.Formularios
             InitializeComponent();
             this.ordenCompraID = ordenCompraID;
             CargarCbProveedores();
-            cbProveedor.SelectedValue = proc_CargarTodosProveedores_Results.Where(r => r.Nombre == proveedor)
-                .FirstOrDefault().ProveedorID;
+            cbProveedor.SelectedItem = proveedor;
             cbProveedor.Enabled = false;
 
             if (status)
@@ -93,7 +92,7 @@ namespace CapaPresentacion.Formularios
         {
             cbProveedor.DisplayMember = "Nombre";
             cbProveedor.ValueMember = "ProveedorID";
-            proc_CargarTodosProveedores_Results = proveedoresNegocio.CargarTodosProveedores().ToList();
+            proc_CargarTodosProveedores_Results = proveedoresNegocio.CargarTodosProveedores(1, 1, "Reporte", "Reporte").ToList();
             cbProveedor.DataSource = proc_CargarTodosProveedores_Results;
             cbProveedor.SelectedIndex = -1;
         }

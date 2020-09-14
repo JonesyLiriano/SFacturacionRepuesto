@@ -30,6 +30,7 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductosPorProveedor));
             this.btnDesmarcarTodos = new System.Windows.Forms.Button();
             this.btnMarcarTodos = new System.Windows.Forms.Button();
             this.dgvProductos = new System.Windows.Forms.DataGridView();
@@ -50,6 +51,7 @@
             this.txtFiltro = new System.Windows.Forms.TextBox();
             this.cbFiltro = new System.Windows.Forms.ComboBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -57,6 +59,7 @@
             this.label20 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
+            this.btnRealizarBusqueda = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             this.groupBox6.SuspendLayout();
             this.SuspendLayout();
@@ -71,10 +74,9 @@
             this.btnDesmarcarTodos.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDesmarcarTodos.ForeColor = System.Drawing.Color.White;
             this.btnDesmarcarTodos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDesmarcarTodos.Location = new System.Drawing.Point(2524, 680);
-            this.btnDesmarcarTodos.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
+            this.btnDesmarcarTodos.Location = new System.Drawing.Point(847, 239);
             this.btnDesmarcarTodos.Name = "btnDesmarcarTodos";
-            this.btnDesmarcarTodos.Size = new System.Drawing.Size(570, 100);
+            this.btnDesmarcarTodos.Size = new System.Drawing.Size(180, 35);
             this.btnDesmarcarTodos.TabIndex = 47;
             this.btnDesmarcarTodos.Text = "Desmarcar Todos";
             this.btnDesmarcarTodos.UseVisualStyleBackColor = false;
@@ -90,10 +92,9 @@
             this.btnMarcarTodos.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMarcarTodos.ForeColor = System.Drawing.Color.White;
             this.btnMarcarTodos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMarcarTodos.Location = new System.Drawing.Point(2524, 512);
-            this.btnMarcarTodos.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
+            this.btnMarcarTodos.Location = new System.Drawing.Point(847, 180);
             this.btnMarcarTodos.Name = "btnMarcarTodos";
-            this.btnMarcarTodos.Size = new System.Drawing.Size(570, 100);
+            this.btnMarcarTodos.Size = new System.Drawing.Size(180, 35);
             this.btnMarcarTodos.TabIndex = 46;
             this.btnMarcarTodos.Text = "Marcar Todos";
             this.btnMarcarTodos.UseVisualStyleBackColor = false;
@@ -101,6 +102,7 @@
             // 
             // dgvProductos
             // 
+            this.dgvProductos.AllowUserToAddRows = false;
             this.dgvProductos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -141,15 +143,15 @@
             this.dgvProductos.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvProductos.EnableHeadersVisualStyles = false;
             this.dgvProductos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.dgvProductos.Location = new System.Drawing.Point(127, 188);
-            this.dgvProductos.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
+            this.dgvProductos.Location = new System.Drawing.Point(40, 66);
             this.dgvProductos.MultiSelect = false;
             this.dgvProductos.Name = "dgvProductos";
             this.dgvProductos.RowHeadersVisible = false;
             this.dgvProductos.RowHeadersWidth = 123;
             this.dgvProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProductos.Size = new System.Drawing.Size(2296, 1284);
+            this.dgvProductos.Size = new System.Drawing.Size(775, 471);
             this.dgvProductos.TabIndex = 45;
+            this.dgvProductos.Scroll += new System.Windows.Forms.ScrollEventHandler(this.dgvProductos_Scroll);
             // 
             // Seleccionar
             // 
@@ -158,7 +160,7 @@
             this.Seleccionar.Name = "Seleccionar";
             this.Seleccionar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Seleccionar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Seleccionar.Width = 51;
+            this.Seleccionar.Width = 17;
             // 
             // ProductoID
             // 
@@ -166,7 +168,7 @@
             this.ProductoID.HeaderText = "ID";
             this.ProductoID.MinimumWidth = 15;
             this.ProductoID.Name = "ProductoID";
-            this.ProductoID.Width = 121;
+            this.ProductoID.Width = 44;
             // 
             // Referencia
             // 
@@ -174,7 +176,7 @@
             this.Referencia.HeaderText = "Referencia";
             this.Referencia.MinimumWidth = 15;
             this.Referencia.Name = "Referencia";
-            this.Referencia.Width = 289;
+            this.Referencia.Width = 99;
             // 
             // Descripcion
             // 
@@ -182,7 +184,7 @@
             this.Descripcion.HeaderText = "Descripcion";
             this.Descripcion.MinimumWidth = 15;
             this.Descripcion.Name = "Descripcion";
-            this.Descripcion.Width = 307;
+            this.Descripcion.Width = 106;
             // 
             // Marca
             // 
@@ -190,7 +192,7 @@
             this.Marca.HeaderText = "Marca";
             this.Marca.MinimumWidth = 15;
             this.Marca.Name = "Marca";
-            this.Marca.Width = 207;
+            this.Marca.Width = 72;
             // 
             // Calidad
             // 
@@ -198,7 +200,7 @@
             this.Calidad.HeaderText = "Calidad";
             this.Calidad.MinimumWidth = 15;
             this.Calidad.Name = "Calidad";
-            this.Calidad.Width = 239;
+            this.Calidad.Width = 84;
             // 
             // UnidadMedida
             // 
@@ -206,7 +208,7 @@
             this.UnidadMedida.HeaderText = "UM";
             this.UnidadMedida.MinimumWidth = 15;
             this.UnidadMedida.Name = "UnidadMedida";
-            this.UnidadMedida.Width = 143;
+            this.UnidadMedida.Width = 50;
             // 
             // Existencia
             // 
@@ -214,7 +216,7 @@
             this.Existencia.HeaderText = "Existencia";
             this.Existencia.MinimumWidth = 15;
             this.Existencia.Name = "Existencia";
-            this.Existencia.Width = 269;
+            this.Existencia.Width = 93;
             // 
             // PrecioCompra
             // 
@@ -222,7 +224,7 @@
             this.PrecioCompra.HeaderText = "PrecioCompra";
             this.PrecioCompra.MinimumWidth = 15;
             this.PrecioCompra.Name = "PrecioCompra";
-            this.PrecioCompra.Width = 362;
+            this.PrecioCompra.Width = 126;
             // 
             // CantMin
             // 
@@ -230,7 +232,7 @@
             this.CantMin.HeaderText = "CantMin";
             this.CantMin.MinimumWidth = 15;
             this.CantMin.Name = "CantMin";
-            this.CantMin.Width = 246;
+            this.CantMin.Width = 86;
             // 
             // CantMax
             // 
@@ -238,7 +240,7 @@
             this.CantMax.HeaderText = "CantMax";
             this.CantMax.MinimumWidth = 15;
             this.CantMax.Name = "CantMax";
-            this.CantMax.Width = 259;
+            this.CantMax.Width = 90;
             // 
             // btnCerrar
             // 
@@ -247,10 +249,9 @@
             this.btnCerrar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCerrar.ForeColor = System.Drawing.Color.DimGray;
-            this.btnCerrar.Location = new System.Drawing.Point(38, 26);
-            this.btnCerrar.Margin = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.btnCerrar.Location = new System.Drawing.Point(12, 9);
             this.btnCerrar.Name = "btnCerrar";
-            this.btnCerrar.Size = new System.Drawing.Size(56, 55);
+            this.btnCerrar.Size = new System.Drawing.Size(20, 20);
             this.btnCerrar.TabIndex = 44;
             this.btnCerrar.Text = "X";
             this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
@@ -265,10 +266,9 @@
             this.btnSeleccionar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSeleccionar.ForeColor = System.Drawing.Color.White;
             this.btnSeleccionar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSeleccionar.Location = new System.Drawing.Point(2524, 339);
-            this.btnSeleccionar.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
+            this.btnSeleccionar.Location = new System.Drawing.Point(847, 119);
             this.btnSeleccionar.Name = "btnSeleccionar";
-            this.btnSeleccionar.Size = new System.Drawing.Size(570, 100);
+            this.btnSeleccionar.Size = new System.Drawing.Size(180, 35);
             this.btnSeleccionar.TabIndex = 43;
             this.btnSeleccionar.Text = "Seleccionar";
             this.btnSeleccionar.UseVisualStyleBackColor = false;
@@ -281,10 +281,9 @@
             this.checkBoxProdExistBaja.Checked = true;
             this.checkBoxProdExistBaja.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxProdExistBaja.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.checkBoxProdExistBaja.Location = new System.Drawing.Point(2542, 188);
-            this.checkBoxProdExistBaja.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
+            this.checkBoxProdExistBaja.Location = new System.Drawing.Point(835, 66);
             this.checkBoxProdExistBaja.Name = "checkBoxProdExistBaja";
-            this.checkBoxProdExistBaja.Size = new System.Drawing.Size(565, 56);
+            this.checkBoxProdExistBaja.Size = new System.Drawing.Size(196, 22);
             this.checkBoxProdExistBaja.TabIndex = 93;
             this.checkBoxProdExistBaja.Text = "Prod. con Existencia Baja";
             this.checkBoxProdExistBaja.UseVisualStyleBackColor = true;
@@ -295,13 +294,11 @@
             this.txtFiltro.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtFiltro.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFiltro.ForeColor = System.Drawing.Color.Gray;
-            this.txtFiltro.Location = new System.Drawing.Point(1241, 60);
-            this.txtFiltro.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
+            this.txtFiltro.Location = new System.Drawing.Point(408, 29);
             this.txtFiltro.Name = "txtFiltro";
-            this.txtFiltro.Size = new System.Drawing.Size(666, 57);
+            this.txtFiltro.Size = new System.Drawing.Size(213, 24);
             this.txtFiltro.TabIndex = 95;
             this.txtFiltro.Text = "Escriba para filtrar...";
-            this.txtFiltro.TextChanged += new System.EventHandler(this.txtFiltro_TextChanged);
             this.txtFiltro.Enter += new System.EventHandler(this.txtFiltro_Enter);
             this.txtFiltro.Leave += new System.EventHandler(this.txtFiltro_Leave);
             // 
@@ -312,16 +309,16 @@
             this.cbFiltro.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbFiltro.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbFiltro.FormattingEnabled = true;
-            this.cbFiltro.Location = new System.Drawing.Point(1913, 60);
-            this.cbFiltro.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
+            this.cbFiltro.Location = new System.Drawing.Point(620, 29);
             this.cbFiltro.Name = "cbFiltro";
-            this.cbFiltro.Size = new System.Drawing.Size(501, 52);
+            this.cbFiltro.Size = new System.Drawing.Size(161, 24);
             this.cbFiltro.TabIndex = 94;
             this.cbFiltro.Validating += new System.ComponentModel.CancelEventHandler(this.cbFiltro_Validating);
             // 
             // groupBox6
             // 
             this.groupBox6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox6.Controls.Add(this.label5);
             this.groupBox6.Controls.Add(this.label2);
             this.groupBox6.Controls.Add(this.label4);
             this.groupBox6.Controls.Add(this.label1);
@@ -330,23 +327,30 @@
             this.groupBox6.Controls.Add(this.label19);
             this.groupBox6.Controls.Add(this.label18);
             this.groupBox6.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold);
-            this.groupBox6.Location = new System.Drawing.Point(2524, 831);
-            this.groupBox6.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
+            this.groupBox6.Location = new System.Drawing.Point(847, 292);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Padding = new System.Windows.Forms.Padding(10, 9, 10, 9);
-            this.groupBox6.Size = new System.Drawing.Size(570, 640);
+            this.groupBox6.Size = new System.Drawing.Size(180, 245);
             this.groupBox6.TabIndex = 126;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "ATAJOS";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Century Gothic", 10F);
+            this.label5.Location = new System.Drawing.Point(14, 223);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(145, 19);
+            this.label5.TabIndex = 94;
+            this.label5.Text = "ENTER = Selec. Prod.";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 10F);
-            this.label2.Location = new System.Drawing.Point(44, 305);
-            this.label2.Margin = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.label2.Location = new System.Drawing.Point(14, 107);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(361, 49);
+            this.label2.Size = new System.Drawing.Size(129, 19);
             this.label2.TabIndex = 93;
             this.label2.Text = "F4 = Marcar Prod.";
             // 
@@ -354,10 +358,9 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 10F);
-            this.label4.Location = new System.Drawing.Point(44, 558);
-            this.label4.Margin = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.label4.Location = new System.Drawing.Point(14, 196);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(446, 49);
+            this.label4.Size = new System.Drawing.Size(156, 19);
             this.label4.TabIndex = 92;
             this.label4.Text = "F7 = Desmarcar Todos";
             // 
@@ -365,10 +368,9 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 10F);
-            this.label1.Location = new System.Drawing.Point(44, 475);
-            this.label1.Margin = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.label1.Location = new System.Drawing.Point(14, 167);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(372, 49);
+            this.label1.Size = new System.Drawing.Size(132, 19);
             this.label1.TabIndex = 91;
             this.label1.Text = "F6 = Marcar Todos";
             // 
@@ -376,21 +378,19 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 10F);
-            this.label3.Location = new System.Drawing.Point(44, 390);
-            this.label3.Margin = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.label3.Location = new System.Drawing.Point(14, 137);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(451, 49);
+            this.label3.Size = new System.Drawing.Size(168, 19);
             this.label3.TabIndex = 90;
-            this.label3.Text = "F5 = Seleccionar Prod.";
+            this.label3.Text = "F5 = Realizar Busqueda";
             // 
             // label20
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Century Gothic", 10F);
-            this.label20.Location = new System.Drawing.Point(44, 57);
-            this.label20.Margin = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.label20.Location = new System.Drawing.Point(14, 20);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(322, 49);
+            this.label20.Size = new System.Drawing.Size(115, 19);
             this.label20.TabIndex = 89;
             this.label20.Text = "F1 = Filtrar Prod.";
             // 
@@ -398,10 +398,9 @@
             // 
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Century Gothic", 10F);
-            this.label19.Location = new System.Drawing.Point(44, 222);
-            this.label19.Margin = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.label19.Location = new System.Drawing.Point(14, 78);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(407, 49);
+            this.label19.Size = new System.Drawing.Size(146, 19);
             this.label19.TabIndex = 88;
             this.label19.Text = "F3 = Prod. Exist. Baja";
             // 
@@ -409,19 +408,37 @@
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Century Gothic", 10F);
-            this.label18.Location = new System.Drawing.Point(44, 137);
-            this.label18.Margin = new System.Windows.Forms.Padding(10, 0, 10, 0);
+            this.label18.Location = new System.Drawing.Point(14, 48);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(445, 49);
+            this.label18.Size = new System.Drawing.Size(158, 19);
             this.label18.TabIndex = 87;
             this.label18.Text = "F2 = Seleccionar Grid.";
             // 
+            // btnRealizarBusqueda
+            // 
+            this.btnRealizarBusqueda.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRealizarBusqueda.BackColor = System.Drawing.SystemColors.Window;
+            this.btnRealizarBusqueda.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnRealizarBusqueda.FlatAppearance.BorderSize = 0;
+            this.btnRealizarBusqueda.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.btnRealizarBusqueda.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnRealizarBusqueda.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRealizarBusqueda.ForeColor = System.Drawing.Color.White;
+            this.btnRealizarBusqueda.Image = ((System.Drawing.Image)(resources.GetObject("btnRealizarBusqueda.Image")));
+            this.btnRealizarBusqueda.Location = new System.Drawing.Point(778, 29);
+            this.btnRealizarBusqueda.Name = "btnRealizarBusqueda";
+            this.btnRealizarBusqueda.Size = new System.Drawing.Size(37, 24);
+            this.btnRealizarBusqueda.TabIndex = 127;
+            this.btnRealizarBusqueda.UseVisualStyleBackColor = false;
+            this.btnRealizarBusqueda.Click += new System.EventHandler(this.btnRealizarBusqueda_Click);
+            // 
             // ProductosPorProveedor
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(19F, 37F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.ClientSize = new System.Drawing.Size(3167, 1506);
+            this.ClientSize = new System.Drawing.Size(1049, 549);
+            this.Controls.Add(this.btnRealizarBusqueda);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.txtFiltro);
             this.Controls.Add(this.cbFiltro);
@@ -432,7 +449,6 @@
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.btnSeleccionar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(10, 9, 10, 9);
             this.Name = "ProductosPorProveedor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ProductosPorProveedor";
@@ -474,5 +490,7 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btnRealizarBusqueda;
     }
 }

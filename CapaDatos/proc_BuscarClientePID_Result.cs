@@ -11,9 +11,8 @@ namespace CapaDatos
 {
     using System;
     
-    public partial class proc_CargarTodosClientes_Result
+    public partial class proc_BuscarClientePID_Result
     {
-        public Nullable<long> RowNumber { get; set; }
         public int ClienteID { get; set; }
         public string Nombre { get; set; }
         public string CedulaORnc { get; set; }

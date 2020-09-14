@@ -20,9 +20,9 @@ namespace CapaDatos
             return Tuple.Create((bool)resultado.Value, (int)proveedorID.Value);
         }
 
-        public ObjectResult<proc_CargarTodosProveedores_Result> CargarTodosProveedores()
+        public ObjectResult<proc_CargarTodosProveedores_Result> CargarTodosProveedores(int indicePagina, int tamanoPagina, string filtro, string columna)
         {
-            var result = modelDB.proc_CargarTodosProveedores();
+            var result = modelDB.proc_CargarTodosProveedores(indicePagina, tamanoPagina, filtro, columna);
 
             return result;
         }

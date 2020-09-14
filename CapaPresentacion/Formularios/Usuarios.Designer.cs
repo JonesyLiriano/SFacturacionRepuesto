@@ -30,6 +30,7 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Usuarios));
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
             this.dgvUsuarios = new System.Windows.Forms.DataGridView();
@@ -41,7 +42,12 @@
             this.btnNuevo = new System.Windows.Forms.Button();
             this.txtFiltro = new System.Windows.Forms.TextBox();
             this.cbFiltro = new System.Windows.Forms.ComboBox();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.btnRealizarBusqueda = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
+            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnEliminar
@@ -82,6 +88,7 @@
             // 
             // dgvUsuarios
             // 
+            this.dgvUsuarios.AllowUserToAddRows = false;
             this.dgvUsuarios.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -123,6 +130,7 @@
             this.dgvUsuarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvUsuarios.Size = new System.Drawing.Size(838, 522);
             this.dgvUsuarios.TabIndex = 50;
+            this.dgvUsuarios.Scroll += new System.Windows.Forms.ScrollEventHandler(this.dgvUsuarios_Scroll);
             // 
             // UserID
             // 
@@ -193,12 +201,11 @@
             this.txtFiltro.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtFiltro.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFiltro.ForeColor = System.Drawing.Color.Gray;
-            this.txtFiltro.Location = new System.Drawing.Point(501, 21);
+            this.txtFiltro.Location = new System.Drawing.Point(467, 21);
             this.txtFiltro.Name = "txtFiltro";
             this.txtFiltro.Size = new System.Drawing.Size(213, 24);
             this.txtFiltro.TabIndex = 88;
             this.txtFiltro.Text = "Escriba para filtrar...";
-            this.txtFiltro.TextChanged += new System.EventHandler(this.txtFiltro_TextChanged);
             this.txtFiltro.Enter += new System.EventHandler(this.txtFiltro_Enter);
             this.txtFiltro.Leave += new System.EventHandler(this.txtFiltro_Leave);
             // 
@@ -209,11 +216,62 @@
             this.cbFiltro.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbFiltro.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbFiltro.FormattingEnabled = true;
-            this.cbFiltro.Location = new System.Drawing.Point(713, 21);
+            this.cbFiltro.Location = new System.Drawing.Point(679, 21);
             this.cbFiltro.Name = "cbFiltro";
             this.cbFiltro.Size = new System.Drawing.Size(161, 24);
             this.cbFiltro.TabIndex = 87;
             this.cbFiltro.Validating += new System.ComponentModel.CancelEventHandler(this.cbFiltro_Validating);
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox6.Controls.Add(this.label20);
+            this.groupBox6.Controls.Add(this.label18);
+            this.groupBox6.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold);
+            this.groupBox6.Location = new System.Drawing.Point(905, 243);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(180, 87);
+            this.groupBox6.TabIndex = 111;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "ATAJOS";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Century Gothic", 10F);
+            this.label20.Location = new System.Drawing.Point(11, 24);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(134, 19);
+            this.label20.TabIndex = 89;
+            this.label20.Text = "F1 = Filtrar Clientes";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Century Gothic", 10F);
+            this.label18.Location = new System.Drawing.Point(11, 52);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(168, 19);
+            this.label18.TabIndex = 87;
+            this.label18.Text = "F5 = Realizar Busqueda";
+            // 
+            // btnRealizarBusqueda
+            // 
+            this.btnRealizarBusqueda.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRealizarBusqueda.BackColor = System.Drawing.SystemColors.Window;
+            this.btnRealizarBusqueda.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnRealizarBusqueda.FlatAppearance.BorderSize = 0;
+            this.btnRealizarBusqueda.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.btnRealizarBusqueda.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnRealizarBusqueda.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRealizarBusqueda.ForeColor = System.Drawing.Color.White;
+            this.btnRealizarBusqueda.Image = ((System.Drawing.Image)(resources.GetObject("btnRealizarBusqueda.Image")));
+            this.btnRealizarBusqueda.Location = new System.Drawing.Point(837, 21);
+            this.btnRealizarBusqueda.Name = "btnRealizarBusqueda";
+            this.btnRealizarBusqueda.Size = new System.Drawing.Size(37, 24);
+            this.btnRealizarBusqueda.TabIndex = 110;
+            this.btnRealizarBusqueda.UseVisualStyleBackColor = false;
+            this.btnRealizarBusqueda.Click += new System.EventHandler(this.btnRealizarBusqueda_Click);
             // 
             // Usuarios
             // 
@@ -221,6 +279,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1110, 600);
+            this.Controls.Add(this.groupBox6);
+            this.Controls.Add(this.btnRealizarBusqueda);
             this.Controls.Add(this.txtFiltro);
             this.Controls.Add(this.cbFiltro);
             this.Controls.Add(this.btnEliminar);
@@ -231,9 +291,10 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Usuarios";
             this.Text = "Usuarios";
-            this.Activated += new System.EventHandler(this.Usuarios_Activated);
             this.Load += new System.EventHandler(this.Usuarios_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).EndInit();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -252,5 +313,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn UserLevel;
         private System.Windows.Forms.TextBox txtFiltro;
         private System.Windows.Forms.ComboBox cbFiltro;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Button btnRealizarBusqueda;
     }
 }

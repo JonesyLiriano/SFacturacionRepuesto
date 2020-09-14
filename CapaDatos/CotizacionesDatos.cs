@@ -31,9 +31,9 @@ namespace CapaDatos
             modelDB.proc_ActualizarEstatusCotizacion(cotizacionID, resultado);
             return (bool)resultado.Value;
         }
-        public ObjectResult<proc_CargarTodasCotizaciones_Result> CargarTodasCotizaciones()
+        public ObjectResult<proc_CargarTodasCotizaciones_Result> CargarTodasCotizaciones(int indicePagina, int tamanoPagina, string filtro, string columna)
         {
-            var result = modelDB.proc_CargarTodasCotizaciones();
+            var result = modelDB.proc_CargarTodasCotizaciones(indicePagina, tamanoPagina, filtro, columna);
             return result;
         }
 

@@ -20,9 +20,11 @@ namespace SFacturacion
     public partial class Productos : Form
     {
         ProductosNegocio productosNegocio = new ProductosNegocio();
-        List<proc_CargarTodosProductos_Result> proc_CargarTodosProductos_Results;
+        BindingList<proc_CargarTodosProductos_Result> proc_CargarTodosProductos_Results;
         Producto productoEntidad = new Producto();
-        bool resultado;
+        bool resultado, finalLista;
+        int indicePagina, tamanoPagina;
+        string filtro, columna;
 
         public Productos()
         {
@@ -38,6 +40,9 @@ namespace SFacturacion
         {
             try
             {
+                proc_CargarTodosProductos_Results = new BindingList<proc_CargarTodosProductos_Result>();
+                indicePagina = 1;
+                tamanoPagina = 50;
                 CargarProductos();
                 CargarCBFiltro();
                 txtFiltro.Select();
@@ -79,9 +84,18 @@ namespace SFacturacion
             try
             {
                 dgvProductos.AutoGenerateColumns = false;
-                proc_CargarTodosProductos_Results = productosNegocio.CargarTodosProductos().ToList();
+                List<proc_CargarTodosProductos_Result> lista = productosNegocio.CargarTodosProductos(indicePagina, tamanoPagina, filtro, columna).ToList();
+                if (lista.Count < tamanoPagina)
+                {
+                    finalLista = true;
+                }
+                foreach (var item in lista)
+                {
+                    proc_CargarTodosProductos_Results.Add(item);
+                }
                 dgvProductos.DataSource = proc_CargarTodosProductos_Results;
-                OrdenarColumnasDGV();
+
+               OrdenarColumnasDGV();
             }
             catch (Exception exc)
             {
@@ -161,6 +175,7 @@ namespace SFacturacion
             MantenimientoProducto frmMantProducto = new MantenimientoProducto();
             frmMantProducto.Controls["btnAplicar"].Text = "Agregar";
             frmMantProducto.ShowDialog();
+            ResetearBusqueda();
             CargarProductos();
         }
 
@@ -171,6 +186,7 @@ namespace SFacturacion
                 MantenimientoProducto frmMantProducto = new MantenimientoProducto(CargarParametrosProducto());
                 frmMantProducto.Controls["btnAplicar"].Text = "Editar";
                 frmMantProducto.ShowDialog();
+                ResetearBusqueda();
                 CargarProductos();
             }
             else
@@ -241,6 +257,8 @@ namespace SFacturacion
             {
                 txtFiltro.Text = "Escriba para filtrar...";
                 txtFiltro.ForeColor = Color.Gray;
+                ResetearBusqueda();
+                CargarProductos();
             }
         }
 
@@ -252,57 +270,7 @@ namespace SFacturacion
                 txtFiltro.ForeColor = Color.Black;
             }
         }
-
-        private void txtFiltro_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                if (txtFiltro.Text != "Escriba para filtrar...")
-                {
-                    switch (cbFiltro.SelectedItem.ToString())
-                    {
-                        case "ID":
-                            dgvProductos.DataSource = proc_CargarTodosProductos_Results.Where(p => p.ProductoID.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
-                            break;
-                        case "Servicio":
-                            dgvProductos.DataSource = proc_CargarTodosProductos_Results.Where(p => p.Servicio.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
-                            break;
-                        case "Codigo de Barra":
-                            dgvProductos.DataSource = proc_CargarTodosProductos_Results.Where(p => p.CodigoBarra.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
-                            break;
-                        case "Descripcion":
-                            dgvProductos.DataSource = proc_CargarTodosProductos_Results.Where(p => p.Descripcion.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
-                            break;
-                        case "Unidad de Medida":
-                            dgvProductos.DataSource = proc_CargarTodosProductos_Results.Where(p => p.UnidadMedida.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
-                            break;
-                        case "Proveedor":
-                            dgvProductos.DataSource = proc_CargarTodosProductos_Results.Where(p => p.Proveedor.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
-                            break;
-                        case "Referencia":
-                            dgvProductos.DataSource = proc_CargarTodosProductos_Results.Where(p => p.Referencia.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
-                            break;
-                        case "Marca":
-                            dgvProductos.DataSource = proc_CargarTodosProductos_Results.Where(p => p.Marca.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
-                            break;
-                        case "Calidad":
-                            dgvProductos.DataSource = proc_CargarTodosProductos_Results.Where(p => p.Calidad.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
-                            break;
-
-                        default:
-                            break;
-                    }
-                }
-               OrdenarColumnasDGV();
-            }
-            catch (Exception exc)
-            {
-                MessageBox.Show("Error: No se ha podido realizar la busqueda, intente de nuevo por favor.",
-                      "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Loggeator.EscribeEnArchivo(exc.ToString());
-            }
-        }
-
+       
         private void cbFiltro_Validating(object sender, CancelEventArgs e)
         {
             if (cbFiltro.SelectedIndex == -1 && cbFiltro.Items.Count > 0)
@@ -320,6 +288,9 @@ namespace SFacturacion
                     return true;
                 case Keys.F2:
                     dgvProductos.Focus();
+                    return true;
+                case Keys.F5:
+                    btnRealizarBusqueda.PerformClick();
                     return true;
                 case Keys.Escape:
                     this.Close();
@@ -360,6 +331,110 @@ namespace SFacturacion
                 Loggeator.EscribeEnArchivo(exc.ToString());
             }
         }
-        
+
+        private void btnRealizarBusqueda_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ResetearBusqueda();
+                if (txtFiltro.Text != "Escriba para filtrar...")
+                {                    
+                    switch (cbFiltro.SelectedItem.ToString())
+                    {
+                        case "ID":
+                            columna = "ProductoID";
+                            filtro = txtFiltro.Text;
+                            CargarProductos();
+                            break;
+                        case "Servicio":
+                            columna = "Servicio";
+                            filtro = txtFiltro.Text;
+                            CargarProductos();
+                            break;
+                        case "Codigo de Barra":
+                            columna = "CodigoBarra";
+                            filtro = txtFiltro.Text;
+                            CargarProductos();
+                            break;
+                        case "Descripcion":
+                            columna = "Descripcion";
+                            filtro = txtFiltro.Text;
+                            CargarProductos();
+                            break;
+                        case "Unidad de Medida":
+                            columna = "UnidadMedida";
+                            filtro = txtFiltro.Text;
+                            CargarProductos();
+                            break;
+                        case "Proveedor":
+                            columna = "Proveedor";
+                            filtro = txtFiltro.Text;
+                            CargarProductos();
+                            break;
+                        case "Referencia":
+                            columna = "Referencia";
+                            filtro = txtFiltro.Text;
+                            CargarProductos();
+                            break;
+                        case "Marca":
+                            columna = "Marca";
+                            filtro = txtFiltro.Text;
+                            CargarProductos();
+                            break;
+                        case "Calidad":
+                            columna = "Calidad";
+                            filtro = txtFiltro.Text;
+                            CargarProductos();
+                            break;
+
+                        default:
+                            break;
+                    }
+                } 
+                else
+                {
+                    CargarProductos();
+                }
+                OrdenarColumnasDGV();
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Error: No se ha podido realizar la busqueda, intente de nuevo por favor.",
+                      "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Loggeator.EscribeEnArchivo(exc.ToString());
+            }
+        }
+
+        private void dgvProductos_Scroll(object sender, ScrollEventArgs e)
+        {
+            if (!finalLista)
+            {
+                if ((e.Type == ScrollEventType.SmallIncrement || e.Type == ScrollEventType.LargeIncrement) && e.ScrollOrientation == ScrollOrientation.VerticalScroll)
+                {
+                    int display = dgvProductos.Rows.Count - dgvProductos.DisplayedRowCount(false);
+                    if (e.NewValue >= dgvProductos.Rows.Count - GetDisplayedRowsCount())
+                    {
+                        indicePagina++;
+                        CargarProductos();
+                    }
+                }
+            }
+        }
+        private int GetDisplayedRowsCount()
+        {
+            int count = dgvProductos.Rows[dgvProductos.FirstDisplayedScrollingRowIndex].Height;
+            count = dgvProductos.Height / count;
+            return count;
+        }            
+
+        private void ResetearBusqueda()
+        {
+            proc_CargarTodosProductos_Results.Clear();
+            finalLista = false;
+            indicePagina = 1;
+            filtro = null;
+            columna = null;
+        }
+      
     }
 }

@@ -30,6 +30,7 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Productos));
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
             this.dgvProductos = new System.Windows.Forms.DataGridView();
@@ -59,10 +60,12 @@
             this.cbFiltro = new System.Windows.Forms.ComboBox();
             this.btnMovimientos = new System.Windows.Forms.Button();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
+            this.btnRealizarBusqueda = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductos)).BeginInit();
             this.groupBox6.SuspendLayout();
             this.SuspendLayout();
@@ -77,7 +80,7 @@
             this.btnEliminar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEliminar.ForeColor = System.Drawing.Color.White;
             this.btnEliminar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEliminar.Location = new System.Drawing.Point(906, 190);
+            this.btnEliminar.Location = new System.Drawing.Point(907, 190);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(180, 35);
             this.btnEliminar.TabIndex = 52;
@@ -95,7 +98,7 @@
             this.btnEditar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEditar.ForeColor = System.Drawing.Color.White;
             this.btnEditar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEditar.Location = new System.Drawing.Point(906, 129);
+            this.btnEditar.Location = new System.Drawing.Point(907, 129);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(180, 35);
             this.btnEditar.TabIndex = 51;
@@ -105,6 +108,7 @@
             // 
             // dgvProductos
             // 
+            this.dgvProductos.AllowUserToAddRows = false;
             this.dgvProductos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -159,8 +163,9 @@
             this.dgvProductos.RowHeadersVisible = false;
             this.dgvProductos.RowHeadersWidth = 123;
             this.dgvProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProductos.Size = new System.Drawing.Size(835, 525);
+            this.dgvProductos.Size = new System.Drawing.Size(838, 521);
             this.dgvProductos.TabIndex = 50;
+            this.dgvProductos.Scroll += new System.Windows.Forms.ScrollEventHandler(this.dgvProductos_Scroll);
             // 
             // Descripcion
             // 
@@ -348,7 +353,7 @@
             this.btnNuevo.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNuevo.ForeColor = System.Drawing.Color.White;
             this.btnNuevo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNuevo.Location = new System.Drawing.Point(906, 67);
+            this.btnNuevo.Location = new System.Drawing.Point(907, 67);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(180, 35);
             this.btnNuevo.TabIndex = 48;
@@ -366,7 +371,7 @@
             this.btnSeleccionar.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSeleccionar.ForeColor = System.Drawing.Color.White;
             this.btnSeleccionar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSeleccionar.Location = new System.Drawing.Point(906, 99);
+            this.btnSeleccionar.Location = new System.Drawing.Point(907, 99);
             this.btnSeleccionar.Name = "btnSeleccionar";
             this.btnSeleccionar.Size = new System.Drawing.Size(180, 35);
             this.btnSeleccionar.TabIndex = 53;
@@ -385,7 +390,7 @@
             this.btnImprimirEtiqueta.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnImprimirEtiqueta.ForeColor = System.Drawing.Color.White;
             this.btnImprimirEtiqueta.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnImprimirEtiqueta.Location = new System.Drawing.Point(906, 250);
+            this.btnImprimirEtiqueta.Location = new System.Drawing.Point(907, 250);
             this.btnImprimirEtiqueta.Name = "btnImprimirEtiqueta";
             this.btnImprimirEtiqueta.Size = new System.Drawing.Size(180, 35);
             this.btnImprimirEtiqueta.TabIndex = 54;
@@ -398,12 +403,11 @@
             this.txtFiltro.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtFiltro.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFiltro.ForeColor = System.Drawing.Color.Gray;
-            this.txtFiltro.Location = new System.Drawing.Point(501, 21);
+            this.txtFiltro.Location = new System.Drawing.Point(464, 26);
             this.txtFiltro.Name = "txtFiltro";
             this.txtFiltro.Size = new System.Drawing.Size(213, 24);
             this.txtFiltro.TabIndex = 86;
             this.txtFiltro.Text = "Escriba para filtrar...";
-            this.txtFiltro.TextChanged += new System.EventHandler(this.txtFiltro_TextChanged);
             this.txtFiltro.Enter += new System.EventHandler(this.txtFiltro_Enter);
             this.txtFiltro.Leave += new System.EventHandler(this.txtFiltro_Leave);
             // 
@@ -414,7 +418,7 @@
             this.cbFiltro.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbFiltro.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbFiltro.FormattingEnabled = true;
-            this.cbFiltro.Location = new System.Drawing.Point(713, 21);
+            this.cbFiltro.Location = new System.Drawing.Point(676, 26);
             this.cbFiltro.Name = "cbFiltro";
             this.cbFiltro.Size = new System.Drawing.Size(161, 24);
             this.cbFiltro.TabIndex = 85;
@@ -430,7 +434,7 @@
             this.btnMovimientos.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMovimientos.ForeColor = System.Drawing.Color.White;
             this.btnMovimientos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMovimientos.Location = new System.Drawing.Point(906, 310);
+            this.btnMovimientos.Location = new System.Drawing.Point(907, 310);
             this.btnMovimientos.Name = "btnMovimientos";
             this.btnMovimientos.Size = new System.Drawing.Size(180, 35);
             this.btnMovimientos.TabIndex = 87;
@@ -441,17 +445,28 @@
             // groupBox6
             // 
             this.groupBox6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox6.Controls.Add(this.label2);
             this.groupBox6.Controls.Add(this.label1);
             this.groupBox6.Controls.Add(this.label20);
             this.groupBox6.Controls.Add(this.label19);
             this.groupBox6.Controls.Add(this.label18);
             this.groupBox6.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Bold);
-            this.groupBox6.Location = new System.Drawing.Point(906, 374);
+            this.groupBox6.Location = new System.Drawing.Point(907, 374);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(180, 149);
+            this.groupBox6.Size = new System.Drawing.Size(180, 171);
             this.groupBox6.TabIndex = 103;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "ATAJOS";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 10F);
+            this.label2.Location = new System.Drawing.Point(10, 149);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(140, 19);
+            this.label2.TabIndex = 91;
+            this.label2.Text = "ENTER = Elegir Prod.";
             // 
             // label1
             // 
@@ -489,9 +504,27 @@
             this.label18.Font = new System.Drawing.Font("Century Gothic", 10F);
             this.label18.Location = new System.Drawing.Point(11, 86);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(140, 19);
+            this.label18.Size = new System.Drawing.Size(168, 19);
             this.label18.TabIndex = 87;
-            this.label18.Text = "ENTER = Elegir Prod.";
+            this.label18.Text = "F5 = Realizar Busqueda";
+            // 
+            // btnRealizarBusqueda
+            // 
+            this.btnRealizarBusqueda.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRealizarBusqueda.BackColor = System.Drawing.SystemColors.Window;
+            this.btnRealizarBusqueda.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnRealizarBusqueda.FlatAppearance.BorderSize = 0;
+            this.btnRealizarBusqueda.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.btnRealizarBusqueda.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnRealizarBusqueda.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRealizarBusqueda.ForeColor = System.Drawing.Color.White;
+            this.btnRealizarBusqueda.Image = ((System.Drawing.Image)(resources.GetObject("btnRealizarBusqueda.Image")));
+            this.btnRealizarBusqueda.Location = new System.Drawing.Point(837, 26);
+            this.btnRealizarBusqueda.Name = "btnRealizarBusqueda";
+            this.btnRealizarBusqueda.Size = new System.Drawing.Size(37, 24);
+            this.btnRealizarBusqueda.TabIndex = 104;
+            this.btnRealizarBusqueda.UseVisualStyleBackColor = false;
+            this.btnRealizarBusqueda.Click += new System.EventHandler(this.btnRealizarBusqueda_Click);
             // 
             // Productos
             // 
@@ -500,6 +533,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1110, 600);
+            this.Controls.Add(this.btnRealizarBusqueda);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.btnMovimientos);
             this.Controls.Add(this.txtFiltro);
@@ -559,5 +593,7 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnRealizarBusqueda;
     }
 }

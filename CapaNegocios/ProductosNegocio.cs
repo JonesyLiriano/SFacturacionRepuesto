@@ -17,24 +17,24 @@ namespace CapaNegocios
             return productosDatos.AgregarProducto(producto);
         }
 
-        public ObjectResult<proc_CargarTodosProductos_Result> CargarTodosProductos()
+        public ObjectResult<proc_CargarTodosProductos_Result> CargarTodosProductos(int indicePagina, int tamanoPagina, string filtro, string columna)
         {
-            return productosDatos.CargarTodosProductos();
+            return productosDatos.CargarTodosProductos(indicePagina,tamanoPagina, filtro, columna );
         }
-        public ObjectResult<proc_CargarProductosExistBaja_Result> CargarProductosExistBaja()
+        public ObjectResult<proc_CargarProductosExistBaja_Result> CargarProductosExistBaja(int indicePagina, int tamanoPagina)
         {
-            return productosDatos.CargarProductosExistBaja();
-        }
-
-        public ObjectResult<proc_CargarProductosExistBajaPorProveedor_Result> CargarProductosExistBajaPorProveedor(int proveedorID)
-        {
-            return productosDatos.CargarProductosExistBajaPorProveedor(proveedorID);
+            return productosDatos.CargarProductosExistBaja(indicePagina, tamanoPagina);
         }
 
-
-        public ObjectResult<proc_CargarProductosPorProveedor_Result> CargarProductosPorProveedor(int proveedorID)
+        public ObjectResult<proc_CargarProductosExistBajaPorProveedor_Result> CargarProductosExistBajaPorProveedor(int proveedorID, int indicePagina, int tamanoPagina, string filtro, string columna)
         {
-            return productosDatos.CargarProductosPorProveedor(proveedorID);
+            return productosDatos.CargarProductosExistBajaPorProveedor(proveedorID, indicePagina, tamanoPagina, filtro, columna);
+        }
+
+
+        public ObjectResult<proc_CargarProductosPorProveedor_Result> CargarProductosPorProveedor(int proveedorID, int indicePagina, int tamanoPagina, string filtro, string columna)
+        {
+            return productosDatos.CargarProductosPorProveedor(proveedorID, indicePagina, tamanoPagina, filtro, columna);
         }
 
 

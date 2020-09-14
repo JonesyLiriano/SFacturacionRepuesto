@@ -17,8 +17,11 @@ namespace CapaPresentacion.Formularios
     public partial class Facturas : Form
     {
         FacturasNegocio facturasNegocio = new FacturasNegocio();
-        List<proc_CargarTodasFacturas_Result> proc_CargarTodasFacturas_Results;        
+        BindingList<proc_CargarTodasFacturas_Result> proc_CargarTodasFacturas_Results;        
         Thread hilo;
+        bool finalLista;
+        int indicePagina, tamanoPagina;
+        string filtro, columna;
         public Facturas()
         {
             InitializeComponent();
@@ -28,6 +31,9 @@ namespace CapaPresentacion.Formularios
         {
             try
             {
+                proc_CargarTodasFacturas_Results = new BindingList<proc_CargarTodasFacturas_Result>();
+                indicePagina = 1;
+                tamanoPagina = 50;
                 CargarFacturas();
                 CargarCBFiltro();
             }
@@ -76,11 +82,21 @@ namespace CapaPresentacion.Formularios
         {
             try
             {
+
                 dgvFacturas.AutoGenerateColumns = false;
-                proc_CargarTodasFacturas_Results = facturasNegocio.CargarTodasFacturas().ToList();
+                List<proc_CargarTodasFacturas_Result> lista = facturasNegocio.CargarTodasFacturas(indicePagina, tamanoPagina, filtro, columna).ToList();
+                if (lista.Count < tamanoPagina)
+                {
+                    finalLista = true;
+                }
+                foreach (var item in lista)
+                {
+                    proc_CargarTodasFacturas_Results.Add(item);
+                }
                 dgvFacturas.DataSource = proc_CargarTodasFacturas_Results;
+
                 OrdenarColumnasDGV();
-                
+
             }
             catch (Exception exc)
             {
@@ -172,6 +188,8 @@ namespace CapaPresentacion.Formularios
             {
                 txtFiltro.Text = "Escriba para filtrar...";
                 txtFiltro.ForeColor = Color.Gray;
+                ResetearBusqueda();
+                CargarFacturas();
             }
         }
 
@@ -182,40 +200,67 @@ namespace CapaPresentacion.Formularios
                 txtFiltro.Text = "";
                 txtFiltro.ForeColor = Color.Black;
             }
+        }           
+
+        private void cbFiltro_Validating(object sender, CancelEventArgs e)
+        {
+            if (cbFiltro.SelectedIndex == -1 && cbFiltro.Items.Count > 0)
+            {
+                cbFiltro.Focus();
+            }
         }
 
-        private void txtFiltro_TextChanged(object sender, EventArgs e)
+        private void btnRealizarBusqueda_Click(object sender, EventArgs e)
         {
             try
             {
+                ResetearBusqueda();
                 if (txtFiltro.Text != "Escriba para filtrar...")
                 {
                     switch (cbFiltro.SelectedItem.ToString())
                     {
                         case "ID":
-                            dgvFacturas.DataSource = proc_CargarTodasFacturas_Results.Where(p => p.FacturaID.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                            columna = "FacturaID";
+                            filtro = txtFiltro.Text;
+                            CargarFacturas();
                             break;
                         case "Cliente":
-                            dgvFacturas.DataSource = proc_CargarTodasFacturas_Results.Where(p => p.Cliente.ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                            columna = "Cliente";
+                            filtro = txtFiltro.Text;
+                            CargarFacturas();
                             break;
                         case "Fecha":
-                            dgvFacturas.DataSource = proc_CargarTodasFacturas_Results.Where(p => p.Fecha.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                            columna = "Fecha";
+                            filtro = txtFiltro.Text;
+                            CargarFacturas();
                             break;
                         case "Tipo de Pago":
-                            dgvFacturas.DataSource = proc_CargarTodasFacturas_Results.Where(p => p.TipoDePago.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                            columna = "TipoDePago";
+                            filtro = txtFiltro.Text;
+                            CargarFacturas();
                             break;
                         case "Tipo de Factura":
-                            dgvFacturas.DataSource = proc_CargarTodasFacturas_Results.Where(p => p.TipoFactura.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                            columna = "TipoFactura";
+                            filtro = txtFiltro.Text;
+                            CargarFacturas();
                             break;
                         case "NCF":
-                            dgvFacturas.DataSource = proc_CargarTodasFacturas_Results.Where(p => p.NCF.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                            columna = "NCF";
+                            filtro = txtFiltro.Text;
+                            CargarFacturas();
                             break;
                         case "Cotizacion":
-                            dgvFacturas.DataSource = proc_CargarTodasFacturas_Results.Where(p => p.Cotizacion.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                            columna = "Cotizacion";
+                            filtro = txtFiltro.Text;
+                            CargarFacturas();
                             break;
                         default:
                             break;
                     }
+                }
+                else
+                {
+                    CargarCBFiltro();
                 }
                 OrdenarColumnasDGV();
             }
@@ -227,13 +272,51 @@ namespace CapaPresentacion.Formularios
             }
         }
 
-        private void cbFiltro_Validating(object sender, CancelEventArgs e)
+        private void dgvFacturas_Scroll(object sender, ScrollEventArgs e)
         {
-            if (cbFiltro.SelectedIndex == -1 && cbFiltro.Items.Count > 0)
+            if (!finalLista)
             {
-                cbFiltro.Focus();
+                if ((e.Type == ScrollEventType.SmallIncrement || e.Type == ScrollEventType.LargeIncrement) && e.ScrollOrientation == ScrollOrientation.VerticalScroll)
+                {
+                    int display = dgvFacturas.Rows.Count - dgvFacturas.DisplayedRowCount(false);
+                    if (e.NewValue >= dgvFacturas.Rows.Count - GetDisplayedRowsCount())
+                    {
+                        indicePagina++;
+                        CargarFacturas();
+                    }
+                }
+            }
+
+        }
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            switch (keyData)
+            {
+                case Keys.F1:
+                    txtFiltro.Focus();
+                    return true;
+                case Keys.F5:
+                    btnRealizarBusqueda.PerformClick();
+                    return true;
+                default:
+                    return base.ProcessCmdKey(ref msg, keyData);
             }
         }
 
+        private int GetDisplayedRowsCount()
+        {
+            int count = dgvFacturas.Rows[dgvFacturas.FirstDisplayedScrollingRowIndex].Height;
+            count = dgvFacturas.Height / count;
+            return count;
+        }
+
+        private void ResetearBusqueda()
+        {
+            proc_CargarTodasFacturas_Results.Clear();
+            finalLista = false;
+            indicePagina = 1;
+            filtro = null;
+            columna = null;
+        }
     }
 }

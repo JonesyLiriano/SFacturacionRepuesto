@@ -20,6 +20,9 @@ namespace SFacturacion
         SistemaResumenNegocio sistemaResumenNegocio = new SistemaResumenNegocio();
         List<proc_ResumenSistema_Result> proc_ResumenSistema_Results;
         List<proc_CargarProductosMasVendidos_Result> proc_CargarProductosMasVendidos_Results;
+        BindingList<proc_CargarProductosExistBaja_Result> proc_CargarProductosExistBaja_Results;
+        bool finalLista;
+        int indicePagina, tamanoPagina;
         public InicioResumen()
         {
             InitializeComponent();
@@ -27,6 +30,9 @@ namespace SFacturacion
 
         private void InicioResumen_Load(object sender, EventArgs e)
         {
+            proc_CargarProductosExistBaja_Results = new BindingList<proc_CargarProductosExistBaja_Result>();
+            indicePagina = 1;
+            tamanoPagina = 50;
             InicicializarLabelSistemaResumen();
             CargarProductoExistenciaBajaDGV();
             CargarProductosMasVendidosChart();
@@ -42,10 +48,36 @@ namespace SFacturacion
             }           
 
         }
+
         private void CargarProductoExistenciaBajaDGV()
         {
-            dgvProductos.AutoGenerateColumns = false;
-            dgvProductos.DataSource = productosNegocio.CargarProductosExistBaja();
+            try
+            {
+                dgvProductos.AutoGenerateColumns = false;
+                List<proc_CargarProductosExistBaja_Result> lista = productosNegocio.CargarProductosExistBaja(indicePagina, tamanoPagina).ToList();
+                if (lista.Count < tamanoPagina)
+                {
+                    finalLista = true;
+                }
+                foreach (var item in lista)
+                {
+                    proc_CargarProductosExistBaja_Results.Add(item);
+                }
+                dgvProductos.DataSource = proc_CargarProductosExistBaja_Results;
+
+                OrdenarColumnasDGV();
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Error: No se ha podido cargar todos los usuarios correctamente, intente de nuevo por favor.",
+                   "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Loggeator.EscribeEnArchivo(exc.ToString());
+            }
+        }
+
+
+        private void OrdenarColumnasDGV()
+        {           
             dgvProductos.Columns["ProductoID"].DisplayIndex = 0;
             dgvProductos.Columns["Referencia"].DisplayIndex = 1;
             dgvProductos.Columns["CodigoBarra"].DisplayIndex = 2;
@@ -82,6 +114,29 @@ namespace SFacturacion
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Loggeator.EscribeEnArchivo(exc.ToString());
             }
+        }
+
+        private void dgvProductos_Scroll(object sender, ScrollEventArgs e)
+        {
+            if (!finalLista)
+            {
+                if ((e.Type == ScrollEventType.SmallIncrement || e.Type == ScrollEventType.LargeIncrement) && e.ScrollOrientation == ScrollOrientation.VerticalScroll)
+                {
+                    int display = dgvProductos.Rows.Count - dgvProductos.DisplayedRowCount(false);
+                    if (e.NewValue >= dgvProductos.Rows.Count - GetDisplayedRowsCount())
+                    {
+                        indicePagina++;
+                        CargarProductoExistenciaBajaDGV();
+                    }
+                }
+            }
+
+        }
+        private int GetDisplayedRowsCount()
+        {
+            int count = dgvProductos.Rows[dgvProductos.FirstDisplayedScrollingRowIndex].Height;
+            count = dgvProductos.Height / count;
+            return count;
         }
     }
 }

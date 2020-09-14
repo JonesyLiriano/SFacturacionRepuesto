@@ -41,11 +41,17 @@ namespace CapaDatos
         {
             var result = modelDB.proc_CargarProductosFactura(facturaID);
             return result;
-        }       
+        }
 
-        public ObjectResult<proc_CargarTodasFacturas_Result> CargarTodasFacturas()
+        public ObjectResult<proc_CargarFacturasPCliente_Result> CargarFacturasPCliente(int clienteID)
         {
-            var result = modelDB.proc_CargarTodasFacturas();
+            var result = modelDB.proc_CargarFacturasPCliente(clienteID);
+            return result;
+        }        
+
+        public ObjectResult<proc_CargarTodasFacturas_Result> CargarTodasFacturas(int indicePagina, int tamanoPagina, string filtro, string columna)
+        {
+            var result = modelDB.proc_CargarTodasFacturas(indicePagina, tamanoPagina, filtro, columna);
             return result;
         }
        

@@ -13,14 +13,15 @@ namespace CapaDatos
     
     public partial class proc_CargarProductosExistBaja_Result
     {
+        public Nullable<long> RowNumber { get; set; }
         public int ProductoID { get; set; }
+        public string CodigoBarra { get; set; }
+        public string Referencia { get; set; }
+        public string Proveedor { get; set; }
         public string Descripcion { get; set; }
+        public string UnidadMedida { get; set; }
         public Nullable<double> Existencia { get; set; }
         public Nullable<double> CantMin { get; set; }
         public Nullable<double> CantMax { get; set; }
-        public string CodigoBarra { get; set; }
-        public string UnidadMedida { get; set; }
-        public string Proveedor { get; set; }
-        public string Referencia { get; set; }
     }
 }

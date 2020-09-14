@@ -13,12 +13,13 @@ namespace CapaDatos
     
     public partial class proc_CargarTodasCotizaciones_Result
     {
+        public Nullable<long> RowNumber { get; set; }
         public int CotizacionID { get; set; }
+        public string Cliente { get; set; }
         public Nullable<decimal> DescuentoCliente { get; set; }
         public System.DateTime Fecha { get; set; }
-        public Nullable<decimal> Valor { get; set; }
-        public string Cliente { get; set; }
-        public string Usuario { get; set; }
         public Nullable<int> Factura { get; set; }
+        public string Usuario { get; set; }
+        public Nullable<decimal> Valor { get; set; }
     }
 }

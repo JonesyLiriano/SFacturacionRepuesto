@@ -16,19 +16,17 @@ namespace CapaPresentacion
     public partial class Usuarios : Form
     {
         UsersNegocio usuariosNegocio = new UsersNegocio();
-        List<proc_CargarTodosUsers_Result> proc_CargarTodosUsers_Results;
+        BindingList<proc_CargarTodosUsers_Result> proc_CargarTodosUsers_Results;
         User usuarioEntidad = new User();
-        bool resultado;
+        bool resultado, finalLista;
+        int indicePagina, tamanoPagina;
+        string filtro, columna;
 
         public Usuarios()
         {
             InitializeComponent();
         }
-
-        private void Usuarios_Activated(object sender, EventArgs e)
-        {
-          
-        }
+             
 
         private void btnCerrar_Click(object sender, EventArgs e)
         {
@@ -63,6 +61,9 @@ namespace CapaPresentacion
         {
             try
             {
+                proc_CargarTodosUsers_Results = new BindingList<proc_CargarTodosUsers_Result>();
+                indicePagina = 1;
+                tamanoPagina = 50;
                 CargarUsuarios();
                 CargarCBFiltro();
             }
@@ -88,8 +89,17 @@ namespace CapaPresentacion
             try
             {
                 dgvUsuarios.AutoGenerateColumns = false;
-                proc_CargarTodosUsers_Results = usuariosNegocio.CargarTodosUsers().ToList();
+                List<proc_CargarTodosUsers_Result> lista = usuariosNegocio.CargarTodosUsers(indicePagina, tamanoPagina, filtro, columna).ToList();
+                if (lista.Count < tamanoPagina)
+                {
+                    finalLista = true;
+                }
+                foreach (var item in lista)
+                {
+                    proc_CargarTodosUsers_Results.Add(item);
+                }
                 dgvUsuarios.DataSource = proc_CargarTodosUsers_Results;
+
                 OrdenarColumnasDGV();
             }
             catch (Exception exc)
@@ -155,6 +165,8 @@ namespace CapaPresentacion
             {
                 txtFiltro.Text = "Escriba para filtrar...";
                 txtFiltro.ForeColor = Color.Gray;
+                ResetearBusqueda();
+                CargarUsuarios();
             }
         }
 
@@ -165,28 +177,47 @@ namespace CapaPresentacion
                 txtFiltro.Text = "";
                 txtFiltro.ForeColor = Color.Black;
             }
+        }       
+
+        private void cbFiltro_Validating(object sender, CancelEventArgs e)
+        {
+            if (cbFiltro.SelectedIndex == -1 && cbFiltro.Items.Count > 0)
+            {
+                cbFiltro.Focus();
+            }
         }
 
-        private void txtFiltro_TextChanged(object sender, EventArgs e)
+        private void btnRealizarBusqueda_Click(object sender, EventArgs e)
         {
             try
             {
+                ResetearBusqueda();
                 if (txtFiltro.Text != "Escriba para filtrar...")
                 {
                     switch (cbFiltro.SelectedItem.ToString())
                     {
                         case "ID":
-                            dgvUsuarios.DataSource = proc_CargarTodosUsers_Results.Where(p => p.UserID.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                            columna = "UserID";
+                            filtro = txtFiltro.Text;
+                            CargarUsuarios();
                             break;
                         case "Usuario":
-                            dgvUsuarios.DataSource = proc_CargarTodosUsers_Results.Where(p => p.UserName.ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                            columna = "UserName";
+                            filtro = txtFiltro.Text;
+                            CargarUsuarios();
                             break;
                         case "Nivel":
-                            dgvUsuarios.DataSource = proc_CargarTodosUsers_Results.Where(p => p.UserLevel.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
-                            break;
+                            columna = "UserLevel";
+                            filtro = txtFiltro.Text;
+                            CargarUsuarios();
+                            break;      
                         default:
                             break;
                     }
+                }
+                else
+                {
+                    CargarCBFiltro();
                 }
                 OrdenarColumnasDGV();
             }
@@ -198,12 +229,51 @@ namespace CapaPresentacion
             }
         }
 
-        private void cbFiltro_Validating(object sender, CancelEventArgs e)
+        private void dgvUsuarios_Scroll(object sender, ScrollEventArgs e)
         {
-            if (cbFiltro.SelectedIndex == -1 && cbFiltro.Items.Count > 0)
+            if (!finalLista)
             {
-                cbFiltro.Focus();
+                if ((e.Type == ScrollEventType.SmallIncrement || e.Type == ScrollEventType.LargeIncrement) && e.ScrollOrientation == ScrollOrientation.VerticalScroll)
+                {
+                    int display = dgvUsuarios.Rows.Count - dgvUsuarios.DisplayedRowCount(false);
+                    if (e.NewValue >= dgvUsuarios.Rows.Count - GetDisplayedRowsCount())
+                    {
+                        indicePagina++;
+                        CargarUsuarios();
+                    }
+                }
             }
+
+        }
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            switch (keyData)
+            {
+                case Keys.F1:
+                    txtFiltro.Focus();
+                    return true;
+                case Keys.F5:
+                    btnRealizarBusqueda.PerformClick();
+                    return true;
+                default:
+                    return base.ProcessCmdKey(ref msg, keyData);
+            }
+        }
+
+        private int GetDisplayedRowsCount()
+        {
+            int count = dgvUsuarios.Rows[dgvUsuarios.FirstDisplayedScrollingRowIndex].Height;
+            count = dgvUsuarios.Height / count;
+            return count;
+        }
+
+        private void ResetearBusqueda()
+        {
+            proc_CargarTodosUsers_Results.Clear();
+            finalLista = false;
+            indicePagina = 1;
+            filtro = null;
+            columna = null;
         }
     }
 }

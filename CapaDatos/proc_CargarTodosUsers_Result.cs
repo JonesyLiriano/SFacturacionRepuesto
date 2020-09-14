@@ -13,6 +13,7 @@ namespace CapaDatos
     
     public partial class proc_CargarTodosUsers_Result
     {
+        public Nullable<long> RowNumber { get; set; }
         public int UserID { get; set; }
         public string UserName { get; set; }
         public string UserPassword { get; set; }

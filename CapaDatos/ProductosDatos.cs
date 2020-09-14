@@ -19,29 +19,29 @@ namespace CapaDatos
 
             return Tuple.Create((bool)resultado.Value, (int)productoID.Value);
         }
-        public ObjectResult<proc_CargarTodosProductos_Result> CargarTodosProductos()
+        public ObjectResult<proc_CargarTodosProductos_Result> CargarTodosProductos(int indicePagina, int tamanoPagina, string filtro, string columna)
         {
-            var result = modelDB.proc_CargarTodosProductos();
+            var result = modelDB.proc_CargarTodosProductos(indicePagina, tamanoPagina, filtro, columna);
 
             return result;
         }
-        public ObjectResult<proc_CargarProductosExistBaja_Result> CargarProductosExistBaja()
+        public ObjectResult<proc_CargarProductosExistBaja_Result> CargarProductosExistBaja(int indicePagina, int tamanoPagina)
         {
-            var result = modelDB.proc_CargarProductosExistBaja();
-
-            return result;
-        }
-
-        public ObjectResult<proc_CargarProductosExistBajaPorProveedor_Result> CargarProductosExistBajaPorProveedor(int proveedorID)
-        {
-            var result = modelDB.proc_CargarProductosExistBajaPorProveedor(proveedorID);
+            var result = modelDB.proc_CargarProductosExistBaja(indicePagina, tamanoPagina);
 
             return result;
         }
 
-        public ObjectResult<proc_CargarProductosPorProveedor_Result> CargarProductosPorProveedor(int proveedorID)
+        public ObjectResult<proc_CargarProductosExistBajaPorProveedor_Result> CargarProductosExistBajaPorProveedor(int proveedorID, int indicePagina, int tamanoPagina, string filtro, string columna)
         {
-            var result = modelDB.proc_CargarProductosPorProveedor(proveedorID);
+            var result = modelDB.proc_CargarProductosExistBajaPorProveedor(proveedorID, indicePagina, tamanoPagina, filtro, columna);
+
+            return result;
+        }
+
+        public ObjectResult<proc_CargarProductosPorProveedor_Result> CargarProductosPorProveedor(int proveedorID, int indicePagina, int tamanoPagina, string filtro, string columna)
+        {
+            var result = modelDB.proc_CargarProductosPorProveedor(proveedorID, indicePagina, tamanoPagina, filtro, columna);
 
             return result;
         }

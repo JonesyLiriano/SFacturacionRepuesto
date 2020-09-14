@@ -16,9 +16,9 @@ namespace CapaNegocios
             return proveedoresDatos.AgregarProveedor(proveedor);
         }
 
-        public ObjectResult<proc_CargarTodosProveedores_Result> CargarTodosProveedores()
+        public ObjectResult<proc_CargarTodosProveedores_Result> CargarTodosProveedores(int indicePagina, int tamanoPagina, string filtro, string columna)
         {
-            return proveedoresDatos.CargarTodosProveedores();
+            return proveedoresDatos.CargarTodosProveedores(indicePagina, tamanoPagina, filtro, columna);
         }
 
         public bool EditarProveedor(Proveedore proveedor)

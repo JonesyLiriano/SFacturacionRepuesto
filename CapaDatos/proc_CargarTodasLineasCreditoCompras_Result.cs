@@ -13,6 +13,7 @@ namespace CapaDatos
     
     public partial class proc_CargarTodasLineasCreditoCompras_Result
     {
+        public Nullable<long> RowNumber { get; set; }
         public int LineaCreditoCompraID { get; set; }
         public string Proveedor { get; set; }
         public int OrdenCompra { get; set; }

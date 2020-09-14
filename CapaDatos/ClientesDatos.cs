@@ -19,9 +19,9 @@ namespace CapaDatos
 
             return Tuple.Create((bool)resultado.Value, (int) clienteID.Value);
         }
-        public ObjectResult<proc_CargarTodosClientes_Result> CargarTodosClientes()
+        public ObjectResult<proc_CargarTodosClientes_Result> CargarTodosClientes(int indicePagina, int tamanoPagina, string filtro, string columna)
         {
-            var result = modelDB.proc_CargarTodosClientes();
+            var result = modelDB.proc_CargarTodosClientes(indicePagina, tamanoPagina, filtro, columna);
 
             return result;
         }              
@@ -36,6 +36,11 @@ namespace CapaDatos
         {
             modelDB.proc_BorrarCliente(clienteID, resultado);
             return (bool)resultado.Value;
+        }
+        public ObjectResult<proc_BuscarClientePID_Result> BuscarClientePID(int clienteID)
+        {
+            var result = modelDB.proc_BuscarClientePID(clienteID);
+            return result;
         }
         public bool VerificarCredito(int clienteID, decimal montoFactura)
         {

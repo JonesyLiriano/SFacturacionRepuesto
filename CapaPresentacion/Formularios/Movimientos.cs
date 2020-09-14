@@ -16,7 +16,9 @@ namespace CapaPresentacion.Formularios
     public partial class Movimientos : Form
     {
         MovimientoNegocio movimientoNegocio = new MovimientoNegocio();
-        List<proc_CargarMovimientos_Result> proc_CargarMovimientos_Results;
+        BindingList<proc_CargarMovimientos_Result> proc_CargarMovimientos_Results;
+        bool finalLista;
+        int indicePagina, tamanoPagina, productoID;
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
@@ -31,7 +33,8 @@ namespace CapaPresentacion.Formularios
         public Movimientos(int productoID)
         {
             InitializeComponent();
-            CargarMovimientos(productoID);
+            this.productoID = productoID;
+            CargarMovimientos();
         }
 
         private void iconcerrar_Click(object sender, EventArgs e)
@@ -41,15 +44,26 @@ namespace CapaPresentacion.Formularios
 
         private void Movimientos_Load(object sender, EventArgs e)
         {
-           
+            proc_CargarMovimientos_Results = new BindingList<proc_CargarMovimientos_Result>();
+            indicePagina = 1;
+            tamanoPagina = 50;
         }
-        private void CargarMovimientos(int productoID)
+        private void CargarMovimientos()
         {
             try
             {
                 dgvMovimientos.AutoGenerateColumns = false;
-                proc_CargarMovimientos_Results = movimientoNegocio.CargarMovimientos(productoID).ToList();
+                List<proc_CargarMovimientos_Result> lista = movimientoNegocio.CargarMovimientos(productoID, indicePagina, tamanoPagina).ToList();
+                if (lista.Count < tamanoPagina)
+                {
+                    finalLista = true;
+                }
+                foreach (var item in lista)
+                {
+                    proc_CargarMovimientos_Results.Add(item);
+                }
                 dgvMovimientos.DataSource = proc_CargarMovimientos_Results;
+
                 OrdenarColumnasDGV();
             }
             catch (Exception exc)
@@ -59,6 +73,31 @@ namespace CapaPresentacion.Formularios
                 Loggeator.EscribeEnArchivo(exc.ToString());
             }
         }
+
+        private void dgvMovimientos_Scroll(object sender, ScrollEventArgs e)
+        {
+
+            if (!finalLista)
+            {
+                if ((e.Type == ScrollEventType.SmallIncrement || e.Type == ScrollEventType.LargeIncrement) && e.ScrollOrientation == ScrollOrientation.VerticalScroll)
+                {
+                    int display = dgvMovimientos.Rows.Count - dgvMovimientos.DisplayedRowCount(false);
+                    if (e.NewValue >= dgvMovimientos.Rows.Count - GetDisplayedRowsCount())
+                    {
+                        indicePagina++;
+                        CargarMovimientos();
+                    }
+                }
+            }
+
+        }
+        private int GetDisplayedRowsCount()
+        {
+            int count = dgvMovimientos.Rows[dgvMovimientos.FirstDisplayedScrollingRowIndex].Height;
+            count = dgvMovimientos.Height / count;
+            return count;
+        }
+
         private void OrdenarColumnasDGV()
         {
             dgvMovimientos.Columns["Producto"].DisplayIndex = 0;

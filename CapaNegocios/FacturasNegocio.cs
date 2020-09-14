@@ -35,9 +35,14 @@ namespace CapaNegocios
         }
 
 
-        public ObjectResult<proc_CargarTodasFacturas_Result> CargarTodasFacturas()
+        public ObjectResult<proc_CargarTodasFacturas_Result> CargarTodasFacturas(int indicePagina, int tamanoPagina, string filtro, string columna)
         {
-            return facturasDatos.CargarTodasFacturas();
+            return facturasDatos.CargarTodasFacturas(indicePagina, tamanoPagina, filtro, columna);
+        }
+
+        public ObjectResult<proc_CargarFacturasPCliente_Result> CargarFacturasPCliente(int clienteID)
+        {
+            return facturasDatos.CargarFacturasPCliente(clienteID);
         }
 
         public ObjectResult<proc_ComprobanteFacturaVenta_Result> CargarComprobanteFacturaVenta(int facturaID)

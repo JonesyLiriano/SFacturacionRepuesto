@@ -15,9 +15,11 @@ namespace CapaPresentacion
     public partial class Proveedores : Form
     {
         ProveedoresNegocio proveedoresNegocio = new ProveedoresNegocio();
-        List<proc_CargarTodosProveedores_Result> proc_CargarTodosProveedores_Results;
+        BindingList<proc_CargarTodosProveedores_Result> proc_CargarTodosProveedores_Results;
         Proveedore proveedorEntidad = new Proveedore();
-        bool resultado;
+        bool resultado, finalLista;
+        int indicePagina, tamanoPagina;
+        string filtro, columna;
         public Proveedores()
         {
             InitializeComponent();
@@ -55,6 +57,9 @@ namespace CapaPresentacion
         {
             try
             {
+                proc_CargarTodosProveedores_Results = new BindingList<proc_CargarTodosProveedores_Result>();
+                indicePagina = 1;
+                tamanoPagina = 50;
                 CargarProveedores();
                 CargarCBFiltro();
             }
@@ -83,8 +88,17 @@ namespace CapaPresentacion
             try
             {
                 dgvProveedores.AutoGenerateColumns = false;
-                proc_CargarTodosProveedores_Results = proveedoresNegocio.CargarTodosProveedores().ToList();
+                List<proc_CargarTodosProveedores_Result> lista = proveedoresNegocio.CargarTodosProveedores(indicePagina, tamanoPagina, filtro, columna).ToList();
+                if (lista.Count < tamanoPagina)
+                {
+                    finalLista = true;
+                }
+                foreach (var item in lista)
+                {
+                    proc_CargarTodosProveedores_Results.Add(item);
+                }
                 dgvProveedores.DataSource = proc_CargarTodosProveedores_Results;
+
                 OrdenarColumnasDGV();
             }
             catch (Exception exc)
@@ -155,6 +169,8 @@ namespace CapaPresentacion
             {
                 txtFiltro.Text = "Escriba para filtrar...";
                 txtFiltro.ForeColor = Color.Gray;
+                ResetearBusqueda();
+                CargarProveedores();
             }
         }
 
@@ -166,30 +182,53 @@ namespace CapaPresentacion
                 txtFiltro.ForeColor = Color.Black;
             }
         }
+       
 
-        private void txtFiltro_TextChanged(object sender, EventArgs e)
+        private void cbFiltro_Validating(object sender, CancelEventArgs e)
+        {
+            if (cbFiltro.SelectedIndex == -1 && cbFiltro.Items.Count > 0)
+            {
+                cbFiltro.Focus();
+            }
+        }
+
+        private void btnRealizarBusqueda_Click(object sender, EventArgs e)
         {
             try
             {
+                ResetearBusqueda();
                 if (txtFiltro.Text != "Escriba para filtrar...")
                 {
                     switch (cbFiltro.SelectedItem.ToString())
                     {
                         case "ID":
-                            dgvProveedores.DataSource = proc_CargarTodosProveedores_Results.Where(p => p.ProveedorID.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                            columna = "ClienteID";
+                            filtro = txtFiltro.Text;
+                            CargarProveedores();
                             break;
                         case "Nombre":
-                            dgvProveedores.DataSource = proc_CargarTodosProveedores_Results.Where(p => p.Nombre.ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                            columna = "Nombre";
+                            filtro = txtFiltro.Text;
+                            CargarProveedores();
                             break;
                         case "Cedula o RNC":
-                            dgvProveedores.DataSource = proc_CargarTodosProveedores_Results.Where(p => p.CedulaORnc.ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                            columna = "CedulaORnc";
+                            filtro = txtFiltro.Text;
+                            CargarProveedores();
                             break;
                         case "Direccion":
-                            dgvProveedores.DataSource = proc_CargarTodosProveedores_Results.Where(p => p.Direccion.ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                            columna = "Direccion";
+                            filtro = txtFiltro.Text;
+                            CargarProveedores();
                             break;
+
                         default:
                             break;
                     }
+                }
+                else
+                {
+                    CargarCBFiltro();
                 }
                 OrdenarColumnasDGV();
             }
@@ -201,12 +240,51 @@ namespace CapaPresentacion
             }
         }
 
-        private void cbFiltro_Validating(object sender, CancelEventArgs e)
+        private void dgvProveedores_Scroll(object sender, ScrollEventArgs e)
         {
-            if (cbFiltro.SelectedIndex == -1 && cbFiltro.Items.Count > 0)
+            if (!finalLista)
             {
-                cbFiltro.Focus();
+                if ((e.Type == ScrollEventType.SmallIncrement || e.Type == ScrollEventType.LargeIncrement) && e.ScrollOrientation == ScrollOrientation.VerticalScroll)
+                {
+                    int display = dgvProveedores.Rows.Count - dgvProveedores.DisplayedRowCount(false);
+                    if (e.NewValue >= dgvProveedores.Rows.Count - GetDisplayedRowsCount())
+                    {
+                        indicePagina++;
+                        CargarProveedores();
+                    }
+                }
             }
+
+        }
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            switch (keyData)
+            {
+                case Keys.F1:
+                    txtFiltro.Focus();
+                    return true;
+                case Keys.F5:
+                    btnRealizarBusqueda.PerformClick();
+                    return true;
+                default:
+                    return base.ProcessCmdKey(ref msg, keyData);
+            }
+        }
+
+        private int GetDisplayedRowsCount()
+        {
+            int count = dgvProveedores.Rows[dgvProveedores.FirstDisplayedScrollingRowIndex].Height;
+            count = dgvProveedores.Height / count;
+            return count;
+        }
+
+        private void ResetearBusqueda()
+        {
+            proc_CargarTodosProveedores_Results.Clear();
+            finalLista = false;
+            indicePagina = 1;
+            filtro = null;
+            columna = null;
         }
     }
 }

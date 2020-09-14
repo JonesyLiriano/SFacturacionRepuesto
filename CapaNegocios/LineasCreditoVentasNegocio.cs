@@ -18,9 +18,9 @@ namespace CapaNegocios
             return lineasCreditoVentasDatos.InsertarLineaCreditoVenta(lineaCreditoVenta);
         }
 
-        public ObjectResult<proc_CargarTodasLineasCreditoVentas_Result> CargarTodasLineasCreditoVentas()
+        public ObjectResult<proc_CargarTodasLineasCreditoVentas_Result> CargarTodasLineasCreditoVentas(int indicePagina, int tamanoPagina, string filtro, string columna)
         {
-           return lineasCreditoVentasDatos.CargarTodasLineasCreditoVentas();
+           return lineasCreditoVentasDatos.CargarTodasLineasCreditoVentas(indicePagina, tamanoPagina, filtro, columna);
         }        
        
         public bool ActualizarLineaCreditoVenta(int lineaCreditoVentaID, bool estatus)

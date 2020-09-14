@@ -18,9 +18,9 @@ namespace CapaNegocios
             return ordenesCompraDatos.InsertarOrdenCompra(ordenCompra);
         }
 
-        public ObjectResult<proc_CargarTodasOrdenesCompra_Result> CargarTodasOrdenesCompra()
+        public ObjectResult<proc_CargarTodasOrdenesCompra_Result> CargarTodasOrdenesCompra(int indicePagina, int tamanoPagina, string filtro, string columna)
         {
-            return ordenesCompraDatos.CargarTodasOrdenesCompra();
+            return ordenesCompraDatos.CargarTodasOrdenesCompra(indicePagina, tamanoPagina, filtro, columna);
         }
 
         public void CerrarOrdenCompra (int ordenCompraID)

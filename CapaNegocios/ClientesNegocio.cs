@@ -17,9 +17,9 @@ namespace CapaNegocios
             return clientesDatos.AgregarCliente(cliente);
         }
 
-        public ObjectResult<proc_CargarTodosClientes_Result> CargarTodosClientes()
+        public ObjectResult<proc_CargarTodosClientes_Result> CargarTodosClientes(int indicePagina, int tamanoPagina, string filtro, string columna)
         {
-            return clientesDatos.CargarTodosClientes();
+            return clientesDatos.CargarTodosClientes(indicePagina, tamanoPagina, filtro, columna);
         }
       
         public bool EditarCliente(Cliente cliente)
@@ -34,6 +34,11 @@ namespace CapaNegocios
         public bool VerificarCredito(int clienteID, decimal montoFactura)
         {
             return clientesDatos.VerificarCredito(clienteID, montoFactura);
+        }
+
+        public ObjectResult<proc_BuscarClientePID_Result> BuscarClientePID(int clienteID)
+        {
+            return clientesDatos.BuscarClientePID(clienteID);
         }
     }
 }

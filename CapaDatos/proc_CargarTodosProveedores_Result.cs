@@ -13,6 +13,7 @@ namespace CapaDatos
     
     public partial class proc_CargarTodosProveedores_Result
     {
+        public Nullable<long> RowNumber { get; set; }
         public int ProveedorID { get; set; }
         public string Nombre { get; set; }
         public string CedulaORnc { get; set; }

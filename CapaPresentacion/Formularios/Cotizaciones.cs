@@ -18,9 +18,11 @@ namespace CapaPresentacion
     public partial class Cotizaciones : Form
     {
         CotizacionesNegocio cotizacionesNegocio = new CotizacionesNegocio();
-        List<proc_CargarTodasCotizaciones_Result> proc_CargarTodasCotizaciones_Results;
-        bool resultado;
+        BindingList<proc_CargarTodasCotizaciones_Result> proc_CargarTodasCotizaciones_Results;
+        bool resultado, finalLista;
         Thread hilo;
+        int indicePagina, tamanoPagina;
+        string filtro, columna;
         public Cotizaciones()
         {
             InitializeComponent();
@@ -62,11 +64,21 @@ namespace CapaPresentacion
         private void CargarCotizaciones()
         {
             try
-            {
+            {               
                 dgvCotizaciones.AutoGenerateColumns = false;
-                proc_CargarTodasCotizaciones_Results = cotizacionesNegocio.CargarTodasCotizaciones().ToList();
+                List<proc_CargarTodasCotizaciones_Result> lista = cotizacionesNegocio.CargarTodasCotizaciones(indicePagina, tamanoPagina, filtro, columna).ToList();
+                if (lista.Count < tamanoPagina)
+                {
+                    finalLista = true;
+                }
+                foreach (var item in lista)
+                {
+                    proc_CargarTodasCotizaciones_Results.Add(item);
+                }
                 dgvCotizaciones.DataSource = proc_CargarTodasCotizaciones_Results;
+
                 OrdenarColumnasDGV();
+
             }
             catch (Exception exc)
             {
@@ -131,6 +143,9 @@ namespace CapaPresentacion
 
         private void Cotizaciones_Load(object sender, EventArgs e)
         {
+            proc_CargarTodasCotizaciones_Results = new BindingList<proc_CargarTodasCotizaciones_Result>();
+            indicePagina = 1;
+            tamanoPagina = 50;
             CargarCotizaciones();
             CargarCBFiltro();
         }
@@ -195,6 +210,8 @@ namespace CapaPresentacion
             {
                 txtFiltro.Text = "Escriba para filtrar...";
                 txtFiltro.ForeColor = Color.Gray;
+                ResetearBusqueda();
+                CargarCotizaciones();
             }
         }
 
@@ -206,30 +223,69 @@ namespace CapaPresentacion
                 txtFiltro.ForeColor = Color.Black;
             }
         }
+            
 
-        private void txtFiltro_TextChanged(object sender, EventArgs e)
+        private void cbFiltro_Validating(object sender, CancelEventArgs e)
+        {
+            if (cbFiltro.SelectedIndex == -1 && cbFiltro.Items.Count > 0)
+            {
+                cbFiltro.Focus();
+            }
+        }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            switch (keyData)
+            {
+                case Keys.F1:
+                    txtFiltro.Focus();
+                    return true;                
+                case Keys.F5:
+                    btnRealizarBusqueda.PerformClick();
+                    return true;               
+                default:
+                    return base.ProcessCmdKey(ref msg, keyData);
+            }
+        }
+
+
+        private void btnRealizarBusqueda_Click(object sender, EventArgs e)
         {
             try
             {
+                ResetearBusqueda();
                 if (txtFiltro.Text != "Escriba para filtrar...")
-                {
+                {                    
                     switch (cbFiltro.SelectedItem.ToString())
                     {
                         case "ID":
-                            dgvCotizaciones.DataSource = proc_CargarTodasCotizaciones_Results.Where(p => p.CotizacionID.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                            columna = "CotizacionID";
+                            filtro = txtFiltro.Text;
+                            CargarCotizaciones();
                             break;
                         case "Cliente":
-                            dgvCotizaciones.DataSource = proc_CargarTodasCotizaciones_Results.Where(p => p.Cliente.ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                            columna = "Cliente";
+                            filtro = txtFiltro.Text;
+                            CargarCotizaciones();
                             break;
                         case "Fecha":
-                            dgvCotizaciones.DataSource = proc_CargarTodasCotizaciones_Results.Where(p => p.Fecha.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                            columna = "Fecha";
+                            filtro = txtFiltro.Text;
+                            CargarCotizaciones();
                             break;
                         case "Factura":
-                            dgvCotizaciones.DataSource = proc_CargarTodasCotizaciones_Results.Where(p => p.Factura.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
-                            break;
+                            columna = "Factura";
+                            filtro = txtFiltro.Text;
+                            CargarCotizaciones();
+                            break;                     
+
                         default:
                             break;
                     }
+                }
+                else
+                {
+                    CargarCotizaciones();
                 }
                 OrdenarColumnasDGV();
             }
@@ -241,12 +297,38 @@ namespace CapaPresentacion
             }
         }
 
-        private void cbFiltro_Validating(object sender, CancelEventArgs e)
+        private void dgvCotizaciones_Scroll(object sender, ScrollEventArgs e)
         {
-            if (cbFiltro.SelectedIndex == -1 && cbFiltro.Items.Count > 0)
+            if (!finalLista)
             {
-                cbFiltro.Focus();
+                if ((e.Type == ScrollEventType.SmallIncrement || e.Type == ScrollEventType.LargeIncrement) && e.ScrollOrientation == ScrollOrientation.VerticalScroll)
+                {
+                    int display = dgvCotizaciones.Rows.Count - dgvCotizaciones.DisplayedRowCount(false);
+                    if (e.NewValue >= dgvCotizaciones.Rows.Count - GetDisplayedRowsCount())
+                    {
+                        indicePagina++;
+                        CargarCotizaciones();
+                    }
+                }
             }
         }
+      
+        private int GetDisplayedRowsCount()
+        {
+            int count = dgvCotizaciones.Rows[dgvCotizaciones.FirstDisplayedScrollingRowIndex].Height;
+            count = dgvCotizaciones.Height / count;
+            return count;
+        }
+
+        private void ResetearBusqueda()
+        {
+            proc_CargarTodasCotizaciones_Results.Clear();
+            finalLista = false;
+            indicePagina = 1;
+            filtro = null;
+            columna = null;
+        }
+
     }
+
 }

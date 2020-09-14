@@ -19,9 +19,9 @@ namespace CapaNegocios
             return userDatos.ValidarUsuario(user);   
         }
 
-        public ObjectResult<proc_CargarTodosUsers_Result> CargarTodosUsers()
+        public ObjectResult<proc_CargarTodosUsers_Result> CargarTodosUsers(int indicePagina, int tamanoPagina, string filtro, string columna)
         {
-            return userDatos.CargarTodosUsers();
+            return userDatos.CargarTodosUsers(indicePagina, tamanoPagina, filtro, columna);
         }
 
         public Tuple<bool, int> AgregarUser(User user)

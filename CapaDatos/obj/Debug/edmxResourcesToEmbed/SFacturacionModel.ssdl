@@ -664,6 +664,9 @@
     <Parameter Name="UserID" Type="int" Mode="In" />
     <Parameter Name="resultado" Type="bit" Mode="InOut" />
   </Function>
+  <Function Name="proc_BuscarClientePID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ClienteID" Type="int" Mode="In" />
+  </Function>
   <Function Name="proc_BuscarLineaDeCreditoVentaIDFactura" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="FacturaID" Type="int" Mode="In" />
     <Parameter Name="LineaCreditoVentaID" Type="int" Mode="InOut" />
@@ -673,14 +676,18 @@
   </Function>
   <Function Name="proc_BuscarProductosPorProveedor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ProveedorID" Type="int" Mode="In" />
+    <Parameter Name="IndicePagina" Type="int" Mode="In" />
+    <Parameter Name="TamanoPagina" Type="int" Mode="In" />
+    <Parameter Name="Filtro" Type="varchar" Mode="In" />
+    <Parameter Name="Columna" Type="varchar" Mode="In" />
   </Function>
   <Function Name="proc_CalcularGanancias" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="GananciaFContDia" Type="decimal" Mode="InOut" Precision="18" Scale="2" />
-    <Parameter Name="GananciaFContSemana" Type="decimal" Mode="InOut" Precision="18" Scale="2" />
-    <Parameter Name="GananciaFContMes" Type="decimal" Mode="InOut" Precision="18" Scale="2" />
-    <Parameter Name="GananciaFCredDia" Type="decimal" Mode="InOut" Precision="18" Scale="2" />
-    <Parameter Name="GananciaFCredSemana" Type="decimal" Mode="InOut" Precision="18" Scale="2" />
-    <Parameter Name="GananciaFCredMes" Type="decimal" Mode="InOut" Precision="18" Scale="2" />
+    <Parameter Name="GananciaFContDia" Type="decimal" Mode="InOut" />
+    <Parameter Name="GananciaFContSemana" Type="decimal" Mode="InOut" />
+    <Parameter Name="GananciaFContMes" Type="decimal" Mode="InOut" />
+    <Parameter Name="GananciaFCredDia" Type="decimal" Mode="InOut" />
+    <Parameter Name="GananciaFCredSemana" Type="decimal" Mode="InOut" />
+    <Parameter Name="GananciaFCredMes" Type="decimal" Mode="InOut" />
     <Parameter Name="Itbis" Type="decimal" Mode="In" />
   </Function>
   <Function Name="proc_CargarCobrosVentaCredito" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
@@ -705,6 +712,9 @@
     <Parameter Name="FechaInicial" Type="date" Mode="In" />
     <Parameter Name="FechaFinal" Type="date" Mode="In" />
   </Function>
+  <Function Name="proc_CargarFacturasPCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ClienteID" Type="int" Mode="In" />
+  </Function>
   <Function Name="proc_CargarFacturasPendientes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ClienteID" Type="int" Mode="In" />
   </Function>
@@ -721,6 +731,8 @@
   </Function>
   <Function Name="proc_CargarMovimientos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ProductoID" Type="int" Mode="In" />
+    <Parameter Name="IndicePagina" Type="int" Mode="In" />
+    <Parameter Name="TamanoPagina" Type="int" Mode="In" />
   </Function>
   <Function Name="proc_CargarNotasDeCreditoPFecha" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="FechaInicial" Type="date" Mode="In" />
@@ -736,9 +748,16 @@
   <Function Name="proc_CargarProductosCotizacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="CotizacionID" Type="int" Mode="In" />
   </Function>
-  <Function Name="proc_CargarProductosExistBaja" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="proc_CargarProductosExistBaja" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IndicePagina" Type="int" Mode="In" />
+    <Parameter Name="TamanoPagina" Type="int" Mode="In" />
+  </Function>
   <Function Name="proc_CargarProductosExistBajaPorProveedor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ProveedorID" Type="int" Mode="In" />
+    <Parameter Name="IndicePagina" Type="int" Mode="In" />
+    <Parameter Name="TamanoPagina" Type="int" Mode="In" />
+    <Parameter Name="Filtro" Type="varchar" Mode="In" />
+    <Parameter Name="Columna" Type="varchar" Mode="In" />
   </Function>
   <Function Name="proc_CargarProductosFactura" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="FacturaID" Type="int" Mode="In" />
@@ -746,19 +765,73 @@
   <Function Name="proc_CargarProductosMasVendidos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="proc_CargarProductosPorProveedor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="ProveedorID" Type="int" Mode="In" />
+    <Parameter Name="IndicePagina" Type="int" Mode="In" />
+    <Parameter Name="TamanoPagina" Type="int" Mode="In" />
+    <Parameter Name="Filtro" Type="varchar" Mode="In" />
+    <Parameter Name="Columna" Type="varchar" Mode="In" />
   </Function>
-  <Function Name="proc_CargarTodasCotizaciones" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-  <Function Name="proc_CargarTodasFacturas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-  <Function Name="proc_CargarTodasLineasCreditoCompras" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-  <Function Name="proc_CargarTodasLineasCreditoVentas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-  <Function Name="proc_CargarTodasNotasDeCredito" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-  <Function Name="proc_CargarTodasOrdenesCompra" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-  <Function Name="proc_CargarTodosClientes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-  <Function Name="proc_CargarTodosProductos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-  <Function Name="proc_CargarTodosProveedores" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="proc_CargarTodasCotizaciones" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IndicePagina" Type="int" Mode="In" />
+    <Parameter Name="TamanoPagina" Type="int" Mode="In" />
+    <Parameter Name="Filtro" Type="varchar" Mode="In" />
+    <Parameter Name="Columna" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="proc_CargarTodasFacturas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IndicePagina" Type="int" Mode="In" />
+    <Parameter Name="TamanoPagina" Type="int" Mode="In" />
+    <Parameter Name="Filtro" Type="varchar" Mode="In" />
+    <Parameter Name="Columna" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="proc_CargarTodasLineasCreditoCompras" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IndicePagina" Type="int" Mode="In" />
+    <Parameter Name="TamanoPagina" Type="int" Mode="In" />
+    <Parameter Name="Filtro" Type="varchar" Mode="In" />
+    <Parameter Name="Columna" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="proc_CargarTodasLineasCreditoVentas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IndicePagina" Type="int" Mode="In" />
+    <Parameter Name="TamanoPagina" Type="int" Mode="In" />
+    <Parameter Name="Filtro" Type="varchar" Mode="In" />
+    <Parameter Name="Columna" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="proc_CargarTodasNotasDeCredito" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IndicePagina" Type="int" Mode="In" />
+    <Parameter Name="TamanoPagina" Type="int" Mode="In" />
+    <Parameter Name="Filtro" Type="varchar" Mode="In" />
+    <Parameter Name="Columna" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="proc_CargarTodasOrdenesCompra" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IndicePagina" Type="int" Mode="In" />
+    <Parameter Name="TamanoPagina" Type="int" Mode="In" />
+    <Parameter Name="Filtro" Type="varchar" Mode="In" />
+    <Parameter Name="Columna" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="proc_CargarTodosClientes" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IndicePagina" Type="int" Mode="In" />
+    <Parameter Name="TamanoPagina" Type="int" Mode="In" />
+    <Parameter Name="Filtro" Type="varchar" Mode="In" />
+    <Parameter Name="Columna" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="proc_CargarTodosProductos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IndicePagina" Type="int" Mode="In" />
+    <Parameter Name="TamanoPagina" Type="int" Mode="In" />
+    <Parameter Name="Filtro" Type="varchar" Mode="In" />
+    <Parameter Name="Columna" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="proc_CargarTodosProveedores" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IndicePagina" Type="int" Mode="In" />
+    <Parameter Name="TamanoPagina" Type="int" Mode="In" />
+    <Parameter Name="Filtro" Type="varchar" Mode="In" />
+    <Parameter Name="Columna" Type="varchar" Mode="In" />
+  </Function>
   <Function Name="proc_CargarTodosTiposFactura" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="proc_CargarTodosTiposPagos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-  <Function Name="proc_CargarTodosUsers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="proc_CargarTodosUsers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IndicePagina" Type="int" Mode="In" />
+    <Parameter Name="TamanoPagina" Type="int" Mode="In" />
+    <Parameter Name="Filtro" Type="varchar" Mode="In" />
+    <Parameter Name="Columna" Type="varchar" Mode="In" />
+  </Function>
   <Function Name="proc_CerrarOrdenCompra" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="OrdenCompraID" Type="int" Mode="In" />
   </Function>

@@ -128,6 +128,9 @@
     <Compile Include="PagosComprasCredito.cs">
       <DependentUpon>SFacturacionModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="proc_BuscarClientePID_Result.cs">
+      <DependentUpon>SFacturacionModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="proc_BuscarProductosPorCodigoBarra_Result.cs">
       <DependentUpon>SFacturacionModel.tt</DependentUpon>
     </Compile>
@@ -150,6 +153,9 @@
       <DependentUpon>SFacturacionModel.tt</DependentUpon>
     </Compile>
     <Compile Include="proc_CargarFacturasCGubernamentalPFecha_Result.cs">
+      <DependentUpon>SFacturacionModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="proc_CargarFacturasPCliente_Result.cs">
       <DependentUpon>SFacturacionModel.tt</DependentUpon>
     </Compile>
     <Compile Include="proc_CargarFacturasPendientes_Result.cs">

@@ -13,23 +13,24 @@ namespace CapaDatos
     
     public partial class proc_CargarTodosProductos_Result
     {
+        public Nullable<long> RowNumber { get; set; }
         public int ProductoID { get; set; }
+        public bool Servicio { get; set; }
+        public string CodigoBarra { get; set; }
+        public string Referencia { get; set; }
         public string Descripcion { get; set; }
+        public string Marca { get; set; }
+        public string Calidad { get; set; }
+        public string UnidadMedida { get; set; }
+        public Nullable<int> ProveedorID { get; set; }
+        public string Proveedor { get; set; }
         public Nullable<double> Existencia { get; set; }
+        public bool ITBIS { get; set; }
         public Nullable<decimal> PrecioCompra { get; set; }
         public decimal PrecioVenta { get; set; }
         public decimal PrecioVentaMin { get; set; }
-        public bool ITBIS { get; set; }
         public decimal Descuento { get; set; }
         public Nullable<double> CantMin { get; set; }
         public Nullable<double> CantMax { get; set; }
-        public bool Servicio { get; set; }
-        public Nullable<int> ProveedorID { get; set; }
-        public string Proveedor { get; set; }
-        public string CodigoBarra { get; set; }
-        public string UnidadMedida { get; set; }
-        public string Referencia { get; set; }
-        public string Marca { get; set; }
-        public string Calidad { get; set; }
     }
 }

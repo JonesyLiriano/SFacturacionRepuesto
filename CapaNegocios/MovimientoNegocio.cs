@@ -17,9 +17,9 @@ namespace CapaNegocios
             return movimientoDatos.AgregarMovimiento(movimiento);
         }
 
-        public ObjectResult<proc_CargarMovimientos_Result> CargarMovimientos(int productoID)
+        public ObjectResult<proc_CargarMovimientos_Result> CargarMovimientos(int productoID, int indicePagina, int tamanoPagina)
         {
-            return movimientoDatos.CargarMovimientos(productoID);
+            return movimientoDatos.CargarMovimientos(productoID, indicePagina, tamanoPagina);
         }
     }
 }

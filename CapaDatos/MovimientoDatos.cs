@@ -22,9 +22,9 @@ namespace CapaDatos
             return Tuple.Create((bool)resultado.Value, (int)movimientoID.Value);
         }
 
-        public ObjectResult<proc_CargarMovimientos_Result> CargarMovimientos(int productoID)
+        public ObjectResult<proc_CargarMovimientos_Result> CargarMovimientos(int productoID, int indicePagina, int tamanoPagina)
         {
-            return modelDB.proc_CargarMovimientos(productoID);
+            return modelDB.proc_CargarMovimientos(productoID, indicePagina, tamanoPagina);
         }
 
     }

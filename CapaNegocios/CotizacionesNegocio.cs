@@ -29,9 +29,9 @@ namespace CapaNegocios
         }
 
 
-        public ObjectResult<proc_CargarTodasCotizaciones_Result> CargarTodasCotizaciones()
+        public ObjectResult<proc_CargarTodasCotizaciones_Result> CargarTodasCotizaciones(int indicePagina, int tamanoPagina, string filtro, string columna)
         {
-            return cotizacionDatos.CargarTodasCotizaciones();
+            return cotizacionDatos.CargarTodasCotizaciones(indicePagina, tamanoPagina, filtro, columna);
         }
 
         public ObjectResult<proc_CargarProductosCotizacion_Result> CargarProductosCotizacion(int cotizacionID)

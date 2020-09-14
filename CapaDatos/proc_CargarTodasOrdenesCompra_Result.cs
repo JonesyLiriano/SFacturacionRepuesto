@@ -13,17 +13,18 @@ namespace CapaDatos
     
     public partial class proc_CargarTodasOrdenesCompra_Result
     {
-        public System.DateTime FechaPedido { get; set; }
-        public Nullable<System.DateTime> FechaCompletado { get; set; }
-        public string NCF { get; set; }
-        public Nullable<System.DateTime> FechaFactura { get; set; }
+        public Nullable<long> RowNumber { get; set; }
+        public int OrdenCompraID { get; set; }
         public string Proveedor { get; set; }
+        public System.DateTime FechaPedido { get; set; }
+        public bool Completado { get; set; }
+        public Nullable<System.DateTime> FechaCompletado { get; set; }
         public string TipoDePago { get; set; }
+        public string NCF { get; set; }
+        public Nullable<System.DateTime> FechaVencimiento { get; set; }
+        public Nullable<System.DateTime> FechaFactura { get; set; }
         public Nullable<decimal> ITBIS { get; set; }
         public Nullable<decimal> SubTotal { get; set; }
-        public bool Completado { get; set; }
         public Nullable<decimal> Total { get; set; }
-        public Nullable<System.DateTime> FechaVencimiento { get; set; }
-        public int OrdenCompraID { get; set; }
     }
 }

@@ -74,7 +74,7 @@ namespace CapaPresentacion.Reportes
         {
             try
             {
-                proc_CargarTodosClientes_Results = clientesNegocio.CargarTodosClientes().ToList();
+                proc_CargarTodosClientes_Results = clientesNegocio.CargarTodosClientes(1,1,"Reporte","Reporte").ToList();
                 var dataSource = new ReportDataSource("DataSetTodosClientes", proc_CargarTodosClientes_Results);
                 reportViewer1.ProcessingMode = ProcessingMode.Local;
                 reportViewer1.LocalReport.ReportPath = @"C:/SFacturacion/reporteClientes.rdlc";

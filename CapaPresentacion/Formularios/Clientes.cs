@@ -17,9 +17,11 @@ namespace SFacturacion
     public partial class Clientes : Form
     {
         ClientesNegocio clientesNegocio = new ClientesNegocio();
-        List<proc_CargarTodosClientes_Result> proc_CargarTodosClientes_Results;
+        BindingList<proc_CargarTodosClientes_Result> proc_CargarTodosClientes_Results;
         Cliente clienteEntidad = new Cliente();
-        bool resultado;
+        bool resultado, finalLista;
+        int indicePagina, tamanoPagina;
+        string filtro, columna;
 
         public Clientes()
         {
@@ -59,6 +61,9 @@ namespace SFacturacion
         {
             try
             {
+                proc_CargarTodosClientes_Results = new BindingList<proc_CargarTodosClientes_Result>();
+                indicePagina = 1;
+                tamanoPagina = 50;
                 CargarClientes();
                 CargarCBFiltro();
             }
@@ -88,8 +93,17 @@ namespace SFacturacion
             try
             {
                 dgvClientes.AutoGenerateColumns = false;
-                proc_CargarTodosClientes_Results = clientesNegocio.CargarTodosClientes().ToList();
+                List<proc_CargarTodosClientes_Result> lista = clientesNegocio.CargarTodosClientes(indicePagina, tamanoPagina, filtro, columna).ToList();
+                if (lista.Count < tamanoPagina)
+                {
+                    finalLista = true;
+                }
+                foreach (var item in lista)
+                {
+                    proc_CargarTodosClientes_Results.Add(item);
+                }
                 dgvClientes.DataSource = proc_CargarTodosClientes_Results;
+
                 OrdenarColumnasDGV();
 
 
@@ -150,6 +164,8 @@ namespace SFacturacion
             {
                 txtFiltro.Text = "Escriba para filtrar...";
                 txtFiltro.ForeColor = Color.Gray;
+                ResetearBusqueda();
+                CargarClientes();
             }                
         }
 
@@ -167,40 +183,7 @@ namespace SFacturacion
             dgvClientes.Columns["Descuento"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgvClientes.Columns["Credito"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             dgvClientes.Refresh();
-        }
-        private void txtFiltro_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                if(txtFiltro.Text != "Escriba para filtrar...")
-                {
-                    switch (cbFiltro.SelectedItem.ToString())
-                    {
-                        case "ID":
-                            dgvClientes.DataSource = proc_CargarTodosClientes_Results.Where(p => p.ClienteID.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
-                            break;
-                        case "Nombre":
-                            dgvClientes.DataSource = proc_CargarTodosClientes_Results.Where(p => p.Nombre.ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
-                            break;
-                        case "Cedula o RNC":
-                            dgvClientes.DataSource = proc_CargarTodosClientes_Results.Where(p => p.CedulaORnc.ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
-                            break;
-                        case "Direccion":
-                            dgvClientes.DataSource = proc_CargarTodosClientes_Results.Where(p => p.Direccion.ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
-                            break;
-                        default:
-                            break;
-                    }
-                    OrdenarColumnasDGV();
-                }                
-            }
-            catch (Exception exc)
-            {
-                MessageBox.Show("No se pudo completar la busqueda, intentelo de nuevo por favor.",
-                      "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Loggeator.EscribeEnArchivo(exc.ToString());
-            }
-        }
+        }    
 
         private void cbFiltro_Validating(object sender, CancelEventArgs e)
         {
@@ -208,6 +191,101 @@ namespace SFacturacion
             {
                 cbFiltro.Focus();
             }
+        }
+
+        private void btnRealizarBusqueda_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ResetearBusqueda();
+                if (txtFiltro.Text != "Escriba para filtrar...")
+                {
+                    switch (cbFiltro.SelectedItem.ToString())
+                    {
+                        case "ID":
+                            columna = "ClienteID";
+                            filtro = txtFiltro.Text;
+                            CargarClientes();
+                            break;
+                        case "Nombre":
+                            columna = "Nombre";
+                            filtro = txtFiltro.Text;
+                            CargarClientes();
+                            break;
+                        case "Cedula o RNC":
+                            columna = "CedulaORnc";
+                            filtro = txtFiltro.Text;
+                            CargarClientes();
+                            break;
+                        case "Direccion":
+                            columna = "Direccion";
+                            filtro = txtFiltro.Text;
+                            CargarClientes();
+                            break;
+
+                        default:
+                            break;
+                    }
+                }
+                else
+                {
+                    CargarClientes();
+                }
+                OrdenarColumnasDGV();
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Error: No se ha podido realizar la busqueda, intente de nuevo por favor.",
+                      "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Loggeator.EscribeEnArchivo(exc.ToString());
+            }
+        }
+
+        private void dgvClientes_Scroll(object sender, ScrollEventArgs e)
+        {
+            if (!finalLista)
+            {
+                if ((e.Type == ScrollEventType.SmallIncrement || e.Type == ScrollEventType.LargeIncrement) && e.ScrollOrientation == ScrollOrientation.VerticalScroll)
+                {
+                    int display = dgvClientes.Rows.Count - dgvClientes.DisplayedRowCount(false);
+                    if (e.NewValue >= dgvClientes.Rows.Count - GetDisplayedRowsCount())
+                    {
+                        indicePagina++;
+                        CargarClientes();
+                    }
+                }
+            }
+
+        }
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            switch (keyData)
+            {
+                case Keys.F1:
+                    txtFiltro.Focus();
+                    return true;
+                case Keys.F5:
+                    btnRealizarBusqueda.PerformClick();
+                    return true;
+                default:
+                    return base.ProcessCmdKey(ref msg, keyData);
+            }
+        }
+
+        private int GetDisplayedRowsCount()
+        {
+            int count = dgvClientes.Rows[dgvClientes.FirstDisplayedScrollingRowIndex].Height;
+            count = dgvClientes.Height / count;
+            return count;
+        }
+
+        private void ResetearBusqueda()
+        {
+            proc_CargarTodosClientes_Results.Clear();
+            finalLista = false;
+            indicePagina = 1;
+            filtro = null;
+            columna = null;
         }
     }
 }

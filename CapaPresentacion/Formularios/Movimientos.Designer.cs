@@ -58,7 +58,7 @@
             this.BarraTitulo.Dock = System.Windows.Forms.DockStyle.Top;
             this.BarraTitulo.Location = new System.Drawing.Point(0, 0);
             this.BarraTitulo.Name = "BarraTitulo";
-            this.BarraTitulo.Size = new System.Drawing.Size(750, 36);
+            this.BarraTitulo.Size = new System.Drawing.Size(755, 36);
             this.BarraTitulo.TabIndex = 115;
             this.BarraTitulo.MouseDown += new System.Windows.Forms.MouseEventHandler(this.BarraTitulo_MouseDown);
             // 
@@ -89,7 +89,7 @@
             this.iconcerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.iconcerrar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.iconcerrar.Image = ((System.Drawing.Image)(resources.GetObject("iconcerrar.Image")));
-            this.iconcerrar.Location = new System.Drawing.Point(720, 9);
+            this.iconcerrar.Location = new System.Drawing.Point(725, 9);
             this.iconcerrar.Name = "iconcerrar";
             this.iconcerrar.Size = new System.Drawing.Size(18, 18);
             this.iconcerrar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -143,8 +143,9 @@
             this.dgvMovimientos.RowHeadersVisible = false;
             this.dgvMovimientos.RowHeadersWidth = 123;
             this.dgvMovimientos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvMovimientos.Size = new System.Drawing.Size(723, 392);
+            this.dgvMovimientos.Size = new System.Drawing.Size(728, 412);
             this.dgvMovimientos.TabIndex = 116;
+            this.dgvMovimientos.Scroll += new System.Windows.Forms.ScrollEventHandler(this.dgvMovimientos_Scroll);
             // 
             // Producto
             // 
@@ -207,11 +208,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(750, 450);
+            this.ClientSize = new System.Drawing.Size(755, 470);
             this.Controls.Add(this.dgvMovimientos);
             this.Controls.Add(this.BarraTitulo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.Margin = new System.Windows.Forms.Padding(1);
             this.Name = "Movimientos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Movimientos";

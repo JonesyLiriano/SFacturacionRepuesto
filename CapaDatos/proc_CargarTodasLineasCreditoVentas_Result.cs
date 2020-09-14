@@ -13,11 +13,12 @@ namespace CapaDatos
     
     public partial class proc_CargarTodasLineasCreditoVentas_Result
     {
+        public Nullable<long> RowNumber { get; set; }
         public int LineaCreditoVentaID { get; set; }
-        public System.DateTime Fecha { get; set; }
-        public Nullable<decimal> MontoFactura { get; set; }
         public string Cliente { get; set; }
         public int Factura { get; set; }
+        public System.DateTime Fecha { get; set; }
+        public Nullable<decimal> MontoFactura { get; set; }
         public Nullable<decimal> BalancePendiente { get; set; }
         public bool Completado { get; set; }
     }

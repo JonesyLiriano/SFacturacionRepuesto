@@ -24,9 +24,9 @@ namespace CapaDatos
             
         }               
 
-        public ObjectResult<proc_CargarTodosUsers_Result> CargarTodosUsers()
+        public ObjectResult<proc_CargarTodosUsers_Result> CargarTodosUsers(int indicePagina, int tamanoPagina, string filtro, string columna)
         {
-            var result = modelDB.proc_CargarTodosUsers();
+            var result = modelDB.proc_CargarTodosUsers(indicePagina, tamanoPagina, filtro, columna);
 
             return result;
         }

@@ -16,9 +16,12 @@ namespace CapaPresentacion.Formularios
 {
     public partial class Compras : Form
     {
-        List<proc_CargarTodasOrdenesCompra_Result> proc_CargarTodasOrdenesCompra_Results;
+        BindingList<proc_CargarTodasOrdenesCompra_Result> proc_CargarTodasOrdenesCompra_Results;
         OrdenesCompraNegocio ordenesCompraNegocio = new OrdenesCompraNegocio();
         Thread hilo;
+        bool finalLista;
+        int indicePagina, tamanoPagina;
+        string filtro, columna;
         public Compras()
         {
             InitializeComponent();
@@ -121,6 +124,9 @@ namespace CapaPresentacion.Formularios
         {
             try
             {
+                proc_CargarTodasOrdenesCompra_Results = new BindingList<proc_CargarTodasOrdenesCompra_Result>();
+                indicePagina = 1;
+                tamanoPagina = 50;
                 CargarDataGridView();
                 CargarCBFiltro();
             }
@@ -135,10 +141,28 @@ namespace CapaPresentacion.Formularios
 
         private void CargarDataGridView()
         {
-            dgvCompras.AutoGenerateColumns = false;
-            proc_CargarTodasOrdenesCompra_Results = ordenesCompraNegocio.CargarTodasOrdenesCompra().ToList();
-            dgvCompras.DataSource = proc_CargarTodasOrdenesCompra_Results;
-            OrdenarColumnasDGV();
+            try
+            {
+                dgvCompras.AutoGenerateColumns = false;
+                List<proc_CargarTodasOrdenesCompra_Result> lista = ordenesCompraNegocio.CargarTodasOrdenesCompra(indicePagina, tamanoPagina, filtro, columna).ToList();
+                if (lista.Count < tamanoPagina)
+                {
+                    finalLista = true;
+                }
+                foreach (var item in lista)
+                {
+                    proc_CargarTodasOrdenesCompra_Results.Add(item);
+                }
+                dgvCompras.DataSource = proc_CargarTodasOrdenesCompra_Results;
+
+                OrdenarColumnasDGV();
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Error: No se ha podido cargar las ordenes de compra correctamente, intente de nuevo por favor. " + exc.ToString(),
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Loggeator.EscribeEnArchivo(exc.ToString());
+            }
         }
 
         private void OrdenarColumnasDGV()
@@ -228,6 +252,8 @@ namespace CapaPresentacion.Formularios
             {
                 txtFiltro.Text = "Escriba para filtrar...";
                 txtFiltro.ForeColor = Color.Gray;
+                ResetearBusqueda();
+                CargarDataGridView();
             }
         }
 
@@ -238,37 +264,62 @@ namespace CapaPresentacion.Formularios
                 txtFiltro.Text = "";
                 txtFiltro.ForeColor = Color.Black;
             }
+        }      
+
+        private void cbFiltro_Validating(object sender, CancelEventArgs e)
+        {
+            if (cbFiltro.SelectedIndex == -1 && cbFiltro.Items.Count > 0)
+            {
+                cbFiltro.Focus();
+            }
         }
 
-        private void txtFiltro_TextChanged(object sender, EventArgs e)
+        private void btnRealizarBusqueda_Click(object sender, EventArgs e)
         {
             try
             {
+                ResetearBusqueda();
                 if (txtFiltro.Text != "Escriba para filtrar...")
                 {
                     switch (cbFiltro.SelectedItem.ToString())
                     {
                         case "ID":
-                            dgvCompras.DataSource = proc_CargarTodasOrdenesCompra_Results.Where(p => p.OrdenCompraID.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                            columna = "OrdenCompraID";
+                            filtro = txtFiltro.Text;
+                            CargarDataGridView();
                             break;
                         case "Proveedor":
-                            dgvCompras.DataSource = proc_CargarTodasOrdenesCompra_Results.Where(p => p.Proveedor.ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                            columna = "Proveedor";
+                            filtro = txtFiltro.Text;
+                            CargarDataGridView();
                             break;
                         case "Tipo de Pago":
-                            dgvCompras.DataSource = proc_CargarTodasOrdenesCompra_Results.Where(p => p.TipoDePago.ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                            columna = "TipoDePago";
+                            filtro = txtFiltro.Text;
+                            CargarDataGridView();
                             break;
                         case "Fecha Pedido":
-                            dgvCompras.DataSource = proc_CargarTodasOrdenesCompra_Results.Where(p => p.FechaPedido.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                            columna = "FechaPedido";
+                            filtro = txtFiltro.Text;
+                            CargarDataGridView();
                             break;
                         case "NCF":
-                            dgvCompras.DataSource = proc_CargarTodasOrdenesCompra_Results.Where(p => p.NCF.ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                            columna = "NCF";
+                            filtro = txtFiltro.Text;
+                            CargarDataGridView();
                             break;
                         case "Completado":
-                            dgvCompras.DataSource = proc_CargarTodasOrdenesCompra_Results.Where(p => p.Completado.ToString().ToLower().Contains(txtFiltro.Text.ToLower())).ToList();
+                            columna = "Completado";
+                            filtro = txtFiltro.Text;
+                            CargarDataGridView();
                             break;
                         default:
                             break;
                     }
+                }
+                else
+                {
+                    CargarCBFiltro();
                 }
                 OrdenarColumnasDGV();
             }
@@ -280,12 +331,51 @@ namespace CapaPresentacion.Formularios
             }
         }
 
-        private void cbFiltro_Validating(object sender, CancelEventArgs e)
+        private void dgvCompras_Scroll(object sender, ScrollEventArgs e)
         {
-            if (cbFiltro.SelectedIndex == -1 && cbFiltro.Items.Count > 0)
+            if (!finalLista)
             {
-                cbFiltro.Focus();
+                if ((e.Type == ScrollEventType.SmallIncrement || e.Type == ScrollEventType.LargeIncrement) && e.ScrollOrientation == ScrollOrientation.VerticalScroll)
+                {
+                    int display = dgvCompras.Rows.Count - dgvCompras.DisplayedRowCount(false);
+                    if (e.NewValue >= dgvCompras.Rows.Count - GetDisplayedRowsCount())
+                    {
+                        indicePagina++;
+                        CargarDataGridView();
+                    }
+                }
             }
+
+        }
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            switch (keyData)
+            {
+                case Keys.F1:
+                    txtFiltro.Focus();
+                    return true;
+                case Keys.F5:
+                    btnRealizarBusqueda.PerformClick();
+                    return true;
+                default:
+                    return base.ProcessCmdKey(ref msg, keyData);
+            }
+        }
+
+        private int GetDisplayedRowsCount()
+        {
+            int count = dgvCompras.Rows[dgvCompras.FirstDisplayedScrollingRowIndex].Height;
+            count = dgvCompras.Height / count;
+            return count;
+        }
+
+        private void ResetearBusqueda()
+        {
+            proc_CargarTodasOrdenesCompra_Results.Clear();
+            finalLista = false;
+            indicePagina = 1;
+            filtro = null;
+            columna = null;
         }
     }
 }

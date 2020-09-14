@@ -18,9 +18,9 @@ namespace CapaNegocios
             return notasDeCreditoDatos.AgregarNotaDeCredito(notasDeCredito);
         }
 
-        public ObjectResult<proc_CargarTodasNotasDeCredito_Result> CargarTodasNotasDeCredito()
+        public ObjectResult<proc_CargarTodasNotasDeCredito_Result> CargarTodasNotasDeCredito(int indicePagina, int tamanoPagina, string filtro, string columna)
         {
-            return notasDeCreditoDatos.CargarTodasNotasDeCredito();
+            return notasDeCreditoDatos.CargarTodasNotasDeCredito(indicePagina, tamanoPagina, filtro, columna);
         }
 
         public ObjectResult<proc_ComprobanteNotaDeCredito_Result> CargarComprobanteNotaDeCredito(int notaCreditoID)
