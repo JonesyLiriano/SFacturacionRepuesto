@@ -33,6 +33,7 @@ namespace CapaPresentacion.Formularios
             {
                 RegistrarNotaCredito registrarNotaCredito = new RegistrarNotaCredito();
                 registrarNotaCredito.ShowDialog();
+                ResetearBusqueda();
                 CargarNotasDeCredito();
             }
             catch (Exception exc)

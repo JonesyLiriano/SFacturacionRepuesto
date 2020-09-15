@@ -39,6 +39,7 @@ namespace SFacturacion
             MantenimientoCliente frmMantCliente = new MantenimientoCliente();
             frmMantCliente.Controls["btnAplicar"].Text = "Agregar";
             frmMantCliente.ShowDialog();
+            ResetearBusqueda();
             CargarClientes();
         }
 
@@ -48,7 +49,8 @@ namespace SFacturacion
                 MantenimientoCliente frmMantCliente = new MantenimientoCliente(CargarParametrosCliente());
                 frmMantCliente.Controls["btnAplicar"].Text = "Editar";
                 frmMantCliente.ShowDialog();
-                CargarClientes();
+                ResetearBusqueda();
+                CargarClientes(); ;
             }
             else
             {
@@ -143,7 +145,10 @@ namespace SFacturacion
         {
             if (result)
             {
+                ResetearBusqueda();
+                CargarClientes();
                 MessageBox.Show(string.Format("El cliente ha sido borrado correctamente en la base de datos."), "Cliente Borrado Correctamente!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             }
             else
             {

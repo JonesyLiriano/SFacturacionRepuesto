@@ -35,6 +35,7 @@ namespace CapaPresentacion
             MantenimientoProveedor frmMantProveedor = new MantenimientoProveedor();
             frmMantProveedor.Controls["btnAplicar"].Text = "Agregar";
             frmMantProveedor.ShowDialog();
+            ResetearBusqueda();
             CargarProveedores();
         }
 
@@ -45,6 +46,7 @@ namespace CapaPresentacion
                 MantenimientoProveedor frmMantProveedor = new MantenimientoProveedor(CargarParametrosProveedor());
                 frmMantProveedor.Controls["btnAplicar"].Text = "Editar";
                 frmMantProveedor.ShowDialog();
+                ResetearBusqueda();
                 CargarProveedores();
             }
             else
@@ -147,6 +149,8 @@ namespace CapaPresentacion
         {
             if (result)
             {
+                ResetearBusqueda();
+                CargarProveedores();
                 MessageBox.Show(string.Format("El proveedor ha sido borrado correctamente en la base de datos."), "Proveedor Borrado Correctamente!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else

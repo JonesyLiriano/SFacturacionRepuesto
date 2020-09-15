@@ -44,6 +44,7 @@ namespace CapaPresentacion.Formularios
                    Convert.ToBoolean(dgvCompras.Rows[dgvCompras.CurrentRow.Index].Cells["Completado"].Value)
                    );
                     ordenCompra.ShowDialog();
+                    ResetearBusqueda();
                     CargarDataGridView();
                 }
                 else
@@ -66,6 +67,7 @@ namespace CapaPresentacion.Formularios
             {
                 OrdenCompra ordenCompra = new OrdenCompra();
                 ordenCompra.ShowDialog();
+                ResetearBusqueda();
                 CargarDataGridView();
             }
             catch (Exception exc)
@@ -91,6 +93,7 @@ namespace CapaPresentacion.Formularios
 
                             if (resultado)
                             {
+                                ResetearBusqueda();
                                 CargarDataGridView();
                                 MessageBox.Show("Orden de compra ha sido borrada correctamente.", "Orden de Compra Eliminada", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }

@@ -38,6 +38,7 @@ namespace CapaPresentacion
             MantenimientoUsuario frmMantUsuario = new MantenimientoUsuario();
             frmMantUsuario.Controls["btnAplicar"].Text = "Agregar";
             frmMantUsuario.ShowDialog();
+            ResetearBusqueda();
             CargarUsuarios();
 
         }
@@ -49,6 +50,7 @@ namespace CapaPresentacion
                 MantenimientoUsuario frmMantUsuario = new MantenimientoUsuario(CargarParametrosUsuario());
                 frmMantUsuario.Controls["btnAplicar"].Text = "Editar";
                 frmMantUsuario.ShowDialog();
+                ResetearBusqueda();
                 CargarUsuarios();
             }
             else
@@ -144,6 +146,8 @@ namespace CapaPresentacion
         {
             if (result)
             {
+                ResetearBusqueda();
+                CargarUsuarios();
                 MessageBox.Show(string.Format("El usuario ha sido borrado correctamente en la base de datos."), "Usuario Borrado Correctamente!", MessageBoxButtons.OK, MessageBoxIcon.Information);           
             }
             else

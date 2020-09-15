@@ -97,6 +97,7 @@ namespace CapaPresentacion.Formularios
                         , dgvLineasCreditoVenta.CurrentRow.Cells["Cliente"].Value.ToString()
                         , Convert.ToDecimal(dgvLineasCreditoVenta.CurrentRow.Cells["BalancePendiente"].Value));
                         registrarCobro.ShowDialog();
+                        ResetearBusqueda();
                         CargarTodasLineasCreditoVenta();
 
                     }
@@ -132,6 +133,7 @@ namespace CapaPresentacion.Formularios
                         , Convert.ToDecimal(dgvLineasCreditoVenta.CurrentRow.Cells["BalancePendiente"].Value)
                         , Convert.ToBoolean(dgvLineasCreditoVenta.CurrentRow.Cells["Completado"].Value));
                     historialCobros.ShowDialog();
+                    ResetearBusqueda();
                     CargarTodasLineasCreditoVenta();
                 }
             }

@@ -34,6 +34,9 @@ namespace CapaPresentacion.Formularios
         {
             InitializeComponent();
             this.productoID = productoID;
+            proc_CargarMovimientos_Results = new BindingList<proc_CargarMovimientos_Result>();
+            indicePagina = 1;
+            tamanoPagina = 50;
             CargarMovimientos();
         }
 
@@ -44,9 +47,7 @@ namespace CapaPresentacion.Formularios
 
         private void Movimientos_Load(object sender, EventArgs e)
         {
-            proc_CargarMovimientos_Results = new BindingList<proc_CargarMovimientos_Result>();
-            indicePagina = 1;
-            tamanoPagina = 50;
+            
         }
         private void CargarMovimientos()
         {

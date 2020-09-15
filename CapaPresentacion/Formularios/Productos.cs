@@ -162,7 +162,10 @@ namespace SFacturacion
         {
             if (result)
             {
+                ResetearBusqueda();
+                CargarProductos();
                 MessageBox.Show(string.Format("El producto/servicio ha sido borrado correctamente en la base de datos."), "Producto/Servicio Borrado Correctamente!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+               
             }
             else
             {

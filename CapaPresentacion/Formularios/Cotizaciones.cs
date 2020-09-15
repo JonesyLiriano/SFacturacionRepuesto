@@ -111,8 +111,7 @@ namespace CapaPresentacion
                     DialogResult dialogResult = MessageBox.Show(string.Format("Esta seguro que desea eliminar la cotizacion {0}?", dgvCotizaciones.CurrentRow.Cells["CotizacionID"].Value), "Eliminar Cotizacion", MessageBoxButtons.OKCancel);
                     if (dialogResult == DialogResult.OK)
                     {
-                        resultado = cotizacionesNegocio.BorrarCotizacion(Convert.ToInt32(dgvCotizaciones.CurrentRow.Cells["CotizacionID"].Value));
-                        CargarCotizaciones();
+                        resultado = cotizacionesNegocio.BorrarCotizacion(Convert.ToInt32(dgvCotizaciones.CurrentRow.Cells["CotizacionID"].Value));                       
                         ValidarBorrarCotizacion(resultado);
                     }
                 }
@@ -133,6 +132,8 @@ namespace CapaPresentacion
         {
             if (result)
             {
+                ResetearBusqueda();
+                CargarCotizaciones();
                 MessageBox.Show(string.Format("La cotizacion ha sido borrada correctamente en la base de datos."), "Cotizacion Borrada Correctamente!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
