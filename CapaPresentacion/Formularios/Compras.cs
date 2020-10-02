@@ -287,32 +287,32 @@ namespace CapaPresentacion.Formularios
                     switch (cbFiltro.SelectedItem.ToString())
                     {
                         case "ID":
-                            columna = "OrdenCompraID";
+                            columna = "oc.OrdenCompraID";
                             filtro = txtFiltro.Text;
                             CargarDataGridView();
                             break;
                         case "Proveedor":
-                            columna = "Proveedor";
+                            columna = "p.Nombre";
                             filtro = txtFiltro.Text;
                             CargarDataGridView();
                             break;
                         case "Tipo de Pago":
-                            columna = "TipoDePago";
+                            columna = "tp.TipoDePago";
                             filtro = txtFiltro.Text;
                             CargarDataGridView();
                             break;
                         case "Fecha Pedido":
-                            columna = "FechaPedido";
+                            columna = "oc.FechaPedido";
                             filtro = txtFiltro.Text;
                             CargarDataGridView();
                             break;
                         case "NCF":
-                            columna = "NCF";
+                            columna = "fc.NCF";
                             filtro = txtFiltro.Text;
                             CargarDataGridView();
                             break;
                         case "Completado":
-                            columna = "Completado";
+                            columna = "oc.Estatus";
                             filtro = txtFiltro.Text;
                             CargarDataGridView();
                             break;

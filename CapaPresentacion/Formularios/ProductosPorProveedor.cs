@@ -353,32 +353,32 @@ namespace CapaPresentacion.Formularios
                     switch (cbFiltro.SelectedItem.ToString())
                     {
                         case "ID":
-                            columna = "ProductoID";
+                            columna = "p.ProductoID";
                             filtro = txtFiltro.Text;
                             CargarDataGridView();
                             break;    
                         case "Descripcion":
-                            columna = "Descripcion";
+                            columna = "p.Descripcion";
                             filtro = txtFiltro.Text;
                             CargarDataGridView();
                             break;
                         case "Unidad de Medida":
-                            columna = "UnidadMedida";
+                            columna = "p.UnidadMedida";
                             filtro = txtFiltro.Text;
                             CargarDataGridView();
                             break;                       
                         case "Referencia":
-                            columna = "Referencia";
+                            columna = "p.Referencia";
                             filtro = txtFiltro.Text;
                             CargarDataGridView();
                             break;
                         case "Marca":
-                            columna = "Marca";
+                            columna = "p.Marca";
                             filtro = txtFiltro.Text;
                             CargarDataGridView();
                             break;
                         case "Calidad":
-                            columna = "Calidad";
+                            columna = "p.Calidad";
                             filtro = txtFiltro.Text;
                             CargarDataGridView();
                             break;

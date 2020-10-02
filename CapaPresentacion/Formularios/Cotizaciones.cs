@@ -260,22 +260,22 @@ namespace CapaPresentacion
                     switch (cbFiltro.SelectedItem.ToString())
                     {
                         case "ID":
-                            columna = "CotizacionID";
+                            columna = "co.CotizacionID";
                             filtro = txtFiltro.Text;
                             CargarCotizaciones();
                             break;
                         case "Cliente":
-                            columna = "Cliente";
+                            columna = "cl.Nombre";
                             filtro = txtFiltro.Text;
                             CargarCotizaciones();
                             break;
                         case "Fecha":
-                            columna = "Fecha";
+                            columna = "co.Fecha";
                             filtro = txtFiltro.Text;
                             CargarCotizaciones();
                             break;
                         case "Factura":
-                            columna = "Factura";
+                            columna = "f.FacturaID";
                             filtro = txtFiltro.Text;
                             CargarCotizaciones();
                             break;                     

@@ -220,37 +220,37 @@ namespace CapaPresentacion.Formularios
                     switch (cbFiltro.SelectedItem.ToString())
                     {
                         case "ID":
-                            columna = "FacturaID";
+                            columna = "f.FacturaID";
                             filtro = txtFiltro.Text;
                             CargarFacturas();
                             break;
                         case "Cliente":
-                            columna = "Cliente";
+                            columna = "c.Nombre";
                             filtro = txtFiltro.Text;
                             CargarFacturas();
                             break;
                         case "Fecha":
-                            columna = "Fecha";
+                            columna = "f.Fecha";
                             filtro = txtFiltro.Text;
                             CargarFacturas();
                             break;
                         case "Tipo de Pago":
-                            columna = "TipoDePago";
+                            columna = "tp.TipoDePago";
                             filtro = txtFiltro.Text;
                             CargarFacturas();
                             break;
                         case "Tipo de Factura":
-                            columna = "TipoFactura";
+                            columna = "tf.TipoFactura";
                             filtro = txtFiltro.Text;
                             CargarFacturas();
                             break;
                         case "NCF":
-                            columna = "NCF";
+                            columna = "f.NCF";
                             filtro = txtFiltro.Text;
                             CargarFacturas();
                             break;
                         case "Cotizacion":
-                            columna = "Cotizacion";
+                            columna = "f.CotizacionID";
                             filtro = txtFiltro.Text;
                             CargarFacturas();
                             break;

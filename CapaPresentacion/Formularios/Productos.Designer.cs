@@ -462,11 +462,11 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 10F);
-            this.label2.Location = new System.Drawing.Point(10, 149);
+            this.label2.Location = new System.Drawing.Point(11, 84);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(140, 19);
+            this.label2.Size = new System.Drawing.Size(115, 19);
             this.label2.TabIndex = 91;
-            this.label2.Text = "ENTER = Elegir Prod.";
+            this.label2.Text = "F4 = Elegir Prod.";
             // 
             // label1
             // 
@@ -492,7 +492,7 @@
             // 
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Century Gothic", 10F);
-            this.label19.Location = new System.Drawing.Point(11, 119);
+            this.label19.Location = new System.Drawing.Point(11, 144);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(78, 19);
             this.label19.TabIndex = 88;
@@ -502,7 +502,7 @@
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Century Gothic", 10F);
-            this.label18.Location = new System.Drawing.Point(11, 86);
+            this.label18.Location = new System.Drawing.Point(11, 114);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(168, 19);
             this.label18.TabIndex = 87;

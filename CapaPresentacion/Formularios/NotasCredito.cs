@@ -237,37 +237,37 @@ namespace CapaPresentacion.Formularios
                     switch (cbFiltro.SelectedItem.ToString())
                     {
                         case "ID":
-                            columna = "NotaDeCreditoID";
+                            columna = "nc.NotaDeCreditoID";
                             filtro = txtFiltro.Text;
                             CargarNotasDeCredito();
                             break;
                         case "Cliente":
-                            columna = "Cliente";
+                            columna = "c.Nombre";
                             filtro = txtFiltro.Text;
                             CargarNotasDeCredito();
                             break;
                         case "Fecha":
-                            columna = "Fecha";
+                            columna = "nc.Fecha";
                             filtro = txtFiltro.Text;
                             CargarNotasDeCredito();
                             break;
                         case "Factura":
-                            columna = "Factura";
+                            columna = "nc.FacturaID";
                             filtro = txtFiltro.Text;
                             CargarNotasDeCredito();
                             break;
                         case "Factura Aplicada":
-                            columna = "FacturaAplicada";
+                            columna = "nc.FacturaAplicarID";
                             filtro = txtFiltro.Text;
                             CargarNotasDeCredito();
                             break;
                         case "NCF":
-                            columna = "NCF";
+                            columna = "nc.NCF";
                             filtro = txtFiltro.Text;
                             CargarNotasDeCredito();
                             break;
                         case "NCFAfectado":
-                            columna = "NCFAfectado";
+                            columna = "f.NCF";
                             filtro = txtFiltro.Text;
                             CargarNotasDeCredito();
                             break;

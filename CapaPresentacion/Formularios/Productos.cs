@@ -292,6 +292,9 @@ namespace SFacturacion
                 case Keys.F2:
                     dgvProductos.Focus();
                     return true;
+                case Keys.F4:
+                    btnSeleccionar.PerformClick();
+                    return true;
                 case Keys.F5:
                     btnRealizarBusqueda.PerformClick();
                     return true;
@@ -345,47 +348,47 @@ namespace SFacturacion
                     switch (cbFiltro.SelectedItem.ToString())
                     {
                         case "ID":
-                            columna = "ProductoID";
+                            columna = "p.ProductoID";
                             filtro = txtFiltro.Text;
                             CargarProductos();
                             break;
                         case "Servicio":
-                            columna = "Servicio";
+                            columna = "p.Servicio";
                             filtro = txtFiltro.Text;
                             CargarProductos();
                             break;
                         case "Codigo de Barra":
-                            columna = "CodigoBarra";
+                            columna = "p.CodigoBarra";
                             filtro = txtFiltro.Text;
                             CargarProductos();
                             break;
                         case "Descripcion":
-                            columna = "Descripcion";
+                            columna = "p.Descripcion";
                             filtro = txtFiltro.Text;
                             CargarProductos();
                             break;
                         case "Unidad de Medida":
-                            columna = "UnidadMedida";
+                            columna = "p.UnidadMedida";
                             filtro = txtFiltro.Text;
                             CargarProductos();
                             break;
                         case "Proveedor":
-                            columna = "Proveedor";
+                            columna = "pro.Nombre";
                             filtro = txtFiltro.Text;
                             CargarProductos();
                             break;
                         case "Referencia":
-                            columna = "Referencia";
+                            columna = "p.Referencia";
                             filtro = txtFiltro.Text;
                             CargarProductos();
                             break;
                         case "Marca":
-                            columna = "Marca";
+                            columna = "p.Marca";
                             filtro = txtFiltro.Text;
                             CargarProductos();
                             break;
                         case "Calidad":
-                            columna = "Calidad";
+                            columna = "p.Calidad";
                             filtro = txtFiltro.Text;
                             CargarProductos();
                             break;

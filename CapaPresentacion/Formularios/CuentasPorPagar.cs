@@ -223,27 +223,27 @@ namespace CapaPresentacion.Formularios
                     switch (cbFiltro.SelectedItem.ToString())
                     {
                         case "ID":
-                            columna = "LineaCreditoVentaID";
+                            columna = "lc.LineaCreditoCompraID";
                             filtro = txtFiltro.Text;
                             CargarTodasLineasCreditoCompra();
                             break;
                         case "Proveedor":
-                            columna = "Proveedor";
+                            columna = "pr.Nombre";
                             filtro = txtFiltro.Text;
                             CargarTodasLineasCreditoCompra();
                             break;
                         case "Fecha":
-                            columna = "Fecha";
+                            columna = "o.FechaPedido";
                             filtro = txtFiltro.Text;
                             CargarTodasLineasCreditoCompra();
                             break;
                         case "Factura Compra":
-                            columna = "FacturaCompra";
+                            columna = "f.FacturaCompraID";
                             filtro = txtFiltro.Text;
                             CargarTodasLineasCreditoCompra();
                             break;
                         case "Completado":
-                            columna = "Completado";
+                            columna = "lc.Estatus";
                             filtro = txtFiltro.Text;
                             CargarTodasLineasCreditoCompra();
                             break;
