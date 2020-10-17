@@ -124,6 +124,7 @@
     <Compile Include="Clases\ControladorImpresoraMatricial.cs" />
     <Compile Include="Clases\ControladorImpresoraPapelA4.cs" />
     <Compile Include="Clases\ControladorMegaApi.cs" />
+    <Compile Include="Clases\RawPrinterHelper.cs" />
     <Compile Include="Formularios\Autorizar.cs">
       <SubType>Form</SubType>
     </Compile>

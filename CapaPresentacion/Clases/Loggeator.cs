@@ -11,6 +11,8 @@ namespace CapaPresentacion
     {
         public static void EscribeEnArchivo(string contenido)
         {
+            EmptyLog();
+
             using (StreamWriter w = File.AppendText("C:/SFacturacion/Logs.txt"))
             {
                 Log(contenido + " - - - UserID: " + SFacturacion.Login.userID.ToString(), w);
@@ -37,6 +39,15 @@ namespace CapaPresentacion
             {
                 Console.WriteLine(line);
             }
+        }
+
+        private static void EmptyLog()
+        {
+            if (new FileInfo("C:/SFacturacion/Logs.txt").Length > 100000)
+            {
+                File.WriteAllText("C:/SFacturacion/Logs.txt", String.Empty);
+            }
+
         }
     }
 }

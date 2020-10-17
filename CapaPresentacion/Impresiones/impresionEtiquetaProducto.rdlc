@@ -132,6 +132,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox1</rd:DefaultName>
             <Top>0.25in</Top>
+            <Left>0in</Left>
             <Height>0.125in</Height>
             <Width>1.5in</Width>
             <ZIndex>4</ZIndex>

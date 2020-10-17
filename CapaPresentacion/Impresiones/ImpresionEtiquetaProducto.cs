@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -18,7 +19,6 @@ namespace CapaPresentacion.Impresiones
 {
     public partial class ImpresionEtiquetaProducto : Form
     {
-        private int cantidad;
         ReportParameter[] parameters = new ReportParameter[7];
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
@@ -31,28 +31,15 @@ namespace CapaPresentacion.Impresiones
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
 
-        public ImpresionEtiquetaProducto(string descripcionProd, string codigoBarra, int cantidad, string precioVenta, string referencia,
-            string precioCompra)
+        public ImpresionEtiquetaProducto()
         {
-            InitializeComponent();
-            CargarParametros(descripcionProd, codigoBarra, precioVenta, referencia, precioCompra);
-            this.cantidad = cantidad;
+            InitializeComponent();       
         }
 
         private void ImpresionEtiquetaProducto_Load(object sender, EventArgs e)
         {
 
-        }
-
-        public void ImprimirLabel()
-        {
-            for (int i = 0; i < cantidad; i++)
-            {
-                ControladorImpresoraPapelA4 controladorImpresoraPapelA4 = new ControladorImpresoraPapelA4();
-                controladorImpresoraPapelA4.ImprimeLabel(CargarImpresionRV());
-            }            
-            this.Close();
-        }
+        }       
 
         private void iconminimizar_Click(object sender, EventArgs e)
         {
@@ -106,18 +93,36 @@ namespace CapaPresentacion.Impresiones
                 return null;
             }
         }
+        public string PadBoth(string source, int length)
+        {
+            int spaces = length - source.Length;
+            int padLeft = spaces / 2 + source.Length;
+            return source.PadLeft(padLeft).PadRight(length);
 
-        private void CargarParametros(string descripcionProd, string codigoBarra, string precioVenta, string referencia, string precioCompra)
+        }
+        public void ImprimirLabel(string descripcionProd, string codigoBarra, int cantidad, string precioVenta, string referencia,
+            string precioCompra)
         {
             try
-            {
-                parameters[0] = new ReportParameter("NombreEmpresa", Properties.Settings.Default.NombreEmpresa);
-                parameters[1] = new ReportParameter("CodigoBarra", GenerarCodigoBarra(codigoBarra));
-                parameters[2] = new ReportParameter("DescripcionProducto", descripcionProd);
-                parameters[3] = new ReportParameter("PrecioCompra", ConvertirPrecioNumeroALetras(precioCompra));
-                parameters[4] = new ReportParameter("PrecioVenta", ConvertirPrecioNumeroALetras(precioVenta));
-                parameters[5] = new ReportParameter("Referencia", referencia);
-                parameters[6] = new ReportParameter("TelefonoEtiqueta", Properties.Settings.Default.TelefonoEtiqueta);
+            {              
+                    StringBuilder sb = new StringBuilder();
+                    sb.AppendLine();
+                    sb.AppendLine("N");
+                    sb.AppendLine("q304");
+                    sb.AppendLine("Q203");
+                    sb.AppendLine("D7");
+                    //AStartPoint, VerticalStartPoint, Rotation, Font Selection, Horizontal Multiplier (expands Text Horizontally), Vertical Multiplier(expands Text Vertically), Reverse Image, Data
+                    sb.AppendLine(string.Format(CultureInfo.InvariantCulture, "A15,10,0,3,1,1,N,\"{0}\"", PadBoth(Properties.Settings.Default.NombreEmpresa, 20)));
+                    sb.AppendLine(string.Format(CultureInfo.InvariantCulture, "A15,35,0,2,1,1,N,\"{0}\"", PadBoth(Properties.Settings.Default.TelefonoEtiqueta, 24)));
+                    sb.AppendLine(string.Format(CultureInfo.InvariantCulture, "A15,60,0,2,1,1,N,\"{0}\"", descripcionProd.Length < 24 ? descripcionProd : descripcionProd.Substring(0, 24)));
+                    sb.AppendLine(string.Format(CultureInfo.InvariantCulture, "A15,80,0,2,1,1,N,\"{0}\"", referencia.Length < 24 ? referencia : referencia.Substring(0, 24)));
+                    sb.AppendLine(string.Format(CultureInfo.InvariantCulture, "A15,105,0,4,1,1,N,\"{0}\"", ConvertirPrecioNumeroALetras(precioCompra) + " / " + ConvertirPrecioNumeroALetras(precioVenta)));
+                    //BStartPoint, VerticalStartPoint, Rotation, BarSelection(Code 39), Barcode Width, Wide Barcode Width, Barcode Height, Print Human Readable (B=Yes), Data
+                    sb.AppendLine(string.Format(CultureInfo.InvariantCulture, "B15,130,0,1,2,2,50,B,\"{0}\"", codigoBarra));
+                    sb.AppendLine($"P{cantidad}");
+                   
+                    RawPrinterHelper.SendStringToPrinter(Properties.Settings.Default.ImpresoraTermica, sb.ToString());                
+                    this.Close();
             }
             catch (Exception exc)
             {

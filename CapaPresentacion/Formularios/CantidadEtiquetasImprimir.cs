@@ -17,7 +17,7 @@ namespace CapaPresentacion.Formularios
     public partial class CantidadEtiquetasImprimir : Form
     {
         private string descripcion, codigoBarra, precioVenta, referencia, precioCompra;
-        private int numeroEntero;
+        private int cantidadEtiqueta;
         Thread hilo;
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
@@ -46,9 +46,9 @@ namespace CapaPresentacion.Formularios
                 {
                     hilo = new Thread(() =>
                     {
-                        ImpresionEtiquetaProducto impresionEtiquetaProducto = new ImpresionEtiquetaProducto(descripcion, codigoBarra, numeroEntero, precioVenta, referencia, precioCompra);
+                        ImpresionEtiquetaProducto impresionEtiquetaProducto = new ImpresionEtiquetaProducto();
                         impresionEtiquetaProducto.Visible = false;
-                        impresionEtiquetaProducto.ImprimirLabel();
+                        impresionEtiquetaProducto.ImprimirLabel(descripcion, codigoBarra, cantidadEtiqueta, precioVenta, referencia, precioCompra);
                     });
                     hilo.Start();
                     this.Close();
@@ -73,7 +73,7 @@ namespace CapaPresentacion.Formularios
 
         private bool ValidarTextBox()
         {            
-            if (string.IsNullOrEmpty(txtCantidad.Text) || !int.TryParse(txtCantidad.Text, out numeroEntero))
+            if (string.IsNullOrEmpty(txtCantidad.Text) || !int.TryParse(txtCantidad.Text, out cantidadEtiqueta))
                 return false;
 
             return true;
