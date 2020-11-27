@@ -1,12 +1,14 @@
 ﻿using CapaDatos;
 using CapaNegocios;
 using CapaPresentacion.Clases;
+using ESC_POS_USB_NET.Printer;
 using Microsoft.Reporting.WinForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -17,6 +19,7 @@ namespace CapaPresentacion.Impresiones
 {
     public partial class ImpresionNotaCredito : Form
     {
+        Printer printer = new Printer(Properties.Settings.Default.Impresora);
         NotasDeCreditoNegocio notaDeCreditoNegocio = new NotasDeCreditoNegocio();
         List<proc_ComprobanteNotaDeCredito_Result> proc_ComprobanteNotaDeCredito_Results;
         ReportParameter[] parameters = new ReportParameter[7];
@@ -76,14 +79,11 @@ namespace CapaPresentacion.Impresiones
             else if (Properties.Settings.Default.TipoImpresora == "Papel A4")
             {
                 CargarParametros();
-                ControladorImpresoraPapelA4 controladorImpresoraPapelA4 = new ControladorImpresoraPapelA4();
-                controladorImpresoraPapelA4.Imprime(CargarImpresionRV());
+                ControladorImpresoraGeneral.PrintToPrinter(CargarImpresionRV());
             }
             else if (Properties.Settings.Default.TipoImpresora == "Termica")
             {
-                CargarParametros();
-                ControladorImpresoraPapelA4 controladorImpresoraPapelA4 = new ControladorImpresoraPapelA4();
-                controladorImpresoraPapelA4.ImprimeTermica(CargarImpresionTermicaRV());
+                CargarImpresionTermica();
             }
             this.Close();
         }
@@ -189,6 +189,131 @@ namespace CapaPresentacion.Impresiones
 
             }
         }
+
+        private void CargarImpresionTermica()
+        {
+            try
+            {
+                cantArticulos = 0;
+
+                printer.AlignCenter();
+                printer.DoubleWidth2();
+                printer.BoldMode(Properties.Settings.Default.NombreEmpresa.ToUpper());
+                printer.NormalWidth();
+                printer.Append(Properties.Settings.Default.Direccion.ToUpper());
+                printer.Append(Properties.Settings.Default.Telefono);
+                printer.AlignLeft();
+                printer.BoldMode(Properties.Settings.Default.RazonSocial.ToUpper());
+                printer.Append(Properties.Settings.Default.CedulaORnc);
+                printer.Append("-----------------------------------------");
+                printer.AlignCenter();
+                printer.Append("NOTA DE CREDITO");
+                printer.AlignLeft();
+                printer.Append("-----------------------------------------");
+                printer.Append(proc_ComprobanteNotaDeCredito_Results.First().Fecha.ToString());
+                printer.Append("NCF:" + " " + proc_ComprobanteNotaDeCredito_Results.First().NCF.ToString());
+                printer.Append("NCF AFECTADO:" + " " + proc_ComprobanteNotaDeCredito_Results.First().NCFAfectado);
+                printer.Append("FECHA VENCIMIENTO: " + proc_ComprobanteNotaDeCredito_Results.First().FechaVencimiento.ToString("dd/MM/yyyy"));
+                printer.Append("-----------------------------------------");
+                printer.Append("DESCRIPCION/COMENTARIO       |VALOR");
+                printer.Append("-----------------------------------------");
+                foreach (var fila in proc_ComprobanteNotaDeCredito_Results)
+                {
+                    AgregaArticuloNC(fila.Descripcion, fila.CantDevuelta, proc_ComprobanteNotaDeCredito_Results.First().ITBIS ? fila.Precio :
+                        Convert.ToDecimal(fila.Precio - (fila.Precio * (Properties.Settings.Default.ITBIS / 100))), fila.Comentario);
+                    cantArticulos++;
+
+                }
+                printer.Append("-----------------------------------------");
+                AgregarTotales("                   ITBIS : $ ", proc_ComprobanteNotaDeCredito_Results.First().ITBIS ? Convert.ToDecimal((proc_ComprobanteNotaDeCredito_Results.First().PrecioTotal * (Properties.Settings.Default.ITBIS / 100))) :
+                Convert.ToDecimal(0.00));
+                AgregarTotales("          VALOR APLICADO : $ ", Convert.ToDecimal(proc_ComprobanteNotaDeCredito_Results.First().PrecioTotal));
+                printer.Append("-----------------------------------------");
+                printer.Append("CANTIDAD DE ARTICULOS DEVUELTOS:" + " " + cantArticulos);
+                printer.Append("-----------------------------------------");
+                // controladorImpresoraMatricial.TextoIzquierda("COD.CLIENTE: " + proc_ComprobanteNotaDeCredito_Results.First().ClienteID.ToString());
+                printer.Append("CLIENTE: " + proc_ComprobanteNotaDeCredito_Results.First().NombreCliente.ToUpper());
+                printer.Append("COD. NOTA DE CREDITO: " + proc_ComprobanteNotaDeCredito_Results.First().NotaDeCreditoID);
+                printer.Append("USUARIO: " + proc_ComprobanteNotaDeCredito_Results.First().UserName.ToUpper());
+                printer.Append("-----------------------------------------");
+                printer.AlignCenter();
+                printer.Append("SISTEMA REALIZADO POR JONESY LIRIANO");
+                printer.Append("TEL/WSS: 809-222-3740");
+                printer.Append("****GRACIAS POR SU VISITA****");
+
+                printer.FullPaperCut();
+                printer.PrintDocument();
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Error: No se ha podido imprimir, verifique si las configuraciones del sistema estan correctas e intente de nuevo por favor.",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Loggeator.EscribeEnArchivo(exc.ToString());
+            }
+        }
+
+        public void AgregarTotales(string texto, decimal total)
+        {
+            int maxCar = 40, cortar;
+            //Variables que usaremos
+            string resumen, valor, textoCompleto, espacios = "";
+
+            if (texto.Length > 29)//Si es mayor a 25 lo cortamos
+            {
+                cortar = texto.Length - 29;
+                resumen = texto.Remove(29, cortar);
+            }
+            else
+            { resumen = texto; }
+
+            textoCompleto = resumen;
+            valor = total.ToString("#,#.00");//Agregamos el total previo formateo.
+
+            //Obtenemos el numero de espacios restantes para alinearlos a la derecha
+            int nroEspacios = maxCar - (resumen.Length + valor.Length);
+            //agregamos los espacios
+            for (int i = 0; i < nroEspacios; i++)
+            {
+                espacios += " ";
+            }
+            textoCompleto += espacios + valor;
+            printer.Append(textoCompleto);
+        }
+
+        public void AgregaArticuloNC(string articulo, double cant, decimal? precio, string comentario)
+        {
+            if (cant.ToString().Length < 7 && precio.ToString().Length < 11)
+            {
+                string elemento, espacios = "";
+                int nroEspacios = 0;
+                decimal importe = 0;
+                //Colocar cant y precio
+                elemento = cant.ToString() + " " + "X" + " " + precio.ToString();
+
+                //Colocar el precio total.
+                importe = Convert.ToDecimal(cant) * Convert.ToDecimal(precio);
+                nroEspacios = (29 - elemento.Length);
+                espacios = "";
+                for (int i = 0; i < nroEspacios; i++)
+                {
+                    espacios += " ";
+                }
+                elemento += espacios + importe.ToString();
+
+                printer.Append(elemento);//Agregamos todo el elemento: nombre del articulo, comentario,cant, precio, importe.
+                printer.Append(articulo);
+                printer.Append(comentario);
+
+
+            }
+            else
+            {
+                printer.Append("Los valores ingresados para esta fila");
+                printer.Append("superan las columnas soportdas por éste.");
+                throw new Exception("Los valores ingresados para algunas filas del ticket\nsuperan las columnas soportdas por éste.");
+            }
+        }
+
         private void CargarImpresionMatricial()
         {
             try
@@ -202,7 +327,9 @@ namespace CapaPresentacion.Impresiones
                 controladorImpresoraMatricial.TextoCentro(Properties.Settings.Default.Telefono);
                 controladorImpresoraMatricial.TextoIzquierda(Properties.Settings.Default.RazonSocial.ToUpper());
                 controladorImpresoraMatricial.TextoIzquierda(Properties.Settings.Default.CedulaORnc);
+                controladorImpresoraMatricial.lineasGuio();
                 controladorImpresoraMatricial.TextoCentro("NOTA DE CREDITO");
+                controladorImpresoraMatricial.lineasGuio();
                 controladorImpresoraMatricial.TextoIzquierda(proc_ComprobanteNotaDeCredito_Results.First().Fecha.ToString());
                 controladorImpresoraMatricial.TextoIzquierda("NCF:" + " " + proc_ComprobanteNotaDeCredito_Results.First().NCF.ToString());
                 controladorImpresoraMatricial.TextoIzquierda("NCF AFECTADO:" + " " + proc_ComprobanteNotaDeCredito_Results.First().NCFAfectado);
@@ -249,6 +376,8 @@ namespace CapaPresentacion.Impresiones
                 Loggeator.EscribeEnArchivo(exc.ToString());
             }
         }
+
+
 
     }
 }

@@ -1,12 +1,14 @@
 ﻿using CapaDatos;
 using CapaNegocios;
 using CapaPresentacion.Clases;
+using ESC_POS_USB_NET.Printer;
 using Microsoft.Reporting.WinForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -17,6 +19,7 @@ namespace CapaPresentacion.Impresiones
 {
     public partial class ImpresionFacturaVenta : Form
     {
+        Printer printer = new Printer(Properties.Settings.Default.Impresora);
         FacturasNegocio facturasNegocio = new FacturasNegocio();
         List<proc_ComprobanteFacturaVenta_Result> proc_ComprobanteFacturaVenta_Results;
         ReportParameter[] parameters = new ReportParameter[10];
@@ -100,14 +103,27 @@ namespace CapaPresentacion.Impresiones
             else if (Properties.Settings.Default.TipoImpresora == "Papel A4")
             {
                 CargarParametros();
-                ControladorImpresoraPapelA4 controladorImpresoraPapelA4 = new ControladorImpresoraPapelA4();
-                controladorImpresoraPapelA4.Imprime(CargarImpresionRV());
+                ControladorImpresoraGeneral.PrintToPrinter(CargarImpresionRV());
             }
             else if (Properties.Settings.Default.TipoImpresora == "Termica")
             {
-                CargarParametros();
-                ControladorImpresoraPapelA4 controladorImpresoraPapelA4 = new ControladorImpresoraPapelA4();
-                controladorImpresoraPapelA4.ImprimeTermica(CargarImpresionTermicaRV());
+                switch (proc_ComprobanteFacturaVenta_Results.First().TipoFactura)
+                {
+                    case "Consumidor Final":
+                        CargarImpresionTermicaFFinal();
+                        break;
+                    case "Comprobante Fiscal":
+                        CargarImpresionTermicaFFiscal();
+                        break;
+                    case "Comprobante Gubernamental":
+                        CargarImpresionTermicaFGubernamental();
+                        break;
+                    case "Factura Rapida":
+                        CargarImpresionTermicaFRapida();
+                        break;
+                    default:
+                        break;
+                }
             }
             this.Close();
         }
@@ -217,6 +233,436 @@ namespace CapaPresentacion.Impresiones
             iconmaximizar.Visible = false;
         }
 
+        private void CargarImpresionTermicaFGubernamental()
+        {
+            try
+            {
+                cantArticulos = 0;
+                subtotal = 0;
+                itbis = 0;
+                desc = 0;
+                descTotal = 0;
+                printer.AlignCenter();
+                printer.DoubleWidth2();
+                printer.BoldMode(Properties.Settings.Default.NombreEmpresa.ToUpper());
+                printer.NormalWidth();
+                printer.Append(Properties.Settings.Default.Direccion);
+                printer.Append("TEL: " + Properties.Settings.Default.Telefono);
+                printer.AlignLeft();
+                printer.BoldMode(Properties.Settings.Default.RazonSocial.ToUpper());
+                printer.Append("RNC: " + Properties.Settings.Default.CedulaORnc);
+                printer.AlignCenter();
+                printer.Append("COMPROBANTE AUTORIZADO POR DGII");
+                printer.AlignLeft();
+                printer.Append(proc_ComprobanteFacturaVenta_Results.First().Fecha.ToString());
+                printer.Append("NCF:" + " " + proc_ComprobanteFacturaVenta_Results.First().NCF.ToString());
+                printer.Append("FECHA VENCIMIENTO: " + proc_ComprobanteFacturaVenta_Results.First().FechaVencimiento?.ToString("dd/MM/yyyy"));
+                printer.Append("RNC: " + proc_ComprobanteFacturaVenta_Results.First().RNC.ToString());
+                printer.Append(proc_ComprobanteFacturaVenta_Results.First().Entidad);
+                printer.Append("TIPO DE PAGO:" + " " + proc_ComprobanteFacturaVenta_Results.First().TipoDePago);
+                printer.Append("-----------------------------------------");
+                printer.AlignCenter();
+                printer.Append("FACTURA GUBERNAMENTAL");
+                printer.AlignLeft();
+                printer.Append("-----------------------------------------");
+                printer.Append("DESCRIPCION         |ITBIS     |VALOR");
+                printer.Append("-----------------------------------------");
+                foreach (var fila in proc_ComprobanteFacturaVenta_Results)
+                {
+                    AgregaArticulo(fila.Descripcion, fila.CantVen, fila.ITBIS, fila.Precio, fila.Descuento);
+                    cantArticulos++;
+                    subtotal += (Convert.ToDecimal(fila.CantVen) * (fila.Precio - fila.Descuento));
+                    itbis += (Convert.ToDecimal(fila.CantVen) * Convert.ToDecimal(fila.ITBIS));
+                    desc += (Convert.ToDecimal(fila.CantVen) * Convert.ToDecimal(fila.Descuento));
+                }
+
+                descTotal = Convert.ToDecimal((desc + ((proc_ComprobanteFacturaVenta_Results.First().DescuentoCliente / 100) * subtotal)));
+                printer.Append("-----------------------------------------");
+                AgregarTotales("                SUBTOTAL : $ ", subtotal);
+                AgregarTotales("                   ITBIS : $ ", itbis);
+                AgregarTotales("                   DESC. : $ ", descTotal);
+                AgregarTotales("                   TOTAL : $ ", Convert.ToDecimal(subtotal + itbis - descTotal));
+
+                if (!(proc_ComprobanteFacturaVenta_Results.First().TipoDePago == "Credito 30 dias" || proc_ComprobanteFacturaVenta_Results.First().TipoDePago == "Credito 60 dias") && recibido != 0)
+                {
+                    AgregarTotales("                 Tarjeta : $ ", Convert.ToDecimal(tarjeta));
+                    AgregarTotales("                Efectivo : $ ", Convert.ToDecimal(efectivo));
+                    AgregarTotales("                Recibido : $ ", Convert.ToDecimal(recibido));
+                    AgregarTotales("                Devuelta : $ ", Convert.ToDecimal(devuelta));
+                }
+                printer.Append("-----------------------------------------");
+                printer.Append("CANTIDAD DE PRODUCTOS/SERVICIOS:" + " " + cantArticulos);
+                printer.Append("-----------------------------------------");
+                printer.Append("LAS DEVOLUCIONES SE HACEN");
+                printer.Append("CON CREDITO, NO SE DEVUELVE DINERO");
+                printer.Append("-----------------------------------------");
+                if (proc_ComprobanteFacturaVenta_Results.First().TipoDePago == "Credito 30 dias" || proc_ComprobanteFacturaVenta_Results.First().TipoDePago == "Credito 60 dias")
+                {
+                    printer.AlignCenter();
+                    printer.Append(" ");
+                    printer.Append(" ");
+                    printer.Append("___________________________");
+                    printer.Append("FIRMA/CEDULA");
+                    printer.AlignLeft();
+                    printer.Append("-----------------------------------------");
+                }
+                // controladorImpresoraMatricial.TextoIzquierda("COD. CLIENTE: " + proc_ComprobanteCotizacion_Results.First().ClienteID);
+                printer.Append("CLIENTE: " + proc_ComprobanteFacturaVenta_Results.First().NombreCliente.ToUpper());
+                printer.Append("COD. FACTURA: " + proc_ComprobanteFacturaVenta_Results.First().FacturaID.ToString());
+                printer.Append("USUARIO: " + proc_ComprobanteFacturaVenta_Results.First().UserName.ToUpper());
+                printer.Append("-----------------------------------------");
+                printer.AlignCenter();
+                printer.Append("SISTEMA REALIZADO POR JONESY LIRIANO");
+                printer.Append("TEL/WSS: 809-222-3740");
+                printer.Append("****GRACIAS POR SU VISITA****");
+
+                printer.FullPaperCut();
+                printer.PrintDocument();
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Error: No se ha podido imprimir, verifique si las configuraciones del sistema estan correctas e intente de nuevo por favor.",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Loggeator.EscribeEnArchivo(exc.ToString());
+            }
+        }
+
+        private void CargarImpresionTermicaFFiscal()
+        {
+            try
+            {
+                cantArticulos = 0;
+                subtotal = 0;
+                itbis = 0;
+                desc = 0;
+                descTotal = 0;
+                printer.AlignCenter();
+                printer.DoubleWidth2();
+                printer.BoldMode(Properties.Settings.Default.NombreEmpresa.ToUpper());
+                printer.NormalWidth();
+                printer.Append(Properties.Settings.Default.Direccion);
+                printer.Append("TEL: " + Properties.Settings.Default.Telefono);
+                printer.AlignLeft();
+                printer.BoldMode(Properties.Settings.Default.RazonSocial.ToUpper());
+                printer.Append("RNC: " + Properties.Settings.Default.CedulaORnc);
+                printer.AlignCenter();
+                printer.Append("COMPROBANTE AUTORIZADO POR DGII");
+                printer.AlignLeft();
+                printer.Append(proc_ComprobanteFacturaVenta_Results.First().Fecha.ToString());
+                printer.Append("NCF:" + " " + proc_ComprobanteFacturaVenta_Results.First().NCF.ToString());
+                printer.Append("FECHA VENCIMIENTO: " + proc_ComprobanteFacturaVenta_Results.First().FechaVencimiento?.ToString("dd/MM/yyyy"));
+                printer.Append("RNC: " + proc_ComprobanteFacturaVenta_Results.First().RNC.ToString());
+                printer.Append(proc_ComprobanteFacturaVenta_Results.First().Entidad);
+                printer.Append("TIPO DE PAGO:" + " " + proc_ComprobanteFacturaVenta_Results.First().TipoDePago);
+                printer.Append("-----------------------------------------");
+                printer.AlignCenter();
+                printer.Append("FACTURA PARA CREDITO FISCAL");
+                printer.AlignLeft();
+                printer.Append("-----------------------------------------");
+                printer.Append("DESCRIPCION         |ITBIS     |VALOR");
+                printer.Append("-----------------------------------------");
+                foreach (var fila in proc_ComprobanteFacturaVenta_Results)
+                {
+                    AgregaArticulo(fila.Descripcion, fila.CantVen, fila.ITBIS, fila.Precio, fila.Descuento);
+                    cantArticulos++;
+                    subtotal += (Convert.ToDecimal(fila.CantVen) * (fila.Precio - fila.Descuento));
+                    itbis += (Convert.ToDecimal(fila.CantVen) * Convert.ToDecimal(fila.ITBIS));
+                    desc += (Convert.ToDecimal(fila.CantVen) * Convert.ToDecimal(fila.Descuento));
+                }
+
+                descTotal = Convert.ToDecimal((desc + ((proc_ComprobanteFacturaVenta_Results.First().DescuentoCliente / 100) * subtotal)));
+                printer.Append("-----------------------------------------");
+                AgregarTotales("                SUBTOTAL : $ ", subtotal);
+                AgregarTotales("                   ITBIS : $ ", itbis);
+                AgregarTotales("                   DESC. : $ ", descTotal);
+                AgregarTotales("                   TOTAL : $ ", Convert.ToDecimal(subtotal + itbis - descTotal));
+
+                if (!(proc_ComprobanteFacturaVenta_Results.First().TipoDePago == "Credito 30 dias" || proc_ComprobanteFacturaVenta_Results.First().TipoDePago == "Credito 60 dias") && recibido != 0)
+                {
+                    AgregarTotales("                 Tarjeta : $ ", Convert.ToDecimal(tarjeta));
+                    AgregarTotales("                Efectivo : $ ", Convert.ToDecimal(efectivo));
+                    AgregarTotales("                Recibido : $ ", Convert.ToDecimal(recibido));
+                    AgregarTotales("                Devuelta : $ ", Convert.ToDecimal(devuelta));
+                }
+                printer.Append("-----------------------------------------");
+                printer.Append("CANTIDAD DE PRODUCTOS/SERVICIOS:" + " " + cantArticulos);
+                printer.Append("-----------------------------------------");
+                printer.Append("LAS DEVOLUCIONES SE HACEN");
+                printer.Append("CON CREDITO, NO SE DEVUELVE DINERO");
+                printer.Append("-----------------------------------------");
+                if (proc_ComprobanteFacturaVenta_Results.First().TipoDePago == "Credito 30 dias" || proc_ComprobanteFacturaVenta_Results.First().TipoDePago == "Credito 60 dias")
+                {
+                    printer.AlignCenter();
+                    printer.Append(" ");
+                    printer.Append(" ");
+                    printer.Append("___________________________");
+                    printer.Append("FIRMA/CEDULA");
+                    printer.AlignLeft();
+                    printer.Append("-----------------------------------------");
+                }
+                // controladorImpresoraMatricial.TextoIzquierda("COD. CLIENTE: " + proc_ComprobanteCotizacion_Results.First().ClienteID);
+                printer.Append("CLIENTE: " + proc_ComprobanteFacturaVenta_Results.First().NombreCliente.ToUpper());
+                printer.Append("COD. FACTURA: " + proc_ComprobanteFacturaVenta_Results.First().FacturaID.ToString());
+                printer.Append("USUARIO: " + proc_ComprobanteFacturaVenta_Results.First().UserName.ToUpper());
+                printer.Append("-----------------------------------------");
+                printer.AlignCenter();
+                printer.Append("SISTEMA REALIZADO POR JONESY LIRIANO");
+                printer.Append("TEL/WSS: 809-222-3740");
+                printer.Append("****GRACIAS POR SU VISITA****");
+
+                printer.FullPaperCut();
+                printer.PrintDocument();
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Error: No se ha podido imprimir, verifique si las configuraciones del sistema estan correctas e intente de nuevo por favor.",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Loggeator.EscribeEnArchivo(exc.ToString());
+            }
+        }
+
+        private void CargarImpresionTermicaFFinal()
+        {
+            try
+            {
+                cantArticulos = 0;
+                subtotal = 0;
+                itbis = 0;
+                desc = 0;
+                descTotal = 0;
+                printer.AlignCenter();
+                printer.DoubleWidth2();
+                printer.BoldMode(Properties.Settings.Default.NombreEmpresa.ToUpper());
+                printer.NormalWidth();
+                printer.Append(Properties.Settings.Default.Direccion);
+                printer.Append("TEL: " + Properties.Settings.Default.Telefono);
+                printer.AlignLeft();
+                // printer.Append(Properties.Settings.Default.RazonSocial.ToUpper());
+                // printer.Append("RNC: " + Properties.Settings.Default.CedulaORnc);
+                printer.AlignCenter();
+                printer.Append("COMPROBANTE AUTORIZADO POR DGII");
+                printer.AlignLeft();
+                printer.Append(proc_ComprobanteFacturaVenta_Results.First().Fecha.ToString());
+                printer.Append("NCF:" + " " + proc_ComprobanteFacturaVenta_Results.First().NCF.ToString());
+                printer.Append("TIPO DE PAGO:" + " " + proc_ComprobanteFacturaVenta_Results.First().TipoDePago);
+                printer.Append("-----------------------------------------");
+                printer.AlignCenter();
+                printer.Append("FACTURA PARA CONSUMIDOR FINAL");
+                printer.AlignLeft();
+                printer.Append("-----------------------------------------");
+                printer.Append("DESCRIPCION         |ITBIS     |VALOR");
+                printer.Append("-----------------------------------------");
+                foreach (var fila in proc_ComprobanteFacturaVenta_Results)
+                {
+                    AgregaArticulo(fila.Descripcion, fila.CantVen, fila.ITBIS, fila.Precio, fila.Descuento);
+                    cantArticulos++;
+                    subtotal += (Convert.ToDecimal(fila.CantVen) * (fila.Precio - fila.Descuento));
+                    itbis += (Convert.ToDecimal(fila.CantVen) * Convert.ToDecimal(fila.ITBIS));
+                    desc += (Convert.ToDecimal(fila.CantVen) * Convert.ToDecimal(fila.Descuento));
+                }
+
+                descTotal = Convert.ToDecimal((desc + ((proc_ComprobanteFacturaVenta_Results.First().DescuentoCliente / 100) * subtotal)));
+                printer.Append("-----------------------------------------");
+                AgregarTotales("                SUBTOTAL : $ ", subtotal);
+                AgregarTotales("                   ITBIS : $ ", itbis);
+                AgregarTotales("                   DESC. : $ ", descTotal);
+                AgregarTotales("                   TOTAL : $ ", Convert.ToDecimal(subtotal + itbis - descTotal));
+
+                if (!(proc_ComprobanteFacturaVenta_Results.First().TipoDePago == "Credito 30 dias" || proc_ComprobanteFacturaVenta_Results.First().TipoDePago == "Credito 60 dias") && recibido != 0)
+                {
+                    AgregarTotales("                 Tarjeta : $ ", Convert.ToDecimal(tarjeta));
+                    AgregarTotales("                Efectivo : $ ", Convert.ToDecimal(efectivo));
+                    AgregarTotales("                Recibido : $ ", Convert.ToDecimal(recibido));
+                    AgregarTotales("                Devuelta : $ ", Convert.ToDecimal(devuelta));
+                }
+                printer.Append("-----------------------------------------");
+                printer.Append("CANTIDAD DE PRODUCTOS/SERVICIOS:" + " " + cantArticulos);
+                printer.Append("-----------------------------------------");
+                printer.Append("LAS DEVOLUCIONES SE HACEN");
+                printer.Append("CON CREDITO, NO SE DEVUELVE DINERO");
+                printer.Append("-----------------------------------------");
+                if (proc_ComprobanteFacturaVenta_Results.First().TipoDePago == "Credito 30 dias" || proc_ComprobanteFacturaVenta_Results.First().TipoDePago == "Credito 60 dias")
+                {
+                    printer.AlignCenter();
+                    printer.Append(" ");
+                    printer.Append(" ");
+                    printer.Append("___________________________");
+                    printer.Append("FIRMA/CEDULA");
+                    printer.AlignLeft();
+                    printer.Append("-----------------------------------------");
+                }
+                // controladorImpresoraMatricial.TextoIzquierda("COD. CLIENTE: " + proc_ComprobanteCotizacion_Results.First().ClienteID);
+                printer.Append("CLIENTE: " + proc_ComprobanteFacturaVenta_Results.First().NombreCliente.ToUpper());
+                printer.Append("COD. FACTURA: " + proc_ComprobanteFacturaVenta_Results.First().FacturaID.ToString());
+                printer.Append("USUARIO: " + proc_ComprobanteFacturaVenta_Results.First().UserName.ToUpper());
+                printer.Append("-----------------------------------------");
+                printer.AlignCenter();
+                printer.Append("SISTEMA REALIZADO POR JONESY LIRIANO");
+                printer.Append("TEL/WSS: 809-222-3740");
+                printer.Append("****GRACIAS POR SU VISITA****");
+
+                printer.FullPaperCut();
+                printer.PrintDocument();
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Error: No se ha podido imprimir, verifique si las configuraciones del sistema estan correctas e intente de nuevo por favor.",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Loggeator.EscribeEnArchivo(exc.ToString());
+            }
+        }
+
+        private void CargarImpresionTermicaFRapida()
+        {
+            try
+            {
+                cantArticulos = 0;
+                subtotal = 0;
+                itbis = 0;
+                desc = 0;
+                descTotal = 0;
+                printer.AlignCenter();
+                printer.DoubleWidth2();
+                printer.BoldMode(Properties.Settings.Default.NombreEmpresa.ToUpper());
+                printer.NormalWidth();
+                printer.Append(Properties.Settings.Default.Direccion);
+                printer.Append("TEL: " + Properties.Settings.Default.Telefono);
+                printer.AlignLeft();
+                // printer.Append(Properties.Settings.Default.RazonSocial.ToUpper());
+                // printer.Append("RNC: " + Properties.Settings.Default.CedulaORnc);
+                printer.Append(proc_ComprobanteFacturaVenta_Results.First().Fecha.ToString());
+                printer.Append("TIPO DE PAGO:" + " " + proc_ComprobanteFacturaVenta_Results.First().TipoDePago);
+                printer.Append("-----------------------------------------");
+                printer.AlignCenter();
+                printer.Append("FACTURA");
+                printer.AlignLeft();
+                printer.Append("-----------------------------------------");
+                printer.Append("DESCRIPCION         |ITBIS     |VALOR");
+                printer.Append("-----------------------------------------");
+                foreach (var fila in proc_ComprobanteFacturaVenta_Results)
+                {
+                    AgregaArticulo(fila.Descripcion, fila.CantVen, fila.ITBIS, fila.Precio, fila.Descuento);
+                    cantArticulos++;
+                    subtotal += (Convert.ToDecimal(fila.CantVen) * (fila.Precio - fila.Descuento));
+                    itbis += (Convert.ToDecimal(fila.CantVen) * Convert.ToDecimal(fila.ITBIS));
+                    desc += (Convert.ToDecimal(fila.CantVen) * Convert.ToDecimal(fila.Descuento));
+                }
+
+                descTotal = Convert.ToDecimal((desc + ((proc_ComprobanteFacturaVenta_Results.First().DescuentoCliente / 100) * subtotal)));
+                printer.Append("-----------------------------------------");
+                AgregarTotales("                SUBTOTAL : $ ", subtotal);
+                AgregarTotales("                   ITBIS : $ ", itbis);
+                AgregarTotales("                   DESC. : $ ", descTotal);
+                AgregarTotales("                   TOTAL : $ ", Convert.ToDecimal(subtotal + itbis - descTotal));
+
+                if (!(proc_ComprobanteFacturaVenta_Results.First().TipoDePago == "Credito 30 dias" || proc_ComprobanteFacturaVenta_Results.First().TipoDePago == "Credito 60 dias") && recibido != 0)
+                {
+                    AgregarTotales("                 Tarjeta : $ ", Convert.ToDecimal(tarjeta));
+                    AgregarTotales("                Efectivo : $ ", Convert.ToDecimal(efectivo));
+                    AgregarTotales("                Recibido : $ ", Convert.ToDecimal(recibido));
+                    AgregarTotales("                Devuelta : $ ", Convert.ToDecimal(devuelta));
+                }   
+                printer.Append("-----------------------------------------");
+                printer.Append("CANTIDAD DE PRODUCTOS/SERVICIOS:" + " " + cantArticulos);
+                printer.Append("-----------------------------------------");
+                printer.Append("LAS DEVOLUCIONES SE HACEN");
+                printer.Append("CON CREDITO, NO SE DEVUELVE DINERO");
+                printer.Append("-----------------------------------------");
+                if (proc_ComprobanteFacturaVenta_Results.First().TipoDePago == "Credito 30 dias" || proc_ComprobanteFacturaVenta_Results.First().TipoDePago == "Credito 60 dias")
+                {
+                    printer.AlignCenter();
+                    printer.Append(" ");
+                    printer.Append(" ");
+                    printer.Append("___________________________");
+                    printer.Append("FIRMA/CEDULA");
+                    printer.AlignLeft();
+                    printer.Append("-----------------------------------------");
+                }                
+                // controladorImpresoraMatricial.TextoIzquierda("COD. CLIENTE: " + proc_ComprobanteCotizacion_Results.First().ClienteID);
+                printer.Append("CLIENTE: " + proc_ComprobanteFacturaVenta_Results.First().NombreCliente.ToUpper());
+                printer.Append("COD. FACTURA: " + proc_ComprobanteFacturaVenta_Results.First().FacturaID.ToString());
+                printer.Append("USUARIO: " + proc_ComprobanteFacturaVenta_Results.First().UserName.ToUpper());
+                printer.Append("-----------------------------------------");
+                printer.AlignCenter();
+                printer.Append("SISTEMA REALIZADO POR JONESY LIRIANO");
+                printer.Append("TEL/WSS: 809-222-3740");
+                printer.Append("****GRACIAS POR SU VISITA****");
+
+                printer.FullPaperCut();
+                printer.PrintDocument();
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Error: No se ha podido imprimir, verifique si las configuraciones del sistema estan correctas e intente de nuevo por favor.",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Loggeator.EscribeEnArchivo(exc.ToString());
+            }
+        }
+
+        public void AgregarTotales(string texto, decimal total)
+        {
+            int maxCar = 40, cortar;
+            //Variables que usaremos
+            string resumen, valor, textoCompleto, espacios = "";
+
+            if (texto.Length > 29)//Si es mayor a 25 lo cortamos
+            {
+                cortar = texto.Length - 29;
+                resumen = texto.Remove(29, cortar);
+            }
+            else
+            { resumen = texto; }
+
+            textoCompleto = resumen;
+            valor = total.ToString("#,#.00");//Agregamos el total previo formateo.
+
+            //Obtenemos el numero de espacios restantes para alinearlos a la derecha
+            int nroEspacios = maxCar - (resumen.Length + valor.Length);
+            //agregamos los espacios
+            for (int i = 0; i < nroEspacios; i++)
+            {
+                espacios += " ";
+            }
+            textoCompleto += espacios + valor;
+            printer.Append(textoCompleto);
+        }
+
+        public void AgregaArticulo(string articulo, double cant, decimal itbis, decimal precio, decimal descuento)
+        {
+            if (cant.ToString().Length < 7 && precio.ToString().Length < 11)
+            {
+                string elemento, espacios = "";
+                int nroEspacios = 0;
+                decimal importe = 0;
+                //Colocar cant y precio
+                elemento = cant.ToString() + " " + "X" + " " + precio.ToString();
+
+
+                //Colocar el ITBIS a la derecha.
+                nroEspacios = (20 - elemento.Length);
+                espacios = "";
+                for (int i = 0; i < nroEspacios; i++)
+                {
+                    espacios += " ";
+                }
+                elemento += espacios + itbis.ToString();
+                //Colocar el precio total.
+                importe = Convert.ToDecimal(cant) * (precio + itbis - descuento);
+                nroEspacios = (31 - elemento.Length);
+                espacios = "";
+                for (int i = 0; i < nroEspacios; i++)
+                {
+                    espacios += " ";
+                }
+                elemento += espacios + importe.ToString();
+
+                printer.Append(elemento);//Agregamos todo el elemento: nombre del articulo, cant, precio, importe.
+                printer.Append(articulo);
+
+            }
+        }
+
+
         private void CargarImpresionMatricialFRapida()
         {
             try
@@ -233,7 +679,7 @@ namespace CapaPresentacion.Impresiones
                 controladorImpresoraMatricial.TextoCentro(Properties.Settings.Default.Direccion);
                 controladorImpresoraMatricial.TextoCentro("TEL: " + Properties.Settings.Default.Telefono);
                 // controladorImpresoraMatricial.TextoIzquierda(Properties.Settings.Default.RazonSocial.ToUpper());
-                controladorImpresoraMatricial.TextoIzquierda("RNC: " + Properties.Settings.Default.CedulaORnc);
+                // controladorImpresoraMatricial.TextoIzquierda("RNC: " + Properties.Settings.Default.CedulaORnc);
                 // controladorImpresoraMatricial.TextoCentro("COMPROBANTE AUTORIZADO POR DGII");
                 controladorImpresoraMatricial.TextoIzquierda(proc_ComprobanteFacturaVenta_Results.First().Fecha.ToString());
                 controladorImpresoraMatricial.TextoIzquierda("TIPO DE PAGO:" + " " + proc_ComprobanteFacturaVenta_Results.First().TipoDePago);
@@ -256,7 +702,7 @@ namespace CapaPresentacion.Impresiones
                 controladorImpresoraMatricial.AgregarTotales("                   ITBIS : $ ", itbis);
                 controladorImpresoraMatricial.AgregarTotales("                   DESC. : $ ", descTotal);
                 controladorImpresoraMatricial.AgregarTotales("                   TOTAL : $ ", Convert.ToDecimal(subtotal + itbis - descTotal));
-                if (!(proc_ComprobanteFacturaVenta_Results.First().TipoDePago == "Credito 30 dias" || proc_ComprobanteFacturaVenta_Results.First().TipoDePago == "Credito 60 dias"))
+                if (!(proc_ComprobanteFacturaVenta_Results.First().TipoDePago == "Credito 30 dias" || proc_ComprobanteFacturaVenta_Results.First().TipoDePago == "Credito 60 dias") && recibido != 0)
                 {
                     controladorImpresoraMatricial.AgregarTotales("                 Tarjeta : $ ", Convert.ToDecimal(tarjeta));
                     controladorImpresoraMatricial.AgregarTotales("                Efectivo : $ ", Convert.ToDecimal(efectivo));
@@ -317,7 +763,7 @@ namespace CapaPresentacion.Impresiones
                 controladorImpresoraMatricial.TextoCentro(Properties.Settings.Default.NombreEmpresa.ToUpper());
                 controladorImpresoraMatricial.TextoCentro(Properties.Settings.Default.Direccion);
                 controladorImpresoraMatricial.TextoCentro("TEL: " + Properties.Settings.Default.Telefono);
-               // controladorImpresoraMatricial.TextoIzquierda(Properties.Settings.Default.RazonSocial.ToUpper());
+                controladorImpresoraMatricial.TextoIzquierda(Properties.Settings.Default.RazonSocial.ToUpper());
                 controladorImpresoraMatricial.TextoIzquierda("RNC: " + Properties.Settings.Default.CedulaORnc);
                 controladorImpresoraMatricial.TextoCentro("COMPROBANTE AUTORIZADO POR DGII");
                 controladorImpresoraMatricial.TextoIzquierda(proc_ComprobanteFacturaVenta_Results.First().Fecha.ToString());
@@ -345,7 +791,7 @@ namespace CapaPresentacion.Impresiones
                 controladorImpresoraMatricial.AgregarTotales("                   ITBIS : $ ", itbis);
                 controladorImpresoraMatricial.AgregarTotales("                   DESC. : $ ", descTotal);
                 controladorImpresoraMatricial.AgregarTotales("                   TOTAL : $ ", Convert.ToDecimal(subtotal + itbis - descTotal));
-                if (!(proc_ComprobanteFacturaVenta_Results.First().TipoDePago == "Credito 30 dias" || proc_ComprobanteFacturaVenta_Results.First().TipoDePago == "Credito 60 dias"))
+                if (!(proc_ComprobanteFacturaVenta_Results.First().TipoDePago == "Credito 30 dias" || proc_ComprobanteFacturaVenta_Results.First().TipoDePago == "Credito 60 dias") && recibido != 0)
                 {
                     controladorImpresoraMatricial.AgregarTotales("                 Tarjeta : $ ", Convert.ToDecimal(tarjeta));
                     controladorImpresoraMatricial.AgregarTotales("                Efectivo : $ ", Convert.ToDecimal(efectivo));
@@ -406,8 +852,8 @@ namespace CapaPresentacion.Impresiones
                 controladorImpresoraMatricial.TextoCentro(Properties.Settings.Default.NombreEmpresa.ToUpper());
                 controladorImpresoraMatricial.TextoCentro(Properties.Settings.Default.Direccion);
                 controladorImpresoraMatricial.TextoCentro("TEL: " + Properties.Settings.Default.Telefono);
-               // controladorImpresoraMatricial.TextoIzquierda(Properties.Settings.Default.RazonSocial.ToUpper());
-                controladorImpresoraMatricial.TextoIzquierda("RNC: " + Properties.Settings.Default.CedulaORnc);
+                //controladorImpresoraMatricial.TextoIzquierda(Properties.Settings.Default.RazonSocial.ToUpper());
+                //controladorImpresoraMatricial.TextoIzquierda("RNC: " + Properties.Settings.Default.CedulaORnc);
                 controladorImpresoraMatricial.TextoCentro("COMPROBANTE AUTORIZADO POR DGII");
                 controladorImpresoraMatricial.TextoIzquierda(proc_ComprobanteFacturaVenta_Results.First().Fecha.ToString());                
                 controladorImpresoraMatricial.TextoIzquierda("NCF:" + " " + proc_ComprobanteFacturaVenta_Results.First().NCF.ToString());
@@ -431,7 +877,7 @@ namespace CapaPresentacion.Impresiones
                 controladorImpresoraMatricial.AgregarTotales("                   ITBIS : $ ", itbis);
                 controladorImpresoraMatricial.AgregarTotales("                   DESC. : $ ", descTotal);
                 controladorImpresoraMatricial.AgregarTotales("                   TOTAL : $ ", Convert.ToDecimal(subtotal + itbis - descTotal));
-                if (!(proc_ComprobanteFacturaVenta_Results.First().TipoDePago == "Credito 30 dias" || proc_ComprobanteFacturaVenta_Results.First().TipoDePago == "Credito 60 dias"))
+                if (!(proc_ComprobanteFacturaVenta_Results.First().TipoDePago == "Credito 30 dias" || proc_ComprobanteFacturaVenta_Results.First().TipoDePago == "Credito 60 dias") && recibido != 0)
                 {
                     controladorImpresoraMatricial.AgregarTotales("                 Tarjeta : $ ", Convert.ToDecimal(tarjeta));
                     controladorImpresoraMatricial.AgregarTotales("                Efectivo : $ ", Convert.ToDecimal(efectivo));
@@ -520,7 +966,7 @@ namespace CapaPresentacion.Impresiones
                 controladorImpresoraMatricial.AgregarTotales("                   ITBIS : $ ", itbis);
                 controladorImpresoraMatricial.AgregarTotales("                   DESC. : $ ", descTotal);
                 controladorImpresoraMatricial.AgregarTotales("                   TOTAL : $ ", Convert.ToDecimal(subtotal + itbis - descTotal));
-                if (!(proc_ComprobanteFacturaVenta_Results.First().TipoDePago == "Credito 30 dias" || proc_ComprobanteFacturaVenta_Results.First().TipoDePago == "Credito 60 dias"))
+                if (!(proc_ComprobanteFacturaVenta_Results.First().TipoDePago == "Credito 30 dias" || proc_ComprobanteFacturaVenta_Results.First().TipoDePago == "Credito 60 dias") && recibido != 0)
                 {
                     controladorImpresoraMatricial.AgregarTotales("                 Tarjeta : $ ", Convert.ToDecimal(tarjeta));
                     controladorImpresoraMatricial.AgregarTotales("                Efectivo : $ ", Convert.ToDecimal(efectivo));

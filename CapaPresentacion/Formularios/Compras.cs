@@ -292,7 +292,7 @@ namespace CapaPresentacion.Formularios
                             CargarDataGridView();
                             break;
                         case "Proveedor":
-                            columna = "p.Nombre";
+                            columna = "Proveedor";
                             filtro = txtFiltro.Text;
                             CargarDataGridView();
                             break;

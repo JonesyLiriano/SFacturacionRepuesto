@@ -112,7 +112,7 @@ namespace CapaPresentacion.Impresiones
                     sb.AppendLine("Q203");
                     sb.AppendLine("D7");
                     //AStartPoint, VerticalStartPoint, Rotation, Font Selection, Horizontal Multiplier (expands Text Horizontally), Vertical Multiplier(expands Text Vertically), Reverse Image, Data
-                    sb.AppendLine(string.Format(CultureInfo.InvariantCulture, "A15,10,0,3,1,1,N,\"{0}\"", PadBoth(Properties.Settings.Default.NombreEmpresa, 20)));
+                    sb.AppendLine(string.Format(CultureInfo.InvariantCulture,"A15,10,0,3,1,1,N,\"{0}\"", PadBoth(Properties.Settings.Default.NombreEmpresa, 20)));
                     sb.AppendLine(string.Format(CultureInfo.InvariantCulture, "A15,35,0,2,1,1,N,\"{0}\"", PadBoth(Properties.Settings.Default.TelefonoEtiqueta, 24)));
                     sb.AppendLine(string.Format(CultureInfo.InvariantCulture, "A15,60,0,2,1,1,N,\"{0}\"", descripcionProd.Length < 24 ? descripcionProd : descripcionProd.Substring(0, 24)));
                     sb.AppendLine(string.Format(CultureInfo.InvariantCulture, "A15,80,0,2,1,1,N,\"{0}\"", referencia.Length < 24 ? referencia : referencia.Substring(0, 24)));

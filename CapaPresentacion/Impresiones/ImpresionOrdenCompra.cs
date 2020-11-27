@@ -1,12 +1,14 @@
 ﻿using CapaDatos;
 using CapaNegocios;
 using CapaPresentacion.Clases;
+using ESC_POS_USB_NET.Printer;
 using Microsoft.Reporting.WinForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -17,6 +19,7 @@ namespace CapaPresentacion.Impresiones
 {
     public partial class ImpresionOrdenCompra : Form
     {
+        Printer printer = new Printer(Properties.Settings.Default.Impresora);
         OrdenesCompraNegocio ordenesCompraNegocio = new OrdenesCompraNegocio();
         List<proc_ComprobanteOrdenCompra_Result> proc_ComprobanteOrdenCompra_Results;
         ReportParameter[] parameters = new ReportParameter[6];
@@ -77,14 +80,11 @@ namespace CapaPresentacion.Impresiones
             else if (Properties.Settings.Default.TipoImpresora == "Papel A4")
             {
                 CargarParametros();
-                ControladorImpresoraPapelA4 controladorImpresoraPapelA4 = new ControladorImpresoraPapelA4();
-                controladorImpresoraPapelA4.Imprime(CargarImpresionRV());
+                ControladorImpresoraGeneral.PrintToPrinter(CargarImpresionRV());
             }
             else if (Properties.Settings.Default.TipoImpresora == "Termica")
             {
-                CargarParametros();
-                ControladorImpresoraPapelA4 controladorImpresoraPapelA4 = new ControladorImpresoraPapelA4();
-                controladorImpresoraPapelA4.ImprimeTermica(CargarImpresionTermicaRV());
+                CargarImpresionTermica();
             }
             this.Close();
         }
@@ -192,6 +192,123 @@ namespace CapaPresentacion.Impresiones
 
             }
         }
+        private void CargarImpresionTermica()
+        {
+            try
+            {
+                cantArticulos = 0;
+                subtotal = 0;
+                printer.AlignCenter();
+                printer.DoubleWidth2();
+                printer.BoldMode(Properties.Settings.Default.NombreEmpresa.ToUpper());
+                printer.NormalWidth();
+                printer.Append(Properties.Settings.Default.Direccion);
+                printer.Append("TEL: " + Properties.Settings.Default.Telefono);
+                printer.AlignLeft();
+                printer.BoldMode(Properties.Settings.Default.RazonSocial.ToUpper());
+                printer.Append("RNC: " + Properties.Settings.Default.CedulaORnc);
+                printer.Append(proc_ComprobanteOrdenCompra_Results.First().FechaPedido.ToString());
+                printer.Append("-----------------------------------------");
+                printer.AlignCenter();
+                printer.Append("ORDEN DE COMPRA");
+                printer.AlignLeft();
+                printer.Append("-----------------------------------------");
+                printer.Append("DESCRIPCION/COMENTARIO       |VALOR");
+                printer.Append("-----------------------------------------");
+                foreach (var fila in proc_ComprobanteOrdenCompra_Results)
+                {
+                    AgregaArticuloOrdenCompra(fila.Descripcion, fila.Ordenada, Convert.ToDecimal(fila.PrecioCompra));
+                    cantArticulos++;
+                    subtotal += (Convert.ToDecimal(fila.Ordenada) * Convert.ToDecimal(fila.PrecioCompra));
+                }
+                printer.Append("-----------------------------------------");
+                AgregarTotales("                   TOTAL : $ ", Convert.ToDecimal(subtotal));
+                printer.Append("-----------------------------------------");
+                printer.Append("CANTIDAD DE PRODUCTOS:" + " " + cantArticulos);
+                printer.Append("-----------------------------------------");
+                printer.Append("EL PRECIO DE LOS PRODUCTOS");
+                printer.Append("PUEDE VARIAR.");
+                printer.Append("-----------------------------------------");
+                // controladorImpresoraMatricial.TextoIzquierda("COD. PROVEEDOR: " + proc_ComprobanteOrdenCompra_Results.First().ProveedorID);
+                printer.Append("PROVEEDOR: " + proc_ComprobanteOrdenCompra_Results.First().NombreProveedor.ToUpper());
+                printer.Append("COD. ORDEN COMPRA: " + proc_ComprobanteOrdenCompra_Results.First().OrdenCompraID.ToString());
+                printer.Append("-----------------------------------------");
+                printer.AlignCenter();
+                printer.Append("SISTEMA REALIZADO POR JONESY LIRIANO");
+                printer.Append("TEL/WSS: 809-222-3740");
+                printer.Append("****GRACIAS POR SU VISITA****");
+
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Error: No se ha podido imprimir, verifique si las configuraciones del sistema estan correctas e intente de nuevo por favor.",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Loggeator.EscribeEnArchivo(exc.ToString());
+            }
+        }
+
+        public void AgregarTotales(string texto, decimal total)
+        {
+            int maxCar = 40, cortar;
+            //Variables que usaremos
+            string resumen, valor, textoCompleto, espacios = "";
+
+            if (texto.Length > 29)//Si es mayor a 25 lo cortamos
+            {
+                cortar = texto.Length - 29;
+                resumen = texto.Remove(29, cortar);
+            }
+            else
+            { resumen = texto; }
+
+            textoCompleto = resumen;
+            valor = total.ToString("#,#.00");//Agregamos el total previo formateo.
+
+            //Obtenemos el numero de espacios restantes para alinearlos a la derecha
+            int nroEspacios = maxCar - (resumen.Length + valor.Length);
+            //agregamos los espacios
+            for (int i = 0; i < nroEspacios; i++)
+            {
+                espacios += " ";
+            }
+            textoCompleto += espacios + valor;
+            printer.Append(textoCompleto);
+        }
+
+        public void AgregaArticuloOrdenCompra(string articulo, double cant, decimal precio)
+        {
+            if (cant.ToString().Length < 7 && precio.ToString().Length < 11)
+            {
+                string elemento, espacios = "";
+                int nroEspacios = 0;
+                decimal importe = 0;
+                //Colocar cant y precio
+                elemento = cant.ToString() + " " + "X" + " " + precio.ToString();
+
+
+
+                //Colocar el precio total.
+                importe = Convert.ToDecimal(cant) * (precio);
+                nroEspacios = (29 - elemento.Length);
+                espacios = "";
+                for (int i = 0; i < nroEspacios; i++)
+                {
+                    espacios += " ";
+                }
+                elemento += espacios + importe.ToString();
+
+                printer.Append(elemento);//Agregamos todo el elemento: nombre del articulo, cant, precio, importe.
+                printer.Append(articulo);
+
+            }
+            else
+            {
+                printer.Append("Los valores ingresados para esta fila");
+                printer.Append("superan las columnas soportdas por éste.");
+                throw new Exception("Los valores ingresados para algunas filas del ticket\nsuperan las columnas soportdas por éste.");
+            }
+        }
+
         private void CargarImpresionMatricial()
         {
             try

@@ -1,12 +1,14 @@
 ﻿using CapaDatos;
 using CapaNegocios;
 using CapaPresentacion.Clases;
+using ESC_POS_USB_NET.Printer;
 using Microsoft.Reporting.WinForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -17,6 +19,7 @@ namespace CapaPresentacion.Impresiones
 {
     public partial class ImpresionReciboCobro : Form
     {
+        Printer printer = new Printer(Properties.Settings.Default.Impresora);
         CobrosVentaCreditoNegocio cobrosVentaCreditoNegocio = new CobrosVentaCreditoNegocio();
         List<proc_ComprobantePagoLineaCreditoVenta_Result> proc_ComprobantePagoLineaCreditoVenta_Results;
         ReportParameter[] parameters = new ReportParameter[6];
@@ -75,14 +78,11 @@ namespace CapaPresentacion.Impresiones
             else if (Properties.Settings.Default.TipoImpresora == "Papel A4")
             {
                 CargarParametros();
-                ControladorImpresoraPapelA4 controladorImpresoraPapelA4 = new ControladorImpresoraPapelA4();
-                controladorImpresoraPapelA4.Imprime(CargarImpresionRV());
+                ControladorImpresoraGeneral.PrintToPrinter(CargarImpresionRV());
             }
             else if (Properties.Settings.Default.TipoImpresora == "Termica")
             {
-                CargarParametros();
-                ControladorImpresoraPapelA4 controladorImpresoraPapelA4 = new ControladorImpresoraPapelA4();
-                controladorImpresoraPapelA4.ImprimeTermica(CargarImpresionTermicaRV());
+                CargarImpresionTermica();
             }
             this.Close();
         }
@@ -186,6 +186,92 @@ namespace CapaPresentacion.Impresiones
 
             }
         }
+
+        private void CargarImpresionTermica()
+        {
+            try
+            {
+
+                printer.AlignCenter();
+                printer.DoubleWidth2();
+                printer.BoldMode(Properties.Settings.Default.NombreEmpresa.ToUpper());
+                printer.NormalWidth();
+                printer.Append(Properties.Settings.Default.Direccion);
+                printer.Append(Properties.Settings.Default.Telefono);
+                printer.AlignLeft();
+                printer.Append(Properties.Settings.Default.RazonSocial.ToUpper());
+                printer.Append(Properties.Settings.Default.CedulaORnc);
+                printer.Append("-----------------------------------------");
+                printer.AlignCenter();
+                printer.Append("COMPROBANTE DE PAGO");
+                printer.AlignLeft();
+                printer.Append("-----------------------------------------");
+                printer.Append(proc_ComprobantePagoLineaCreditoVenta_Results.First().FechaCobro.ToString());
+                printer.Append("COMPROBANTE: " + proc_ComprobantePagoLineaCreditoVenta_Results.First().CobroVentaCreditoID.ToString());
+                printer.Append("FECHA: " + proc_ComprobantePagoLineaCreditoVenta_Results.First().FechaCobro.ToString());
+                printer.Append("LINEA DE CREDITO: " + proc_ComprobantePagoLineaCreditoVenta_Results.First().LineaCreditoVentaID.ToString());
+                printer.Append("FACTURA: " + proc_ComprobantePagoLineaCreditoVenta_Results.First().FacturaID.ToString());
+                printer.Append("VALOR FACTURA: $ " + Convert.ToDecimal(proc_ComprobantePagoLineaCreditoVenta_Results.First().ValorFactura).ToString("0.00"));
+                printer.Append("CONCEPTO: " + proc_ComprobantePagoLineaCreditoVenta_Results.First().Concepto);
+                printer.Append("-----------------------------------------");
+                AgregarTotales("    VALOR PENDIENTE : $ ", Convert.ToDecimal(proc_ComprobantePagoLineaCreditoVenta_Results.First().ValorPendiente));
+                AgregarTotales("     PAGO REALIZADO : $ ", Convert.ToDecimal(proc_ComprobantePagoLineaCreditoVenta_Results.First().PagoRealizado));
+                AgregarTotales("     MONTO RESTANTE : $ ", Convert.ToDecimal(proc_ComprobantePagoLineaCreditoVenta_Results.First().MontoRestante));
+                printer.Append("-----------------------------------------");
+                printer.AlignCenter();
+                printer.Append(" ");
+                printer.Append(" ");
+                printer.Append("___________________________");
+                printer.Append("FIRMA/CEDULA");
+                printer.AlignLeft();
+                printer.Append("-----------------------------------------");
+                //  controladorImpresoraMatricial.TextoIzquierda("COD. CLIENTE: " + proc_ComprobantePagoLineaCreditoVenta_Results.First().ClienteID);
+                printer.Append("CLIENTE: " + proc_ComprobantePagoLineaCreditoVenta_Results.First().Cliente.ToUpper());
+                printer.Append("USUARIO: " + proc_ComprobantePagoLineaCreditoVenta_Results.First().Usuario.ToUpper());
+                printer.Append("-----------------------------------------");
+                printer.AlignCenter();
+                printer.Append("SISTEMA REALIZADO POR JONESY LIRIANO");
+                printer.Append("TEL/WSS: 809-222-3740");
+                printer.Append("****GRACIAS POR SU PAGO***");
+
+                printer.FullPaperCut();
+                printer.PrintDocument();
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Error: No se ha podido imprimir, verifique si las configuraciones del sistema estan correctas e intente de nuevo por favor.",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Loggeator.EscribeEnArchivo(exc.ToString());
+            }
+        }
+
+        public void AgregarTotales(string texto, decimal total)
+        {
+            int maxCar = 40, cortar;
+            //Variables que usaremos
+            string resumen, valor, textoCompleto, espacios = "";
+
+            if (texto.Length > 29)//Si es mayor a 25 lo cortamos
+            {
+                cortar = texto.Length - 29;
+                resumen = texto.Remove(29, cortar);
+            }
+            else
+            { resumen = texto; }
+
+            textoCompleto = resumen;
+            valor = total.ToString("#,#.00");//Agregamos el total previo formateo.
+
+            //Obtenemos el numero de espacios restantes para alinearlos a la derecha
+            int nroEspacios = maxCar - (resumen.Length + valor.Length);
+            //agregamos los espacios
+            for (int i = 0; i < nroEspacios; i++)
+            {
+                espacios += " ";
+            }
+            textoCompleto += espacios + valor;
+            printer.Append(textoCompleto);
+        }
         private void CargarImpresionMatricial()
         {
             try
@@ -197,16 +283,18 @@ namespace CapaPresentacion.Impresiones
                 controladorImpresoraMatricial.TextoCentro(Properties.Settings.Default.Telefono);
                 controladorImpresoraMatricial.TextoIzquierda(Properties.Settings.Default.RazonSocial.ToUpper());
                 controladorImpresoraMatricial.TextoIzquierda(Properties.Settings.Default.CedulaORnc);
+                controladorImpresoraMatricial.lineasGuio();
                 controladorImpresoraMatricial.TextoCentro("COMPROBANTE DE PAGO");
+                controladorImpresoraMatricial.lineasGuio();
                 controladorImpresoraMatricial.TextoIzquierda(proc_ComprobantePagoLineaCreditoVenta_Results.First().FechaCobro.ToString());
                 controladorImpresoraMatricial.TextoIzquierda("COMPROBANTE: " + proc_ComprobantePagoLineaCreditoVenta_Results.First().CobroVentaCreditoID.ToString());
                 controladorImpresoraMatricial.TextoIzquierda("FECHA: " + proc_ComprobantePagoLineaCreditoVenta_Results.First().FechaCobro.ToString());
                 controladorImpresoraMatricial.TextoIzquierda("LINEA DE CREDITO: " + proc_ComprobantePagoLineaCreditoVenta_Results.First().LineaCreditoVentaID.ToString());
                 controladorImpresoraMatricial.TextoIzquierda("FACTURA: " + proc_ComprobantePagoLineaCreditoVenta_Results.First().FacturaID.ToString());
-                controladorImpresoraMatricial.AgregarTotales("VALOR FACTURA: $ ", Convert.ToDecimal(proc_ComprobantePagoLineaCreditoVenta_Results.First().ValorFactura));
+                controladorImpresoraMatricial.TextoIzquierda("VALOR FACTURA: $ " + Convert.ToDecimal(proc_ComprobantePagoLineaCreditoVenta_Results.First().ValorFactura).ToString("0.00"));
                 controladorImpresoraMatricial.TextoIzquierda("CONCEPTO: " + proc_ComprobantePagoLineaCreditoVenta_Results.First().Concepto);
                 controladorImpresoraMatricial.lineasGuio();
-                controladorImpresoraMatricial.AgregarTotales("     VALOR PENDIENTE : $ ", Convert.ToDecimal(proc_ComprobantePagoLineaCreditoVenta_Results.First().ValorPendiente));
+                controladorImpresoraMatricial.AgregarTotales("    VALOR PENDIENTE : $ ", Convert.ToDecimal(proc_ComprobantePagoLineaCreditoVenta_Results.First().ValorPendiente));
                 controladorImpresoraMatricial.AgregarTotales("     PAGO REALIZADO : $ ", Convert.ToDecimal(proc_ComprobantePagoLineaCreditoVenta_Results.First().PagoRealizado));
                 controladorImpresoraMatricial.AgregarTotales("     MONTO RESTANTE : $ ", Convert.ToDecimal(proc_ComprobantePagoLineaCreditoVenta_Results.First().MontoRestante));
                 controladorImpresoraMatricial.lineasGuio();
