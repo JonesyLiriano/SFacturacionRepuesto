@@ -720,7 +720,7 @@ namespace CapaPresentacion.Impresiones
                 controladorImpresoraMatricial.lineasGuio();
                 controladorImpresoraMatricial.TextoCentro("FACTURA");
                 controladorImpresoraMatricial.lineasGuio();
-                controladorImpresoraMatricial.EncabezadoVenta();
+                controladorImpresoraMatricial.TextoIzquierda("DESCRIPCION                   |VALOR");
                 controladorImpresoraMatricial.lineasGuio();
                 foreach (var fila in proc_ComprobanteFacturaVenta_Results)
                 {
