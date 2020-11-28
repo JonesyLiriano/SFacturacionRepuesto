@@ -537,11 +537,11 @@ namespace CapaPresentacion.Impresiones
                 printer.Append("FACTURA");
                 printer.AlignLeft();
                 printer.Append("-----------------------------------------");
-                printer.Append("DESCRIPCION         |ITBIS     |VALOR");
+                printer.Append("DESCRIPCION                   |VALOR");
                 printer.Append("-----------------------------------------");
                 foreach (var fila in proc_ComprobanteFacturaVenta_Results)
                 {
-                    AgregaArticulo(fila.Descripcion, fila.CantVen, fila.ITBIS, fila.Precio, fila.Descuento);
+                    AgregaArticuloSinITBIS(fila.Descripcion, fila.CantVen, fila.ITBIS, fila.Precio, fila.Descuento);
                     cantArticulos++;
                     subtotal += (Convert.ToDecimal(fila.CantVen) * (fila.Precio - fila.Descuento));
                     itbis += (Convert.ToDecimal(fila.CantVen) * Convert.ToDecimal(fila.ITBIS));
@@ -551,7 +551,6 @@ namespace CapaPresentacion.Impresiones
                 descTotal = Convert.ToDecimal((desc + ((proc_ComprobanteFacturaVenta_Results.First().DescuentoCliente / 100) * subtotal)));
                 printer.Append("-----------------------------------------");
                 AgregarTotales("                SUBTOTAL : $ ", subtotal);
-                AgregarTotales("                   ITBIS : $ ", itbis);
                 AgregarTotales("                   DESC. : $ ", descTotal);
                 AgregarTotales("                   TOTAL : $ ", Convert.ToDecimal(subtotal + itbis - descTotal));
 
@@ -662,6 +661,41 @@ namespace CapaPresentacion.Impresiones
             }
         }
 
+        public void AgregaArticuloSinITBIS(string articulo, double cant, decimal itbis, decimal precio, decimal descuento)
+        {
+            if (cant.ToString().Length < 7 && precio.ToString().Length < 11)
+            {
+                string elemento, espacios = "";
+                int nroEspacios = 0;
+                decimal importe = 0;
+                //Colocar cant y precio
+                elemento = cant.ToString() + " " + "X" + " " + precio.ToString();
+
+
+                //Colocar el ITBIS a la derecha.
+                nroEspacios = (20 - elemento.Length);
+                espacios = "";
+                for (int i = 0; i < nroEspacios; i++)
+                {
+                    espacios += " ";
+                }
+                elemento += espacios + "";
+                //Colocar el precio total.
+                importe = Convert.ToDecimal(cant) * (precio + itbis - descuento);
+                nroEspacios = (31 - elemento.Length);
+                espacios = "";
+                for (int i = 0; i < nroEspacios; i++)
+                {
+                    espacios += " ";
+                }
+                elemento += espacios + importe.ToString();
+
+                printer.Append(elemento);//Agregamos todo el elemento: nombre del articulo, cant, precio, importe.
+                printer.Append(articulo);
+
+            }
+        }
+
 
         private void CargarImpresionMatricialFRapida()
         {
@@ -690,7 +724,7 @@ namespace CapaPresentacion.Impresiones
                 controladorImpresoraMatricial.lineasGuio();
                 foreach (var fila in proc_ComprobanteFacturaVenta_Results)
                 {
-                    controladorImpresoraMatricial.AgregaArticulo(fila.Descripcion, fila.CantVen, fila.ITBIS, fila.Precio, fila.Descuento);
+                    controladorImpresoraMatricial.AgregaArticuloSinITBIS(fila.Descripcion, fila.CantVen, fila.ITBIS, fila.Precio, fila.Descuento);
                     cantArticulos++;
                     subtotal += (Convert.ToDecimal(fila.CantVen) * (fila.Precio - fila.Descuento));
                     itbis += (Convert.ToDecimal(fila.CantVen) * Convert.ToDecimal(fila.ITBIS));
@@ -699,7 +733,6 @@ namespace CapaPresentacion.Impresiones
                 descTotal = Convert.ToDecimal((desc + ((proc_ComprobanteFacturaVenta_Results.First().DescuentoCliente / 100) * subtotal)));
                 controladorImpresoraMatricial.lineasGuio();
                 controladorImpresoraMatricial.AgregarTotales("                SUBTOTAL : $ ", subtotal);
-                controladorImpresoraMatricial.AgregarTotales("                   ITBIS : $ ", itbis);
                 controladorImpresoraMatricial.AgregarTotales("                   DESC. : $ ", descTotal);
                 controladorImpresoraMatricial.AgregarTotales("                   TOTAL : $ ", Convert.ToDecimal(subtotal + itbis - descTotal));
                 if (!(proc_ComprobanteFacturaVenta_Results.First().TipoDePago == "Credito 30 dias" || proc_ComprobanteFacturaVenta_Results.First().TipoDePago == "Credito 60 dias") && recibido != 0)
